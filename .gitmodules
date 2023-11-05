@@ -1,6 +1,0 @@
-[submodule "themes/themes/robust"]
-	path = themes/themes/robust
-	url = https://github.com/dim0627/hugo_theme_robust
-[submodule "themes/robust"]
-	path = themes/robust
-	url = https://github.com/dim0627/hugo_theme_robust
