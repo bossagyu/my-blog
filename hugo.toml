@@ -1,4 +1,12 @@
 baseURL = 'https://bossagyu.github.io/my-blog/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'robust'
+title = 'kohei Blog'
+theme = 'hugo-bearcub'
+
+[author]
+name = "Kohei Yamamto"
+
+[social]
+email = "me@example.com" # Added to the footer so readers can reply to posts
+twitter = "example" # Twitter handle (without '@')
+facebook_admin = "0000000000" # Facebook Page Admin ID

@@ -4,3 +4,6 @@
 [submodule "themes/robust"]
 	path = themes/robust
 	url = https://github.com/dim0627/hugo_theme_robust
+[submodule "themes/hugo-bearcub"]
+	path = themes/hugo-bearcub
+	url = https://github.com/clente/hugo-bearcub
