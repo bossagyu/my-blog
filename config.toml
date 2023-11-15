@@ -1,6 +1,6 @@
 baseURL = 'https://bossagyu.github.io/my-blog/'
 languageCode = 'en-us'
-title = 'kohei Blog'
+title = 'kouhei Blog'
 theme = 'hugo-bearcub'
 
 [author]
