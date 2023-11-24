@@ -1,6 +1,6 @@
 baseURL = 'https://kouhei-blog.netlify.app'
 languageCode = 'en-us'
-title = 'kouhei Blog'
+title = 'Bossagyu Blog'
 theme = 'hugo-bearcub'
 
 [author]
