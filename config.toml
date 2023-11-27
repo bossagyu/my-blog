@@ -3,6 +3,11 @@ languageCode = 'en-us'
 title = 'Bossagyu Blog'
 theme = 'hugo-bearcub'
 
+
+copyright = '©2023 Bossagyu'
+
+
+
 [author]
 name = "Kohei Yamamto"
 
