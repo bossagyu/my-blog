@@ -1,6 +1,6 @@
 +++
 title = 'Hugo + Netlify + Githubでブログを公開する'
-date = 2023-12-02T23:05:29+09:00
+date = 2023-12-02T00:59:37+09:00
 draft = false
 toc = true 
 +++
@@ -79,11 +79,11 @@ pushが完了するとGithubのUI上でソースコードが閲覧できる状�
 
 指示に従いデプロイを完了すると以下のようにDeployの結果が `published` になる。
 
-![img-001-001.png](img-001-001.png)
+![img-001-001.png](/blog/img-001-001.png)
 
 
 サイト上に表示されたURLをクリックするとデプロイされたサイトにアクセスできる。
-![img-001-002.png](img-001-002.png)
+![img-001-002.png](/blog/img-001-002.png)
 
 
 これでデプロイまではおしまい。  
