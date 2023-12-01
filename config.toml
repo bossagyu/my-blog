@@ -1,4 +1,4 @@
-baseURL = 'https://kouhei-blog.netlify.app'
+baseURL = 'https://bossagyu.com'
 languageCode = 'en-us'
 title = 'Bossagyu Blog'
 theme = 'hugo-bearcub'
