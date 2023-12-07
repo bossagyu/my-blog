@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>概要 Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>Hugo + Netlify + Githubでブログを公開する 概要 Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。
 流れ Hugoでサイトを生成 Githubにプッシュ Netlifyでデプロイ Hugoで静的サイトを生成 まずはHugoをインストールします。
 brew install hugoblogの雛形を作成します。
@@ -7,7 +7,8 @@ cd my-blog git init # テーマをgithubのsubmoduleとして追加 git submodul
 echo &amp;#34;theme = &amp;#39;ananke&amp;#39;&amp;#34; &amp;gt;&amp;gt; config.tomlサーバを起動させます。
 hugo server起動ログの Web Server is available at http://localhost:51517/ (bind address 127.0.0.1) のような記述の http://localhost:51517/ にアクセスすればローカルに起動した静的サイトが閲覧できます。
 Tips Hugoのテーマを変えたい場合は、Hugo Themas から好きなものを選んで変えてください。 これは後からでも変えられるのでとりあえずNetlifyでビルドするところまで走り切るのがおすすめ。 Tomlファイルの書き方は Configure Hugo に記載されています。 Githubにpush Github にリポジトリを作成。 作成後以下のコマンドを実行し、サイトをpushします。
-cd my-blog echo .hugo_build.lock &amp;gt;&amp;gt; .gitignore git add . git commit -m &amp;#34;first commit&amp;#34; git branch -M main # &amp;lt;user name&amp;gt;は自分のユーザー名に置き換えてください。 # 今回はmy-blogというリポジトリを作成している例です。 git remote add origin git@github.</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+cd my-blog echo .hugo_build.lock &amp;gt;&amp;gt; .</description><content:encoded><![CDATA[<h1 id="hugo--netlify--githubでブログを公開する">Hugo + Netlify + Githubでブログを公開する</h1>
+<h2 id="概要">概要</h2>
 <p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。<br>
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。</p>
 <h2 id="流れ">流れ</h2>
