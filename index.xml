@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>Hugo + Netlify + Githubでブログを公開する 概要 Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Thu, 07 Dec 2023 09:37:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>LINE Messaging APIの登録と使い方 概要 LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。
+本ページでは一番最初にLINE Message APIの登録の方法とcurlでコマンドラインからメッセージを送る方法を紹介します。
+Messaging APIを利用する LINE Developers にログインしてプロバイダーを作成する。
+プロバイダーとは(説明)
+LINE Developersサイトでは、サービスを提供し、ユーザーの情報を取得する開発者個人、 企業、または団体等をサービス提供者（LINEミニアプリではサービス事業主）と呼びます。なので好きな文字列を入れる。
+そのまま新規チャンネルを作成する。 このまま作成ボタンを押すと新規チャンネルが作成される
+コマンドラインからポストをする Messaging API設定からQRコードを読みこんで友達追加する。
+Messaging API設定から「チャンネルアクセストークン(長期)」を取得 チャンネル基本設定から「あなたのユーザーID」取得
+TOKEN=&amp;#34;&amp;lt;チャンネルアクセストークン(長期)&amp;gt;&amp;#34; ID=&amp;#34;&amp;lt;あなたのユーザーID&amp;gt;&amp;#34; UUID=$(uuidgen | tr &amp;#34;[:upper:]&amp;#34; &amp;#34;[:lower:]&amp;#34;) curl -v -X POST https://api.line.me/v2/bot/message/push \ -H &amp;#39;Content-Type: application/json&amp;#39; \ -H &amp;#34;Authorization: Bearer ${TOKEN}&amp;#34; \ -H &amp;#34;X-Line-Retry-Key: &amp;#34; \ -d &amp;#34;{ \&amp;#34;to\&amp;#34;: \&amp;#34;${ID}\&amp;#34;, \&amp;#34;messages\&amp;#34;:[ { \&amp;#34;type\&amp;#34;:\&amp;#34;text\&amp;#34;, \&amp;#34;text\&amp;#34;:\&amp;#34;Hello, world1\&amp;#34; } ] }&amp;#34;レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！</description><content:encoded><![CDATA[<h1 id="line-messaging-apiの登録と使い方">LINE Messaging APIの登録と使い方</h1>
+<h2 id="概要">概要</h2>
+<p>LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。<br>
+本ページでは一番最初にLINE Message APIの登録の方法とcurlでコマンドラインからメッセージを送る方法を紹介します。</p>
+<h2 id="messaging-apiを利用する">Messaging APIを利用する</h2>
+<p><a href="https://developers.line.biz/console/">LINE Developers</a> にログインしてプロバイダーを作成する。</p>
+<p><img src="/blog/img-002-001.png" alt="img-002-001.png"></p>
+<p>プロバイダーとは(<a href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider">説明</a>)</p>
+
+
+
+
+
+<pre tabindex="0"><code>LINE Developersサイトでは、サービスを提供し、ユーザーの情報を取得する開発者個人、
+企業、または団体等をサービス提供者（LINEミニアプリではサービス事業主）と呼びます。</code></pre><p>なので好きな文字列を入れる。</p>
+<p>そのまま新規チャンネルを作成する。
+<img src="/blog/img-002-002.png" alt="img-002-002.png"></p>
+<p>このまま作成ボタンを押すと新規チャンネルが作成される</p>
+<p><img src="/blog/img-002-003.png" alt="img-002-003.png"></p>
+<h1 id="コマンドラインからポストをする">コマンドラインからポストをする</h1>
+<p>Messaging API設定からQRコードを読みこんで友達追加する。</p>
+<p>Messaging API設定から「チャンネルアクセストークン(長期)」を取得
+チャンネル基本設定から「あなたのユーザーID」取得</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;チャンネルアクセストークン(長期)&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;あなたのユーザーID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>UUID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>uuidgen | tr <span style="color:#e6db74">&#34;[:upper:]&#34;</span> <span style="color:#e6db74">&#34;[:lower:]&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl -v -X POST https://api.line.me/v2/bot/message/push <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Authorization: Bearer </span><span style="color:#e6db74">${</span>TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;X-Line-Retry-Key: &#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#34;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    \&#34;to\&#34;: \&#34;</span><span style="color:#e6db74">${</span>ID<span style="color:#e6db74">}</span><span style="color:#e6db74">\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    \&#34;messages\&#34;:[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            \&#34;type\&#34;:\&#34;text\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            \&#34;text\&#34;:\&#34;Hello, world1\&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#34;</span></span></span></code></pre></div><p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！</p>
+]]></content:encoded></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>Hugo + Netlify + Githubでブログを公開する 概要 Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。
 流れ Hugoでサイトを生成 Githubにプッシュ Netlifyでデプロイ Hugoで静的サイトを生成 まずはHugoをインストールします。
 brew install hugoblogの雛形を作成します。
