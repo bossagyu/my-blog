@@ -4,7 +4,6 @@ date = 2023-12-02T00:59:37+09:00
 draft = false
 toc = true 
 +++
-# Hugo + Netlify + Githubでブログを公開する
 ## 概要
 Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。  
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。
