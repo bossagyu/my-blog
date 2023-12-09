@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Thu, 07 Dec 2023 09:37:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>概要 LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sat, 09 Dec 2023 18:09:42 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>概要 HugoをでGoogle Analyticsを設定する方法をサクッと解説します。
+実現までの流れ Google Analyticsへの登録 トラッキングIDの取得 Hugoの設定にトラッキングIDを追加 Google Analyticsの登録 [GA4] アナリティクスで新しいウェブサイトまたはアプリのセットアップを行う に従い登録を行います。
+データストリームを追加すると、トラッキングIDが取得できるのでメモしておきます。 ※ トラッキングIDは日本語訳の影響か、測定IDという表示になっています。
+Hugoの設定にトラッキングIDを追加 tomlに設定を追加 config.tomlにgoogleAnalytics = トラッキングIDを追加します。
+baseURL = &amp;#39;https://bossagyu.com&amp;#39; languageCode = &amp;#39;ja-jp&amp;#39; title = &amp;#39;Bossagyu Blog&amp;#39; theme = &amp;#39;hugo-bearcub&amp;#39; googleAnalytics = &amp;#34;G-1234ABCDEF&amp;#34; # ↑ この行を追加、トラッキングIDは自分のものに変更してください。トラッキングコードを埋め込む テンプレートによってはtomlの設定を入れるだけで読めるものもあるみたいですが、 私の使用しているbearcubのテンプレートは対応してなかったので、 自分でヘッダにトラッキングコードを読み込むように追加します。
+コードスニペットについてはまくまく Hugo ノートを参考にさせていただきました。
+トラッキングコードを読むために layouts/partials/analytics.html を作成する。
+{{ if not .Site.IsServer }} {{ with .Site.GoogleAnalytics }} &amp;lt;!-- Google tag (gtag.js) --&amp;gt; &amp;lt;script async src=&amp;#34;https://www.googletagmanager.com/gtag/js?id={{ . }}&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; window.dataLayer = window.</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>HugoをでGoogle Analyticsを設定する方法をサクッと解説します。</p>
+<h2 id="実現までの流れ">実現までの流れ</h2>
+<ol>
+<li>Google Analyticsへの登録</li>
+<li>トラッキングIDの取得</li>
+<li>Hugoの設定にトラッキングIDを追加</li>
+</ol>
+<h2 id="google-analyticsの登録">Google Analyticsの登録</h2>
+<p><a href="https://support.google.com/analytics/answer/9304153?hl=ja">[GA4] アナリティクスで新しいウェブサイトまたはアプリのセットアップを行う</a>
+に従い登録を行います。<br>
+データストリームを追加すると、トラッキングIDが取得できるのでメモしておきます。
+<img src="/blog/img-003-001.png" alt="img-003-001.png">
+※ トラッキングIDは日本語訳の影響か、測定IDという表示になっています。</p>
+<h2 id="hugoの設定にトラッキングidを追加">Hugoの設定にトラッキングIDを追加</h2>
+<h3 id="tomlに設定を追加">tomlに設定を追加</h3>
+<p>config.tomlに<code>googleAnalytics = トラッキングID</code>を追加します。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#39;https://bossagyu.com&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#39;ja-jp&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#39;Bossagyu Blog&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#39;hugo-bearcub&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">googleAnalytics</span> = <span style="color:#e6db74">&#34;G-1234ABCDEF&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ↑ この行を追加、トラッキングIDは自分のものに変更してください。</span></span></span></code></pre></div><h3 id="トラッキングコードを埋め込む">トラッキングコードを埋め込む</h3>
+<p>テンプレートによってはtomlの設定を入れるだけで読めるものもあるみたいですが、
+私の使用している<a href="https://github.com/clente/hugo-bearcub/tree/main">bearcub</a>のテンプレートは対応してなかったので、
+自分でヘッダにトラッキングコードを読み込むように追加します。</p>
+<p>コードスニペットについては<a href="https://github.com/clente/hugo-bearcub/tree/main">まくまく Hugo ノート</a>を参考にさせていただきました。</p>
+<p>トラッキングコードを読むために <code>layouts/partials/analytics.html</code> を作成する。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if not .Site.IsServer }}
+</span></span><span style="display:flex;"><span>{{ with .Site.GoogleAnalytics }}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Google tag (gtag.js) --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.googletagmanager.com/gtag/js?id={{ . }}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">dataLayer</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">dataLayer</span> <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">gtag</span>(){<span style="color:#a6e22e">dataLayer</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">arguments</span>);}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gtag</span>(<span style="color:#e6db74">&#39;js&#39;</span>, <span style="color:#66d9ef">new</span> Date());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gtag</span>(<span style="color:#e6db74">&#39;config&#39;</span>, <span style="color:#e6db74">&#39;{{ . }}&#39;</span>);
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span><span style="display:flex;"><span>{{ end }}</span></span></code></pre></div><p>ページヘッダで <code>analytics.html</code> を読み込むようにする。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># テンプレートの内容をコピーしてきてオーバーライドする</span>
+</span></span><span style="display:flex;"><span>cp themes/hugo-bearcub/layouts/_default/baseof.html layouts/_default/baseof.html 
+</span></span><span style="display:flex;"><span>vim layouts/_default/baseof.html </span></span></code></pre></div><p>baseof.htmlに<code>{{- partial &quot;analytics&quot; . -}}</code> を追加する。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  {{- partial &#34;analytics&#34; . -}}
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-Clacks-Overhead&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;GNU Terry Pratchett&#34;</span> <span style="color:#960050;background-color:#1e0010">/</span></span></span></code></pre></div><p>上記ソースコードを追加した状態で、再度ビルドするとGoogle Analyticsにデータが送信されるようになります。</p>
+<h2 id="tips">tips</h2>
+<p>こちらの対応をしても、Google Analyticsにデータが連携されていないように見える場合は、タグの追加がうまくいっていない可能性があります。<br>
+まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。</p>
+]]></content:encoded></item><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>概要 LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。
 本ページでは一番最初にLINE Message APIの登録の方法とcurlでコマンドラインからメッセージを送る方法を紹介します。
 Messaging APIを利用する LINE Developers にログインしてプロバイダーを作成する。
 プロバイダーとは(説明)
