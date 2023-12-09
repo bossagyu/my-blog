@@ -1,15 +1,13 @@
 baseURL = 'https://bossagyu.com'
-languageCode = 'en-us'
+languageCode = 'ja-jp'
 title = 'Bossagyu Blog'
 theme = 'hugo-bearcub'
-
-
+googleAnalytics = "G-5JL2R6XT6H"
 copyright = '©2023 Bossagyu'
 
 
-
 [author]
-name = "Kohei Yamamto"
+name = "bossagyu"
 
 [social]
 email = "me@example.com" # Added to the footer so readers can reply to posts
