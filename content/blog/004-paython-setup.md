@@ -20,69 +20,69 @@ macのローカル環境で開発を行う際のpythonの環境構築の方法�
 まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
 
 pyenvをインストールします。
-```
+```shell
 brew install pyenv
 ```
 
 インストールしたpyenvのバージョンを確認します。
-```
+```shell
 pyenv --version
 pyenv 2.3.35
 ```
 
 zshに設定を追加する。
-```
+```shell
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc    
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
 ```
 
 `.zshrc`の内容を読み込む。
-```
+```shell
 source ~/.zshrc
 ```
 
 インストール可能なPythonのバージョン一覧を表示する。
-```
+```shell
 pyenv install --list
 ```
 
 指定したバージョンをインストールする。
-```
+```shell
 pyenv install 3.11.7
 ```
 
 プロジェクトフォルダに指定したPythonのバージョンを利用する。
-```
+```shell
 cd <作成したプロジェクトフォルダ>
 pyenv local 3.11.7
 pyenv versions
 ```
 globalの場合は全体に反映される。
-```
+```shell
 pyenv global 3.11.7
 ```
 
 実行されているpythonのバージョンを確認する。
-```
+```shell
 python -V
 ```
 
 ## venvで仮想環境の作成
 
 プロジェクトのディレクトリに仮想環境を作成する。
-```
+```shell
 # python -m venv <仮想環境名>
 python -m venv venv
 ```
 
 仮想環境を有効化する。
-```
+```shell
 source venv/bin/activate
 ```
 
 ディアクティベートは以下のコマンドで実行できる。
-```
+```shell
 deactivate
 ```
 
