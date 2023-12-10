@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sat, 09 Dec 2023 18:09:42 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>概要 HugoをでGoogle Analyticsを設定する方法をサクッと解説します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sun, 10 Dec 2023 23:19:33 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-paython-setup/</guid><description>概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。
+pyenv 複数のpythonのバージョンを扱うために利用する。 venv プロジェクトごとに環境を分けるために利用する。 それぞれの違いや必要性の解説はこちらの記事が参考になります。
+Pythonのインストール まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
+pyenvをインストールします。
+brew install pyenvインストールしたpyenvのバージョンを確認します。
+pyenv --version pyenv 2.3.35zshに設定を追加する。
+echo &amp;#39;export PYENV_ROOT=&amp;#34;$HOME/.pyenv&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.zshrc echo &amp;#39;export PATH=&amp;#34;$PYENV_ROOT/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.zshrc echo -e &amp;#39;if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n eval &amp;#34;$(pyenv init -)&amp;#34;\nfi&amp;#39; &amp;gt;&amp;gt; ~/.zshrc.zshrcの内容を読み込む。
+source ~/.zshrcインストール可能なPythonのバージョン一覧を表示する。
+pyenv install --list指定したバージョンをインストールする。
+pyenv install 3.11.7プロジェクトフォルダに指定したPythonのバージョンを利用する。
+cd &amp;lt;作成したプロジェクトフォルダ&amp;gt; pyenv local 3.11.7 pyenv versionsglobalの場合は全体に反映される。
+pyenv global 3.11.7実行されているpythonのバージョンを確認する。
+python -Vvenvで仮想環境の作成 プロジェクトのディレクトリに仮想環境を作成する。
+# python -m venv &amp;lt;仮想環境名&amp;gt; python -m venv venv仮想環境を有効化する。</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。<br>
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。</p>
+<ul>
+<li>pyenv
+<ul>
+<li>複数のpythonのバージョンを扱うために利用する。</li>
+</ul>
+</li>
+<li>venv
+<ul>
+<li>プロジェクトごとに環境を分けるために利用する。</li>
+</ul>
+</li>
+</ul>
+<p>それぞれの違いや必要性の解説は<a href="https://jimaru.blog/programming/python/venv_pyenv_choice/">こちら</a>の記事が参考になります。</p>
+<h2 id="pythonのインストール">Pythonのインストール</h2>
+<p>まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。</p>
+<p>pyenvをインストールします。</p>
+
+
+
+
+
+<pre tabindex="0"><code>brew install pyenv</code></pre><p>インストールしたpyenvのバージョンを確認します。</p>
+
+
+
+
+
+<pre tabindex="0"><code>pyenv --version
+pyenv 2.3.35</code></pre><p>zshに設定を追加する。</p>
+
+
+
+
+
+<pre tabindex="0"><code>echo &#39;export PYENV_ROOT=&#34;$HOME/.pyenv&#34;&#39; &gt;&gt; ~/.zshrc    
+echo &#39;export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc
+echo -e &#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &#34;$(pyenv init -)&#34;\nfi&#39; &gt;&gt; ~/.zshrc</code></pre><p><code>.zshrc</code>の内容を読み込む。</p>
+
+
+
+
+
+<pre tabindex="0"><code>source ~/.zshrc</code></pre><p>インストール可能なPythonのバージョン一覧を表示する。</p>
+
+
+
+
+
+<pre tabindex="0"><code>pyenv install --list</code></pre><p>指定したバージョンをインストールする。</p>
+
+
+
+
+
+<pre tabindex="0"><code>pyenv install 3.11.7</code></pre><p>プロジェクトフォルダに指定したPythonのバージョンを利用する。</p>
+
+
+
+
+
+<pre tabindex="0"><code>cd &lt;作成したプロジェクトフォルダ&gt;
+pyenv local 3.11.7
+pyenv versions</code></pre><p>globalの場合は全体に反映される。</p>
+
+
+
+
+
+<pre tabindex="0"><code>pyenv global 3.11.7</code></pre><p>実行されているpythonのバージョンを確認する。</p>
+
+
+
+
+
+<pre tabindex="0"><code>python -V</code></pre><h2 id="venvで仮想環境の作成">venvで仮想環境の作成</h2>
+<p>プロジェクトのディレクトリに仮想環境を作成する。</p>
+
+
+
+
+
+<pre tabindex="0"><code># python -m venv &lt;仮想環境名&gt;
+python -m venv venv</code></pre><p>仮想環境を有効化する。</p>
+
+
+
+
+
+<pre tabindex="0"><code>source venv/bin/activate</code></pre><p>ディアクティベートは以下のコマンドで実行できる。</p>
+
+
+
+
+
+<pre tabindex="0"><code>deactivate</code></pre><p>以上でローカル環境の構築が完了です。</p>
+]]></content:encoded></item><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>概要 HugoをでGoogle Analyticsを設定する方法をサクッと解説します。
 実現までの流れ Google Analyticsへの登録 トラッキングIDの取得 Hugoの設定にトラッキングIDを追加 Google Analyticsの登録 [GA4] アナリティクスで新しいウェブサイトまたはアプリのセットアップを行う に従い登録を行います。
 データストリームを追加すると、トラッキングIDが取得できるのでメモしておきます。 ※ トラッキングIDは日本語訳の影響か、測定IDという表示になっています。
 Hugoの設定にトラッキングIDを追加 tomlに設定を追加 config.tomlにgoogleAnalytics = トラッキングIDを追加します。

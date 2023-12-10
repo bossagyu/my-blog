@@ -1,0 +1,67 @@
+<!doctype html><html lang=ja-jp><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-5JL2R6XT6H"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-5JL2R6XT6H")</script><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Pyenvとvenvを用いたローカル環境のセットアップ方法 | Bossagyu Blog</title><meta name=title content="Pyenvとvenvを用いたローカル環境のセットアップ方法"><meta name=description content="概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。
+pyenv 複数のpythonのバージョンを扱うために利用する。 venv プロジェクトごとに環境を分けるために利用する。 それぞれの違いや必要性の解説はこちらの記事が参考になります。
+Pythonのインストール まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
+pyenvをインストールします。
+brew install pyenvインストールしたpyenvのバージョンを確認します。
+pyenv --version pyenv 2.3.35zshに設定を追加する。
+echo 'export PYENV_ROOT=&#34;$HOME/.pyenv&#34;' >> ~/.zshrc echo 'export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;' >> ~/.zshrc echo -e 'if command -v pyenv 1>/dev/null 2>&amp;1; then\n eval &#34;$(pyenv init -)&#34;\nfi' >> ~/.zshrc.zshrcの内容を読み込む。
+source ~/.zshrcインストール可能なPythonのバージョン一覧を表示する。
+pyenv install --list指定したバージョンをインストールする。
+pyenv install 3.11.7プロジェクトフォルダに指定したPythonのバージョンを利用する。
+cd <作成したプロジェクトフォルダ> pyenv local 3.11.7 pyenv versionsglobalの場合は全体に反映される。
+pyenv global 3.11.7実行されているpythonのバージョンを確認する。
+python -Vvenvで仮想環境の作成 プロジェクトのディレクトリに仮想環境を作成する。
+# python -m venv <仮想環境名> python -m venv venv仮想環境を有効化する。"><meta name=keywords content><meta property="og:title" content="Pyenvとvenvを用いたローカル環境のセットアップ方法"><meta property="og:description" content="概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。
+pyenv 複数のpythonのバージョンを扱うために利用する。 venv プロジェクトごとに環境を分けるために利用する。 それぞれの違いや必要性の解説はこちらの記事が参考になります。
+Pythonのインストール まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
+pyenvをインストールします。
+brew install pyenvインストールしたpyenvのバージョンを確認します。
+pyenv --version pyenv 2.3.35zshに設定を追加する。
+echo 'export PYENV_ROOT=&#34;$HOME/.pyenv&#34;' >> ~/.zshrc echo 'export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;' >> ~/.zshrc echo -e 'if command -v pyenv 1>/dev/null 2>&amp;1; then\n eval &#34;$(pyenv init -)&#34;\nfi' >> ~/.zshrc.zshrcの内容を読み込む。
+source ~/.zshrcインストール可能なPythonのバージョン一覧を表示する。
+pyenv install --list指定したバージョンをインストールする。
+pyenv install 3.11.7プロジェクトフォルダに指定したPythonのバージョンを利用する。
+cd <作成したプロジェクトフォルダ> pyenv local 3.11.7 pyenv versionsglobalの場合は全体に反映される。
+pyenv global 3.11.7実行されているpythonのバージョンを確認する。
+python -Vvenvで仮想環境の作成 プロジェクトのディレクトリに仮想環境を作成する。
+# python -m venv <仮想環境名> python -m venv venv仮想環境を有効化する。"><meta property="og:type" content="article"><meta property="og:url" content="https://bossagyu.com/blog/004-paython-setup/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2023-12-10T23:19:33+09:00"><meta property="article:modified_time" content="2023-12-10T23:19:33+09:00"><meta property="fb:admins" content="0000000000"><meta name=twitter:card content="summary"><meta name=twitter:title content="Pyenvとvenvを用いたローカル環境のセットアップ方法"><meta name=twitter:description content="概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。
+pyenv 複数のpythonのバージョンを扱うために利用する。 venv プロジェクトごとに環境を分けるために利用する。 それぞれの違いや必要性の解説はこちらの記事が参考になります。
+Pythonのインストール まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
+pyenvをインストールします。
+brew install pyenvインストールしたpyenvのバージョンを確認します。
+pyenv --version pyenv 2.3.35zshに設定を追加する。
+echo 'export PYENV_ROOT=&#34;$HOME/.pyenv&#34;' >> ~/.zshrc echo 'export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;' >> ~/.zshrc echo -e 'if command -v pyenv 1>/dev/null 2>&amp;1; then\n eval &#34;$(pyenv init -)&#34;\nfi' >> ~/.zshrc.zshrcの内容を読み込む。
+source ~/.zshrcインストール可能なPythonのバージョン一覧を表示する。
+pyenv install --list指定したバージョンをインストールする。
+pyenv install 3.11.7プロジェクトフォルダに指定したPythonのバージョンを利用する。
+cd <作成したプロジェクトフォルダ> pyenv local 3.11.7 pyenv versionsglobalの場合は全体に反映される。
+pyenv global 3.11.7実行されているpythonのバージョンを確認する。
+python -Vvenvで仮想環境の作成 プロジェクトのディレクトリに仮想環境を作成する。
+# python -m venv <仮想環境名> python -m venv venv仮想環境を有効化する。"><meta name=twitter:site content="@example"><meta itemprop=name content="Pyenvとvenvを用いたローカル環境のセットアップ方法"><meta itemprop=description content="概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。
+pyenv 複数のpythonのバージョンを扱うために利用する。 venv プロジェクトごとに環境を分けるために利用する。 それぞれの違いや必要性の解説はこちらの記事が参考になります。
+Pythonのインストール まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
+pyenvをインストールします。
+brew install pyenvインストールしたpyenvのバージョンを確認します。
+pyenv --version pyenv 2.3.35zshに設定を追加する。
+echo 'export PYENV_ROOT=&#34;$HOME/.pyenv&#34;' >> ~/.zshrc echo 'export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;' >> ~/.zshrc echo -e 'if command -v pyenv 1>/dev/null 2>&amp;1; then\n eval &#34;$(pyenv init -)&#34;\nfi' >> ~/.zshrc.zshrcの内容を読み込む。
+source ~/.zshrcインストール可能なPythonのバージョン一覧を表示する。
+pyenv install --list指定したバージョンをインストールする。
+pyenv install 3.11.7プロジェクトフォルダに指定したPythonのバージョンを利用する。
+cd <作成したプロジェクトフォルダ> pyenv local 3.11.7 pyenv versionsglobalの場合は全体に反映される。
+pyenv global 3.11.7実行されているpythonのバージョンを確認する。
+python -Vvenvで仮想環境の作成 プロジェクトのディレクトリに仮想環境を作成する。
+# python -m venv <仮想環境名> python -m venv venv仮想環境を有効化する。"><meta itemprop=datePublished content="2023-12-10T23:19:33+09:00"><meta itemprop=dateModified content="2023-12-10T23:19:33+09:00"><meta itemprop=wordCount content="76"><meta itemprop=keywords content><meta name=referrer content="no-referrer-when-downgrade"><link href=/style.min.css rel=stylesheet><link href=/syntax.min.css rel=stylesheet></head><body><header><a class=skip-link href=#main-content>Skip to main content</a>
+<a href=/ class=title><h1>Bossagyu Blog</h1></a><nav><a href=/>Home</a>
+<a href=/></a>
+<a href=/blog/>Blog</a></nav></header><main id=main-content><h1>Pyenvとvenvを用いたローカル環境のセットアップ方法</h1><p class=byline><time datetime=2023-12-10 pubdate>2023-12-10</time></p><content><h2 id=概要>概要</h2><p>macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。<br>今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。</p><ul><li>pyenv<ul><li>複数のpythonのバージョンを扱うために利用する。</li></ul></li><li>venv<ul><li>プロジェクトごとに環境を分けるために利用する。</li></ul></li></ul><p>それぞれの違いや必要性の解説は<a href=https://jimaru.blog/programming/python/venv_pyenv_choice/>こちら</a>の記事が参考になります。</p><h2 id=pythonのインストール>Pythonのインストール</h2><p>まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。</p><p>pyenvをインストールします。</p><pre tabindex=0><code>brew install pyenv</code></pre><p>インストールしたpyenvのバージョンを確認します。</p><pre tabindex=0><code>pyenv --version
+pyenv 2.3.35</code></pre><p>zshに設定を追加する。</p><pre tabindex=0><code>echo &#39;export PYENV_ROOT=&#34;$HOME/.pyenv&#34;&#39; &gt;&gt; ~/.zshrc    
+echo &#39;export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc
+echo -e &#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &#34;$(pyenv init -)&#34;\nfi&#39; &gt;&gt; ~/.zshrc</code></pre><p><code>.zshrc</code>の内容を読み込む。</p><pre tabindex=0><code>source ~/.zshrc</code></pre><p>インストール可能なPythonのバージョン一覧を表示する。</p><pre tabindex=0><code>pyenv install --list</code></pre><p>指定したバージョンをインストールする。</p><pre tabindex=0><code>pyenv install 3.11.7</code></pre><p>プロジェクトフォルダに指定したPythonのバージョンを利用する。</p><pre tabindex=0><code>cd &lt;作成したプロジェクトフォルダ&gt;
+pyenv local 3.11.7
+pyenv versions</code></pre><p>globalの場合は全体に反映される。</p><pre tabindex=0><code>pyenv global 3.11.7</code></pre><p>実行されているpythonのバージョンを確認する。</p><pre tabindex=0><code>python -V</code></pre><h2 id=venvで仮想環境の作成>venvで仮想環境の作成</h2><p>プロジェクトのディレクトリに仮想環境を作成する。</p><pre tabindex=0><code># python -m venv &lt;仮想環境名&gt;
+python -m venv venv</code></pre><p>仮想環境を有効化する。</p><pre tabindex=0><code>source venv/bin/activate</code></pre><p>ディアクティベートは以下のコマンドで実行できる。</p><pre tabindex=0><code>deactivate</code></pre><p>以上でローカル環境の構築が完了です。</p></content><p></p></main><footer><small>©2023 Bossagyu |</small></footer></body></html>
