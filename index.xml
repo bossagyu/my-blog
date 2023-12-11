@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sun, 10 Dec 2023 23:19:33 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-paython-setup/</guid><description>概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Mon, 11 Dec 2023 22:45:40 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>概要 Github CopilotをIntellijで使う方法を解説します。
+実現までの流れ Github Copilotの登録 Intellijの設定 Github Copilotの利用 まとめ Github Copilotの登録 こちらからGithub Copilotに登録します。
+Intellijの設定 IntellijのプラグインからGithub Copilotをインストールします。
+インストールが完了したら、Intellijを再起動します。
+Github Copilotの利用 Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。
+macのショートカットの一覧は以下のとおりです。
+ショートカット 機能 tab コードを補完する Option + ] 次の補完候補を表示する Option + [ 前の補完候補を表示する Command + → 提案の次の単語のみ受け入れる まとめ IntellijでGithub Copilotを利用する方法を解説しました。
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>Github CopilotをIntellijで使う方法を解説します。</p>
+<h2 id="実現までの流れ">実現までの流れ</h2>
+<ol>
+<li>Github Copilotの登録</li>
+<li>Intellijの設定</li>
+<li>Github Copilotの利用</li>
+<li>まとめ</li>
+</ol>
+<h2 id="github-copilotの登録">Github Copilotの登録</h2>
+<p><a href="https://copilot.github.com/">こちら</a>からGithub Copilotに登録します。</p>
+<h2 id="intellijの設定">Intellijの設定</h2>
+<p>IntellijのプラグインからGithub Copilotをインストールします。</p>
+<p><img src="/blog/img-005-001.png" alt="img-005-001.png"></p>
+<p>インストールが完了したら、Intellijを再起動します。</p>
+<h2 id="github-copilotの利用">Github Copilotの利用</h2>
+<p>Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。</p>
+<p>macのショートカットの一覧は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th>ショートカット</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tab</code></td>
+<td>コードを補完する</td>
+</tr>
+<tr>
+<td><code>Option</code> + <code>]</code></td>
+<td>次の補完候補を表示する</td>
+</tr>
+<tr>
+<td><code>Option</code> + <code>[</code></td>
+<td>前の補完候補を表示する</td>
+</tr>
+<tr>
+<td><code>Command</code> + <code>→</code></td>
+<td>提案の次の単語のみ受け入れる</td>
+</tr>
+</tbody>
+</table>
+<h2 id="まとめ">まとめ</h2>
+<p>IntellijでGithub Copilotを利用する方法を解説しました。<br>
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。</p>
+]]></content:encoded></item><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-paython-setup/</guid><description>概要 macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。
 今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。
 pyenv 複数のpythonのバージョンを扱うために利用する。 venv プロジェクトごとに環境を分けるために利用する。 それぞれの違いや必要性の解説はこちらの記事が参考になります。
 Pythonのインストール まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。
