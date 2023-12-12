@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Mon, 11 Dec 2023 22:45:40 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>概要 Github CopilotをIntellijで使う方法を解説します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Tue, 12 Dec 2023 22:40:05 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>概要 IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。
+実現までの流れ 事前準備 AWS Toolkitのインストール AWS Toolkitの設定 Lambdaの開発 Lambdaをローカルで実行 まとめ 事前準備 dockerのインストール intellijで利用するAWS Toolkitでは、Lambda動作させるためにDockerを使用します。
+このため事前に こちらを参考にDockerをインストールしておいてください。
+AWS CLIのインストール AWS CLI(SAM)をインストールします。
+インストール方法は こちら を参考にしてください。
+IntellijにSAM CLI executableのパスを File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit から設定します。
+私の環境ではbrewでインストールしたので、以下のパスを設定しました。 AWS Toolkitのインストール IntellijのプラグインからAWS Toolkitをインストールします。 プラグインのインストールは こちら を参考にしてください。
+AWS Toolkitの設定 AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。
+AWS ExplorerからAWSの認証情報を設定します。 Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。 設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。 この画像ではリージョンが us-east-1 になっていますが、Lambdaを作成するリージョンに合わせてください。
+Lambdaの開発 以下のようなコードスニペットを作成します。
+lamda-sample.py
+def lambda_handler(event, context): print(&amp;#34;Hello World&amp;#34;) return &amp;#34;Hello World!</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。</p>
+<h2 id="実現までの流れ">実現までの流れ</h2>
+<ol>
+<li>事前準備</li>
+<li>AWS Toolkitのインストール</li>
+<li>AWS Toolkitの設定</li>
+<li>Lambdaの開発</li>
+<li>Lambdaをローカルで実行</li>
+<li>まとめ</li>
+</ol>
+<h2 id="事前準備">事前準備</h2>
+<h3 id="dockerのインストール">dockerのインストール</h3>
+<p>intellijで利用するAWS Toolkitでは、Lambda動作させるためにDockerを使用します。<br>
+このため事前に <a href="https://docs.docker.jp/docker-for-mac/install.html">こちら</a>を参考にDockerをインストールしておいてください。</p>
+<h3 id="aws-cliのインストール">AWS CLIのインストール</h3>
+<p>AWS CLI(SAM)をインストールします。<br>
+インストール方法は <a href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html">こちら</a> を参考にしてください。</p>
+<p>IntellijにSAM CLI executableのパスを <code>File -&gt; Settings -&gt; Tools -&gt; AWS Toolkit</code> から設定します。<br>
+私の環境ではbrewでインストールしたので、以下のパスを設定しました。
+<img src="/blog/img-006-005.png" alt="img-006-005.png"></p>
+<h2 id="aws-toolkitのインストール">AWS Toolkitのインストール</h2>
+<p>IntellijのプラグインからAWS Toolkitをインストールします。
+プラグインのインストールは <a href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin">こちら</a> を参考にしてください。</p>
+<h2 id="aws-toolkitの設定">AWS Toolkitの設定</h2>
+<p>AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。</p>
+<p>AWS ExplorerからAWSの認証情報を設定します。
+<img src="/blog/img-006-001.png" alt="img-006-001.png"></p>
+<p>Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。
+設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。
+<img src="/blog/img-006-002.png" alt="img-006-002.png"></p>
+<p>この画像ではリージョンが <code>us-east-1</code> になっていますが、Lambdaを作成するリージョンに合わせてください。</p>
+<h2 id="lambdaの開発">Lambdaの開発</h2>
+<p>以下のようなコードスニペットを作成します。</p>
+<p>lamda-sample.py</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lambda_handler</span>(event, context):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Hello World&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello World!&#34;</span></span></span></code></pre></div><p>AWS ExplorerからLambdaを作成します。<br>
+<img src="/blog/img-006-003.png" alt="img-006-003.png"></p>
+<p>Create Lambda Functionを選択し、必要な値を入力します。<br>
+Handlerにはコードスニペットの <code>&lt;ファイル名&gt;.&lt;関数名&gt;</code> を入力してください。<br>
+<img src="/blog/img-006-004.png" alt="img-006-004.png"></p>
+<p>これでLambdaの作成が完了しました。</p>
+<h2 id="lambdaをローカルで実行">Lambdaをローカルで実行</h2>
+<p>またToolkitを利用すると、Lambdaをローカルで実行することができます。
+<img src="/blog/img-006-006.png" alt="img-006-006.png"></p>
+<p>Runを選択すると、Lambdaがローカルで実行されます。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。</p>
+]]></content:encoded></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>概要 Github CopilotをIntellijで使う方法を解説します。
 実現までの流れ Github Copilotの登録 Intellijの設定 Github Copilotの利用 まとめ Github Copilotの登録 こちらからGithub Copilotに登録します。
 Intellijの設定 IntellijのプラグインからGithub Copilotをインストールします。
 インストールが完了したら、Intellijを再起動します。
