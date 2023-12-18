@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Tue, 12 Dec 2023 22:40:05 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>概要 IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Mon, 18 Dec 2023 19:10:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>概要 Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。 この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。
+実現までの流れ Google Search Consoleの登録 ドメインの所有権の確認 サイトマップの登録 インデックス登録をリクエスト まとめ Google Search Consoleの登録 Google Search Consoleに登録します。
+ドメインを選択肢、URLを入力します。
+ドメインの所有権の確認 以下のような画像が表示されDNSの所有権を確認します。
+(念のためTXTレコードの内容は黒く塗りつぶしています。) ドメインのTXTにGoogleが指定した文字列を追加することで、所有権を確認することができます。 ドメインのDNSの設定画面に移動し、TXTレコードを追加します。
+私の場合はNetlifyでドメインを取得しているので、NetlifyのDNSの設定画面に移動します。 Domains -&amp;gt; Domain Settings -&amp;gt; DNS Records に移動し、TXTレコードを追加します。 レコードの内容はGoogle Search Consoleに表示されているものをコピーしてValueに貼り付けます。
+(Valueの部分は黒く塗りつぶしています。) DNSの反映を待ちます。ものによっては数時間かかる場合があります。
+DNSの反映はコマンドラインからでも確認できます。
+dig -t txt bossagyu.comその後、Google Search Consoleの所有権の確認を押します。
+これで所有権の確認が完了し、Google Search Consoleにドメインが登録されます。
+サイトマップの登録 サイトマップを登録することで、Googleにサイトの構造を伝え、サイトのクロールを促進することができます。 Hugoで作成したブログの場合は、/sitemap.xmlにサイトマップが作成されているので、これを登録します。
+Google Search Consoleの左側のメニューから「サイトマップ」を選択し、サイトマップを追加します。 インデックス登録をリクエスト サイトマップに登録されていても、Googleがクロールして、その後インデックスが登録されるまでには時間がかかります。 私の場合は数日待ってもインデックスが登録されなかったので、インデックス登録をリクエストしました。
+Google Search Consoleの検索窓で登録したいURLを検索し、検索結果の右側にある「インデックス登録をリクエスト」を押します。 これでインデックス登録をリクエストできます。 クリックしてから数時間でインデックスが登録されました。
+まとめ Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。
+この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。</p>
+<h2 id="実現までの流れ">実現までの流れ</h2>
+<ol>
+<li>Google Search Consoleの登録</li>
+<li>ドメインの所有権の確認</li>
+<li>サイトマップの登録</li>
+<li>インデックス登録をリクエスト</li>
+<li>まとめ</li>
+</ol>
+<h2 id="google-search-consoleの登録">Google Search Consoleの登録</h2>
+<p><a href="https://search.google.com/search-console/welcome">Google Search Console</a>に登録します。</p>
+<p>ドメインを選択肢、URLを入力します。<br>
+<img src="/blog/img-007-001.png" alt="img-007-001.png"></p>
+<h2 id="ドメインの所有権の確認">ドメインの所有権の確認</h2>
+<p>以下のような画像が表示されDNSの所有権を確認します。<br>
+(念のためTXTレコードの内容は黒く塗りつぶしています。)
+<img src="/blog/img-007-002.png" alt="img-007-002.png"></p>
+<p>ドメインのTXTにGoogleが指定した文字列を追加することで、所有権を確認することができます。
+ドメインのDNSの設定画面に移動し、TXTレコードを追加します。</p>
+<p>私の場合はNetlifyでドメインを取得しているので、NetlifyのDNSの設定画面に移動します。
+<code>Domains -&gt; Domain Settings -&gt; DNS Records</code> に移動し、TXTレコードを追加します。
+<img src="/blog/img-007-003.png" alt="img-007-003.png"></p>
+<p>レコードの内容はGoogle Search Consoleに表示されているものをコピーしてValueに貼り付けます。<br>
+(Valueの部分は黒く塗りつぶしています。)
+<img src="/blog/img-007-004.png" alt="img-007-004.png"></p>
+<p>DNSの反映を待ちます。ものによっては数時間かかる場合があります。</p>
+<p>DNSの反映はコマンドラインからでも確認できます。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dig -t txt bossagyu.com</span></span></code></pre></div><p>その後、Google Search Consoleの所有権の確認を押します。<br>
+これで所有権の確認が完了し、Google Search Consoleにドメインが登録されます。</p>
+<h2 id="サイトマップの登録">サイトマップの登録</h2>
+<p>サイトマップを登録することで、Googleにサイトの構造を伝え、サイトのクロールを促進することができます。
+Hugoで作成したブログの場合は、<code>/sitemap.xml</code>にサイトマップが作成されているので、これを登録します。</p>
+<p>Google Search Consoleの左側のメニューから「サイトマップ」を選択し、サイトマップを追加します。
+<img src="/blog/img-007-005.png" alt="img-007-005.png"></p>
+<h2 id="インデックス登録をリクエスト">インデックス登録をリクエスト</h2>
+<p>サイトマップに登録されていても、Googleがクロールして、その後インデックスが登録されるまでには時間がかかります。
+私の場合は数日待ってもインデックスが登録されなかったので、インデックス登録をリクエストしました。</p>
+<p>Google Search Consoleの検索窓で登録したいURLを検索し、検索結果の右側にある「インデックス登録をリクエスト」を押します。
+<img src="/blog/img-007-006.png" alt="img-007-006.png"></p>
+<p>これでインデックス登録をリクエストできます。
+クリックしてから数時間でインデックスが登録されました。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。<br>
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。</p>
+]]></content:encoded></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>概要 IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。
 実現までの流れ 事前準備 AWS Toolkitのインストール AWS Toolkitの設定 Lambdaの開発 Lambdaをローカルで実行 まとめ 事前準備 dockerのインストール intellijで利用するAWS Toolkitでは、Lambda動作させるためにDockerを使用します。
 このため事前に こちらを参考にDockerをインストールしておいてください。
 AWS CLIのインストール AWS CLI(SAM)をインストールします。
