@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Mon, 18 Dec 2023 19:10:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>概要 Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。 この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Thu, 21 Dec 2023 23:03:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>概要 AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。
+前提 Lambda関数についてはすでに作成されていることを前提としています。
+手順 Lambda関数を選択し「トリガーを追加」を選択します。
+トリガーから「EventBridge」を選択します。
+ルールの作成画面が表示されるので、設定します。
+今回はcron形式で5分ごとに実行するように設定しています。
+cronのsyntaxについては Schedule type on EventBridge Scheduler のページを参考にしてください。
+設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。
+ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。
+こんな感じで5分に1回通知がくるようになりました。
+まとめ AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。
+設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。</p>
+<h2 id="前提">前提</h2>
+<p>Lambda関数についてはすでに作成されていることを前提としています。</p>
+<h2 id="手順">手順</h2>
+<p>Lambda関数を選択し「トリガーを追加」を選択します。<br>
+<img src="/blog/img-008-001.png" alt="img-008-001.png"></p>
+<p>トリガーから「EventBridge」を選択します。<br>
+<img src="/blog/img-008-002.png" alt="img-008-002.png"></p>
+<p>ルールの作成画面が表示されるので、設定します。<br>
+今回はcron形式で5分ごとに実行するように設定しています。<br>
+cronのsyntaxについては <a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based">Schedule type on EventBridge Scheduler</a> のページを参考にしてください。<br>
+<img src="/blog/img-008-003.png" alt="img-008-003.png"></p>
+<p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。<br>
+<img src="/blog/img-008-004.png" alt="img-008-004.png"></p>
+<p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。<br>
+こんな感じで5分に1回通知がくるようになりました。</p>
+<p><img src="/blog/img-008-005.png" alt="img-008-005.png"></p>
+<h2 id="まとめ">まとめ</h2>
+<p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。<br>
+設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。</p>
+]]></content:encoded></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>概要 Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。 この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。
 実現までの流れ Google Search Consoleの登録 ドメインの所有権の確認 サイトマップの登録 インデックス登録をリクエスト まとめ Google Search Consoleの登録 Google Search Consoleに登録します。
 ドメインを選択肢、URLを入力します。
 ドメインの所有権の確認 以下のような画像が表示されDNSの所有権を確認します。
