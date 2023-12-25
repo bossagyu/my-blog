@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Fri, 22 Dec 2023 23:08:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>概要 Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sun, 24 Dec 2023 22:14:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Faviconを作ってHugoで表示する方法</title><link>https://bossagyu.com/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/blog/010-favicon/</guid><description>概要 Faviconを簡単に作る方法を解説します。 また、HugoでFaviconを表示する方法も解説します。
+Faviconとは Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。 Googleより検索結果に表示されるためのfaviconのガイドラインが公開されており、 こちらに従うことで検索結果に表示されるようになります。
+Faviconの作成 Faviconを作成するには、以下のサイトを利用します。
+Favicon.ico &amp;amp; App Icon Generator サイトにアクセスすると、以下のような画面が表示されます。
+faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。 その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。
+HugoでFaviconを表示する HugoでFaviconを表示するには、themeによっても違うますが、 bearcub の場合は 以下のようにtomlに設定するだけでfaviconが表示できます。
+[params] favicon = &amp;#34;images/favicon.ico&amp;#34;まとめ Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。
+Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>Faviconを簡単に作る方法を解説します。
+また、HugoでFaviconを表示する方法も解説します。</p>
+<h2 id="faviconとは">Faviconとは</h2>
+<p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
+Googleより検索結果に表示されるための<a href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines">faviconのガイドライン</a>が公開されており、
+こちらに従うことで検索結果に表示されるようになります。</p>
+<h2 id="faviconの作成">Faviconの作成</h2>
+<p>Faviconを作成するには、以下のサイトを利用します。</p>
+<ul>
+<li><a href="https://www.favicon-generator.org/">Favicon.ico &amp; App Icon Generator</a></li>
+</ul>
+<p>サイトにアクセスすると、以下のような画面が表示されます。<br>
+<img src="/blog/img-010-001.png" alt="Favicon Generator"></p>
+<p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
+その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。</p>
+<h2 id="hugoでfaviconを表示する">HugoでFaviconを表示する</h2>
+<p>HugoでFaviconを表示するには、themeによっても違うますが、 <a href="https://github.com/clente/hugo-bearcub/tree/main">bearcub</a> の場合は
+以下のようにtomlに設定するだけでfaviconが表示できます。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>params<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  favicon <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;images/favicon.ico&#34;</span></span></span></code></pre></div><h2 id="まとめ">まとめ</h2>
+<p>Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。<br>
+Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。</p>
+]]></content:encoded></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>概要 Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説します。
 Lighthouseとは LighthouseはGoogleが提供している、Webサイトのパフォーマンスを計測するツールです。 Google Chromeの拡張機能として提供されており、プラグインをインストールすることで利用することができます。
 Lighthouseのインストール Lighthouseをchromeウェブストアからインストールします。
 分析したいサイトを開き、Lighthouseのアイコンをクリックします。
