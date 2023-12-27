@@ -249,15 +249,16 @@ Handlerにはコードスニペットの <code>&lt;ファイル名&gt;.&lt;関�
 <h2 id="まとめ">まとめ</h2>
 <p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
 Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。</p>
-]]></content:encoded></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>概要 Github CopilotをIntellijで使う方法を解説します。
-実現までの流れ Github Copilotの登録 Intellijの設定 Github Copilotの利用 まとめ Github Copilotの登録 こちらからGithub Copilotに登録します。
+]]></content:encoded></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>概要 Github CopilotをIntellijで使う方法を解説します。 合わせてショートカットのチートシートを記載します。
+実現までの流れ Github Copilotの登録 Intellijの設定 Github Copilotの利用 まとめ Github Copilotの登録 Github Copilot のリンクからGithub Copilotに登録します。
 Intellijの設定 IntellijのプラグインからGithub Copilotをインストールします。
 インストールが完了したら、Intellijを再起動します。
 Github Copilotの利用 Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。
 macのショートカットの一覧は以下のとおりです。
 ショートカット 機能 tab コードを補完する Option + ] 次の補完候補を表示する Option + [ 前の補完候補を表示する Command + → 提案の次の単語のみ受け入れる まとめ IntellijでGithub Copilotを利用する方法を解説しました。
 この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
-<p>Github CopilotをIntellijで使う方法を解説します。</p>
+<p>Github CopilotをIntellijで使う方法を解説します。
+合わせてショートカットのチートシートを記載します。</p>
 <h2 id="実現までの流れ">実現までの流れ</h2>
 <ol>
 <li>Github Copilotの登録</li>
@@ -266,10 +267,10 @@ macのショートカットの一覧は以下のとおりです。
 <li>まとめ</li>
 </ol>
 <h2 id="github-copilotの登録">Github Copilotの登録</h2>
-<p><a href="https://copilot.github.com/">こちら</a>からGithub Copilotに登録します。</p>
+<p><a href="https://copilot.github.com/">Github Copilot</a> のリンクからGithub Copilotに登録します。</p>
 <h2 id="intellijの設定">Intellijの設定</h2>
 <p>IntellijのプラグインからGithub Copilotをインストールします。</p>
-<p><img src="/blog/img-005-001.png" alt="img-005-001.png"></p>
+<p><img src="/blog/img-005-001.png" alt="Github Copilot plugin"></p>
 <p>インストールが完了したら、Intellijを再起動します。</p>
 <h2 id="github-copilotの利用">Github Copilotの利用</h2>
 <p>Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。</p>
