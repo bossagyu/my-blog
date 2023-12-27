@@ -6,6 +6,7 @@ draft = false
 
 ## 概要
 Github CopilotをIntellijで使う方法を解説します。
+合わせてショートカットのチートシートを記載します。
 
 ## 実現までの流れ
 1. Github Copilotの登録
@@ -14,12 +15,12 @@ Github CopilotをIntellijで使う方法を解説します。
 4. まとめ
 
 ## Github Copilotの登録
-[こちら](https://copilot.github.com/)からGithub Copilotに登録します。
+[Github Copilot](https://copilot.github.com/) のリンクからGithub Copilotに登録します。
 
 ## Intellijの設定
 IntellijのプラグインからGithub Copilotをインストールします。
 
-![img-005-001.png](/blog/img-005-001.png)
+![Github Copilot plugin](/blog/img-005-001.png)
 
 インストールが完了したら、Intellijを再起動します。
 
