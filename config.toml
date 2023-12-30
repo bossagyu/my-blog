@@ -4,13 +4,29 @@ title = 'Bossagyu Blog'
 theme = 'hugo-bearcub'
 googleAnalytics = "G-5JL2R6XT6H"
 copyright = '©2023 Bossagyu'
-
+defaultContentLanguage = "jp"
 
 [author]
 name = "bossagyu"
 
 [params]
 favicon = "images/favicon.png"
+
+[languages]
+  [languages.jp]
+    title = "Bossagyu Blog"
+    languageName = "ja-jp 🇯🇵"
+    LanguageCode = "ja-jp"
+    contentDir = "content"
+    [languages.jp.params]
+
+  [languages.en]
+    title = "Bossagyu Blog"
+    languageName = "en-US 🇺🇸"
+    LanguageCode = "en-US"
+    contentDir = "content.en"
+    [languages.en.params]
+
 
 [social]
 email = "me@example.com" # Added to the footer so readers can reply to posts

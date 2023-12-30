@@ -13,6 +13,7 @@ weight: 1
 * [Github](https://github.com/bossagyu)
 
 ## Skill
+* Management
 * Java, Python, JavaScript, PHP
 * cassandra, MySQL
 * Data Enginnering
