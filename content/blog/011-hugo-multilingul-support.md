@@ -1,7 +1,7 @@
 +++
 title = 'ChatGPTを利用してHugoで作ったブログを多言語対応する方法'
 date = 2023-12-31T20:46:36+09:00
-draft = true
+draft = false
 +++
 
 ## 概要
