@@ -1,4 +1,142 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sun, 24 Dec 2023 22:14:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>Overview This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>概要 この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。
+GhatGPTを利用して記事を英語化する方法 Markdownで書かれた記事をChatGPTに英語化させます。 英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。
+マークダウンを体裁を崩さずに英語にしてください。 マークダウン以外の余分な出力は行わないでください。 英語化された内容をそのままコピーできる形で出力してください。その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。 出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。
+また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。 GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。
+Hugoで多言語対応する方法 Hugoで多言語化を行うための設定方法を記載します。
+設定ファイルの作成 config.tomlに以下のような設定を追加します。
+# デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。 defaultContentLanguage = &amp;#34;jp&amp;#34; [languages] # 言語ごとに設定を変更します [languages.jp] title = &amp;#34;Bossagyu Blog&amp;#34; languageName = &amp;#34;ja-jp 🇯🇵&amp;#34; LanguageCode = &amp;#34;ja-jp&amp;#34; contentDir = &amp;#34;content&amp;#34; # 日本語ブログ記事を格納するディレクトリ [languages.jp.params] [languages.en] title = &amp;#34;Bossagyu Blog&amp;#34; languageName = &amp;#34;en-US 🇺🇸&amp;#34; LanguageCode = &amp;#34;en-US&amp;#34; contentDir = &amp;#34;content.en&amp;#34; # 英語ブログ記事を格納するディレクトリ [languages.en.params]上記のような設定を行うことで、contentディレクトリに日本語の記事を、content.enディレクトリに英語の記事を書くことで多言語対応が可能となります。
+最終的なディレクトリ構成は以下のような形になります。
+project/ ├── content/ │ ├── index.md │ └── blog/ │ ├── index.</description><content:encoded><![CDATA[<h2 id="概要">概要</h2>
+<p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。</p>
+<h2 id="ghatgptを利用して記事を英語化する方法">GhatGPTを利用して記事を英語化する方法</h2>
+<p>Markdownで書かれた記事を<a href="https://chat.openai.com/">ChatGPT</a>に英語化させます。
+英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>マークダウンを体裁を崩さずに英語にしてください。
+</span></span><span style="display:flex;"><span>マークダウン以外の余分な出力は行わないでください。
+</span></span><span style="display:flex;"><span>英語化された内容をそのままコピーできる形で出力してください。</span></span></code></pre></div><p>その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。
+出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。</p>
+<p><img src="/blog/img-011-001.png" alt="ChatGPTの画面"></p>
+<p>また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。
+GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。</p>
+<h2 id="hugoで多言語対応する方法">Hugoで多言語対応する方法</h2>
+<p>Hugoで多言語化を行うための設定方法を記載します。</p>
+<h3 id="設定ファイルの作成">設定ファイルの作成</h3>
+<p>config.tomlに以下のような設定を追加します。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">defaultContentLanguage</span> = <span style="color:#e6db74">&#34;jp&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">languages</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 言語ごとに設定を変更します</span>
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">jp</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Bossagyu Blog&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;ja-jp 🇯🇵&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LanguageCode</span> = <span style="color:#e6db74">&#34;ja-jp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content&#34;</span>  <span style="color:#75715e"># 日本語ブログ記事を格納するディレクトリ</span>
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">jp</span>.<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Bossagyu Blog&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;en-US 🇺🇸&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LanguageCode</span> = <span style="color:#e6db74">&#34;en-US&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content.en&#34;</span> <span style="color:#75715e"># 英語ブログ記事を格納するディレクトリ</span>
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">params</span>]</span></span></code></pre></div><p>上記のような設定を行うことで、<code>content</code>ディレクトリに日本語の記事を、<code>content.en</code>ディレクトリに英語の記事を書くことで多言語対応が可能となります。</p>
+<p>最終的なディレクトリ構成は以下のような形になります。</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project/
+</span></span><span style="display:flex;"><span>├── content/
+</span></span><span style="display:flex;"><span>│   ├── index.md
+</span></span><span style="display:flex;"><span>│   └── blog/
+</span></span><span style="display:flex;"><span>│       ├── index.md
+</span></span><span style="display:flex;"><span>│       └── article1.md
+</span></span><span style="display:flex;"><span>└── content.en/
+</span></span><span style="display:flex;"><span>    ├── index.md
+</span></span><span style="display:flex;"><span>    └── blog/
+</span></span><span style="display:flex;"><span>        ├── index.md
+</span></span><span style="display:flex;"><span>        └── article1.en.md</span></span></code></pre></div><p>また英語化したディレクトリの中には <code>記事名.en.md</code> の拡張子とすることで、デフォルト言語に対する英語の記事として認識され、記事に言語変換用のアイコンが出力されるようになります。
+記事についてはGhatGPTを用いて英語化したものをコピー&amp;ペーストするだけでOKです。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
+ChatGPTを利用することで、英語化を簡単に行うことができます。
+また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。</p>
+<p>ローコストで多言語対応できるのでぜひやってみましょう。</p>
+]]></content:encoded></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>Overview This article explains how to use ChatGPT to make a blog created with Hugo multilingual.
+Translating Articles into English with ChatGPT You can translate articles written in Markdown into English using ChatGPT. When doing so, use the following prompt to ensure that the format remains intact:
+Please translate this Markdown into English without altering its format. Ensure that no extraneous output is included. Present the translated content in a format that can be easily copied.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
+<p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.</p>
+<h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT</h2>
+<p>You can translate articles written in Markdown into English using <a href="https://chat.openai.com/">ChatGPT</a>. When doing so, use the following prompt to ensure that the format remains intact:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Please translate this Markdown into English without altering its format.
+</span></span><span style="display:flex;"><span>Ensure that no extraneous output is included.
+</span></span><span style="display:flex;"><span>Present the translated content in a format that can be easily copied.</span></span></code></pre></div><p>Paste your article in Japanese, and ChatGPT will output the translated Markdown. You can copy the output directly by clicking the copy button at the bottom left of the output.</p>
+<p><img src="/blog/img-011-001.png" alt="ChatGPT Screen"></p>
+<p>It is highly recommended to use GPT-4 instead of GPT-3.5, despite the subscription cost. GPT-4 significantly outperforms GPT-3.5 in providing accurate responses, making it useful for purposes beyond just translation.</p>
+<h2 id="making-hugo-multilingual">Making Hugo Multilingual</h2>
+<p>Here are the steps to make your Hugo site multilingual.</p>
+<h3 id="creating-configuration-files">Creating Configuration Files</h3>
+<p>Add the following settings to your config.toml:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># Set the default language, without this setting English is assumed default.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">defaultContentLanguage</span> = <span style="color:#e6db74">&#34;jp&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">languages</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Set configurations for each language</span>
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">jp</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Bossagyu Blog&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;ja-jp 🇯🇵&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LanguageCode</span> = <span style="color:#e6db74">&#34;ja-jp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content&#34;</span>  <span style="color:#75715e"># Directory for Japanese blog articles</span>
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">jp</span>.<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Bossagyu Blog&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;en-US 🇺🇸&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LanguageCode</span> = <span style="color:#e6db74">&#34;en-US&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content.en&#34;</span> <span style="color:#75715e"># Directory for English blog articles</span>
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">params</span>]</span></span></code></pre></div><p>With the above settings, you can write Japanese articles in the <code>content</code> directory and English articles in the <code>content.en</code> directory to support multiple languages.</p>
+<p>The final directory structure will look like this:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project/
+</span></span><span style="display:flex;"><span>├── content/
+</span></span><span style="display:flex;"><span>│   ├── index.md
+</span></span><span style="display:flex;"><span>│   └── blog/
+</span></span><span style="display:flex;"><span>│       ├── index.md
+</span></span><span style="display:flex;"><span>│       └── article1.md
+</span></span><span style="display:flex;"><span>└── content.en/
+</span></span><span style="display:flex;"><span>    ├── index.md
+</span></span><span style="display:flex;"><span>    └── blog/
+</span></span><span style="display:flex;"><span>        ├── index.md
+</span></span><span style="display:flex;"><span>        └── article1.en.md</span></span></code></pre></div><p>In the English directory, naming files as <code>article-name.en.md</code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.</p>
+<h2 id="summary">Summary</h2>
+<p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.</p>
+<p>Since it&rsquo;s low-cost and efficient, it&rsquo;s worth giving it a try.</p>
+]]></content:encoded></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>Overview This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.
 What is a Favicon? A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published guidelines for favicons that appear in search results. Adhering to these guidelines can help your favicon appear in search results.
 Creating a Favicon To create a favicon, use the following site:</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
 <p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.</p>

@@ -1,0 +1,73 @@
+<!doctype html><html lang=ja-jp><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-5JL2R6XT6H"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-5JL2R6XT6H")</script><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://bossagyu.com/images/favicon.png><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法 | Bossagyu Blog</title><meta name=title content="ChatGPTを利用してHugoで作ったブログを多言語対応する方法"><meta name=description content="概要 この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。
+GhatGPTを利用して記事を英語化する方法 Markdownで書かれた記事をChatGPTに英語化させます。 英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。
+マークダウンを体裁を崩さずに英語にしてください。 マークダウン以外の余分な出力は行わないでください。 英語化された内容をそのままコピーできる形で出力してください。その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。 出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。
+また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。 GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。
+Hugoで多言語対応する方法 Hugoで多言語化を行うための設定方法を記載します。
+設定ファイルの作成 config.tomlに以下のような設定を追加します。
+# デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。 defaultContentLanguage = &#34;jp&#34; [languages] # 言語ごとに設定を変更します [languages.jp] title = &#34;Bossagyu Blog&#34; languageName = &#34;ja-jp 🇯🇵&#34; LanguageCode = &#34;ja-jp&#34; contentDir = &#34;content&#34; # 日本語ブログ記事を格納するディレクトリ [languages.jp.params] [languages.en] title = &#34;Bossagyu Blog&#34; languageName = &#34;en-US 🇺🇸&#34; LanguageCode = &#34;en-US&#34; contentDir = &#34;content.en&#34; # 英語ブログ記事を格納するディレクトリ [languages.en.params]上記のような設定を行うことで、contentディレクトリに日本語の記事を、content.enディレクトリに英語の記事を書くことで多言語対応が可能となります。
+最終的なディレクトリ構成は以下のような形になります。
+project/ ├── content/ │ ├── index.md │ └── blog/ │ ├── index."><meta name=keywords content><meta property="og:title" content="ChatGPTを利用してHugoで作ったブログを多言語対応する方法"><meta property="og:description" content="概要 この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。
+GhatGPTを利用して記事を英語化する方法 Markdownで書かれた記事をChatGPTに英語化させます。 英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。
+マークダウンを体裁を崩さずに英語にしてください。 マークダウン以外の余分な出力は行わないでください。 英語化された内容をそのままコピーできる形で出力してください。その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。 出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。
+また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。 GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。
+Hugoで多言語対応する方法 Hugoで多言語化を行うための設定方法を記載します。
+設定ファイルの作成 config.tomlに以下のような設定を追加します。
+# デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。 defaultContentLanguage = &#34;jp&#34; [languages] # 言語ごとに設定を変更します [languages.jp] title = &#34;Bossagyu Blog&#34; languageName = &#34;ja-jp 🇯🇵&#34; LanguageCode = &#34;ja-jp&#34; contentDir = &#34;content&#34; # 日本語ブログ記事を格納するディレクトリ [languages.jp.params] [languages.en] title = &#34;Bossagyu Blog&#34; languageName = &#34;en-US 🇺🇸&#34; LanguageCode = &#34;en-US&#34; contentDir = &#34;content.en&#34; # 英語ブログ記事を格納するディレクトリ [languages.en.params]上記のような設定を行うことで、contentディレクトリに日本語の記事を、content.enディレクトリに英語の記事を書くことで多言語対応が可能となります。
+最終的なディレクトリ構成は以下のような形になります。
+project/ ├── content/ │ ├── index.md │ └── blog/ │ ├── index."><meta property="og:type" content="article"><meta property="og:url" content="https://bossagyu.com/blog/011-hugo-multilingul-support/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2023-12-31T20:46:36+09:00"><meta property="article:modified_time" content="2023-12-31T20:46:36+09:00"><meta property="fb:admins" content="0000000000"><meta name=twitter:card content="summary"><meta name=twitter:title content="ChatGPTを利用してHugoで作ったブログを多言語対応する方法"><meta name=twitter:description content="概要 この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。
+GhatGPTを利用して記事を英語化する方法 Markdownで書かれた記事をChatGPTに英語化させます。 英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。
+マークダウンを体裁を崩さずに英語にしてください。 マークダウン以外の余分な出力は行わないでください。 英語化された内容をそのままコピーできる形で出力してください。その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。 出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。
+また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。 GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。
+Hugoで多言語対応する方法 Hugoで多言語化を行うための設定方法を記載します。
+設定ファイルの作成 config.tomlに以下のような設定を追加します。
+# デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。 defaultContentLanguage = &#34;jp&#34; [languages] # 言語ごとに設定を変更します [languages.jp] title = &#34;Bossagyu Blog&#34; languageName = &#34;ja-jp 🇯🇵&#34; LanguageCode = &#34;ja-jp&#34; contentDir = &#34;content&#34; # 日本語ブログ記事を格納するディレクトリ [languages.jp.params] [languages.en] title = &#34;Bossagyu Blog&#34; languageName = &#34;en-US 🇺🇸&#34; LanguageCode = &#34;en-US&#34; contentDir = &#34;content.en&#34; # 英語ブログ記事を格納するディレクトリ [languages.en.params]上記のような設定を行うことで、contentディレクトリに日本語の記事を、content.enディレクトリに英語の記事を書くことで多言語対応が可能となります。
+最終的なディレクトリ構成は以下のような形になります。
+project/ ├── content/ │ ├── index.md │ └── blog/ │ ├── index."><meta name=twitter:site content="@example"><meta itemprop=name content="ChatGPTを利用してHugoで作ったブログを多言語対応する方法"><meta itemprop=description content="概要 この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。
+GhatGPTを利用して記事を英語化する方法 Markdownで書かれた記事をChatGPTに英語化させます。 英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。
+マークダウンを体裁を崩さずに英語にしてください。 マークダウン以外の余分な出力は行わないでください。 英語化された内容をそのままコピーできる形で出力してください。その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。 出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。
+また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。 GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。
+Hugoで多言語対応する方法 Hugoで多言語化を行うための設定方法を記載します。
+設定ファイルの作成 config.tomlに以下のような設定を追加します。
+# デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。 defaultContentLanguage = &#34;jp&#34; [languages] # 言語ごとに設定を変更します [languages.jp] title = &#34;Bossagyu Blog&#34; languageName = &#34;ja-jp 🇯🇵&#34; LanguageCode = &#34;ja-jp&#34; contentDir = &#34;content&#34; # 日本語ブログ記事を格納するディレクトリ [languages.jp.params] [languages.en] title = &#34;Bossagyu Blog&#34; languageName = &#34;en-US 🇺🇸&#34; LanguageCode = &#34;en-US&#34; contentDir = &#34;content.en&#34; # 英語ブログ記事を格納するディレクトリ [languages.en.params]上記のような設定を行うことで、contentディレクトリに日本語の記事を、content.enディレクトリに英語の記事を書くことで多言語対応が可能となります。
+最終的なディレクトリ構成は以下のような形になります。
+project/ ├── content/ │ ├── index.md │ └── blog/ │ ├── index."><meta itemprop=datePublished content="2023-12-31T20:46:36+09:00"><meta itemprop=dateModified content="2023-12-31T20:46:36+09:00"><meta itemprop=wordCount content="93"><meta itemprop=keywords content><meta name=referrer content="no-referrer-when-downgrade"><link href=/style.min.css rel=stylesheet><link href=/syntax.min.css rel=stylesheet></head><body><header><a class=skip-link href=#main-content></a>
+<a href=/ class=title><h1>Bossagyu Blog</h1></a><nav><a href=/>Home</a>
+<a href=/></a>
+<a href=/blog/>Blog</a>
+<a href=https://bossagyu.com/en/blog/011-hugo-multilingul-support/>en-US 🇺🇸</a></nav></header><main id=main-content><h1>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</h1><p class=byline><time datetime=2023-12-31 pubdate>2023-12-31</time></p><content><h2 id=概要>概要</h2><p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。</p><h2 id=ghatgptを利用して記事を英語化する方法>GhatGPTを利用して記事を英語化する方法</h2><p>Markdownで書かれた記事を<a href=https://chat.openai.com/>ChatGPT</a>に英語化させます。
+英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>マークダウンを体裁を崩さずに英語にしてください。
+</span></span><span style=display:flex><span>マークダウン以外の余分な出力は行わないでください。
+</span></span><span style=display:flex><span>英語化された内容をそのままコピーできる形で出力してください。</span></span></code></pre></div><p>その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。
+出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。</p><p><img src=/blog/img-011-001.png alt=ChatGPTの画面></p><p>また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。
+GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。</p><h2 id=hugoで多言語対応する方法>Hugoで多言語対応する方法</h2><p>Hugoで多言語化を行うための設定方法を記載します。</p><h3 id=設定ファイルの作成>設定ファイルの作成</h3><p>config.tomlに以下のような設定を追加します。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span><span style=color:#75715e># デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>defaultContentLanguage</span> = <span style=color:#e6db74>&#34;jp&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>languages</span>]
+</span></span><span style=display:flex><span>  <span style=color:#75715e># 言語ごとに設定を変更します</span>
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>jp</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;Bossagyu Blog&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>languageName</span> = <span style=color:#e6db74>&#34;ja-jp 🇯🇵&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>LanguageCode</span> = <span style=color:#e6db74>&#34;ja-jp&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>contentDir</span> = <span style=color:#e6db74>&#34;content&#34;</span>  <span style=color:#75715e># 日本語ブログ記事を格納するディレクトリ</span>
+</span></span><span style=display:flex><span>      [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>jp</span>.<span style=color:#a6e22e>params</span>]
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;Bossagyu Blog&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>languageName</span> = <span style=color:#e6db74>&#34;en-US 🇺🇸&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>LanguageCode</span> = <span style=color:#e6db74>&#34;en-US&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>contentDir</span> = <span style=color:#e6db74>&#34;content.en&#34;</span> <span style=color:#75715e># 英語ブログ記事を格納するディレクトリ</span>
+</span></span><span style=display:flex><span>      [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>params</span>]</span></span></code></pre></div><p>上記のような設定を行うことで、<code>content</code>ディレクトリに日本語の記事を、<code>content.en</code>ディレクトリに英語の記事を書くことで多言語対応が可能となります。</p><p>最終的なディレクトリ構成は以下のような形になります。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>project/
+</span></span><span style=display:flex><span>├── content/
+</span></span><span style=display:flex><span>│   ├── index.md
+</span></span><span style=display:flex><span>│   └── blog/
+</span></span><span style=display:flex><span>│       ├── index.md
+</span></span><span style=display:flex><span>│       └── article1.md
+</span></span><span style=display:flex><span>└── content.en/
+</span></span><span style=display:flex><span>    ├── index.md
+</span></span><span style=display:flex><span>    └── blog/
+</span></span><span style=display:flex><span>        ├── index.md
+</span></span><span style=display:flex><span>        └── article1.en.md</span></span></code></pre></div><p>また英語化したディレクトリの中には <code>記事名.en.md</code> の拡張子とすることで、デフォルト言語に対する英語の記事として認識され、記事に言語変換用のアイコンが出力されるようになります。
+記事についてはGhatGPTを用いて英語化したものをコピー&ペーストするだけでOKです。</p><h2 id=まとめ>まとめ</h2><p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
+ChatGPTを利用することで、英語化を簡単に行うことができます。
+また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。</p><p>ローコストで多言語対応できるのでぜひやってみましょう。</p></content><p></p></main><footer><small>©2023 Bossagyu |</small></footer></body></html>
