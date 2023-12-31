@@ -11,6 +11,7 @@ name = "bossagyu"
 
 [params]
 favicon = "images/favicon.png"
+images = ["images/share.webp"]
 
 [languages]
   [languages.jp]
