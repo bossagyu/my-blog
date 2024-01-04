@@ -1,9 +1,11 @@
 ---
-title: ""
-menu: "main"
-weight: 1
+menu:
+    main:
+        name: Home
+        weight: 1
+        params:
+            icon: home
 ---
-
 ## Hi I'm Bossagyu
 * バックエンドエンジニア(5年)→マネジメント職(5年)
 * このブログではマネジメントと技術の両面について話していきます
