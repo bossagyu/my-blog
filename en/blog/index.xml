@@ -1,621 +1,879 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>©2023 Bossagyu</copyright><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>Overview This article explains how to use ChatGPT to make a blog created with Hugo multilingual.
-Translating Articles into English with ChatGPT You can translate articles written in Markdown into English using ChatGPT. When doing so, use the following prompt to ensure that the format remains intact:
-Please translate this Markdown into English without altering its format. Ensure that no extraneous output is included. Present the translated content in a format that can be easily copied.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.</p>
-<h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT</h2>
-<p>You can translate articles written in Markdown into English using <a href="https://chat.openai.com/">ChatGPT</a>. When doing so, use the following prompt to ensure that the format remains intact:</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Please translate this Markdown into English without altering its format.
-</span></span><span style="display:flex;"><span>Ensure that no extraneous output is included.
-</span></span><span style="display:flex;"><span>Present the translated content in a format that can be easily copied.</span></span></code></pre></div><p>Paste your article in Japanese, and ChatGPT will output the translated Markdown. You can copy the output directly by clicking the copy button at the bottom left of the output.</p>
-<p><img src="/blog/img-011-001.png" alt="ChatGPT Screen"></p>
-<p>It is highly recommended to use GPT-4 instead of GPT-3.5, despite the subscription cost. GPT-4 significantly outperforms GPT-3.5 in providing accurate responses, making it useful for purposes beyond just translation.</p>
-<h2 id="making-hugo-multilingual">Making Hugo Multilingual</h2>
-<p>Here are the steps to make your Hugo site multilingual.</p>
-<h3 id="creating-configuration-files">Creating Configuration Files</h3>
-<p>Add the following settings to your config.toml:</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># Set the default language, without this setting English is assumed default.</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">defaultContentLanguage</span> = <span style="color:#e6db74">&#34;jp&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">languages</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Set configurations for each language</span>
-</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">jp</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Bossagyu Blog&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;ja-jp 🇯🇵&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LanguageCode</span> = <span style="color:#e6db74">&#34;ja-jp&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content&#34;</span>  <span style="color:#75715e"># Directory for Japanese blog articles</span>
-</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">jp</span>.<span style="color:#a6e22e">params</span>]
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Bossagyu Blog&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;en-US 🇺🇸&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LanguageCode</span> = <span style="color:#e6db74">&#34;en-US&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content.en&#34;</span> <span style="color:#75715e"># Directory for English blog articles</span>
-</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">params</span>]</span></span></code></pre></div><p>With the above settings, you can write Japanese articles in the <code>content</code> directory and English articles in the <code>content.en</code> directory to support multiple languages.</p>
-<p>The final directory structure will look like this:</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project/
-</span></span><span style="display:flex;"><span>├── content/
-</span></span><span style="display:flex;"><span>│   ├── index.md
-</span></span><span style="display:flex;"><span>│   └── blog/
-</span></span><span style="display:flex;"><span>│       ├── index.md
-</span></span><span style="display:flex;"><span>│       └── article1.md
-</span></span><span style="display:flex;"><span>└── content.en/
-</span></span><span style="display:flex;"><span>    ├── index.md
-</span></span><span style="display:flex;"><span>    └── blog/
-</span></span><span style="display:flex;"><span>        ├── index.md
-</span></span><span style="display:flex;"><span>        └── article1.en.md</span></span></code></pre></div><p>In the English directory, naming files as <code>article-name.en.md</code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.</p>
-<h2 id="summary">Summary</h2>
-<p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.</p>
-<p>Since it&rsquo;s low-cost and efficient, it&rsquo;s worth giving it a try.</p>
-]]></content:encoded></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>Overview This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.
-What is a Favicon? A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published guidelines for favicons that appear in search results. Adhering to these guidelines can help your favicon appear in search results.
-Creating a Favicon To create a favicon, use the following site:</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.</p>
-<h2 id="what-is-a-favicon">What is a Favicon?</h2>
-<p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published <a href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines">guidelines for favicons</a> that appear in search results. Adhering to these guidelines can help your favicon appear in search results.</p>
-<h2 id="creating-a-favicon">Creating a Favicon</h2>
-<p>To create a favicon, use the following site:</p>
-<ul>
-<li><a href="https://www.favicon-generator.org/">Favicon.ico &amp; App Icon Generator</a></li>
-</ul>
-<p>When you visit the site, you&rsquo;ll see a screen like this.<br>
-<img src="/blog/img-010-001.png" alt="Favicon Generator"></p>
-<p>Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the &lsquo;Download the generated favicon&rsquo; link to download the favicon.</p>
-<h2 id="displaying-a-favicon-in-hugo">Displaying a Favicon in Hugo</h2>
-<p>To display a favicon in Hugo, the process varies depending on the theme. For the <a href="https://github.com/clente/hugo-bearcub/tree/main">bearcub theme</a>, you can simply set it in the toml like this:</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>params<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>  favicon <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;images/favicon.ico&#34;</span></span></span></code></pre></div><h2 id="summary">Summary</h2>
-<p>This article explained how to create a favicon and display it in Hugo. Favicons are displayed in bookmarks, tabs, and home screens, so it&rsquo;s a good idea to create one for your blog.</p>
-]]></content:encoded></item><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>Overview This article explains how to measure your blog&amp;rsquo;s performance using Lighthouse.
-What is Lighthouse? Lighthouse is a performance measurement tool for websites provided by Google. It&amp;rsquo;s available as a Google Chrome extension and can be used by installing the plugin.
-Installing Lighthouse Install Lighthouse from the Chrome Web Store.
-Open the site you want to analyze and click on the Lighthouse icon.
-Click on Generate report to start the analysis.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article explains how to measure your blog&rsquo;s performance using Lighthouse.</p>
-<h2 id="what-is-lighthouse">What is Lighthouse?</h2>
-<p>Lighthouse is a performance measurement tool for websites provided by Google. It&rsquo;s available as a Google Chrome extension and can be used by installing the plugin.</p>
-<h2 id="installing-lighthouse">Installing Lighthouse</h2>
-<p>Install Lighthouse from the Chrome Web Store.<br>
-<img src="/blog/img-009-001.png" alt="Lighthouse Chrome Store"></p>
-<p>Open the site you want to analyze and click on the Lighthouse icon.<br>
-<img src="/blog/img-009-002.png" alt="Lighthouse Icon"></p>
-<p>Click on Generate report to start the analysis.<br>
-This time, I ran it on my <a href="https://bossagyu.com/blog/001-hugo-netlify-build/">blog page</a>.<br>
-<img src="/blog/img-009-003.png" alt="Lighthouse Execution Screen"></p>
-<p>The results are displayed as follows, taking about 1 minute to complete.<br>
-<img src="/blog/img-009-004.png" alt="Lighthouse Results"></p>
-<h2 id="interpreting-the-results">Interpreting the Results</h2>
-<h3 id="performance">Performance</h3>
-<p>Evaluates web performance, like page loading and image display speeds. Clicking the See calculator link takes you to more details.<br>
-<img src="/blog/img-009-005.png" alt="Lighthouse Performance"></p>
-<h3 id="accessibility">Accessibility</h3>
-<p>Checks whether all users can access content and navigate efficiently within the site. Scrolling down shows areas flagged by Accessibility.<br>
-<img src="/blog/img-009-006.png" alt="Lighthouse Accessibility"></p>
-<p>It points out weak color contrast in the code snippets and missing descriptions in links.</p>
-<p>However, the flagged content is not from my writing but depends on the template, so to fix this, it would be necessary to override the Hugo template.</p>
-<h3 id="best-practices">Best Practices</h3>
-<p>Tests the integrity of web pages. You can view the testing items in the results.<br>
-<img src="/blog/img-009-007.png" alt="Lighthouse Best Practices"></p>
-<h3 id="seo">SEO</h3>
-<p>You can check if the page is optimized for search engine result rankings.<br>
-<img src="/blog/img-009-008.png" alt="Lighthouse SEO"></p>
-<h3 id="progressive-web-app">Progressive Web App</h3>
-<p>Checks if the loading speed of web pages on smartphones is optimized and if it&rsquo;s suitable for PWAs. This wasn&rsquo;t checked in this case.</p>
-<h2 id="summary">Summary</h2>
-<p>The article explained how to measure the performance of a blog using Lighthouse.
-Especially for SEO, as it affects visibility in Google search results, it&rsquo;s important to address these issues adequately.</p>
-]]></content:encoded></item><item><title>Scheduling Lambda Functions Regularly Using AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>Overview This article explains how to schedule regular executions of Lambda functions using AWS EventBridge.
-Prerequisite It is assumed that the Lambda function has already been created.
-Steps Select the Lambda function and choose &amp;lsquo;Add trigger&amp;rsquo;.
-Select &amp;lsquo;EventBridge&amp;rsquo; from the triggers.
-The rule creation screen will appear. Configure the settings.
-For this example, I set it to execute every 5 minutes using a cron expression.
-For cron syntax, refer to the Schedule type on EventBridge Scheduler page.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article explains how to schedule regular executions of Lambda functions using AWS EventBridge.</p>
-<h2 id="prerequisite">Prerequisite</h2>
-<p>It is assumed that the Lambda function has already been created.</p>
-<h2 id="steps">Steps</h2>
-<p>Select the Lambda function and choose &lsquo;Add trigger&rsquo;.<br>
-<img src="/blog/img-008-001.png" alt="img-008-001.png"></p>
-<p>Select &lsquo;EventBridge&rsquo; from the triggers.<br>
-<img src="/blog/img-008-002.png" alt="img-008-002.png"></p>
-<p>The rule creation screen will appear. Configure the settings.<br>
-For this example, I set it to execute every 5 minutes using a cron expression.<br>
-For cron syntax, refer to the <a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based">Schedule type on EventBridge Scheduler</a> page.<br>
-<img src="/blog/img-008-003.png" alt="img-008-003.png"></p>
-<p>Once configured, EventBridge will be added to the triggers in the Lambda function diagram.<br>
-<img src="/blog/img-008-004.png" alt="img-008-004.png"></p>
-<p>As an aside, I created and tested a Function to send messages to LINE.<br>
-Now, it sends notifications every 5 minutes like this.</p>
-<p><img src="/blog/img-008-005.png" alt="img-008-005.png"></p>
-<h2 id="summary">Summary</h2>
-<p>This article explained how to schedule Lambda functions regularly using AWS EventBridge.<br>
-Keep in mind that leaving the configured EventBridge running can incur charges, so delete it if it&rsquo;s no longer needed.</p>
-]]></content:encoded></item><item><title>Using Google Search Console to Make Your Blog Searchable on Google</title><link>https://bossagyu.com/en/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/007-google-search-console/</guid><description>Overview To appear in Google searches, it&amp;rsquo;s not enough just to apply SEO strategies; your site must first be recognized by Google. This article explains how to make your own custom domain blog appear in Google search results using Google Search Console.
-Steps to Implementation Registering with Google Search Console Verifying Domain Ownership Registering the Sitemap Requesting Index Registration Summary Registering with Google Search Console Register on Google Search Console.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>To appear in Google searches, it&rsquo;s not enough just to apply SEO strategies; your site must first be recognized by Google. This article explains how to make your own custom domain blog appear in Google search results using Google Search Console.</p>
-<h2 id="steps-to-implementation">Steps to Implementation</h2>
-<ol>
-<li>Registering with Google Search Console</li>
-<li>Verifying Domain Ownership</li>
-<li>Registering the Sitemap</li>
-<li>Requesting Index Registration</li>
-<li>Summary</li>
-</ol>
-<h2 id="registering-with-google-search-console">Registering with Google Search Console</h2>
-<p>Register on <a href="https://search.google.com/search-console/welcome">Google Search Console</a>.</p>
-<p>Choose your domain and enter the URL.<br>
-<img src="/blog/img-007-001.png" alt="img-007-001.png"></p>
-<h2 id="verifying-domain-ownership">Verifying Domain Ownership</h2>
-<p>A screen like the following will appear to verify DNS ownership.<br>
-(The TXT record content is blacked out for privacy.)<br>
-<img src="/blog/img-007-002.png" alt="img-007-002.png"></p>
-<p>You can verify ownership by adding a string specified by Google to your domain&rsquo;s TXT record.
-Go to your domain&rsquo;s DNS settings and add a TXT record.</p>
-<p>In my case, I acquired the domain through Netlify, so I went to Netlify&rsquo;s DNS settings.
-Navigate to <code>Domains -&gt; Domain Settings -&gt; DNS Records</code> and add the TXT record.<br>
-<img src="/blog/img-007-003.png" alt="img-007-003.png"></p>
-<p>Copy the content displayed on Google Search Console and paste it into the Value field.<br>
-(The Value part is blacked out for privacy.)<br>
-<img src="/blog/img-007-004.png" alt="img-007-004.png"></p>
-<p>Wait for DNS updates, which can take a few hours depending on the provider.</p>
-<p>You can check DNS propagation from the command line.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dig -t txt bossagyu.com</span></span></code></pre></div><p>Afterward, press the verify ownership button on Google Search Console.<br>
-This completes the verification process, and your domain will be registered with Google Search Console.</p>
-<h2 id="registering-the-sitemap">Registering the Sitemap</h2>
-<p>Registering a sitemap informs Google about the structure of your site, facilitating the crawling process.
-For blogs created with Hugo, the sitemap is available at <code>/sitemap.xml</code>, which you should register.</p>
-<p>From the left menu of Google Search Console, select &lsquo;Sitemaps&rsquo; and add your sitemap.<br>
-<img src="/blog/img-007-005.png" alt="img-007-005.png"></p>
-<h2 id="requesting-index-registration">Requesting Index Registration</h2>
-<p>Even if your site is registered in the sitemap, it can take time for Google to crawl and index it.
-In my case, I requested index registration after waiting several days without being indexed.</p>
-<p>Search for the URL you want to register in Google Search Console, and click on &lsquo;Request Indexing&rsquo; found on the right side of the search result.<br>
-<img src="/blog/img-007-006.png" alt="img-007-006.png"></p>
-<p>This requests index registration.
-It took a few hours for the index to be registered after clicking.</p>
-<h2 id="summary">Summary</h2>
-<p>This article explained how to make your custom domain blog searchable using Google Search Console.<br>
-It&rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.</p>
-]]></content:encoded></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>Overview This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.
-Steps to Implementation Preliminary Preparation Installing AWS Toolkit Configuring AWS Toolkit Developing Lambda Executing Lambda Locally Summary Preliminary Preparation Installing Docker AWS Toolkit in IntelliJ uses Docker to run Lambda.
-Prior to proceeding, please install Docker by referring to these instructions.
-Installing AWS CLI Install AWS CLI (SAM).
-For installation, refer to these instructions.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.</p>
-<h2 id="steps-to-implementation">Steps to Implementation</h2>
-<ol>
-<li>Preliminary Preparation</li>
-<li>Installing AWS Toolkit</li>
-<li>Configuring AWS Toolkit</li>
-<li>Developing Lambda</li>
-<li>Executing Lambda Locally</li>
-<li>Summary</li>
-</ol>
-<h2 id="preliminary-preparation">Preliminary Preparation</h2>
-<h3 id="installing-docker">Installing Docker</h3>
-<p>AWS Toolkit in IntelliJ uses Docker to run Lambda.<br>
-Prior to proceeding, please install Docker by referring to <a href="https://docs.docker.jp/docker-for-mac/install.html">these instructions</a>.</p>
-<h3 id="installing-aws-cli">Installing AWS CLI</h3>
-<p>Install AWS CLI (SAM).<br>
-For installation, refer to <a href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html">these instructions</a>.</p>
-<p>In IntelliJ, set the path for SAM CLI executable under <code>File -&gt; Settings -&gt; Tools -&gt; AWS Toolkit</code>.<br>
-In my case, as I installed it through brew, I set the following path.<br>
-<img src="/blog/img-006-005.png" alt="img-006-005.png"></p>
-<h2 id="installing-aws-toolkit">Installing AWS Toolkit</h2>
-<p>Install the AWS Toolkit via IntelliJ plugins.
-Refer to <a href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin">this guide</a> for plugin installation.</p>
-<h2 id="configuring-aws-toolkit">Configuring AWS Toolkit</h2>
-<p>To use AWS Toolkit, you need to set up your AWS credentials.</p>
-<p>Set up AWS credentials through AWS Explorer.<br>
-<img src="/blog/img-006-001.png" alt="img-006-001.png"></p>
-<p>Obtain and configure your Access Key ID and Secret Access Key from the AWS console.
-Once configured, AWS resources should appear in AWS Explorer.<br>
-<img src="/blog/img-006-002.png" alt="img-006-002.png"></p>
-<p>Note: In this image, the region is set to <code>us-east-1</code>. Please adjust according to the region where you intend to create your Lambda.</p>
-<h2 id="developing-lambda">Developing Lambda</h2>
-<p>Create a code snippet like the following.</p>
-<p>lambda-sample.py</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lambda_handler</span>(event, context):
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Hello World&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello World!&#34;</span></span></span></code></pre></div><p>Create a Lambda through AWS Explorer.<br>
-<img src="/blog/img-006-003.png" alt="img-006-003.png"></p>
-<p>Select Create Lambda Function and input the necessary values.<br>
-For the Handler, enter <code>&lt;filename&gt;.&lt;function name&gt;</code> from your code snippet.<br>
-<img src="/blog/img-006-004.png" alt="img-006-004.png"></p>
-<p>This completes the creation of your Lambda.</p>
-<h2 id="executing-lambda-locally">Executing Lambda Locally</h2>
-<p>The Toolkit also allows you to execute Lambda locally.
-<img src="/blog/img-006-006.png" alt="img-006-006.png"></p>
-<p>Selecting Run will execute the Lambda locally.</p>
-<h2 id="summary">Summary</h2>
-<p>This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
-Developing in IntelliJ and executing locally can significantly improve development efficiency.</p>
-]]></content:encoded></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>Overview This article explains how to use GitHub Copilot in IntelliJ. Additionally, a cheat sheet of shortcuts is provided.
-Steps to Implementation Register for GitHub Copilot Configure IntelliJ Use GitHub Copilot Summary Registering for GitHub Copilot Register for GitHub Copilot through the GitHub Copilot link.
-Configuring IntelliJ Install the GitHub Copilot plugin from IntelliJ plugins.
-Once installed, restart IntelliJ.
-Using GitHub Copilot When you write code in IntelliJ, GitHub Copilot will assist with code completion.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article explains how to use GitHub Copilot in IntelliJ.
-Additionally, a cheat sheet of shortcuts is provided.</p>
-<h2 id="steps-to-implementation">Steps to Implementation</h2>
-<ol>
-<li>Register for GitHub Copilot</li>
-<li>Configure IntelliJ</li>
-<li>Use GitHub Copilot</li>
-<li>Summary</li>
-</ol>
-<h2 id="registering-for-github-copilot">Registering for GitHub Copilot</h2>
-<p>Register for GitHub Copilot through the <a href="https://copilot.github.com/">GitHub Copilot</a> link.</p>
-<h2 id="configuring-intellij">Configuring IntelliJ</h2>
-<p>Install the GitHub Copilot plugin from IntelliJ plugins.</p>
-<p><img src="/blog/img-005-001.png" alt="GitHub Copilot plugin"></p>
-<p>Once installed, restart IntelliJ.</p>
-<h2 id="using-github-copilot">Using GitHub Copilot</h2>
-<p>When you write code in IntelliJ, GitHub Copilot will assist with code completion.</p>
-<p>Here is a list of shortcuts for Mac:</p>
-<table>
-<thead>
-<tr>
-<th>Shortcut</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>tab</code></td>
-<td>Complete the code</td>
-</tr>
-<tr>
-<td><code>Option</code> + <code>]</code></td>
-<td>Show the next completion suggestion</td>
-</tr>
-<tr>
-<td><code>Option</code> + <code>[</code></td>
-<td>Show the previous completion suggestion</td>
-</tr>
-<tr>
-<td><code>Command</code> + <code>→</code></td>
-<td>Accept only the next word of the suggestion</td>
-</tr>
-</tbody>
-</table>
-<h2 id="summary">Summary</h2>
-<p>This article explained how to use GitHub Copilot in IntelliJ.
-It&rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.</p>
-]]></content:encoded></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-paython-setup/</guid><description>Overview This article documents how to set up a Python environment for development on a Mac local environment.
-In this case, we will use two systems to manage different versions of Python and virtual environments:
-pyenv Used to handle multiple versions of Python. venv Used to separate environments for each project. For explanations on the differences and the necessity of each, this article is a helpful reference.
-Installing Python First, install Pyenv on your local environment to use a specific version of Python.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article documents how to set up a Python environment for development on a Mac local environment.<br>
-In this case, we will use two systems to manage different versions of Python and virtual environments:</p>
-<ul>
-<li>pyenv
-<ul>
-<li>Used to handle multiple versions of Python.</li>
-</ul>
-</li>
-<li>venv
-<ul>
-<li>Used to separate environments for each project.</li>
-</ul>
-</li>
-</ul>
-<p>For explanations on the differences and the necessity of each, this <a href="https://jimaru.blog/programming/python/venv_pyenv_choice/">article</a> is a helpful reference.</p>
-<h2 id="installing-python">Installing Python</h2>
-<p>First, install Pyenv on your local environment to use a specific version of Python.</p>
-<p>Install pyenv.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install pyenv</span></span></code></pre></div><p>Check the installed version of pyenv.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pyenv --version
-</span></span><span style="display:flex;"><span>pyenv 2.3.35</span></span></code></pre></div><p>Add settings to zsh.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PYENV_ROOT=&#34;$HOME/.pyenv&#34;&#39;</span> &gt;&gt; ~/.zshrc    
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &#34;$(pyenv init -)&#34;\nfi&#39;</span> &gt;&gt; ~/.zshrc</span></span></code></pre></div><p>Reload <code>.zshrc</code>.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>source ~/.zshrc</span></span></code></pre></div><p>Display a list of installable Python versions.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pyenv install --list</span></span></code></pre></div><p>Install the specified version.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pyenv install 3.11.7</span></span></code></pre></div><p>Use the specified Python version in your project folder.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd &lt;created project folder&gt;
-</span></span><span style="display:flex;"><span>pyenv local 3.11.7
-</span></span><span style="display:flex;"><span>pyenv versions</span></span></code></pre></div><p>If global, it will be applied to the entire system.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pyenv global 3.11.7</span></span></code></pre></div><p>Check the version of Python being executed.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python -V</span></span></code></pre></div><h2 id="creating-a-virtual-environment-with-venv">Creating a Virtual Environment with venv</h2>
-<p>Create a virtual environment in the project directory.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># python -m venv &lt;virtual environment name&gt;</span>
-</span></span><span style="display:flex;"><span>python -m venv venv</span></span></code></pre></div><p>Activate the virtual environment.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>source venv/bin/activate</span></span></code></pre></div><p>To deactivate, execute the following command.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>deactivate</span></span></code></pre></div><p>This completes the setup of the local environment.</p>
-]]></content:encoded></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>Overview This article briefly explains how to set up Google Analytics with Hugo.
-Steps to Implementation Register with Google Analytics Obtain the Tracking ID Add the Tracking ID to Hugo&amp;rsquo;s configuration Registering with Google Analytics Follow the instructions on Setting up a new website or app with GA4 to register.
-When you add a data stream, you will get a Tracking ID, so make a note of it. ※ The Tracking ID may be displayed as &amp;ldquo;Measurement ID&amp;rdquo; due to translation.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This article briefly explains how to set up Google Analytics with Hugo.</p>
-<h2 id="steps-to-implementation">Steps to Implementation</h2>
-<ol>
-<li>Register with Google Analytics</li>
-<li>Obtain the Tracking ID</li>
-<li>Add the Tracking ID to Hugo&rsquo;s configuration</li>
-</ol>
-<h2 id="registering-with-google-analytics">Registering with Google Analytics</h2>
-<p>Follow the instructions on <a href="https://support.google.com/analytics/answer/9304153?hl=ja">Setting up a new website or app with GA4</a> to register.<br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
+&lt;h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT&lt;/h2>
+&lt;p>You can translate articles written in Markdown into English using &lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
+>ChatGPT&lt;/a>. When doing so, use the following prompt to ensure that the format remains intact:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">Please translate this Markdown into English without altering its format.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Ensure that no extraneous output is included.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Present the translated content in a format that can be easily copied.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Paste your article in Japanese, and ChatGPT will output the translated Markdown. You can copy the output directly by clicking the copy button at the bottom left of the output.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/img-011-001.png"
+loading="lazy"
+alt="ChatGPT Screen"
+>&lt;/p>
+&lt;p>It is highly recommended to use GPT-4 instead of GPT-3.5, despite the subscription cost. GPT-4 significantly outperforms GPT-3.5 in providing accurate responses, making it useful for purposes beyond just translation.&lt;/p>
+&lt;h2 id="making-hugo-multilingual">Making Hugo Multilingual&lt;/h2>
+&lt;p>Here are the steps to make your Hugo site multilingual.&lt;/p>
+&lt;h3 id="creating-configuration-files">Creating Configuration Files&lt;/h3>
+&lt;p>Add the following settings to your config.toml:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># Set the default language, without this setting English is assumed default.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">defaultContentLanguage&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;jp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c"># Set configurations for each language&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jp&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;Bossagyu Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">languageName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;ja-jp 🇯🇵&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">LanguageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;ja-jp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">contentDir&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;content&amp;#34;&lt;/span> &lt;span class="c"># Directory for Japanese blog articles&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">en&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;Bossagyu Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">languageName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;en-US 🇺🇸&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">LanguageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;en-US&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">contentDir&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;content.en&amp;#34;&lt;/span> &lt;span class="c"># Directory for English blog articles&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">en&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>With the above settings, you can write Japanese articles in the &lt;code>content&lt;/code> directory and English articles in the &lt;code>content.en&lt;/code> directory to support multiple languages.&lt;/p>
+&lt;p>The final directory structure will look like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">project/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── content/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── blog/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── article1.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── content.en/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── blog/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── article1.en.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In the English directory, naming files as &lt;code>article-name.en.md&lt;/code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.&lt;/p>
+&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.&lt;/p>
+&lt;h2 id="what-is-a-favicon">What is a Favicon?&lt;/h2>
+&lt;p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>guidelines for favicons&lt;/a> that appear in search results. Adhering to these guidelines can help your favicon appear in search results.&lt;/p>
+&lt;h2 id="creating-a-favicon">Creating a Favicon&lt;/h2>
+&lt;p>To create a favicon, use the following site:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>When you visit the site, you&amp;rsquo;ll see a screen like this.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-010-001.png"
+loading="lazy"
+alt="Favicon Generator"
+>&lt;/p>
+&lt;p>Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the &amp;lsquo;Download the generated favicon&amp;rsquo; link to download the favicon.&lt;/p>
+&lt;h2 id="displaying-a-favicon-in-hugo">Displaying a Favicon in Hugo&lt;/h2>
+&lt;p>To display a favicon in Hugo, the process varies depending on the theme. For the &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub theme&lt;/a>, you can simply set it in the toml like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to create a favicon and display it in Hugo. Favicons are displayed in bookmarks, tabs, and home screens, so it&amp;rsquo;s a good idea to create one for your blog.&lt;/p></description></item><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to measure your blog&amp;rsquo;s performance using Lighthouse.&lt;/p>
+&lt;h2 id="what-is-lighthouse">What is Lighthouse?&lt;/h2>
+&lt;p>Lighthouse is a performance measurement tool for websites provided by Google. It&amp;rsquo;s available as a Google Chrome extension and can be used by installing the plugin.&lt;/p>
+&lt;h2 id="installing-lighthouse">Installing Lighthouse&lt;/h2>
+&lt;p>Install Lighthouse from the Chrome Web Store.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-001.png"
+loading="lazy"
+alt="Lighthouse Chrome Store"
+>&lt;/p>
+&lt;p>Open the site you want to analyze and click on the Lighthouse icon.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-002.png"
+loading="lazy"
+alt="Lighthouse Icon"
+>&lt;/p>
+&lt;p>Click on Generate report to start the analysis.&lt;br>
+This time, I ran it on my &lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" target="_blank" rel="noopener"
+>blog page&lt;/a>.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-003.png"
+loading="lazy"
+alt="Lighthouse Execution Screen"
+>&lt;/p>
+&lt;p>The results are displayed as follows, taking about 1 minute to complete.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-004.png"
+loading="lazy"
+alt="Lighthouse Results"
+>&lt;/p>
+&lt;h2 id="interpreting-the-results">Interpreting the Results&lt;/h2>
+&lt;h3 id="performance">Performance&lt;/h3>
+&lt;p>Evaluates web performance, like page loading and image display speeds. Clicking the See calculator link takes you to more details.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-005.png"
+loading="lazy"
+alt="Lighthouse Performance"
+>&lt;/p>
+&lt;h3 id="accessibility">Accessibility&lt;/h3>
+&lt;p>Checks whether all users can access content and navigate efficiently within the site. Scrolling down shows areas flagged by Accessibility.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-006.png"
+loading="lazy"
+alt="Lighthouse Accessibility"
+>&lt;/p>
+&lt;p>It points out weak color contrast in the code snippets and missing descriptions in links.&lt;/p>
+&lt;p>However, the flagged content is not from my writing but depends on the template, so to fix this, it would be necessary to override the Hugo template.&lt;/p>
+&lt;h3 id="best-practices">Best Practices&lt;/h3>
+&lt;p>Tests the integrity of web pages. You can view the testing items in the results.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-007.png"
+loading="lazy"
+alt="Lighthouse Best Practices"
+>&lt;/p>
+&lt;h3 id="seo">SEO&lt;/h3>
+&lt;p>You can check if the page is optimized for search engine result rankings.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-009-008.png"
+loading="lazy"
+alt="Lighthouse SEO"
+>&lt;/p>
+&lt;h3 id="progressive-web-app">Progressive Web App&lt;/h3>
+&lt;p>Checks if the loading speed of web pages on smartphones is optimized and if it&amp;rsquo;s suitable for PWAs. This wasn&amp;rsquo;t checked in this case.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>The article explained how to measure the performance of a blog using Lighthouse.
+Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p></description></item><item><title>Scheduling Lambda Functions Regularly Using AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to schedule regular executions of Lambda functions using AWS EventBridge.&lt;/p>
+&lt;h2 id="prerequisite">Prerequisite&lt;/h2>
+&lt;p>It is assumed that the Lambda function has already been created.&lt;/p>
+&lt;h2 id="steps">Steps&lt;/h2>
+&lt;p>Select the Lambda function and choose &amp;lsquo;Add trigger&amp;rsquo;.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-008-001.png"
+loading="lazy"
+alt="img-008-001.png"
+>&lt;/p>
+&lt;p>Select &amp;lsquo;EventBridge&amp;rsquo; from the triggers.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-008-002.png"
+loading="lazy"
+alt="img-008-002.png"
+>&lt;/p>
+&lt;p>The rule creation screen will appear. Configure the settings.&lt;br>
+For this example, I set it to execute every 5 minutes using a cron expression.&lt;br>
+For cron syntax, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
+>Schedule type on EventBridge Scheduler&lt;/a> page.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-008-003.png"
+loading="lazy"
+alt="img-008-003.png"
+>&lt;/p>
+&lt;p>Once configured, EventBridge will be added to the triggers in the Lambda function diagram.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-008-004.png"
+loading="lazy"
+alt="img-008-004.png"
+>&lt;/p>
+&lt;p>As an aside, I created and tested a Function to send messages to LINE.&lt;br>
+Now, it sends notifications every 5 minutes like this.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/img-008-005.png"
+loading="lazy"
+alt="img-008-005.png"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to schedule Lambda functions regularly using AWS EventBridge.&lt;br>
+Keep in mind that leaving the configured EventBridge running can incur charges, so delete it if it&amp;rsquo;s no longer needed.&lt;/p></description></item><item><title>Using Google Search Console to Make Your Blog Searchable on Google</title><link>https://bossagyu.com/en/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/007-google-search-console/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>To appear in Google searches, it&amp;rsquo;s not enough just to apply SEO strategies; your site must first be recognized by Google. This article explains how to make your own custom domain blog appear in Google search results using Google Search Console.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Registering with Google Search Console&lt;/li>
+&lt;li>Verifying Domain Ownership&lt;/li>
+&lt;li>Registering the Sitemap&lt;/li>
+&lt;li>Requesting Index Registration&lt;/li>
+&lt;li>Summary&lt;/li>
+&lt;/ol>
+&lt;h2 id="registering-with-google-search-console">Registering with Google Search Console&lt;/h2>
+&lt;p>Register on &lt;a class="link" href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener"
+>Google Search Console&lt;/a>.&lt;/p>
+&lt;p>Choose your domain and enter the URL.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-007-001.png"
+loading="lazy"
+alt="img-007-001.png"
+>&lt;/p>
+&lt;h2 id="verifying-domain-ownership">Verifying Domain Ownership&lt;/h2>
+&lt;p>A screen like the following will appear to verify DNS ownership.&lt;br>
+(The TXT record content is blacked out for privacy.)&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-007-002.png"
+loading="lazy"
+alt="img-007-002.png"
+>&lt;/p>
+&lt;p>You can verify ownership by adding a string specified by Google to your domain&amp;rsquo;s TXT record.
+Go to your domain&amp;rsquo;s DNS settings and add a TXT record.&lt;/p>
+&lt;p>In my case, I acquired the domain through Netlify, so I went to Netlify&amp;rsquo;s DNS settings.
+Navigate to &lt;code>Domains -&amp;gt; Domain Settings -&amp;gt; DNS Records&lt;/code> and add the TXT record.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-007-003.png"
+loading="lazy"
+alt="img-007-003.png"
+>&lt;/p>
+&lt;p>Copy the content displayed on Google Search Console and paste it into the Value field.&lt;br>
+(The Value part is blacked out for privacy.)&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-007-004.png"
+loading="lazy"
+alt="img-007-004.png"
+>&lt;/p>
+&lt;p>Wait for DNS updates, which can take a few hours depending on the provider.&lt;/p>
+&lt;p>You can check DNS propagation from the command line.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">dig -t txt bossagyu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Afterward, press the verify ownership button on Google Search Console.&lt;br>
+This completes the verification process, and your domain will be registered with Google Search Console.&lt;/p>
+&lt;h2 id="registering-the-sitemap">Registering the Sitemap&lt;/h2>
+&lt;p>Registering a sitemap informs Google about the structure of your site, facilitating the crawling process.
+For blogs created with Hugo, the sitemap is available at &lt;code>/sitemap.xml&lt;/code>, which you should register.&lt;/p>
+&lt;p>From the left menu of Google Search Console, select &amp;lsquo;Sitemaps&amp;rsquo; and add your sitemap.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-007-005.png"
+loading="lazy"
+alt="img-007-005.png"
+>&lt;/p>
+&lt;h2 id="requesting-index-registration">Requesting Index Registration&lt;/h2>
+&lt;p>Even if your site is registered in the sitemap, it can take time for Google to crawl and index it.
+In my case, I requested index registration after waiting several days without being indexed.&lt;/p>
+&lt;p>Search for the URL you want to register in Google Search Console, and click on &amp;lsquo;Request Indexing&amp;rsquo; found on the right side of the search result.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-007-006.png"
+loading="lazy"
+alt="img-007-006.png"
+>&lt;/p>
+&lt;p>This requests index registration.
+It took a few hours for the index to be registered after clicking.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to make your custom domain blog searchable using Google Search Console.&lt;br>
+It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Preliminary Preparation&lt;/li>
+&lt;li>Installing AWS Toolkit&lt;/li>
+&lt;li>Configuring AWS Toolkit&lt;/li>
+&lt;li>Developing Lambda&lt;/li>
+&lt;li>Executing Lambda Locally&lt;/li>
+&lt;li>Summary&lt;/li>
+&lt;/ol>
+&lt;h2 id="preliminary-preparation">Preliminary Preparation&lt;/h2>
+&lt;h3 id="installing-docker">Installing Docker&lt;/h3>
+&lt;p>AWS Toolkit in IntelliJ uses Docker to run Lambda.&lt;br>
+Prior to proceeding, please install Docker by referring to &lt;a class="link" href="https://docs.docker.jp/docker-for-mac/install.html" target="_blank" rel="noopener"
+>these instructions&lt;/a>.&lt;/p>
+&lt;h3 id="installing-aws-cli">Installing AWS CLI&lt;/h3>
+&lt;p>Install AWS CLI (SAM).&lt;br>
+For installation, refer to &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html" target="_blank" rel="noopener"
+>these instructions&lt;/a>.&lt;/p>
+&lt;p>In IntelliJ, set the path for SAM CLI executable under &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code>.&lt;br>
+In my case, as I installed it through brew, I set the following path.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-006-005.png"
+loading="lazy"
+alt="img-006-005.png"
+>&lt;/p>
+&lt;h2 id="installing-aws-toolkit">Installing AWS Toolkit&lt;/h2>
+&lt;p>Install the AWS Toolkit via IntelliJ plugins.
+Refer to &lt;a class="link" href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin" target="_blank" rel="noopener"
+>this guide&lt;/a> for plugin installation.&lt;/p>
+&lt;h2 id="configuring-aws-toolkit">Configuring AWS Toolkit&lt;/h2>
+&lt;p>To use AWS Toolkit, you need to set up your AWS credentials.&lt;/p>
+&lt;p>Set up AWS credentials through AWS Explorer.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-006-001.png"
+loading="lazy"
+alt="img-006-001.png"
+>&lt;/p>
+&lt;p>Obtain and configure your Access Key ID and Secret Access Key from the AWS console.
+Once configured, AWS resources should appear in AWS Explorer.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-006-002.png"
+loading="lazy"
+alt="img-006-002.png"
+>&lt;/p>
+&lt;p>Note: In this image, the region is set to &lt;code>us-east-1&lt;/code>. Please adjust according to the region where you intend to create your Lambda.&lt;/p>
+&lt;h2 id="developing-lambda">Developing Lambda&lt;/h2>
+&lt;p>Create a code snippet like the following.&lt;/p>
+&lt;p>lambda-sample.py&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">lambda_handler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello World&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;Hello World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Create a Lambda through AWS Explorer.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-006-003.png"
+loading="lazy"
+alt="img-006-003.png"
+>&lt;/p>
+&lt;p>Select Create Lambda Function and input the necessary values.&lt;br>
+For the Handler, enter &lt;code>&amp;lt;filename&amp;gt;.&amp;lt;function name&amp;gt;&lt;/code> from your code snippet.&lt;br>
+&lt;img src="https://bossagyu.com/blog/img-006-004.png"
+loading="lazy"
+alt="img-006-004.png"
+>&lt;/p>
+&lt;p>This completes the creation of your Lambda.&lt;/p>
+&lt;h2 id="executing-lambda-locally">Executing Lambda Locally&lt;/h2>
+&lt;p>The Toolkit also allows you to execute Lambda locally.
+&lt;img src="https://bossagyu.com/blog/img-006-006.png"
+loading="lazy"
+alt="img-006-006.png"
+>&lt;/p>
+&lt;p>Selecting Run will execute the Lambda locally.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
+Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use GitHub Copilot in IntelliJ.
+Additionally, a cheat sheet of shortcuts is provided.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Register for GitHub Copilot&lt;/li>
+&lt;li>Configure IntelliJ&lt;/li>
+&lt;li>Use GitHub Copilot&lt;/li>
+&lt;li>Summary&lt;/li>
+&lt;/ol>
+&lt;h2 id="registering-for-github-copilot">Registering for GitHub Copilot&lt;/h2>
+&lt;p>Register for GitHub Copilot through the &lt;a class="link" href="https://copilot.github.com/" target="_blank" rel="noopener"
+>GitHub Copilot&lt;/a> link.&lt;/p>
+&lt;h2 id="configuring-intellij">Configuring IntelliJ&lt;/h2>
+&lt;p>Install the GitHub Copilot plugin from IntelliJ plugins.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/img-005-001.png"
+loading="lazy"
+alt="GitHub Copilot plugin"
+>&lt;/p>
+&lt;p>Once installed, restart IntelliJ.&lt;/p>
+&lt;h2 id="using-github-copilot">Using GitHub Copilot&lt;/h2>
+&lt;p>When you write code in IntelliJ, GitHub Copilot will assist with code completion.&lt;/p>
+&lt;p>Here is a list of shortcuts for Mac:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Shortcut&lt;/th>
+&lt;th>Function&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>tab&lt;/code>&lt;/td>
+&lt;td>Complete the code&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>]&lt;/code>&lt;/td>
+&lt;td>Show the next completion suggestion&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>[&lt;/code>&lt;/td>
+&lt;td>Show the previous completion suggestion&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Command&lt;/code> + &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Accept only the next word of the suggestion&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to use GitHub Copilot in IntelliJ.
+It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-paython-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article documents how to set up a Python environment for development on a Mac local environment.&lt;br>
+In this case, we will use two systems to manage different versions of Python and virtual environments:&lt;/p>
+&lt;ul>
+&lt;li>pyenv
+&lt;ul>
+&lt;li>Used to handle multiple versions of Python.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>venv
+&lt;ul>
+&lt;li>Used to separate environments for each project.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>For explanations on the differences and the necessity of each, this &lt;a class="link" href="https://jimaru.blog/programming/python/venv_pyenv_choice/" target="_blank" rel="noopener"
+>article&lt;/a> is a helpful reference.&lt;/p>
+&lt;h2 id="installing-python">Installing Python&lt;/h2>
+&lt;p>First, install Pyenv on your local environment to use a specific version of Python.&lt;/p>
+&lt;p>Install pyenv.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install pyenv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Check the installed version of pyenv.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv 2.3.35
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add settings to zsh.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PYENV_ROOT=&amp;#34;$HOME/.pyenv&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PATH=&amp;#34;$PYENV_ROOT/bin:$PATH&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> -e &lt;span class="s1">&amp;#39;if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n eval &amp;#34;$(pyenv init -)&amp;#34;\nfi&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Reload &lt;code>.zshrc&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Display a list of installable Python versions.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv install --list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Install the specified version.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv install 3.11.7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Use the specified Python version in your project folder.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> &amp;lt;created project folder&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv &lt;span class="nb">local&lt;/span> 3.11.7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv versions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If global, it will be applied to the entire system.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv global 3.11.7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Check the version of Python being executed.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python -V
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="creating-a-virtual-environment-with-venv">Creating a Virtual Environment with venv&lt;/h2>
+&lt;p>Create a virtual environment in the project directory.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># python -m venv &amp;lt;virtual environment name&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -m venv venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Activate the virtual environment.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>To deactivate, execute the following command.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">deactivate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p></description></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article briefly explains how to set up Google Analytics with Hugo.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Register with Google Analytics&lt;/li>
+&lt;li>Obtain the Tracking ID&lt;/li>
+&lt;li>Add the Tracking ID to Hugo&amp;rsquo;s configuration&lt;/li>
+&lt;/ol>
+&lt;h2 id="registering-with-google-analytics">Registering with Google Analytics&lt;/h2>
+&lt;p>Follow the instructions on &lt;a class="link" href="https://support.google.com/analytics/answer/9304153?hl=ja" target="_blank" rel="noopener"
+>Setting up a new website or app with GA4&lt;/a> to register.&lt;br>
 When you add a data stream, you will get a Tracking ID, so make a note of it.
-<img src="/blog/img-003-001.png" alt="img-003-001.png">
-※ The Tracking ID may be displayed as &ldquo;Measurement ID&rdquo; due to translation.</p>
-<h2 id="adding-tracking-id-to-hugos-configuration">Adding Tracking ID to Hugo&rsquo;s Configuration</h2>
-<h3 id="add-settings-in-toml">Add settings in toml</h3>
-<p>Add <code>googleAnalytics = Tracking ID</code> to your config.toml.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#39;https://bossagyu.com&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#39;ja-jp&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#39;Bossagyu Blog&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#39;hugo-bearcub&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">googleAnalytics</span> = <span style="color:#e6db74">&#34;G-1234ABCDEF&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ↑ Add this line, replace the Tracking ID with your own.</span></span></span></code></pre></div><h3 id="embedding-the-tracking-code">Embedding the Tracking Code</h3>
-<p>Some templates might read settings from the toml file, but the <a href="https://github.com/clente/hugo-bearcub/tree/main">bearcub</a> template I use does not support this, so I added the tracking code to the header myself.</p>
-<p>For the code snippet, I referred to <a href="https://github.com/clente/hugo-bearcub/tree/main">Makumaku Hugo Notes</a>.</p>
-<p>Create <code>layouts/partials/analytics.html</code> to load the tracking code.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if not .Site.IsServer }}
-</span></span><span style="display:flex;"><span>{{ with .Site.GoogleAnalytics }}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Google tag (gtag.js) --&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.googletagmanager.com/gtag/js?id={{ . }}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
-</span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">dataLayer</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">dataLayer</span> <span style="color:#f92672">||</span> [];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">gtag</span>(){<span style="color:#a6e22e">dataLayer</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">arguments</span>);}
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gtag</span>(<span style="color:#e6db74">&#39;js&#39;</span>, <span style="color:#66d9ef">new</span> Date());
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gtag</span>(<span style="color:#e6db74">&#39;config&#39;</span>, <span style="color:#e6db74">&#39;{{ . }}&#39;</span>);
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
-</span></span><span style="display:flex;"><span>{{ end }}
-</span></span><span style="display:flex;"><span>{{ end }}</span></span></code></pre></div><p>Make the page header load <code>analytics.html</code>.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Copy the content of the template to override it</span>
-</span></span><span style="display:flex;"><span>cp themes/hugo-bearcub/layouts/_default/baseof.html layouts/_default/baseof.html 
-</span></span><span style="display:flex;"><span>vim layouts/_default/baseof.html </span></span></code></pre></div><p>Add <code>{{- partial &quot;analytics&quot; . -}}</code> to baseof.html.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>  {{- partial &#34;analytics&#34; . -}}
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-Clacks-Overhead&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;GNU Terry Pratchett&#34;</span> <span style="color:#960050;background-color:#1e0010">/</span></span></span></code></pre></div><p>After adding the above source code and rebuilding, data will be sent to Google Analytics.</p>
-<h2 id="tips">Tips</h2>
-<p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&rsquo;s possible that the tags have not been added correctly.<br>
-To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.</p>
-]]></content:encoded></item><item><title>Registering and Using the LINE Messaging API</title><link>https://bossagyu.com/en/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/002-line-messaging-api/</guid><description>Overview I thought of creating an application using LINE&amp;rsquo;s Bot, so first, I will make the Bot usable.
-This page introduces how to register for the LINE Messaging API and how to send messages from the command line using curl.
-Using the Messaging API Log in to LINE Developers and create a provider.
-A provider is (Explanation)
-On the LINE Developers site, a service provider refers to individuals, companies, or organizations that provide services and obtain user information (service proprietor in LINE Mini Apps).</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>I thought of creating an application using LINE&rsquo;s Bot, so first, I will make the Bot usable.<br>
-This page introduces how to register for the LINE Messaging API and how to send messages from the command line using curl.</p>
-<h2 id="using-the-messaging-api">Using the Messaging API</h2>
-<p>Log in to <a href="https://developers.line.biz/console/">LINE Developers</a> and create a provider.</p>
-<p><img src="/blog/img-002-001.png" alt="img-002-001.png"></p>
-<p>A provider is (<a href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider">Explanation</a>)</p>
-
-
-
-
-
-<pre tabindex="0"><code>On the LINE Developers site, a service provider refers to individuals, companies, or organizations that provide services and obtain user information (service proprietor in LINE Mini Apps).</code></pre><p>So, you can enter any string you like.</p>
-<p>Then, create a new channel.
-<img src="/blog/img-002-002.png" alt="img-002-002.png"></p>
-<p>Clicking the create button will establish a new channel.</p>
-<p><img src="/blog/img-002-003.png" alt="img-002-003.png"></p>
-<h1 id="posting-from-the-command-line">Posting from the Command Line</h1>
-<p>Add friends by reading the QR code in the Messaging API settings.</p>
-<p>Obtain the &lsquo;Channel Access Token (Long-lived)&rsquo; from the Messaging API settings.
-Get &lsquo;Your User ID&rsquo; from the channel basic settings.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;Channel Access Token (Long-lived)&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;Your User ID&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>UUID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>uuidgen | tr <span style="color:#e6db74">&#34;[:upper:]&#34;</span> <span style="color:#e6db74">&#34;[:lower:]&#34;</span><span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>curl -v -X POST https://api.line.me/v2/bot/message/push <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Authorization: Bearer </span><span style="color:#e6db74">${</span>TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;X-Line-Retry-Key: &#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#34;{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    \&#34;to\&#34;: \&#34;</span><span style="color:#e6db74">${</span>ID<span style="color:#e6db74">}</span><span style="color:#e6db74">\&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    \&#34;messages\&#34;:[
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            \&#34;type\&#34;:\&#34;text\&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            \&#34;text\&#34;:\&#34;Hello, world1\&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#34;</span></span></span></code></pre></div><p>If a response is returned and you see a post from the Bot in your LINE chat, it&rsquo;s a success!</p>
-]]></content:encoded></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>Overview This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
-With this method, you can easily publish by just pushing your Markdown-written blog to Github.
-Process Generate a site with Hugo Push to Github Deploy with Netlify Generating a Static Site with Hugo First, install Hugo.
-brew install hugoCreate a template for the blog.
-hugo new site my-blogAdd a theme suitable for the blog as a submodule.</description><content:encoded><![CDATA[<h2 id="overview">Overview</h2>
-<p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.<br>
-With this method, you can easily publish by just pushing your Markdown-written blog to Github.</p>
-<h2 id="process">Process</h2>
-<ol>
-<li>Generate a site with Hugo</li>
-<li>Push to Github</li>
-<li>Deploy with Netlify</li>
-</ol>
-<h2 id="generating-a-static-site-with-hugo">Generating a Static Site with Hugo</h2>
-<p>First, install Hugo.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install hugo</span></span></code></pre></div><p>Create a template for the blog.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site my-blog</span></span></code></pre></div><p>Add a theme suitable for the blog as a submodule.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd my-blog
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add the theme as a submodule from Github</span>
-</span></span><span style="display:flex;"><span>git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke</span></span></code></pre></div><p>Apply the theme by adding it to hugo.toml.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;theme = &#39;ananke&#39;&#34;</span> &gt;&gt; config.toml</span></span></code></pre></div><p>Start the server.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo server</span></span></code></pre></div><p>Access the URL like <code>http://localhost:51517/</code> shown in the startup log <code>Web Server is available at http://localhost:51517/ (bind address 127.0.0.1)</code> to view the locally launched static site.</p>
-<h3 id="tips">Tips</h3>
-<ul>
-<li>If you want to change the Hugo theme, please choose your favorite one from <a href="https://themes.gohugo.io/">Hugo Themes</a>.
-<ul>
-<li>It&rsquo;s recommended to run through until you build with Netlify first, as this can be changed later.</li>
-</ul>
-</li>
-<li>The way to write Toml files is described in <a href="https://gohugo.io/getting-started/configuration/">Configure Hugo</a>.</li>
-</ul>
-<!-- raw HTML omitted -->
-<h2 id="push-to-github">Push to Github</h2>
-<p>Create a repository on <a href="https://github.com/">Github</a>.<!-- raw HTML omitted -->
-After creation, execute the following commands to push your site.</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd my-blog
-</span></span><span style="display:flex;"><span>echo .hugo_build.lock &gt;&gt; .gitignore
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
-</span></span><span style="display:flex;"><span>git branch -M main
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Replace &lt;user name&gt; with your own username.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># This is an example of creating a repository called my-blog.</span>
-</span></span><span style="display:flex;"><span>git remote add origin git@github.com:&lt;user name&gt;/my-blog
-</span></span><span style="display:flex;"><span>git push -u origin main</span></span></code></pre></div><p>Once the push is complete, the source code becomes viewable on the Github UI.</p>
-<h2 id="deploy-with-netlify">Deploy with Netlify</h2>
-<p>Access <a href="https://www.netlify.com/">Netlify</a> and perform deployment.<br>
-There are instructions on <a href="https://gohugo.io/hosting-and-deployment/hosting-on-netlify/">Hugo&rsquo;s official website</a>, so refer to them for integration.</p>
-<p>Follow the instructions to complete the deployment, and the result of the Deploy will be shown as <code>published</code>.</p>
-<p><img src="/blog/img-001-001.png" alt="img-001-001.png"></p>
-<p>Click on the URL displayed on the site to access the deployed site.
-<img src="/blog/img-001-002.png" alt="img-001-002.png"></p>
-<p>This completes the deployment process.
-After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.</p>
-]]></content:encoded></item></channel></rss>
+&lt;img src="https://bossagyu.com/blog/img-003-001.png"
+loading="lazy"
+alt="img-003-001.png"
+>
+※ The Tracking ID may be displayed as &amp;ldquo;Measurement ID&amp;rdquo; due to translation.&lt;/p>
+&lt;h2 id="adding-tracking-id-to-hugos-configuration">Adding Tracking ID to Hugo&amp;rsquo;s Configuration&lt;/h2>
+&lt;h3 id="add-settings-in-toml">Add settings in toml&lt;/h3>
+&lt;p>Add &lt;code>googleAnalytics = Tracking ID&lt;/code> to your config.toml.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">baseURL&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;https://bossagyu.com&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">languageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;ja-jp&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;Bossagyu Blog&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">theme&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;hugo-bearcub&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">googleAnalytics&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;G-1234ABCDEF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ↑ Add this line, replace the Tracking ID with your own.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="embedding-the-tracking-code">Embedding the Tracking Code&lt;/h3>
+&lt;p>Some templates might read settings from the toml file, but the &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub&lt;/a> template I use does not support this, so I added the tracking code to the header myself.&lt;/p>
+&lt;p>For the code snippet, I referred to &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>Makumaku Hugo Notes&lt;/a>.&lt;/p>
+&lt;p>Create &lt;code>layouts/partials/analytics.html&lt;/code> to load the tracking code.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">{{ if not .Site.IsServer }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ with .Site.GoogleAnalytics }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;lt;!-- Google tag (gtag.js) --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">async&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;https://www.googletagmanager.com/gtag/js?id={{ . }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">dataLayer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">dataLayer&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">[];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(){&lt;/span>&lt;span class="nx">dataLayer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">push&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">arguments&lt;/span>&lt;span class="p">);}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;js&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;config&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;{{ . }}&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ end }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ end }}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Make the page header load &lt;code>analytics.html&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Copy the content of the template to override it&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp themes/hugo-bearcub/layouts/_default/baseof.html layouts/_default/baseof.html
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim layouts/_default/baseof.html
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add &lt;code>{{- partial &amp;quot;analytics&amp;quot; . -}}&lt;/code> to baseof.html.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- partial &amp;#34;analytics&amp;#34; . -}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">http-equiv&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;X-Clacks-Overhead&amp;#34;&lt;/span> &lt;span class="na">content&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;GNU Terry Pratchett&amp;#34;&lt;/span> &lt;span class="err">/&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After adding the above source code and rebuilding, data will be sent to Google Analytics.&lt;/p>
+&lt;h2 id="tips">Tips&lt;/h2>
+&lt;p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&amp;rsquo;s possible that the tags have not been added correctly.&lt;br>
+To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p></description></item><item><title>Registering and Using the LINE Messaging API</title><link>https://bossagyu.com/en/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/002-line-messaging-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>I thought of creating an application using LINE&amp;rsquo;s Bot, so first, I will make the Bot usable.&lt;br>
+This page introduces how to register for the LINE Messaging API and how to send messages from the command line using curl.&lt;/p>
+&lt;h2 id="using-the-messaging-api">Using the Messaging API&lt;/h2>
+&lt;p>Log in to &lt;a class="link" href="https://developers.line.biz/console/" target="_blank" rel="noopener"
+>LINE Developers&lt;/a> and create a provider.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/img-002-001.png"
+loading="lazy"
+alt="img-002-001.png"
+>&lt;/p>
+&lt;p>A provider is (&lt;a class="link" href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider" target="_blank" rel="noopener"
+>Explanation&lt;/a>)&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">On the LINE Developers site, a service provider refers to individuals, companies, or organizations that provide services and obtain user information (service proprietor in LINE Mini Apps).
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>So, you can enter any string you like.&lt;/p>
+&lt;p>Then, create a new channel.
+&lt;img src="https://bossagyu.com/blog/img-002-002.png"
+loading="lazy"
+alt="img-002-002.png"
+>&lt;/p>
+&lt;p>Clicking the create button will establish a new channel.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/img-002-003.png"
+loading="lazy"
+alt="img-002-003.png"
+>&lt;/p>
+&lt;h1 id="posting-from-the-command-line">Posting from the Command Line&lt;/h1>
+&lt;p>Add friends by reading the QR code in the Messaging API settings.&lt;/p>
+&lt;p>Obtain the &amp;lsquo;Channel Access Token (Long-lived)&amp;rsquo; from the Messaging API settings.
+Get &amp;lsquo;Your User ID&amp;rsquo; from the channel basic settings.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TOKEN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;Channel Access Token (Long-lived)&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;Your User ID&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">UUID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>uuidgen &lt;span class="p">|&lt;/span> tr &lt;span class="s2">&amp;#34;[:upper:]&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;[:lower:]&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -v -X POST https://api.line.me/v2/bot/message/push &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s1">&amp;#39;Content-Type: application/json&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s2">&amp;#34;Authorization: Bearer &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">TOKEN&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s2">&amp;#34;X-Line-Retry-Key: &amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-d &lt;span class="s2">&amp;#34;{
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;to\&amp;#34;: \&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">ID&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">\&amp;#34;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;messages\&amp;#34;:[
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;type\&amp;#34;:\&amp;#34;text\&amp;#34;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;text\&amp;#34;:\&amp;#34;Hello, world1\&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> ]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.&lt;br>
+With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
+&lt;h2 id="process">Process&lt;/h2>
+&lt;ol>
+&lt;li>Generate a site with Hugo&lt;/li>
+&lt;li>Push to Github&lt;/li>
+&lt;li>Deploy with Netlify&lt;/li>
+&lt;/ol>
+&lt;h2 id="generating-a-static-site-with-hugo">Generating a Static Site with Hugo&lt;/h2>
+&lt;p>First, install Hugo.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Create a template for the blog.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo new site my-blog
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add a theme suitable for the blog as a submodule.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Add the theme as a submodule from Github&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Apply the theme by adding it to hugo.toml.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;theme = &amp;#39;ananke&amp;#39;&amp;#34;&lt;/span> &amp;gt;&amp;gt; config.toml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Start the server.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Access the URL like &lt;code>http://localhost:51517/&lt;/code> shown in the startup log &lt;code>Web Server is available at http://localhost:51517/ (bind address 127.0.0.1)&lt;/code> to view the locally launched static site.&lt;/p>
+&lt;h3 id="tips">Tips&lt;/h3>
+&lt;ul>
+&lt;li>If you want to change the Hugo theme, please choose your favorite one from &lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+>Hugo Themes&lt;/a>.
+&lt;ul>
+&lt;li>It&amp;rsquo;s recommended to run through until you build with Netlify first, as this can be changed later.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>The way to write Toml files is described in &lt;a class="link" href="https://gohugo.io/getting-started/configuration/" target="_blank" rel="noopener"
+>Configure Hugo&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;h2 id="push-to-github">Push to Github&lt;/h2>
+&lt;p>Create a repository on &lt;a class="link" href="https://github.com/" target="_blank" rel="noopener"
+>Github&lt;/a>.&lt;br>
+After creation, execute the following commands to push your site.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> .hugo_build.lock &amp;gt;&amp;gt; .gitignore
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s2">&amp;#34;first commit&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -M main
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Replace &amp;lt;user name&amp;gt; with your own username.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># This is an example of creating a repository called my-blog.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote add origin git@github.com:&amp;lt;user name&amp;gt;/my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -u origin main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Once the push is complete, the source code becomes viewable on the Github UI.&lt;/p>
+&lt;h2 id="deploy-with-netlify">Deploy with Netlify&lt;/h2>
+&lt;p>Access &lt;a class="link" href="https://www.netlify.com/" target="_blank" rel="noopener"
+>Netlify&lt;/a> and perform deployment.&lt;br>
+There are instructions on &lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-netlify/" target="_blank" rel="noopener"
+>Hugo&amp;rsquo;s official website&lt;/a>, so refer to them for integration.&lt;/p>
+&lt;p>Follow the instructions to complete the deployment, and the result of the Deploy will be shown as &lt;code>published&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/img-001-001.png"
+loading="lazy"
+alt="img-001-001.png"
+>&lt;/p>
+&lt;p>Click on the URL displayed on the site to access the deployed site.
+&lt;img src="https://bossagyu.com/blog/img-001-002.png"
+loading="lazy"
+alt="img-001-002.png"
+>&lt;/p>
+&lt;p>This completes the deployment process.
+After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p></description></item></channel></rss>
