@@ -18,8 +18,8 @@ subtitle = "エンジニアリングマネージャーがエンジニアリン�
 
 [sidebar.avatar]
 enabled = true
-local = true
-src = "img/avatar.png"
+local = false
+src = "images/share.webp"
 
 [article]
 math = false
