@@ -1,16 +1,14 @@
 baseURL = 'https://bossagyu.com'
 languageCode = 'ja-jp'
 title = 'Bossagyu Blog'
-theme = 'hugo-bearcub'
+theme = 'hugo-theme-stack'
 googleAnalytics = "G-5JL2R6XT6H"
-copyright = '©2023 Bossagyu'
 defaultContentLanguage = "jp"
 
 [author]
 name = "bossagyu"
 
 [params]
-favicon = "images/favicon.png"
 images = ["images/share.webp"]
 
 [languages]
