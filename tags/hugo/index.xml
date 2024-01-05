@@ -111,14 +111,26 @@
 &lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-netlify/" target="_blank" rel="noopener"
 >Hugoの公式で案内&lt;/a> があるのでこちらを参考に連携を行う。&lt;/p>
 &lt;p>指示に従いデプロイを完了すると以下のようにDeployの結果が &lt;code>published&lt;/code> になる。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-001-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-001.png"
+width="1259"
+height="781"
+srcset="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-001-001.png"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="386px"
 >&lt;/p>
 &lt;p>サイト上に表示されたURLをクリックするとデプロイされたサイトにアクセスできる。
-&lt;img src="https://bossagyu.com/blog/img-001-002.png"
+&lt;img src="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-002.png"
+width="844"
+height="274"
+srcset="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-001-002.png"
+class="gallery-image"
+data-flex-grow="308"
+data-flex-basis="739px"
 >&lt;/p>
 &lt;p>これでデプロイまではおしまい。&lt;br>
 以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。&lt;/p></description></item></channel></rss>

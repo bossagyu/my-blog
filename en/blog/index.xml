@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
 &lt;h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT&lt;/h2>
 &lt;p>You can translate articles written in Markdown into English using &lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
@@ -866,14 +866,26 @@ After creation, execute the following commands to push your site.&lt;/p>
 There are instructions on &lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-netlify/" target="_blank" rel="noopener"
 >Hugo&amp;rsquo;s official website&lt;/a>, so refer to them for integration.&lt;/p>
 &lt;p>Follow the instructions to complete the deployment, and the result of the Deploy will be shown as &lt;code>published&lt;/code>.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-001-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-001.png"
+width="1259"
+height="781"
+srcset="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-001-001.png"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="386px"
 >&lt;/p>
 &lt;p>Click on the URL displayed on the site to access the deployed site.
-&lt;img src="https://bossagyu.com/blog/img-001-002.png"
+&lt;img src="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-002.png"
+width="844"
+height="274"
+srcset="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-001-002.png"
+class="gallery-image"
+data-flex-grow="308"
+data-flex-basis="739px"
 >&lt;/p>
 &lt;p>This completes the deployment process.
 After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p></description></item></channel></rss>
