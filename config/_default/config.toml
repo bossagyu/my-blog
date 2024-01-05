@@ -4,6 +4,7 @@ title = 'Bossagyu Blog'
 theme = 'hugo-theme-stack'
 googleAnalytics = "G-5JL2R6XT6H"
 defaultContentLanguage = "jp"
+contentDir = "content"
 
 [author]
 name = "bossagyu"
@@ -16,14 +17,12 @@ images = ["images/share.webp"]
     title = "Bossagyu Blog"
     languageName = "ja-jp 🇯🇵"
     LanguageCode = "ja-jp"
-    contentDir = "content"
     [languages.jp.params]
 
   [languages.en]
     title = "Bossagyu Blog"
     languageName = "en-US 🇺🇸"
     LanguageCode = "en-US"
-    contentDir = "content.en"
     [languages.en.params]
 
 
