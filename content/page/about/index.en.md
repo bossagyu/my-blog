@@ -1,12 +1,14 @@
 ---
+title: "About"
+date: 2022-03-06
+layout: "about"
+slug: "about"
 menu:
     main:
-        name: Home
-        weight: 1
-        params:
-            icon: home
+        weight: 2
+        params: 
+            icon: user
 ---
-
 ## Hi I'm Bossagyu
 * Backend Engineer (5 years) → Management Position (5 years)
 * In this blog, I will talk about both management and technology
