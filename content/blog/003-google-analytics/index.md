@@ -2,6 +2,8 @@
 title = 'HugoでGoogle Analyticsの設定をする方法'
 date = 2023-12-09T18:09:42+09:00
 draft = false
+categories = ['Engineering']
+tags = ['Hugo', 'SEO', 'Google Analytics']
 +++
 
 ## 概要

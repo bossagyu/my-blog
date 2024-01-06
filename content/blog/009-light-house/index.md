@@ -2,6 +2,8 @@
 title = 'Lighthouseの使い方の紹介'
 date = 2023-12-22T23:08:00+09:00
 draft = false
+categories = ['Engineering']
+tags = ['Hugo', 'Netlify', 'Github']
 +++
 
 ## 概要

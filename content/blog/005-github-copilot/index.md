@@ -2,6 +2,8 @@
 title = 'IntellijでのGithub Copilotの使い方'
 date = 2023-12-11T22:45:40+09:00
 draft = false
+categories = ['Engineering']
+tags = ['copilot', 'intellij']
 +++
 
 ## 概要

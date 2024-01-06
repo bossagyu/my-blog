@@ -2,6 +2,8 @@
 title = 'Faviconを作ってHugoで表示する方法'
 date = 2023-12-24T22:14:39+09:00
 draft = false
+categories = ['Engineering']
+tags = ['Hugo', 'Favicon']
 +++
 
 ## 概要

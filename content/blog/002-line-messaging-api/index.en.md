@@ -2,6 +2,8 @@
 title = 'Registering and Using the LINE Messaging API'
 date = 2023-12-07T09:37:00+09:00
 draft = false
+categories = ['Engineering']
+tags = ['LINE BOT', 'LINE API']
 +++
 
 ## Overview

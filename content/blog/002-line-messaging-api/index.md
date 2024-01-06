@@ -2,6 +2,8 @@
 title = 'LINE Messaging APIの登録と使い方'
 date = 2023-12-07T09:37:00+09:00
 draft = false
+categories = ['Engineering']
+tags = ['LINE BOT', 'LINE API']
 +++
 
 ## 概要

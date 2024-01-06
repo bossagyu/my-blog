@@ -2,6 +2,8 @@
 title = 'Introduction to Using Lighthouse'
 date = 2023-12-22T23:08:00+09:00
 draft = false
+categories = ['Engineering']
+tags = ['lighthouse', 'seo', 'performance']
 +++
 
 ## Overview

@@ -2,6 +2,8 @@
 title = 'Efficient Lambda Development with AWS Toolkit in IntelliJ'
 date = 2023-12-12T22:40:05+09:00
 draft = false
+categories = ['Engineering']
+tags = ['Intellij', 'AWS', 'Lambda']
 +++
 ## Overview
 This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.

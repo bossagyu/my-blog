@@ -2,6 +2,8 @@
 title = 'Pyenvとvenvを用いたローカル環境のセットアップ方法'
 date = 2023-12-10T23:19:33+09:00
 draft = false
+categories = ['Engineering']
+tags = ['python', 'mac']
 +++
 
 ## 概要

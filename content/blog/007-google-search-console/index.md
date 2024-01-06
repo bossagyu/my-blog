@@ -1,7 +1,9 @@
 +++
 title = 'Google Search Consoleを用いてブログをGoogle検索の対象にする方法'
 date = 2023-12-18T19:10:04+09:00
-draft = false 
+draft = false
+categories = ['Engineering']
+tags = ['google search console', 'seo', 'blog']
 +++
 
 ## 概要

@@ -2,6 +2,8 @@
 title = 'AWS EventBridgeを用いてLambdaを定期実行する方法'
 date = 2023-12-21T23:03:13+09:00
 draft = false
+categories = ['Engineering']
+tags = ['aws', 'lambda', 'eventbridge']
 +++
 
 ## 概要
