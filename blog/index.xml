@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 06 Jan 2024 21:45:12 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Twitter Social Cardの設定方法</title><link>https://bossagyu.com/blog/012-social-card/</link><pubDate>Sat, 06 Jan 2024 21:45:12 +0900</pubDate><guid>https://bossagyu.com/blog/012-social-card/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明します。&lt;/p>
+&lt;h2 id="twitter-social-cardとは">Twitter Social Cardとは&lt;/h2>
+&lt;p>Twitter Social Cardとは、Twitterで記事をシェアした際に表示される画像のことです。
+以下のような画像がTwitter Social Cardです。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/012-social-card/img-012-001.png"
+width="602"
+height="220"
+srcset="https://bossagyu.com/blog/012-social-card/img-012-001_hua2e3d73bb1829d9bc1818e9b476a1657_53764_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/012-social-card/img-012-001_hua2e3d73bb1829d9bc1818e9b476a1657_53764_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Twitter Social Card"
+class="gallery-image"
+data-flex-grow="273"
+data-flex-basis="656px"
+>&lt;/p>
+&lt;p>Twitter Social Cardは、以下の種類があります。&lt;/p>
+&lt;ul>
+&lt;li>Summary Card&lt;/li>
+&lt;li>Summary Card with Large Image&lt;/li>
+&lt;li>App Card&lt;/li>
+&lt;li>Player Card&lt;/li>
+&lt;/ul>
+&lt;p>この中でもブログのシェアを行う場合は、Summary Card か Summary Card with Large Image を利用することが多いです。&lt;/p>
+&lt;p>そのれぞれのカードがどのようなものかについてはTwitterの&lt;a class="link" href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards" target="_blank" rel="noopener"
+>公式ドキュメント&lt;/a>を参照してください。&lt;/p>
+&lt;h2 id="twitter-social-cardの設定方法">Twitter Social Cardの設定方法&lt;/h2>
+&lt;p>Twitter Social Cardの設定方法は、以下の2つの方法があります。&lt;/p>
+&lt;ul>
+&lt;li>テーマによる設定&lt;/li>
+&lt;li>テーマに依存しない設定&lt;/li>
+&lt;/ul>
+&lt;h3 id="テーマによる設定">テーマによる設定&lt;/h3>
+&lt;p>テーマによっては、Twitter Social Cardの設定を行うことができます。&lt;/p>
+&lt;p>今回は私が採用している&lt;a class="link" href="https://themes.gohugo.io/hugo-theme-stack/" target="_blank" rel="noopener"
+>Stack&lt;/a>を例に説明します。&lt;/p>
+&lt;p>Stackでは、&lt;code>config.toml&lt;/code> 対して以下のような設定を行うことでTwitter Social Cardの設定が可能です。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">opengraph&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">twitter&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">site&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">card&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;summary&amp;#34;&lt;/span> &lt;span class="c"># summary or summary_large_image&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">defaultImage&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">opengraph&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">enabled&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">local&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">src&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;/images/share.webp&amp;#34;&lt;/span> &lt;span class="c"># デフォルトで設定したいimageのパス&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="テーマに依存しない設定">テーマに依存しない設定&lt;/h3>
+&lt;p>テーマによっては、Twitter Social Cardの設定を行うことができません。
+自前で実装して、設定を行う必要があります。&lt;/p>
+&lt;p>Hugoの公式で&lt;a class="link" href="https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html" target="_blank" rel="noopener"
+>実装のテンプレート&lt;/a>が公開されていますので、それを利用することで容易に実装することが可能です。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明しました。
+Social Cardを設定することで、Twitterで記事をシェアした際に、より多くの人に記事を読んでもらうことができますのでぜひ設定しましょう。&lt;/p></description></item><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。&lt;/p>
 &lt;h2 id="ghatgptを利用して記事を英語化する方法">GhatGPTを利用して記事を英語化する方法&lt;/h2>
 &lt;p>Markdownで書かれた記事を&lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"

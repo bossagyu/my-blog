@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Social Card on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/social-card/</link><description>Recent content in Social Card on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 06 Jan 2024 21:45:12 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/social-card/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up Twitter Social Cards</title><link>https://bossagyu.com/en/blog/012-social-card/</link><pubDate>Sat, 06 Jan 2024 21:45:12 +0900</pubDate><guid>https://bossagyu.com/en/blog/012-social-card/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to set up Twitter Social Cards for a blog created with Hugo.&lt;/p>
+&lt;h2 id="what-is-a-twitter-social-card">What is a Twitter Social Card?&lt;/h2>
+&lt;p>A Twitter Social Card is an image that is displayed when an article is shared on Twitter. The image below is an example of a Twitter Social Card.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/012-social-card/img-012-001.png"
+width="602"
+height="220"
+srcset="https://bossagyu.com/en/blog/012-social-card/img-012-001_hua2e3d73bb1829d9bc1818e9b476a1657_53764_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/012-social-card/img-012-001_hua2e3d73bb1829d9bc1818e9b476a1657_53764_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Twitter Social Card"
+class="gallery-image"
+data-flex-grow="273"
+data-flex-basis="656px"
+>&lt;/p>
+&lt;p>There are several types of Twitter Social Cards, including:&lt;/p>
+&lt;ul>
+&lt;li>Summary Card&lt;/li>
+&lt;li>Summary Card with Large Image&lt;/li>
+&lt;li>App Card&lt;/li>
+&lt;li>Player Card&lt;/li>
+&lt;/ul>
+&lt;p>For sharing blog posts, the most commonly used types are Summary Card and Summary Card with Large Image.&lt;/p>
+&lt;p>For more details on each card type, refer to Twitter&amp;rsquo;s &lt;a class="link" href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards" target="_blank" rel="noopener"
+>official documentation&lt;/a>.&lt;/p>
+&lt;h2 id="how-to-set-up-twitter-social-cards">How to Set Up Twitter Social Cards&lt;/h2>
+&lt;p>There are two main methods to set up Twitter Social Cards:&lt;/p>
+&lt;ul>
+&lt;li>Setting up through the theme&lt;/li>
+&lt;li>Setting up independently of the theme&lt;/li>
+&lt;/ul>
+&lt;h3 id="setting-up-through-the-theme">Setting Up Through the Theme&lt;/h3>
+&lt;p>Some themes allow you to set up Twitter Social Cards directly.&lt;/p>
+&lt;p>For this example, I&amp;rsquo;ll use the &lt;a class="link" href="https://themes.gohugo.io/hugo-theme-stack/" target="_blank" rel="noopener"
+>Stack&lt;/a> theme that I&amp;rsquo;m using. In Stack, you can configure Twitter Social Cards in &lt;code>config.toml&lt;/code> as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">opengraph&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">twitter&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">site&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">card&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;summary&amp;#34;&lt;/span> &lt;span class="c"># summary or summary_large_image&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">defaultImage&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">opengraph&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">enabled&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">local&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">src&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;/images/share.webp&amp;#34;&lt;/span> &lt;span class="c"># Path to the default image you want to set&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="setting-up-independently-of-the-theme">Setting Up Independently of the Theme&lt;/h3>
+&lt;p>If your theme doesn’t support Twitter Social Card settings, you will need to implement it yourself.&lt;/p>
+&lt;p>Hugo’s official &lt;a class="link" href="https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html" target="_blank" rel="noopener"
+>template for implementation&lt;/a> is available, which you can use for an easy setup.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p></description></item></channel></rss>
