@@ -18,9 +18,15 @@
 &lt;/div>
 &lt;/div>&lt;p>その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。
 出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-011-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001.png"
+width="1542"
+height="516"
+srcset="https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="ChatGPTの画面"
+class="gallery-image"
+data-flex-grow="298"
+data-flex-basis="717px"
 >&lt;/p>
 &lt;p>また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。
 GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。&lt;/p>
@@ -121,9 +127,15 @@ Googleより検索結果に表示されるための&lt;a class="link" href="http
 >Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>サイトにアクセスすると、以下のような画面が表示されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-010-001.png"
+&lt;img src="https://bossagyu.com/blog/010-favicon/img-010-001.png"
+width="3336"
+height="1510"
+srcset="https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Favicon Generator"
+class="gallery-image"
+data-flex-grow="220"
+data-flex-basis="530px"
 >&lt;/p>
 &lt;p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
 その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
@@ -150,57 +162,105 @@ Faviconは、ブログのブックマークやタブ、ホーム画面などに�
 Google Chromeの拡張機能として提供されており、プラグインをインストールすることで利用することができます。&lt;/p>
 &lt;h2 id="lighthouseのインストール">Lighthouseのインストール&lt;/h2>
 &lt;p>Lighthouseをchromeウェブストアからインストールします。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-001.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-001.png"
+width="3090"
+height="528"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse chromeストア"
+class="gallery-image"
+data-flex-grow="585"
+data-flex-basis="1404px"
 >&lt;/p>
 &lt;p>分析したいサイトを開き、Lighthouseのアイコンをクリックします。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-002.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-002.png"
+width="976"
+height="184"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse アイコン"
+class="gallery-image"
+data-flex-grow="530"
+data-flex-basis="1273px"
 >&lt;/p>
 &lt;p>Generate reportをクリックすると、分析が始まります。&lt;br>
 今回は私の&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" target="_blank" rel="noopener"
 >ブログのページ&lt;/a>で実行しました。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-003.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-003.png"
+width="546"
+height="1048"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse 実行画面"
+class="gallery-image"
+data-flex-grow="52"
+data-flex-basis="125px"
 >&lt;/p>
 &lt;p>実行すると、以下のような結果が表示されます。&lt;br>
 実行の完了までに約1分くらい時間がかかります。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-004.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-004.png"
+width="1756"
+height="906"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse 結果"
+class="gallery-image"
+data-flex-grow="193"
+data-flex-basis="465px"
 >&lt;/p>
 &lt;h2 id="結果の見方">結果の見方&lt;/h2>
 &lt;h3 id="performance">Performance&lt;/h3>
 &lt;p>ページの読み込み速度や画像の表示速度など、webサイトのパフォーマンスが評価される。
 See calculatorのリンクをクリックすると詳細に飛べる。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-005.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-005.png"
+width="2236"
+height="1222"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Performance"
+class="gallery-image"
+data-flex-grow="182"
+data-flex-basis="439px"
 >&lt;/p>
 &lt;h3 id="accessibility">Accessibility&lt;/h3>
 &lt;p>すべてのユーザーがコンテンツにアクセス、サイト内を効率的に移動できるかどうかを確認する。
 スクロールすると、Accessibilityで指摘されている箇所が表示される。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-006.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-006.png"
+width="1790"
+height="1238"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Accessibility"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="347px"
 >&lt;/p>
 &lt;p>コードスニペットを貼っているところの色のコントラストが弱いことと、リンクに説明がないことを指摘されています。&lt;/p>
 &lt;p>ただ、指摘されている内容は自分の記述ではなく、テンプレートに依存している部分なので、これを直そうと思うとHugoのテンプレートをオーバーライドする必要がありますね。。&lt;/p>
 &lt;h3 id="best-practices">Best Practices&lt;/h3>
 &lt;p>ウェブページの健全性についてテストを行います。
 検証項目については結果から閲覧できます。
-&lt;img src="https://bossagyu.com/blog/img-009-007.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-007.png"
+width="962"
+height="1070"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Best Practices"
+class="gallery-image"
+data-flex-grow="89"
+data-flex-basis="215px"
 >&lt;/p>
 &lt;h3 id="seo">SEO&lt;/h3>
 &lt;p>ページが検索エンジンの結果ランキング向けに最適化されているかを確認できます。
-&lt;img src="https://bossagyu.com/blog/img-009-008.png"
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-008.png"
+width="957"
+height="1215"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse SEO"
+class="gallery-image"
+data-flex-grow="78"
+data-flex-basis="189px"
 >&lt;/p>
 &lt;h3 id="progressive-web-app">Progressive Web App&lt;/h3>
 &lt;p>スマートフォン上のウェブページの読み込み速度を高速化できているか、PWAに最適化できているかを確認できます。
@@ -213,33 +273,63 @@ alt="Lighthouse SEO"
 &lt;p>Lambda関数についてはすでに作成されていることを前提としています。&lt;/p>
 &lt;h2 id="手順">手順&lt;/h2>
 &lt;p>Lambda関数を選択し「トリガーを追加」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-001.png"
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
+width="1682"
+height="608"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-001.png"
+class="gallery-image"
+data-flex-grow="276"
+data-flex-basis="663px"
 >&lt;/p>
 &lt;p>トリガーから「EventBridge」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-002.png"
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
+width="930"
+height="400"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-002.png"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="558px"
 >&lt;/p>
 &lt;p>ルールの作成画面が表示されるので、設定します。&lt;br>
 今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
 cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
 >Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-003.png"
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
+width="891"
+height="903"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-003.png"
+class="gallery-image"
+data-flex-grow="98"
+data-flex-basis="236px"
 >&lt;/p>
 &lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-004.png"
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
+width="1761"
+height="976"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-004.png"
+class="gallery-image"
+data-flex-grow="180"
+data-flex-basis="433px"
 >&lt;/p>
 &lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
 こんな感じで5分に1回通知がくるようになりました。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-008-005.png"
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
+width="1494"
+height="256"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-005.png"
+class="gallery-image"
+data-flex-grow="583"
+data-flex-basis="1400px"
 >&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;br>
@@ -258,30 +348,54 @@ alt="img-008-005.png"
 &lt;p>&lt;a class="link" href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener"
 >Google Search Console&lt;/a>に登録します。&lt;/p>
 &lt;p>ドメインを選択肢、URLを入力します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-001.png"
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-001.png"
+width="1838"
+height="1546"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-001.png"
+class="gallery-image"
+data-flex-grow="118"
+data-flex-basis="285px"
 >&lt;/p>
 &lt;h2 id="ドメインの所有権の確認">ドメインの所有権の確認&lt;/h2>
 &lt;p>以下のような画像が表示されDNSの所有権を確認します。&lt;br>
 (念のためTXTレコードの内容は黒く塗りつぶしています。)
-&lt;img src="https://bossagyu.com/blog/img-007-002.png"
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-002.png"
+width="1562"
+height="1404"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-002.png"
+class="gallery-image"
+data-flex-grow="111"
+data-flex-basis="267px"
 >&lt;/p>
 &lt;p>ドメインのTXTにGoogleが指定した文字列を追加することで、所有権を確認することができます。
 ドメインのDNSの設定画面に移動し、TXTレコードを追加します。&lt;/p>
 &lt;p>私の場合はNetlifyでドメインを取得しているので、NetlifyのDNSの設定画面に移動します。
 &lt;code>Domains -&amp;gt; Domain Settings -&amp;gt; DNS Records&lt;/code> に移動し、TXTレコードを追加します。
-&lt;img src="https://bossagyu.com/blog/img-007-003.png"
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-003.png"
+width="2510"
+height="1058"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-003.png"
+class="gallery-image"
+data-flex-grow="237"
+data-flex-basis="569px"
 >&lt;/p>
 &lt;p>レコードの内容はGoogle Search Consoleに表示されているものをコピーしてValueに貼り付けます。&lt;br>
 (Valueの部分は黒く塗りつぶしています。)
-&lt;img src="https://bossagyu.com/blog/img-007-004.png"
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-004.png"
+width="1174"
+height="1128"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-004.png"
+class="gallery-image"
+data-flex-grow="104"
+data-flex-basis="249px"
 >&lt;/p>
 &lt;p>DNSの反映を待ちます。ものによっては数時間かかる場合があります。&lt;/p>
 &lt;p>DNSの反映はコマンドラインからでも確認できます。&lt;/p>
@@ -299,17 +413,29 @@ alt="img-007-004.png"
 &lt;p>サイトマップを登録することで、Googleにサイトの構造を伝え、サイトのクロールを促進することができます。
 Hugoで作成したブログの場合は、&lt;code>/sitemap.xml&lt;/code>にサイトマップが作成されているので、これを登録します。&lt;/p>
 &lt;p>Google Search Consoleの左側のメニューから「サイトマップ」を選択し、サイトマップを追加します。
-&lt;img src="https://bossagyu.com/blog/img-007-005.png"
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-005.png"
+width="1401"
+height="649"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-005.png"
+class="gallery-image"
+data-flex-grow="215"
+data-flex-basis="518px"
 >&lt;/p>
 &lt;h2 id="インデックス登録をリクエスト">インデックス登録をリクエスト&lt;/h2>
 &lt;p>サイトマップに登録されていても、Googleがクロールして、その後インデックスが登録されるまでには時間がかかります。
 私の場合は数日待ってもインデックスが登録されなかったので、インデックス登録をリクエストしました。&lt;/p>
 &lt;p>Google Search Consoleの検索窓で登録したいURLを検索し、検索結果の右側にある「インデックス登録をリクエスト」を押します。
-&lt;img src="https://bossagyu.com/blog/img-007-006.png"
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-006.png"
+width="2900"
+height="868"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-006.png"
+class="gallery-image"
+data-flex-grow="334"
+data-flex-basis="801px"
 >&lt;/p>
 &lt;p>これでインデックス登録をリクエストできます。
 クリックしてから数時間でインデックスが登録されました。&lt;/p>
@@ -337,9 +463,15 @@ alt="img-007-006.png"
 >こちら&lt;/a> を参考にしてください。&lt;/p>
 &lt;p>IntellijにSAM CLI executableのパスを &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code> から設定します。&lt;br>
 私の環境ではbrewでインストールしたので、以下のパスを設定しました。
-&lt;img src="https://bossagyu.com/blog/img-006-005.png"
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005.png"
+width="976"
+height="707"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-005.png"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
 >&lt;/p>
 &lt;h2 id="aws-toolkitのインストール">AWS Toolkitのインストール&lt;/h2>
 &lt;p>IntellijのプラグインからAWS Toolkitをインストールします。
@@ -348,15 +480,27 @@ alt="img-006-005.png"
 &lt;h2 id="aws-toolkitの設定">AWS Toolkitの設定&lt;/h2>
 &lt;p>AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。&lt;/p>
 &lt;p>AWS ExplorerからAWSの認証情報を設定します。
-&lt;img src="https://bossagyu.com/blog/img-006-001.png"
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001.png"
+width="2196"
+height="1099"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-001.png"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
 >&lt;/p>
 &lt;p>Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。
 設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。
-&lt;img src="https://bossagyu.com/blog/img-006-002.png"
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002.png"
+width="400"
+height="517"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-002.png"
+class="gallery-image"
+data-flex-grow="77"
+data-flex-basis="185px"
 >&lt;/p>
 &lt;p>この画像ではリージョンが &lt;code>us-east-1&lt;/code> になっていますが、Lambdaを作成するリージョンに合わせてください。&lt;/p>
 &lt;h2 id="lambdaの開発">Lambdaの開発&lt;/h2>
@@ -375,22 +519,40 @@ alt="img-006-002.png"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>AWS ExplorerからLambdaを作成します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-003.png"
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003.png"
+width="382"
+height="452"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-003.png"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
 >&lt;/p>
 &lt;p>Create Lambda Functionを選択し、必要な値を入力します。&lt;br>
 Handlerにはコードスニペットの &lt;code>&amp;lt;ファイル名&amp;gt;.&amp;lt;関数名&amp;gt;&lt;/code> を入力してください。&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-004.png"
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004.png"
+width="769"
+height="626"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-004.png"
+class="gallery-image"
+data-flex-grow="122"
+data-flex-basis="294px"
 >&lt;/p>
 &lt;p>これでLambdaの作成が完了しました。&lt;/p>
 &lt;h2 id="lambdaをローカルで実行">Lambdaをローカルで実行&lt;/h2>
 &lt;p>またToolkitを利用すると、Lambdaをローカルで実行することができます。
-&lt;img src="https://bossagyu.com/blog/img-006-006.png"
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006.png"
+width="544"
+height="181"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-006.png"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="721px"
 >&lt;/p>
 &lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
@@ -410,9 +572,15 @@ Intellijで開発してローカルで実行できるので、開発効率がか
 >Github Copilot&lt;/a> のリンクからGithub Copilotに登録します。&lt;/p>
 &lt;h2 id="intellijの設定">Intellijの設定&lt;/h2>
 &lt;p>IntellijのプラグインからGithub Copilotをインストールします。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-005-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/blog/005-github-copilot/img-005-001.png"
+width="972"
+height="237"
+srcset="https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Github Copilot plugin"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
 >&lt;/p>
 &lt;p>インストールが完了したら、Intellijを再起動します。&lt;/p>
 &lt;h2 id="github-copilotの利用">Github Copilotの利用&lt;/h2>
@@ -599,9 +767,15 @@ alt="Github Copilot plugin"
 >[GA4] アナリティクスで新しいウェブサイトまたはアプリのセットアップを行う&lt;/a>
 に従い登録を行います。&lt;br>
 データストリームを追加すると、トラッキングIDが取得できるのでメモしておきます。
-&lt;img src="https://bossagyu.com/blog/img-003-001.png"
+&lt;img src="https://bossagyu.com/blog/003-google-analytics/img-003-001.png"
+width="1262"
+height="387"
+srcset="https://bossagyu.com/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-003-001.png"
+class="gallery-image"
+data-flex-grow="326"
+data-flex-basis="782px"
 >
 ※ トラッキングIDは日本語訳の影響か、測定IDという表示になっています。&lt;/p>
 &lt;h2 id="hugoの設定にトラッキングidを追加">Hugoの設定にトラッキングIDを追加&lt;/h2>
@@ -706,9 +880,15 @@ alt="img-003-001.png"
 &lt;h2 id="messaging-apiを利用する">Messaging APIを利用する&lt;/h2>
 &lt;p>&lt;a class="link" href="https://developers.line.biz/console/" target="_blank" rel="noopener"
 >LINE Developers&lt;/a> にログインしてプロバイダーを作成する。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-002-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/blog/002-line-messaging-api/img-002-001.png"
+width="1542"
+height="947"
+srcset="https://bossagyu.com/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-002-001.png"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="390px"
 >&lt;/p>
 &lt;p>プロバイダーとは(&lt;a class="link" href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider" target="_blank" rel="noopener"
 >説明&lt;/a>)&lt;/p>
@@ -724,14 +904,26 @@ alt="img-002-001.png"
 &lt;/div>
 &lt;/div>&lt;p>なので好きな文字列を入れる。&lt;/p>
 &lt;p>そのまま新規チャンネルを作成する。
-&lt;img src="https://bossagyu.com/blog/img-002-002.png"
+&lt;img src="https://bossagyu.com/blog/002-line-messaging-api/img-002-002.png"
+width="1393"
+height="1461"
+srcset="https://bossagyu.com/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-002-002.png"
+class="gallery-image"
+data-flex-grow="95"
+data-flex-basis="228px"
 >&lt;/p>
 &lt;p>このまま作成ボタンを押すと新規チャンネルが作成される&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-002-003.png"
+&lt;p>&lt;img src="https://bossagyu.com/blog/002-line-messaging-api/img-002-003.png"
+width="848"
+height="267"
+srcset="https://bossagyu.com/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-002-003.png"
+class="gallery-image"
+data-flex-grow="317"
+data-flex-basis="762px"
 >&lt;/p>
 &lt;h1 id="コマンドラインからポストをする">コマンドラインからポストをする&lt;/h1>
 &lt;p>Messaging API設定からQRコードを読みこんで友達追加する。&lt;/p>

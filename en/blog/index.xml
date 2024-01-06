@@ -16,9 +16,15 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Paste your article in Japanese, and ChatGPT will output the translated Markdown. You can copy the output directly by clicking the copy button at the bottom left of the output.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-011-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/011-hugo-multilingul-support/img-011-001.png"
+width="1542"
+height="516"
+srcset="https://bossagyu.com/en/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="ChatGPT Screen"
+class="gallery-image"
+data-flex-grow="298"
+data-flex-basis="717px"
 >&lt;/p>
 &lt;p>It is highly recommended to use GPT-4 instead of GPT-3.5, despite the subscription cost. GPT-4 significantly outperforms GPT-3.5 in providing accurate responses, making it useful for purposes beyond just translation.&lt;/p>
 &lt;h2 id="making-hugo-multilingual">Making Hugo Multilingual&lt;/h2>
@@ -112,9 +118,15 @@ alt="ChatGPT Screen"
 >Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>When you visit the site, you&amp;rsquo;ll see a screen like this.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-010-001.png"
+&lt;img src="https://bossagyu.com/en/blog/010-favicon/img-010-001.png"
+width="3336"
+height="1510"
+srcset="https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Favicon Generator"
+class="gallery-image"
+data-flex-grow="220"
+data-flex-basis="530px"
 >&lt;/p>
 &lt;p>Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the &amp;lsquo;Download the generated favicon&amp;rsquo; link to download the favicon.&lt;/p>
 &lt;h2 id="displaying-a-favicon-in-hugo">Displaying a Favicon in Hugo&lt;/h2>
@@ -137,53 +149,101 @@ alt="Favicon Generator"
 &lt;p>Lighthouse is a performance measurement tool for websites provided by Google. It&amp;rsquo;s available as a Google Chrome extension and can be used by installing the plugin.&lt;/p>
 &lt;h2 id="installing-lighthouse">Installing Lighthouse&lt;/h2>
 &lt;p>Install Lighthouse from the Chrome Web Store.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-001.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-001.png"
+width="3090"
+height="528"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Chrome Store"
+class="gallery-image"
+data-flex-grow="585"
+data-flex-basis="1404px"
 >&lt;/p>
 &lt;p>Open the site you want to analyze and click on the Lighthouse icon.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-002.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-002.png"
+width="976"
+height="184"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Icon"
+class="gallery-image"
+data-flex-grow="530"
+data-flex-basis="1273px"
 >&lt;/p>
 &lt;p>Click on Generate report to start the analysis.&lt;br>
 This time, I ran it on my &lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" target="_blank" rel="noopener"
 >blog page&lt;/a>.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-003.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-003.png"
+width="546"
+height="1048"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Execution Screen"
+class="gallery-image"
+data-flex-grow="52"
+data-flex-basis="125px"
 >&lt;/p>
 &lt;p>The results are displayed as follows, taking about 1 minute to complete.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-004.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-004.png"
+width="1756"
+height="906"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Results"
+class="gallery-image"
+data-flex-grow="193"
+data-flex-basis="465px"
 >&lt;/p>
 &lt;h2 id="interpreting-the-results">Interpreting the Results&lt;/h2>
 &lt;h3 id="performance">Performance&lt;/h3>
 &lt;p>Evaluates web performance, like page loading and image display speeds. Clicking the See calculator link takes you to more details.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-005.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-005.png"
+width="2236"
+height="1222"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Performance"
+class="gallery-image"
+data-flex-grow="182"
+data-flex-basis="439px"
 >&lt;/p>
 &lt;h3 id="accessibility">Accessibility&lt;/h3>
 &lt;p>Checks whether all users can access content and navigate efficiently within the site. Scrolling down shows areas flagged by Accessibility.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-006.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-006.png"
+width="1790"
+height="1238"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Accessibility"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="347px"
 >&lt;/p>
 &lt;p>It points out weak color contrast in the code snippets and missing descriptions in links.&lt;/p>
 &lt;p>However, the flagged content is not from my writing but depends on the template, so to fix this, it would be necessary to override the Hugo template.&lt;/p>
 &lt;h3 id="best-practices">Best Practices&lt;/h3>
 &lt;p>Tests the integrity of web pages. You can view the testing items in the results.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-007.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-007.png"
+width="962"
+height="1070"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse Best Practices"
+class="gallery-image"
+data-flex-grow="89"
+data-flex-basis="215px"
 >&lt;/p>
 &lt;h3 id="seo">SEO&lt;/h3>
 &lt;p>You can check if the page is optimized for search engine result rankings.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-009-008.png"
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-008.png"
+width="957"
+height="1215"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Lighthouse SEO"
+class="gallery-image"
+data-flex-grow="78"
+data-flex-basis="189px"
 >&lt;/p>
 &lt;h3 id="progressive-web-app">Progressive Web App&lt;/h3>
 &lt;p>Checks if the loading speed of web pages on smartphones is optimized and if it&amp;rsquo;s suitable for PWAs. This wasn&amp;rsquo;t checked in this case.&lt;/p>
@@ -195,33 +255,63 @@ Especially for SEO, as it affects visibility in Google search results, it&amp;rs
 &lt;p>It is assumed that the Lambda function has already been created.&lt;/p>
 &lt;h2 id="steps">Steps&lt;/h2>
 &lt;p>Select the Lambda function and choose &amp;lsquo;Add trigger&amp;rsquo;.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-001.png"
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001.png"
+width="1682"
+height="608"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-001.png"
+class="gallery-image"
+data-flex-grow="276"
+data-flex-basis="663px"
 >&lt;/p>
 &lt;p>Select &amp;lsquo;EventBridge&amp;rsquo; from the triggers.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-002.png"
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002.png"
+width="930"
+height="400"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-002.png"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="558px"
 >&lt;/p>
 &lt;p>The rule creation screen will appear. Configure the settings.&lt;br>
 For this example, I set it to execute every 5 minutes using a cron expression.&lt;br>
 For cron syntax, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
 >Schedule type on EventBridge Scheduler&lt;/a> page.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-003.png"
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003.png"
+width="891"
+height="903"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-003.png"
+class="gallery-image"
+data-flex-grow="98"
+data-flex-basis="236px"
 >&lt;/p>
 &lt;p>Once configured, EventBridge will be added to the triggers in the Lambda function diagram.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-008-004.png"
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004.png"
+width="1761"
+height="976"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-004.png"
+class="gallery-image"
+data-flex-grow="180"
+data-flex-basis="433px"
 >&lt;/p>
 &lt;p>As an aside, I created and tested a Function to send messages to LINE.&lt;br>
 Now, it sends notifications every 5 minutes like this.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-008-005.png"
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005.png"
+width="1494"
+height="256"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-008-005.png"
+class="gallery-image"
+data-flex-grow="583"
+data-flex-basis="1400px"
 >&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to schedule Lambda functions regularly using AWS EventBridge.&lt;br>
@@ -239,30 +329,54 @@ Keep in mind that leaving the configured EventBridge running can incur charges, 
 &lt;p>Register on &lt;a class="link" href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener"
 >Google Search Console&lt;/a>.&lt;/p>
 &lt;p>Choose your domain and enter the URL.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-001.png"
+&lt;img src="https://bossagyu.com/en/blog/007-google-search-console/img-007-001.png"
+width="1838"
+height="1546"
+srcset="https://bossagyu.com/en/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-001.png"
+class="gallery-image"
+data-flex-grow="118"
+data-flex-basis="285px"
 >&lt;/p>
 &lt;h2 id="verifying-domain-ownership">Verifying Domain Ownership&lt;/h2>
 &lt;p>A screen like the following will appear to verify DNS ownership.&lt;br>
 (The TXT record content is blacked out for privacy.)&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-002.png"
+&lt;img src="https://bossagyu.com/en/blog/007-google-search-console/img-007-002.png"
+width="1562"
+height="1404"
+srcset="https://bossagyu.com/en/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-002.png"
+class="gallery-image"
+data-flex-grow="111"
+data-flex-basis="267px"
 >&lt;/p>
 &lt;p>You can verify ownership by adding a string specified by Google to your domain&amp;rsquo;s TXT record.
 Go to your domain&amp;rsquo;s DNS settings and add a TXT record.&lt;/p>
 &lt;p>In my case, I acquired the domain through Netlify, so I went to Netlify&amp;rsquo;s DNS settings.
 Navigate to &lt;code>Domains -&amp;gt; Domain Settings -&amp;gt; DNS Records&lt;/code> and add the TXT record.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-003.png"
+&lt;img src="https://bossagyu.com/en/blog/007-google-search-console/img-007-003.png"
+width="2510"
+height="1058"
+srcset="https://bossagyu.com/en/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-003.png"
+class="gallery-image"
+data-flex-grow="237"
+data-flex-basis="569px"
 >&lt;/p>
 &lt;p>Copy the content displayed on Google Search Console and paste it into the Value field.&lt;br>
 (The Value part is blacked out for privacy.)&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-004.png"
+&lt;img src="https://bossagyu.com/en/blog/007-google-search-console/img-007-004.png"
+width="1174"
+height="1128"
+srcset="https://bossagyu.com/en/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-004.png"
+class="gallery-image"
+data-flex-grow="104"
+data-flex-basis="249px"
 >&lt;/p>
 &lt;p>Wait for DNS updates, which can take a few hours depending on the provider.&lt;/p>
 &lt;p>You can check DNS propagation from the command line.&lt;/p>
@@ -280,17 +394,29 @@ This completes the verification process, and your domain will be registered with
 &lt;p>Registering a sitemap informs Google about the structure of your site, facilitating the crawling process.
 For blogs created with Hugo, the sitemap is available at &lt;code>/sitemap.xml&lt;/code>, which you should register.&lt;/p>
 &lt;p>From the left menu of Google Search Console, select &amp;lsquo;Sitemaps&amp;rsquo; and add your sitemap.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-005.png"
+&lt;img src="https://bossagyu.com/en/blog/007-google-search-console/img-007-005.png"
+width="1401"
+height="649"
+srcset="https://bossagyu.com/en/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-005.png"
+class="gallery-image"
+data-flex-grow="215"
+data-flex-basis="518px"
 >&lt;/p>
 &lt;h2 id="requesting-index-registration">Requesting Index Registration&lt;/h2>
 &lt;p>Even if your site is registered in the sitemap, it can take time for Google to crawl and index it.
 In my case, I requested index registration after waiting several days without being indexed.&lt;/p>
 &lt;p>Search for the URL you want to register in Google Search Console, and click on &amp;lsquo;Request Indexing&amp;rsquo; found on the right side of the search result.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-007-006.png"
+&lt;img src="https://bossagyu.com/en/blog/007-google-search-console/img-007-006.png"
+width="2900"
+height="868"
+srcset="https://bossagyu.com/en/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-007-006.png"
+class="gallery-image"
+data-flex-grow="334"
+data-flex-basis="801px"
 >&lt;/p>
 &lt;p>This requests index registration.
 It took a few hours for the index to be registered after clicking.&lt;/p>
@@ -318,9 +444,15 @@ For installation, refer to &lt;a class="link" href="https://docs.aws.amazon.com/
 >these instructions&lt;/a>.&lt;/p>
 &lt;p>In IntelliJ, set the path for SAM CLI executable under &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code>.&lt;br>
 In my case, as I installed it through brew, I set the following path.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-005.png"
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-005.png"
+width="976"
+height="707"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-005.png"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
 >&lt;/p>
 &lt;h2 id="installing-aws-toolkit">Installing AWS Toolkit&lt;/h2>
 &lt;p>Install the AWS Toolkit via IntelliJ plugins.
@@ -329,15 +461,27 @@ Refer to &lt;a class="link" href="https://www.jetbrains.com/help/idea/managing-p
 &lt;h2 id="configuring-aws-toolkit">Configuring AWS Toolkit&lt;/h2>
 &lt;p>To use AWS Toolkit, you need to set up your AWS credentials.&lt;/p>
 &lt;p>Set up AWS credentials through AWS Explorer.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-001.png"
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-001.png"
+width="2196"
+height="1099"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-001.png"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
 >&lt;/p>
 &lt;p>Obtain and configure your Access Key ID and Secret Access Key from the AWS console.
 Once configured, AWS resources should appear in AWS Explorer.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-002.png"
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-002.png"
+width="400"
+height="517"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-002.png"
+class="gallery-image"
+data-flex-grow="77"
+data-flex-basis="185px"
 >&lt;/p>
 &lt;p>Note: In this image, the region is set to &lt;code>us-east-1&lt;/code>. Please adjust according to the region where you intend to create your Lambda.&lt;/p>
 &lt;h2 id="developing-lambda">Developing Lambda&lt;/h2>
@@ -356,22 +500,40 @@ alt="img-006-002.png"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Create a Lambda through AWS Explorer.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-003.png"
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-003.png"
+width="382"
+height="452"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-003.png"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
 >&lt;/p>
 &lt;p>Select Create Lambda Function and input the necessary values.&lt;br>
 For the Handler, enter &lt;code>&amp;lt;filename&amp;gt;.&amp;lt;function name&amp;gt;&lt;/code> from your code snippet.&lt;br>
-&lt;img src="https://bossagyu.com/blog/img-006-004.png"
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-004.png"
+width="769"
+height="626"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-004.png"
+class="gallery-image"
+data-flex-grow="122"
+data-flex-basis="294px"
 >&lt;/p>
 &lt;p>This completes the creation of your Lambda.&lt;/p>
 &lt;h2 id="executing-lambda-locally">Executing Lambda Locally&lt;/h2>
 &lt;p>The Toolkit also allows you to execute Lambda locally.
-&lt;img src="https://bossagyu.com/blog/img-006-006.png"
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-006.png"
+width="544"
+height="181"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-006-006.png"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="721px"
 >&lt;/p>
 &lt;p>Selecting Run will execute the Lambda locally.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
@@ -391,9 +553,15 @@ Additionally, a cheat sheet of shortcuts is provided.&lt;/p>
 >GitHub Copilot&lt;/a> link.&lt;/p>
 &lt;h2 id="configuring-intellij">Configuring IntelliJ&lt;/h2>
 &lt;p>Install the GitHub Copilot plugin from IntelliJ plugins.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-005-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/005-github-copilot/img-005-001.png"
+width="972"
+height="237"
+srcset="https://bossagyu.com/en/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="GitHub Copilot plugin"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
 >&lt;/p>
 &lt;p>Once installed, restart IntelliJ.&lt;/p>
 &lt;h2 id="using-github-copilot">Using GitHub Copilot&lt;/h2>
@@ -579,9 +747,15 @@ In this case, we will use two systems to manage different versions of Python and
 &lt;p>Follow the instructions on &lt;a class="link" href="https://support.google.com/analytics/answer/9304153?hl=ja" target="_blank" rel="noopener"
 >Setting up a new website or app with GA4&lt;/a> to register.&lt;br>
 When you add a data stream, you will get a Tracking ID, so make a note of it.
-&lt;img src="https://bossagyu.com/blog/img-003-001.png"
+&lt;img src="https://bossagyu.com/en/blog/003-google-analytics/img-003-001.png"
+width="1262"
+height="387"
+srcset="https://bossagyu.com/en/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-003-001.png"
+class="gallery-image"
+data-flex-grow="326"
+data-flex-basis="782px"
 >
 ※ The Tracking ID may be displayed as &amp;ldquo;Measurement ID&amp;rdquo; due to translation.&lt;/p>
 &lt;h2 id="adding-tracking-id-to-hugos-configuration">Adding Tracking ID to Hugo&amp;rsquo;s Configuration&lt;/h2>
@@ -684,9 +858,15 @@ This page introduces how to register for the LINE Messaging API and how to send 
 &lt;h2 id="using-the-messaging-api">Using the Messaging API&lt;/h2>
 &lt;p>Log in to &lt;a class="link" href="https://developers.line.biz/console/" target="_blank" rel="noopener"
 >LINE Developers&lt;/a> and create a provider.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-002-001.png"
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-001.png"
+width="1542"
+height="947"
+srcset="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-002-001.png"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="390px"
 >&lt;/p>
 &lt;p>A provider is (&lt;a class="link" href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider" target="_blank" rel="noopener"
 >Explanation&lt;/a>)&lt;/p>
@@ -700,14 +880,26 @@ alt="img-002-001.png"
 &lt;/div>
 &lt;/div>&lt;p>So, you can enter any string you like.&lt;/p>
 &lt;p>Then, create a new channel.
-&lt;img src="https://bossagyu.com/blog/img-002-002.png"
+&lt;img src="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-002.png"
+width="1393"
+height="1461"
+srcset="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-002-002.png"
+class="gallery-image"
+data-flex-grow="95"
+data-flex-basis="228px"
 >&lt;/p>
 &lt;p>Clicking the create button will establish a new channel.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/img-002-003.png"
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-003.png"
+width="848"
+height="267"
+srcset="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="img-002-003.png"
+class="gallery-image"
+data-flex-grow="317"
+data-flex-basis="762px"
 >&lt;/p>
 &lt;h1 id="posting-from-the-command-line">Posting from the Command Line&lt;/h1>
 &lt;p>Add friends by reading the QR code in the Messaging API settings.&lt;/p>
