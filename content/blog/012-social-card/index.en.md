@@ -52,5 +52,8 @@ If your theme doesn’t support Twitter Social Card settings, you will need to i
 
 Hugo’s official [template for implementation](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html) is available, which you can use for an easy setup.
 
+## Troubleshooting
+If the settings don’t seem to work, it might be due to incorrect implementation or the meta tags not being properly set. In such cases, use the [debugging tool](https://cards-dev.twitter.com/validator) provided by Twitter to check if the settings have been correctly applied.
+
 ## Summary
 This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it's definitely worth doing.

@@ -56,6 +56,10 @@ src = "/images/share.webp" # デフォルトで設定したいimageのパス
 
 Hugoの公式で[実装のテンプレート](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html)が公開されていますので、それを利用することで容易に実装することが可能です。
 
+## うまくいかない場合
+うまくいかない場合はうまく設定が反映されていない、megaタグが正しく設定されていない可能性があります。
+Twitterから提供されている[デバッグツール](https://cards-dev.twitter.com/validator)を利用して、設定が正しく反映されているか確認してみましょう。
+
 ## まとめ
 この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明しました。
 Social Cardを設定することで、Twitterで記事をシェアした際に、より多くの人に記事を読んでもらうことができますのでぜひ設定しましょう。
