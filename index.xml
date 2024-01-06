@@ -61,6 +61,10 @@ data-flex-basis="656px"
 自前で実装して、設定を行う必要があります。&lt;/p>
 &lt;p>Hugoの公式で&lt;a class="link" href="https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html" target="_blank" rel="noopener"
 >実装のテンプレート&lt;/a>が公開されていますので、それを利用することで容易に実装することが可能です。&lt;/p>
+&lt;h2 id="うまくいかない場合">うまくいかない場合&lt;/h2>
+&lt;p>うまくいかない場合はうまく設定が反映されていない、megaタグが正しく設定されていない可能性があります。
+Twitterから提供されている&lt;a class="link" href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener"
+>デバッグツール&lt;/a>を利用して、設定が正しく反映されているか確認してみましょう。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明しました。
 Social Cardを設定することで、Twitterで記事をシェアした際に、より多くの人に記事を読んでもらうことができますのでぜひ設定しましょう。&lt;/p></description></item><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>

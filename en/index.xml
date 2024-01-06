@@ -58,6 +58,9 @@ data-flex-basis="656px"
 &lt;p>If your theme doesn’t support Twitter Social Card settings, you will need to implement it yourself.&lt;/p>
 &lt;p>Hugo’s official &lt;a class="link" href="https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html" target="_blank" rel="noopener"
 >template for implementation&lt;/a> is available, which you can use for an easy setup.&lt;/p>
+&lt;h2 id="troubleshooting">Troubleshooting&lt;/h2>
+&lt;p>If the settings don’t seem to work, it might be due to incorrect implementation or the meta tags not being properly set. In such cases, use the &lt;a class="link" href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener"
+>debugging tool&lt;/a> provided by Twitter to check if the settings have been correctly applied.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
