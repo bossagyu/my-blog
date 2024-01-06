@@ -2,7 +2,7 @@
 mainSections = ["blog"]
 # Output page's full content in RSS.
 rssFullContent = true
-favicon = "images/favicon.png"
+favicon = "/images/favicon.png"
 
 [footer]
 since = 2023
@@ -19,7 +19,7 @@ subtitle = "エンジニアリングマネージャーがエンジニアリン�
 [sidebar.avatar]
 enabled = true
 local = false
-src = "images/share.webp"
+src = "/images/share.webp"
 
 [article]
 math = false
