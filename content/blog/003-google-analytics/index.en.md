@@ -15,7 +15,7 @@ This article briefly explains how to set up Google Analytics with Hugo.
 ## Registering with Google Analytics
 Follow the instructions on [Setting up a new website or app with GA4](https://support.google.com/analytics/answer/9304153?hl=ja) to register.  
 When you add a data stream, you will get a Tracking ID, so make a note of it.
-![img-003-001.png](/blog/img-003-001.png)
+![img-003-001.png](img-003-001.png)
 ※ The Tracking ID may be displayed as "Measurement ID" due to translation.
 
 ## Adding Tracking ID to Hugo's Configuration

@@ -18,7 +18,7 @@ Present the translated content in a format that can be easily copied.
 
 Paste your article in Japanese, and ChatGPT will output the translated Markdown. You can copy the output directly by clicking the copy button at the bottom left of the output.
 
-![ChatGPT Screen](/blog/img-011-001.png)
+![ChatGPT Screen](img-011-001.png)
 
 It is highly recommended to use GPT-4 instead of GPT-3.5, despite the subscription cost. GPT-4 significantly outperforms GPT-3.5 in providing accurate responses, making it useful for purposes beyond just translation.
 

@@ -12,26 +12,26 @@ Lighthouse is a performance measurement tool for websites provided by Google. It
 
 ## Installing Lighthouse
 Install Lighthouse from the Chrome Web Store.  
-![Lighthouse Chrome Store](/blog/img-009-001.png)
+![Lighthouse Chrome Store](img-009-001.png)
 
 Open the site you want to analyze and click on the Lighthouse icon.  
-![Lighthouse Icon](/blog/img-009-002.png)
+![Lighthouse Icon](img-009-002.png)
 
 Click on Generate report to start the analysis.  
 This time, I ran it on my [blog page](https://bossagyu.com/blog/001-hugo-netlify-build/).  
-![Lighthouse Execution Screen](/blog/img-009-003.png)
+![Lighthouse Execution Screen](img-009-003.png)
 
 The results are displayed as follows, taking about 1 minute to complete.  
-![Lighthouse Results](/blog/img-009-004.png)
+![Lighthouse Results](img-009-004.png)
 
 ## Interpreting the Results
 ### Performance
 Evaluates web performance, like page loading and image display speeds. Clicking the See calculator link takes you to more details.  
-![Lighthouse Performance](/blog/img-009-005.png)
+![Lighthouse Performance](img-009-005.png)
 
 ### Accessibility
 Checks whether all users can access content and navigate efficiently within the site. Scrolling down shows areas flagged by Accessibility.  
-![Lighthouse Accessibility](/blog/img-009-006.png)
+![Lighthouse Accessibility](img-009-006.png)
 
 It points out weak color contrast in the code snippets and missing descriptions in links.
 
@@ -39,11 +39,11 @@ However, the flagged content is not from my writing but depends on the template,
 
 ### Best Practices
 Tests the integrity of web pages. You can view the testing items in the results.  
-![Lighthouse Best Practices](/blog/img-009-007.png)
+![Lighthouse Best Practices](img-009-007.png)
 
 ### SEO
 You can check if the page is optimized for search engine result rankings.  
-![Lighthouse SEO](/blog/img-009-008.png)
+![Lighthouse SEO](img-009-008.png)
 
 ### Progressive Web App
 Checks if the loading speed of web pages on smartphones is optimized and if it's suitable for PWAs. This wasn't checked in this case.

@@ -16,7 +16,7 @@ To create a favicon, use the following site:
 * [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/)
 
 When you visit the site, you'll see a screen like this.  
-![Favicon Generator](/blog/img-010-001.png)
+![Favicon Generator](img-010-001.png)
 
 Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the 'Download the generated favicon' link to download the favicon.
 

@@ -20,7 +20,7 @@ Github CopilotをIntellijで使う方法を解説します。
 ## Intellijの設定
 IntellijのプラグインからGithub Copilotをインストールします。
 
-![Github Copilot plugin](/blog/img-005-001.png)
+![Github Copilot plugin](img-005-001.png)
 
 インストールが完了したら、Intellijを再起動します。
 

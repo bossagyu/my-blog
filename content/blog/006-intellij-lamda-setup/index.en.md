@@ -26,7 +26,7 @@ For installation, refer to [these instructions](https://docs.aws.amazon.com/ja_j
 
 In IntelliJ, set the path for SAM CLI executable under `File -> Settings -> Tools -> AWS Toolkit`.  
 In my case, as I installed it through brew, I set the following path.  
-![img-006-005.png](/blog/img-006-005.png)
+![img-006-005.png](img-006-005.png)
 
 ## Installing AWS Toolkit
 Install the AWS Toolkit via IntelliJ plugins.
@@ -36,11 +36,11 @@ Refer to [this guide](https://www.jetbrains.com/help/idea/managing-plugins.html#
 To use AWS Toolkit, you need to set up your AWS credentials.
 
 Set up AWS credentials through AWS Explorer.  
-![img-006-001.png](/blog/img-006-001.png)
+![img-006-001.png](img-006-001.png)
 
 Obtain and configure your Access Key ID and Secret Access Key from the AWS console.
 Once configured, AWS resources should appear in AWS Explorer.  
-![img-006-002.png](/blog/img-006-002.png)
+![img-006-002.png](img-006-002.png)
 
 Note: In this image, the region is set to `us-east-1`. Please adjust according to the region where you intend to create your Lambda.
 
@@ -56,17 +56,17 @@ def lambda_handler(event, context):
 ```
 
 Create a Lambda through AWS Explorer.  
-![img-006-003.png](/blog/img-006-003.png)
+![img-006-003.png](img-006-003.png)
 
 Select Create Lambda Function and input the necessary values.  
 For the Handler, enter `<filename>.<function name>` from your code snippet.  
-![img-006-004.png](/blog/img-006-004.png)
+![img-006-004.png](img-006-004.png)
 
 This completes the creation of your Lambda.
 
 ## Executing Lambda Locally
 The Toolkit also allows you to execute Lambda locally.
-![img-006-006.png](/blog/img-006-006.png)
+![img-006-006.png](img-006-006.png)
 
 Selecting Run will execute the Lambda locally.
 

@@ -20,7 +20,7 @@ Faviconを作成するには、以下のサイトを利用します。
 * [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/)
 
 サイトにアクセスすると、以下のような画面が表示されます。  
-![Favicon Generator](/blog/img-010-001.png)
+![Favicon Generator](img-010-001.png)
 
 faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
 その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。

@@ -19,25 +19,25 @@ To appear in Google searches, it's not enough just to apply SEO strategies; your
 Register on [Google Search Console](https://search.google.com/search-console/welcome).
 
 Choose your domain and enter the URL.  
-![img-007-001.png](/blog/img-007-001.png)
+![img-007-001.png](img-007-001.png)
 
 
 ## Verifying Domain Ownership
 
 A screen like the following will appear to verify DNS ownership.  
 (The TXT record content is blacked out for privacy.)  
-![img-007-002.png](/blog/img-007-002.png)
+![img-007-002.png](img-007-002.png)
 
 You can verify ownership by adding a string specified by Google to your domain's TXT record.
 Go to your domain's DNS settings and add a TXT record.
 
 In my case, I acquired the domain through Netlify, so I went to Netlify's DNS settings.
 Navigate to `Domains -> Domain Settings -> DNS Records` and add the TXT record.  
-![img-007-003.png](/blog/img-007-003.png)
+![img-007-003.png](img-007-003.png)
 
 Copy the content displayed on Google Search Console and paste it into the Value field.  
 (The Value part is blacked out for privacy.)  
-![img-007-004.png](/blog/img-007-004.png)
+![img-007-004.png](img-007-004.png)
 
 Wait for DNS updates, which can take a few hours depending on the provider.
 
@@ -54,7 +54,7 @@ Registering a sitemap informs Google about the structure of your site, facilitat
 For blogs created with Hugo, the sitemap is available at `/sitemap.xml`, which you should register.
 
 From the left menu of Google Search Console, select 'Sitemaps' and add your sitemap.  
-![img-007-005.png](/blog/img-007-005.png)
+![img-007-005.png](img-007-005.png)
 
 
 ## Requesting Index Registration
@@ -62,7 +62,7 @@ Even if your site is registered in the sitemap, it can take time for Google to c
 In my case, I requested index registration after waiting several days without being indexed.
 
 Search for the URL you want to register in Google Search Console, and click on 'Request Indexing' found on the right side of the search result.  
-![img-007-006.png](/blog/img-007-006.png)
+![img-007-006.png](img-007-006.png)
 
 This requests index registration.
 It took a few hours for the index to be registered after clicking.

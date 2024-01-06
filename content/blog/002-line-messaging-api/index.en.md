@@ -11,7 +11,7 @@ This page introduces how to register for the LINE Messaging API and how to send 
 ## Using the Messaging API
 Log in to [LINE Developers](https://developers.line.biz/console/) and create a provider.
 
-![img-002-001.png](/blog/img-002-001.png)
+![img-002-001.png](img-002-001.png)
 
 A provider is ([Explanation](https://developers.line.biz/ja/docs/line-developers-console/overview/#provider))
 ```
@@ -21,11 +21,11 @@ On the LINE Developers site, a service provider refers to individuals, companies
 So, you can enter any string you like.
 
 Then, create a new channel.
-![img-002-002.png](/blog/img-002-002.png)
+![img-002-002.png](img-002-002.png)
 
 Clicking the create button will establish a new channel.
 
-![img-002-003.png](/blog/img-002-003.png)
+![img-002-003.png](img-002-003.png)
 
 # Posting from the Command Line
 Add friends by reading the QR code in the Messaging API settings.

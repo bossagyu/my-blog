@@ -20,7 +20,7 @@ Register for GitHub Copilot through the [GitHub Copilot](https://copilot.github.
 ## Configuring IntelliJ
 Install the GitHub Copilot plugin from IntelliJ plugins.
 
-![GitHub Copilot plugin](/blog/img-005-001.png)
+![GitHub Copilot plugin](img-005-001.png)
 
 Once installed, restart IntelliJ.
 
