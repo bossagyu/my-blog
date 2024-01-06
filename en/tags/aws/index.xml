@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/aws/</link><description>Recent content in AWS on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Thu, 21 Dec 2023 23:03:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>Scheduling Lambda Functions Regularly Using AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to schedule regular executions of Lambda functions using AWS EventBridge.&lt;/p>
+&lt;h2 id="prerequisite">Prerequisite&lt;/h2>
+&lt;p>It is assumed that the Lambda function has already been created.&lt;/p>
+&lt;h2 id="steps">Steps&lt;/h2>
+&lt;p>Select the Lambda function and choose &amp;lsquo;Add trigger&amp;rsquo;.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001.png"
+width="1682"
+height="608"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-001.png"
+class="gallery-image"
+data-flex-grow="276"
+data-flex-basis="663px"
+>&lt;/p>
+&lt;p>Select &amp;lsquo;EventBridge&amp;rsquo; from the triggers.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002.png"
+width="930"
+height="400"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-002.png"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="558px"
+>&lt;/p>
+&lt;p>The rule creation screen will appear. Configure the settings.&lt;br>
+For this example, I set it to execute every 5 minutes using a cron expression.&lt;br>
+For cron syntax, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
+>Schedule type on EventBridge Scheduler&lt;/a> page.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003.png"
+width="891"
+height="903"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-003.png"
+class="gallery-image"
+data-flex-grow="98"
+data-flex-basis="236px"
+>&lt;/p>
+&lt;p>Once configured, EventBridge will be added to the triggers in the Lambda function diagram.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004.png"
+width="1761"
+height="976"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-004.png"
+class="gallery-image"
+data-flex-grow="180"
+data-flex-basis="433px"
+>&lt;/p>
+&lt;p>As an aside, I created and tested a Function to send messages to LINE.&lt;br>
+Now, it sends notifications every 5 minutes like this.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005.png"
+width="1494"
+height="256"
+srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-005.png"
+class="gallery-image"
+data-flex-grow="583"
+data-flex-basis="1400px"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to schedule Lambda functions regularly using AWS EventBridge.&lt;br>
+Keep in mind that leaving the configured EventBridge running can incur charges, so delete it if it&amp;rsquo;s no longer needed.&lt;/p></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Preliminary Preparation&lt;/li>
+&lt;li>Installing AWS Toolkit&lt;/li>
+&lt;li>Configuring AWS Toolkit&lt;/li>
+&lt;li>Developing Lambda&lt;/li>
+&lt;li>Executing Lambda Locally&lt;/li>
+&lt;li>Summary&lt;/li>
+&lt;/ol>
+&lt;h2 id="preliminary-preparation">Preliminary Preparation&lt;/h2>
+&lt;h3 id="installing-docker">Installing Docker&lt;/h3>
+&lt;p>AWS Toolkit in IntelliJ uses Docker to run Lambda.&lt;br>
+Prior to proceeding, please install Docker by referring to &lt;a class="link" href="https://docs.docker.jp/docker-for-mac/install.html" target="_blank" rel="noopener"
+>these instructions&lt;/a>.&lt;/p>
+&lt;h3 id="installing-aws-cli">Installing AWS CLI&lt;/h3>
+&lt;p>Install AWS CLI (SAM).&lt;br>
+For installation, refer to &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html" target="_blank" rel="noopener"
+>these instructions&lt;/a>.&lt;/p>
+&lt;p>In IntelliJ, set the path for SAM CLI executable under &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code>.&lt;br>
+In my case, as I installed it through brew, I set the following path.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-005.png"
+width="976"
+height="707"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-005.png"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
+>&lt;/p>
+&lt;h2 id="installing-aws-toolkit">Installing AWS Toolkit&lt;/h2>
+&lt;p>Install the AWS Toolkit via IntelliJ plugins.
+Refer to &lt;a class="link" href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin" target="_blank" rel="noopener"
+>this guide&lt;/a> for plugin installation.&lt;/p>
+&lt;h2 id="configuring-aws-toolkit">Configuring AWS Toolkit&lt;/h2>
+&lt;p>To use AWS Toolkit, you need to set up your AWS credentials.&lt;/p>
+&lt;p>Set up AWS credentials through AWS Explorer.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-001.png"
+width="2196"
+height="1099"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-001.png"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
+>&lt;/p>
+&lt;p>Obtain and configure your Access Key ID and Secret Access Key from the AWS console.
+Once configured, AWS resources should appear in AWS Explorer.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-002.png"
+width="400"
+height="517"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-002.png"
+class="gallery-image"
+data-flex-grow="77"
+data-flex-basis="185px"
+>&lt;/p>
+&lt;p>Note: In this image, the region is set to &lt;code>us-east-1&lt;/code>. Please adjust according to the region where you intend to create your Lambda.&lt;/p>
+&lt;h2 id="developing-lambda">Developing Lambda&lt;/h2>
+&lt;p>Create a code snippet like the following.&lt;/p>
+&lt;p>lambda-sample.py&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">lambda_handler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello World&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;Hello World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Create a Lambda through AWS Explorer.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-003.png"
+width="382"
+height="452"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-003.png"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
+>&lt;/p>
+&lt;p>Select Create Lambda Function and input the necessary values.&lt;br>
+For the Handler, enter &lt;code>&amp;lt;filename&amp;gt;.&amp;lt;function name&amp;gt;&lt;/code> from your code snippet.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-004.png"
+width="769"
+height="626"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-004.png"
+class="gallery-image"
+data-flex-grow="122"
+data-flex-basis="294px"
+>&lt;/p>
+&lt;p>This completes the creation of your Lambda.&lt;/p>
+&lt;h2 id="executing-lambda-locally">Executing Lambda Locally&lt;/h2>
+&lt;p>The Toolkit also allows you to execute Lambda locally.
+&lt;img src="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-006.png"
+width="544"
+height="181"
+srcset="https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-006.png"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="721px"
+>&lt;/p>
+&lt;p>Selecting Run will execute the Lambda locally.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
+Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p></description></item></channel></rss>

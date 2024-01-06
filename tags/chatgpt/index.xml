@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ChatGPT on Bossagyu Blog</title><link>https://bossagyu.com/tags/chatgpt/</link><description>Recent content in ChatGPT on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/chatgpt/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。&lt;/p>
+&lt;h2 id="ghatgptを利用して記事を英語化する方法">GhatGPTを利用して記事を英語化する方法&lt;/h2>
+&lt;p>Markdownで書かれた記事を&lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
+>ChatGPT&lt;/a>に英語化させます。
+英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">マークダウンを体裁を崩さずに英語にしてください。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">マークダウン以外の余分な出力は行わないでください。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">英語化された内容をそのままコピーできる形で出力してください。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。
+出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001.png"
+width="1542"
+height="516"
+srcset="https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTの画面"
+class="gallery-image"
+data-flex-grow="298"
+data-flex-basis="717px"
+>&lt;/p>
+&lt;p>また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。
+GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。&lt;/p>
+&lt;h2 id="hugoで多言語対応する方法">Hugoで多言語対応する方法&lt;/h2>
+&lt;p>Hugoで多言語化を行うための設定方法を記載します。&lt;/p>
+&lt;h3 id="設定ファイルの作成">設定ファイルの作成&lt;/h3>
+&lt;p>config.tomlに以下のような設定を追加します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">defaultContentLanguage&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;jp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c"># 言語ごとに設定を変更します&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jp&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;Bossagyu Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">languageName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;ja-jp 🇯🇵&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">LanguageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;ja-jp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">contentDir&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;content&amp;#34;&lt;/span> &lt;span class="c"># 日本語ブログ記事を格納するディレクトリ&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">en&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;Bossagyu Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">languageName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;en-US 🇺🇸&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">LanguageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;en-US&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">contentDir&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;content.en&amp;#34;&lt;/span> &lt;span class="c"># 英語ブログ記事を格納するディレクトリ&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">en&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上記のような設定を行うことで、&lt;code>content&lt;/code>ディレクトリに日本語の記事を、&lt;code>content.en&lt;/code>ディレクトリに英語の記事を書くことで多言語対応が可能となります。&lt;/p>
+&lt;p>最終的なディレクトリ構成は以下のような形になります。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">project/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── content/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── blog/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── article1.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── content.en/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── blog/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── article1.en.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>また英語化したディレクトリの中には &lt;code>記事名.en.md&lt;/code> の拡張子とすることで、デフォルト言語に対する英語の記事として認識され、記事に言語変換用のアイコンが出力されるようになります。
+記事についてはGhatGPTを用いて英語化したものをコピー&amp;amp;ペーストするだけでOKです。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
+ChatGPTを利用することで、英語化を簡単に行うことができます。
+また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。&lt;/p>
+&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item></channel></rss>

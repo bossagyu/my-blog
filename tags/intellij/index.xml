@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>intellij on Bossagyu Blog</title><link>https://bossagyu.com/tags/intellij/</link><description>Recent content in intellij on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 12 Dec 2023 22:40:05 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/intellij/index.xml" rel="self" type="application/rss+xml"/><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>事前準備&lt;/li>
+&lt;li>AWS Toolkitのインストール&lt;/li>
+&lt;li>AWS Toolkitの設定&lt;/li>
+&lt;li>Lambdaの開発&lt;/li>
+&lt;li>Lambdaをローカルで実行&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="事前準備">事前準備&lt;/h2>
+&lt;h3 id="dockerのインストール">dockerのインストール&lt;/h3>
+&lt;p>intellijで利用するAWS Toolkitでは、Lambda動作させるためにDockerを使用します。&lt;br>
+このため事前に &lt;a class="link" href="https://docs.docker.jp/docker-for-mac/install.html" target="_blank" rel="noopener"
+>こちら&lt;/a>を参考にDockerをインストールしておいてください。&lt;/p>
+&lt;h3 id="aws-cliのインストール">AWS CLIのインストール&lt;/h3>
+&lt;p>AWS CLI(SAM)をインストールします。&lt;br>
+インストール方法は &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html" target="_blank" rel="noopener"
+>こちら&lt;/a> を参考にしてください。&lt;/p>
+&lt;p>IntellijにSAM CLI executableのパスを &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code> から設定します。&lt;br>
+私の環境ではbrewでインストールしたので、以下のパスを設定しました。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005.png"
+width="976"
+height="707"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-005.png"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
+>&lt;/p>
+&lt;h2 id="aws-toolkitのインストール">AWS Toolkitのインストール&lt;/h2>
+&lt;p>IntellijのプラグインからAWS Toolkitをインストールします。
+プラグインのインストールは &lt;a class="link" href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin" target="_blank" rel="noopener"
+>こちら&lt;/a> を参考にしてください。&lt;/p>
+&lt;h2 id="aws-toolkitの設定">AWS Toolkitの設定&lt;/h2>
+&lt;p>AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。&lt;/p>
+&lt;p>AWS ExplorerからAWSの認証情報を設定します。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001.png"
+width="2196"
+height="1099"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-001.png"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
+>&lt;/p>
+&lt;p>Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。
+設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002.png"
+width="400"
+height="517"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-002.png"
+class="gallery-image"
+data-flex-grow="77"
+data-flex-basis="185px"
+>&lt;/p>
+&lt;p>この画像ではリージョンが &lt;code>us-east-1&lt;/code> になっていますが、Lambdaを作成するリージョンに合わせてください。&lt;/p>
+&lt;h2 id="lambdaの開発">Lambdaの開発&lt;/h2>
+&lt;p>以下のようなコードスニペットを作成します。&lt;/p>
+&lt;p>lamda-sample.py&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">lambda_handler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello World&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;Hello World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>AWS ExplorerからLambdaを作成します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003.png"
+width="382"
+height="452"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-003.png"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
+>&lt;/p>
+&lt;p>Create Lambda Functionを選択し、必要な値を入力します。&lt;br>
+Handlerにはコードスニペットの &lt;code>&amp;lt;ファイル名&amp;gt;.&amp;lt;関数名&amp;gt;&lt;/code> を入力してください。&lt;br>
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004.png"
+width="769"
+height="626"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-004.png"
+class="gallery-image"
+data-flex-grow="122"
+data-flex-basis="294px"
+>&lt;/p>
+&lt;p>これでLambdaの作成が完了しました。&lt;/p>
+&lt;h2 id="lambdaをローカルで実行">Lambdaをローカルで実行&lt;/h2>
+&lt;p>またToolkitを利用すると、Lambdaをローカルで実行することができます。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006.png"
+width="544"
+height="181"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-006.png"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="721px"
+>&lt;/p>
+&lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Github CopilotをIntellijで使う方法を解説します。
+合わせてショートカットのチートシートを記載します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>Github Copilotの登録&lt;/li>
+&lt;li>Intellijの設定&lt;/li>
+&lt;li>Github Copilotの利用&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="github-copilotの登録">Github Copilotの登録&lt;/h2>
+&lt;p>&lt;a class="link" href="https://copilot.github.com/" target="_blank" rel="noopener"
+>Github Copilot&lt;/a> のリンクからGithub Copilotに登録します。&lt;/p>
+&lt;h2 id="intellijの設定">Intellijの設定&lt;/h2>
+&lt;p>IntellijのプラグインからGithub Copilotをインストールします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/005-github-copilot/img-005-001.png"
+width="972"
+height="237"
+srcset="https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Github Copilot plugin"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
+>&lt;/p>
+&lt;p>インストールが完了したら、Intellijを再起動します。&lt;/p>
+&lt;h2 id="github-copilotの利用">Github Copilotの利用&lt;/h2>
+&lt;p>Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。&lt;/p>
+&lt;p>macのショートカットの一覧は以下のとおりです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ショートカット&lt;/th>
+&lt;th>機能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>tab&lt;/code>&lt;/td>
+&lt;td>コードを補完する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>]&lt;/code>&lt;/td>
+&lt;td>次の補完候補を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>[&lt;/code>&lt;/td>
+&lt;td>前の補完候補を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Command&lt;/code> + &lt;code>→&lt;/code>&lt;/td>
+&lt;td>提案の次の単語のみ受け入れる&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。&lt;br>
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p></description></item></channel></rss>

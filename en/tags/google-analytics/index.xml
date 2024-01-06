@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Google Analytics on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/google-analytics/</link><description>Recent content in Google Analytics on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 09 Dec 2023 18:09:42 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/google-analytics/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article briefly explains how to set up Google Analytics with Hugo.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Register with Google Analytics&lt;/li>
+&lt;li>Obtain the Tracking ID&lt;/li>
+&lt;li>Add the Tracking ID to Hugo&amp;rsquo;s configuration&lt;/li>
+&lt;/ol>
+&lt;h2 id="registering-with-google-analytics">Registering with Google Analytics&lt;/h2>
+&lt;p>Follow the instructions on &lt;a class="link" href="https://support.google.com/analytics/answer/9304153?hl=ja" target="_blank" rel="noopener"
+>Setting up a new website or app with GA4&lt;/a> to register.&lt;br>
+When you add a data stream, you will get a Tracking ID, so make a note of it.
+&lt;img src="https://bossagyu.com/en/blog/003-google-analytics/img-003-001.png"
+width="1262"
+height="387"
+srcset="https://bossagyu.com/en/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-003-001.png"
+class="gallery-image"
+data-flex-grow="326"
+data-flex-basis="782px"
+>
+※ The Tracking ID may be displayed as &amp;ldquo;Measurement ID&amp;rdquo; due to translation.&lt;/p>
+&lt;h2 id="adding-tracking-id-to-hugos-configuration">Adding Tracking ID to Hugo&amp;rsquo;s Configuration&lt;/h2>
+&lt;h3 id="add-settings-in-toml">Add settings in toml&lt;/h3>
+&lt;p>Add &lt;code>googleAnalytics = Tracking ID&lt;/code> to your config.toml.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">baseURL&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;https://bossagyu.com&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">languageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;ja-jp&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;Bossagyu Blog&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">theme&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;hugo-bearcub&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">googleAnalytics&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;G-1234ABCDEF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ↑ Add this line, replace the Tracking ID with your own.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="embedding-the-tracking-code">Embedding the Tracking Code&lt;/h3>
+&lt;p>Some templates might read settings from the toml file, but the &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub&lt;/a> template I use does not support this, so I added the tracking code to the header myself.&lt;/p>
+&lt;p>For the code snippet, I referred to &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>Makumaku Hugo Notes&lt;/a>.&lt;/p>
+&lt;p>Create &lt;code>layouts/partials/analytics.html&lt;/code> to load the tracking code.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">{{ if not .Site.IsServer }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ with .Site.GoogleAnalytics }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;lt;!-- Google tag (gtag.js) --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">async&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;https://www.googletagmanager.com/gtag/js?id={{ . }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">dataLayer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">dataLayer&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">[];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(){&lt;/span>&lt;span class="nx">dataLayer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">push&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">arguments&lt;/span>&lt;span class="p">);}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;js&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;config&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;{{ . }}&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ end }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ end }}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Make the page header load &lt;code>analytics.html&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Copy the content of the template to override it&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp themes/hugo-bearcub/layouts/_default/baseof.html layouts/_default/baseof.html
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim layouts/_default/baseof.html
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add &lt;code>{{- partial &amp;quot;analytics&amp;quot; . -}}&lt;/code> to baseof.html.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- partial &amp;#34;analytics&amp;#34; . -}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">http-equiv&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;X-Clacks-Overhead&amp;#34;&lt;/span> &lt;span class="na">content&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;GNU Terry Pratchett&amp;#34;&lt;/span> &lt;span class="err">/&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After adding the above source code and rebuilding, data will be sent to Google Analytics.&lt;/p>
+&lt;h2 id="tips">Tips&lt;/h2>
+&lt;p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&amp;rsquo;s possible that the tags have not been added correctly.&lt;br>
+To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p></description></item></channel></rss>

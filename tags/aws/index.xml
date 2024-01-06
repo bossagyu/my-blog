@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Bossagyu Blog</title><link>https://bossagyu.com/tags/aws/</link><description>Recent content in AWS on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 21 Dec 2023 23:03:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
+&lt;h2 id="前提">前提&lt;/h2>
+&lt;p>Lambda関数についてはすでに作成されていることを前提としています。&lt;/p>
+&lt;h2 id="手順">手順&lt;/h2>
+&lt;p>Lambda関数を選択し「トリガーを追加」を選択します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
+width="1682"
+height="608"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-001.png"
+class="gallery-image"
+data-flex-grow="276"
+data-flex-basis="663px"
+>&lt;/p>
+&lt;p>トリガーから「EventBridge」を選択します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
+width="930"
+height="400"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-002.png"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="558px"
+>&lt;/p>
+&lt;p>ルールの作成画面が表示されるので、設定します。&lt;br>
+今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
+cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
+>Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
+width="891"
+height="903"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-003.png"
+class="gallery-image"
+data-flex-grow="98"
+data-flex-basis="236px"
+>&lt;/p>
+&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
+width="1761"
+height="976"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-004.png"
+class="gallery-image"
+data-flex-grow="180"
+data-flex-basis="433px"
+>&lt;/p>
+&lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
+こんな感じで5分に1回通知がくるようになりました。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
+width="1494"
+height="256"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-005.png"
+class="gallery-image"
+data-flex-grow="583"
+data-flex-basis="1400px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;br>
+設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。&lt;/p></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>事前準備&lt;/li>
+&lt;li>AWS Toolkitのインストール&lt;/li>
+&lt;li>AWS Toolkitの設定&lt;/li>
+&lt;li>Lambdaの開発&lt;/li>
+&lt;li>Lambdaをローカルで実行&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="事前準備">事前準備&lt;/h2>
+&lt;h3 id="dockerのインストール">dockerのインストール&lt;/h3>
+&lt;p>intellijで利用するAWS Toolkitでは、Lambda動作させるためにDockerを使用します。&lt;br>
+このため事前に &lt;a class="link" href="https://docs.docker.jp/docker-for-mac/install.html" target="_blank" rel="noopener"
+>こちら&lt;/a>を参考にDockerをインストールしておいてください。&lt;/p>
+&lt;h3 id="aws-cliのインストール">AWS CLIのインストール&lt;/h3>
+&lt;p>AWS CLI(SAM)をインストールします。&lt;br>
+インストール方法は &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html" target="_blank" rel="noopener"
+>こちら&lt;/a> を参考にしてください。&lt;/p>
+&lt;p>IntellijにSAM CLI executableのパスを &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code> から設定します。&lt;br>
+私の環境ではbrewでインストールしたので、以下のパスを設定しました。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005.png"
+width="976"
+height="707"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-005.png"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
+>&lt;/p>
+&lt;h2 id="aws-toolkitのインストール">AWS Toolkitのインストール&lt;/h2>
+&lt;p>IntellijのプラグインからAWS Toolkitをインストールします。
+プラグインのインストールは &lt;a class="link" href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin" target="_blank" rel="noopener"
+>こちら&lt;/a> を参考にしてください。&lt;/p>
+&lt;h2 id="aws-toolkitの設定">AWS Toolkitの設定&lt;/h2>
+&lt;p>AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。&lt;/p>
+&lt;p>AWS ExplorerからAWSの認証情報を設定します。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001.png"
+width="2196"
+height="1099"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-001.png"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
+>&lt;/p>
+&lt;p>Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。
+設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002.png"
+width="400"
+height="517"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-002.png"
+class="gallery-image"
+data-flex-grow="77"
+data-flex-basis="185px"
+>&lt;/p>
+&lt;p>この画像ではリージョンが &lt;code>us-east-1&lt;/code> になっていますが、Lambdaを作成するリージョンに合わせてください。&lt;/p>
+&lt;h2 id="lambdaの開発">Lambdaの開発&lt;/h2>
+&lt;p>以下のようなコードスニペットを作成します。&lt;/p>
+&lt;p>lamda-sample.py&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">lambda_handler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello World&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;Hello World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>AWS ExplorerからLambdaを作成します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003.png"
+width="382"
+height="452"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-003.png"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
+>&lt;/p>
+&lt;p>Create Lambda Functionを選択し、必要な値を入力します。&lt;br>
+Handlerにはコードスニペットの &lt;code>&amp;lt;ファイル名&amp;gt;.&amp;lt;関数名&amp;gt;&lt;/code> を入力してください。&lt;br>
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004.png"
+width="769"
+height="626"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-004.png"
+class="gallery-image"
+data-flex-grow="122"
+data-flex-basis="294px"
+>&lt;/p>
+&lt;p>これでLambdaの作成が完了しました。&lt;/p>
+&lt;h2 id="lambdaをローカルで実行">Lambdaをローカルで実行&lt;/h2>
+&lt;p>またToolkitを利用すると、Lambdaをローカルで実行することができます。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006.png"
+width="544"
+height="181"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-006.png"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="721px"
+>&lt;/p>
+&lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p></description></item></channel></rss>

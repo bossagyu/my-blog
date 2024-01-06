@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>copilot on Bossagyu Blog</title><link>https://bossagyu.com/tags/copilot/</link><description>Recent content in copilot on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 11 Dec 2023 22:45:40 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/copilot/index.xml" rel="self" type="application/rss+xml"/><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Github CopilotをIntellijで使う方法を解説します。
+合わせてショートカットのチートシートを記載します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>Github Copilotの登録&lt;/li>
+&lt;li>Intellijの設定&lt;/li>
+&lt;li>Github Copilotの利用&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="github-copilotの登録">Github Copilotの登録&lt;/h2>
+&lt;p>&lt;a class="link" href="https://copilot.github.com/" target="_blank" rel="noopener"
+>Github Copilot&lt;/a> のリンクからGithub Copilotに登録します。&lt;/p>
+&lt;h2 id="intellijの設定">Intellijの設定&lt;/h2>
+&lt;p>IntellijのプラグインからGithub Copilotをインストールします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/005-github-copilot/img-005-001.png"
+width="972"
+height="237"
+srcset="https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Github Copilot plugin"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
+>&lt;/p>
+&lt;p>インストールが完了したら、Intellijを再起動します。&lt;/p>
+&lt;h2 id="github-copilotの利用">Github Copilotの利用&lt;/h2>
+&lt;p>Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。&lt;/p>
+&lt;p>macのショートカットの一覧は以下のとおりです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ショートカット&lt;/th>
+&lt;th>機能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>tab&lt;/code>&lt;/td>
+&lt;td>コードを補完する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>]&lt;/code>&lt;/td>
+&lt;td>次の補完候補を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>[&lt;/code>&lt;/td>
+&lt;td>前の補完候補を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Command&lt;/code> + &lt;code>→&lt;/code>&lt;/td>
+&lt;td>提案の次の単語のみ受け入れる&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。&lt;br>
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p></description></item></channel></rss>

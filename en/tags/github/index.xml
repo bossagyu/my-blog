@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Github on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/github/</link><description>Recent content in Github on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/github/index.xml" rel="self" type="application/rss+xml"/><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.&lt;br>
+With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
+&lt;h2 id="process">Process&lt;/h2>
+&lt;ol>
+&lt;li>Generate a site with Hugo&lt;/li>
+&lt;li>Push to Github&lt;/li>
+&lt;li>Deploy with Netlify&lt;/li>
+&lt;/ol>
+&lt;h2 id="generating-a-static-site-with-hugo">Generating a Static Site with Hugo&lt;/h2>
+&lt;p>First, install Hugo.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Create a template for the blog.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo new site my-blog
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add a theme suitable for the blog as a submodule.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Add the theme as a submodule from Github&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Apply the theme by adding it to hugo.toml.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;theme = &amp;#39;ananke&amp;#39;&amp;#34;&lt;/span> &amp;gt;&amp;gt; config.toml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Start the server.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Access the URL like &lt;code>http://localhost:51517/&lt;/code> shown in the startup log &lt;code>Web Server is available at http://localhost:51517/ (bind address 127.0.0.1)&lt;/code> to view the locally launched static site.&lt;/p>
+&lt;h3 id="tips">Tips&lt;/h3>
+&lt;ul>
+&lt;li>If you want to change the Hugo theme, please choose your favorite one from &lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+>Hugo Themes&lt;/a>.
+&lt;ul>
+&lt;li>It&amp;rsquo;s recommended to run through until you build with Netlify first, as this can be changed later.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>The way to write Toml files is described in &lt;a class="link" href="https://gohugo.io/getting-started/configuration/" target="_blank" rel="noopener"
+>Configure Hugo&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;h2 id="push-to-github">Push to Github&lt;/h2>
+&lt;p>Create a repository on &lt;a class="link" href="https://github.com/" target="_blank" rel="noopener"
+>Github&lt;/a>.&lt;br>
+After creation, execute the following commands to push your site.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> .hugo_build.lock &amp;gt;&amp;gt; .gitignore
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s2">&amp;#34;first commit&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -M main
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Replace &amp;lt;user name&amp;gt; with your own username.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># This is an example of creating a repository called my-blog.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote add origin git@github.com:&amp;lt;user name&amp;gt;/my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -u origin main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Once the push is complete, the source code becomes viewable on the Github UI.&lt;/p>
+&lt;h2 id="deploy-with-netlify">Deploy with Netlify&lt;/h2>
+&lt;p>Access &lt;a class="link" href="https://www.netlify.com/" target="_blank" rel="noopener"
+>Netlify&lt;/a> and perform deployment.&lt;br>
+There are instructions on &lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-netlify/" target="_blank" rel="noopener"
+>Hugo&amp;rsquo;s official website&lt;/a>, so refer to them for integration.&lt;/p>
+&lt;p>Follow the instructions to complete the deployment, and the result of the Deploy will be shown as &lt;code>published&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-001.png"
+width="1259"
+height="781"
+srcset="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-001-001.png"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="386px"
+>&lt;/p>
+&lt;p>Click on the URL displayed on the site to access the deployed site.
+&lt;img src="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-002.png"
+width="844"
+height="274"
+srcset="https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-001-002.png"
+class="gallery-image"
+data-flex-grow="308"
+data-flex-basis="739px"
+>&lt;/p>
+&lt;p>This completes the deployment process.
+After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Favicon on Bossagyu Blog</title><link>https://bossagyu.com/tags/favicon/</link><description>Recent content in Favicon on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 24 Dec 2023 22:14:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/favicon/index.xml" rel="self" type="application/rss+xml"/><item><title>Faviconを作ってHugoで表示する方法</title><link>https://bossagyu.com/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/blog/010-favicon/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Faviconを簡単に作る方法を解説します。
+また、HugoでFaviconを表示する方法も解説します。&lt;/p>
+&lt;h2 id="faviconとは">Faviconとは&lt;/h2>
+&lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
+Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>faviconのガイドライン&lt;/a>が公開されており、
+こちらに従うことで検索結果に表示されるようになります。&lt;/p>
+&lt;h2 id="faviconの作成">Faviconの作成&lt;/h2>
+&lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>サイトにアクセスすると、以下のような画面が表示されます。&lt;br>
+&lt;img src="https://bossagyu.com/blog/010-favicon/img-010-001.png"
+width="3336"
+height="1510"
+srcset="https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Favicon Generator"
+class="gallery-image"
+data-flex-grow="220"
+data-flex-basis="530px"
+>&lt;/p>
+&lt;p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
+その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
+&lt;h2 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h2>
+&lt;p>HugoでFaviconを表示するには、themeによっても違うますが、 &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub&lt;/a> の場合は
+以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。&lt;br>
+Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。&lt;/p></description></item></channel></rss>

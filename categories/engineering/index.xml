@@ -1,4 +1,975 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。&lt;/p>
+&lt;h2 id="ghatgptを利用して記事を英語化する方法">GhatGPTを利用して記事を英語化する方法&lt;/h2>
+&lt;p>Markdownで書かれた記事を&lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
+>ChatGPT&lt;/a>に英語化させます。
+英語化を実施するにあたって、なるべき体裁を崩さないようにするために、以下のようなプロンプトをChatGPTへ入力します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">マークダウンを体裁を崩さずに英語にしてください。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">マークダウン以外の余分な出力は行わないでください。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">英語化された内容をそのままコピーできる形で出力してください。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>その後、日本語で書いた記事をそのまま貼り付けると、英語化されたMarkdownが出力されます。
+出力結果の左下のコピーボタンから出力結果をコピーすれば、英語化は完了です。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001.png"
+width="1542"
+height="516"
+srcset="https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/011-hugo-multilingul-support/img-011-001_hu712801eb1dd59e23992097ade27112d6_94833_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTの画面"
+class="gallery-image"
+data-flex-grow="298"
+data-flex-basis="717px"
+>&lt;/p>
+&lt;p>また、ChatGPTを利用する際はGPT3.5ではなく、課金をしてGPT4を利用することを強くおすすめします。
+GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正しい回答を返す確率が高いので、英語化以外の用途にも使えます。&lt;/p>
+&lt;h2 id="hugoで多言語対応する方法">Hugoで多言語対応する方法&lt;/h2>
+&lt;p>Hugoで多言語化を行うための設定方法を記載します。&lt;/p>
+&lt;h3 id="設定ファイルの作成">設定ファイルの作成&lt;/h3>
+&lt;p>config.tomlに以下のような設定を追加します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># デフォルトの言語を設定、設定しない場合英語がデフォルト判定されます。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">defaultContentLanguage&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;jp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c"># 言語ごとに設定を変更します&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jp&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;Bossagyu Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">languageName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;ja-jp 🇯🇵&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">LanguageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;ja-jp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">contentDir&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;content&amp;#34;&lt;/span> &lt;span class="c"># 日本語ブログ記事を格納するディレクトリ&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">en&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;Bossagyu Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">languageName&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;en-US 🇺🇸&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">LanguageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;en-US&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">contentDir&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;content.en&amp;#34;&lt;/span> &lt;span class="c"># 英語ブログ記事を格納するディレクトリ&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="nx">languages&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">en&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上記のような設定を行うことで、&lt;code>content&lt;/code>ディレクトリに日本語の記事を、&lt;code>content.en&lt;/code>ディレクトリに英語の記事を書くことで多言語対応が可能となります。&lt;/p>
+&lt;p>最終的なディレクトリ構成は以下のような形になります。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">project/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── content/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── blog/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── article1.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── content.en/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── blog/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── index.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── article1.en.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>また英語化したディレクトリの中には &lt;code>記事名.en.md&lt;/code> の拡張子とすることで、デフォルト言語に対する英語の記事として認識され、記事に言語変換用のアイコンが出力されるようになります。
+記事についてはGhatGPTを用いて英語化したものをコピー&amp;amp;ペーストするだけでOKです。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
+ChatGPTを利用することで、英語化を簡単に行うことができます。
+また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。&lt;/p>
+&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item><item><title>Faviconを作ってHugoで表示する方法</title><link>https://bossagyu.com/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/blog/010-favicon/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Faviconを簡単に作る方法を解説します。
+また、HugoでFaviconを表示する方法も解説します。&lt;/p>
+&lt;h2 id="faviconとは">Faviconとは&lt;/h2>
+&lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
+Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>faviconのガイドライン&lt;/a>が公開されており、
+こちらに従うことで検索結果に表示されるようになります。&lt;/p>
+&lt;h2 id="faviconの作成">Faviconの作成&lt;/h2>
+&lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>サイトにアクセスすると、以下のような画面が表示されます。&lt;br>
+&lt;img src="https://bossagyu.com/blog/010-favicon/img-010-001.png"
+width="3336"
+height="1510"
+srcset="https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Favicon Generator"
+class="gallery-image"
+data-flex-grow="220"
+data-flex-basis="530px"
+>&lt;/p>
+&lt;p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
+その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
+&lt;h2 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h2>
+&lt;p>HugoでFaviconを表示するには、themeによっても違うますが、 &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub&lt;/a> の場合は
+以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。&lt;br>
+Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。&lt;/p></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説します。&lt;/p>
+&lt;h2 id="lighthouseとは">Lighthouseとは&lt;/h2>
+&lt;p>LighthouseはGoogleが提供している、Webサイトのパフォーマンスを計測するツールです。
+Google Chromeの拡張機能として提供されており、プラグインをインストールすることで利用することができます。&lt;/p>
+&lt;h2 id="lighthouseのインストール">Lighthouseのインストール&lt;/h2>
+&lt;p>Lighthouseをchromeウェブストアからインストールします。&lt;br>
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-001.png"
+width="3090"
+height="528"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse chromeストア"
+class="gallery-image"
+data-flex-grow="585"
+data-flex-basis="1404px"
+>&lt;/p>
+&lt;p>分析したいサイトを開き、Lighthouseのアイコンをクリックします。&lt;br>
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-002.png"
+width="976"
+height="184"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse アイコン"
+class="gallery-image"
+data-flex-grow="530"
+data-flex-basis="1273px"
+>&lt;/p>
+&lt;p>Generate reportをクリックすると、分析が始まります。&lt;br>
+今回は私の&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" target="_blank" rel="noopener"
+>ブログのページ&lt;/a>で実行しました。&lt;br>
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-003.png"
+width="546"
+height="1048"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse 実行画面"
+class="gallery-image"
+data-flex-grow="52"
+data-flex-basis="125px"
+>&lt;/p>
+&lt;p>実行すると、以下のような結果が表示されます。&lt;br>
+実行の完了までに約1分くらい時間がかかります。&lt;br>
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-004.png"
+width="1756"
+height="906"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse 結果"
+class="gallery-image"
+data-flex-grow="193"
+data-flex-basis="465px"
+>&lt;/p>
+&lt;h2 id="結果の見方">結果の見方&lt;/h2>
+&lt;h3 id="performance">Performance&lt;/h3>
+&lt;p>ページの読み込み速度や画像の表示速度など、webサイトのパフォーマンスが評価される。
+See calculatorのリンクをクリックすると詳細に飛べる。&lt;br>
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-005.png"
+width="2236"
+height="1222"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Performance"
+class="gallery-image"
+data-flex-grow="182"
+data-flex-basis="439px"
+>&lt;/p>
+&lt;h3 id="accessibility">Accessibility&lt;/h3>
+&lt;p>すべてのユーザーがコンテンツにアクセス、サイト内を効率的に移動できるかどうかを確認する。
+スクロールすると、Accessibilityで指摘されている箇所が表示される。&lt;br>
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-006.png"
+width="1790"
+height="1238"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Accessibility"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="347px"
+>&lt;/p>
+&lt;p>コードスニペットを貼っているところの色のコントラストが弱いことと、リンクに説明がないことを指摘されています。&lt;/p>
+&lt;p>ただ、指摘されている内容は自分の記述ではなく、テンプレートに依存している部分なので、これを直そうと思うとHugoのテンプレートをオーバーライドする必要がありますね。。&lt;/p>
+&lt;h3 id="best-practices">Best Practices&lt;/h3>
+&lt;p>ウェブページの健全性についてテストを行います。
+検証項目については結果から閲覧できます。
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-007.png"
+width="962"
+height="1070"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Best Practices"
+class="gallery-image"
+data-flex-grow="89"
+data-flex-basis="215px"
+>&lt;/p>
+&lt;h3 id="seo">SEO&lt;/h3>
+&lt;p>ページが検索エンジンの結果ランキング向けに最適化されているかを確認できます。
+&lt;img src="https://bossagyu.com/blog/009-light-house/img-009-008.png"
+width="957"
+height="1215"
+srcset="https://bossagyu.com/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse SEO"
+class="gallery-image"
+data-flex-grow="78"
+data-flex-basis="189px"
+>&lt;/p>
+&lt;h3 id="progressive-web-app">Progressive Web App&lt;/h3>
+&lt;p>スマートフォン上のウェブページの読み込み速度を高速化できているか、PWAに最適化できているかを確認できます。
+今回はチェックしてません。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
+特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
+&lt;h2 id="前提">前提&lt;/h2>
+&lt;p>Lambda関数についてはすでに作成されていることを前提としています。&lt;/p>
+&lt;h2 id="手順">手順&lt;/h2>
+&lt;p>Lambda関数を選択し「トリガーを追加」を選択します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
+width="1682"
+height="608"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-001.png"
+class="gallery-image"
+data-flex-grow="276"
+data-flex-basis="663px"
+>&lt;/p>
+&lt;p>トリガーから「EventBridge」を選択します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
+width="930"
+height="400"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-002.png"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="558px"
+>&lt;/p>
+&lt;p>ルールの作成画面が表示されるので、設定します。&lt;br>
+今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
+cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
+>Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
+width="891"
+height="903"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-003.png"
+class="gallery-image"
+data-flex-grow="98"
+data-flex-basis="236px"
+>&lt;/p>
+&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
+&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
+width="1761"
+height="976"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-004.png"
+class="gallery-image"
+data-flex-grow="180"
+data-flex-basis="433px"
+>&lt;/p>
+&lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
+こんな感じで5分に1回通知がくるようになりました。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
+width="1494"
+height="256"
+srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-008-005.png"
+class="gallery-image"
+data-flex-grow="583"
+data-flex-basis="1400px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;br>
+設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。&lt;/p></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。
+この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>Google Search Consoleの登録&lt;/li>
+&lt;li>ドメインの所有権の確認&lt;/li>
+&lt;li>サイトマップの登録&lt;/li>
+&lt;li>インデックス登録をリクエスト&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="google-search-consoleの登録">Google Search Consoleの登録&lt;/h2>
+&lt;p>&lt;a class="link" href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener"
+>Google Search Console&lt;/a>に登録します。&lt;/p>
+&lt;p>ドメインを選択肢、URLを入力します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-001.png"
+width="1838"
+height="1546"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-001.png"
+class="gallery-image"
+data-flex-grow="118"
+data-flex-basis="285px"
+>&lt;/p>
+&lt;h2 id="ドメインの所有権の確認">ドメインの所有権の確認&lt;/h2>
+&lt;p>以下のような画像が表示されDNSの所有権を確認します。&lt;br>
+(念のためTXTレコードの内容は黒く塗りつぶしています。)
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-002.png"
+width="1562"
+height="1404"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-002.png"
+class="gallery-image"
+data-flex-grow="111"
+data-flex-basis="267px"
+>&lt;/p>
+&lt;p>ドメインのTXTにGoogleが指定した文字列を追加することで、所有権を確認することができます。
+ドメインのDNSの設定画面に移動し、TXTレコードを追加します。&lt;/p>
+&lt;p>私の場合はNetlifyでドメインを取得しているので、NetlifyのDNSの設定画面に移動します。
+&lt;code>Domains -&amp;gt; Domain Settings -&amp;gt; DNS Records&lt;/code> に移動し、TXTレコードを追加します。
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-003.png"
+width="2510"
+height="1058"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-003.png"
+class="gallery-image"
+data-flex-grow="237"
+data-flex-basis="569px"
+>&lt;/p>
+&lt;p>レコードの内容はGoogle Search Consoleに表示されているものをコピーしてValueに貼り付けます。&lt;br>
+(Valueの部分は黒く塗りつぶしています。)
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-004.png"
+width="1174"
+height="1128"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-004.png"
+class="gallery-image"
+data-flex-grow="104"
+data-flex-basis="249px"
+>&lt;/p>
+&lt;p>DNSの反映を待ちます。ものによっては数時間かかる場合があります。&lt;/p>
+&lt;p>DNSの反映はコマンドラインからでも確認できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">dig -t txt bossagyu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>その後、Google Search Consoleの所有権の確認を押します。&lt;br>
+これで所有権の確認が完了し、Google Search Consoleにドメインが登録されます。&lt;/p>
+&lt;h2 id="サイトマップの登録">サイトマップの登録&lt;/h2>
+&lt;p>サイトマップを登録することで、Googleにサイトの構造を伝え、サイトのクロールを促進することができます。
+Hugoで作成したブログの場合は、&lt;code>/sitemap.xml&lt;/code>にサイトマップが作成されているので、これを登録します。&lt;/p>
+&lt;p>Google Search Consoleの左側のメニューから「サイトマップ」を選択し、サイトマップを追加します。
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-005.png"
+width="1401"
+height="649"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-005.png"
+class="gallery-image"
+data-flex-grow="215"
+data-flex-basis="518px"
+>&lt;/p>
+&lt;h2 id="インデックス登録をリクエスト">インデックス登録をリクエスト&lt;/h2>
+&lt;p>サイトマップに登録されていても、Googleがクロールして、その後インデックスが登録されるまでには時間がかかります。
+私の場合は数日待ってもインデックスが登録されなかったので、インデックス登録をリクエストしました。&lt;/p>
+&lt;p>Google Search Consoleの検索窓で登録したいURLを検索し、検索結果の右側にある「インデックス登録をリクエスト」を押します。
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-006.png"
+width="2900"
+height="868"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-006.png"
+class="gallery-image"
+data-flex-grow="334"
+data-flex-basis="801px"
+>&lt;/p>
+&lt;p>これでインデックス登録をリクエストできます。
+クリックしてから数時間でインデックスが登録されました。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。&lt;br>
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>事前準備&lt;/li>
+&lt;li>AWS Toolkitのインストール&lt;/li>
+&lt;li>AWS Toolkitの設定&lt;/li>
+&lt;li>Lambdaの開発&lt;/li>
+&lt;li>Lambdaをローカルで実行&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="事前準備">事前準備&lt;/h2>
+&lt;h3 id="dockerのインストール">dockerのインストール&lt;/h3>
+&lt;p>intellijで利用するAWS Toolkitでは、Lambda動作させるためにDockerを使用します。&lt;br>
+このため事前に &lt;a class="link" href="https://docs.docker.jp/docker-for-mac/install.html" target="_blank" rel="noopener"
+>こちら&lt;/a>を参考にDockerをインストールしておいてください。&lt;/p>
+&lt;h3 id="aws-cliのインストール">AWS CLIのインストール&lt;/h3>
+&lt;p>AWS CLI(SAM)をインストールします。&lt;br>
+インストール方法は &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html" target="_blank" rel="noopener"
+>こちら&lt;/a> を参考にしてください。&lt;/p>
+&lt;p>IntellijにSAM CLI executableのパスを &lt;code>File -&amp;gt; Settings -&amp;gt; Tools -&amp;gt; AWS Toolkit&lt;/code> から設定します。&lt;br>
+私の環境ではbrewでインストールしたので、以下のパスを設定しました。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005.png"
+width="976"
+height="707"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-005_hu675386622417230d840d91c8ebb2bb8f_99529_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-005.png"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
+>&lt;/p>
+&lt;h2 id="aws-toolkitのインストール">AWS Toolkitのインストール&lt;/h2>
+&lt;p>IntellijのプラグインからAWS Toolkitをインストールします。
+プラグインのインストールは &lt;a class="link" href="https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin" target="_blank" rel="noopener"
+>こちら&lt;/a> を参考にしてください。&lt;/p>
+&lt;h2 id="aws-toolkitの設定">AWS Toolkitの設定&lt;/h2>
+&lt;p>AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。&lt;/p>
+&lt;p>AWS ExplorerからAWSの認証情報を設定します。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001.png"
+width="2196"
+height="1099"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-001_huf4116ed306cba8df785a2a60b5b23b2e_297569_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-001.png"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
+>&lt;/p>
+&lt;p>Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。
+設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002.png"
+width="400"
+height="517"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-002_huef1a4e77eb43fc9eb01b7ee491b04729_36733_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-002.png"
+class="gallery-image"
+data-flex-grow="77"
+data-flex-basis="185px"
+>&lt;/p>
+&lt;p>この画像ではリージョンが &lt;code>us-east-1&lt;/code> になっていますが、Lambdaを作成するリージョンに合わせてください。&lt;/p>
+&lt;h2 id="lambdaの開発">Lambdaの開発&lt;/h2>
+&lt;p>以下のようなコードスニペットを作成します。&lt;/p>
+&lt;p>lamda-sample.py&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">lambda_handler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello World&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;Hello World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>AWS ExplorerからLambdaを作成します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003.png"
+width="382"
+height="452"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-003_hu43e53933fae6825db1f62c0ff344925c_42804_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-003.png"
+class="gallery-image"
+data-flex-grow="84"
+data-flex-basis="202px"
+>&lt;/p>
+&lt;p>Create Lambda Functionを選択し、必要な値を入力します。&lt;br>
+Handlerにはコードスニペットの &lt;code>&amp;lt;ファイル名&amp;gt;.&amp;lt;関数名&amp;gt;&lt;/code> を入力してください。&lt;br>
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004.png"
+width="769"
+height="626"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-004_hub0ca7c127cd2ded12c0d6c6eb7b0efd4_80439_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-004.png"
+class="gallery-image"
+data-flex-grow="122"
+data-flex-basis="294px"
+>&lt;/p>
+&lt;p>これでLambdaの作成が完了しました。&lt;/p>
+&lt;h2 id="lambdaをローカルで実行">Lambdaをローカルで実行&lt;/h2>
+&lt;p>またToolkitを利用すると、Lambdaをローカルで実行することができます。
+&lt;img src="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006.png"
+width="544"
+height="181"
+srcset="https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/006-intellij-lamda-setup/img-006-006_hue5ae0f1238e4626d26a5e0ef51d83c5a_29793_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-006-006.png"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="721px"
+>&lt;/p>
+&lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Github CopilotをIntellijで使う方法を解説します。
+合わせてショートカットのチートシートを記載します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>Github Copilotの登録&lt;/li>
+&lt;li>Intellijの設定&lt;/li>
+&lt;li>Github Copilotの利用&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="github-copilotの登録">Github Copilotの登録&lt;/h2>
+&lt;p>&lt;a class="link" href="https://copilot.github.com/" target="_blank" rel="noopener"
+>Github Copilot&lt;/a> のリンクからGithub Copilotに登録します。&lt;/p>
+&lt;h2 id="intellijの設定">Intellijの設定&lt;/h2>
+&lt;p>IntellijのプラグインからGithub Copilotをインストールします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/005-github-copilot/img-005-001.png"
+width="972"
+height="237"
+srcset="https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Github Copilot plugin"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
+>&lt;/p>
+&lt;p>インストールが完了したら、Intellijを再起動します。&lt;/p>
+&lt;h2 id="github-copilotの利用">Github Copilotの利用&lt;/h2>
+&lt;p>Intellijでコードを書いていると、Github Copilotがコードを補完してくれます。&lt;/p>
+&lt;p>macのショートカットの一覧は以下のとおりです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ショートカット&lt;/th>
+&lt;th>機能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>tab&lt;/code>&lt;/td>
+&lt;td>コードを補完する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>]&lt;/code>&lt;/td>
+&lt;td>次の補完候補を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>[&lt;/code>&lt;/td>
+&lt;td>前の補完候補を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Command&lt;/code> + &lt;code>→&lt;/code>&lt;/td>
+&lt;td>提案の次の単語のみ受け入れる&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。&lt;br>
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p></description></item><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-paython-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>macのローカル環境で開発を行う際のpythonの環境構築の方法について記載する。&lt;br>
+今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行う。&lt;/p>
+&lt;ul>
+&lt;li>pyenv
+&lt;ul>
+&lt;li>複数のpythonのバージョンを扱うために利用する。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>venv
+&lt;ul>
+&lt;li>プロジェクトごとに環境を分けるために利用する。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>それぞれの違いや必要性の解説は&lt;a class="link" href="https://jimaru.blog/programming/python/venv_pyenv_choice/" target="_blank" rel="noopener"
+>こちら&lt;/a>の記事が参考になります。&lt;/p>
+&lt;h2 id="pythonのインストール">Pythonのインストール&lt;/h2>
+&lt;p>まずは、ローカル環境にPyenvをインストールし、任意のPythonバージョンを利用できるようにします。&lt;/p>
+&lt;p>pyenvをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install pyenv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストールしたpyenvのバージョンを確認します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv 2.3.35
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>zshに設定を追加する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PYENV_ROOT=&amp;#34;$HOME/.pyenv&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PATH=&amp;#34;$PYENV_ROOT/bin:$PATH&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> -e &lt;span class="s1">&amp;#39;if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n eval &amp;#34;$(pyenv init -)&amp;#34;\nfi&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>.zshrc&lt;/code>の内容を読み込む。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストール可能なPythonのバージョン一覧を表示する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv install --list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>指定したバージョンをインストールする。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv install 3.11.7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>プロジェクトフォルダに指定したPythonのバージョンを利用する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> &amp;lt;作成したプロジェクトフォルダ&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv &lt;span class="nb">local&lt;/span> 3.11.7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv versions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>globalの場合は全体に反映される。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv global 3.11.7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>実行されているpythonのバージョンを確認する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python -V
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="venvで仮想環境の作成">venvで仮想環境の作成&lt;/h2>
+&lt;p>プロジェクトのディレクトリに仮想環境を作成する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># python -m venv &amp;lt;仮想環境名&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -m venv venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>仮想環境を有効化する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ディアクティベートは以下のコマンドで実行できる。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">deactivate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p></description></item><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>HugoをでGoogle Analyticsを設定する方法をサクッと解説します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>Google Analyticsへの登録&lt;/li>
+&lt;li>トラッキングIDの取得&lt;/li>
+&lt;li>Hugoの設定にトラッキングIDを追加&lt;/li>
+&lt;/ol>
+&lt;h2 id="google-analyticsの登録">Google Analyticsの登録&lt;/h2>
+&lt;p>&lt;a class="link" href="https://support.google.com/analytics/answer/9304153?hl=ja" target="_blank" rel="noopener"
+>[GA4] アナリティクスで新しいウェブサイトまたはアプリのセットアップを行う&lt;/a>
+に従い登録を行います。&lt;br>
+データストリームを追加すると、トラッキングIDが取得できるのでメモしておきます。
+&lt;img src="https://bossagyu.com/blog/003-google-analytics/img-003-001.png"
+width="1262"
+height="387"
+srcset="https://bossagyu.com/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/003-google-analytics/img-003-001_hud6bb49f0ab37d8b4799433827135bf4a_61149_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-003-001.png"
+class="gallery-image"
+data-flex-grow="326"
+data-flex-basis="782px"
+>
+※ トラッキングIDは日本語訳の影響か、測定IDという表示になっています。&lt;/p>
+&lt;h2 id="hugoの設定にトラッキングidを追加">Hugoの設定にトラッキングIDを追加&lt;/h2>
+&lt;h3 id="tomlに設定を追加">tomlに設定を追加&lt;/h3>
+&lt;p>config.tomlに&lt;code>googleAnalytics = トラッキングID&lt;/code>を追加します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">baseURL&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;https://bossagyu.com&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">languageCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;ja-jp&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">title&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;Bossagyu Blog&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">theme&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;hugo-bearcub&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">googleAnalytics&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;G-1234ABCDEF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ↑ この行を追加、トラッキングIDは自分のものに変更してください。&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="トラッキングコードを埋め込む">トラッキングコードを埋め込む&lt;/h3>
+&lt;p>テンプレートによってはtomlの設定を入れるだけで読めるものもあるみたいですが、
+私の使用している&lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub&lt;/a>のテンプレートは対応してなかったので、
+自分でヘッダにトラッキングコードを読み込むように追加します。&lt;/p>
+&lt;p>コードスニペットについては&lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>まくまく Hugo ノート&lt;/a>を参考にさせていただきました。&lt;/p>
+&lt;p>トラッキングコードを読むために &lt;code>layouts/partials/analytics.html&lt;/code> を作成する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">{{ if not .Site.IsServer }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ with .Site.GoogleAnalytics }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;lt;!-- Google tag (gtag.js) --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">async&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;https://www.googletagmanager.com/gtag/js?id={{ . }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">dataLayer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">window&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">dataLayer&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">[];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">function&lt;/span> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(){&lt;/span>&lt;span class="nx">dataLayer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">push&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">arguments&lt;/span>&lt;span class="p">);}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;js&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">gtag&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;config&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;{{ . }}&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ end }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{ end }}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ページヘッダで &lt;code>analytics.html&lt;/code> を読み込むようにする。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># テンプレートの内容をコピーしてきてオーバーライドする&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp themes/hugo-bearcub/layouts/_default/baseof.html layouts/_default/baseof.html
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim layouts/_default/baseof.html
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>baseof.htmlに&lt;code>{{- partial &amp;quot;analytics&amp;quot; . -}}&lt;/code> を追加する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- partial &amp;#34;analytics&amp;#34; . -}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">http-equiv&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;X-Clacks-Overhead&amp;#34;&lt;/span> &lt;span class="na">content&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;GNU Terry Pratchett&amp;#34;&lt;/span> &lt;span class="err">/&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上記ソースコードを追加した状態で、再度ビルドするとGoogle Analyticsにデータが送信されるようになります。&lt;/p>
+&lt;h2 id="tips">tips&lt;/h2>
+&lt;p>こちらの対応をしても、Google Analyticsにデータが連携されていないように見える場合は、タグの追加がうまくいっていない可能性があります。&lt;br>
+まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。&lt;/p></description></item><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。&lt;br>
+本ページでは一番最初にLINE Message APIの登録の方法とcurlでコマンドラインからメッセージを送る方法を紹介します。&lt;/p>
+&lt;h2 id="messaging-apiを利用する">Messaging APIを利用する&lt;/h2>
+&lt;p>&lt;a class="link" href="https://developers.line.biz/console/" target="_blank" rel="noopener"
+>LINE Developers&lt;/a> にログインしてプロバイダーを作成する。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/002-line-messaging-api/img-002-001.png"
+width="1542"
+height="947"
+srcset="https://bossagyu.com/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-002-001.png"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="390px"
+>&lt;/p>
+&lt;p>プロバイダーとは(&lt;a class="link" href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider" target="_blank" rel="noopener"
+>説明&lt;/a>)&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">LINE Developersサイトでは、サービスを提供し、ユーザーの情報を取得する開発者個人、
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">企業、または団体等をサービス提供者（LINEミニアプリではサービス事業主）と呼びます。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>なので好きな文字列を入れる。&lt;/p>
+&lt;p>そのまま新規チャンネルを作成する。
+&lt;img src="https://bossagyu.com/blog/002-line-messaging-api/img-002-002.png"
+width="1393"
+height="1461"
+srcset="https://bossagyu.com/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-002-002.png"
+class="gallery-image"
+data-flex-grow="95"
+data-flex-basis="228px"
+>&lt;/p>
+&lt;p>このまま作成ボタンを押すと新規チャンネルが作成される&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/002-line-messaging-api/img-002-003.png"
+width="848"
+height="267"
+srcset="https://bossagyu.com/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-002-003.png"
+class="gallery-image"
+data-flex-grow="317"
+data-flex-basis="762px"
+>&lt;/p>
+&lt;h1 id="コマンドラインからポストをする">コマンドラインからポストをする&lt;/h1>
+&lt;p>Messaging API設定からQRコードを読みこんで友達追加する。&lt;/p>
+&lt;p>Messaging API設定から「チャンネルアクセストークン(長期)」を取得
+チャンネル基本設定から「あなたのユーザーID」取得&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TOKEN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;チャンネルアクセストークン(長期)&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;あなたのユーザーID&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">UUID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>uuidgen &lt;span class="p">|&lt;/span> tr &lt;span class="s2">&amp;#34;[:upper:]&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;[:lower:]&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -v -X POST https://api.line.me/v2/bot/message/push &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s1">&amp;#39;Content-Type: application/json&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s2">&amp;#34;Authorization: Bearer &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">TOKEN&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s2">&amp;#34;X-Line-Retry-Key: &amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-d &lt;span class="s2">&amp;#34;{
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;to\&amp;#34;: \&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">ID&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">\&amp;#34;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;messages\&amp;#34;:[
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;type\&amp;#34;:\&amp;#34;text\&amp;#34;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;text\&amp;#34;:\&amp;#34;Hello, world1\&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> ]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！&lt;/p></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。&lt;br>
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。&lt;/p>
 &lt;h2 id="流れ">流れ&lt;/h2>

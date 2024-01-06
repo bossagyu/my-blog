@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>blog on Bossagyu Blog</title><link>https://bossagyu.com/tags/blog/</link><description>Recent content in blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 18 Dec 2023 19:10:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。
+この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。&lt;/p>
+&lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
+&lt;ol>
+&lt;li>Google Search Consoleの登録&lt;/li>
+&lt;li>ドメインの所有権の確認&lt;/li>
+&lt;li>サイトマップの登録&lt;/li>
+&lt;li>インデックス登録をリクエスト&lt;/li>
+&lt;li>まとめ&lt;/li>
+&lt;/ol>
+&lt;h2 id="google-search-consoleの登録">Google Search Consoleの登録&lt;/h2>
+&lt;p>&lt;a class="link" href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener"
+>Google Search Console&lt;/a>に登録します。&lt;/p>
+&lt;p>ドメインを選択肢、URLを入力します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-001.png"
+width="1838"
+height="1546"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-001_hueec663f85e06a371439303da89c78565_290083_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-001.png"
+class="gallery-image"
+data-flex-grow="118"
+data-flex-basis="285px"
+>&lt;/p>
+&lt;h2 id="ドメインの所有権の確認">ドメインの所有権の確認&lt;/h2>
+&lt;p>以下のような画像が表示されDNSの所有権を確認します。&lt;br>
+(念のためTXTレコードの内容は黒く塗りつぶしています。)
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-002.png"
+width="1562"
+height="1404"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-002_hu90d036695b5d9438a5ef8f0d8eb9f52d_277880_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-002.png"
+class="gallery-image"
+data-flex-grow="111"
+data-flex-basis="267px"
+>&lt;/p>
+&lt;p>ドメインのTXTにGoogleが指定した文字列を追加することで、所有権を確認することができます。
+ドメインのDNSの設定画面に移動し、TXTレコードを追加します。&lt;/p>
+&lt;p>私の場合はNetlifyでドメインを取得しているので、NetlifyのDNSの設定画面に移動します。
+&lt;code>Domains -&amp;gt; Domain Settings -&amp;gt; DNS Records&lt;/code> に移動し、TXTレコードを追加します。
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-003.png"
+width="2510"
+height="1058"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-003_hu314a39771588211da36db92d8d263e34_237067_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-003.png"
+class="gallery-image"
+data-flex-grow="237"
+data-flex-basis="569px"
+>&lt;/p>
+&lt;p>レコードの内容はGoogle Search Consoleに表示されているものをコピーしてValueに貼り付けます。&lt;br>
+(Valueの部分は黒く塗りつぶしています。)
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-004.png"
+width="1174"
+height="1128"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-004_hu1e1863a2c4e003478336f70e9eafc56f_103599_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-004.png"
+class="gallery-image"
+data-flex-grow="104"
+data-flex-basis="249px"
+>&lt;/p>
+&lt;p>DNSの反映を待ちます。ものによっては数時間かかる場合があります。&lt;/p>
+&lt;p>DNSの反映はコマンドラインからでも確認できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">dig -t txt bossagyu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>その後、Google Search Consoleの所有権の確認を押します。&lt;br>
+これで所有権の確認が完了し、Google Search Consoleにドメインが登録されます。&lt;/p>
+&lt;h2 id="サイトマップの登録">サイトマップの登録&lt;/h2>
+&lt;p>サイトマップを登録することで、Googleにサイトの構造を伝え、サイトのクロールを促進することができます。
+Hugoで作成したブログの場合は、&lt;code>/sitemap.xml&lt;/code>にサイトマップが作成されているので、これを登録します。&lt;/p>
+&lt;p>Google Search Consoleの左側のメニューから「サイトマップ」を選択し、サイトマップを追加します。
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-005.png"
+width="1401"
+height="649"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-005_huab186b2aac0819b0a23c39035e1f9b13_109847_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-005.png"
+class="gallery-image"
+data-flex-grow="215"
+data-flex-basis="518px"
+>&lt;/p>
+&lt;h2 id="インデックス登録をリクエスト">インデックス登録をリクエスト&lt;/h2>
+&lt;p>サイトマップに登録されていても、Googleがクロールして、その後インデックスが登録されるまでには時間がかかります。
+私の場合は数日待ってもインデックスが登録されなかったので、インデックス登録をリクエストしました。&lt;/p>
+&lt;p>Google Search Consoleの検索窓で登録したいURLを検索し、検索結果の右側にある「インデックス登録をリクエスト」を押します。
+&lt;img src="https://bossagyu.com/blog/007-google-search-console/img-007-006.png"
+width="2900"
+height="868"
+srcset="https://bossagyu.com/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/007-google-search-console/img-007-006_hu89514150a49eb25441f9d3432897d97a_212853_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="img-007-006.png"
+class="gallery-image"
+data-flex-grow="334"
+data-flex-basis="801px"
+>&lt;/p>
+&lt;p>これでインデックス登録をリクエストできます。
+クリックしてから数時間でインデックスが登録されました。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。&lt;br>
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p></description></item></channel></rss>
