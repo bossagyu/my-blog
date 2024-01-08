@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>strategy on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/strategy/</link><description>Recent content in strategy on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 08 Jan 2024 21:55:15 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/strategy/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Create a Product Strategy</title><link>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article summarizes how to create a good product strategy, based on the book &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
+&lt;h2 id="background">Background&lt;/h2>
+&lt;p>As a product owner in my job, I took over a product from the previous owner. The product lacked a clear strategy and direction, prompting me to develop a new product strategy.&lt;/p>
+&lt;p>While developing the strategy, I realized that the term &amp;ldquo;strategy&amp;rdquo; is interpreted in various ways by different people, often used loosely in many contexts. To understand what constitutes a good strategy, I referred to &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
+&lt;h2 id="what-is-a-good-strategy">What is a Good Strategy?&lt;/h2>
+&lt;p>A good strategy identifies critical points where concerted efforts can significantly boost the effect of one’s actions. A strategy should show the direction for an organization to move forward.&lt;/p>
+&lt;p>A good strategy has three basic structures:&lt;/p>
+&lt;ul>
+&lt;li>Diagnosis&lt;/li>
+&lt;li>Guiding Policy&lt;/li>
+&lt;li>Actions&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/img-013-001-en.png"
+width="1798"
+height="774"
+srcset="https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/img-013-001-en_hu680e7b02c44958a4bc711ee8c4490ebe_136397_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/img-013-001-en_hu680e7b02c44958a4bc711ee8c4490ebe_136397_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Good Strategy&amp;rsquo;s Three Basic Structures"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="557px"
+>&lt;/p>
+&lt;h3 id="diagnosis">Diagnosis&lt;/h3>
+&lt;p>Diagnosis involves assessing the situation to identify the key challenges to address. A good diagnosis separates crucial issues from the complex mix of problems and simplifies them.&lt;/p>
+&lt;p>Most of the strategy work lies in figuring out what is happening. Gathering information is crucial. Although the book criticizes consultants&amp;rsquo; frameworks, I find them useful in organizing information after thorough collection.&lt;/p>
+&lt;p>In creating my product strategy, I used SWOT analysis and Impact Mapping to organize the current situation and the impact of existing strategies.&lt;/p>
+&lt;p>For more on these methods, refer to the following resources:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.innovation.co.jp/urumo/swot/" target="_blank" rel="noopener"
+>SWOT Analysis&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://amzn.asia/d/0FygsZ4" target="_blank" rel="noopener"
+>Impact Mapping&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="guiding-policy">Guiding Policy&lt;/h3>
+&lt;p>The guiding policy outlines how to approach the challenges identified in the diagnosis. A good policy is not about goals or visions but about how to face challenges and exclude other options. It focuses efforts on a decisive point to achieve a significant effect.&lt;/p>
+&lt;p>A good strategy clearly shows where resources will be allocated according to the strategy.&lt;/p>
+&lt;p>In my case, I defined the product direction based on the current situation and vision, focusing on specific target segments and values to offer.&lt;/p>
+&lt;h3 id="actions">Actions&lt;/h3>
+&lt;p>Actions are a coherent set of steps designed to execute the guiding policy. A strategy coordinates all actions to implement the policy effectively.&lt;/p>
+&lt;p>A good strategy includes guidelines for implementing actions.&lt;/p>
+&lt;h3 id="my-strategy">My Strategy&lt;/h3>
+&lt;p>Based on the above, I developed the following strategy (partially obscured as it was for my company):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">Reduce the new user cost of using xx function.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This simple strategy meets the three basic structures of a good strategy:&lt;/p>
+&lt;ul>
+&lt;li>Diagnosis
+&lt;ul>
+&lt;li>Identified increasing new users of xx as critical for the company&amp;rsquo;s benefit.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Guiding Policy
+&lt;ul>
+&lt;li>Decided to lower the onboarding cost to acquire new users.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Actions
+&lt;ul>
+&lt;li>Prioritized several approaches to realize the policy.&lt;/li>
+&lt;li>Although it could have included more action-oriented words, I decided on the above.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="what-is-a-bad-strategy">What is a Bad Strategy&lt;/h2>
+&lt;p>Finally, let&amp;rsquo;s touch on common patterns of bad strategies:&lt;/p>
+&lt;p>Characteristics of a Bad Strategy:&lt;/p>
+&lt;ul>
+&lt;li>Vague
+&lt;ul>
+&lt;li>Uses jargon or industry terms to obscure simple facts.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Avoids Significant Problems
+&lt;ul>
+&lt;li>Strategy should overcome difficult challenges and obstacles.&lt;/li>
+&lt;li>Strategies focusing only on attainability are bad.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Confuses Goals with Strategy
+&lt;ul>
+&lt;li>For instance, a 10% revenue increase is a goal, not a strategy.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Sets Wrong Strategic Objectives
+&lt;ul>
+&lt;li>Strategies set without sufficient investigation of causes and surroundings.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article summarized how to create a good product strategy based on &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo; Creating a good strategy might not happen at once. However, not having a strategy is like running blindly, unable to judge whether actions are successful or not.&lt;/p>
+&lt;p>It&amp;rsquo;s important to start with a basic strategy, constantly observe surroundings, and update the strategy to define the direction for your product and organization.&lt;/p></description></item></channel></rss>

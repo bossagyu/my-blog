@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 06 Jan 2024 21:45:12 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Twitter Social Cardの設定方法</title><link>https://bossagyu.com/blog/012-social-card/</link><pubDate>Sat, 06 Jan 2024 21:45:12 +0900</pubDate><guid>https://bossagyu.com/blog/012-social-card/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 08 Jan 2024 21:55:15 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>プロダクト戦略の作り方</title><link>https://bossagyu.com/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>良いプロダクト戦略の作り方について、「良い戦略、悪い戦略」という書籍をベースにまとめました。&lt;/p>
+&lt;h2 id="背景">背景&lt;/h2>
+&lt;p>業務でプロダクトオーナーとして、前プロダクトオーナーからプロダクトを引き継ぎました。&lt;br>
+引き継いだプロダクトにはプロダクト戦略がなく、プロダクトの方向性が定まっていない状態であったため、今後プロダクトをどうするかを含めて、プロダクト戦略を作成しました。&lt;/p>
+&lt;p>プロダクト戦略を作成するにあたって、そもそも「戦略」というものが人によって様々な意味に解釈されており、なんでも「戦略」という言葉を使ってしまう傾向があると常々感じていました。
+そこで、プロダクト戦略を作成するにあたって、どのような戦略を作成すれば良いのかを知るために、「良い戦略、悪い戦略」を読みました。&lt;/p>
+&lt;h2 id="良い戦略とは">良い戦略とは&lt;/h2>
+&lt;p>良い戦略とは、こちらの打つ手の効果が一気に高まるようなポイントを見つけ、そこに狙いを絞って手持ちのリソースを集中させることで、効果を最大化することができる戦略です。
+戦略とは組織が前に進むためにどのようにしたら良いかを示すものである必要があります。&lt;/p>
+&lt;p>良い戦略は、以下の3つの基本構造を持っています。&lt;/p>
+&lt;ul>
+&lt;li>診断&lt;/li>
+&lt;li>基本方針&lt;/li>
+&lt;li>行動&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://bossagyu.com/blog/013-good-strategy-bad-strategy/img-013-001.png"
+width="1496"
+height="844"
+srcset="https://bossagyu.com/blog/013-good-strategy-bad-strategy/img-013-001_hu74bc795a581a6eebaf9972b83112b6d2_147669_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/013-good-strategy-bad-strategy/img-013-001_hu74bc795a581a6eebaf9972b83112b6d2_147669_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="良い戦略の3つの基本構造"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="425px"
+>&lt;/p>
+&lt;h3 id="診断">診断&lt;/h3>
+&lt;p>診断とは、状況を診断し取り組むべき課題を見極めることです。&lt;br>
+良い診断は死活的に重要な問題点をより分け、複雑に絡み合った状況を明快に整理することができます。&lt;/p>
+&lt;p>戦略を立てる作業の多くは、今何が置きているのかを洗い出すことにあります。まずは情報を集めることが何よりも大切です。&lt;br>
+本書ではコンサルが提案するようなフレームに割り当てるだけではまともな戦略はできない。とこき下ろしていますが情報をしっかりと集めた上でフレームに割り当て整理することを診断の段階で行うことは有意義だと私は考えています。&lt;/p>
+&lt;p>実際に私がプロダクト戦略を作成するにあたって、SWOT分析でプロダクトの置かれる状況を、インパクトマッピングを用いて現状の施策が一体誰にどのような影響を与えるのかの整理を行いました。&lt;br>
+それぞれのやり方については、以下の記事や書籍を参照してください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.innovation.co.jp/urumo/swot/" target="_blank" rel="noopener"
+>SWOT分析&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://amzn.asia/d/0FygsZ4" target="_blank" rel="noopener"
+>インパクトマッピング&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="基本方針">基本方針&lt;/h3>
+&lt;p>基本方針とは、診断で見つかった課題にどう取り組むか、大きな方向性と総合的な方針を示すことです。&lt;br>
+良い基本方針とは、目標でもビジョンではない、何曲に立ち向かう方法を固め、他の選択肢を排除することが基本方針である。と本書では述べられていました。&lt;br>
+決定的な一点に努力を集中させることによって、大きな効果を上げることができます。&lt;/p>
+&lt;p>このため良い戦略の中には、その戦略に従うことによって何に対してリソースを割くのかがはっきりと分かるようになっていることが大切です。&lt;/p>
+&lt;p>私が戦略を立てた際には、インパクトマッピングで整理した内容をベースに、プロダクトの置かれた現状やビジョンをもとに勘案し、プロダクトの方向性を決めました。&lt;br>
+リソースを選択する意味では、どのターゲットのセグメントに対して、どのような価値を提供するのかを明確にすることを意識しました。&lt;/p>
+&lt;h3 id="行動">行動&lt;/h3>
+&lt;p>基本方針を実行するために設計された一貫性のある一連の行動のことです。
+戦略が存在することですべての行動をコーディネートして方針を実行することができます。&lt;/p>
+&lt;p>このため、良い戦略は、行動を実行するための指針が含まれていることが大切となります。&lt;/p>
+&lt;h3 id="私が立てた戦略">私が立てた戦略&lt;/h3>
+&lt;p>上記をベースに私が立てた戦略は以下となりました。&lt;br>
+会社で立てた戦略ですので、一部ぼかして書いています。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">xx機能の利用者の新規利用コストを低減する
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>かなりシンプルなものになりましたが、以下のように良い戦略の3つの基本構造を満たしていると考えています。&lt;/p>
+&lt;ul>
+&lt;li>診断
+&lt;ul>
+&lt;li>プロダクトの状況、課題をベースに考えたときにxxの新規利用者を増やすことが会社の利益につながると考えました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>基本方針
+&lt;ul>
+&lt;li>新規利用者を確保するために導入コストを下げるという基本方針を定めました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>行動
+&lt;ul>
+&lt;li>基本方針を実現するためにいくつかのアプローチを用意し優先順位をつけました。&lt;/li>
+&lt;li>ここについては行動を連想できるようなワードを戦略に含められればと考えましたが上記対応としました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="悪い戦略とは">悪い戦略とは&lt;/h2>
+&lt;p>最後に陥りがちな悪い戦略のパターンについて書いておきます。&lt;/p>
+&lt;p>悪い戦略の特徴&lt;/p>
+&lt;ul>
+&lt;li>空疎である
+&lt;ul>
+&lt;li>わかり切っていることを専門用語や業界用語で煙に巻くような内容&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>重大な問題に取り組まない
+&lt;ul>
+&lt;li>本来困難な課題を克服し、障害を乗り越えるためのものが戦略である。&lt;/li>
+&lt;li>達成容易性のみを考えた戦略は悪い戦略である。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>目標と戦略と取り違えている
+&lt;ul>
+&lt;li>売りあげ10%向上など。それはただの目標である。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>間違った戦略目標を掲げている
+&lt;ul>
+&lt;li>十分な周辺・原因の調査がなく戦略を掲げている状態。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回は、良いプロダクト戦略の作り方について、「良い戦略、悪い戦略」という書籍をベースにまとめました。
+一回でいきなり良い戦略は立てられないと考えています。ただ、戦略のない環境はただ闇雲に走っているだけなのでそれが成功したのか失敗したのかすら判断することができない最低の状態です。&lt;br>
+最初は下手な戦略でも良いので、良い戦略とは何かを意識しつつ常に周りの状況を観察しながら、戦略をアップデートしプロダクトと組織の方向性を定めていくことが大切だと思います。&lt;/p></description></item><item><title>Twitter Social Cardの設定方法</title><link>https://bossagyu.com/blog/012-social-card/</link><pubDate>Sat, 06 Jan 2024 21:45:12 +0900</pubDate><guid>https://bossagyu.com/blog/012-social-card/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明します。&lt;/p>
 &lt;h2 id="twitter-social-cardとは">Twitter Social Cardとは&lt;/h2>
 &lt;p>Twitter Social Cardとは、Twitterで記事をシェアした際に表示される画像のことです。
