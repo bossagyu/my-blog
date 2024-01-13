@@ -1,7 +1,7 @@
 +++
 title = 'AWS API GatewayとLambdaを連携させる方法'
 date = 2024-01-13T18:06:52+09:00
-draft = true
+draft = false
 +++
 
 ## 概要
