@@ -1,4 +1,93 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 31 Dec 2023 20:46:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 13 Jan 2024 18:06:52 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Integrating AWS API Gateway with Lambda</title><link>https://bossagyu.com/en/blog/014-aws-apigateway-lambda/</link><pubDate>Sat, 13 Jan 2024 18:06:52 +0900</pubDate><guid>https://bossagyu.com/en/blog/014-aws-apigateway-lambda/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Integrating AWS API Gateway with Lambda enables you to call Lambda functions from API Gateway. This article introduces how to integrate AWS API Gateway with Lambda.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;p>It is assumed that the Lambda function has already been created. If not, please refer to the following article for creation:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started.html" target="_blank" rel="noopener"
+>Creating an AWS Lambda function&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="deciding-how-to-integrate-api-gateway-with-lambda">Deciding How to Integrate API Gateway with Lambda&lt;/h2>
+&lt;p>When integrating API Gateway with Lambda, you need to consider the following two points:&lt;/p>
+&lt;ol>
+&lt;li>The request format for API Gateway&lt;/li>
+&lt;li>Whether to use Proxy Integration or Non-Proxy Integration&lt;/li>
+&lt;/ol>
+&lt;h3 id="request-format-for-api-gateway">Request Format for API Gateway&lt;/h3>
+&lt;p>You can choose from the following formats:&lt;/p>
+&lt;ul>
+&lt;li>REST API&lt;/li>
+&lt;li>HTTP API&lt;/li>
+&lt;li>WebSocket API&lt;/li>
+&lt;/ul>
+&lt;p>If you choose to use the REST API format, you will need to decide between REST API and HTTP API. While REST API has more features, it is more expensive than HTTP API. HTTP API is a good choice for simpler requirements.&lt;/p>
+&lt;p>For a detailed comparison, please refer to the &lt;a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html" target="_blank" rel="noopener"
+>official documentation&lt;/a>.&lt;/p>
+&lt;h2 id="proxy-vs-non-proxy-integration">Proxy vs. Non-Proxy Integration&lt;/h2>
+&lt;p>Using Proxy Integration standardizes the format of the response returned from Lambda. It is generally recommended to use Proxy Integration.&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html" target="_blank" rel="noopener"
+>Setting up Lambda Proxy Integrations in API Gateway&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;p>After creating the Lambda function, select &amp;ldquo;Add Trigger.&amp;rdquo;&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-001.png"
+width="3298"
+height="980"
+srcset="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-001_hu7a602e3d547dfd28cd38c53d38cddce0_223431_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-001_hu7a602e3d547dfd28cd38c53d38cddce0_223431_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Add Lambda Trigger"
+class="gallery-image"
+data-flex-grow="336"
+data-flex-basis="807px"
+>&lt;/p>
+&lt;p>Choose API Gateway.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-002.png"
+width="966"
+height="522"
+srcset="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-002_hu446ae81980eb6a0d259b3af0f9d88117_59141_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-002_hu446ae81980eb6a0d259b3af0f9d88117_59141_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Select API Gateway"
+class="gallery-image"
+data-flex-grow="185"
+data-flex-basis="444px"
+>&lt;/p>
+&lt;p>Configure the trigger addition as shown below.
+&lt;img src="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-003.png"
+width="892"
+height="1203"
+srcset="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-003_hu45d67fc282f3323f6fa435777af50650_166604_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-003_hu45d67fc282f3323f6fa435777af50650_166604_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="API Gateway Configuration"
+class="gallery-image"
+data-flex-grow="74"
+data-flex-basis="177px"
+>&lt;/p>
+&lt;p>Once configured successfully, the screen should look like this.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-004.png"
+width="1396"
+height="969"
+srcset="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-004_hu4410e1ba85bd0e88e16bb309c05ab865_175168_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/014-aws-apigateway-lambda/img-014-004_hu4410e1ba85bd0e88e16bb309c05ab865_175168_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="API Gateway Configuration Complete"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="345px"
+>&lt;/p>
+&lt;p>Access the &lt;code>API endpoint&lt;/code> listed with a tool like curl to execute the Lambda function.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ curl https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/default/apigateway-get-sample
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;Hello from Lambda!&amp;#34;&lt;/span>%
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
 &lt;h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT&lt;/h2>
 &lt;p>You can translate articles written in Markdown into English using &lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"

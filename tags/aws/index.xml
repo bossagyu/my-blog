@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Bossagyu Blog</title><link>https://bossagyu.com/tags/aws/</link><description>Recent content in AWS on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 21 Dec 2023 23:03:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Bossagyu Blog</title><link>https://bossagyu.com/tags/aws/</link><description>Recent content in AWS on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 13 Jan 2024 18:06:52 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS API GatewayとLambdaを連携させる方法</title><link>https://bossagyu.com/blog/014-aws-apigateway-lambda/</link><pubDate>Sat, 13 Jan 2024 18:06:52 +0900</pubDate><guid>https://bossagyu.com/blog/014-aws-apigateway-lambda/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>AWS API GatewayとLambdaを連携させることで、API GatewayからLambdaを呼び出すことができます。
+本記事AWS API GatewayとLambdaを連携させる方法を紹介します。&lt;/p>
+&lt;h2 id="前提条件">前提条件&lt;/h2>
+&lt;p>Lambda関数については作成されていることを前提としています。
+作成していない場合は、下記記事を参考に作成してください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started.html" target="_blank" rel="noopener"
+>AWS Lambdaを作成する方法&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="どの形式でapi-gatewayとlambdaを連携させるかを考える">どの形式でAPI GatewayとLambdaを連携させるかを考える&lt;/h2>
+&lt;p>API GatewayとLambdaを連携させるに当たってどのような方式で連携させるか以下の2点について考える必要があります。&lt;/p>
+&lt;ol>
+&lt;li>API Gatewayのリクエスト形式について&lt;/li>
+&lt;li>プロキシ統合が非プロキシ統合か&lt;/li>
+&lt;/ol>
+&lt;h3 id="api-gatewayのリクエスト形式について">API Gatewayのリクエスト形式について&lt;/h3>
+&lt;p>以下の形式から選択できます。&lt;/p>
+&lt;ul>
+&lt;li>REST API&lt;/li>
+&lt;li>HTTP API&lt;/li>
+&lt;li>WebSocket API&lt;/li>
+&lt;/ul>
+&lt;p>この内、REST APIの形式で利用する場合は、REST APIかHTTP APIのどちらかを選択することになります。&lt;br>
+REST APIの方が機能が多いですが、HTTP APIと比べコストがかかります。&lt;br>
+特に複雑なことをしないのであればHTTP APIを選択するのが良いと思います。&lt;/p>
+&lt;p>詳細な比較内容については&lt;a class="link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html" target="_blank" rel="noopener"
+>公式ドキュメント&lt;/a>で公開されているのでそちらを参照してください。&lt;/p>
+&lt;h2 id="プロキシ統合が非プロキシ統合か">プロキシ統合が非プロキシ統合か&lt;/h2>
+&lt;p>プロキシ統合を利用することで、Lambdaから返される値のフォーマットが固定化されます。
+基本的にはプロキシ統合を利用することをおすすめします。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html" target="_blank" rel="noopener"
+>API Gateway で Lambda プロキシ統合を設定する&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="設定">設定&lt;/h2>
+&lt;p>Lambda関数を作成したら、トリガー追加を選択します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-001.png"
+width="3298"
+height="980"
+srcset="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-001_hu7a602e3d547dfd28cd38c53d38cddce0_223431_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-001_hu7a602e3d547dfd28cd38c53d38cddce0_223431_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lambdaトリガー追加"
+class="gallery-image"
+data-flex-grow="336"
+data-flex-basis="807px"
+>&lt;/p>
+&lt;p>API Gatewayを選択します。&lt;br>
+&lt;img src="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-002.png"
+width="966"
+height="522"
+srcset="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-002_hu446ae81980eb6a0d259b3af0f9d88117_59141_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-002_hu446ae81980eb6a0d259b3af0f9d88117_59141_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="API Gatewayを選択"
+class="gallery-image"
+data-flex-grow="185"
+data-flex-basis="444px"
+>&lt;/p>
+&lt;p>トリガーを追加の画面で以下のように設定を行います。
+&lt;img src="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-003.png"
+width="892"
+height="1203"
+srcset="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-003_hu45d67fc282f3323f6fa435777af50650_166604_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-003_hu45d67fc282f3323f6fa435777af50650_166604_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="API Gatewayの設定"
+class="gallery-image"
+data-flex-grow="74"
+data-flex-basis="177px"
+>&lt;/p>
+&lt;p>設定がうまくいくと以下のような画面になります。&lt;br>
+&lt;img src="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-004.png"
+width="1396"
+height="969"
+srcset="https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-004_hu4410e1ba85bd0e88e16bb309c05ab865_175168_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/014-aws-apigateway-lambda/img-014-004_hu4410e1ba85bd0e88e16bb309c05ab865_175168_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="API Gatewayの設定完了"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="345px"
+>&lt;/p>
+&lt;p>&lt;code>API endpoint&lt;/code> に記載のエンドポイントにcurlなどでアクセスするとLambda関数が実行されます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ curl https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/default/apigateway-get-sample
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;Hello from Lambda!&amp;#34;&lt;/span>%
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>本記事ではAWS API GatewayとLambdaを連携させる方法を紹介しました。
+API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
 &lt;h2 id="前提">前提&lt;/h2>
 &lt;p>Lambda関数についてはすでに作成されていることを前提としています。&lt;/p>
