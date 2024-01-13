@@ -2,6 +2,8 @@
 title = 'Integrating AWS API Gateway with Lambda'
 date = 2024-01-13T18:06:52+09:00
 draft = false
+categories = ['Engineering']
+tags = ['AWS', 'API Gateway', 'Lambda']
 +++
 
 ## Overview
