@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Twitter on Bossagyu Blog</title><link>https://bossagyu.com/tags/twitter/</link><description>Recent content in Twitter on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 27 Jan 2024 21:41:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/twitter/index.xml" rel="self" type="application/rss+xml"/><item><title>s3のオブジェクトの存在確認をする方法</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>このページではPythondでs3のオブジェクトの存在確認を方法を説明します。&lt;/p>
+&lt;p>このページではPythondでs3のオブジェクトの存在確認をする方法を説明します。&lt;/p>
 &lt;h2 id="boto3を利用する方法">boto3を利用する方法&lt;/h2>
 &lt;p>boto3.resourceを利用する場合は以下のようなコードでチェックできます。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
