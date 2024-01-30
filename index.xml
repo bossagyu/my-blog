@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 27 Jan 2024 21:41:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>s3のオブジェクトの存在確認をする方法</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 30 Jan 2024 20:34:58 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>ITIL v4 可用性管理について</title><link>https://bossagyu.com/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、ITIL v4の可用性管理について説明します。
+また、理解した内容をもとに自分の経験を当てはめ、可用性管理のプロセスについて説明します。&lt;/p>
+&lt;h2 id="可用性管理とは">可用性管理とは&lt;/h2>
+&lt;p>可用性管理とは、サービスの可用性を確保するための活動のことです。
+可用性管理の目的は、サービスが顧客とユーザーのニーズを満たすために合意されたレベルの可用性を確実に提供することです。&lt;/p>
+&lt;h2 id="可用性管理のプロセス">可用性管理のプロセス&lt;/h2>
+&lt;p>可用性管理のプロセスは以下２つがあります。&lt;/p>
+&lt;ul>
+&lt;li>サービス可用性制御の確立&lt;/li>
+&lt;li>サービス可用性の分析と改善&lt;/li>
+&lt;/ul>
+&lt;h3 id="サービス可用性制御の確立">サービス可用性制御の確立&lt;/h3>
+&lt;p>サービス可用性制御の確立は、サービスの可用性を確保するための活動のことです。
+以下の流れで実現されます。&lt;/p>
+&lt;ol>
+&lt;li>サービス可用性要件の特定&lt;/li>
+&lt;li>サービス可用性要件の合意&lt;/li>
+&lt;li>可用性測定要件の決定&lt;/li>
+&lt;li>可用性メトリクスと報告の設計&lt;/li>
+&lt;/ol>
+&lt;p>上記プロセスに対して自分の経験を当てはめると以下のように理解しました。&lt;/p>
+&lt;ul>
+&lt;li>サービス可用性要件の特定
+&lt;ul>
+&lt;li>どのような利用者がおり、サービスが停止したときの事業リスクなどの影響を特定する。&lt;/li>
+&lt;li>自分のサービスは社内のPFなので、各サービスがPFとして利用しておりそれぞれどのような影響があるかを特定しました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>サービス可用性要件の合意
+&lt;ul>
+&lt;li>SLAの形でサービスの可用性（稼働率99%）などを合意する&lt;/li>
+&lt;li>稼働率では停止判定の基準や、例外事由なども明らかにしました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>可用性測定要件の決定
+&lt;ul>
+&lt;li>測定要件については可用性要件合意の段階で何をサービス停止とするかを決めているので、測定要件は特になし。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>可用性メトリクスと報告の設計
+&lt;ul>
+&lt;li>基本的には「ダウンタイム/稼働時間」で設計&lt;/li>
+&lt;li>報告については、可用性メトリクスを可視化するためのダッシュボードを作成しました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="サービス可用性の分析と改善">サービス可用性の分析と改善&lt;/h3>
+&lt;p>サービス可用性の分析と改善は、その名の通り可用性の分析と改善を行うプロセスです。
+以下の流れで実現されます。&lt;/p>
+&lt;ol>
+&lt;li>サービス可用性の分析&lt;/li>
+&lt;li>サービス可用性の報告&lt;/li>
+&lt;li>サービス可用性の計画と設計&lt;/li>
+&lt;/ol>
+&lt;p>上記プロセスに対して自分の経験を当てはめると以下のように理解しました。&lt;/p>
+&lt;ul>
+&lt;li>サービス可用性の分析
+&lt;ul>
+&lt;li>サービス可用性が達成されていることを確認し、集計します。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>サービス可用性の報告
+&lt;ul>
+&lt;li>可用性をダッシュボードに反映、誰でも見られる状態にします。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>サービス可用性の計画と設計
+&lt;ul>
+&lt;li>可用性を割るような障害が発生した場合、再発防止のための計画を立てました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide" target="_blank" rel="noopener"
+>Availability management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>s3のオブジェクトの存在確認をする方法</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>このページではPythonでs3のオブジェクトの存在確認をする方法を説明します。&lt;/p>
 &lt;h2 id="boto3を利用して確認する方法">boto3を利用して確認する方法&lt;/h2>
 &lt;p>boto3.resourceを利用する場合は以下のようなコードでチェックできます。&lt;/p>

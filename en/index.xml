@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 27 Jan 2024 21:41:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Checking for the Existence of an Object in S3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 30 Jan 2024 20:34:58 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains availability management as defined in ITIL v4. I will also relate my own experiences to explain the processes involved in availability management.&lt;/p>
+&lt;h2 id="what-is-availability-management">What is Availability Management?&lt;/h2>
+&lt;p>Availability management involves activities to ensure the availability of a service. The objective of availability management is to ensure that the service delivers an agreed level of availability to meet the needs of customers and users.&lt;/p>
+&lt;h2 id="processes-in-availability-management">Processes in Availability Management&lt;/h2>
+&lt;p>There are two main processes in availability management:&lt;/p>
+&lt;ul>
+&lt;li>Establishing Service Availability Control&lt;/li>
+&lt;li>Analyzing and Improving Service Availability&lt;/li>
+&lt;/ul>
+&lt;h3 id="establishing-service-availability-control">Establishing Service Availability Control&lt;/h3>
+&lt;p>Establishing service availability control ensures the availability of a service. It is realized through the following steps:&lt;/p>
+&lt;ol>
+&lt;li>Identifying service availability requirements&lt;/li>
+&lt;li>Agreeing on service availability requirements&lt;/li>
+&lt;li>Deciding on availability measurement requirements&lt;/li>
+&lt;li>Designing availability metrics and reporting&lt;/li>
+&lt;/ol>
+&lt;p>Applying my own experiences to these processes, I understood them as follows:&lt;/p>
+&lt;ul>
+&lt;li>Identifying service availability requirements
+&lt;ul>
+&lt;li>Identifying the types of users and the business risks of service downtime.&lt;/li>
+&lt;li>For my service, which is an internal platform, I identified the impacts on various services using the platform.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Agreeing on service availability requirements
+&lt;ul>
+&lt;li>Agreeing on the service&amp;rsquo;s availability (e.g., 99% uptime) in the form of an SLA.&lt;/li>
+&lt;li>We also clarified downtime criteria and exceptions for uptime calculations.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Deciding on availability measurement requirements
+&lt;ul>
+&lt;li>As the availability requirements were agreed upon earlier, there were no specific measurement requirements.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Designing availability metrics and reporting
+&lt;ul>
+&lt;li>Primarily designed around the &amp;lsquo;downtime/uptime&amp;rsquo; formula.&lt;/li>
+&lt;li>For reporting, we created a dashboard to visualize the availability metrics.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="analyzing-and-improving-service-availability">Analyzing and Improving Service Availability&lt;/h3>
+&lt;p>This process, as the name suggests, involves analyzing and improving service availability. It is realized through the following steps:&lt;/p>
+&lt;ol>
+&lt;li>Analyzing service availability&lt;/li>
+&lt;li>Reporting on service availability&lt;/li>
+&lt;li>Planning and designing for service availability&lt;/li>
+&lt;/ol>
+&lt;p>Applying my own experiences to these processes, I understood them as follows:&lt;/p>
+&lt;ul>
+&lt;li>Analyzing service availability
+&lt;ul>
+&lt;li>Confirming that service availability is being achieved and compiling the data.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Reporting on service availability
+&lt;ul>
+&lt;li>Reflecting availability on a dashboard that is accessible to everyone.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Planning and designing for service availability
+&lt;ul>
+&lt;li>In case of incidents that affect availability, we formulated plans for prevention of recurrence.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide" target="_blank" rel="noopener"
+>Availability management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Checking for the Existence of an Object in S3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This page explains how to check for the existence of an object in S3 using Python.&lt;/p>
 &lt;h2 id="method-using-boto3">Method Using boto3&lt;/h2>
 &lt;p>To check using &lt;code>boto3.resource&lt;/code>, you can use the following code:&lt;/p>
