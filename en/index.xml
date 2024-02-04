@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 30 Jan 2024 20:34:58 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up and Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to set up and use GitHub Copilot in VSCode. A GitHub Copilot account is required as a prerequisite.&lt;/p>
+&lt;h2 id="getting-started-with-github-copilot-in-vscode">Getting Started with GitHub Copilot in VSCode&lt;/h2>
+&lt;h3 id="installing-the-extension">Installing the Extension&lt;/h3>
+&lt;p>First, you need to install the extension in VSCode.
+Open VSCode, click on the icon with four squares in the left menu, enter &amp;ldquo;copilot&amp;rdquo; in the search text input, and click &amp;ldquo;install&amp;rdquo; to start the installation.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-001.png"
+width="626"
+height="267"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-001_hua2075257b737ae41d41cddc9273959b8_30520_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-001_hua2075257b737ae41d41cddc9273959b8_30520_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Extension"
+class="gallery-image"
+data-flex-grow="234"
+data-flex-basis="562px"
+>&lt;/p>
+&lt;h3 id="linking-with-github">Linking with GitHub&lt;/h3>
+&lt;p>After clicking install and completing the installation, the following screen will appear. Click on &amp;ldquo;Sign in to GitHub.&amp;rdquo;&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-002.png"
+width="574"
+height="141"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-002_hud50fff9149b461526033d19f8d6aa177_7541_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-002_hud50fff9149b461526033d19f8d6aa177_7541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Sing in to GitHub Screen"
+class="gallery-image"
+data-flex-grow="407"
+data-flex-basis="977px"
+>&lt;/p>
+&lt;p>You will be asked to allow access to your GitHub account. Click &amp;ldquo;Allow&amp;rdquo; to grant permission.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-003.png"
+width="984"
+height="245"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-003_hu2ee054375fc09dad64838e766feb723e_62679_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-003_hu2ee054375fc09dad64838e766feb723e_62679_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Access Permission Screen"
+class="gallery-image"
+data-flex-grow="401"
+data-flex-basis="963px"
+>&lt;/p>
+&lt;p>Click &amp;ldquo;Authorize Visual Studio Code&amp;rdquo; to give permission.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-004.png"
+width="653"
+height="735"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-004_hu681f1d2b9e85acefcddbdd060977aa52_52159_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-004_hu681f1d2b9e85acefcddbdd060977aa52_52159_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Confirmation Screen"
+class="gallery-image"
+data-flex-grow="88"
+data-flex-basis="213px"
+>&lt;/p>
+&lt;p>This completes the integration of GitHub Copilot with VSCode, and you&amp;rsquo;re now ready to use it.&lt;/p>
+&lt;h2 id="how-to-use">How to Use&lt;/h2>
+&lt;p>Basically, as you write code, suggestions will automatically appear.
+Use the following commands to write code efficiently with the suggested completions.&lt;/p>
+&lt;h3 id="cheat-sheet">Cheat Sheet&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Function&lt;/th>
+&lt;th>Key&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Accept suggestion&lt;/td>
+&lt;td>Tab&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Reject suggestion&lt;/td>
+&lt;td>Esc&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Open Copilot&lt;/td>
+&lt;td>Ctrl + Enter&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Next suggestion&lt;/td>
+&lt;td>Alt/Option + ]&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Previous suggestion&lt;/td>
+&lt;td>Alt/Option + [&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Trigger inline Copilot&lt;/td>
+&lt;td>Alt/Option + \&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article covered how to set up and use GitHub Copilot in VSCode.&lt;br>
+GitHub Copilot not only provides code completions but also assists with writing text.&lt;/p>
+&lt;p>This blog was also written with the assistance of GitHub Copilot, significantly improving efficiency.&lt;br>
+Give it a try and see how it can help you.&lt;/p></description></item><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains availability management as defined in ITIL v4. I will also relate my own experiences to explain the processes involved in availability management.&lt;/p>
 &lt;h2 id="what-is-availability-management">What is Availability Management?&lt;/h2>
 &lt;p>Availability management involves activities to ensure the availability of a service. The objective of availability management is to ensure that the service delivers an agreed level of availability to meet the needs of customers and users.&lt;/p>

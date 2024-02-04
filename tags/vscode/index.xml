@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>VSCodeでGithub Copilotを設定して使う方法</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、VSCodeでGithub Copilotを設定して使う方法を説明します。
+前提としてGithub Copilotのアカウントが必要です。&lt;/p>
+&lt;h2 id="vscodeでgithub-copilotを使えるようにするまで">VSCodeでGithub Copilotを使えるようにするまで&lt;/h2>
+&lt;h3 id="拡張機能をインストール">拡張機能をインストール&lt;/h3>
+&lt;p>まずは、VSCodeに拡張機能をインストールします。
+VSCode を開き、左メニューの四角形が4つあるアイコンをクリックし、検索用テキスト入力に「copilot」と入力します。
+「install」をクリックし、インストールを開始してください。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/017-vscode-copilot/img-017-001.png"
+width="626"
+height="267"
+srcset="https://bossagyu.com/blog/017-vscode-copilot/img-017-001_hua2075257b737ae41d41cddc9273959b8_30520_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/017-vscode-copilot/img-017-001_hua2075257b737ae41d41cddc9273959b8_30520_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="拡張機能"
+class="gallery-image"
+data-flex-grow="234"
+data-flex-basis="562px"
+>&lt;/p>
+&lt;h3 id="githubとの連携">GitHubとの連携&lt;/h3>
+&lt;p>installをクリックし、installが完了すれば以下のような画面が表示されるので、「Sign in to GitHub」をクリックします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/017-vscode-copilot/img-017-002.png"
+width="574"
+height="141"
+srcset="https://bossagyu.com/blog/017-vscode-copilot/img-017-002_hud50fff9149b461526033d19f8d6aa177_7541_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/017-vscode-copilot/img-017-002_hud50fff9149b461526033d19f8d6aa177_7541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Sing in to GitHubの画面"
+class="gallery-image"
+data-flex-grow="407"
+data-flex-basis="977px"
+>&lt;/p>
+&lt;p>GitHubのアカウントへのアクセスを要求されるので「Allow」で許可します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/017-vscode-copilot/img-017-003.png"
+width="984"
+height="245"
+srcset="https://bossagyu.com/blog/017-vscode-copilot/img-017-003_hu2ee054375fc09dad64838e766feb723e_62679_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/017-vscode-copilot/img-017-003_hu2ee054375fc09dad64838e766feb723e_62679_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="アクセス許可確認画面"
+class="gallery-image"
+data-flex-grow="401"
+data-flex-basis="963px"
+>&lt;/p>
+&lt;p>「Authorize Visual Studio Code」をクリックし、許可します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/017-vscode-copilot/img-017-004.png"
+width="653"
+height="735"
+srcset="https://bossagyu.com/blog/017-vscode-copilot/img-017-004_hu681f1d2b9e85acefcddbdd060977aa52_52159_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/017-vscode-copilot/img-017-004_hu681f1d2b9e85acefcddbdd060977aa52_52159_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="確認画面"
+class="gallery-image"
+data-flex-grow="88"
+data-flex-basis="213px"
+>&lt;/p>
+&lt;p>これでGithub CopilotとVSCodeの連携が完了し、使えるようになりました。&lt;/p>
+&lt;h2 id="使い方">使い方&lt;/h2>
+&lt;p>基本的には、コードを書いていくだけで自動的に保管されるようになります。
+保管内容が提案されるので以下のコマンドを使いながらコードを書いていくと良いでしょう。&lt;/p>
+&lt;h3 id="チートシート">チートシート&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>機能&lt;/th>
+&lt;th>キー&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>提案を受け入れる&lt;/td>
+&lt;td>Tab&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>提案を拒否する&lt;/td>
+&lt;td>Esc&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Copilotを開く&lt;/td>
+&lt;td>Ctrl + Enter&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>次の提案&lt;/td>
+&lt;td>Alt/Option + ]&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>前の提案&lt;/td>
+&lt;td>Alt/Option + [&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>インラインCopilotをトリガーする&lt;/td>
+&lt;td>Alt/Option + \&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>VSCodeでGithub Copilotを設定して使う方法について説明しました。&lt;br>
+また、Github Copilotはソースコードだけではなく文章にも保管を行ってくれます。&lt;/p>
+&lt;p>このブログもGithub Copilotで保管を行いながら書いており、かなり効率化できています。&lt;br>
+ぜひ使ってみてください。&lt;/p></description></item></channel></rss>
