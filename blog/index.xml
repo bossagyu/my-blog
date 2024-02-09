@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>VSCodeでGithub Copilotを設定して使う方法</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Fri, 09 Feb 2024 09:00:56 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>ITIL v4 事業分析について解説</title><link>https://bossagyu.com/blog/018-itilv4-business-analysis/</link><pubDate>Fri, 09 Feb 2024 09:00:56 +0900</pubDate><guid>https://bossagyu.com/blog/018-itilv4-business-analysis/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>ITIL v4の事業分析について、学習し理解した内容をまとめます。&lt;br>
+また、理解した内容をもとに自分の経験を当てはめ、事業分析のプロセスについて説明します。&lt;/p>
+&lt;h2 id="事業分析とは">事業分析とは&lt;/h2>
+&lt;p>事業分析とは、事業または他の何らかの要素を分析し、それらのニーズへの対応やビジネス上の課題を解決するためのソリューションを提案するプロセスです。&lt;br>
+「事業」分析とされていますが、対象は事業だけでないことに注意が必要です。&lt;/p>
+&lt;h2 id="事業分析手法の例">事業分析手法の例&lt;/h2>
+&lt;p>事業分析手法の例として以下のようなものがあります。&lt;/p>
+&lt;ul>
+&lt;li>SWOT分析&lt;/li>
+&lt;li>ユーザーストーリー&lt;/li>
+&lt;/ul>
+&lt;p>具体的ない方法についてはここでは本題ではないため他のサイトに譲ります。&lt;br>
+私は例には挙げられていませんが、カスタマージャーニーマップをよく使います。&lt;/p>
+&lt;h2 id="事業分析のプロセス">事業分析のプロセス&lt;/h2>
+&lt;p>事業分析のプロセスは以下の２つのプロセスがあります。&lt;/p>
+&lt;ul>
+&lt;li>事業分析アプローチの設計と維持&lt;/li>
+&lt;li>事業分析とソリューションの特定&lt;/li>
+&lt;/ul>
+&lt;h3 id="事業分析アプローチの設計と維持">事業分析アプローチの設計と維持&lt;/h3>
+&lt;p>このプロセスの焦点は、組織の現在および予想されるニーズに対処することにより、ビジネス分析に対する一貫した効果的なアプローチを確立することです。&lt;br>
+以下の流れで実行されます。&lt;/p>
+&lt;ul>
+&lt;li>組織と要件を分析する&lt;/li>
+&lt;li>ビジネス分析のアプローチ手法のレビュー&lt;/li>
+&lt;li>ビジネス分析アプローチを実行する&lt;/li>
+&lt;/ul>
+&lt;p>私が所属する組織ではあまり、事業レイヤーレベルの分析を行うことはないですが、一般的に要件・要求があればそれを特定の手法で分析しましょうというお話であると理解しています。&lt;/p>
+&lt;h3 id="事業分析とソリューションの特定">事業分析とソリューションの特定&lt;/h3>
+&lt;p>このプロセスは、利害関係者のニーズと要件を分析することに重点が置かれています。
+分析の結果から利害関係者のニーズと要件に対処するためのソリューションの特定と提案が含まれています。&lt;br>
+以下の流れで実行されます。&lt;/p>
+&lt;ol>
+&lt;li>ステークホルダーからの情報収集と分析&lt;/li>
+&lt;li>ソリューションのオプションを定義し、推奨されるソリューションを特定する&lt;/li>
+&lt;li>ソリューション提供チームへのサポートの提供&lt;/li>
+&lt;li>ソリューションのパフォーマンスと評価&lt;/li>
+&lt;/ol>
+&lt;p>上記活動について、私の経験を当てはめると以下のように理解しました。&lt;/p>
+&lt;h4 id="12について">1,2について&lt;/h4>
+&lt;ul>
+&lt;li>ステークホルダーから情報を収集、得た情報の分析を行う。&lt;/li>
+&lt;li>分析結果から解決すべき課題(why)を特定、課題に対してどのような解決策があるか(what)を決定する。&lt;/li>
+&lt;/ul>
+&lt;h4 id="3について">3について&lt;/h4>
+&lt;ul>
+&lt;li>1,2で特定されたwhy, whatに対して、どのような解決策(how)があるかをプロダクトチームと一緒に考える&lt;/li>
+&lt;li>この際に解決手法とともに評価基準をきめ、どのような変化があればこのソリューションが成功したと言えるかを決定する。
+&lt;ul>
+&lt;li>またこの際に効果はどの程度の時間軸で現れるのかの認識を合わせておくとよい。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="4について">4について&lt;/h4>
+&lt;ul>
+&lt;li>定めた評価基準に対して、ソリューションがどの程度達成されているかを定期的に評価する。&lt;/li>
+&lt;li>数値については手動集計だと見なくなるので、個人的には自動化してGrafanaなどで可視化することをおすすめします。&lt;/li>
+&lt;/ul>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回は事業分析について学習した内容に基づき私の経験を当てはめ説明しました。&lt;br>
+個人的な理解としては事業分析といいつつ事業だけを対象としないこと、分析といいつつ分析したあとのプロセスも含まれていることが理解できました。&lt;/p>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide" target="_blank" rel="noopener"
+>Business analysis management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>VSCodeでGithub Copilotを設定して使う方法</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、VSCodeでGithub Copilotを設定して使う方法を説明します。
 前提としてGithub Copilotのアカウントが必要です。&lt;/p>
 &lt;h2 id="vscodeでgithub-copilotを使えるようにするまで">VSCodeでGithub Copilotを使えるようにするまで&lt;/h2>
@@ -93,7 +159,7 @@ data-flex-basis="213px"
 &lt;p>VSCodeでGithub Copilotを設定して使う方法について説明しました。&lt;br>
 また、Github Copilotはソースコードだけではなく文章にも保管を行ってくれます。&lt;/p>
 &lt;p>このブログもGithub Copilotで保管を行いながら書いており、かなり効率化できています。&lt;br>
-ぜひ使ってみてください。&lt;/p></description></item><item><title>ITIL v4 可用性管理について</title><link>https://bossagyu.com/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+ぜひ使ってみてください。&lt;/p></description></item><item><title>ITIL v4 可用性管理について解説</title><link>https://bossagyu.com/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、ITIL v4の可用性管理について説明します。
 また、理解した内容をもとに自分の経験を当てはめ、可用性管理のプロセスについて説明します。&lt;/p>
 &lt;h2 id="可用性管理とは">可用性管理とは&lt;/h2>
