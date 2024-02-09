@@ -1,8 +1,9 @@
 +++
-title = 'ITIL v4 可用性管理について'
+title = 'ITIL v4 可用性管理について解説'
 date = 2024-01-30T20:34:58+09:00
 draft = false
-categories = ['Management', 'ITIL', 'IT Service Manager']
+categories = ['Management']
+tags = ['ITIL', 'Availability Management']
 +++
 
 ## 概要
