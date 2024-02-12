@@ -8,7 +8,8 @@
 &lt;p>Stable Diffusionを利用方法は大きく以下の2種類に分かれます。&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://huggingface.co/" target="_blank" rel="noopener"
->Hugging Face&lt;/a>, [Dream Studio](などのwebアプリケーションを利用する&lt;/li>
+>Hugging Face&lt;/a>, &lt;a class="link" href="https://beta.dreamstudio.ai/generate" target="_blank" rel="noopener"
+>Dream Studio&lt;/a> などのwebアプリケーションを利用する&lt;/li>
 &lt;li>ローカルでStable Diffusion Web UIを利用する&lt;/li>
 &lt;/ul>
 &lt;p>本記事では、ローカルでStable Diffusion Web UIを利用する方法を紹介します。

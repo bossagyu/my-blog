@@ -7,7 +7,7 @@
 &lt;p>There are two main ways to use Stable Diffusion:&lt;/p>
 &lt;ul>
 &lt;li>Using web applications like &lt;a class="link" href="https://huggingface.co/" target="_blank" rel="noopener"
->Hugging Face&lt;/a> or &lt;a class="link" href="https://dream-studio.tech/" target="_blank" rel="noopener"
+>Hugging Face&lt;/a> or &lt;a class="link" href="https://beta.dreamstudio.ai/generate" target="_blank" rel="noopener"
 >Dream Studio&lt;/a>&lt;/li>
 &lt;li>Using Stable Diffusion Web UI locally&lt;/li>
 &lt;/ul>
