@@ -2,7 +2,6 @@
 &lt;p>This article will guide you through installing Stable Diffusion Web UI on Mac and using it locally.&lt;/p>
 &lt;h2 id="what-is-stable-diffusion">What is Stable Diffusion?&lt;/h2>
 &lt;p>Stable Diffusion is a type of image processing technology using AI. By inputting text, it can generate images corresponding to that text.&lt;/p>
-&lt;Example Image>
 &lt;h2 id="ways-to-use-stable-diffusion">Ways to Use Stable Diffusion&lt;/h2>
 &lt;p>There are two main ways to use Stable Diffusion:&lt;/p>
 &lt;ul>
