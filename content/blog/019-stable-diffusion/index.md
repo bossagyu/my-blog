@@ -13,7 +13,9 @@ tags = ['Stable Diffusion', 'AI']
 Stable Diffusionは、AIを用いた画像処理技術の一つです。
 テキストを入力することで、そのテキストに対応する画像を生成することができます。
 
-<画像の例>
+以下は、Stable Diffusionのアニメ画像を出力できるモデルで、黒髪の少女を出力した例です。
+
+![Stable Diffusionのイメージ](img-019-003.png)
 
 ## Stable Diffusionを利用する方法
 
