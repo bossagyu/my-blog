@@ -18,7 +18,7 @@ Stable Diffusion is a type of image processing technology using AI. By inputting
 
 There are two main ways to use Stable Diffusion:
 
-* Using web applications like [Hugging Face](https://huggingface.co/) or [Dream Studio](https://dream-studio.tech/)
+* Using web applications like [Hugging Face](https://huggingface.co/) or [Dream Studio](https://beta.dreamstudio.ai/generate)
 * Using Stable Diffusion Web UI locally
 
 This article focuses on using Stable Diffusion Web UI locally. While web applications are easy for trial purposes, they might have limitations or costs for generating a significant number of images. Thus, local usage is recommended for more extensive needs.

@@ -19,7 +19,7 @@ Stable Diffusionは、AIを用いた画像処理技術の一つです。
 
 Stable Diffusionを利用方法は大きく以下の2種類に分かれます。
 
-* [Hugging Face](https://huggingface.co/), [Dream Studio](などのwebアプリケーションを利用する
+* [Hugging Face](https://huggingface.co/), [Dream Studio](https://beta.dreamstudio.ai/generate) などのwebアプリケーションを利用する
 * ローカルでStable Diffusion Web UIを利用する
 
 本記事では、ローカルでStable Diffusion Web UIを利用する方法を紹介します。
