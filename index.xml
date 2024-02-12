@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Fri, 09 Feb 2024 09:00:56 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>ITIL v4 事業分析について解説</title><link>https://bossagyu.com/blog/018-itilv4-business-analysis/</link><pubDate>Fri, 09 Feb 2024 09:00:56 +0900</pubDate><guid>https://bossagyu.com/blog/018-itilv4-business-analysis/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 12 Feb 2024 11:24:59 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事ではMacにStable Diffusion Web UIをインストールし、ローカルで利用する方法を紹介します。&lt;/p>
+&lt;h2 id="stable-diffusionとは">Stable Diffusionとは&lt;/h2>
+&lt;p>Stable Diffusionは、AIを用いた画像処理技術の一つです。
+テキストを入力することで、そのテキストに対応する画像を生成することができます。&lt;/p>
+&lt;p>&amp;lt;画像の例&amp;gt;&lt;/p>
+&lt;h2 id="stable-diffusionを利用する方法">Stable Diffusionを利用する方法&lt;/h2>
+&lt;p>Stable Diffusionを利用方法は大きく以下の2種類に分かれます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://huggingface.co/" target="_blank" rel="noopener"
+>Hugging Face&lt;/a>, [Dream Studio](などのwebアプリケーションを利用する&lt;/li>
+&lt;li>ローカルでStable Diffusion Web UIを利用する&lt;/li>
+&lt;/ul>
+&lt;p>本記事では、ローカルでStable Diffusion Web UIを利用する方法を紹介します。
+試しに使って見るだけであれば、webアプリケーションを利用するのが簡単ですが、画像を大量に生成する場合は制限があったり、費用がかかったりするので、
+ある程度の量を生成する場合はローカルで利用することをおすすめします。&lt;/p>
+&lt;h2 id="stable-diffusion-web-uiをローカルで利用する方法">Stable Diffusion Web UIをローカルで利用する方法&lt;/h2>
+&lt;p>今回はAUTOMATIC1111氏が公開している、&lt;a class="link" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank" rel="noopener"
+>stable-diffusion-web-ui&lt;/a>を利用します。&lt;/p>
+&lt;ol>
+&lt;li>動作する環境を整える&lt;/li>
+&lt;li>stable-diffusion-web-uiをインストールする&lt;/li>
+&lt;li>モデルファイルを配置する&lt;/li>
+&lt;li>stable-diffusion-web-uiを起動し画像を生成する&lt;/li>
+&lt;/ol>
+&lt;h3 id="1-動作する環境を整える">1. 動作する環境を整える&lt;/h3>
+&lt;p>まずは、ローカルで動作させるにあたって、Pythonやその他ライブラリが必要であるため、homebrewを利用してインストールします。&lt;/p>
+&lt;p>homebrewのインストール&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">/bin/bash -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>homebrewのパスを通す&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$PATH&lt;/span>&lt;span class="s2">:/opt/homebrew/bin/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>関連ライブラリのインストール&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install cmake protobuf rust pyenv git wget
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>pyenvを用いて、Python環境のセットアップ。複数のPythonのバージョンを使い分けられるようにします。
+このあとにvenvも登場します。pythonの環境の構築については&lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+>こちら&lt;/a>の記事を参考にしてください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv install 3.10.6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv &lt;span class="nb">local&lt;/span> 3.10.6
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-stable-diffusion-web-uiをインストールする">2. stable-diffusion-web-uiをインストールする&lt;/h3>
+&lt;p>git cloneでリポジトリをクローンします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> stable-diffusion-webui
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>venvで仮想環境を設定、他の環境を汚さないようにします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python -m venv venv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これで環境構築は完了です。&lt;/p>
+&lt;h3 id="3-モデルファイルを配置する">3. モデルファイルを配置する&lt;/h3>
+&lt;p>次にモデルファイルをダウンロードしてきて、&lt;code>stable-diffusion-webui/models/Stable-diffusion/&lt;/code> ディレクトリに配置します。&lt;br>
+モデルファイルは以下のサイトからダウンロードできます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://dream-studio.tech/" target="_blank" rel="noopener"
+>Civitai&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://huggingface.co/models?pipeline_tag=text-to-image&amp;amp;sort=downloads" target="_blank" rel="noopener"
+>Hugging Face&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>今回はCivilaiから &lt;code>bule_pencil&lt;/code> のモデルをダウンロードしてきて利用してみます。&lt;/p>
+&lt;p>Civilaiの検索窓に&lt;code>bule_pencil&lt;/code>と入力し、検索します。&lt;br>
+検索結果から&lt;code>bule_pencil&lt;/code>を選択し、&lt;code>Download&lt;/code>ボタンをクリックします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/019-stable-diffusion/img-019-001.png"
+width="1357"
+height="1019"
+srcset="https://bossagyu.com/blog/019-stable-diffusion/img-019-001_hu0340b7643e68d89bf045571164e24a86_1170489_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/019-stable-diffusion/img-019-001_hu0340b7643e68d89bf045571164e24a86_1170489_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ダウンロード画面"
+class="gallery-image"
+data-flex-grow="133"
+data-flex-basis="319px"
+>&lt;/p>
+&lt;p>ダウンロードしたモデルをディレクトリに移します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mv ~/Downloads/bluePencilXL_v401.safetensors models/Stable-diffusion/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-stable-diffusion-web-uiを起動し画像を生成する">4. stable-diffusion-web-uiを起動し画像を生成する&lt;/h3>
+&lt;p>最後に、stable-diffusion-web-uiを起動し、画像を生成します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">./webui.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>起動したらプロンプトにテキストを入力し、画像を生成します。&lt;/p>
+&lt;ol>
+&lt;li>Stable Diffusion checkpointで先程ダウンロードしたbule_pencilを選択します。&lt;/li>
+&lt;li>promptに生成したい画像の要素を入力します&lt;/li>
+&lt;li>Negative promptに生成してほしくない画像の要素を入れます。&lt;/li>
+&lt;li>Generateをクリックします。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/blog/019-stable-diffusion/img-019-002.png"
+width="3304"
+height="1860"
+srcset="https://bossagyu.com/blog/019-stable-diffusion/img-019-002_hu4a45a04ce22c441948fe1eb974670ec4_1576758_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/019-stable-diffusion/img-019-002_hu4a45a04ce22c441948fe1eb974670ec4_1576758_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="画像生成画面"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;p>ピンク色のサングラスをかけた犬という意味のテキストを入力してみたところ、ちゃんと出力されました。&lt;br>
+もちろん、他のテキストを入力することで、様々な画像を生成することができます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>この記事ではMacにStable Diffusion Web UIをインストールし、ローカルで利用する方法を紹介しました。
+ローカルで利用することで、制限があったり、費用がかかったりするwebアプリケーションを利用するよりも、自由に画像を生成することができます。&lt;/p></description></item><item><title>ITIL v4 事業分析について解説</title><link>https://bossagyu.com/blog/018-itilv4-business-analysis/</link><pubDate>Fri, 09 Feb 2024 09:00:56 +0900</pubDate><guid>https://bossagyu.com/blog/018-itilv4-business-analysis/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>ITIL v4の事業分析について、学習し理解した内容をまとめます。&lt;br>
 また、理解した内容をもとに自分の経験を当てはめ、事業分析のプロセスについて説明します。&lt;/p>
 &lt;h2 id="事業分析とは">事業分析とは&lt;/h2>
