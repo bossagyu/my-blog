@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 12 Feb 2024 11:24:59 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 27 Feb 2024 08:53:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>ITIL v4 キャパシティ及びパフォーマンス管理について解説</title><link>https://bossagyu.com/blog/020-itilv4-capacity-and-performance-management/</link><pubDate>Tue, 27 Feb 2024 08:53:36 +0900</pubDate><guid>https://bossagyu.com/blog/020-itilv4-capacity-and-performance-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、ITIL v4のキャパシティ及びパフォーマンス管理について説明します。
+た、理解した内容をもとに自分の経験を当てはめキャパシティ及びパフォーマンス管理のプロセスについて説明します。&lt;/p>
+&lt;h2 id="キャパシティおよびパフォーマンス管理とは">キャパシティおよびパフォーマンス管理とは&lt;/h2>
+&lt;p>サービス及びサービスを支えるリソースのパフォーマンスを管理することです。&lt;br>
+キャパシティとパフォーマンスの管理活動を通じて、サービスのパフォーマンスを最適化し、サービスのキャパシティを適切に確保することが目的です。&lt;/p>
+&lt;h2 id="キャパシティ及びパフォーマンス管理のプロセス">キャパシティ及びパフォーマンス管理のプロセス&lt;/h2>
+&lt;p>キャパシティ及びパフォーマンス管理のプロセスは以下の2つがあります。&lt;/p>
+&lt;ul>
+&lt;li>キャパシティとパフォーマンスコントロールの確立&lt;/li>
+&lt;li>サービスのキャパシティとパフォーマンスの分析と改善&lt;/li>
+&lt;/ul>
+&lt;h3 id="キャパシティとパフォーマンスコントロールの確立">キャパシティとパフォーマンスコントロールの確立&lt;/h3>
+&lt;p>キャパシティとパフォーマンスコントロールの確立は、サービスが利用するITリソースの使用量と性能基準について、要件を利害関係者と合意し、それらを評価するタイミング・基準値・報告形式を決めることです。&lt;/p>
+&lt;p>以下の流れで実現されます。&lt;/p>
+&lt;ol>
+&lt;li>サービスキャパシティとパフォーマンス要件の特定&lt;/li>
+&lt;li>サービスキャパシティとパフォーマンス要件の合意&lt;/li>
+&lt;li>キャパシティとパフォーマンスの要件の決定&lt;/li>
+&lt;li>キャパシティとパフォーマンス評価指標とレポートの設計&lt;/li>
+&lt;/ol>
+&lt;p>上記プロセスに対して筆者の経験を当てはめると以下の通りになりました。&lt;/p>
+&lt;ul>
+&lt;li>サービスキャパシティとパフォーマンス要件の特定
+&lt;ul>
+&lt;li>筆者は社内PFとしてAPIを提供していたため、社内の利用者から求められるレイテンシー性能（99%ile Nms）を特定しました。&lt;/li>
+&lt;li>上記のしきい値をベースにパフォーマンス検証を行い、1インスタンスあたりのスループットを測定しました。&lt;/li>
+&lt;li>スループットをベースに必要となる金額を算出しました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>サービスキャパシティとパフォーマンス要件の合意
+&lt;ul>
+&lt;li>レイテンシー性能とスループットを関係者と合意を行いました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>キャパシティとパフォーマンスの要件の決定
+&lt;ul>
+&lt;li>こちらについては合意内容と変わらず&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>キャパシティとパフォーマンス評価指標のレポートの設計
+&lt;ul>
+&lt;li>パフォーマンスについてはDynatraceと呼ばれるトレーシングツールを利用して計測、レポートを作成しました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="サービスのキャパシティとパフォーマンスの分析と改善">サービスのキャパシティとパフォーマンスの分析と改善&lt;/h3>
+&lt;p>サービスの出力ログ・インシデント情報から使用量と性能状況の問題点を分析する。&lt;/p>
+&lt;p>以下の流れで実現されます。&lt;/p>
+&lt;ol>
+&lt;li>キャパシティとパフォーマンスの分析&lt;/li>
+&lt;li>キャパシティとパフォーマンスの報告&lt;/li>
+&lt;li>キャパシティとパフォーマンスの計画と設計&lt;/li>
+&lt;/ol>
+&lt;p>上記プロセスに対して筆者の経験を当てはめると以下の通りになりました。&lt;/p>
+&lt;ul>
+&lt;li>キャパシティとパフォーマンスの分析
+&lt;ul>
+&lt;li>パフォーマンスの分析については、Dynatraceを利用して、レイテンシー性能とスループットを分析しました。&lt;/li>
+&lt;li>インシデント情報から、パフォーマンスの問題点を特定しました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>キャパシティとパフォーマンスの報告
+&lt;ul>
+&lt;li>パフォーマンスの報告については、Dynatraceのダッシュボードを利用して、レイテンシー性能とスループットを可視化しました。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>キャパシティとパフォーマンスの計画と設計
+&lt;ul>
+&lt;li>利用者の拡大によって現状のキャパシティでは受け入れが難しくなります。&lt;/li>
+&lt;li>需要予測を立て必要なキャパシティの増強計画を立てて、実行に移すようにしています。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はキャパシティ及びパフォーマンス管理について学習した内容に基づき筆者の経験を当てはめ説明しました。
+キャパシティ及びパフォーマンス管理では、可用性管理相当のことをキャパシティとパフォーマンスの観点から行うことが理解できました。&lt;br>
+筆者の経験ではパフォーマンスの話と可用性の話についてはセットで行うことが多いのであまり独立して行わないと感じました。&lt;/p></description></item><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事ではMacにStable Diffusion Web UIをインストールし、ローカルで利用する方法を紹介します。&lt;/p>
 &lt;h2 id="stable-diffusionとは">Stable Diffusionとは&lt;/h2>
 &lt;p>Stable Diffusionは、AIを用いた画像処理技術の一つです。
@@ -325,7 +402,7 @@ data-flex-basis="213px"
 &lt;p>このブログもGithub Copilotで保管を行いながら書いており、かなり効率化できています。&lt;br>
 ぜひ使ってみてください。&lt;/p></description></item><item><title>ITIL v4 可用性管理について解説</title><link>https://bossagyu.com/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、ITIL v4の可用性管理について説明します。
-また、理解した内容をもとに自分の経験を当てはめ、可用性管理のプロセスについて説明します。&lt;/p>
+また、理解した内容をもとに自分の経験を当てはあめ、可用性管理のプロセスについて説明します。&lt;/p>
 &lt;h2 id="可用性管理とは">可用性管理とは&lt;/h2>
 &lt;p>可用性管理とは、サービスの可用性を確保するための活動のことです。
 可用性管理の目的は、サービスが顧客とユーザーのニーズを満たすために合意されたレベルの可用性を確実に提供することです。&lt;/p>
