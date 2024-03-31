@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 23 Mar 2024 13:11:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>TyeScriptにおけるEnumの使い方</title><link>https://bossagyu.com/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/022-typescript-enum/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 31 Mar 2024 17:35:07 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Stable Diffusionなどの画像生成用のモデルではなく ChatGPTでも画像が生成できるので、生成の方法を説明します。&lt;br>
+ChatGPTの有料プランを利用している人は新たに課金などせずに利用できるので、大きな手間をかけずに商用利用可能な画像を生成できます。&lt;/p>
+&lt;p>今回は、DALL-Eと呼ばれるChatGPT Plusの機能を利用して画像を生成します。
+DALL-E3については OpenAI の&lt;a class="link" href="https://openai.com/dall-e-3" target="_blank" rel="noopener"
+>公式ページ&lt;/a>を参照してください。&lt;/p>
+&lt;h2 id="画像生成の方法">画像生成の方法&lt;/h2>
+&lt;p>サイドバーから 「Explore GPTs」を選択&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-001.png"
+width="265"
+height="116"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Explore GPTs"
+class="gallery-image"
+data-flex-grow="228"
+data-flex-basis="548px"
+>&lt;/p>
+&lt;p>検索窓で &lt;code>DALL-E&lt;/code> と入力し検索を行う。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-002.png"
+width="1303"
+height="365"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="DALL-E"
+class="gallery-image"
+data-flex-grow="356"
+data-flex-basis="856px"
+>&lt;/p>
+&lt;p>&lt;code>Start Chat&lt;/code> をクリックし、画像生成を開始する。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-003.png"
+width="1145"
+height="540"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Start Chat"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="508px"
+>&lt;/p>
+&lt;p>後は、生成したい画像の説明を入力するだけで画像が生成されます。&lt;/p>
+&lt;h2 id="実際に画像を生成してみる">実際に画像を生成してみる&lt;/h2>
+&lt;p>このブログで利用されている、ピンク色のサングラスを掛けた犬の画像を生成してみます。&lt;/p>
+&lt;p>とりあえず &lt;code>ピンク色のサングラスをかけた犬&lt;/code> というプロンプトで打ってみます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-004.png"
+width="986"
+height="599"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTで生成された画像1"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="395px"
+>&lt;/p>
+&lt;p>また、普段のChat GPTを使うように出力された画像に対して追加のプロンプトを入力することで加工できます。&lt;br>
+今回は &lt;code>アニメ調にしてください&lt;/code> と追加のプロンプトを入力してみます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-005.png"
+width="1055"
+height="549"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTで生成された画像2"
+class="gallery-image"
+data-flex-grow="192"
+data-flex-basis="461px"
+>&lt;/p>
+&lt;p>アニメ調になっているのがわかります。
+このように追加のオーダーをすることでどんどん目的の画像に近づけつつ生成できます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はChatGPTを利用して画像を生成する方法を説明しました。&lt;/p>
+&lt;p>簡単に画像を生成できるのが非常に便利ですが、Stable Diffusion同様期待する画像を出力することはなかなか難しく、プロンプトを調整する必要があります。
+Stable Diffusionを利用したときよりもプロンプトを工夫しなくても良い画像が生成されるので、このあたりはモデルの性能差なのかなと思いました。&lt;/p>
+&lt;p>ちなみに、やりすぎると以下のような文章が出力され、待つように言われるので生成回数には制限がついていそうです。
+マシンソースがある人はやっぱりローカルmacでStable Diffusionでやるのが良さそうですね。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-006.png"
+width="866"
+height="238"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTで画像の生成が制限"
+class="gallery-image"
+data-flex-grow="363"
+data-flex-basis="873px"
+>&lt;/p></description></item><item><title>TyeScriptにおけるEnumの使い方</title><link>https://bossagyu.com/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/022-typescript-enum/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、TypeScriptにおけるEnumの使い方について説明します。&lt;/p>
 &lt;h2 id="enumとは">Enumとは&lt;/h2>
 &lt;p>Enum（列挙型）は、特定の値の集合を表す型です。&lt;br>

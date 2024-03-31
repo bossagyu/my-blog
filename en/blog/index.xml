@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 23 Mar 2024 13:11:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Using Enums in TypeScript</title><link>https://bossagyu.com/en/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/022-typescript-enum/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 31 Mar 2024 17:35:07 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Unlike image generation models like Stable Diffusion, ChatGPT can also generate images. This guide explains how to do so.&lt;br>
+For those using the ChatGPT paid plan, images can be generated without any additional fees, allowing for the creation of commercially usable images with minimal effort.&lt;/p>
+&lt;p>This tutorial utilizes DALL-E, a feature of ChatGPT Plus, to generate images.
+For more information on DALL-E3, refer to OpenAI&amp;rsquo;s &lt;a class="link" href="https://openai.com/dall-e-3" target="_blank" rel="noopener"
+>official page&lt;/a>.&lt;/p>
+&lt;h2 id="how-to-generate-images">How to Generate Images&lt;/h2>
+&lt;p>Select &amp;ldquo;Explore GPTs&amp;rdquo; from the sidebar.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-001.png"
+width="265"
+height="116"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Explore GPTs"
+class="gallery-image"
+data-flex-grow="228"
+data-flex-basis="548px"
+>&lt;/p>
+&lt;p>Type &lt;code>DALL-E&lt;/code> in the search bar and perform a search.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-002.png"
+width="1303"
+height="365"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="DALL-E"
+class="gallery-image"
+data-flex-grow="356"
+data-flex-basis="856px"
+>&lt;/p>
+&lt;p>Click on &amp;ldquo;Start Chat&amp;rdquo; to begin generating images.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-003.png"
+width="1145"
+height="540"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Start Chat"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="508px"
+>&lt;/p>
+&lt;p>Then, simply enter a description of the image you wish to generate, and the image will be created.&lt;/p>
+&lt;h2 id="generating-an-example-image">Generating an Example Image&lt;/h2>
+&lt;p>Let&amp;rsquo;s try generating an image of a dog wearing pink sunglasses, as used in this blog.&lt;/p>
+&lt;p>For a start, we&amp;rsquo;ll input the prompt &amp;ldquo;a dog wearing pink sunglasses&amp;rdquo;.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-004.png"
+width="986"
+height="599"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPT generated image 1"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="395px"
+>&lt;/p>
+&lt;p>Additionally, like using regular ChatGPT, you can refine the generated image by entering additional prompts.&lt;br>
+This time, let&amp;rsquo;s input &amp;ldquo;Make it anime-style&amp;rdquo; as an additional prompt.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-005.png"
+width="1055"
+height="549"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPT generated image 2"
+class="gallery-image"
+data-flex-grow="192"
+data-flex-basis="461px"
+>&lt;/p>
+&lt;p>You can see it has an anime-style appearance.
+By issuing further orders, you can gradually get closer to your desired image.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This guide has explained how to generate images using ChatGPT.&lt;/p>
+&lt;p>It&amp;rsquo;s incredibly convenient to be able to generate images easily, but just like with Stable Diffusion, it&amp;rsquo;s quite challenging to get the exact image you want without adjusting the prompts.
+The need for prompt refinement seems less critical than with Stable Diffusion, suggesting a possible difference in model performance.&lt;/p>
+&lt;p>Note that if you overuse this feature, you may receive a message asking you to wait, indicating there may be a limit on the number of generations.
+For those with access to a machine source, running Stable Diffusion locally on a Mac might still be the best option.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-006.png"
+width="866"
+height="238"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPT image generation limit"
+class="gallery-image"
+data-flex-grow="363"
+data-flex-basis="873px"
+>&lt;/p></description></item><item><title>Using Enums in TypeScript</title><link>https://bossagyu.com/en/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/022-typescript-enum/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use Enums in TypeScript.&lt;/p>
 &lt;h2 id="what-are-enums">What are Enums?&lt;/h2>
 &lt;p>Enums (enumerated types) represent a collection of related values. While many languages implement Enums, JavaScript does not. However, TypeScript supports Enums, enriching the JavaScript experience.&lt;/p>
