@@ -1,4 +1,147 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 31 Mar 2024 17:35:07 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 07 Apr 2024 23:52:09 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>PythonでBluesky APIを用いて自動投稿する方法</title><link>https://bossagyu.com/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/blog/024-bluesky-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>&lt;a class="link" href="https://bsky.app/" target="_blank" rel="noopener"
+>Bluesky&lt;/a> とは、旧Twitter社の元CEOであるジャック・ドーシー氏が立ち上げた分散型SNSです。&lt;br>
+&lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
+>ATProtocl&lt;/a> というプロトコルを用いて構築されたSNSで、簡単に言うと中央管理者がいないTwitterのようなものです。&lt;br>
+昨今の中央集権である通貨から分散型である仮想通貨への流れのように、SNSも分散型への流れがあるのかなと感じます。&lt;/p>
+&lt;p>今回はそんなBlueskyのAPIをPythonを用いて実行する方法をまとめます。&lt;/p>
+&lt;h2 id="bluesky-apiを使うまでのステップ">Bluesky APIを使うまでのステップ&lt;/h2>
+&lt;ul>
+&lt;li>API実行用パスワードの生成&lt;/li>
+&lt;li>Python実行環境の構築&lt;/li>
+&lt;li>スクリプトの作成と実行&lt;/li>
+&lt;/ul>
+&lt;h2 id="api実行用パスワードの生成">API実行用パスワードの生成&lt;/h2>
+&lt;p>APIを実行するためにはアカウント名とAPI実行用のパスワードの発行が必要です。&lt;/p>
+&lt;p>まずは、APIの実行に利用するアカウント名を確認します。&lt;br>
+アカウント名は、Blueskyにログインした際に画像の箇所に表示される名前となります。&lt;br>
+この際先頭の &lt;code>@&lt;/code> は不要で、私のアカウントであれば &lt;code>bossagyu.bsky.social&lt;/code> がアカウント名となります。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-001.png"
+width="1246"
+height="494"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアカウント名"
+class="gallery-image"
+data-flex-grow="252"
+data-flex-basis="605px"
+>&lt;/p>
+&lt;p>次に、API実行用のパスワードを生成します。&lt;/p>
+&lt;p>API実行用パスワードは &lt;code>設定&lt;/code> → &lt;code>アプリパスワード&lt;/code> から生成できます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-002.png"
+width="702"
+height="599"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアプリパスワード1"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="281px"
+>&lt;/p>
+&lt;p>その後、&lt;code>アプリパスワードを追加&lt;/code> をクリックします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-003.png"
+width="589"
+height="281"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアプリパスワード2"
+class="gallery-image"
+data-flex-grow="209"
+data-flex-basis="503px"
+>&lt;/p>
+&lt;p>追加ボタンを押すと、パスワードにつける名前を聞かれます。&lt;br>
+これ自体はパスワードとならず管理を容易にすることが目的なので、特にこだわりがなければそのまま作成します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-004.png"
+width="588"
+height="245"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアプリパスワード3"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="576px"
+>&lt;/p>
+&lt;p>パスワードが生成されるので、これをコピーしておきます。&lt;br>
+ちなみに二度と表示されなくなるので、コピーを忘れないようにしましょう。コピーを忘れた場合は再生成すればOKです。&lt;/p>
+&lt;h2 id="python実行環境の構築">Python実行環境の構築&lt;/h2>
+&lt;p>Pythonの実行環境をセットアップしてください。&lt;br>
+venvを用いたセットアップについては、&lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+>こちら&lt;/a> にまとめています。&lt;/p>
+&lt;p>&lt;a class="link" href="https://atproto.blue/en/latest/" target="_blank" rel="noopener"
+>公式ドキュメント&lt;/a> によると、Pythonのバージョンは3.7.1以上を利用する必要がありますので注意しておいてください。&lt;/p>
+&lt;p>Pythonの実行環境が整えば、ATProtocolを利用するためにライブラリをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip install atproto
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストールの確認&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip list &lt;span class="p">|&lt;/span> grep atproto
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">atproto 0.0.46
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これで準備は完了です。&lt;/p>
+&lt;h2 id="スクリプトの作成と実行">スクリプトの作成と実行&lt;/h2>
+&lt;p>Blueskyに投稿するスクリプトを作成します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">atproto&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Client&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Client&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">user_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;bossagyu.bsky.social&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;*******&amp;#34;&lt;/span> &lt;span class="c1"># 生成したAPI実行用パスワードを入力&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;APIからの投稿です&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>スクリプトはこれだけで、APIを用いてBlueskyに投稿できます。&lt;/p>
+&lt;p>それでは実行してみましょう。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ python post_bluesky.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>実行すると、Blueskyに以下のように無事投稿されました。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-005.png"
+width="1244"
+height="512"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyに投稿された投稿"
+class="gallery-image"
+data-flex-grow="242"
+data-flex-basis="583px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。&lt;br>
+Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。&lt;/p></description></item><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Stable Diffusionなどの画像生成用のモデルではなく ChatGPTでも画像が生成できるので、生成の方法を説明します。&lt;br>
 ChatGPTの有料プランを利用している人は新たに課金などせずに利用できるので、大きな手間をかけずに商用利用可能な画像を生成できます。&lt;/p>
 &lt;p>今回は、DALL-Eと呼ばれるChatGPT Plusの機能を利用して画像を生成します。

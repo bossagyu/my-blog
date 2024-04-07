@@ -1,4 +1,141 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/python/</link><description>Recent content in python on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 27 Jan 2024 21:41:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Checking for the Existence of an Object in S3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/python/</link><description>Recent content in python on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 07 Apr 2024 23:52:09 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Using Bluesky API for Automated Posting with Python</title><link>https://bossagyu.com/en/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/en/blog/024-bluesky-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>&lt;a class="link" href="https://bsky.app/" target="_blank" rel="noopener"
+>Bluesky&lt;/a> is a decentralized social network initiated by Jack Dorsey, former CEO of Twitter.&lt;br>
+Built on the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
+>ATProtocol&lt;/a>, it can be seen as a decentralized version of Twitter, where there is no central authority. The move towards decentralization in social networking might be following the trend seen in finance, from centralized to decentralized cryptocurrencies.&lt;/p>
+&lt;p>This article compiles methods for executing Bluesky&amp;rsquo;s API using Python.&lt;/p>
+&lt;h2 id="steps-to-use-bluesky-api">Steps to Use Bluesky API&lt;/h2>
+&lt;ul>
+&lt;li>Generating an API Password&lt;/li>
+&lt;li>Setting Up Python Environment&lt;/li>
+&lt;li>Script Creation and Execution&lt;/li>
+&lt;/ul>
+&lt;h2 id="generating-an-api-password">Generating an API Password&lt;/h2>
+&lt;p>To execute the API, you need to generate an API password using your account name.&lt;/p>
+&lt;p>First, verify your account name displayed on your Bluesky profile, minus the initial &lt;code>@&lt;/code>. For instance, if my account is &lt;code>bossagyu.bsky.social&lt;/code>, that&amp;rsquo;s the account name I&amp;rsquo;ll use.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-001.png"
+width="1246"
+height="494"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky Account Name"
+class="gallery-image"
+data-flex-grow="252"
+data-flex-basis="605px"
+>&lt;/p>
+&lt;p>Next, generate the API execution password.&lt;/p>
+&lt;p>Navigate to &lt;code>Settings&lt;/code> → &lt;code>App Passwords&lt;/code> to create the password.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-002.png"
+width="702"
+height="599"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky App Password 1"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="281px"
+>&lt;/p>
+&lt;p>Click &lt;code>Add App Password&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-003.png"
+width="589"
+height="281"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky App Password 2"
+class="gallery-image"
+data-flex-grow="209"
+data-flex-basis="503px"
+>&lt;/p>
+&lt;p>After clicking the add button, name your password for management purposes. The name itself is not the password but helps with organization.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-004.png"
+width="588"
+height="245"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky App Password 3"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="576px"
+>&lt;/p>
+&lt;p>Once the password is generated, ensure to copy it as it won&amp;rsquo;t be displayed again. If you forget to copy, simply generate a new one.&lt;/p>
+&lt;h2 id="setting-up-the-python-environment">Setting Up the Python Environment&lt;/h2>
+&lt;p>Prepare your Python environment. For setup using venv, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+>this guide&lt;/a>.&lt;/p>
+&lt;p>According to the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
+>official documentation&lt;/a>, Python version 3.7.1 or higher is required.&lt;/p>
+&lt;p>After setting up your environment, install the ATProtocol library to interact with it.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip install atproto
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Verify installation:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip list &lt;span class="p">|&lt;/span> grep atproto
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">atproto 0.0.46
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>With this, preparation is complete.&lt;/p>
+&lt;h2 id="script-creation-and-execution">Script Creation and Execution&lt;/h2>
+&lt;p>Create a script to post on Bluesky.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">atproto&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Client&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Client&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">user_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;bossagyu.bsky.social&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;*******&amp;#34;&lt;/span> &lt;span class="c1"># Enter the generated API password&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;Posting via API.&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>That&amp;rsquo;s all for the script. You can now post to Bluesky using the API.&lt;/p>
+&lt;p>Let&amp;rsquo;s run it:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ python post_bluesky.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Upon execution, the post successfully appears on Bluesky.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-005.png"
+width="1244"
+height="512"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Posted on Bluesky"
+class="gallery-image"
+data-flex-grow="242"
+data-flex-basis="583px"
+>&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.&lt;br>
+While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p></description></item><item><title>Checking for the Existence of an Object in S3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This page explains how to check for the existence of an object in S3 using Python.&lt;/p>
 &lt;h2 id="method-using-boto3">Method Using boto3&lt;/h2>
 &lt;p>To check using &lt;code>boto3.resource&lt;/code>, you can use the following code:&lt;/p>
