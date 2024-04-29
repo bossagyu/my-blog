@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Evernote on Bossagyu Blog</title><link>https://bossagyu.com/tags/evernote/</link><description>Recent content in Evernote on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 29 Apr 2024 19:32:38 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/evernote/index.xml" rel="self" type="application/rss+xml"/><item><title>EvernoteからNotionへの移行方法</title><link>https://bossagyu.com/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>2024年4月26日にEvernoteの日本法人が解散するなど、Evernoteのサービスは終了しないもののいよいよEvernoteの雲行きが怪しくなってきました。&lt;br>
+Evernoteは無料プランに制限が多いため、有料プランを利用しており費用がかさむこともあり、他のノートアプリへの移行を検討しました。&lt;/p>
+&lt;p>以下の理由から移行先はNotionを選択しました。&lt;/p>
+&lt;ol>
+&lt;li>ノートアプリととして基本的な機能を揃えており、Evernoteの代替として十分利用できる。&lt;/li>
+&lt;li>Notionは無料プランの制限がゆるく無料プランで十分使え移行することで有料プランの費用を削減できる。&lt;/li>
+&lt;li>Evernoteからインポートする機能がNotion側で提供されており、移行コストが非常に低い。&lt;/li>
+&lt;/ol>
+&lt;p>今回はEvernoteからNotionへの移行方法をまとめます。&lt;/p>
+&lt;h2 id="移行方法">移行方法&lt;/h2>
+&lt;p>NotionにはEvernoteからのインポート機能が提供されているため、こちらを利用するだけで簡単に移行ができます。&lt;/p>
+&lt;p>Notionのアプリのメニューから &lt;code>設定&lt;/code> を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/026-evernote-to-notion/img-026-001.png"
+width="476"
+height="109"
+srcset="https://bossagyu.com/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notionの設定"
+class="gallery-image"
+data-flex-grow="436"
+data-flex-basis="1048px"
+>&lt;/p>
+&lt;p>設定をクリックすると &lt;code>インポート&lt;/code> が表示されるので、これをクリックします。&lt;br>
+インポートをクリックすると、インポート元のアプリケーションが表示されるので、ここで &lt;code>Evernote&lt;/code> を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/026-evernote-to-notion/img-026-002.png"
+width="1107"
+height="553"
+srcset="https://bossagyu.com/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notionのインポート"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;p>連携が完了するとインポートするノートブックが選択できるようになります。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/026-evernote-to-notion/img-026-003.png"
+width="262"
+height="131"
+srcset="https://bossagyu.com/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notionのインポート"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;p>ここでの注意点です！&lt;br>
+ノートブックを複数選択すると一気にインポートできるように見えるのですが、一気にインポートするととんでもない時間がかかった挙げ句エラーが出ることがあります。
+このため、ノートブックは一つづつインポートすることをおすすめします。&lt;/p>
+&lt;p>一つずつインポートした場合でも、ノートの分量が多いと数時間かかったりするので、気長に対応するとよいです。&lt;/p>
+&lt;p>インポート後は特に体裁が崩れることもなく、画像やリンク、ラベルも正常にインポートされるので問題なく利用ができました。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>EvernoteからNotionへの移行方法をまとめました。
+無料で機能が豊富なNotionに簡単に移行できるので、ぜひ移行を検討してみてください。&lt;/p></description></item></channel></rss>

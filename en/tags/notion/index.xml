@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notion on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/notion/</link><description>Recent content in Notion on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 29 Apr 2024 19:32:38 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/notion/index.xml" rel="self" type="application/rss+xml"/><item><title>Migrating from Evernote to Notion</title><link>https://bossagyu.com/en/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/en/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>As of April 26, 2024, Evernote&amp;rsquo;s Japanese corporation was dissolved, which does not mean Evernote services are ending, but it certainly raises concerns about its future. Given the many restrictions on Evernote&amp;rsquo;s free plan and the cost associated with its premium plan, I considered switching to another note-taking app.&lt;/p>
+&lt;p>After some deliberation, I chose Notion for the following reasons:&lt;/p>
+&lt;ol>
+&lt;li>It possesses all essential features required for a note-taking app and is a viable alternative to Evernote.&lt;/li>
+&lt;li>Notion&amp;rsquo;s free plan is less restrictive and adequate for my needs, allowing me to cut costs on premium subscriptions.&lt;/li>
+&lt;li>Notion offers an import tool specifically for Evernote, facilitating a low-cost migration.&lt;/li>
+&lt;/ol>
+&lt;p>This article details the process of migrating from Evernote to Notion.&lt;/p>
+&lt;h2 id="migration-process">Migration Process&lt;/h2>
+&lt;p>Notion provides an Evernote import feature, making the migration straightforward:&lt;/p>
+&lt;h3 id="accessing-import-settings">Accessing Import Settings&lt;/h3>
+&lt;p>Navigate to &lt;code>Settings&lt;/code> in the Notion app.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-001.png"
+width="476"
+height="109"
+srcset="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notion Settings"
+class="gallery-image"
+data-flex-grow="436"
+data-flex-basis="1048px"
+>&lt;/p>
+&lt;p>Click &lt;code>Settings&lt;/code> to access the &lt;code>Import&lt;/code> option.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-002.png"
+width="1107"
+height="553"
+srcset="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notion Import"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;p>After clicking on &lt;code>Import&lt;/code>, select &lt;code>Evernote&lt;/code> as the import source.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-003.png"
+width="262"
+height="131"
+srcset="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Select Evernote"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;h3 id="importing-notebooks">Importing Notebooks&lt;/h3>
+&lt;p>Once linked, you can choose the notebooks you wish to import. Here&amp;rsquo;s a critical tip:
+While it seems possible to select multiple notebooks for import, doing so may lead to excessively long processing times or even errors. Therefore, it is advisable to import one notebook at a time.&lt;/p>
+&lt;p>Even when importing one notebook at a time, be prepared for the process to take several hours, depending on the size of the notebook.&lt;/p>
+&lt;h3 id="post-import-review">Post-Import Review&lt;/h3>
+&lt;p>After the import, the formatting, images, links, and labels were preserved well, allowing for a seamless transition to Notion.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This guide outlines the steps to migrate from Evernote to Notion. With Notion&amp;rsquo;s robust free features and straightforward migration process, it&amp;rsquo;s worth considering if you&amp;rsquo;re looking to move away from Evernote.&lt;/p></description></item></channel></rss>
