@@ -6,8 +6,7 @@ gitignoreを全体に適応する方法 .gitignore_global を作成して、core
 1 vim ~/.config/git/ignore 記載例
 1 2 3 .idea/ *.log node_modules/ これだけでOKです。
 .gitignore_global を作成する方法だと .gitconfig に無駄な設定をいれる必要があるので、こちらのほうがおすすめです。
-参考 Git - gitignore "><title>gitignoreを全体に適応する方法</title><link rel=canonical href=https://bossagyu.com/blog/025-git-ignore/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css>&lt;-- Google Adsense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="gitignoreを全体に適応する方法"><meta property="og:description" content="概要 .idea などIDEがデフォルトで生成するディレクトリを毎回プロジェクト毎にgitignoreに追加するのが面倒なので、全体に適応する方法をまとめます。
+参考 Git - gitignore "><title>gitignoreを全体に適応する方法</title><link rel=canonical href=https://bossagyu.com/blog/025-git-ignore/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="gitignoreを全体に適応する方法"><meta property="og:description" content="概要 .idea などIDEがデフォルトで生成するディレクトリを毎回プロジェクト毎にgitignoreに追加するのが面倒なので、全体に適応する方法をまとめます。
 gitignoreを全体に適応する方法 .gitignore_global を作成して、core.excludesfile に登録する方法がよく案内されていますが、gitはデフォルトで ~/.config/git/ignore へignore設定を見に行きます。
 このため、~/.config/git/ignore にignore設定を記述することで全体に適応できます。
 ディレクトリを作成

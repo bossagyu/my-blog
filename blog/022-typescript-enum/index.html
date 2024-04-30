@@ -4,8 +4,7 @@ Enumとは Enum（列挙型）は、特定の値の集合を表す型です。
 Enumの使い方 以下のようにEnumを定義します。
 1 2 3 4 5 6 7 enum Status { zero, one, two } console.log(Status.zero); // 0 Enumは、デフォルトで数値を割り当てられ、0から始まります。 生成されるJavaScriptコードは以下の通りです。
 1 2 3 4 5 6 7 var Status; (function (Status) { Status[Status[&amp;#34;zero&amp;#34;] = 0] = &amp;#34;zero&amp;#34;; Status[Status[&amp;#34;one&amp;#34;] = 1] = &amp;#34;one&amp;#34;; Status[Status[&amp;#34;two&amp;#34;] = 2] = &amp;#34;two&amp;#34;; })(Status || (Status = {})); console.log(Status.zero); // 0 また、enumの値を文字列で指定することもできます。
-1 2 3 4 5 6 7 enum Status { zero = &amp;#39;zero&amp;#39;, one = &amp;#39;one&amp;#39;, two = &amp;#39;two&amp;#39; } console."><title>TyeScriptにおけるEnumの使い方</title><link rel=canonical href=https://bossagyu.com/blog/022-typescript-enum/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css>&lt;-- Google Adsense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="TyeScriptにおけるEnumの使い方"><meta property="og:description" content="概要 この記事では、TypeScriptにおけるEnumの使い方について説明します。
+1 2 3 4 5 6 7 enum Status { zero = &amp;#39;zero&amp;#39;, one = &amp;#39;one&amp;#39;, two = &amp;#39;two&amp;#39; } console."><title>TyeScriptにおけるEnumの使い方</title><link rel=canonical href=https://bossagyu.com/blog/022-typescript-enum/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="TyeScriptにおけるEnumの使い方"><meta property="og:description" content="概要 この記事では、TypeScriptにおけるEnumの使い方について説明します。
 Enumとは Enum（列挙型）は、特定の値の集合を表す型です。
 多くの言語に実装されていますが、JavaScriptには存在しません。しかし、TypeScriptではEnumがサポートされています。
 Enumの使い方 以下のようにEnumを定義します。

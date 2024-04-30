@@ -20,8 +20,7 @@ Pythonの実行環境が整えば、ATProtocolを利用するためにライブ�
 1 $ pip install atproto インストールの確認
 1 2 3 $ pip list | grep atproto atproto 0.0.46 これで準備は完了です。
 スクリプトの作成と実行 Blueskyに投稿するスクリプトを作成します。
-1 2 3 4 5 6 7 8 9 from atproto import Client client = Client() user_name = &amp;#34;bossagyu."><title>PythonでBluesky APIを用いて自動投稿する方法</title><link rel=canonical href=https://bossagyu.com/blog/024-bluesky-api/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css>&lt;-- Google Adsense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="PythonでBluesky APIを用いて自動投稿する方法"><meta property="og:description" content="概要 Bluesky とは、旧Twitter社の元CEOであるジャック・ドーシー氏が立ち上げた分散型SNSです。
+1 2 3 4 5 6 7 8 9 from atproto import Client client = Client() user_name = &amp;#34;bossagyu."><title>PythonでBluesky APIを用いて自動投稿する方法</title><link rel=canonical href=https://bossagyu.com/blog/024-bluesky-api/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="PythonでBluesky APIを用いて自動投稿する方法"><meta property="og:description" content="概要 Bluesky とは、旧Twitter社の元CEOであるジャック・ドーシー氏が立ち上げた分散型SNSです。
 ATProtocl というプロトコルを用いて構築されたSNSで、簡単に言うと中央管理者がいないTwitterのようなものです。
 昨今の中央集権である通貨から分散型である仮想通貨への流れのように、SNSも分散型への流れがあるのかなと感じます。
 今回はそんなBlueskyのAPIをPythonを用いて実行する方法をまとめます。
