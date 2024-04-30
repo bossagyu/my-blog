@@ -5,7 +5,8 @@ Hugoの設定にトラッキングIDを追加 tomlに設定を追加 config.toml
 1 2 3 4 5 6 baseURL = &amp;#39;https://bossagyu.com&amp;#39; languageCode = &amp;#39;ja-jp&amp;#39; title = &amp;#39;Bossagyu Blog&amp;#39; theme = &amp;#39;hugo-bearcub&amp;#39; googleAnalytics = &amp;#34;G-1234ABCDEF&amp;#34; # ↑ この行を追加、トラッキングIDは自分のものに変更してください。 トラッキングコードを埋め込む テンプレートによってはtomlの設定を入れるだけで読めるものもあるみたいですが、 私の使用しているbearcubのテンプレートは対応してなかったので、 自分でヘッダにトラッキングコードを読み込むように追加します。
 コードスニペットについてはまくまく Hugo ノートを参考にさせていただきました。
 トラッキングコードを読むために layouts/partials/analytics.html を作成する。
-1 2 3 4 5 6 7 8 9 10 11 12 13 {{ if not ."><title>HugoでGoogle Analyticsの設定をする方法</title><link rel=canonical href=https://bossagyu.com/blog/003-google-analytics/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><meta property="og:title" content="HugoでGoogle Analyticsの設定をする方法"><meta property="og:description" content="概要 HugoをでGoogle Analyticsを設定する方法をサクッと解説します。
+1 2 3 4 5 6 7 8 9 10 11 12 13 {{ if not ."><title>HugoでGoogle Analyticsの設定をする方法</title><link rel=canonical href=https://bossagyu.com/blog/003-google-analytics/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css>&lt;-- Google Adsense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="HugoでGoogle Analyticsの設定をする方法"><meta property="og:description" content="概要 HugoをでGoogle Analyticsを設定する方法をサクッと解説します。
 実現までの流れ Google Analyticsへの登録 トラッキングIDの取得 Hugoの設定にトラッキングIDを追加 Google Analyticsの登録 [GA4] アナリティクスで新しいウェブサイトまたはアプリのセットアップを行う に従い登録を行います。
 データストリームを追加すると、トラッキングIDが取得できるのでメモしておきます。 ※ トラッキングIDは日本語訳の影響か、測定IDという表示になっています。
 Hugoの設定にトラッキングIDを追加 tomlに設定を追加 config.tomlにgoogleAnalytics = トラッキングIDを追加します。
