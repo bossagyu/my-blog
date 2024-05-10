@@ -1,4 +1,564 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 12 Feb 2024 11:24:59 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use Stable Diffusion Web UI on Mac</title><link>https://bossagyu.com/en/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/en/blog/019-stable-diffusion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 29 Apr 2024 19:32:38 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Migrating from Evernote to Notion</title><link>https://bossagyu.com/en/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/en/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>As of April 26, 2024, Evernote&amp;rsquo;s Japanese corporation was dissolved, which does not mean Evernote services are ending, but it certainly raises concerns about its future. Given the many restrictions on Evernote&amp;rsquo;s free plan and the cost associated with its premium plan, I considered switching to another note-taking app.&lt;/p>
+&lt;p>After some deliberation, I chose Notion for the following reasons:&lt;/p>
+&lt;ol>
+&lt;li>It possesses all essential features required for a note-taking app and is a viable alternative to Evernote.&lt;/li>
+&lt;li>Notion&amp;rsquo;s free plan is less restrictive and adequate for my needs, allowing me to cut costs on premium subscriptions.&lt;/li>
+&lt;li>Notion offers an import tool specifically for Evernote, facilitating a low-cost migration.&lt;/li>
+&lt;/ol>
+&lt;p>This article details the process of migrating from Evernote to Notion.&lt;/p>
+&lt;h2 id="migration-process">Migration Process&lt;/h2>
+&lt;p>Notion provides an Evernote import feature, making the migration straightforward:&lt;/p>
+&lt;h3 id="accessing-import-settings">Accessing Import Settings&lt;/h3>
+&lt;p>Navigate to &lt;code>Settings&lt;/code> in the Notion app.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-001.png"
+width="476"
+height="109"
+srcset="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notion Settings"
+class="gallery-image"
+data-flex-grow="436"
+data-flex-basis="1048px"
+>&lt;/p>
+&lt;p>Click &lt;code>Settings&lt;/code> to access the &lt;code>Import&lt;/code> option.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-002.png"
+width="1107"
+height="553"
+srcset="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notion Import"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;p>After clicking on &lt;code>Import&lt;/code>, select &lt;code>Evernote&lt;/code> as the import source.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-003.png"
+width="262"
+height="131"
+srcset="https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Select Evernote"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;h3 id="importing-notebooks">Importing Notebooks&lt;/h3>
+&lt;p>Once linked, you can choose the notebooks you wish to import. Here&amp;rsquo;s a critical tip:
+While it seems possible to select multiple notebooks for import, doing so may lead to excessively long processing times or even errors. Therefore, it is advisable to import one notebook at a time.&lt;/p>
+&lt;p>Even when importing one notebook at a time, be prepared for the process to take several hours, depending on the size of the notebook.&lt;/p>
+&lt;h3 id="post-import-review">Post-Import Review&lt;/h3>
+&lt;p>After the import, the formatting, images, links, and labels were preserved well, allowing for a seamless transition to Notion.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This guide outlines the steps to migrate from Evernote to Notion. With Notion&amp;rsquo;s robust free features and straightforward migration process, it&amp;rsquo;s worth considering if you&amp;rsquo;re looking to move away from Evernote.&lt;/p></description></item><item><title>Applying gitignore Globally</title><link>https://bossagyu.com/en/blog/025-git-ignore/</link><pubDate>Tue, 16 Apr 2024 23:16:25 +0900</pubDate><guid>https://bossagyu.com/en/blog/025-git-ignore/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article simplifies the process of adding directories like &lt;code>.idea&lt;/code> which are automatically generated by IDEs to &lt;code>.gitignore&lt;/code> by applying the settings globally, rather than per project.&lt;/p>
+&lt;h2 id="how-to-apply-gitignore-globally">How to Apply gitignore Globally&lt;/h2>
+&lt;p>Creating a &lt;code>.gitignore_global&lt;/code> file and registering it with &lt;code>core.excludesfile&lt;/code> is a common method, but git by default looks for ignore settings in &lt;code>~/.config/git/ignore&lt;/code>.&lt;br>
+By placing your ignore settings into this file, you can apply them across all projects.&lt;/p>
+&lt;h3 id="creating-the-directory">Creating the Directory&lt;/h3>
+&lt;p>First, create the directory if it doesn&amp;rsquo;t already exist:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir -p ~/.config/git/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="creating-the-ignore-file">Creating the ignore File&lt;/h3>
+&lt;p>Next, create the ignore file and add the patterns you want to ignore universally:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vim ~/.config/git/ignore
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add entries like so:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">.idea/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*.log
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node_modules/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This setup negates the need to add extra configurations in &lt;code>.gitconfig&lt;/code> which would be necessary if using &lt;code>.gitignore_global&lt;/code>, making it a simpler and cleaner solution.&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://git-scm.com/docs/gitignore" target="_blank" rel="noopener"
+>Git - gitignore&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Using Bluesky API for Automated Posting with Python</title><link>https://bossagyu.com/en/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/en/blog/024-bluesky-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>&lt;a class="link" href="https://bsky.app/" target="_blank" rel="noopener"
+>Bluesky&lt;/a> is a decentralized social network initiated by Jack Dorsey, former CEO of Twitter.&lt;br>
+Built on the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
+>ATProtocol&lt;/a>, it can be seen as a decentralized version of Twitter, where there is no central authority. The move towards decentralization in social networking might be following the trend seen in finance, from centralized to decentralized cryptocurrencies.&lt;/p>
+&lt;p>This article compiles methods for executing Bluesky&amp;rsquo;s API using Python.&lt;/p>
+&lt;h2 id="steps-to-use-bluesky-api">Steps to Use Bluesky API&lt;/h2>
+&lt;ul>
+&lt;li>Generating an API Password&lt;/li>
+&lt;li>Setting Up Python Environment&lt;/li>
+&lt;li>Script Creation and Execution&lt;/li>
+&lt;/ul>
+&lt;h2 id="generating-an-api-password">Generating an API Password&lt;/h2>
+&lt;p>To execute the API, you need to generate an API password using your account name.&lt;/p>
+&lt;p>First, verify your account name displayed on your Bluesky profile, minus the initial &lt;code>@&lt;/code>. For instance, if my account is &lt;code>bossagyu.bsky.social&lt;/code>, that&amp;rsquo;s the account name I&amp;rsquo;ll use.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-001.png"
+width="1246"
+height="494"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky Account Name"
+class="gallery-image"
+data-flex-grow="252"
+data-flex-basis="605px"
+>&lt;/p>
+&lt;p>Next, generate the API execution password.&lt;/p>
+&lt;p>Navigate to &lt;code>Settings&lt;/code> → &lt;code>App Passwords&lt;/code> to create the password.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-002.png"
+width="702"
+height="599"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky App Password 1"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="281px"
+>&lt;/p>
+&lt;p>Click &lt;code>Add App Password&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-003.png"
+width="589"
+height="281"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky App Password 2"
+class="gallery-image"
+data-flex-grow="209"
+data-flex-basis="503px"
+>&lt;/p>
+&lt;p>After clicking the add button, name your password for management purposes. The name itself is not the password but helps with organization.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-004.png"
+width="588"
+height="245"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Bluesky App Password 3"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="576px"
+>&lt;/p>
+&lt;p>Once the password is generated, ensure to copy it as it won&amp;rsquo;t be displayed again. If you forget to copy, simply generate a new one.&lt;/p>
+&lt;h2 id="setting-up-the-python-environment">Setting Up the Python Environment&lt;/h2>
+&lt;p>Prepare your Python environment. For setup using venv, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+>this guide&lt;/a>.&lt;/p>
+&lt;p>According to the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
+>official documentation&lt;/a>, Python version 3.7.1 or higher is required.&lt;/p>
+&lt;p>After setting up your environment, install the ATProtocol library to interact with it.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip install atproto
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Verify installation:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip list &lt;span class="p">|&lt;/span> grep atproto
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">atproto 0.0.46
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>With this, preparation is complete.&lt;/p>
+&lt;h2 id="script-creation-and-execution">Script Creation and Execution&lt;/h2>
+&lt;p>Create a script to post on Bluesky.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">atproto&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Client&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Client&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">user_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;bossagyu.bsky.social&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;*******&amp;#34;&lt;/span> &lt;span class="c1"># Enter the generated API password&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;Posting via API.&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>That&amp;rsquo;s all for the script. You can now post to Bluesky using the API.&lt;/p>
+&lt;p>Let&amp;rsquo;s run it:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ python post_bluesky.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Upon execution, the post successfully appears on Bluesky.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/024-bluesky-api/img-024-005.png"
+width="1244"
+height="512"
+srcset="https://bossagyu.com/en/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Posted on Bluesky"
+class="gallery-image"
+data-flex-grow="242"
+data-flex-basis="583px"
+>&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.&lt;br>
+While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p></description></item><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Unlike image generation models like Stable Diffusion, ChatGPT can also generate images. This guide explains how to do so.&lt;br>
+For those using the ChatGPT paid plan, images can be generated without any additional fees, allowing for the creation of commercially usable images with minimal effort.&lt;/p>
+&lt;p>This tutorial utilizes DALL-E, a feature of ChatGPT Plus, to generate images.
+For more information on DALL-E3, refer to OpenAI&amp;rsquo;s &lt;a class="link" href="https://openai.com/dall-e-3" target="_blank" rel="noopener"
+>official page&lt;/a>.&lt;/p>
+&lt;h2 id="how-to-generate-images">How to Generate Images&lt;/h2>
+&lt;p>Select &amp;ldquo;Explore GPTs&amp;rdquo; from the sidebar.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-001.png"
+width="265"
+height="116"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Explore GPTs"
+class="gallery-image"
+data-flex-grow="228"
+data-flex-basis="548px"
+>&lt;/p>
+&lt;p>Type &lt;code>DALL-E&lt;/code> in the search bar and perform a search.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-002.png"
+width="1303"
+height="365"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="DALL-E"
+class="gallery-image"
+data-flex-grow="356"
+data-flex-basis="856px"
+>&lt;/p>
+&lt;p>Click on &amp;ldquo;Start Chat&amp;rdquo; to begin generating images.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-003.png"
+width="1145"
+height="540"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Start Chat"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="508px"
+>&lt;/p>
+&lt;p>Then, simply enter a description of the image you wish to generate, and the image will be created.&lt;/p>
+&lt;h2 id="generating-an-example-image">Generating an Example Image&lt;/h2>
+&lt;p>Let&amp;rsquo;s try generating an image of a dog wearing pink sunglasses, as used in this blog.&lt;/p>
+&lt;p>For a start, we&amp;rsquo;ll input the prompt &amp;ldquo;a dog wearing pink sunglasses&amp;rdquo;.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-004.png"
+width="986"
+height="599"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPT generated image 1"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="395px"
+>&lt;/p>
+&lt;p>Additionally, like using regular ChatGPT, you can refine the generated image by entering additional prompts.&lt;br>
+This time, let&amp;rsquo;s input &amp;ldquo;Make it anime-style&amp;rdquo; as an additional prompt.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-005.png"
+width="1055"
+height="549"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPT generated image 2"
+class="gallery-image"
+data-flex-grow="192"
+data-flex-basis="461px"
+>&lt;/p>
+&lt;p>You can see it has an anime-style appearance.
+By issuing further orders, you can gradually get closer to your desired image.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This guide has explained how to generate images using ChatGPT.&lt;/p>
+&lt;p>It&amp;rsquo;s incredibly convenient to be able to generate images easily, but just like with Stable Diffusion, it&amp;rsquo;s quite challenging to get the exact image you want without adjusting the prompts.
+The need for prompt refinement seems less critical than with Stable Diffusion, suggesting a possible difference in model performance.&lt;/p>
+&lt;p>Note that if you overuse this feature, you may receive a message asking you to wait, indicating there may be a limit on the number of generations.
+For those with access to a machine source, running Stable Diffusion locally on a Mac might still be the best option.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-006.png"
+width="866"
+height="238"
+srcset="https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPT image generation limit"
+class="gallery-image"
+data-flex-grow="363"
+data-flex-basis="873px"
+>&lt;/p></description></item><item><title>Using Enums in TypeScript</title><link>https://bossagyu.com/en/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/022-typescript-enum/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use Enums in TypeScript.&lt;/p>
+&lt;h2 id="what-are-enums">What are Enums?&lt;/h2>
+&lt;p>Enums (enumerated types) represent a collection of related values. While many languages implement Enums, JavaScript does not. However, TypeScript supports Enums, enriching the JavaScript experience.&lt;/p>
+&lt;h2 id="how-to-use-enums">How to Use Enums&lt;/h2>
+&lt;p>Enums can be defined as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">enum&lt;/span> &lt;span class="nx">Status&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">zero&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">one&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">two&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>By default, Enums are assigned numerical values, starting from 0. The compiled JavaScript code would look like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">var&lt;/span> &lt;span class="nx">Status&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;zero&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;zero&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;one&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;one&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;two&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;two&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">})(&lt;/span>&lt;span class="nx">Status&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{}));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can also assign string values to Enums:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">enum&lt;/span> &lt;span class="nx">Status&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">zero&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;zero&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">one&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;one&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">two&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;two&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// &amp;#39;zero&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>When comparing string values, you can write as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">stringZero&lt;/span>: &lt;span class="kt">String&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;zero&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">stringZero&lt;/span> &lt;span class="kr">as&lt;/span> &lt;span class="nx">StringStatus&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">value&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="nx">StringStatus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;value is zero&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;value is not zero&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to use Enums in TypeScript. By utilizing Enums, you can improve the readability and maintainability of your code.&lt;/p></description></item><item><title>Setting Up TypeScript Development Environment Easily with Volta</title><link>https://bossagyu.com/en/blog/021-typescript-setup/</link><pubDate>Sun, 10 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/021-typescript-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to easily set up a TypeScript development environment using Volta, with MacOS as the target platform.&lt;/p>
+&lt;h2 id="what-is-volta">What is Volta?&lt;/h2>
+&lt;p>Volta is a version management tool for Node.js, featuring the following characteristics as presented on &lt;a class="link" href="https://volta.sh/" target="_blank" rel="noopener"
+>Volta&amp;rsquo;s official site&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>Fast: Built in Rust, enabling swift Node.js version switching.&lt;/li>
+&lt;li>Reliable: Ensures everyone on a project uses the same tools.&lt;/li>
+&lt;li>Universal: Can be used across package managers, node runtimes, and OSes.&lt;/li>
+&lt;/ul>
+&lt;p>While nodebrew has been commonly used, the use of Volta seems to be increasing lately.&lt;/p>
+&lt;h2 id="installing-volta-and-nodejs">Installing Volta and Node.js&lt;/h2>
+&lt;p>Installing Volta is as simple as running the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">curl https://get.volta.sh &lt;span class="p">|&lt;/span> bash
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If you&amp;rsquo;re using zsh and the path hasn&amp;rsquo;t been automatically set, use the following commands:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;VOLTA_HOME=$HOME/.volta&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PATH=$VOLTA_HOME/bin:$PATH&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Verify the installation. If a version is displayed, Volta has been successfully installed:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta -v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Next, use Volta to install Node.js. If no version is specified, the latest LTS version will be installed:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta install node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="installing-yarn-and-creating-a-typescript-project">Installing yarn and Creating a TypeScript Project&lt;/h2>
+&lt;h3 id="differences-between-npm-and-yarn">Differences between npm and yarn&lt;/h3>
+&lt;p>Both npm and yarn are package managers for Node.js. Their features include:&lt;/p>
+&lt;p>&lt;strong>npm&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Released a year after Node.js (2010).&lt;/li>
+&lt;li>Stands for Node Package Manager.&lt;/li>
+&lt;li>Automatically generates a package-lock.json file.&lt;/li>
+&lt;li>Installed automatically with Node.js.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>yarn&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Released in 2016.&lt;/li>
+&lt;li>Developed by Facebook, Google, Exponent, and Tilde.&lt;/li>
+&lt;li>Compatible with npm (can use the same package.json).&lt;/li>
+&lt;li>More strict in locking module versions than npm.&lt;/li>
+&lt;li>Faster installation than npm.&lt;/li>
+&lt;/ul>
+&lt;p>While yarn appears superior, recent updates to npm have minimized the differences. Here, we will use yarn to create a TypeScript project.&lt;/p>
+&lt;h3 id="installing-yarn">Installing yarn&lt;/h3>
+&lt;p>Install yarn using Volta:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta install yarn
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Confirm the installation by checking if yarn is listed:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="creating-a-typescript-project">Creating a TypeScript Project&lt;/h3>
+&lt;p>Initialize yarn:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn init -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Install Node.js:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta pin node@20.0.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Install TypeScript:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn add typescript
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Install ts-node:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn add --dev ts-node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Create a tsconfig.json file. This is a TypeScript configuration file that details compilation settings. In this case, you can leave it at the default settings generated:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn tsc --init
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Test a sample program:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;console.log(&amp;#39;Hello, TypeScript!&amp;#39;);&amp;#34;&lt;/span> &amp;gt; hello.ts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yarn ts-node hello.ts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># If &amp;#34;Hello, TypeScript!&amp;#34; is displayed, it&amp;#39;s a success.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The test script ran successfully. This completes the setup of the TypeScript development environment.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article described how to set up a TypeScript development environment easily using Volta. By using Volta, managing Node.js versions becomes straightforward, making the development environment setup smoother. Additionally, specifying the Node.js version with Volta in your project&amp;rsquo;s package.json can help eliminate version discrepancies among developers, adding another layer of convenience to your workflow.&lt;/p></description></item><item><title>How to Use Stable Diffusion Web UI on Mac</title><link>https://bossagyu.com/en/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/en/blog/019-stable-diffusion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article will guide you through installing Stable Diffusion Web UI on Mac and using it locally.&lt;/p>
 &lt;h2 id="what-is-stable-diffusion">What is Stable Diffusion?&lt;/h2>
 &lt;p>Stable Diffusion is a type of image processing technology using AI. By inputting text, it can generate images corresponding to that text.&lt;/p>
