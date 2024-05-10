@@ -10,7 +10,8 @@ menu:
             icon: user
 ---
 ## Hi I'm Bossagyu
-* Backend Engineer (5 years) → Management Position (5 years)
+* Major web company manager
+* Backend Engineer (5 years) → Management Position (6 years)
 * In this blog, I will talk about both management and technology
 
 ## Links

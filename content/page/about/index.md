@@ -10,7 +10,8 @@ menu:
             icon: user
 ---
 ## Hi I'm Bossagyu
-* バックエンドエンジニア(5年)→マネジメント職(5年)
+* 大手Web系企業マネージャー
+* バックエンドエンジニア(5年)→マネジメント職(6年)
 * このブログではマネジメントと技術の両面について話していきます
 
 ## Links
@@ -21,7 +22,7 @@ menu:
 * Management
 * Java, Python, JavaScript, PHP
 * cassandra, MySQL
-* Data Enginnering
+* Data Engineering
 
 ## Certification
 * 2011年 基本情報処理記述者
