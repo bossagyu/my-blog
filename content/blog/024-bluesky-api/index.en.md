@@ -2,7 +2,7 @@
 title = 'Using Bluesky API for Automated Posting with Python'
 date = 2024-04-07T23:52:09+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['Python', 'Bluesky', 'API']
 +++
 

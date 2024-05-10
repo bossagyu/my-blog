@@ -2,7 +2,7 @@
 title = 'Generating Images with ChatGPT'
 date = 2024-03-31T17:35:07+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['chatGPT', 'Image Generation']
 +++
 

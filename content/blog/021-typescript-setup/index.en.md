@@ -2,7 +2,7 @@
 title = 'Setting Up TypeScript Development Environment Easily with Volta'
 date = 2024-03-10T13:11:13+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']
 +++
 
