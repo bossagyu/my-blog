@@ -51,12 +51,16 @@ data-flex-basis="480px"
 &lt;p>インポート後は特に体裁が崩れることもなく、画像やリンク、ラベルも正常にインポートされるので問題なく利用ができました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>EvernoteからNotionへの移行方法をまとめました。
-無料で機能が豊富なNotionに簡単に移行できるので、ぜひ移行を検討してみてください。&lt;/p></description></item><item><title>gitignoreを全体に適応する方法</title><link>https://bossagyu.com/blog/025-git-ignore/</link><pubDate>Tue, 16 Apr 2024 23:16:25 +0900</pubDate><guid>https://bossagyu.com/blog/025-git-ignore/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>&lt;code>.idea&lt;/code> などIDEがデフォルトで生成するディレクトリを毎回プロジェクト毎にgitignoreに追加するのが面倒なので、全体に適応する方法をまとめます。&lt;/p>
+無料で機能が豊富なNotionに簡単に移行できるので、ぜひ移行を検討してみてください。&lt;/p></description></item><item><title>グローバルなgitignoreを設定してプロジェクト全体に適応する方法</title><link>https://bossagyu.com/blog/025-git-ignore/</link><pubDate>Tue, 16 Apr 2024 23:16:25 +0900</pubDate><guid>https://bossagyu.com/blog/025-git-ignore/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>&lt;code>.gitignore&lt;/code> ファイルをプロジェクトに追加することでプロジェクト事にgitのトラッキング対象から外すことができます。&lt;br>
+しかしながら&lt;code>.idea&lt;/code> などIDEがデフォルトで生成するディレクトリを毎回プロジェクト毎にgitignoreに追加するのが面倒です。&lt;br>
+本記事では &lt;code>gitignore&lt;/code> に設定した内容をすべてのプロジェクトに 適応する方法をまとめます。&lt;/p>
 &lt;h2 id="gitignoreを全体に適応する方法">gitignoreを全体に適応する方法&lt;/h2>
-&lt;p>&lt;code>.gitignore_global&lt;/code> を作成して、&lt;code>core.excludesfile&lt;/code> に登録する方法がよく案内されていますが、gitはデフォルトで &lt;code>~/.config/git/ignore&lt;/code> へignore設定を見に行きます。&lt;br>
-このため、&lt;code>~/.config/git/ignore&lt;/code> にignore設定を記述することで全体に適応できます。&lt;/p>
-&lt;p>ディレクトリを作成&lt;/p>
+&lt;p>gitはデフォルトで &lt;code>~/.config/git/ignore&lt;/code> へignore設定を見に行きます。&lt;br>
+このため、&lt;code>~/.config/git/ignore&lt;/code> にignore設定を記述することですべてのプロジェクトにgitignoreの内容を適応できます。&lt;/p>
+&lt;p>よく &lt;code>.gitignore_global&lt;/code> を作成して、&lt;code>core.excludesfile&lt;/code> に登録する方法が案内されていますが、この方法だと &lt;code>.gitconfig&lt;/code> に無駄な設定をいれる必要があるため、こちらの方法をおすすめします。&lt;/p>
+&lt;h2 id="プロジェクト全体にgitignoreを適応する手順">プロジェクト全体にgitignoreを適応する手順&lt;/h2>
+&lt;p>ignoreファイルを格納するためのディレクトリを作成します。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -87,8 +91,8 @@ data-flex-basis="480px"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node_modules/
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>これだけでOKです。&lt;br>
-&lt;code>.gitignore_global&lt;/code> を作成する方法だと &lt;code>.gitconfig&lt;/code> に無駄な設定をいれる必要があるので、こちらのほうがおすすめです。&lt;/p>
+&lt;/div>&lt;p>この設定を行うことで、全プロジェクトで同じignore設定を適応できます。&lt;br>
+すでにトラッキングしているファイルを含む場合は、一度 &lt;code>git rm --cached&lt;/code> でトラッキングを解除してください。&lt;/p>
 &lt;h2 id="参考">参考&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://git-scm.com/docs/gitignore" target="_blank" rel="noopener"
