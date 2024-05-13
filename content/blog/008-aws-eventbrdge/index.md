@@ -1,37 +1,39 @@
 +++
-title = 'AWS EventBridgeを用いてLambdaを定期実行する方法'
+title = 'How to Schedule Lambda Functions with AWS EventBridge'
 date = 2023-12-21T23:03:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['aws', 'lambda', 'eventbridge']
 +++
 
-## 概要
-AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。
+## Overview
+This guide explains how to schedule Lambda functions using AWS EventBridge.
 
-## 前提
-Lambda関数についてはすでに作成されていることを前提としています。  
+## What is AWS EventBridge?
+AWS EventBridge is a service that facilitates event passing between AWS services. Using EventBridge enables you to build an event-driven architecture.
 
-## 手順
-Lambda関数を選択し「トリガーを追加」を選択します。  
-![img-008-001.png](img-008-001.png)
+For more detailed information, refer to the [AWS official documentation](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html).
 
-トリガーから「EventBridge」を選択します。  
-![img-008-002.png](img-008-002.png)
+## Prerequisites
+It is assumed that the Lambda function is already created. To learn how to create a Lambda function, please refer to [Getting Started with AWS Lambda](https://aws.amazon.com/lambda/getting-started/).
 
-ルールの作成画面が表示されるので、設定します。  
-今回はcron形式で5分ごとに実行するように設定しています。  
-cronのsyntaxについては [Schedule type on EventBridge Scheduler](https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based) のページを参考にしてください。  
-![img-008-003.png](img-008-003.png)
+## Procedure
+Select the Lambda function you plan to schedule with EventBridge and click "Add trigger."  
+![Add trigger screen](img-008-001.png)
 
-設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。  
-![img-008-004.png](img-008-004.png)
+From the trigger options, select "EventBridge."  
+![Selecting EventBridge screen](img-008-002.png)
 
-ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。  
-こんな感じで5分に1回通知がくるようになりました。
+After selecting the trigger, you will be directed to create a rule. For this instance, the rule is set to execute every 5 minutes using cron syntax.  
+For the cron syntax, refer to the [Schedule type on EventBridge Scheduler](https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based) page.  
+![Adding a trigger](img-008-003.png)
 
-![img-008-005.png](img-008-005.png)
+Once the setup is complete, EventBridge will be added to the Lambda function's diagram as a trigger.  
+![Setup completion screen](img-008-004.png)
 
-## まとめ
-AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。  
-設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。
+For instance, I created a Function to send messages to LINE, and it started sending notifications every 5 minutes like this.
+
+![Results of running a Lambda function with EventBridge](img-008-005.png)
+
+## Conclusion
+This guide detailed how to schedule Lambda functions using AWS EventBridge. Keep in mind that leaving the EventBridge setup as is will incur charges, so be sure to delete it when it's no longer needed.
