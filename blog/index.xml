@@ -1682,73 +1682,75 @@ data-flex-basis="189px"
 今回はチェックしてません。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
-特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
-&lt;h2 id="前提">前提&lt;/h2>
-&lt;p>Lambda関数についてはすでに作成されていることを前提としています。&lt;/p>
-&lt;h2 id="手順">手順&lt;/h2>
-&lt;p>Lambda関数を選択し「トリガーを追加」を選択します。&lt;br>
+特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>How to Schedule Lambda Functions with AWS EventBridge</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This guide explains how to schedule Lambda functions using AWS EventBridge.&lt;/p>
+&lt;h2 id="what-is-aws-eventbridge">What is AWS EventBridge?&lt;/h2>
+&lt;p>AWS EventBridge is a service that facilitates event passing between AWS services. Using EventBridge enables you to build an event-driven architecture.&lt;/p>
+&lt;p>For more detailed information, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html" target="_blank" rel="noopener"
+>AWS official documentation&lt;/a>.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;p>It is assumed that the Lambda function is already created. To learn how to create a Lambda function, please refer to &lt;a class="link" href="https://aws.amazon.com/lambda/getting-started/" target="_blank" rel="noopener"
+>Getting Started with AWS Lambda&lt;/a>.&lt;/p>
+&lt;h2 id="procedure">Procedure&lt;/h2>
+&lt;p>Select the Lambda function you plan to schedule with EventBridge and click &amp;ldquo;Add trigger.&amp;rdquo;&lt;br>
 &lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
 width="1682"
 height="608"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-001.png"
+alt="Add trigger screen"
 class="gallery-image"
 data-flex-grow="276"
 data-flex-basis="663px"
 >&lt;/p>
-&lt;p>トリガーから「EventBridge」を選択します。&lt;br>
+&lt;p>From the trigger options, select &amp;ldquo;EventBridge.&amp;rdquo;&lt;br>
 &lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
 width="930"
 height="400"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-002.png"
+alt="Selecting EventBridge screen"
 class="gallery-image"
 data-flex-grow="232"
 data-flex-basis="558px"
 >&lt;/p>
-&lt;p>ルールの作成画面が表示されるので、設定します。&lt;br>
-今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
-cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
->Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
+&lt;p>After selecting the trigger, you will be directed to create a rule. For this instance, the rule is set to execute every 5 minutes using cron syntax.&lt;br>
+For the cron syntax, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
+>Schedule type on EventBridge Scheduler&lt;/a> page.&lt;br>
 &lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
 width="891"
 height="903"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-003.png"
+alt="Adding a trigger"
 class="gallery-image"
 data-flex-grow="98"
 data-flex-basis="236px"
 >&lt;/p>
-&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
+&lt;p>Once the setup is complete, EventBridge will be added to the Lambda function&amp;rsquo;s diagram as a trigger.&lt;br>
 &lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
 width="1761"
 height="976"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-004.png"
+alt="Setup completion screen"
 class="gallery-image"
 data-flex-grow="180"
 data-flex-basis="433px"
 >&lt;/p>
-&lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
-こんな感じで5分に1回通知がくるようになりました。&lt;/p>
+&lt;p>For instance, I created a Function to send messages to LINE, and it started sending notifications every 5 minutes like this.&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
 width="1494"
 height="256"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-005.png"
+alt="Results of running a Lambda function with EventBridge"
 class="gallery-image"
 data-flex-grow="583"
 data-flex-basis="1400px"
 >&lt;/p>
-&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;br>
-設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。&lt;/p></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>This guide detailed how to schedule Lambda functions using AWS EventBridge. Keep in mind that leaving the EventBridge setup as is will incur charges, so be sure to delete it when it&amp;rsquo;s no longer needed.&lt;/p></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。
 この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>

@@ -148,73 +148,86 @@ data-flex-basis="345px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>Scheduling Lambda Functions Regularly Using AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article explains how to schedule regular executions of Lambda functions using AWS EventBridge.&lt;/p>
-&lt;h2 id="prerequisite">Prerequisite&lt;/h2>
-&lt;p>It is assumed that the Lambda function has already been created.&lt;/p>
-&lt;h2 id="steps">Steps&lt;/h2>
-&lt;p>Select the Lambda function and choose &amp;lsquo;Add trigger&amp;rsquo;.&lt;br>
-&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001.png"
+&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>Using AWS EventBridge to Schedule Lambda Functions</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use AWS EventBridge to schedule Lambda functions for periodic execution.&lt;/p>
+&lt;h2 id="what-is-aws-eventbridge">What is AWS EventBridge?&lt;/h2>
+&lt;p>AWS EventBridge is a service that facilitates the passing of events between AWS services, enabling the creation of event-driven architectures. For a detailed explanation, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html" target="_blank" rel="noopener"
+>AWS official documentation on EventBridge&lt;/a>.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;p>It is assumed that you have already created a Lambda function. For instructions on creating Lambda functions, please see the &lt;a class="link" href="https://aws.amazon.com/lambda/getting-started/" target="_blank" rel="noopener"
+>AWS Lambda Getting Started guide&lt;/a>.&lt;/p>
+&lt;h2 id="steps-to-schedule-a-lambda-function-with-eventbridge">Steps to Schedule a Lambda Function with EventBridge&lt;/h2>
+&lt;p>To schedule your Lambda function with EventBridge, follow these steps:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Select the Lambda Function:&lt;/strong> Open the AWS Management Console, navigate to the Lambda service, and select the function you want to schedule.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001.png"
 width="1682"
 height="608"
 srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-001.png"
+alt="Trigger addition screen"
 class="gallery-image"
 data-flex-grow="276"
 data-flex-basis="663px"
 >&lt;/p>
-&lt;p>Select &amp;lsquo;EventBridge&amp;rsquo; from the triggers.&lt;br>
-&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002.png"
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Add a Trigger:&lt;/strong> Choose &amp;lsquo;Add trigger&amp;rsquo; and select &amp;lsquo;EventBridge (CloudWatch Events)&amp;rsquo; from the list of available triggers.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002.png"
 width="930"
 height="400"
 srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-002.png"
+alt="Selecting EventBridge"
 class="gallery-image"
 data-flex-grow="232"
 data-flex-basis="558px"
 >&lt;/p>
-&lt;p>The rule creation screen will appear. Configure the settings.&lt;br>
-For this example, I set it to execute every 5 minutes using a cron expression.&lt;br>
-For cron syntax, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
->Schedule type on EventBridge Scheduler&lt;/a> page.&lt;br>
-&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003.png"
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Create a Rule:&lt;/strong> Once you select EventBridge, you will be prompted to create a new rule. Set up the rule to trigger the Lambda function at desired intervals. For this tutorial, we are using a cron expression to execute the function every 5 minutes. You can find more about cron syntax in the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
+>EventBridge Scheduler documentation&lt;/a>.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003.png"
 width="891"
 height="903"
 srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-003.png"
+alt="Trigger configuration"
 class="gallery-image"
 data-flex-grow="98"
 data-flex-basis="236px"
 >&lt;/p>
-&lt;p>Once configured, EventBridge will be added to the triggers in the Lambda function diagram.&lt;br>
-&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004.png"
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Complete the Setup:&lt;/strong> After configuring the rule, it will appear in the Lambda function&amp;rsquo;s diagram as an associated trigger.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004.png"
 width="1761"
 height="976"
 srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-004.png"
+alt="Configuration completion screen"
 class="gallery-image"
 data-flex-grow="180"
 data-flex-basis="433px"
 >&lt;/p>
-&lt;p>As an aside, I created and tested a Function to send messages to LINE.&lt;br>
-Now, it sends notifications every 5 minutes like this.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Test the Setup:&lt;/strong> As a practical application, I set up a function to send messages to LINE. The setup now sends notifications every 5 minutes, as shown in the screenshot below.&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005.png"
 width="1494"
 height="256"
 srcset="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005_hu71f6b6c6b7e02c0c07c0e3b24896f2dd_36361_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="img-008-005.png"
+alt="Notification from EventBridge-triggered Lambda function"
 class="gallery-image"
 data-flex-grow="583"
 data-flex-basis="1400px"
 >&lt;/p>
-&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to schedule Lambda functions regularly using AWS EventBridge.&lt;br>
-Keep in mind that leaving the configured EventBridge running can incur charges, so delete it if it&amp;rsquo;s no longer needed.&lt;/p></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>We&amp;rsquo;ve outlined how to use AWS EventBridge to schedule Lambda functions periodically. Remember, leaving the EventBridge setup as is will incur charges, so be sure to delete it if it&amp;rsquo;s no longer needed.&lt;/p></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
 &lt;ol>
