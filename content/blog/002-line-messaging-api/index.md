@@ -13,7 +13,7 @@ LINEのBotを利用してアプリケーションを作ってみようと考え�
 ## Messaging APIを利用する
 [LINE Developers](https://developers.line.biz/console/) にログインしてプロバイダーを作成する。
 
-![img-002-001.png](img-002-001.png)
+![プロバイダー作成画面](img-002-001.png)
 
 プロバイダーとは([説明](https://developers.line.biz/ja/docs/line-developers-console/overview/#provider))
 ```
@@ -24,11 +24,11 @@ LINE Developersサイトでは、サービスを提供し、ユーザーの情�
 なので好きな文字列を入れる。
 
 そのまま新規チャンネルを作成する。
-![img-002-002.png](img-002-002.png)
+![チャンネル作成画面](img-002-002.png)
 
 このまま作成ボタンを押すと新規チャンネルが作成される
 
-![img-002-003.png](img-002-003.png)
+![チャンネル作成結果](img-002-003.png)
 
 # コマンドラインからポストをする
 Messaging API設定からQRコードを読みこんで友達追加する。

@@ -80,11 +80,11 @@ There are instructions on [Hugo's official website](https://gohugo.io/hosting-an
 
 Follow the instructions to complete the deployment, and the result of the Deploy will be shown as `published`.
 
-![img-001-001.png](img-001-001.png)
+![Deployment execution result screen](img-001-001.png)
 
 
 Click on the URL displayed on the site to access the deployed site.
-![img-001-002.png](img-001-002.png)
+![Link display screen](img-001-002.png)
 
 
 This completes the deployment process.

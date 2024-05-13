@@ -22,25 +22,25 @@ Google検索で引っかかるようにするために、SEO対策を行いま�
 [Google Search Console](https://search.google.com/search-console/welcome)に登録します。
 
 ドメインを選択肢、URLを入力します。  
-![img-007-001.png](img-007-001.png)
+![URL入力画面](img-007-001.png)
 
 
 ## ドメインの所有権の確認
 
 以下のような画像が表示されDNSの所有権を確認します。  
 (念のためTXTレコードの内容は黒く塗りつぶしています。)
-![img-007-002.png](img-007-002.png)
+![DNSの所有権確認画面](img-007-002.png)
 
 ドメインのTXTにGoogleが指定した文字列を追加することで、所有権を確認することができます。
 ドメインのDNSの設定画面に移動し、TXTレコードを追加します。
 
 私の場合はNetlifyでドメインを取得しているので、NetlifyのDNSの設定画面に移動します。
 `Domains -> Domain Settings -> DNS Records` に移動し、TXTレコードを追加します。
-![img-007-003.png](img-007-003.png)
+![Netlify DNS設定画面](img-007-003.png)
 
 レコードの内容はGoogle Search Consoleに表示されているものをコピーしてValueに貼り付けます。  
 (Valueの部分は黒く塗りつぶしています。)
-![img-007-004.png](img-007-004.png)
+![DNS追加例](img-007-004.png)
 
 DNSの反映を待ちます。ものによっては数時間かかる場合があります。
 
@@ -57,7 +57,7 @@ dig -t txt bossagyu.com
 Hugoで作成したブログの場合は、`/sitemap.xml`にサイトマップが作成されているので、これを登録します。
 
 Google Search Consoleの左側のメニューから「サイトマップ」を選択し、サイトマップを追加します。
-![img-007-005.png](img-007-005.png)
+![サイトマップの登録画面](img-007-005.png)
 
 
 ## インデックス登録をリクエスト
@@ -65,7 +65,7 @@ Google Search Consoleの左側のメニューから「サイトマップ」を�
 私の場合は数日待ってもインデックスが登録されなかったので、インデックス登録をリクエストしました。
 
 Google Search Consoleの検索窓で登録したいURLを検索し、検索結果の右側にある「インデックス登録をリクエスト」を押します。
-![img-007-006.png](img-007-006.png)
+![インデックス登録をリクエスト](img-007-006.png)
 
 これでインデックス登録をリクエストできます。
 クリックしてから数時間でインデックスが登録されました。

@@ -28,7 +28,7 @@ AWS CLI(SAM)をインストールします。
 
 IntellijにSAM CLI executableのパスを `File -> Settings -> Tools -> AWS Toolkit` から設定します。  
 私の環境ではbrewでインストールしたので、以下のパスを設定しました。
-![img-006-005.png](img-006-005.png)
+![Intellijの設定画面](img-006-005.png)
 
 ## AWS Toolkitのインストール
 IntellijのプラグインからAWS Toolkitをインストールします。
@@ -38,11 +38,11 @@ IntellijのプラグインからAWS Toolkitをインストールします。
 AWS Toolkitを利用するためにはAWSの認証情報を設定する必要があります。
 
 AWS ExplorerからAWSの認証情報を設定します。
-![img-006-001.png](img-006-001.png)
+![AWSの認証](img-006-001.png)
 
 Access Key IDとSecret Access KeyをAWSのコンソールから取得し、設定します。
 設定が完了したら、AWS ExplorerにAWSのリソースが表示されるようになります。
-![img-006-002.png](img-006-002.png)
+![AWSリソース追加確認](img-006-002.png)
 
 この画像ではリージョンが `us-east-1` になっていますが、Lambdaを作成するリージョンに合わせてください。
 
@@ -57,18 +57,18 @@ def lambda_handler(event, context):
 ```
 
 AWS ExplorerからLambdaを作成します。  
-![img-006-003.png](img-006-003.png)
+![Lambda関数の作成画面](img-006-003.png)
 
 
 Create Lambda Functionを選択し、必要な値を入力します。  
 Handlerにはコードスニペットの `<ファイル名>.<関数名>` を入力してください。  
-![img-006-004.png](img-006-004.png)
+![Lambda関数の設定](img-006-004.png)
 
 これでLambdaの作成が完了しました。
 
 ## Lambdaをローカルで実行
 またToolkitを利用すると、Lambdaをローカルで実行することができます。
-![img-006-006.png](img-006-006.png)
+![Lambda関数の実行画面](img-006-006.png)
 
 Runを選択すると、Lambdaがローカルで実行されます。
 
