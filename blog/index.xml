@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 29 Apr 2024 19:32:38 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>EvernoteからNotionへの移行方法</title><link>https://bossagyu.com/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 14 May 2024 23:22:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPT 4oの紹介</title><link>https://bossagyu.com/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="gpt-4oの登場">GPT-4oの登場&lt;/h2>
+&lt;p>2024年5月13日に、OpenAI社より新しいGPTモデル、ChatGPT-4oが発表されました。&lt;/p>
+&lt;p>GPT-4oは従来のモデルと比較して以下の内容が向上しています。&lt;/p>
+&lt;ul>
+&lt;li>自然な対話の実現&lt;/li>
+&lt;li>より高速な応答&lt;/li>
+&lt;li>多言語対応の強化&lt;/li>
+&lt;li>より高い信頼性&lt;/li>
+&lt;/ul>
+&lt;p>特に注目すべきは、推論速度と質の向上です。これにより、リアルタイムの対話システムにおいても高い性能を発揮し、よりスムーズで自然なコミュニケーションが可能となります。&lt;/p>
+&lt;h2 id="リアルタイム対話の応用">リアルタイム対話の応用&lt;/h2>
+&lt;p>以下の動画では、スマートフォンを利用してChatGPT-4oとのリアルタイム対話のデモンストレーションが紹介されています。&lt;/p>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/vgYi3Wr7v_g"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;p>実際にご覧いただけるとわかるように、ChatGPT-4oは人間との対話に近いレベルで応答を返すことができます。&lt;br>
+これにより、ユーザーは非常に自然な対話を楽しむことができます。&lt;/p>
+&lt;p>今までのChatGPTシリーズでは音声を文字列へ変換し、その後GPT-4へ入力することで対話を行っていました。&lt;br>
+これは、音声に含まれる声色などの感情の情報が失われることを意味しています。&lt;/p>
+&lt;p>しかし、ChatGPT-4oでは音声からモデルのトレーニングを行っているため、声色などの情報も考慮されており、より自然な対話が実現されています。&lt;br>
+また、音声から直接音声を返却するので、テキストを解釈するステップがない分より高速に応答が返ってくるようになっています。&lt;/p>
+&lt;h2 id="多言語対応の強化">多言語対応の強化&lt;/h2>
+&lt;p>GPT-4oは、多言語対応の強化も図っています。&lt;br>
+今までは英語で質問をすると、精度が高い回答が得られるが、日本語で質問をすると精度が落ちるという問題がありました。&lt;/p>
+&lt;p>今回の多言語対応の強化により、日本語でも高い精度で回答が得られるようになりました。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回は、OpenAI社が発表したChatGPT-4oについて紹介しました。&lt;br>
+ChatGPTのモデルの精度の向上はめざましく、どんどん人間の対話に近づいていると感じます。&lt;br>
+今後エンジニアは生成AIをどれだけうまく使えるかで、生産性が大きく変わってくると感じているので引き続き動向を注視していきたいと思います。&lt;/p>
+&lt;h2 id="関連情報">関連情報&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
+>Hello ChatGPT-4o&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>EvernoteからNotionへの移行方法</title><link>https://bossagyu.com/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>2024年4月26日にEvernoteの日本法人が解散するなど、Evernoteのサービスは終了しないもののいよいよEvernoteの雲行きが怪しくなってきました。&lt;br>
 Evernoteは無料プランに制限が多いため、有料プランを利用しており費用がかさむこともあり、他のノートアプリへの移行を検討しました。&lt;/p>
 &lt;p>以下の理由から移行先はNotionを選択しました。&lt;/p>
