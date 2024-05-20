@@ -1,7 +1,7 @@
 +++
 title = 'Publishing a Blog with Hugo + Netlify + Github'
 date = 2023-12-02T00:59:37+09:00
-draft = false
+draft = true
 toc = true
 categories = ['Engineering']
 tags = ['Hugo', 'Netlify', 'Github']

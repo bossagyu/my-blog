@@ -1,7 +1,7 @@
 +++
 title = 'Explaining Capacity and Performance Management in ITIL v4'
 date = 2024-02-27T08:53:36+09:00
-draft = false
+draft = true
 categories = ['Management']
 tags = ['ITIL', 'Capacity Management', 'Performance Management']
 +++

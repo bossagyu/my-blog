@@ -1,7 +1,7 @@
 +++
 title = 'Using Enums in TypeScript'
 date = 2024-03-23T13:11:13+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']
 +++

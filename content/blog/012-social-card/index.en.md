@@ -1,7 +1,7 @@
 +++
 title = 'Setting Up Twitter Social Cards'
 date = 2024-01-06T21:45:12+09:00
-draft = false
+draft = true
 categories = ['Blog']
 tags = ['Hugo', 'Twitter', 'Social Card']
 +++

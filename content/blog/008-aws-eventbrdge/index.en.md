@@ -1,7 +1,7 @@
 +++
 title = 'Using AWS EventBridge to Schedule Lambda Functions'
 date = 2023-12-21T23:03:13+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['AWS', 'Lambda', 'EventBridge']
 +++

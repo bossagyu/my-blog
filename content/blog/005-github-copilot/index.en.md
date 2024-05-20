@@ -1,7 +1,7 @@
 +++
 title = 'How to Use GitHub Copilot in IntelliJ'
 date = 2023-12-11T22:45:40+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['copilot', 'intellij']
 +++

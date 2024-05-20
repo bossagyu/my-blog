@@ -1,7 +1,7 @@
 +++
 title = 'Using Google Search Console to Make Your Blog Searchable on Google'
 date = 2023-12-18T19:10:04+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['google search console', 'seo', 'blog']
 +++

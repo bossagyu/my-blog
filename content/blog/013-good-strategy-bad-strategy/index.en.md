@@ -1,7 +1,7 @@
 +++
 title = 'How to Create a Product Strategy'
 date = 2024-01-08T21:55:15+09:00
-draft = false
+draft = true
 categories = ['Management']
 tags = ['strategy']
 +++

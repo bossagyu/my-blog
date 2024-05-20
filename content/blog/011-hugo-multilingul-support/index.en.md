@@ -1,7 +1,7 @@
 +++
 title = 'Using ChatGPT to Make a Hugo Blog Multilingual'
 date = 2023-12-31T20:46:36+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['Hugo', 'ChatGPT', 'multilingual']
 +++

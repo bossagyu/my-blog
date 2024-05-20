@@ -1,7 +1,7 @@
 +++
 title = 'Migrating from Evernote to Notion'
 date = 2024-04-29T19:32:38+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['Evernote', 'Notion']
 +++
