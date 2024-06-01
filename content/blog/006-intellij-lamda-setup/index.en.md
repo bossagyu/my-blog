@@ -1,7 +1,7 @@
 +++
 title = 'Efficient Lambda Development with AWS Toolkit in IntelliJ'
 date = 2023-12-12T22:40:05+09:00
-draft = true
+draft = false
 categories = ['Engineering']
 tags = ['Intellij', 'AWS', 'Lambda']
 +++

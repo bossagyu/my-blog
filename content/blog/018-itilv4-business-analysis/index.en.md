@@ -1,7 +1,7 @@
 +++
 title = 'Explaining Business Analysis in ITIL v4'
 date = 2024-02-09T09:00:56+09:00
-draft = true
+draft = false
 categories = ['Management']
 tags = ['ITIL', 'Business Analysis']
 +++

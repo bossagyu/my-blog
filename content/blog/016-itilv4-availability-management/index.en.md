@@ -1,7 +1,7 @@
 +++
 title = 'Understanding Availability Management in ITIL v4'
 date = 2024-01-30T20:34:58+09:00
-draft = true
+draft = false
 categories = ['Management']
 tags = ['ITIL']
 +++

@@ -1,7 +1,7 @@
 +++
 title = 'Creating and Displaying a Favicon with Hugo'
 date = 2023-12-24T22:14:39+09:00
-draft = true
+draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'Favicon']
 +++

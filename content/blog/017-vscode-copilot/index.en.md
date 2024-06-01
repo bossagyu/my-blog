@@ -1,7 +1,7 @@
 +++
 title = 'Setting Up and Using GitHub Copilot in VSCode'
 date = 2024-02-04T22:34:51+09:00
-draft = true
+draft = false
 categories = ['Engineering']
 tags = ['VSCode', 'Copilot']
 +++
