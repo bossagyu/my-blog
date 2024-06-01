@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>copilot on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/copilot/</link><description>Recent content in copilot on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/copilot/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up and Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to set up and use GitHub Copilot in VSCode. A GitHub Copilot account is required as a prerequisite.&lt;/p>
+&lt;h2 id="getting-started-with-github-copilot-in-vscode">Getting Started with GitHub Copilot in VSCode&lt;/h2>
+&lt;h3 id="installing-the-extension">Installing the Extension&lt;/h3>
+&lt;p>First, you need to install the extension in VSCode.
+Open VSCode, click on the icon with four squares in the left menu, enter &amp;ldquo;copilot&amp;rdquo; in the search text input, and click &amp;ldquo;install&amp;rdquo; to start the installation.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-001.png"
+width="626"
+height="267"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-001_hua2075257b737ae41d41cddc9273959b8_30520_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-001_hua2075257b737ae41d41cddc9273959b8_30520_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Extension"
+class="gallery-image"
+data-flex-grow="234"
+data-flex-basis="562px"
+>&lt;/p>
+&lt;h3 id="linking-with-github">Linking with GitHub&lt;/h3>
+&lt;p>After clicking install and completing the installation, the following screen will appear. Click on &amp;ldquo;Sign in to GitHub.&amp;rdquo;&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-002.png"
+width="574"
+height="141"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-002_hud50fff9149b461526033d19f8d6aa177_7541_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-002_hud50fff9149b461526033d19f8d6aa177_7541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Sing in to GitHub Screen"
+class="gallery-image"
+data-flex-grow="407"
+data-flex-basis="977px"
+>&lt;/p>
+&lt;p>You will be asked to allow access to your GitHub account. Click &amp;ldquo;Allow&amp;rdquo; to grant permission.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-003.png"
+width="984"
+height="245"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-003_hu2ee054375fc09dad64838e766feb723e_62679_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-003_hu2ee054375fc09dad64838e766feb723e_62679_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Access Permission Screen"
+class="gallery-image"
+data-flex-grow="401"
+data-flex-basis="963px"
+>&lt;/p>
+&lt;p>Click &amp;ldquo;Authorize Visual Studio Code&amp;rdquo; to give permission.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-004.png"
+width="653"
+height="735"
+srcset="https://bossagyu.com/en/blog/017-vscode-copilot/img-017-004_hu681f1d2b9e85acefcddbdd060977aa52_52159_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/017-vscode-copilot/img-017-004_hu681f1d2b9e85acefcddbdd060977aa52_52159_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Confirmation Screen"
+class="gallery-image"
+data-flex-grow="88"
+data-flex-basis="213px"
+>&lt;/p>
+&lt;p>This completes the integration of GitHub Copilot with VSCode, and you&amp;rsquo;re now ready to use it.&lt;/p>
+&lt;h2 id="how-to-use">How to Use&lt;/h2>
+&lt;p>Basically, as you write code, suggestions will automatically appear.
+Use the following commands to write code efficiently with the suggested completions.&lt;/p>
+&lt;h3 id="cheat-sheet">Cheat Sheet&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Function&lt;/th>
+&lt;th>Key&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Accept suggestion&lt;/td>
+&lt;td>Tab&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Reject suggestion&lt;/td>
+&lt;td>Esc&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Open Copilot&lt;/td>
+&lt;td>Ctrl + Enter&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Next suggestion&lt;/td>
+&lt;td>Alt/Option + ]&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Previous suggestion&lt;/td>
+&lt;td>Alt/Option + [&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Trigger inline Copilot&lt;/td>
+&lt;td>Alt/Option + \&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article covered how to set up and use GitHub Copilot in VSCode.&lt;br>
+GitHub Copilot not only provides code completions but also assists with writing text.&lt;/p>
+&lt;p>This blog was also written with the assistance of GitHub Copilot, significantly improving efficiency.&lt;br>
+Give it a try and see how it can help you.&lt;/p></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use GitHub Copilot in IntelliJ.
+Additionally, a cheat sheet of shortcuts is provided.&lt;/p>
+&lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
+&lt;ol>
+&lt;li>Register for GitHub Copilot&lt;/li>
+&lt;li>Configure IntelliJ&lt;/li>
+&lt;li>Use GitHub Copilot&lt;/li>
+&lt;li>Summary&lt;/li>
+&lt;/ol>
+&lt;h2 id="registering-for-github-copilot">Registering for GitHub Copilot&lt;/h2>
+&lt;p>Register for GitHub Copilot through the &lt;a class="link" href="https://copilot.github.com/" target="_blank" rel="noopener"
+>GitHub Copilot&lt;/a> link.&lt;/p>
+&lt;h2 id="configuring-intellij">Configuring IntelliJ&lt;/h2>
+&lt;p>Install the GitHub Copilot plugin from IntelliJ plugins.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/005-github-copilot/img-005-001.png"
+width="972"
+height="237"
+srcset="https://bossagyu.com/en/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/005-github-copilot/img-005-001_huf1c35ae508766e7174ebde609be4cd7c_63136_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="GitHub Copilot plugin"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
+>&lt;/p>
+&lt;p>Once installed, restart IntelliJ.&lt;/p>
+&lt;h2 id="using-github-copilot">Using GitHub Copilot&lt;/h2>
+&lt;p>When you write code in IntelliJ, GitHub Copilot will assist with code completion.&lt;/p>
+&lt;p>Here is a list of shortcuts for Mac:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Shortcut&lt;/th>
+&lt;th>Function&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>tab&lt;/code>&lt;/td>
+&lt;td>Complete the code&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>]&lt;/code>&lt;/td>
+&lt;td>Show the next completion suggestion&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Option&lt;/code> + &lt;code>[&lt;/code>&lt;/td>
+&lt;td>Show the previous completion suggestion&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Command&lt;/code> + &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Accept only the next word of the suggestion&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to use GitHub Copilot in IntelliJ.
+It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item></channel></rss>

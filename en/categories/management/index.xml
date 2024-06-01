@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Management on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/management/</link><description>Recent content in Management on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 27 Feb 2024 08:53:36 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/management/index.xml" rel="self" type="application/rss+xml"/><item><title>Explaining Capacity and Performance Management in ITIL v4</title><link>https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/</link><pubDate>Tue, 27 Feb 2024 08:53:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains capacity and performance management as outlined in ITIL v4. I will also apply what I have understood to my own experiences, explaining the process of capacity and performance management.&lt;/p>
+&lt;h2 id="what-are-capacity-and-performance-management">What are Capacity and Performance Management?&lt;/h2>
+&lt;p>Capacity and Performance Management involves managing the performance of services and the resources supporting them. The goal is to optimize the performance of services and ensure that the capacity of services is appropriately maintained.&lt;/p>
+&lt;h2 id="processes-in-capacity-and-performance-management">Processes in Capacity and Performance Management&lt;/h2>
+&lt;p>The processes in capacity and performance management include:&lt;/p>
+&lt;ul>
+&lt;li>Establishing Capacity and Performance Control&lt;/li>
+&lt;li>Analyzing and Improving Service Capacity and Performance&lt;/li>
+&lt;/ul>
+&lt;h3 id="establishing-capacity-and-performance-control">Establishing Capacity and Performance Control&lt;/h3>
+&lt;p>Establishing capacity and performance control involves agreeing with stakeholders on the usage and performance standards for the IT resources used by the service, and deciding on the timing, baseline, and format for evaluation.&lt;/p>
+&lt;p>It is realized through the following steps:&lt;/p>
+&lt;ol>
+&lt;li>Identifying service capacity and performance requirements&lt;/li>
+&lt;li>Agreeing on service capacity and performance requirements&lt;/li>
+&lt;li>Deciding on capacity and performance requirements&lt;/li>
+&lt;li>Designing capacity and performance evaluation metrics and reports&lt;/li>
+&lt;/ol>
+&lt;p>Applying my experiences to these processes, I understood them as follows:&lt;/p>
+&lt;ul>
+&lt;li>Identifying service capacity and performance requirements
+&lt;ul>
+&lt;li>As an internal platform provider, I identified latency performance requirements (99%ile in Nms) demanded by internal users.&lt;/li>
+&lt;li>Based on these thresholds, we conducted performance verification and measured throughput per instance.&lt;/li>
+&lt;li>We calculated the cost based on the throughput measurements.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Agreeing on service capacity and performance requirements
+&lt;ul>
+&lt;li>We agreed on latency performance and throughput with stakeholders.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Deciding on capacity and performance requirements
+&lt;ul>
+&lt;li>This remained unchanged from what was agreed upon.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Designing capacity and performance evaluation metrics and reports
+&lt;ul>
+&lt;li>We used a tracing tool called Dynatrace to measure and report performance.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="analyzing-and-improving-service-capacity-and-performance">Analyzing and Improving Service Capacity and Performance&lt;/h3>
+&lt;p>Analyze issues in usage and performance conditions from service output logs and incident information.&lt;/p>
+&lt;p>It is realized through the following steps:&lt;/p>
+&lt;ol>
+&lt;li>Analyzing capacity and performance&lt;/li>
+&lt;li>Reporting capacity and performance&lt;/li>
+&lt;li>Planning and designing capacity and performance&lt;/li>
+&lt;/ol>
+&lt;p>Applying my experiences to these activities, I understood them as follows:&lt;/p>
+&lt;ul>
+&lt;li>Analyzing capacity and performance
+&lt;ul>
+&lt;li>We used Dynatrace to analyze latency performance and throughput.&lt;/li>
+&lt;li>We identified performance issues from incident information.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Reporting capacity and performance
+&lt;ul>
+&lt;li>We visualized latency performance and throughput using Dynatrace&amp;rsquo;s dashboard.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Planning and designing capacity and performance
+&lt;ul>
+&lt;li>Anticipating growth in users, we forecasted that the current capacity would be insufficient.&lt;/li>
+&lt;li>We made plans to increase capacity based on demand forecasts and executed them.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.&lt;br>
+In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p></description></item><item><title>Explaining Business Analysis in ITIL v4</title><link>https://bossagyu.com/en/blog/018-itilv4-business-analysis/</link><pubDate>Fri, 09 Feb 2024 09:00:56 +0900</pubDate><guid>https://bossagyu.com/en/blog/018-itilv4-business-analysis/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article consolidates my learning and understanding of business analysis as per ITIL v4. I will also apply my own experiences to explain the business analysis process.&lt;/p>
+&lt;h2 id="what-is-business-analysis">What is Business Analysis?&lt;/h2>
+&lt;p>Business analysis involves analyzing a business or any other component to propose solutions for meeting those needs or solving business challenges. It is important to note that the term &amp;ldquo;business&amp;rdquo; analysis does not solely pertain to business entities.&lt;/p>
+&lt;h2 id="examples-of-business-analysis-techniques">Examples of Business Analysis Techniques&lt;/h2>
+&lt;p>Examples of business analysis techniques include:&lt;/p>
+&lt;ul>
+&lt;li>SWOT Analysis&lt;/li>
+&lt;li>User Stories&lt;/li>
+&lt;/ul>
+&lt;p>For specific methods, I defer to other sites as they are not the main focus here. Personally, I often use Customer Journey Maps, although it is not listed as an example here.&lt;/p>
+&lt;h2 id="the-business-analysis-process">The Business Analysis Process&lt;/h2>
+&lt;p>The business analysis process includes two main processes:&lt;/p>
+&lt;ul>
+&lt;li>Designing and Maintaining Business Analysis Approaches&lt;/li>
+&lt;li>Identifying Business Analysis and Solutions&lt;/li>
+&lt;/ul>
+&lt;h3 id="designing-and-maintaining-business-analysis-approaches">Designing and Maintaining Business Analysis Approaches&lt;/h3>
+&lt;p>This process focuses on establishing a consistent and effective approach to business analysis by addressing the current and anticipated needs of the organization. It is executed as follows:&lt;/p>
+&lt;ul>
+&lt;li>Analyzing the organization and requirements&lt;/li>
+&lt;li>Reviewing business analysis approach methodologies&lt;/li>
+&lt;li>Implementing the business analysis approach&lt;/li>
+&lt;/ul>
+&lt;p>In my organization, we rarely conduct analysis at the business layer level. Generally, this process involves analyzing specific requirements using certain methodologies.&lt;/p>
+&lt;h3 id="identifying-business-analysis-and-solutions">Identifying Business Analysis and Solutions&lt;/h3>
+&lt;p>This process emphasizes analyzing stakeholders&amp;rsquo; needs and requirements. It includes identifying and proposing solutions to address the stakeholders&amp;rsquo; needs and requirements. It is executed as follows:&lt;/p>
+&lt;ol>
+&lt;li>Collecting and analyzing information from stakeholders&lt;/li>
+&lt;li>Defining solution options and identifying recommended solutions&lt;/li>
+&lt;li>Providing support to the solution delivery team&lt;/li>
+&lt;li>Evaluating and assessing the performance of the solution&lt;/li>
+&lt;/ol>
+&lt;p>Applying my own experiences to these activities, I understood them as follows:&lt;/p>
+&lt;h4 id="for-12">For 1,2&lt;/h4>
+&lt;ul>
+&lt;li>Collecting information from stakeholders and conducting analysis.&lt;/li>
+&lt;li>Identifying the issues to be solved (why) from the analysis results and determining what solutions are available (what).&lt;/li>
+&lt;/ul>
+&lt;h4 id="for-3">For 3&lt;/h4>
+&lt;ul>
+&lt;li>Considering how to solve the identified why and what with the product team.&lt;/li>
+&lt;li>Deciding on the resolution method and evaluation criteria to determine how success will be measured.&lt;/li>
+&lt;/ul>
+&lt;h4 id="for-4">For 4&lt;/h4>
+&lt;ul>
+&lt;li>Regularly evaluating how well the solution meets the established criteria.&lt;/li>
+&lt;li>I recommend automating data collection and visualizing it with tools like Grafana for visibility.&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained business analysis based on my learning and experiences. Personally, I&amp;rsquo;ve understood that business analysis does not only target businesses and includes processes beyond analysis.&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide" target="_blank" rel="noopener"
+>Business analysis management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains availability management as defined in ITIL v4. I will also relate my own experiences to explain the processes involved in availability management.&lt;/p>
+&lt;h2 id="what-is-availability-management">What is Availability Management?&lt;/h2>
+&lt;p>Availability management involves activities to ensure the availability of a service. The objective of availability management is to ensure that the service delivers an agreed level of availability to meet the needs of customers and users.&lt;/p>
+&lt;h2 id="processes-in-availability-management">Processes in Availability Management&lt;/h2>
+&lt;p>There are two main processes in availability management:&lt;/p>
+&lt;ul>
+&lt;li>Establishing Service Availability Control&lt;/li>
+&lt;li>Analyzing and Improving Service Availability&lt;/li>
+&lt;/ul>
+&lt;h3 id="establishing-service-availability-control">Establishing Service Availability Control&lt;/h3>
+&lt;p>Establishing service availability control ensures the availability of a service. It is realized through the following steps:&lt;/p>
+&lt;ol>
+&lt;li>Identifying service availability requirements&lt;/li>
+&lt;li>Agreeing on service availability requirements&lt;/li>
+&lt;li>Deciding on availability measurement requirements&lt;/li>
+&lt;li>Designing availability metrics and reporting&lt;/li>
+&lt;/ol>
+&lt;p>Applying my own experiences to these processes, I understood them as follows:&lt;/p>
+&lt;ul>
+&lt;li>Identifying service availability requirements
+&lt;ul>
+&lt;li>Identifying the types of users and the business risks of service downtime.&lt;/li>
+&lt;li>For my service, which is an internal platform, I identified the impacts on various services using the platform.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Agreeing on service availability requirements
+&lt;ul>
+&lt;li>Agreeing on the service&amp;rsquo;s availability (e.g., 99% uptime) in the form of an SLA.&lt;/li>
+&lt;li>We also clarified downtime criteria and exceptions for uptime calculations.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Deciding on availability measurement requirements
+&lt;ul>
+&lt;li>As the availability requirements were agreed upon earlier, there were no specific measurement requirements.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Designing availability metrics and reporting
+&lt;ul>
+&lt;li>Primarily designed around the &amp;lsquo;downtime/uptime&amp;rsquo; formula.&lt;/li>
+&lt;li>For reporting, we created a dashboard to visualize the availability metrics.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="analyzing-and-improving-service-availability">Analyzing and Improving Service Availability&lt;/h3>
+&lt;p>This process, as the name suggests, involves analyzing and improving service availability. It is realized through the following steps:&lt;/p>
+&lt;ol>
+&lt;li>Analyzing service availability&lt;/li>
+&lt;li>Reporting on service availability&lt;/li>
+&lt;li>Planning and designing for service availability&lt;/li>
+&lt;/ol>
+&lt;p>Applying my own experiences to these processes, I understood them as follows:&lt;/p>
+&lt;ul>
+&lt;li>Analyzing service availability
+&lt;ul>
+&lt;li>Confirming that service availability is being achieved and compiling the data.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Reporting on service availability
+&lt;ul>
+&lt;li>Reflecting availability on a dashboard that is accessible to everyone.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Planning and designing for service availability
+&lt;ul>
+&lt;li>In case of incidents that affect availability, we formulated plans for prevention of recurrence.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide" target="_blank" rel="noopener"
+>Availability management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Create a Product Strategy</title><link>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article summarizes how to create a good product strategy, based on the book &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
+&lt;h2 id="background">Background&lt;/h2>
+&lt;p>As a product owner in my job, I took over a product from the previous owner. The product lacked a clear strategy and direction, prompting me to develop a new product strategy.&lt;/p>
+&lt;p>While developing the strategy, I realized that the term &amp;ldquo;strategy&amp;rdquo; is interpreted in various ways by different people, often used loosely in many contexts. To understand what constitutes a good strategy, I referred to &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
+&lt;h2 id="what-is-a-good-strategy">What is a Good Strategy?&lt;/h2>
+&lt;p>A good strategy identifies critical points where concerted efforts can significantly boost the effect of one’s actions. A strategy should show the direction for an organization to move forward.&lt;/p>
+&lt;p>A good strategy has three basic structures:&lt;/p>
+&lt;ul>
+&lt;li>Diagnosis&lt;/li>
+&lt;li>Guiding Policy&lt;/li>
+&lt;li>Actions&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/img-013-001-en.png"
+width="1798"
+height="774"
+srcset="https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/img-013-001-en_hu680e7b02c44958a4bc711ee8c4490ebe_136397_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/img-013-001-en_hu680e7b02c44958a4bc711ee8c4490ebe_136397_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Good Strategy&amp;rsquo;s Three Basic Structures"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="557px"
+>&lt;/p>
+&lt;h3 id="diagnosis">Diagnosis&lt;/h3>
+&lt;p>Diagnosis involves assessing the situation to identify the key challenges to address. A good diagnosis separates crucial issues from the complex mix of problems and simplifies them.&lt;/p>
+&lt;p>Most of the strategy work lies in figuring out what is happening. Gathering information is crucial. Although the book criticizes consultants&amp;rsquo; frameworks, I find them useful in organizing information after thorough collection.&lt;/p>
+&lt;p>In creating my product strategy, I used SWOT analysis and Impact Mapping to organize the current situation and the impact of existing strategies.&lt;/p>
+&lt;p>For more on these methods, refer to the following resources:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.innovation.co.jp/urumo/swot/" target="_blank" rel="noopener"
+>SWOT Analysis&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://amzn.asia/d/0FygsZ4" target="_blank" rel="noopener"
+>Impact Mapping&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="guiding-policy">Guiding Policy&lt;/h3>
+&lt;p>The guiding policy outlines how to approach the challenges identified in the diagnosis. A good policy is not about goals or visions but about how to face challenges and exclude other options. It focuses efforts on a decisive point to achieve a significant effect.&lt;/p>
+&lt;p>A good strategy clearly shows where resources will be allocated according to the strategy.&lt;/p>
+&lt;p>In my case, I defined the product direction based on the current situation and vision, focusing on specific target segments and values to offer.&lt;/p>
+&lt;h3 id="actions">Actions&lt;/h3>
+&lt;p>Actions are a coherent set of steps designed to execute the guiding policy. A strategy coordinates all actions to implement the policy effectively.&lt;/p>
+&lt;p>A good strategy includes guidelines for implementing actions.&lt;/p>
+&lt;h3 id="my-strategy">My Strategy&lt;/h3>
+&lt;p>Based on the above, I developed the following strategy (partially obscured as it was for my company):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">Reduce the new user cost of using xx function.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This simple strategy meets the three basic structures of a good strategy:&lt;/p>
+&lt;ul>
+&lt;li>Diagnosis
+&lt;ul>
+&lt;li>Identified increasing new users of xx as critical for the company&amp;rsquo;s benefit.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Guiding Policy
+&lt;ul>
+&lt;li>Decided to lower the onboarding cost to acquire new users.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Actions
+&lt;ul>
+&lt;li>Prioritized several approaches to realize the policy.&lt;/li>
+&lt;li>Although it could have included more action-oriented words, I decided on the above.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="what-is-a-bad-strategy">What is a Bad Strategy&lt;/h2>
+&lt;p>Finally, let&amp;rsquo;s touch on common patterns of bad strategies:&lt;/p>
+&lt;p>Characteristics of a Bad Strategy:&lt;/p>
+&lt;ul>
+&lt;li>Vague
+&lt;ul>
+&lt;li>Uses jargon or industry terms to obscure simple facts.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Avoids Significant Problems
+&lt;ul>
+&lt;li>Strategy should overcome difficult challenges and obstacles.&lt;/li>
+&lt;li>Strategies focusing only on attainability are bad.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Confuses Goals with Strategy
+&lt;ul>
+&lt;li>For instance, a 10% revenue increase is a goal, not a strategy.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Sets Wrong Strategic Objectives
+&lt;ul>
+&lt;li>Strategies set without sufficient investigation of causes and surroundings.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article summarized how to create a good product strategy based on &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo; Creating a good strategy might not happen at once. However, not having a strategy is like running blindly, unable to judge whether actions are successful or not.&lt;/p>
+&lt;p>It&amp;rsquo;s important to start with a basic strategy, constantly observe surroundings, and update the strategy to define the direction for your product and organization.&lt;/p></description></item></channel></rss>

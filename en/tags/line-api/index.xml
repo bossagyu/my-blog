@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LINE API on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/line-api/</link><description>Recent content in LINE API on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Thu, 07 Dec 2023 09:37:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/line-api/index.xml" rel="self" type="application/rss+xml"/><item><title>Registering and Using the LINE Messaging API</title><link>https://bossagyu.com/en/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/002-line-messaging-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>I thought of creating an application using LINE&amp;rsquo;s Bot, so first, I will make the Bot usable.&lt;br>
+This page introduces how to register for the LINE Messaging API and how to send messages from the command line using curl.&lt;/p>
+&lt;h2 id="using-the-messaging-api">Using the Messaging API&lt;/h2>
+&lt;p>Log in to &lt;a class="link" href="https://developers.line.biz/console/" target="_blank" rel="noopener"
+>LINE Developers&lt;/a> and create a provider.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-001.png"
+width="1542"
+height="947"
+srcset="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/002-line-messaging-api/img-002-001_hu0f14840654aed48d16eb2fc9422f6fa9_170581_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Provider Creation Screen"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="390px"
+>&lt;/p>
+&lt;p>A provider is (&lt;a class="link" href="https://developers.line.biz/ja/docs/line-developers-console/overview/#provider" target="_blank" rel="noopener"
+>Explanation&lt;/a>)&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">On the LINE Developers site, a service provider refers to individuals, companies, or organizations that provide services and obtain user information (service proprietor in LINE Mini Apps).
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>So, you can enter any string you like.&lt;/p>
+&lt;p>Then, create a new channel.
+&lt;img src="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-002.png"
+width="1393"
+height="1461"
+srcset="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/002-line-messaging-api/img-002-002_hu35721a5501bd4d5408347db79d1d688a_163848_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Channel creation screen"
+class="gallery-image"
+data-flex-grow="95"
+data-flex-basis="228px"
+>&lt;/p>
+&lt;p>Clicking the create button will establish a new channel.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-003.png"
+width="848"
+height="267"
+srcset="https://bossagyu.com/en/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/002-line-messaging-api/img-002-003_hudf15c356e8d7f64c7636ad582293d1a9_33429_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Channel creation results"
+class="gallery-image"
+data-flex-grow="317"
+data-flex-basis="762px"
+>&lt;/p>
+&lt;h1 id="posting-from-the-command-line">Posting from the Command Line&lt;/h1>
+&lt;p>Add friends by reading the QR code in the Messaging API settings.&lt;/p>
+&lt;p>Obtain the &amp;lsquo;Channel Access Token (Long-lived)&amp;rsquo; from the Messaging API settings.
+Get &amp;lsquo;Your User ID&amp;rsquo; from the channel basic settings.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TOKEN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;Channel Access Token (Long-lived)&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;Your User ID&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">UUID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>uuidgen &lt;span class="p">|&lt;/span> tr &lt;span class="s2">&amp;#34;[:upper:]&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;[:lower:]&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -v -X POST https://api.line.me/v2/bot/message/push &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s1">&amp;#39;Content-Type: application/json&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s2">&amp;#34;Authorization: Bearer &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">TOKEN&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-H &lt;span class="s2">&amp;#34;X-Line-Retry-Key: &amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-d &lt;span class="s2">&amp;#34;{
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;to\&amp;#34;: \&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">ID&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">\&amp;#34;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;messages\&amp;#34;:[
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;type\&amp;#34;:\&amp;#34;text\&amp;#34;,
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> \&amp;#34;text\&amp;#34;:\&amp;#34;Hello, world1\&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> ]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p></description></item></channel></rss>

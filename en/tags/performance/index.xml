@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>performance on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/performance/</link><description>Recent content in performance on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Fri, 22 Dec 2023 23:08:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to measure your blog&amp;rsquo;s performance using Lighthouse.&lt;/p>
+&lt;h2 id="what-is-lighthouse">What is Lighthouse?&lt;/h2>
+&lt;p>Lighthouse is a performance measurement tool for websites provided by Google. It&amp;rsquo;s available as a Google Chrome extension and can be used by installing the plugin.&lt;/p>
+&lt;h2 id="installing-lighthouse">Installing Lighthouse&lt;/h2>
+&lt;p>Install Lighthouse from the Chrome Web Store.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-001.png"
+width="3090"
+height="528"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-001_huebb24c65f9e0514e53794d84dae1d193_147708_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Chrome Store"
+class="gallery-image"
+data-flex-grow="585"
+data-flex-basis="1404px"
+>&lt;/p>
+&lt;p>Open the site you want to analyze and click on the Lighthouse icon.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-002.png"
+width="976"
+height="184"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-002_hu79a554b91c1fd5ce9f2d244e8889fd8e_12110_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Icon"
+class="gallery-image"
+data-flex-grow="530"
+data-flex-basis="1273px"
+>&lt;/p>
+&lt;p>Click on Generate report to start the analysis.&lt;br>
+This time, I ran it on my &lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" target="_blank" rel="noopener"
+>blog page&lt;/a>.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-003.png"
+width="546"
+height="1048"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-003_hu32cc9d1c5498eef6660862acfbb0c7a0_88803_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Execution Screen"
+class="gallery-image"
+data-flex-grow="52"
+data-flex-basis="125px"
+>&lt;/p>
+&lt;p>The results are displayed as follows, taking about 1 minute to complete.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-004.png"
+width="1756"
+height="906"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-004_hu5ee3cbd9121e8af4f867f831e4523042_214018_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Results"
+class="gallery-image"
+data-flex-grow="193"
+data-flex-basis="465px"
+>&lt;/p>
+&lt;h2 id="interpreting-the-results">Interpreting the Results&lt;/h2>
+&lt;h3 id="performance">Performance&lt;/h3>
+&lt;p>Evaluates web performance, like page loading and image display speeds. Clicking the See calculator link takes you to more details.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-005.png"
+width="2236"
+height="1222"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-005_hu09a21b450202618b8da67da25ceb5565_223078_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Performance"
+class="gallery-image"
+data-flex-grow="182"
+data-flex-basis="439px"
+>&lt;/p>
+&lt;h3 id="accessibility">Accessibility&lt;/h3>
+&lt;p>Checks whether all users can access content and navigate efficiently within the site. Scrolling down shows areas flagged by Accessibility.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-006.png"
+width="1790"
+height="1238"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-006_hu87f9c989c987a1b95b21e6ceb46b2c76_168048_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Accessibility"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="347px"
+>&lt;/p>
+&lt;p>It points out weak color contrast in the code snippets and missing descriptions in links.&lt;/p>
+&lt;p>However, the flagged content is not from my writing but depends on the template, so to fix this, it would be necessary to override the Hugo template.&lt;/p>
+&lt;h3 id="best-practices">Best Practices&lt;/h3>
+&lt;p>Tests the integrity of web pages. You can view the testing items in the results.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-007.png"
+width="962"
+height="1070"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-007_hub9685d9d8ccde516e384b3026e5fd960_91137_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse Best Practices"
+class="gallery-image"
+data-flex-grow="89"
+data-flex-basis="215px"
+>&lt;/p>
+&lt;h3 id="seo">SEO&lt;/h3>
+&lt;p>You can check if the page is optimized for search engine result rankings.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/009-light-house/img-009-008.png"
+width="957"
+height="1215"
+srcset="https://bossagyu.com/en/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/009-light-house/img-009-008_hu4f2424bc6d0c40fadc50e3b571a98160_118994_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Lighthouse SEO"
+class="gallery-image"
+data-flex-grow="78"
+data-flex-basis="189px"
+>&lt;/p>
+&lt;h3 id="progressive-web-app">Progressive Web App&lt;/h3>
+&lt;p>Checks if the loading speed of web pages on smartphones is optimized and if it&amp;rsquo;s suitable for PWAs. This wasn&amp;rsquo;t checked in this case.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>The article explained how to measure the performance of a blog using Lighthouse.
+Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p></description></item></channel></rss>
