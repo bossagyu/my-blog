@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ChatGPT on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/chatgpt/</link><description>Recent content in ChatGPT on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 31 Mar 2024 17:35:07 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/chatgpt/index.xml" rel="self" type="application/rss+xml"/><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ChatGPT on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/chatgpt/</link><description>Recent content in ChatGPT on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 14 May 2024 23:22:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/chatgpt/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to ChatGPT 4o</title><link>https://bossagyu.com/en/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="introduction-of-gpt-4o">Introduction of GPT-4o&lt;/h2>
+&lt;p>On May 13, 2024, OpenAI announced a new GPT model, ChatGPT-4o.&lt;/p>
+&lt;p>GPT-4o has the following improvements compared to previous models:&lt;/p>
+&lt;ul>
+&lt;li>Realization of natural conversation&lt;/li>
+&lt;li>Faster response time&lt;/li>
+&lt;li>Enhanced multilingual support&lt;/li>
+&lt;li>Higher reliability&lt;/li>
+&lt;/ul>
+&lt;p>Notably, the improvements in inference speed and quality allow it to perform exceptionally well in real-time dialogue systems, enabling smoother and more natural communication.&lt;/p>
+&lt;h2 id="real-time-dialogue-applications">Real-Time Dialogue Applications&lt;/h2>
+&lt;p>The following video demonstrates real-time interaction with ChatGPT-4o using a smartphone.&lt;/p>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/vgYi3Wr7v_g"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;p>As you can see in the video, ChatGPT-4o can respond at a level close to human conversation.&lt;br>
+This allows users to enjoy very natural conversations.&lt;/p>
+&lt;p>Previously, the ChatGPT series converted voice to text and then inputted it into GPT-4 for dialogue.&lt;br>
+This meant that emotional information such as tone was lost in the process.&lt;/p>
+&lt;p>However, ChatGPT-4o is trained directly from voice, taking into account information such as tone, leading to more natural conversations.&lt;br>
+Additionally, it returns responses directly from voice, eliminating the text interpretation step and allowing for faster responses.&lt;/p>
+&lt;h2 id="enhanced-multilingual-support">Enhanced Multilingual Support&lt;/h2>
+&lt;p>GPT-4o also enhances multilingual support.&lt;br>
+Previously, questions asked in English received high-accuracy responses, but questions in Japanese resulted in lower accuracy.&lt;/p>
+&lt;p>With the enhanced multilingual support, high-accuracy responses can now be obtained even in Japanese.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This time, we introduced ChatGPT-4o, announced by OpenAI.&lt;br>
+The accuracy of the ChatGPT model has remarkably improved, feeling more and more like human conversation.&lt;br>
+I believe that how well engineers can utilize generative AI will greatly affect productivity, so I will continue to monitor trends closely.&lt;/p>
+&lt;h2 id="related-information">Related Information&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
+>Hello ChatGPT-4o&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Unlike image generation models like Stable Diffusion, ChatGPT can also generate images. This guide explains how to do so.&lt;br>
 For those using the ChatGPT paid plan, images can be generated without any additional fees, allowing for the creation of commercially usable images with minimal effort.&lt;/p>
 &lt;p>This tutorial utilizes DALL-E, a feature of ChatGPT Plus, to generate images.
