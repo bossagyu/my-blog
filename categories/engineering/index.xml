@@ -1,4 +1,346 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 14 May 2024 23:22:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPT 4oの紹介</title><link>https://bossagyu.com/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="gpt-4oの登場">GPT-4oの登場&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 01 Sep 2024 17:53:57 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
+&lt;ul>
+&lt;li>PRCを実現するためにGoogleが開発したプロトコルの一つ&lt;/li>
+&lt;li>Protocol Bufferを使ってデータをシリアライズし、高速な通信を実現できる点が特徴&lt;/li>
+&lt;li>IDLを使ってあらかじめAPIの仕様を.protoファイルとして定義し、そこから、サーバ側&amp;amp;クライアント側に必要なソースコードを生成する。&lt;/li>
+&lt;/ul>
+&lt;p>REST と gRPCの違い&lt;/p>
+&lt;ul>
+&lt;li>RESTはリソース志向、RPCはメソッドの呼び出しが起点となり、データは副産物であるという考え方。&lt;/li>
+&lt;/ul>
+&lt;h2 id="利点と欠点">利点と欠点&lt;/h2>
+&lt;h3 id="利点">利点&lt;/h3>
+&lt;ul>
+&lt;li>HTTP/2による高パフォーマンス&lt;/li>
+&lt;li>Protocol Buffersによるデータ転送
+&lt;ul>
+&lt;li>IDLを書くことになるので、スキーマファーストで開発することになる&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>柔軟なストリーミング方式&lt;/li>
+&lt;/ul>
+&lt;h3 id="欠点">欠点&lt;/h3>
+&lt;ul>
+&lt;li>HTTP/2非対応&lt;/li>
+&lt;li>ブラウザの対応状況が不十分&lt;/li>
+&lt;li>言語によって機能の実装増強にばらつきがある&lt;/li>
+&lt;li>バイナリにシリアライズされると人間が読めない&lt;/li>
+&lt;li>RESTでも十分早い&lt;/li>
+&lt;/ul>
+&lt;h2 id="protファイル">.protファイル&lt;/h2>
+&lt;p>gRPCではシリアライズフォーマットとしてProtocol Buffersを利用する。&lt;br>
+&lt;code>.proto&lt;/code> を拡張子として持つファイル上にスキーマ定義を行い、 &lt;code>protoc&lt;/code> コマンド絵各言語用のコードを生成する。&lt;br>
+Protocol Buffersでは全ての値が型を持つ。型はスカラー型とメッセージ型に分けることができる。&lt;/p>
+&lt;h3 id="スカラー型">スカラー型&lt;/h3>
+&lt;ul>
+&lt;li>数値、文字列、真偽値、バイト配列&lt;/li>
+&lt;/ul>
+&lt;h3 id="メッセージ型">メッセージ型&lt;/h3>
+&lt;ul>
+&lt;li>複数のフィールドを持ったメッセージ型&lt;/li>
+&lt;li>メッセージ型は一つの .proto ファイルに複数定義することができる&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">message Person &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> int32 &lt;span class="nv">id&lt;/span> &lt;span class="o">=&lt;/span> 1&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> string &lt;span class="nv">name&lt;/span> &lt;span class="o">=&lt;/span> 2&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> string &lt;span class="nv">email&lt;/span> &lt;span class="o">=&lt;/span>3&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="grpcのquick-startを実施する">gRPCのQuick Startを実施する&lt;/h2>
+&lt;p>今回はPythonの環境を用いて、gRPCのQuick Startを実施する。&lt;br>
+&lt;a class="link" href="https://grpc.io/docs/languages/python/quickstart/" target="_blank" rel="noopener"
+>https://grpc.io/docs/languages/python/quickstart/&lt;/a>&lt;/p>
+&lt;p>起動に必要なPythonの環境を整える。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python -m pip install grpcio
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -m pip install grpcio-tools
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>サンプルコードのダウンロード&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git clone -b v1.64.0 --depth &lt;span class="m">1&lt;/span> --shallow-submodules https://github.com/grpc/grpc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> grpc/examples/python/helloworld
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>サーバを起動する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python greeter_server.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 出力&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Server started, listening on &lt;span class="m">50051&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>別のターミナルを起動し、クライアントを起動する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python greeter_client.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## レスポンス&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Will try to greet world ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Greeter client received: Hello, you!
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>gRPCのクライアントとサーバを用いて通信を行うことができました。&lt;/p>
+&lt;h2 id="proto-ファイルを変更してみる">.proto ファイルを変更してみる&lt;/h2>
+&lt;p>今回は、&lt;code>helloworld.proto&lt;/code> ファイルを変更して、新しいメソッドを追加してみます。&lt;/p>
+&lt;p>&lt;code>helloworld.prot&lt;/code> ファイルが格納されている&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> grpc/examples/protos
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以下のように修正する&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">syntax&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;proto3&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">option&lt;/span> &lt;span class="n">java_multiple_files&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">option&lt;/span> &lt;span class="n">java_package&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;io.grpc.examples.helloworld&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">option&lt;/span> &lt;span class="n">java_outer_classname&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;HelloWorldProto&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">option&lt;/span> &lt;span class="n">objc_class_prefix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;HLW&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">package&lt;/span> &lt;span class="n">helloworld&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">//&lt;/span> &lt;span class="n">The&lt;/span> &lt;span class="n">greeting&lt;/span> &lt;span class="n">service&lt;/span> &lt;span class="n">definition&lt;/span>&lt;span class="o">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">service&lt;/span> &lt;span class="n">Greeter&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">//&lt;/span> &lt;span class="n">Sends&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="n">greeting&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">rpc&lt;/span> &lt;span class="n">SayHello&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">HelloRequest&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">returns&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">HelloReply&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">//&lt;/span> &lt;span class="n">以下の1行を追加&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">rpc&lt;/span> &lt;span class="n">SayHelloAgain&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">HelloRequest&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">returns&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">HelloReply&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">rpc&lt;/span> &lt;span class="n">SayHelloStreamReply&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">HelloRequest&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">returns&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">stream&lt;/span> &lt;span class="n">HelloReply&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">rpc&lt;/span> &lt;span class="n">SayHelloBidiStream&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">stream&lt;/span> &lt;span class="n">HelloRequest&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">returns&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">stream&lt;/span> &lt;span class="n">HelloReply&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">//&lt;/span> &lt;span class="n">The&lt;/span> &lt;span class="n">request&lt;/span> &lt;span class="n">message&lt;/span> &lt;span class="n">containing&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="n">user&lt;/span>&lt;span class="s1">&amp;#39;s name.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">message&lt;/span> &lt;span class="n">HelloRequest&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">string&lt;/span> &lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">//&lt;/span> &lt;span class="n">The&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="n">message&lt;/span> &lt;span class="n">containing&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="n">greetings&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">message&lt;/span> &lt;span class="n">HelloReply&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">string&lt;/span> &lt;span class="n">message&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>grpcのコードを生成する&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> examples/python/helloworld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -m grpc_tools.protoc -I../../protos --python_out&lt;span class="o">=&lt;/span>. --pyi_out&lt;span class="o">=&lt;/span>. --grpc_python_out&lt;span class="o">=&lt;/span>. ../../protos/helloworld.proto
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以下のファイルが再作成されている。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">ls -l
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r--@ &lt;span class="m">1&lt;/span> xx xx &lt;span class="m">1823&lt;/span> &lt;span class="m">9&lt;/span> &lt;span class="m">1&lt;/span> 18:12 helloworld_pb2.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r--@ &lt;span class="m">1&lt;/span> xx xx &lt;span class="m">578&lt;/span> &lt;span class="m">9&lt;/span> &lt;span class="m">1&lt;/span> 18:12 helloworld_pb2.pyi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r--@ &lt;span class="m">1&lt;/span> xx xx &lt;span class="m">7018&lt;/span> &lt;span class="m">9&lt;/span> &lt;span class="m">1&lt;/span> 18:12 helloworld_pb2_grpc.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>更新される &lt;code>_pd&lt;/code> ファイルとは、protocol Buuffersの定義クラスが自動で生成されており基本的にはさわらない。&lt;/p>
+&lt;p>greeter_server.py を更新する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">concurrent&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">futures&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">logging&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">grpc&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">helloworld_pb2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">helloworld_pb2_grpc&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Greeter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">helloworld_pb2_grpc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">GreeterServicer&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">SayHello&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">helloworld_pb2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">HelloReply&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Hello, &lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s2">!&amp;#34;&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 以下の関数を追加&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">SayHelloAgain&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">helloworld_pb2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">HelloReply&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Hello Again, &lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s2">!&amp;#34;&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">serve&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;50051&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">grpc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">server&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">futures&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ThreadPoolExecutor&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">max_workers&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">helloworld_pb2_grpc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add_GreeterServicer_to_server&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Greeter&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="n">server&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add_insecure_port&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;[::]:&amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Server started, listening on &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">wait_for_termination&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">logging&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">basicConfig&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">serve&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>greeter_client.py を更新する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># NOTE(gRPC Python Team): .close() is possible on a channel and should be&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># used in circumstances in which the with statement does not fit the needs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># of the code.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Will try to greet world ...&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">with&lt;/span> &lt;span class="n">grpc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">insecure_channel&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;localhost:50051&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">channel&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">stub&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">helloworld_pb2_grpc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">GreeterStub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">channel&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">stub&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SayHello&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">helloworld_pb2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">HelloRequest&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;you&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Greeter client received: &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">stub&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SayHelloAgain&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">helloworld_pb2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">HelloRequest&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;you&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Greeter client received: &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>serverを再起動し、clientを実行する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python greeter_server.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python greeter_client.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 出力&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Greeter client received: Hello, you!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Greeter client received: Hello Again, you!
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>追加したメソッドが正常に動作していることが確認できました。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はgRPCについて調査の調査と公式ドキュメントのチュートリアルを行いました。&lt;br>
+gRPCはスキーマファーストで開発することができ、HTTP/2による高パフォーマンス通信が可能であることら、最近ではREST APIの代替手段として注目されている技術ですので、ぜひ抑えておきたいです。&lt;/p></description></item><item><title>ChatGPT 4oの紹介</title><link>https://bossagyu.com/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="gpt-4oの登場">GPT-4oの登場&lt;/h2>
 &lt;p>2024年5月13日に、OpenAI社より新しいGPTモデル、ChatGPT-4oが発表されました。&lt;/p>
 &lt;p>GPT-4oは従来のモデルと比較して以下の内容が向上しています。&lt;/p>
 &lt;ul>
