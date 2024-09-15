@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 01 Sep 2024 17:53:57 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 15 Sep 2024 16:52:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介します。&lt;/p>
+&lt;h2 id="go言語のインストール">Go言語のインストール&lt;/h2>
+&lt;p>brewを使ってGo言語をインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&amp;gt; brew install go
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>バージョンを確認&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&amp;gt; go version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go version go1.21.3 darwin/arm64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="hello-world-の実行">Hello World の実行&lt;/h2>
+&lt;p>以下のコードを &lt;code>main.go&lt;/code> として保存します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-go" data-lang="go">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">package&lt;/span> &lt;span class="nx">main&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="s">&amp;#34;fmt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">func&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">fmt&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">Printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Hello World\n&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>実行する&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&amp;gt; go run hello.go
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hello World
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>バイナリをビルドして実行する&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&amp;gt; go build hello.go
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; ls
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hello* hello.go
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; ./hello
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hello World
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p></description></item><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
 &lt;ul>
 &lt;li>PRCを実現するためにGoogleが開発したプロトコルの一つ&lt;/li>
 &lt;li>Protocol Bufferを使ってデータをシリアライズし、高速な通信を実現できる点が特徴&lt;/li>
