@@ -1,4 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 15 Sep 2024 16:52:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 18 Nov 2024 09:36:05 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>セレモニーの見直しによるチームパフォーマンス向上</title><link>https://bossagyu.com/blog/028-scrum-ceremony/</link><pubDate>Mon, 18 Nov 2024 09:36:05 +0900</pubDate><guid>https://bossagyu.com/blog/028-scrum-ceremony/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Scrumを採用しているチームでは、セレモニーを行います。
+セレモニーはチームメンバーが集まり、スプリントの進捗や課題を共有し、次のスプリントに向けての計画を立てるための重要な場です。
+しかし、Scrumを惰性で続けてしまっているとセレモニーが長引いたり、効果的な議論が行われなかったりすることがあります。&lt;/p>
+&lt;p>この記事では、セレモニーの見直しによってチームのパフォーマンスを向上させる方法について考察します。&lt;/p>
+&lt;h2 id="セレモニーの目的を明らかにする">セレモニーの目的を明らかにする&lt;/h2>
+&lt;p>各セレモニーの目的は以下の通りです。&lt;br>
+もっとも大切なことはこの目的を達成するために必要な議論がなされるアジェンダになっていることです。
+目的については&lt;a class="link" href="https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Japanese.pdf" target="_blank" rel="noopener"
+>スクラムガイド&lt;/a>を参考に記載していますが、やや筆者の意訳が含まれています。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>セレモニー&lt;/th>
+&lt;th>目的&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>デイリースクラム&lt;/td>
+&lt;td>スプリントゴールを達成するために、チームの一日の計画を立てる。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>スプリントレビュー&lt;/td>
+&lt;td>スプリントの成果を検査し、今後の適応を決定すること。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>プロダクトバックログリファインメント&lt;/td>
+&lt;td>プロダクトバックログを整理し、プロダクトゴールを達成するための計画を立てる。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>スプリントレトロスペクティブ&lt;/td>
+&lt;td>スプリントの振り返りを行い、品質と高価を高めるための適応を計画もしくは実行する。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>スプリントプランニング&lt;/td>
+&lt;td>次のスプリント期間中の作業計画を立てる&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="タイムボックスの徹底">タイムボックスの徹底&lt;/h2>
+&lt;p>セレモニーを効率的に行うためには、タイムボックスを徹底することが重要です。
+タイムボックスとは、セレモニーの時間を決めてその時間内に議論を終えるというルールのことです。&lt;/p>
+&lt;p>セレモニーではタイムボックスを超えないようにし、超えてしまった場合はなぜ超えてしまったのか、超えないようにはどうしていくと良いのかを振り返ることが重要です。&lt;/p>
+&lt;h2 id="セレモニーごとの効率的な議論を行うためのポイント">セレモニーごとの効率的な議論を行うためのポイント&lt;/h2>
+&lt;p>セレモニーのうち特に時間を取られがちなものについて、効率的な議論を行うためのポイントを以下に示します。&lt;/p>
+&lt;h3 id="デイリースクラム">デイリースクラム&lt;/h3>
+&lt;p>デイリースクラムではチームが今日何をするべきかが明確になるようにすることに主眼を置きます。&lt;br>
+それ以外の議論や報告についてはデイリースクラムとは呼ばずに関係者を絞り別途時間を設けるようにします。&lt;br>
+チームメンバー全員の時間を使って行う価値があるかどうかを常に意識することが重要です。&lt;/p>
+&lt;h4 id="ポイント">ポイント&lt;/h4>
+&lt;ul>
+&lt;li>15分を超えないようにする&lt;/li>
+&lt;li>報告内容を絞る&lt;/li>
+&lt;li>議論が発生する場合は、別途時間を設け議論を行うというルールにする&lt;/li>
+&lt;/ul>
+&lt;h3 id="スプリントレビュー">スプリントレビュー&lt;/h3>
+&lt;p>スプリントレビューではステークホルダーに対してフィードバックをもらい、次のスプリントに向けての計画を立てるための情報を得ることが目的です。
+漫然とインクリメントを見せるだけではなく、事前にフィードバックを得たい内容を明確にしておくことが重要です。&lt;/p>
+&lt;h4 id="ポイント-1">ポイント&lt;/h4>
+&lt;ul>
+&lt;li>レビューの準備を事前に行う&lt;/li>
+&lt;li>誰に、どのようなフィードバック得たいのか事前に明らかにしておく（仮説を立てる）&lt;/li>
+&lt;/ul>
+&lt;h3 id="プロダクトバックログリファインメント">プロダクトバックログリファインメント&lt;/h3>
+&lt;p>プロダクトバックログリファインメントは一般的には最大でスプリントの10%程度の時間を割くことが推奨されています。&lt;br>
+特に見積もりに時間がかかることが多いのである程度見切りをつけて行うことが大切です。&lt;/p>
+&lt;h4 id="ポイント-2">ポイント&lt;/h4>
+&lt;ul>
+&lt;li>バックログアイテムに対する詳細な議論をしすぎない。
+&lt;ul>
+&lt;li>次スプリント以降のアイテムはすぐにやらない可能性もあるので、詳細な議論は不要です。スプリント計画のタイミングで実施しましょう。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>見積もりについては相対見積もりを採用し、細かい数値にこだわらない
+&lt;ul>
+&lt;li>不確実性のコーンコーンが示す通り、見積もりは基本的にはブレるものであり、細かい数値にこだわる必要はありません。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はセレモニーを効率的に進める方法について説明しました。&lt;br>
+セレモニーを効率的に進めることで、チームのパフォーマンスを向上させることができます。&lt;/p></description></item><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介します。&lt;/p>
 &lt;h2 id="go言語のインストール">Go言語のインストール&lt;/h2>
 &lt;p>brewを使ってGo言語をインストールします。&lt;/p>

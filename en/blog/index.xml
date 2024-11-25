@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 15 Sep 2024 16:52:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up a Go Development Environment on Mac and Running Hello World</title><link>https://bossagyu.com/en/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-go-environment-construction/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 18 Nov 2024 09:36:05 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Improving Team Performance by Revisiting Scrum Ceremonies</title><link>https://bossagyu.com/en/blog/028-scrum-ceremony/</link><pubDate>Mon, 18 Nov 2024 09:36:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/028-scrum-ceremony/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>In Scrum teams, ceremonies are essential for aligning team members, sharing progress, addressing challenges, and planning for the next sprint. However, when these ceremonies are conducted out of habit without revisiting their purpose, they can become time-consuming and ineffective.&lt;/p>
+&lt;p>This article explores ways to improve team performance by revisiting and optimizing Scrum ceremonies.&lt;/p>
+&lt;h2 id="clarify-the-purpose-of-each-ceremony">Clarify the Purpose of Each Ceremony&lt;/h2>
+&lt;p>Each Scrum ceremony serves a distinct purpose, and ensuring that the agenda aligns with this purpose is crucial. Below are the purposes of the main Scrum ceremonies, based on the &lt;a class="link" href="https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf" target="_blank" rel="noopener"
+>Scrum Guide&lt;/a> with some interpretive notes.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Ceremony&lt;/th>
+&lt;th>Purpose&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Daily Scrum&lt;/strong>&lt;/td>
+&lt;td>Plan the day to achieve the sprint goal.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Sprint Review&lt;/strong>&lt;/td>
+&lt;td>Inspect the sprint&amp;rsquo;s outcome and adapt for future work.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Product Backlog Refinement&lt;/strong>&lt;/td>
+&lt;td>Organize the backlog to support achieving the product goal.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Sprint Retrospective&lt;/strong>&lt;/td>
+&lt;td>Reflect on the sprint to identify improvements for quality and effectiveness.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Sprint Planning&lt;/strong>&lt;/td>
+&lt;td>Define the work to be completed during the next sprint.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="enforce-timeboxing">Enforce Timeboxing&lt;/h2>
+&lt;p>Adhering to timeboxes is vital for maintaining efficient ceremonies. Timeboxing limits the duration of meetings to a set timeframe, ensuring focus and productivity. If a ceremony exceeds its timebox, reflect on why and plan adjustments to prevent recurrence.&lt;/p>
+&lt;h2 id="tips-for-efficient-discussions-in-specific-ceremonies">Tips for Efficient Discussions in Specific Ceremonies&lt;/h2>
+&lt;p>Certain ceremonies, like the Daily Scrum, Sprint Review, and Product Backlog Refinement, often consume more time than necessary. Here are some strategies to enhance their effectiveness.&lt;/p>
+&lt;h3 id="daily-scrum">Daily Scrum&lt;/h3>
+&lt;p>The Daily Scrum should focus on clarifying what the team needs to accomplish that day. Any other discussions should be deferred to smaller, focused meetings involving only relevant members.&lt;/p>
+&lt;h4 id="tips">Tips:&lt;/h4>
+&lt;ul>
+&lt;li>Keep it under &lt;strong>15 minutes&lt;/strong>.&lt;/li>
+&lt;li>Limit reporting to essential information.&lt;/li>
+&lt;li>Defer in-depth discussions to separate, focused sessions.&lt;/li>
+&lt;/ul>
+&lt;h3 id="sprint-review">Sprint Review&lt;/h3>
+&lt;p>The Sprint Review aims to gather feedback from stakeholders to guide future planning. Prepare for the session by clarifying what feedback is needed and from whom.&lt;/p>
+&lt;h4 id="tips-1">Tips:&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>Prepare in advance&lt;/strong> to showcase progress effectively.&lt;/li>
+&lt;li>Clearly define what feedback you want and why.&lt;/li>
+&lt;/ul>
+&lt;h3 id="product-backlog-refinement">Product Backlog Refinement&lt;/h3>
+&lt;p>Product Backlog Refinement should ideally take up no more than 10% of the sprint duration. Avoid delving too deeply into items that are not imminent, and focus instead on high-priority tasks.&lt;/p>
+&lt;h4 id="tips-2">Tips:&lt;/h4>
+&lt;ul>
+&lt;li>Avoid excessive detail on future backlog items; focus on what&amp;rsquo;s next.&lt;/li>
+&lt;li>Use &lt;strong>relative estimation&lt;/strong> techniques and avoid overly precise estimates, acknowledging inherent uncertainty.&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article discussed methods to conduct Scrum ceremonies more efficiently, ultimately improving team performance. By enforcing timeboxes, aligning discussions with ceremony objectives, and focusing on value-driven conversations, teams can optimize their workflows and deliver better results.&lt;/p></description></item><item><title>Setting Up a Go Development Environment on Mac and Running Hello World</title><link>https://bossagyu.com/en/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-go-environment-construction/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide introduces how to quickly set up a Go development environment on Mac and run a Hello World program.&lt;/p>
 &lt;h2 id="installing-go">Installing Go&lt;/h2>
 &lt;p>Install Go using Homebrew.&lt;/p>
