@@ -76,7 +76,187 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p></description></item><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
+&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p></description></item><item><title>macでparquetファイルを読む方法</title><link>https://bossagyu.com/blog/031-read-parquet-file/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/031-read-parquet-file/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>macでparquetファイルをコマンドラインで簡単に読む方法を紹介します。&lt;/p>
+&lt;h2 id="parquet-cliを使って読む">parquet-cliを使って読む&lt;/h2>
+&lt;p>今回は Feastのサンプルで提供されている&lt;a class="link" href="https://github.com/feast-dev/feast/tree/master/examples/podman_local/feature_repo/data" target="_blank" rel="noopener"
+>Parquet&lt;/a>ファイルを読んでみます。&lt;/p>
+&lt;p>parquet-cliをbrewでmacにインストールする。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">brew install parquet-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>meta情報を確認する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">$ parquet meta driver_stats.parquet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">File path: driver_stats.parquet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Created by: parquet-cpp-arrow version 18.1.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Properties:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> pandas: {&amp;#34;index_columns&amp;#34;: [{&amp;#34;kind&amp;#34;: &amp;#34;range&amp;#34;, &amp;#34;name&amp;#34;: null, &amp;#34;start&amp;#34;: 0, &amp;#34;stop&amp;#34;: 1807, &amp;#34;step&amp;#34;: 1}], &amp;#34;column_indexes&amp;#34;: [{&amp;#34;name&amp;#34;: null, &amp;#34;field_name&amp;#34;: null, &amp;#34;pandas_type&amp;#34;: &amp;#34;unicode&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;object&amp;#34;, &amp;#34;metadata&amp;#34;: {&amp;#34;encoding&amp;#34;: &amp;#34;UTF-8&amp;#34;}}], &amp;#34;columns&amp;#34;: [{&amp;#34;name&amp;#34;: &amp;#34;event_timestamp&amp;#34;, &amp;#34;field_name&amp;#34;: &amp;#34;event_timestamp&amp;#34;, &amp;#34;pandas_type&amp;#34;: &amp;#34;datetimetz&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;datetime64[ns]&amp;#34;, &amp;#34;metadata&amp;#34;: {&amp;#34;timezone&amp;#34;: &amp;#34;UTC&amp;#34;}}, {&amp;#34;name&amp;#34;: &amp;#34;driver_id&amp;#34;, &amp;#34;field_name&amp;#34;: &amp;#34;driver_id&amp;#34;, &amp;#34;pandas_type&amp;#34;: &amp;#34;int64&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;int64&amp;#34;, &amp;#34;metadata&amp;#34;: null}, {&amp;#34;name&amp;#34;: &amp;#34;conv_rate&amp;#34;, &amp;#34;field_name&amp;#34;: &amp;#34;conv_rate&amp;#34;, &amp;#34;pandas_type&amp;#34;: &amp;#34;float32&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;float32&amp;#34;, &amp;#34;metadata&amp;#34;: null}, {&amp;#34;name&amp;#34;: &amp;#34;acc_rate&amp;#34;, &amp;#34;field_name&amp;#34;: &amp;#34;acc_rate&amp;#34;, &amp;#34;pandas_type&amp;#34;: &amp;#34;float32&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;float32&amp;#34;, &amp;#34;metadata&amp;#34;: null}, {&amp;#34;name&amp;#34;: &amp;#34;avg_daily_trips&amp;#34;, &amp;#34;field_name&amp;#34;: &amp;#34;avg_daily_trips&amp;#34;, &amp;#34;pandas_type&amp;#34;: &amp;#34;int32&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;int32&amp;#34;, &amp;#34;metadata&amp;#34;: null}, {&amp;#34;name&amp;#34;: &amp;#34;created&amp;#34;, &amp;#34;field_name&amp;#34;: &amp;#34;created&amp;#34;, &amp;#34;pandas_type&amp;#34;: &amp;#34;datetime&amp;#34;, &amp;#34;numpy_type&amp;#34;: &amp;#34;datetime64[us]&amp;#34;, &amp;#34;metadata&amp;#34;: null}], &amp;#34;creator&amp;#34;: {&amp;#34;library&amp;#34;: &amp;#34;pyarrow&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;18.1.0&amp;#34;}, &amp;#34;pandas_version&amp;#34;: &amp;#34;2.2.3&amp;#34;}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ARROW:schema: /////xgGAAAQAAAAAAAKAA4ABgAFAAgACgAAAAABBAAQAAAAAAAKAAwAAAAEAAgACgAAAHAEAAAEAAAAAQAAAAwAAAAIAAwABAAIAAgAAABIBAAABAAAADsEAAB7ImluZGV4X2NvbHVtbnMiOiBbeyJraW5kIjogInJhbmdlIiwgIm5hbWUiOiBudWxsLCAic3RhcnQiOiAwLCAic3RvcCI6IDE4MDcsICJzdGVwIjogMX1dLCAiY29sdW1uX2luZGV4ZXMiOiBbeyJuYW1lIjogbnVsbCwgImZpZWxkX25hbWUiOiBudWxsLCAicGFuZGFzX3R5cGUiOiAidW5pY29kZSIsICJudW1weV90eXBlIjogIm9iamVjdCIsICJtZXRhZGF0YSI6IHsiZW5jb2RpbmciOiAiVVRGLTgifX1dLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAiZXZlbnRfdGltZXN0YW1wIiwgImZpZWxkX25hbWUiOiAiZXZlbnRfdGltZXN0YW1wIiwgInBhbmRhc190eXBlIjogImRhdGV0aW1ldHoiLCAibnVtcHlfdHlwZSI6ICJkYXRldGltZTY0W25zXSIsICJtZXRhZGF0YSI6IHsidGltZXpvbmUiOiAiVVRDIn19LCB7Im5hbWUiOiAiZHJpdmVyX2lkIiwgImZpZWxkX25hbWUiOiAiZHJpdmVyX2lkIiwgInBhbmRhc190eXBlIjogImludDY0IiwgIm51bXB5X3R5cGUiOiAiaW50NjQiLCAibWV0YWRhdGEiOiBudWxsfSwgeyJuYW1lIjogImNvbnZfcmF0ZSIsICJmaWVsZF9uYW1lIjogImNvbnZfcmF0ZSIsICJwYW5kYXNfdHlwZSI6ICJmbG9hdDMyIiwgIm51bXB5X3R5cGUiOiAiZmxvYXQzMiIsICJtZXRhZGF0YSI6IG51bGx9LCB7Im5hbWUiOiAiYWNjX3JhdGUiLCAiZmllbGRfbmFtZSI6ICJhY2NfcmF0ZSIsICJwYW5kYXNfdHlwZSI6ICJmbG9hdDMyIiwgIm51bXB5X3R5cGUiOiAiZmxvYXQzMiIsICJtZXRhZGF0YSI6IG51bGx9LCB7Im5hbWUiOiAiYXZnX2RhaWx5X3RyaXBzIiwgImZpZWxkX25hbWUiOiAiYXZnX2RhaWx5X3RyaXBzIiwgInBhbmRhc190eXBlIjogImludDMyIiwgIm51bXB5X3R5cGUiOiAiaW50MzIiLCAibWV0YWRhdGEiOiBudWxsfSwgeyJuYW1lIjogImNyZWF0ZWQiLCAiZmllbGRfbmFtZSI6ICJjcmVhdGVkIiwgInBhbmRhc190eXBlIjogImRhdGV0aW1lIiwgIm51bXB5X3R5cGUiOiAiZGF0ZXRpbWU2NFt1c10iLCAibWV0YWRhdGEiOiBudWxsfV0sICJjcmVhdG9yIjogeyJsaWJyYXJ5IjogInB5YXJyb3ciLCAidmVyc2lvbiI6ICIxOC4xLjAifSwgInBhbmRhc192ZXJzaW9uIjogIjIuMi4zIn0ABgAAAHBhbmRhcwAABgAAACwBAADcAAAApAAAAHAAAAA0AAAABAAAAPz+//8AAAEKEAAAABgAAAAEAAAAAAAAAAcAAABjcmVhdGVkAGr///8AAAIAKP///wAAAQIQAAAAIAAAAAQAAAAAAAAADwAAAGF2Z19kYWlseV90cmlwcwBo////AAAAASAAAABg////AAABAxAAAAAcAAAABAAAAAAAAAAIAAAAYWNjX3JhdGUAAAAA0v///wAAAQCQ////AAABAxAAAAAgAAAABAAAAAAAAAAJAAAAY29udl9yYXRlAAYACAAGAAYAAAAAAAEAxP///wAAAQIQAAAAJAAAAAQAAAAAAAAACQAAAGRyaXZlcl9pZAAAAAgADAAIAAcACAAAAAAAAAFAAAAAEAAUAAgABgAHAAwAAAAQABAAAAAAAAEKEAAAACgAAAAEAAAAAAAAAA8AAABldmVudF90aW1lc3RhbXAACAAMAAYACAAIAAAAAAADAAQAAAADAAAAVVRDAAAAAAA=
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Schema:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">message schema {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> optional int64 event_timestamp (TIMESTAMP(NANOS,true));
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> optional int64 driver_id;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> optional float conv_rate;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> optional float acc_rate;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> optional int32 avg_daily_trips;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> optional int64 created (TIMESTAMP(MICROS,false));
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Row group 0: count: 1807 16.88 B records start: 4 total(compressed): 29.796 kB total(uncompressed):29.760 kB
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--------------------------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> type encodings count avg size nulls min / max
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">event_timestamp INT64 S _ R 1807 2.78 B 0 &amp;#34;2021-04-12T07:00:00.00000...&amp;#34; / &amp;#34;2024-12-28T14:00:00.00000...&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">driver_id INT64 S _ R 1807 0.07 B 0 &amp;#34;1001&amp;#34; / &amp;#34;1005&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">conv_rate FLOAT S _ R 1807 5.42 B 0 &amp;#34;1.9221554E-4&amp;#34; / &amp;#34;0.9998668&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">acc_rate FLOAT S _ R 1807 5.42 B 0 &amp;#34;2.1329636E-4&amp;#34; / &amp;#34;0.99993944&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">avg_daily_trips INT32 S _ R 1807 3.14 B 0 &amp;#34;0&amp;#34; / &amp;#34;999&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">created INT64 S _ R 1807 0.05 B 0 &amp;#34;2024-12-28T15:20:28.266000&amp;#34; / &amp;#34;2024-12-28T15:20:28.266000&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>headで中を見る。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">$ parquet head driver_stats.parquet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734102000000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.27734742, &amp;#34;acc_rate&amp;#34;: 0.7152132, &amp;#34;avg_daily_trips&amp;#34;: 823, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734105600000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.57354224, &amp;#34;acc_rate&amp;#34;: 0.9831811, &amp;#34;avg_daily_trips&amp;#34;: 851, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734109200000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.3287562, &amp;#34;acc_rate&amp;#34;: 0.6172164, &amp;#34;avg_daily_trips&amp;#34;: 116, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734112800000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.045716193, &amp;#34;acc_rate&amp;#34;: 0.032996926, &amp;#34;avg_daily_trips&amp;#34;: 741, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734116400000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.12863782, &amp;#34;acc_rate&amp;#34;: 0.8951942, &amp;#34;avg_daily_trips&amp;#34;: 534, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734120000000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.9555806, &amp;#34;acc_rate&amp;#34;: 0.62216556, &amp;#34;avg_daily_trips&amp;#34;: 216, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734123600000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.75297666, &amp;#34;acc_rate&amp;#34;: 0.37602386, &amp;#34;avg_daily_trips&amp;#34;: 954, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734127200000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.46957988, &amp;#34;acc_rate&amp;#34;: 0.6454945, &amp;#34;avg_daily_trips&amp;#34;: 360, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734130800000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.6702387, &amp;#34;acc_rate&amp;#34;: 0.36532214, &amp;#34;avg_daily_trips&amp;#34;: 396, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#34;event_timestamp&amp;#34;: 1734134400000000000, &amp;#34;driver_id&amp;#34;: 1005, &amp;#34;conv_rate&amp;#34;: 0.019627139, &amp;#34;acc_rate&amp;#34;: 0.528229, &amp;#34;avg_daily_trips&amp;#34;: 833, &amp;#34;created&amp;#34;: 1735399228266000}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>スキーマの確認。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">$ parquet schema driver_stats.parquet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : &amp;#34;record&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;schema&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;fields&amp;#34; : [ {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;event_timestamp&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : [ &amp;#34;null&amp;#34;, &amp;#34;long&amp;#34; ],
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;default&amp;#34; : null
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }, {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;driver_id&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : [ &amp;#34;null&amp;#34;, &amp;#34;long&amp;#34; ],
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;default&amp;#34; : null
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }, {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;conv_rate&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : [ &amp;#34;null&amp;#34;, &amp;#34;float&amp;#34; ],
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;default&amp;#34; : null
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }, {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;acc_rate&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : [ &amp;#34;null&amp;#34;, &amp;#34;float&amp;#34; ],
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;default&amp;#34; : null
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }, {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;avg_daily_trips&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : [ &amp;#34;null&amp;#34;, &amp;#34;int&amp;#34; ],
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;default&amp;#34; : null
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }, {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;name&amp;#34; : &amp;#34;created&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : [ &amp;#34;null&amp;#34;, {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;type&amp;#34; : &amp;#34;long&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;logicalType&amp;#34; : &amp;#34;local-timestamp-micros&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> } ],
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;default&amp;#34; : null
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> } ]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>macでparquetファイルを簡単に読む方法を紹介しました。&lt;/p></description></item><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
 &lt;ul>
 &lt;li>PRCを実現するためにGoogleが開発したプロトコルの一つ&lt;/li>
 &lt;li>Protocol Bufferを使ってデータをシリアライズし、高速な通信を実現できる点が特徴&lt;/li>
