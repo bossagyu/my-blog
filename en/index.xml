@@ -1,4 +1,85 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 18 Nov 2024 09:36:05 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Improving Team Performance by Revisiting Scrum Ceremonies</title><link>https://bossagyu.com/en/blog/028-scrum-ceremony/</link><pubDate>Mon, 18 Nov 2024 09:36:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/028-scrum-ceremony/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 01 Jan 2025 14:39:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article introduces how to set up a Python development environment on Mac using UV.&lt;/p>
+&lt;h2 id="what-is-uv">What is UV?&lt;/h2>
+&lt;p>UV is a package management tool announced in mid-2024.&lt;br>
+It is written in Rust and is characterized by faster performance compared to other package managers.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/032-python-uv/img-032-001.png"
+width="585"
+height="134"
+srcset="https://bossagyu.com/en/blog/032-python-uv/img-032-001_hud269bb2e4d14314d6b8cb2d2b3093c85_13302_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/032-python-uv/img-032-001_hud269bb2e4d14314d6b8cb2d2b3093c85_13302_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Comparison with Other Package Managers"
+class="gallery-image"
+data-flex-grow="436"
+data-flex-basis="1047px"
+>&lt;/p>
+&lt;p>For official explanations, please refer to &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
+>this site&lt;/a>.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;h3 id="installing-uv">Installing UV&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">curl -LsSf https://astral.sh/uv/install.sh &lt;span class="p">|&lt;/span> sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Add UV to your PATH:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> &lt;span class="nv">$HOME&lt;/span>/.local/bin/env &lt;span class="o">(&lt;/span>sh, bash, zsh&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> &lt;span class="nv">$HOME&lt;/span>/.local/bin/env.fish &lt;span class="o">(&lt;/span>fish&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Verify installation:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uv 0.5.13 &lt;span class="o">(&lt;/span>c456bae5e 2024-12-27&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="how-to-use">How to Use&lt;/h3>
+&lt;p>Create a virtual environment:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Activate the virtual environment:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> .venv/bin/activate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Install packages:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv pip install &amp;lt;package name&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>For more details on UV, refer to the &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
+>official documentation&lt;/a>.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to set up a Python development environment on Mac.&lt;br>
+As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p></description></item><item><title>Improving Team Performance by Revisiting Scrum Ceremonies</title><link>https://bossagyu.com/en/blog/028-scrum-ceremony/</link><pubDate>Mon, 18 Nov 2024 09:36:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/028-scrum-ceremony/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In Scrum teams, ceremonies are essential for aligning team members, sharing progress, addressing challenges, and planning for the next sprint. However, when these ceremonies are conducted out of habit without revisiting their purpose, they can become time-consuming and ineffective.&lt;/p>
 &lt;p>This article explores ways to improve team performance by revisiting and optimizing Scrum ceremonies.&lt;/p>
 &lt;h2 id="clarify-the-purpose-of-each-ceremony">Clarify the Purpose of Each Ceremony&lt;/h2>
