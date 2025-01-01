@@ -3,7 +3,7 @@ title = 'MacでUVを用いてPythonの開発環境を構築する'
 date = 2025-01-01T14:39:53+09:00
 draft = false
 categories = ['Engineering']
-tags = ['Python', 'Uv']
+tags = ['Python', 'uv']
 +++
 
 ## 概要
