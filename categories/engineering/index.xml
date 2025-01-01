@@ -1,4 +1,85 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 15 Sep 2024 16:52:04 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Wed, 01 Jan 2025 14:39:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>MacでUVを用いてPythonの開発環境を構築する</title><link>https://bossagyu.com/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/blog/032-python-uv/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>MacでPythonの開発環境を構築する方法を紹介します。&lt;/p>
+&lt;h2 id="uvとは">uvとは&lt;/h2>
+&lt;p>2024年中旬に発表されたばかりのパッケージ管理ツール。&lt;br>
+Rustで書かれており、他のパッケージ管理マネージャよりも高速であることが特徴です。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/032-python-uv/img-032-001.png"
+width="585"
+height="134"
+srcset="https://bossagyu.com/blog/032-python-uv/img-032-001_hud269bb2e4d14314d6b8cb2d2b3093c85_13302_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/032-python-uv/img-032-001_hud269bb2e4d14314d6b8cb2d2b3093c85_13302_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="他のパッケージマネージャとの比較"
+class="gallery-image"
+data-flex-grow="436"
+data-flex-basis="1047px"
+>&lt;/p>
+&lt;p>公式の説明は &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
+>こちら&lt;/a> を参照してください。&lt;/p>
+&lt;h2 id="利用方法">利用方法&lt;/h2>
+&lt;h3 id="uvのインストール">uvのインストール&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">curl -LsSf https://astral.sh/uv/install.sh &lt;span class="p">|&lt;/span> sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>PATHを通す&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> &lt;span class="nv">$HOME&lt;/span>/.local/bin/env &lt;span class="o">(&lt;/span>sh, bash, zsh&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> &lt;span class="nv">$HOME&lt;/span>/.local/bin/env.fish &lt;span class="o">(&lt;/span>fish&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストールできたことを確認&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">uv 0.5.13 &lt;span class="o">(&lt;/span>c456bae5e 2024-12-27&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="使い方">使い方&lt;/h3>
+&lt;p>仮想環境の作成&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>仮想環境のアクティベート&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> .venv/bin/activate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>パッケージのインストール&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-go" data-lang="go">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">uv&lt;/span> &lt;span class="nx">pip&lt;/span> &lt;span class="nx">install&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="kn">package&lt;/span> &lt;span class="nx">name&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>uvの細かい説明は &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
+>公式のドキュメント&lt;/a> を参照してください。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>MacでPythonの開発環境を構築する方法を紹介しました。
+uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p></description></item><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介します。&lt;/p>
 &lt;h2 id="go言語のインストール">Go言語のインストール&lt;/h2>
 &lt;p>brewを使ってGo言語をインストールします。&lt;/p>
