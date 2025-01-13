@@ -1,0 +1,182 @@
+<!doctype html><html lang=en-US dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Overview In this article, we’ll follow the Feast tutorial and run it on a Mac.
+Prerequisites Refer to Setting up a Python development environment on Mac with UV to prepare your environment. Once you’ve set up UV, install Feast in that environment.
+Installing Feast and Launching the UI 1 uv pip install feast==0.40.1 Note
+As of 2025/01/13, there is a known bug in Feast causing the UI to fail on the latest version."><title>Running the Feast Tutorial on macOS</title><link rel=canonical href=https://bossagyu.com/en/blog/033-feast-tutorial/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="Running the Feast Tutorial on macOS"><meta property="og:description" content="Overview In this article, we’ll follow the Feast tutorial and run it on a Mac.
+Prerequisites Refer to Setting up a Python development environment on Mac with UV to prepare your environment. Once you’ve set up UV, install Feast in that environment.
+Installing Feast and Launching the UI 1 uv pip install feast==0.40.1 Note
+As of 2025/01/13, there is a known bug in Feast causing the UI to fail on the latest version."><meta property="og:url" content="https://bossagyu.com/en/blog/033-feast-tutorial/"><meta property="og:site_name" content="Bossagyu Blog"><meta property="og:type" content="article"><meta property="article:section" content="Blog"><meta property="article:tag" content="Feast"><meta property="article:tag" content="Python"><meta property="article:published_time" content="2025-01-13T11:49:53+09:00"><meta property="article:modified_time" content="2025-01-13T11:49:53+09:00"><meta property="og:image" content="https://bossagyu.com/images/share.webp"><meta name=twitter:title content="Running the Feast Tutorial on macOS"><meta name=twitter:description content="Overview In this article, we’ll follow the Feast tutorial and run it on a Mac.
+Prerequisites Refer to Setting up a Python development environment on Mac with UV to prepare your environment. Once you’ve set up UV, install Feast in that environment.
+Installing Feast and Launching the UI 1 uv pip install feast==0.40.1 Note
+As of 2025/01/13, there is a known bug in Feast causing the UI to fail on the latest version."><meta name=twitter:card content="summary"><meta name=twitter:image content="https://bossagyu.com/images/share.webp"><link rel="shortcut icon" href=/images/favicon.png><script async src="https://www.googletagmanager.com/gtag/js?id=G-5JL2R6XT6H"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-5JL2R6XT6H",{anonymize_ip:!1})}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/en><img src=/images/share.webp width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/en>Bossagyu Blog</a></h1><h2 class=site-description>エンジニアリングマネージャーがエンジニアリングとマネジメントについてまとめていくブログ</h2></div></header><ol class=social-menu><li><a href=https://github.com/bossagyu target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://twitter.com/bossagyu target=_blank title=Twitter rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/en/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/en/page/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/en/page/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/en/page/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://bossagyu.com/en/ selected>en-US 🇺🇸</option><option value=https://bossagyu.com/>ja-jp 🇯🇵</option></select></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#overview>Overview</a></li><li><a href=#prerequisites>Prerequisites</a></li><li><a href=#installing-feast-and-launching-the-ui>Installing Feast and Launching the UI</a></li><li><a href=#manipulating-data-in-feast>Manipulating Data in Feast</a><ol><li><a href=#1-creating-a-training-dataset>1. Creating a Training Dataset</a></li><li><a href=#2-materializing-the-online-store>2. Materializing the Online Store</a></li><li><a href=#3-retrieving-data-from-the-online-store>3. Retrieving Data from the Online Store</a></li></ol></li><li><a href=#summary>Summary</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/en/categories/engineering/>Engineering</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/en/blog/033-feast-tutorial/>Running the Feast Tutorial on macOS</a></h2></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg><time class=article-time--published>Jan 13, 2025</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--reading>3 minute read</time></div></footer><footer class=article-translations><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://bossagyu.com/blog/033-feast-tutorial/ class=link>ja-jp 🇯🇵</a></div></footer></div></header><section class=article-content><h2 id=overview>Overview</h2><p>In this article, we’ll follow the <a class=link href=https://github.com/feast-dev/feast target=_blank rel=noopener>Feast tutorial</a> and run it on a Mac.</p><h2 id=prerequisites>Prerequisites</h2><p>Refer to <a class=link href=https://bossagyu.com/blog/032-python-uv/ target=_blank rel=noopener>Setting up a Python development environment on Mac with UV</a> to prepare your environment. Once you’ve set up UV, install Feast in that environment.</p><h2 id=installing-feast-and-launching-the-ui>Installing Feast and Launching the UI</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>uv pip install <span class=nv>feast</span><span class=o>==</span>0.40.1
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><strong>Note</strong><br>As of 2025/01/13, there is a known bug in Feast causing the UI to fail on the latest version. (<a class=link href=https://github.com/feast-dev/feast/issues/4743 target=_blank rel=noopener>Issue</a>)</p></blockquote><p>Initialize a Feature Repository:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>feast init my_feature_repo
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Creating a new Feast repository in /Users/kouhei/Program/ML/feast/my_feature_repo.
+</span></span></code></pre></td></tr></table></div></div><p>You’ll see a new repository like this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>tree my_feature_repo
+</span></span><span class=line><span class=cl>.
+</span></span><span class=line><span class=cl>└── my_feature_repo
+</span></span><span class=line><span class=cl>    ├── README.md
+</span></span><span class=line><span class=cl>    ├── __init__.py
+</span></span><span class=line><span class=cl>    └── feature_repo
+</span></span><span class=line><span class=cl>        ├── __init__.py
+</span></span><span class=line><span class=cl>        ├── data
+</span></span><span class=line><span class=cl>        │    └── driver_stats.parquet
+</span></span><span class=line><span class=cl>        ├── example_repo.py
+</span></span><span class=line><span class=cl>        ├── feature_store.yaml
+</span></span><span class=line><span class=cl>        └── test_workflow.py
+</span></span></code></pre></td></tr></table></div></div><p>Apply the repository configuration:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> my_feature_repo/feature_repo
+</span></span><span class=line><span class=cl>feast apply
+</span></span></code></pre></td></tr></table></div></div><p>Then launch the Feast UI:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>feast ui
+</span></span></code></pre></td></tr></table></div></div><p>Access <code>http://0.0.0.0:8888/p/my_feature_repo</code> to see the interface.</p><p><img src=/en/blog/033-feast-tutorial/img-033-001.png width=1478 height=581 srcset="/en/blog/033-feast-tutorial/img-033-001_hub81249ce2a094e96f7c08a17dccf8b99_125412_480x0_resize_box_3.png 480w, /en/blog/033-feast-tutorial/img-033-001_hub81249ce2a094e96f7c08a17dccf8b99_125412_1024x0_resize_box_3.png 1024w" loading=lazy alt="Feast UI" class=gallery-image data-flex-grow=254 data-flex-basis=610px></p><h2 id=manipulating-data-in-feast>Manipulating Data in Feast</h2><h3 id=1-creating-a-training-dataset>1. Creating a Training Dataset</h3><p>Starting from step 5 in the tutorial, you’ll use Jupyter Notebook. Install it first:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>uv pip install jupyter
+</span></span></code></pre></td></tr></table></div></div><p>Launch the notebook:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>jupyter notebook
+</span></span></code></pre></td></tr></table></div></div><p>In a Jupyter Notebook, run the following code to create a dataset for training:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>feast</span> <span class=kn>import</span> <span class=n>FeatureStore</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>pandas</span> <span class=k>as</span> <span class=nn>pd</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>datetime</span> <span class=kn>import</span> <span class=n>datetime</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>entity_df</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>DataFrame</span><span class=o>.</span><span class=n>from_dict</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;driver_id&#34;</span><span class=p>:</span> <span class=p>[</span><span class=mi>1001</span><span class=p>,</span> <span class=mi>1002</span><span class=p>,</span> <span class=mi>1003</span><span class=p>,</span> <span class=mi>1004</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;event_timestamp&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=n>datetime</span><span class=p>(</span><span class=mi>2021</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>12</span><span class=p>,</span> <span class=mi>10</span><span class=p>,</span> <span class=mi>59</span><span class=p>,</span> <span class=mi>42</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>        <span class=n>datetime</span><span class=p>(</span><span class=mi>2021</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>12</span><span class=p>,</span> <span class=mi>8</span><span class=p>,</span> <span class=mi>12</span><span class=p>,</span> <span class=mi>10</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>        <span class=n>datetime</span><span class=p>(</span><span class=mi>2021</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>12</span><span class=p>,</span> <span class=mi>16</span><span class=p>,</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>26</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>        <span class=n>datetime</span><span class=p>(</span><span class=mi>2021</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>12</span><span class=p>,</span> <span class=mi>15</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>12</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>store</span> <span class=o>=</span> <span class=n>FeatureStore</span><span class=p>(</span><span class=n>repo_path</span><span class=o>=</span><span class=s2>&#34;.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>training_df</span> <span class=o>=</span> <span class=n>store</span><span class=o>.</span><span class=n>get_historical_features</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>entity_df</span><span class=o>=</span><span class=n>entity_df</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>features</span><span class=o>=</span><span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;driver_hourly_stats:conv_rate&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;driver_hourly_stats:acc_rate&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;driver_hourly_stats:avg_daily_trips&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span>
+</span></span><span class=line><span class=cl><span class=p>)</span><span class=o>.</span><span class=n>to_df</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>training_df</span><span class=o>.</span><span class=n>head</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Train model</span>
+</span></span><span class=line><span class=cl><span class=c1># model = ml.fit(training_df)</span>
+</span></span></code></pre></td></tr></table></div></div><p>Below is an example of the notebook output:</p><p><img src=/en/blog/033-feast-tutorial/img-033-002.png width=1258 height=893 srcset="/en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_480x0_resize_box_3.png 480w, /en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_1024x0_resize_box_3.png 1024w" loading=lazy alt="Training Data in Feast" class=gallery-image data-flex-grow=140 data-flex-basis=338px></p><h3 id=2-materializing-the-online-store>2. Materializing the Online Store</h3><p>To populate the Online Store, run:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>feast materialize 1970-01-01T00:00:00Z 2025-01-04T01:24:24Z
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><strong>Note</strong><br>In the provided sample, the command <code>feast materialize-incremental $CURRENT_TIME</code> may not work, so we specify a broader time range here.</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>01/04/2025 10:28:40 AM root WARNING: _list_feature_views will make breaking changes. ...
+</span></span><span class=line><span class=cl>Materializing <span class=m>2</span> feature views from 1970-01-01 09:00:00+09:00 to 2025-01-04 10:24:24+09:00 into the sqlite online store.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>driver_hourly_stats_fresh:
+</span></span><span class=line><span class=cl>  0%<span class=p>|</span>                                                                         <span class=p>|</span> 0/5 ...
+</span></span><span class=line><span class=cl>100%<span class=p>|</span>███████████████████████████████████████████████████████████████<span class=p>|</span> 5/5 ...
+</span></span><span class=line><span class=cl>driver_hourly_stats:
+</span></span><span class=line><span class=cl>100%<span class=p>|</span>███████████████████████████████████████████████████████████████<span class=p>|</span> 5/5 ...
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-retrieving-data-from-the-online-store>3. Retrieving Data from the Online Store</h3><p>Use Jupyter Notebook to fetch data from the Online Store:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>pprint</span> <span class=kn>import</span> <span class=n>pprint</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>feast</span> <span class=kn>import</span> <span class=n>FeatureStore</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>store</span> <span class=o>=</span> <span class=n>FeatureStore</span><span class=p>(</span><span class=n>repo_path</span><span class=o>=</span><span class=s2>&#34;.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>feature_vector</span> <span class=o>=</span> <span class=n>store</span><span class=o>.</span><span class=n>get_online_features</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>features</span><span class=o>=</span><span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;driver_hourly_stats:conv_rate&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;driver_hourly_stats:acc_rate&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;driver_hourly_stats:avg_daily_trips&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=n>entity_rows</span><span class=o>=</span><span class=p>[{</span><span class=s2>&#34;driver_id&#34;</span><span class=p>:</span> <span class=mi>1001</span><span class=p>}]</span>
+</span></span><span class=line><span class=cl><span class=p>)</span><span class=o>.</span><span class=n>to_dict</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>pprint</span><span class=p>(</span><span class=n>feature_vector</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Make prediction</span>
+</span></span><span class=line><span class=cl><span class=c1># model.predict(feature_vector)</span>
+</span></span></code></pre></td></tr></table></div></div><p>Example output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=o>{</span><span class=s1>&#39;acc_rate&#39;</span>: <span class=o>[</span>0.5004482269287109<span class=o>]</span>,
+</span></span><span class=line><span class=cl> <span class=s1>&#39;avg_daily_trips&#39;</span>: <span class=o>[</span>691<span class=o>]</span>,
+</span></span><span class=line><span class=cl> <span class=s1>&#39;conv_rate&#39;</span>: <span class=o>[</span>0.3067885637283325<span class=o>]</span>,
+</span></span><span class=line><span class=cl> <span class=s1>&#39;driver_id&#39;</span>: <span class=o>[</span>1001<span class=o>]}</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=/en/blog/033-feast-tutorial/img-033-002.png width=1258 height=893 srcset="/en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_480x0_resize_box_3.png 480w, /en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_1024x0_resize_box_3.png 1024w" loading=lazy alt="Retrieving Data from Feast" class=gallery-image data-flex-grow=140 data-flex-basis=338px></p><p>We’ve successfully materialized data in the Online Store and fetched it using Feast.</p><h2 id=summary>Summary</h2><p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.</p></section><footer class=article-footer><section class=article-tags><a href=/en/tags/feast/>Feast</a>
+<a href=/en/tags/python/>python</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/en/blog/032-python-uv/><div class=article-details><h2 class=article-title>Setting Up a Python Development Environment on Mac with UV</h2></div></a></article><article><a href=/en/blog/024-bluesky-api/><div class=article-details><h2 class=article-title>Using Bluesky API for Automated Posting with Python</h2></div></a></article><article><a href=/en/blog/015-s3-object-check/><div class=article-details><h2 class=article-title>Checking for the Existence of an Object in S3</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2023 -
+2025 Bossagyu Blog</section><section class=powerby><a href=/en/others/contact/>Contact</br></a><a href=/en/others/privacy-policy/>Privacy Policy</br></a></br></section><section class=powerby>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.21.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

@@ -1,4 +1,302 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 01 Jan 2025 14:39:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 13 Jan 2025 11:49:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>In this article, we’ll follow the &lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
+>Feast tutorial&lt;/a> and run it on a Mac.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;p>Refer to &lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" target="_blank" rel="noopener"
+>Setting up a Python development environment on Mac with UV&lt;/a> to prepare your environment. Once you’ve set up UV, install Feast in that environment.&lt;/p>
+&lt;h2 id="installing-feast-and-launching-the-ui">Installing Feast and Launching the UI&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv pip install &lt;span class="nv">feast&lt;/span>&lt;span class="o">==&lt;/span>0.40.1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>Note&lt;/strong>&lt;br>
+As of 2025/01/13, there is a known bug in Feast causing the UI to fail on the latest version. (&lt;a class="link" href="https://github.com/feast-dev/feast/issues/4743" target="_blank" rel="noopener"
+>Issue&lt;/a>)&lt;/p>
+&lt;/blockquote>
+&lt;p>Initialize a Feature Repository:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">feast init my_feature_repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Creating a new Feast repository in /Users/kouhei/Program/ML/feast/my_feature_repo.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You’ll see a new repository like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tree my_feature_repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── my_feature_repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── README.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── __init__.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── feature_repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── __init__.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> │ └── driver_stats.parquet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── example_repo.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── feature_store.yaml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── test_workflow.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Apply the repository configuration:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my_feature_repo/feature_repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">feast apply
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then launch the Feast UI:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">feast ui
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Access &lt;code>http://0.0.0.0:8888/p/my_feature_repo&lt;/code> to see the interface.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/033-feast-tutorial/img-033-001.png"
+width="1478"
+height="581"
+srcset="https://bossagyu.com/en/blog/033-feast-tutorial/img-033-001_hub81249ce2a094e96f7c08a17dccf8b99_125412_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/033-feast-tutorial/img-033-001_hub81249ce2a094e96f7c08a17dccf8b99_125412_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Feast UI"
+class="gallery-image"
+data-flex-grow="254"
+data-flex-basis="610px"
+>&lt;/p>
+&lt;h2 id="manipulating-data-in-feast">Manipulating Data in Feast&lt;/h2>
+&lt;h3 id="1-creating-a-training-dataset">1. Creating a Training Dataset&lt;/h3>
+&lt;p>Starting from step 5 in the tutorial, you’ll use Jupyter Notebook. Install it first:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">uv pip install jupyter
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Launch the notebook:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">jupyter notebook
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In a Jupyter Notebook, run the following code to create a dataset for training:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">feast&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">FeatureStore&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">pandas&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">pd&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">datetime&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">datetime&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">entity_df&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pd&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DataFrame&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">from_dict&lt;/span>&lt;span class="p">({&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;driver_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1001&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1002&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1003&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1004&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;event_timestamp&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">datetime&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2021&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">59&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">42&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">datetime&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2021&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">datetime&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2021&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">16&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">40&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">26&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">datetime&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2021&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">15&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">store&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">FeatureStore&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">repo_path&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">training_df&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">store&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_historical_features&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">entity_df&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">entity_df&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">features&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_hourly_stats:conv_rate&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_hourly_stats:acc_rate&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_hourly_stats:avg_daily_trips&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">to_df&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">training_df&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Train model&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># model = ml.fit(training_df)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Below is an example of the notebook output:&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/033-feast-tutorial/img-033-002.png"
+width="1258"
+height="893"
+srcset="https://bossagyu.com/en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Training Data in Feast"
+class="gallery-image"
+data-flex-grow="140"
+data-flex-basis="338px"
+>&lt;/p>
+&lt;h3 id="2-materializing-the-online-store">2. Materializing the Online Store&lt;/h3>
+&lt;p>To populate the Online Store, run:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">feast materialize 1970-01-01T00:00:00Z 2025-01-04T01:24:24Z
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>Note&lt;/strong>&lt;br>
+In the provided sample, the command &lt;code>feast materialize-incremental $CURRENT_TIME&lt;/code> may not work, so we specify a broader time range here.&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">01/04/2025 10:28:40 AM root WARNING: _list_feature_views will make breaking changes. ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Materializing &lt;span class="m">2&lt;/span> feature views from 1970-01-01 09:00:00+09:00 to 2025-01-04 10:24:24+09:00 into the sqlite online store.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">driver_hourly_stats_fresh:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0%&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> 0/5 ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">100%&lt;span class="p">|&lt;/span>███████████████████████████████████████████████████████████████&lt;span class="p">|&lt;/span> 5/5 ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">driver_hourly_stats:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">100%&lt;span class="p">|&lt;/span>███████████████████████████████████████████████████████████████&lt;span class="p">|&lt;/span> 5/5 ...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-retrieving-data-from-the-online-store">3. Retrieving Data from the Online Store&lt;/h3>
+&lt;p>Use Jupyter Notebook to fetch data from the Online Store:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">pprint&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">pprint&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">feast&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">FeatureStore&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">store&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">FeatureStore&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">repo_path&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">feature_vector&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">store&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_online_features&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">features&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_hourly_stats:conv_rate&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_hourly_stats:acc_rate&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_hourly_stats:avg_daily_trips&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">entity_rows&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[{&lt;/span>&lt;span class="s2">&amp;#34;driver_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1001&lt;/span>&lt;span class="p">}]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">to_dict&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pprint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">feature_vector&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Make prediction&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># model.predict(feature_vector)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Example output:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;acc_rate&amp;#39;&lt;/span>: &lt;span class="o">[&lt;/span>0.5004482269287109&lt;span class="o">]&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;avg_daily_trips&amp;#39;&lt;/span>: &lt;span class="o">[&lt;/span>691&lt;span class="o">]&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;conv_rate&amp;#39;&lt;/span>: &lt;span class="o">[&lt;/span>0.3067885637283325&lt;span class="o">]&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;driver_id&amp;#39;&lt;/span>: &lt;span class="o">[&lt;/span>1001&lt;span class="o">]}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/en/blog/033-feast-tutorial/img-033-002.png"
+width="1258"
+height="893"
+srcset="https://bossagyu.com/en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/033-feast-tutorial/img-033-002_hu9a63a8af0e8adbd21872e8fe4c7e159c_152409_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Retrieving Data from Feast"
+class="gallery-image"
+data-flex-grow="140"
+data-flex-basis="338px"
+>&lt;/p>
+&lt;p>We’ve successfully materialized data in the Online Store and fetched it using Feast.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p></description></item><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article introduces how to set up a Python development environment on Mac using UV.&lt;/p>
 &lt;h2 id="what-is-uv">What is UV?&lt;/h2>
 &lt;p>UV is a package management tool announced in mid-2024.&lt;br>
