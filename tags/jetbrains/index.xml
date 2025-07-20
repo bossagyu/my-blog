@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jetBrains on Bossagyu Blog</title><link>https://bossagyu.com/tags/jetbrains/</link><description>Recent content in jetBrains on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 12 Jun 2025 20:46:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/jetbrains/index.xml" rel="self" type="application/rss+xml"/><item><title>JetBrains製品のメジャーバージョンを上げる方法</title><link>https://bossagyu.com/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/blog/034-jetbrains-update/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>IntelliJやPyCharmなどの JetBrains製品のメジャーバージョンを上げる際にサイドダウンロードするが必要になります。
+設定を引き継ぎつつなるべく簡単にアップデートする方法について説明します。&lt;/p>
+&lt;h2 id="jetbrains-toolbox-appのインストール">JetBrains Toolbox Appのインストール&lt;/h2>
+&lt;p>JetBrains製品のメジャーバージョンを上げる際は、&lt;a class="link" href="https://www.jetbrains.com/toolbox-app/" target="_blank" rel="noopener"
+>JetBrains Toolbox App&lt;/a>を利用することをおすすめします。&lt;/p>
+&lt;p>上記リンクよりJetBrains Toolbox Appをダウンロードし、インストールします。&lt;/p>
+&lt;h2 id="アップデート">アップデート&lt;/h2>
+&lt;p>JetBrains Toolbox Appを起動し、アップデートしたい製品を選択します。&lt;/p>
+&lt;p>今回はPyCharmをの更新を行うのでクリックすると、アップデートが開始されます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/034-jetbrains-update/img.png"
+width="443"
+height="691"
+srcset="https://bossagyu.com/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="アップデートの選択画面"
+class="gallery-image"
+data-flex-grow="64"
+data-flex-basis="153px"
+>&lt;/p>
+&lt;p>アップデートが完了すると、以下のように新しいバージョンがインストールされます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/034-jetbrains-update/img_1.png"
+width="423"
+height="509"
+srcset="https://bossagyu.com/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="アップデート後の画面"
+class="gallery-image"
+data-flex-grow="83"
+data-flex-basis="199px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>JetBrains製品のメジャーバージョンを上げる際は、JetBrains Toolbox Appを利用することで簡単にアップデートが可能です。&lt;/p></description></item></channel></rss>

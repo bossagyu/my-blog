@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mathematics on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/mathematics/</link><description>Recent content in Mathematics on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 02 Sep 2024 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/mathematics/index.xml" rel="self" type="application/rss+xml"/><item><title>Investigation of Covariance</title><link>https://bossagyu.com/en/blog/030-covariance/</link><pubDate>Mon, 02 Sep 2024 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-covariance/</guid><description>&lt;h2 id="what-is-covariance">What is Covariance?&lt;/h2>
+&lt;p>Covariance is a statistical measure that indicates how two variables change together.&lt;br>
+A positive value means the two variables tend to change in the same direction, while a negative value means they tend to change in opposite directions.&lt;/p>
+&lt;h3 id="formula">Formula&lt;/h3>
+&lt;p>Covariance is calculated using the following formula:&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/030-covariance/image.png"
+width="1022"
+height="314"
+srcset="https://bossagyu.com/en/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Covariance Formula"
+class="gallery-image"
+data-flex-grow="325"
+data-flex-basis="781px"
+>&lt;/p>
+&lt;h3 id="key-points">Key Points&lt;/h3>
+&lt;ul>
+&lt;li>If the covariance is close to 0, it suggests that the two variables have little to no strong relationship.&lt;/li>
+&lt;li>Since the value depends on the scale, correlation coefficients are often used instead.&lt;/li>
+&lt;/ul>
+&lt;h2 id="example-in-python">Example in Python&lt;/h2>
+&lt;p>Below is an example of calculating covariance using Python.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">numpy&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">np&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Sample data&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">X&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mf">2.1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">2.5&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">4.0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">3.6&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">14&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Calculate covariance&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cov_matrix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cov&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">X&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Y&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bias&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">covariance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cov_matrix&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;Covariance: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">covariance&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="output">Output&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Covariance: 1.53
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="difference-between-covariance-and-correlation-coefficient">Difference Between Covariance and Correlation Coefficient&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Feature&lt;/th>
+&lt;th>Covariance&lt;/th>
+&lt;th>Correlation Coefficient&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Scale Dependent&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Value Range&lt;/td>
+&lt;td>-∞ to ∞&lt;/td>
+&lt;td>-1 to 1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>Covariance is a fundamental metric for understanding the relationship between two variables.&lt;br>
+However, due to its scale dependency, it is often used in conjunction with correlation coefficients for deeper analysis.&lt;/p></description></item></channel></rss>

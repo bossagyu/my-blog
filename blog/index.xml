@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 13 Jan 2025 11:49:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 12 Jun 2025 20:46:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>JetBrains製品のメジャーバージョンを上げる方法</title><link>https://bossagyu.com/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/blog/034-jetbrains-update/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>IntelliJやPyCharmなどの JetBrains製品のメジャーバージョンを上げる際にサイドダウンロードするが必要になります。
+設定を引き継ぎつつなるべく簡単にアップデートする方法について説明します。&lt;/p>
+&lt;h2 id="jetbrains-toolbox-appのインストール">JetBrains Toolbox Appのインストール&lt;/h2>
+&lt;p>JetBrains製品のメジャーバージョンを上げる際は、&lt;a class="link" href="https://www.jetbrains.com/toolbox-app/" target="_blank" rel="noopener"
+>JetBrains Toolbox App&lt;/a>を利用することをおすすめします。&lt;/p>
+&lt;p>上記リンクよりJetBrains Toolbox Appをダウンロードし、インストールします。&lt;/p>
+&lt;h2 id="アップデート">アップデート&lt;/h2>
+&lt;p>JetBrains Toolbox Appを起動し、アップデートしたい製品を選択します。&lt;/p>
+&lt;p>今回はPyCharmをの更新を行うのでクリックすると、アップデートが開始されます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/034-jetbrains-update/img.png"
+width="443"
+height="691"
+srcset="https://bossagyu.com/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="アップデートの選択画面"
+class="gallery-image"
+data-flex-grow="64"
+data-flex-basis="153px"
+>&lt;/p>
+&lt;p>アップデートが完了すると、以下のように新しいバージョンがインストールされます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/034-jetbrains-update/img_1.png"
+width="423"
+height="509"
+srcset="https://bossagyu.com/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="アップデート後の画面"
+class="gallery-image"
+data-flex-grow="83"
+data-flex-basis="199px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>JetBrains製品のメジャーバージョンを上げる際は、JetBrains Toolbox Appを利用することで簡単にアップデートが可能です。&lt;/p></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>今回は&lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feastのチュートリアル&lt;/a>を参考に、Macで実行してみます。&lt;/p>
 &lt;h2 id="事前準備">事前準備&lt;/h2>
@@ -706,7 +738,90 @@ uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環�
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>macでparquetファイルを簡単に読む方法を紹介しました。&lt;/p></description></item><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
+&lt;p>macでparquetファイルを簡単に読む方法を紹介しました。&lt;/p></description></item><item><title>共分散についての調査</title><link>https://bossagyu.com/blog/030-covariance/</link><pubDate>Mon, 02 Sep 2024 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/030-covariance/</guid><description>&lt;h2 id="共分散とは">共分散とは&lt;/h2>
+&lt;p>共分散は、2つの変数がどのように連動して変化するかを示す統計量です。&lt;br>
+正の値なら同じ方向に変化しやすく、負の値なら逆方向に変化しやすいことを意味します。&lt;/p>
+&lt;h3 id="計算式">計算式&lt;/h3>
+&lt;p>共分散は次の式で計算されます：&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/030-covariance/image.png"
+width="1022"
+height="314"
+srcset="https://bossagyu.com/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="共分散の数式"
+class="gallery-image"
+data-flex-grow="325"
+data-flex-basis="781px"
+>&lt;/p>
+&lt;h3 id="ポイント">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>共分散が 0 に近い場合、2つの変数に強い関係はないと考えられます。&lt;/li>
+&lt;li>値がスケールに依存するため、相関係数を使うことが一般的です。&lt;/li>
+&lt;/ul>
+&lt;h2 id="pythonでの例">Pythonでの例&lt;/h2>
+&lt;p>以下は、Pythonを使った共分散の計算例です。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">numpy&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">np&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># サンプルデータ&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">X&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mf">2.1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">2.5&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">4.0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">3.6&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">14&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 共分散の計算&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cov_matrix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cov&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">X&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Y&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bias&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">covariance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cov_matrix&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;共分散: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">covariance&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="実行結果">実行結果&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">共分散: 1.53
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="共分散と相関係数の違い">共分散と相関係数の違い&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>特徴&lt;/th>
+&lt;th>共分散&lt;/th>
+&lt;th>相関係数&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>スケール依存&lt;/td>
+&lt;td>あり&lt;/td>
+&lt;td>なし&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>値の範囲&lt;/td>
+&lt;td>-∞ から ∞&lt;/td>
+&lt;td>-1 から 1\&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>共分散は、2つの変数の関係性を理解するための基本的な指標です。&lt;br>
+ただし、スケール依存性があるため、相関係数と併用することでより深い分析が可能です。&lt;/p></description></item><item><title>gRPCについての調査</title><link>https://bossagyu.com/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/blog/029-grpc/</guid><description>&lt;h2 id="grpcとは">gRPCとは&lt;/h2>
 &lt;ul>
 &lt;li>PRCを実現するためにGoogleが開発したプロトコルの一つ&lt;/li>
 &lt;li>Protocol Bufferを使ってデータをシリアライズし、高速な通信を実現できる点が特徴&lt;/li>

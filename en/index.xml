@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 13 Jan 2025 11:49:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Thu, 12 Jun 2025 20:46:53 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Upgrade JetBrains Products to a Major Version</title><link>https://bossagyu.com/en/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/034-jetbrains-update/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>When upgrading major versions of JetBrains products such as IntelliJ or PyCharm, you need to manually download the new version.&lt;br>
+This article explains how to update easily while preserving your settings.&lt;/p>
+&lt;h2 id="installing-the-jetbrains-toolbox-app">Installing the JetBrains Toolbox App&lt;/h2>
+&lt;p>When upgrading to a major version of a JetBrains product, it is recommended to use the &lt;a class="link" href="https://www.jetbrains.com/toolbox-app/" target="_blank" rel="noopener"
+>JetBrains Toolbox App&lt;/a>.&lt;/p>
+&lt;p>Download and install the JetBrains Toolbox App from the link above.&lt;/p>
+&lt;h2 id="update">Update&lt;/h2>
+&lt;p>Launch the JetBrains Toolbox App and select the product you want to update.&lt;/p>
+&lt;p>In this example, we will update PyCharm. Click on it to start the update.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/034-jetbrains-update/img.png"
+width="443"
+height="691"
+srcset="https://bossagyu.com/en/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Update selection screen"
+class="gallery-image"
+data-flex-grow="64"
+data-flex-basis="153px"
+>&lt;/p>
+&lt;p>Once the update is complete, the new version will be installed as shown below.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/034-jetbrains-update/img_1.png"
+width="423"
+height="509"
+srcset="https://bossagyu.com/en/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Screen after update"
+class="gallery-image"
+data-flex-grow="83"
+data-flex-basis="199px"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>When upgrading to a major version of a JetBrains product, using the JetBrains Toolbox App makes the update process easy.&lt;/p></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In this article, we’ll follow the &lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feast tutorial&lt;/a> and run it on a Mac.&lt;/p>
 &lt;h2 id="prerequisites">Prerequisites&lt;/h2>
@@ -698,7 +730,90 @@ As of January 2025, UV is both fast and easy to use, making it a valuable tool f
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p></description></item><item><title>Research on gRPC</title><link>https://bossagyu.com/en/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/en/blog/029-grpc/</guid><description>&lt;h2 id="what-is-grpc">What is gRPC?&lt;/h2>
+&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p></description></item><item><title>Investigation of Covariance</title><link>https://bossagyu.com/en/blog/030-covariance/</link><pubDate>Mon, 02 Sep 2024 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-covariance/</guid><description>&lt;h2 id="what-is-covariance">What is Covariance?&lt;/h2>
+&lt;p>Covariance is a statistical measure that indicates how two variables change together.&lt;br>
+A positive value means the two variables tend to change in the same direction, while a negative value means they tend to change in opposite directions.&lt;/p>
+&lt;h3 id="formula">Formula&lt;/h3>
+&lt;p>Covariance is calculated using the following formula:&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/030-covariance/image.png"
+width="1022"
+height="314"
+srcset="https://bossagyu.com/en/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Covariance Formula"
+class="gallery-image"
+data-flex-grow="325"
+data-flex-basis="781px"
+>&lt;/p>
+&lt;h3 id="key-points">Key Points&lt;/h3>
+&lt;ul>
+&lt;li>If the covariance is close to 0, it suggests that the two variables have little to no strong relationship.&lt;/li>
+&lt;li>Since the value depends on the scale, correlation coefficients are often used instead.&lt;/li>
+&lt;/ul>
+&lt;h2 id="example-in-python">Example in Python&lt;/h2>
+&lt;p>Below is an example of calculating covariance using Python.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">numpy&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">np&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Sample data&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">X&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mf">2.1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">2.5&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">4.0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">3.6&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">14&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Calculate covariance&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cov_matrix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cov&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">X&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Y&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bias&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">covariance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cov_matrix&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;Covariance: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">covariance&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="output">Output&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Covariance: 1.53
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="difference-between-covariance-and-correlation-coefficient">Difference Between Covariance and Correlation Coefficient&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Feature&lt;/th>
+&lt;th>Covariance&lt;/th>
+&lt;th>Correlation Coefficient&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Scale Dependent&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Value Range&lt;/td>
+&lt;td>-∞ to ∞&lt;/td>
+&lt;td>-1 to 1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>Covariance is a fundamental metric for understanding the relationship between two variables.&lt;br>
+However, due to its scale dependency, it is often used in conjunction with correlation coefficients for deeper analysis.&lt;/p></description></item><item><title>Research on gRPC</title><link>https://bossagyu.com/en/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/en/blog/029-grpc/</guid><description>&lt;h2 id="what-is-grpc">What is gRPC?&lt;/h2>
 &lt;ul>
 &lt;li>gRPC is a protocol developed by Google to implement RPC.&lt;/li>
 &lt;li>It uses Protocol Buffers to serialize data, enabling high-speed communication.&lt;/li>
