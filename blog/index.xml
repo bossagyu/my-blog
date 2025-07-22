@@ -1,4 +1,101 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 21 Jul 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>GitHub CopilotをMarkdownで有効にする方法</title><link>https://bossagyu.com/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 22 Jul 2025 21:01:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>vscodeのインデントガイドをカスタマイズする方法</title><link>https://bossagyu.com/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/blog/036-vscode-indent/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Visual Studio Code (VSCode) では、インデントガイドの色をカスタマイズすることができます。
+この記事では、インデントガイドの色を変更する方法を説明します。
+indent-rainbowのような拡張機能はインデントガイドが途中で切れるなどの問題がありましたが、VSCodeの設定ファイルを編集するだけで実現できます。&lt;/p>
+&lt;h2 id="インデントガイドの色を変更する方法">インデントガイドの色を変更する方法&lt;/h2>
+&lt;h3 id="設定ファイルを開く">設定ファイルを開く&lt;/h3>
+&lt;p>VSCodeの設定ファイルを開きます。
+&lt;code>Command Palette&lt;/code> (Ctrl + Shift + P) を開き、&lt;code>Preferences: Open Settings (JSON)&lt;/code> を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/036-vscode-indent/image.png"
+width="608"
+height="122"
+srcset="https://bossagyu.com/blog/036-vscode-indent/image_hu3c9579035f233532becca6f8faa5c647_25704_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/036-vscode-indent/image_hu3c9579035f233532becca6f8faa5c647_25704_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="設定を開く方法"
+class="gallery-image"
+data-flex-grow="498"
+data-flex-basis="1196px"
+>&lt;/p>
+&lt;h3 id="設定を追加する">設定を追加する&lt;/h3>
+&lt;p>以下を参考に設定を追加します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;workbench.colorCustomizations&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background1&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#006400&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background2&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#008000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background3&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00a000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background4&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#006400&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background5&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#008000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background6&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00a000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground1&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground2&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground3&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground4&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground5&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground6&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorWhitespace.foreground&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#393A3D&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>設定内容&lt;/th>
+&lt;th>説明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>editorIndentGuide.background&amp;lt;number&amp;gt;&lt;/code>&lt;/td>
+&lt;td>インデントガイドの背景色を指定します。&lt;br>&lt;code>&amp;lt;number&amp;gt;&lt;/code> は インデントの深さに対応します。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>editorIndentGuide.activeBackground&amp;lt;number&amp;gt;&lt;/code>&lt;/td>
+&lt;td>アクティブなインデントガイドの背景色を指定します。&lt;br>&lt;code>&amp;lt;number&amp;gt;&lt;/code> はインデントの深さに対応します。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>editorWhitespace.foreground&lt;/code>&lt;/td>
+&lt;td>空白文字の色を指定します。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>実際に設定を追加した結果以下の画像のようにインデントガイドの色が変更されます。
+&lt;img src="https://bossagyu.com/blog/036-vscode-indent/image-1.png"
+width="479"
+height="328"
+srcset="https://bossagyu.com/blog/036-vscode-indent/image-1_hu6f9c993cad77886be734ef5704270561_75507_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/036-vscode-indent/image-1_hu6f9c993cad77886be734ef5704270561_75507_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="インデントの様子"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="350px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>VSCodeでは、インデントガイドの色を簡単にカスタマイズできます。
+設定ファイルに必要な項目を追加するだけで、好みの色に変更できます。
+これにより、コードの可読性が向上し、インデントの深さを視覚的に把握しやすくなります。
+ぜひ試してみてください。&lt;/p></description></item><item><title>GitHub CopilotをMarkdownで有効にする方法</title><link>https://bossagyu.com/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Github Copilotは、デフォルトではMarkdownファイルでの補完が無効になっています。
 この記事では、GitHub CopilotをMarkdownで有効にする方法を説明します。&lt;/p>
 &lt;h2 id="github-copilotの設定">GitHub Copilotの設定&lt;/h2>

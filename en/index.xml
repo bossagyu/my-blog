@@ -1,4 +1,101 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 21 Jul 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Enable GitHub Copilot for Markdown</title><link>https://bossagyu.com/en/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/en/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 22 Jul 2025 21:01:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>In Visual Studio Code (VSCode), you can customize the colors of indent guides.&lt;br>
+This article explains how to change the colors of indent guides.&lt;br>
+While extensions like indent-rainbow often have issues such as guides being cut off, you can achieve this simply by editing the VSCode settings file.&lt;/p>
+&lt;h2 id="how-to-change-the-colors-of-indent-guides">How to Change the Colors of Indent Guides&lt;/h2>
+&lt;h3 id="open-the-settings-file">Open the Settings File&lt;/h3>
+&lt;p>Open the VSCode settings file.&lt;br>
+Open the &lt;code>Command Palette&lt;/code> (Ctrl + Shift + P) and select &lt;code>Preferences: Open Settings (JSON)&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/036-vscode-indent/image.png"
+width="608"
+height="122"
+srcset="https://bossagyu.com/en/blog/036-vscode-indent/image_hu3c9579035f233532becca6f8faa5c647_25704_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/036-vscode-indent/image_hu3c9579035f233532becca6f8faa5c647_25704_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="How to open settings"
+class="gallery-image"
+data-flex-grow="498"
+data-flex-basis="1196px"
+>&lt;/p>
+&lt;h3 id="add-settings">Add Settings&lt;/h3>
+&lt;p>Add the following settings as a reference:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;workbench.colorCustomizations&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background1&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#006400&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background2&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#008000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background3&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00a000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background4&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#006400&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background5&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#008000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.background6&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00a000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground1&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground2&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground3&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground4&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground5&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorIndentGuide.activeBackground6&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#00ff00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;editorWhitespace.foreground&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;#393A3D&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Setting&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>editorIndentGuide.background&amp;lt;number&amp;gt;&lt;/code>&lt;/td>
+&lt;td>Specifies the background color of the indent guide.&lt;br>&lt;code>&amp;lt;number&amp;gt;&lt;/code> corresponds to the depth of the indent.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>editorIndentGuide.activeBackground&amp;lt;number&amp;gt;&lt;/code>&lt;/td>
+&lt;td>Specifies the background color of the active indent guide.&lt;br>&lt;code>&amp;lt;number&amp;gt;&lt;/code> corresponds to the depth of the indent.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>editorWhitespace.foreground&lt;/code>&lt;/td>
+&lt;td>Specifies the color of whitespace characters.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>After adding the settings, the colors of the indent guides will be changed as shown in the image below.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/036-vscode-indent/image-1.png"
+width="479"
+height="328"
+srcset="https://bossagyu.com/en/blog/036-vscode-indent/image-1_hu6f9c993cad77886be734ef5704270561_75507_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/036-vscode-indent/image-1_hu6f9c993cad77886be734ef5704270561_75507_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Indent guide appearance"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="350px"
+>&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>In VSCode, you can easily customize the colors of indent guides.&lt;br>
+By simply adding the necessary items to the settings file, you can change them to your preferred colors.&lt;br>
+This improves code readability and makes it easier to visually grasp the depth of indents.&lt;br>
+Give it a try!&lt;/p></description></item><item><title>How to Enable GitHub Copilot for Markdown</title><link>https://bossagyu.com/en/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>By default, GitHub Copilot is disabled for Markdown files.&lt;br>
 This article explains how to enable GitHub Copilot for Markdown.&lt;/p>
 &lt;h2 id="configuring-github-copilot">Configuring GitHub Copilot&lt;/h2>
@@ -759,90 +856,7 @@ As of January 2025, UV is both fast and easy to use, making it a valuable tool f
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p></description></item><item><title>Investigation of Covariance</title><link>https://bossagyu.com/en/blog/030-covariance/</link><pubDate>Mon, 02 Sep 2024 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-covariance/</guid><description>&lt;h2 id="what-is-covariance">What is Covariance?&lt;/h2>
-&lt;p>Covariance is a statistical measure that indicates how two variables change together.&lt;br>
-A positive value means the two variables tend to change in the same direction, while a negative value means they tend to change in opposite directions.&lt;/p>
-&lt;h3 id="formula">Formula&lt;/h3>
-&lt;p>Covariance is calculated using the following formula:&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/030-covariance/image.png"
-width="1022"
-height="314"
-srcset="https://bossagyu.com/en/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/030-covariance/image_hue129742e3e36996d44912e33be1b2cb4_35019_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Covariance Formula"
-class="gallery-image"
-data-flex-grow="325"
-data-flex-basis="781px"
->&lt;/p>
-&lt;h3 id="key-points">Key Points&lt;/h3>
-&lt;ul>
-&lt;li>If the covariance is close to 0, it suggests that the two variables have little to no strong relationship.&lt;/li>
-&lt;li>Since the value depends on the scale, correlation coefficients are often used instead.&lt;/li>
-&lt;/ul>
-&lt;h2 id="example-in-python">Example in Python&lt;/h2>
-&lt;p>Below is an example of calculating covariance using Python.&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">numpy&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">np&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Sample data&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">X&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mf">2.1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">2.5&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">4.0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">3.6&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">14&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Calculate covariance&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cov_matrix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cov&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">X&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Y&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bias&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">covariance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cov_matrix&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;Covariance: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">covariance&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="output">Output&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Covariance: 1.53
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="difference-between-covariance-and-correlation-coefficient">Difference Between Covariance and Correlation Coefficient&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Feature&lt;/th>
-&lt;th>Covariance&lt;/th>
-&lt;th>Correlation Coefficient&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Scale Dependent&lt;/td>
-&lt;td>Yes&lt;/td>
-&lt;td>No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Value Range&lt;/td>
-&lt;td>-∞ to ∞&lt;/td>
-&lt;td>-1 to 1&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Covariance is a fundamental metric for understanding the relationship between two variables.&lt;br>
-However, due to its scale dependency, it is often used in conjunction with correlation coefficients for deeper analysis.&lt;/p></description></item><item><title>Research on gRPC</title><link>https://bossagyu.com/en/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/en/blog/029-grpc/</guid><description>&lt;h2 id="what-is-grpc">What is gRPC?&lt;/h2>
+&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p></description></item><item><title>Research on gRPC</title><link>https://bossagyu.com/en/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/en/blog/029-grpc/</guid><description>&lt;h2 id="what-is-grpc">What is gRPC?&lt;/h2>
 &lt;ul>
 &lt;li>gRPC is a protocol developed by Google to implement RPC.&lt;/li>
 &lt;li>It uses Protocol Buffers to serialize data, enabling high-speed communication.&lt;/li>
@@ -3751,4 +3765,4 @@ After this, any changes made and pushed to main will automatically trigger deplo
 &lt;li>2023 AWS Cloud Practitioner&lt;/li>
 &lt;li>2023 AWS Certified Solutions Architect Associate&lt;/li>
 &lt;li>2023 Certified Product Owner&lt;/li>
-&lt;/ul></description></item><item><title>Archives</title><link>https://bossagyu.com/en/page/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://bossagyu.com/en/page/archives/</guid><description/></item></channel></rss>
+&lt;/ul></description></item><item><title>Archives</title><link>https://bossagyu.com/en/page/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://bossagyu.com/en/page/archives/</guid><description/></item><item><title/><link>https://bossagyu.com/en/blog/030-covariance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bossagyu.com/en/blog/030-covariance/</guid><description/></item></channel></rss>
