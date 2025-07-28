@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 22 Jul 2025 21:01:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 27 Jul 2025 18:12:16 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Update Visual Studio Code</title><link>https://bossagyu.com/en/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/en/blog/038-update-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to update Visual Studio Code (VSCode) on Mac.&lt;/p>
+&lt;h2 id="how-to-update-vscode">How to Update VSCode&lt;/h2>
+&lt;ol>
+&lt;li>Launch VSCode.&lt;/li>
+&lt;li>Go to Code → &amp;ldquo;Check for Updates&amp;rdquo;.&lt;br>
+If your interface is in English, select &amp;ldquo;Update Visual Studio Code&amp;rdquo;.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/038-update-vscode/image.png"
+width="362"
+height="266"
+srcset="https://bossagyu.com/en/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Check for Updates"
+class="gallery-image"
+data-flex-grow="136"
+data-flex-basis="326px"
+>&lt;/p>
+&lt;p>When the update starts, you will see a screen like this:&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/038-update-vscode/image-1.png"
+width="322"
+height="260"
+srcset="https://bossagyu.com/en/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="alt text"
+class="gallery-image"
+data-flex-grow="123"
+data-flex-basis="297px"
+>&lt;/p>
+&lt;p>Once the download is complete, &amp;ldquo;Restart to Update&amp;rdquo; will be displayed.&lt;/p>
+&lt;p>After restarting, click &amp;ldquo;About Visual Studio Code&amp;rdquo; to confirm that the version has been updated.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/038-update-vscode/image-3.png"
+width="243"
+height="338"
+srcset="https://bossagyu.com/en/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Version"
+class="gallery-image"
+data-flex-grow="71"
+data-flex-basis="172px"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>Updating VSCode is very simple and can be done in just a few clicks. By updating regularly, you can take advantage of new features and security patches, so it is important to always keep your environment up to date.&lt;br>
+After updating, be sure to check the version information to confirm that the update was successful.&lt;/p></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In Visual Studio Code (VSCode), you can customize the colors of indent guides.&lt;br>
 This article explains how to change the colors of indent guides.&lt;br>
 While extensions like indent-rainbow often have issues such as guides being cut off, you can achieve this simply by editing the VSCode settings file.&lt;/p>

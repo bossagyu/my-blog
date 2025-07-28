@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 22 Jul 2025 21:01:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>vscodeのインデントガイドをカスタマイズする方法</title><link>https://bossagyu.com/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/blog/036-vscode-indent/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 27 Jul 2025 18:12:16 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Visual Studio Codeのアップデート方法</title><link>https://bossagyu.com/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/blog/038-update-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>MacでVisual Studio Code (VSCode) のアップデート方法を説明します。&lt;/p>
+&lt;h2 id="vscodeのアップデート方法">VSCodeのアップデート方法&lt;/h2>
+&lt;ol>
+&lt;li>VScodeを起動します。&lt;/li>
+&lt;li>Code → 「更新の確認」&lt;br>
+英語の場合は Update Visual Studio Code を選択します。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image.png"
+width="362"
+height="266"
+srcset="https://bossagyu.com/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="更新の確認"
+class="gallery-image"
+data-flex-grow="136"
+data-flex-basis="326px"
+>&lt;/p>
+&lt;p>更新が始まると以下のような画面になります&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image-1.png"
+width="322"
+height="260"
+srcset="https://bossagyu.com/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="alt text"
+class="gallery-image"
+data-flex-grow="123"
+data-flex-basis="297px"
+>&lt;/p>
+&lt;p>ダウンロードが完了すると「再起動して更新」が表示されます。&lt;/p>
+&lt;p>再起動後「Visual Studio Codeのバージョン情報」をクリックして、バージョンが上がっていることを確認します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image-3.png"
+width="243"
+height="338"
+srcset="https://bossagyu.com/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="バージョン"
+class="gallery-image"
+data-flex-grow="71"
+data-flex-basis="172px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>VSCodeのアップデートは非常に簡単で、数クリックで完了します。定期的にアップデートを行うことで、新機能やセキュリティパッチを利用できるため、常に最新の状態を保つことが重要です。
+アップデート後は、必ずバージョン情報を確認して、正しくアップデートが行われたかをチェックしましょう。&lt;/p></description></item><item><title>vscodeのインデントガイドをカスタマイズする方法</title><link>https://bossagyu.com/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/blog/036-vscode-indent/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Visual Studio Code (VSCode) では、インデントガイドの色をカスタマイズすることができます。
 この記事では、インデントガイドの色を変更する方法を説明します。
 indent-rainbowのような拡張機能はインデントガイドが途中で切れるなどの問題がありましたが、VSCodeの設定ファイルを編集するだけで実現できます。&lt;/p>
