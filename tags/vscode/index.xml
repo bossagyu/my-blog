@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 27 Jul 2025 18:12:16 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>Visual Studio Codeのアップデート方法</title><link>https://bossagyu.com/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/blog/038-update-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 11 Aug 2025 20:33:30 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>Visual Studio CodeでAWS Toolkitを使う方法</title><link>https://bossagyu.com/blog/039-aws-toolkit-vscode/</link><pubDate>Mon, 11 Aug 2025 20:33:30 +0900</pubDate><guid>https://bossagyu.com/blog/039-aws-toolkit-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、Visual Studio Code (VSCode) で AWS Toolkit を使用する方法について説明します。&lt;/p>
+&lt;h2 id="aws-toolkitのインストール">AWS Toolkitのインストール&lt;/h2>
+&lt;ol>
+&lt;li>VSCodeを起動します。&lt;/li>
+&lt;li>左側のサイドバーから拡張機能アイコンをクリックします。&lt;/li>
+&lt;li>検索バーに「AWS Toolkit」と入力し、表示されたリストから「AWS Toolkit for Visual Studio Code」を選択します。&lt;/li>
+&lt;li>「インストール」ボタンをクリックして、インストールを開始します。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/blog/039-aws-toolkit-vscode/image.png"
+width="1192"
+height="265"
+srcset="https://bossagyu.com/blog/039-aws-toolkit-vscode/image_hufa1fd2602d4a5c45942f480dd2c9a493_78579_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/039-aws-toolkit-vscode/image_hufa1fd2602d4a5c45942f480dd2c9a493_78579_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="AWS Toolkit Installation"
+class="gallery-image"
+data-flex-grow="449"
+data-flex-basis="1079px"
+>&lt;/p>
+&lt;h2 id="asia-pacific-tokyoリージョンを設定する方法">Asia Pacific Tokyoリージョンを設定する方法&lt;/h2>
+&lt;p>EXPLORERからリージョンをして利用するのですが、デフォルトではus-east-1が選択されているため、Asia Pacific Tokyoリージョンを設定する必要があります。
+少しわかりにくいので、以下の手順で設定します。&lt;/p>
+&lt;ol>
+&lt;li>左側のサイドバーから「AWS Explorer」から、ハンバーガーメニューをクリックします。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/blog/039-aws-toolkit-vscode/image-1.png"
+width="658"
+height="259"
+srcset="https://bossagyu.com/blog/039-aws-toolkit-vscode/image-1_hu4dbc19d229257ea92a49e677c002202d_66951_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/039-aws-toolkit-vscode/image-1_hu4dbc19d229257ea92a49e677c002202d_66951_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="AWS Explorer"
+class="gallery-image"
+data-flex-grow="254"
+data-flex-basis="609px"
+>&lt;/p>
+&lt;ol start="2">
+&lt;li>&lt;code>Show or Hide Regions&lt;/code>をクリックします。&lt;/li>
+&lt;li>表示されたリストから「Asia Pacific (Tokyo) ap-northeast-1」を選択します。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/blog/039-aws-toolkit-vscode/image-2.png"
+width="600"
+height="211"
+srcset="https://bossagyu.com/blog/039-aws-toolkit-vscode/image-2_hu8226c6e3ff7c2fce4d95162999eea97c_27977_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/039-aws-toolkit-vscode/image-2_hu8226c6e3ff7c2fce4d95162999eea97c_27977_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="AWS Explorer"
+class="gallery-image"
+data-flex-grow="284"
+data-flex-basis="682px"
+>&lt;/p>
+&lt;p>これで、AWS ToolkitがAsia Pacific Tokyoリージョンで使用できるようになります。&lt;/p></description></item><item><title>Visual Studio Codeのアップデート方法</title><link>https://bossagyu.com/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/blog/038-update-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでVisual Studio Code (VSCode) のアップデート方法を説明します。&lt;/p>
 &lt;h2 id="vscodeのアップデート方法">VSCodeのアップデート方法&lt;/h2>
 &lt;ol>

@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 27 Jul 2025 18:12:16 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Update Visual Studio Code</title><link>https://bossagyu.com/en/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/en/blog/038-update-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/vscode/</link><description>Recent content in VSCode on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 11 Aug 2025 20:33:30 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use AWS Toolkit in Visual Studio Code</title><link>https://bossagyu.com/en/blog/039-aws-toolkit-vscode/</link><pubDate>Mon, 11 Aug 2025 20:33:30 +0900</pubDate><guid>https://bossagyu.com/en/blog/039-aws-toolkit-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use AWS Toolkit in Visual Studio Code (VSCode).&lt;/p>
+&lt;h2 id="installing-aws-toolkit">Installing AWS Toolkit&lt;/h2>
+&lt;ol>
+&lt;li>Launch VSCode.&lt;/li>
+&lt;li>Click the Extensions icon in the sidebar on the left.&lt;/li>
+&lt;li>Type &amp;ldquo;AWS Toolkit&amp;rdquo; in the search bar and select &amp;ldquo;AWS Toolkit for Visual Studio Code&amp;rdquo; from the list.&lt;/li>
+&lt;li>Click the &amp;ldquo;Install&amp;rdquo; button to start the installation.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image.png"
+width="1192"
+height="265"
+srcset="https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image_hufa1fd2602d4a5c45942f480dd2c9a493_78579_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image_hufa1fd2602d4a5c45942f480dd2c9a493_78579_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="AWS Toolkit Installation"
+class="gallery-image"
+data-flex-grow="449"
+data-flex-basis="1079px"
+>&lt;/p>
+&lt;h2 id="how-to-set-the-asia-pacific-tokyo-region">How to Set the Asia Pacific Tokyo Region&lt;/h2>
+&lt;p>By default, the region is set to us-east-1, so you need to change it to Asia Pacific Tokyo.&lt;br>
+The procedure is a bit tricky, so follow the steps below:&lt;/p>
+&lt;ol>
+&lt;li>In the left sidebar, open &amp;ldquo;AWS Explorer&amp;rdquo; and click the hamburger menu.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image-1.png"
+width="658"
+height="259"
+srcset="https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image-1_hu4dbc19d229257ea92a49e677c002202d_66951_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image-1_hu4dbc19d229257ea92a49e677c002202d_66951_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="AWS Explorer"
+class="gallery-image"
+data-flex-grow="254"
+data-flex-basis="609px"
+>&lt;/p>
+&lt;ol start="2">
+&lt;li>Click &lt;code>Show or Hide Regions&lt;/code>.&lt;/li>
+&lt;li>From the displayed list, select &amp;ldquo;Asia Pacific (Tokyo) ap-northeast-1&amp;rdquo;.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image-2.png"
+width="600"
+height="211"
+srcset="https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image-2_hu8226c6e3ff7c2fce4d95162999eea97c_27977_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/039-aws-toolkit-vscode/image-2_hu8226c6e3ff7c2fce4d95162999eea97c_27977_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="AWS Explorer"
+class="gallery-image"
+data-flex-grow="284"
+data-flex-basis="682px"
+>&lt;/p>
+&lt;p>Now, you can use AWS Toolkit in the Asia Pacific Tokyo region.&lt;/p></description></item><item><title>How to Update Visual Studio Code</title><link>https://bossagyu.com/en/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/en/blog/038-update-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to update Visual Studio Code (VSCode) on Mac.&lt;/p>
 &lt;h2 id="how-to-update-vscode">How to Update VSCode&lt;/h2>
 &lt;ol>
