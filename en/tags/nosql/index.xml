@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NoSQL on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/nosql/</link><description>Recent content in NoSQL on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Fri, 03 Oct 2025 07:29:31 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/nosql/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Run Redis with Docker</title><link>https://bossagyu.com/en/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/en/blog/040-redis-local/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to run Redis with Docker.&lt;/p>
+&lt;h2 id="what-is-redis">What is Redis?&lt;/h2>
+&lt;p>Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. It provides high-speed read/write performance and supports various data structures such as strings, lists, sets, and hashes.&lt;/p>
+&lt;h2 id="running-redis-with-docker">Running Redis with Docker&lt;/h2>
+&lt;h3 id="1-install-docker">1. Install Docker&lt;/h3>
+&lt;p>First, make sure Docker is installed.
+If it is not installed, please download and install it from the &lt;a class="link" href="https://www.docker.com/get-started" target="_blank" rel="noopener"
+>official Docker website&lt;/a>.&lt;/p>
+&lt;h3 id="2-start-a-redis-container">2. Start a Redis Container&lt;/h3>
+&lt;p>Run the following command to start a Redis container:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run --name redis -d -p 6379:6379 redis:7.4.5-alpine
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Log in to the container:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> -it redis sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-verify-redis-operation">3. Verify Redis Operation&lt;/h3>
+&lt;p>Inside the Redis container, run the following command to start the Redis client:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">redis-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Try setting and getting data:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> name &lt;span class="s2">&amp;#34;hoge&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">get name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;hoge&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>At this point, you can confirm that Redis is working correctly.&lt;/p>
+&lt;h3 id="4-stop-and-remove-the-redis-container">4. Stop and Remove the Redis Container&lt;/h3>
+&lt;p>To stop the Redis container, run:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker stop redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>To remove the Redis container, run:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker rm redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>In this article, we explained how to run Redis using Docker.
+Redis is widely used as a high-performance database, and with Docker, it can be easily set up.
+Give Redis a try and see how it can help you.&lt;/p></description></item></channel></rss>
