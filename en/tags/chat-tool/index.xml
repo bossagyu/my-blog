@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chat tool on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/chat-tool/</link><description>Recent content in Chat tool on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 07 Oct 2025 08:39:41 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/chat-tool/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use GitHub Copilot More Effectively with Chat Tools</title><link>https://bossagyu.com/en/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/en/blog/042-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use Chat Tools to make GitHub Copilot Chat even more powerful.
+By using Chat Tools, you can perform various tasks directly within your conversation with Copilot.&lt;/p>
+&lt;h2 id="what-are-chat-tools">What Are Chat Tools?&lt;/h2>
+&lt;p>Chat Tools are features within GitHub Copilot Chat that allow you to execute special tasks.
+For example, you can fetch terminal outputs or retrieve information from URLs—all from within the chat interface.&lt;/p>
+&lt;h2 id="how-to-use-chat-tools">How to Use Chat Tools&lt;/h2>
+&lt;p>Here’s how to use Chat Tools in VSCode.&lt;/p>
+&lt;p>Basically, you can execute them by typing a command in the following format:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/en/blog/042-github-copilot/image.png"
+width="940"
+height="119"
+srcset="https://bossagyu.com/en/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Example of running a Chat Tool"
+class="gallery-image"
+data-flex-grow="789"
+data-flex-basis="1895px"
+>&lt;/p>
+&lt;p>That’s all there is to it.&lt;/p>
+&lt;h2 id="common-chat-tool-commands">Common Chat Tool Commands&lt;/h2>
+&lt;p>Below are some of the most useful Chat Tool commands:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>Searches the entire current workspace.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>Adds the currently selected code in the editor as context to the prompt.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>Adds the selected output in the terminal as context to the prompt.&lt;br>Useful when referencing terminal output after an error occurs.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>Retrieves content from a specified URL and adds it as context to the prompt.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>There are many more useful commands available—refer to the official documentation for details:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>GitHub Copilot Chat Tools&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>In this article, we covered how to use Chat Tools within GitHub Copilot Chat.
+By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p></description></item></channel></rss>

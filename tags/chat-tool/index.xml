@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chat tool on Bossagyu Blog</title><link>https://bossagyu.com/tags/chat-tool/</link><description>Recent content in Chat tool on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 07 Oct 2025 08:39:41 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/chat-tool/index.xml" rel="self" type="application/rss+xml"/><item><title>Github CopilotをChat toolを使って便利に使う方法</title><link>https://bossagyu.com/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/blog/042-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、Github Copilot Chatをより便利に使うためのChat toolを使う方法について説明します。
+Chat toolを利用することで、Copilotとのチャットの中で様々なタスクを実行できるようになります。&lt;/p>
+&lt;h2 id="chat-toolとは">Chat toolとは&lt;/h2>
+&lt;p>Chat toolとはGithub Copilotのチャット内で特殊なタスクを実行できる機能です。
+例えば、ターミナルからの出力を取得したり、URLから情報を取得したりすることができます。&lt;/p>
+&lt;h2 id="chat-toolの実行方法">Chat toolの実行方法&lt;/h2>
+&lt;p>今回はVSCodeでChat toolを利用する方法を説明します。&lt;/p>
+&lt;p>基本的には &lt;code>#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;&lt;/code> の形式でコマンドを入力します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/042-github-copilot/image.png"
+width="940"
+height="119"
+srcset="https://bossagyu.com/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Chat toolの実行例"
+class="gallery-image"
+data-flex-grow="789"
+data-flex-basis="1895px"
+>&lt;/p>
+&lt;p>これだけです。&lt;/p>
+&lt;h2 id="代表的なchat-toolのコマンド">代表的なChat toolのコマンド&lt;/h2>
+&lt;p>以下に代表的なChat toolのコマンドを紹介します。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コマンド&lt;/th>
+&lt;th>機能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>現在のワークスペースを全部検索する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>現在のエディタで選択しているコードをコンテキストとしてプロンプトに追加する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>現在のターミナルで選択している部分をコンテキストとしてプロンプトに追加する。&lt;br>エラーが出たときにターミナルの出力を参照するのに便利です。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>URLを指定してwebページからコンテンツを取得してコンテキストとしてプロンプトに追加する&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>他にもたくさん便利な使い方があるので、公式ドキュメントを参照してください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>Github Copilot Chat tools&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>この記事では、Github Copilot ChatでChat toolを使う方法について説明しました。
+Chat toolを使うことで、より便利にCopilotを利用できるようになるので、ぜひ活用してみてください。&lt;/p></description></item></channel></rss>
