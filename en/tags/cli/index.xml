@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CLI on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/cli/</link><description>Recent content in CLI on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 12 Oct 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use Codex CLI</title><link>https://bossagyu.com/en/blog/043-codex/</link><pubDate>Sun, 12 Oct 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/043-codex/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article summarizes how to access Codex from your local environment via the command line with Codex CLI. It covers installation, sign-in methods, command execution examples, and common commands.&lt;/p>
+&lt;h2 id="how-to-install-codex-cli">How to Install Codex CLI&lt;/h2>
+&lt;p>If you already have Node.js, you can install it via npm:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">npm install -g codex-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If you use Homebrew, you can also install it as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew tap codexcli/tap
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install codex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After installation, run the following and confirm the version is displayed:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-sign-in">How to Sign In&lt;/h2>
+&lt;p>Codex CLI requires authentication on the first run. You can sign in with either an API key or your ChatGPT account, depending on your use case.&lt;/p>
+&lt;h3 id="sign-in-with-an-api-key">Sign in with an API key&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex login --token &amp;lt;YOUR_API_KEY&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can also store it in an environment variable to avoid typing it every time:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">CODEX_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&amp;lt;YOUR_API_KEY&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="sign-in-with-your-chatgpt-account">Sign in with your ChatGPT account&lt;/h3>
+&lt;p>If you prefer the browser-based flow, omit the token and run &lt;code>codex login&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex login
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This opens a browser and shows the ChatGPT sign-in screen. Sign in with your email, Google, or Apple account, grant access, and the token will be saved when you return to the CLI.&lt;/p>
+&lt;p>After signing in, run the following command in either case. If your account information appears, authentication succeeded.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex whoami
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-run-codex-with-examples">How to Run Codex (with examples)&lt;/h2>
+&lt;h3 id="generate-code-with-a-one-off-prompt">Generate code with a one-off prompt&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex run &lt;span class="s2">&amp;#34;Write FizzBuzz in Python&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="summarize-while-attaching-a-file-as-context">Summarize while attaching a file as context&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex run &lt;span class="s2">&amp;#34;Summarize this file&amp;#34;&lt;/span> --file README.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="try-interactive-chat-mode">Try interactive chat mode&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex chat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In chat mode, you can enter prompts to receive responses in sequence. Press &lt;code>Ctrl + D&lt;/code> to exit.&lt;/p>
+&lt;h4 id="slash-commands-in-chat">Slash commands in chat&lt;/h4>
+&lt;p>In chat mode, type a &lt;code>/&lt;/code> prefix to perform helper actions.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Purpose&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>/help&lt;/code>&lt;/td>
+&lt;td>Display available commands&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/new&lt;/code>&lt;/td>
+&lt;td>Reset the conversation history and start a new thread&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/file &amp;lt;path&amp;gt;&lt;/code>&lt;/td>
+&lt;td>Attach the specified file as context&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/exit&lt;/code>&lt;/td>
+&lt;td>Exit chat&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="how-to-use-the-commands">How to Use the Commands&lt;/h2>
+&lt;p>Here are the main commands:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>codex login --token &amp;lt;API_KEY&amp;gt;&lt;/code>&lt;/td>
+&lt;td>Sign in with an API key&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex login&lt;/code>&lt;/td>
+&lt;td>Start browser authentication with your ChatGPT account&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex whoami&lt;/code>&lt;/td>
+&lt;td>Check the currently signed-in account&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex run &amp;quot;&amp;lt;prompt&amp;gt;&amp;quot;&lt;/code>&lt;/td>
+&lt;td>Send a one-off prompt and get the result&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex run &amp;quot;&amp;lt;prompt&amp;gt;&amp;quot; --file &amp;lt;path&amp;gt;&lt;/code>&lt;/td>
+&lt;td>Run with a file included as context&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex chat&lt;/code>&lt;/td>
+&lt;td>Use interactive chat mode&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex history&lt;/code>&lt;/td>
+&lt;td>Review recent execution history&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item></channel></rss>

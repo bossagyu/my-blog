@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 07 Oct 2025 08:39:41 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Github CopilotをChat toolを使って便利に使う方法</title><link>https://bossagyu.com/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/blog/042-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 12 Oct 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Codex CLIの使い方まとめ</title><link>https://bossagyu.com/blog/043-codex/</link><pubDate>Sun, 12 Oct 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/043-codex/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Codex CLIを使ってローカル環境からコマンドライン経由でCodexにアクセスする手順をまとめました。
+インストールからサインイン、代表的なコマンドの使い方まで一通り確認できます。&lt;/p>
+&lt;h2 id="codex-cliのインストール方法">Codex CLIのインストール方法&lt;/h2>
+&lt;p>Node.jsが入っている環境ならnpm経由で簡単に導入できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">npm install -g codex-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Homebrewを利用している場合は以下でもOKです。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew tap codexcli/tap
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install codex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストール後、バージョンが表示されれば準備完了です。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="サインインの方法">サインインの方法&lt;/h2>
+&lt;p>Codex CLIは初回実行時に認証が必要です。用途に応じてAPIキーかChatGPTアカウントでサインインできます。&lt;/p>
+&lt;h3 id="apiキーでサインインする">APIキーでサインインする&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex login --token &amp;lt;YOUR_API_KEY&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>環境変数に設定しておくと毎回入力する手間を省けます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">CODEX_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&amp;lt;YOUR_API_KEY&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="chatgptのアカウントでサインインする">ChatGPTのアカウントでサインインする&lt;/h3>
+&lt;p>ブラウザでの認証フローを利用したい場合は、トークン指定を省いて &lt;code>codex login&lt;/code> を実行します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex login
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上記を実行するとブラウザが開き、ChatGPTのサインイン画面が表示されます。メールアドレスやGoogle/Appleアカウントでサインインし、許可を与えるとCLIに戻ってトークンが保存されます。&lt;/p>
+&lt;p>サインイン後は共通で以下を実行し、アカウント情報が表示されれば認証成功です。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex whoami
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="codexの実行方法とサンプル">Codexの実行方法とサンプル&lt;/h2>
+&lt;h3 id="単発でコード生成を行う">単発でコード生成を行う&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex run &lt;span class="s2">&amp;#34;PythonでFizzBuzzを書いて&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ファイルをコンテキストに含めて要約する">ファイルをコンテキストに含めて要約する&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex run &lt;span class="s2">&amp;#34;このファイルを要約して&amp;#34;&lt;/span> --file README.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="対話モードで試す">対話モードで試す&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">codex chat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>チャットモードでは、プロンプトを入力すると逐次回答が返ってきます。&lt;code>Ctrl + D&lt;/code> で終了できます。&lt;/p>
+&lt;h4 id="チャット内のスラッシュコマンド">チャット内のスラッシュコマンド&lt;/h4>
+&lt;p>対話モードでは先頭に &lt;code>/&lt;/code> を付けて補助操作を行えます。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コマンド&lt;/th>
+&lt;th>役割&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>/help&lt;/code>&lt;/td>
+&lt;td>利用可能なコマンド一覧を表示する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/new&lt;/code>&lt;/td>
+&lt;td>会話履歴をリセットして新しいスレッドを開始する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/file &amp;lt;path&amp;gt;&lt;/code>&lt;/td>
+&lt;td>指定したファイルをコンテキストに添付する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/exit&lt;/code>&lt;/td>
+&lt;td>チャットを終了する&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="コマンドの使い方">コマンドの使い方&lt;/h2>
+&lt;p>主なコマンドは以下の通りです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コマンド&lt;/th>
+&lt;th>説明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>codex login --token &amp;lt;API_KEY&amp;gt;&lt;/code>&lt;/td>
+&lt;td>APIキーでサインインする&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex login&lt;/code>&lt;/td>
+&lt;td>ChatGPTのアカウントでブラウザ認証を開始する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex whoami&lt;/code>&lt;/td>
+&lt;td>現在サインインしているアカウントを確認する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex run &amp;quot;&amp;lt;prompt&amp;gt;&amp;quot;&lt;/code>&lt;/td>
+&lt;td>単発のプロンプトを投げて結果を取得する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex run &amp;quot;&amp;lt;prompt&amp;gt;&amp;quot; --file &amp;lt;path&amp;gt;&lt;/code>&lt;/td>
+&lt;td>ファイルをコンテキストに含めて実行する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex chat&lt;/code>&lt;/td>
+&lt;td>対話モードで利用する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>codex history&lt;/code>&lt;/td>
+&lt;td>直近の実行履歴を確認する&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Codex CLIはインストール後にサインインを済ませるだけで、コマンドラインからすぐにCodexを活用できます。
+よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p></description></item><item><title>Github CopilotをChat toolを使って便利に使う方法</title><link>https://bossagyu.com/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/blog/042-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、Github Copilot Chatをより便利に使うためのChat toolを使う方法について説明します。
 Chat toolを利用することで、Copilotとのチャットの中で様々なタスクを実行できるようになります。&lt;/p>
 &lt;h2 id="chat-toolとは">Chat toolとは&lt;/h2>
