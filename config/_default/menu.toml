@@ -13,3 +13,11 @@ url = "https://twitter.com/bossagyu"
 
 [social.params]
 icon = "brand-twitter"
+
+[[social]]
+identifier = "mail"
+name = "Mail"
+url = "mailto:Bossagyu@yahoo.co.jp"
+
+[social.params]
+icon = "messages"
