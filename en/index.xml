@@ -2972,10 +2972,11 @@ data-flex-basis="345px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>Contact</title><link>https://bossagyu.com/en/others/contact/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/others/contact/</guid><description>&lt;p>For inquiries, please contact me via Direct Message (DM) on Twitter.&lt;/p>
+&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>Contact</title><link>https://bossagyu.com/en/others/contact/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/others/contact/</guid><description>&lt;p>For inquiries, please contact me via the following:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a class="link" href="https://twitter.com/bossagyu" target="_blank" rel="noopener"
->@bossagyu&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://x.com/bossagyu" target="_blank" rel="noopener"
+>X @bossagyu&lt;/a>&lt;/li>
+&lt;li>Mail: &lt;a class="link" href="mailto:Bossagyu@yahoo.co.jp" >Bossagyu@yahoo.co.jp&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>How to Create a Product Strategy</title><link>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to create a good product strategy, based on the book &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
 &lt;h2 id="background">Background&lt;/h2>
