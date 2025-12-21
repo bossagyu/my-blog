@@ -50,7 +50,7 @@ Install related libraries:
 brew install cmake protobuf rust pyenv git wget
 ```
 
-Set up the Python environment using pyenv. This allows you to use multiple versions of Python. For building the Python environment, refer to [this article](https://bossagyu.com/blog/004-paython-setup/).
+Set up the Python environment using pyenv. This allows you to use multiple versions of Python. For building the Python environment, refer to [this article](https://bossagyu.com/blog/004-python-setup/).
 
 ```shell
 pyenv install 3.10.6

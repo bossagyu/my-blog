@@ -99,4 +99,30 @@ To deactivate, execute the following command.
 deactivate
 ```
 
+## How to Update a venv
+
+If you need to refresh dependencies, activate the virtual environment and run the following. When using `requirements.txt`, update the file first and then reinstall.
+```shell
+source venv/bin/activate
+pip install --upgrade pip
+pip install -U -r requirements.txt
+```
+
+When upgrading Python to a new minor version, install the new version with `pyenv`, recreate the virtual environment, and reinstall dependencies to avoid mismatches.
+```shell
+pyenv install 3.12.2
+pyenv local 3.12.2
+rm -rf venv
+python -m venv venv
+source venv/bin/activate
+pip install -U -r requirements.txt
+```
+
+## How to Delete a venv
+
+When the virtual environment is no longer needed, delete the directory. Confirm you are in the correct working directory before running the command.
+```shell
+rm -rf venv
+```
+
 This completes the setup of the local environment.
