@@ -58,7 +58,7 @@ brew install cmake protobuf rust pyenv git wget
 ```
 
 pyenvを用いて、Python環境のセットアップ。複数のPythonのバージョンを使い分けられるようにします。
-このあとにvenvも登場します。pythonの環境の構築については[こちら](https://bossagyu.com/blog/004-paython-setup/)の記事を参考にしてください。
+このあとにvenvも登場します。pythonの環境の構築については[こちら](https://bossagyu.com/blog/004-python-setup/)の記事を参考にしてください。
 
 ```shell
 pyenv install 3.10.6
@@ -125,4 +125,3 @@ mv ~/Downloads/bluePencilXL_v401.safetensors models/Stable-diffusion/
 ## まとめ
 この記事ではMacにStable Diffusion Web UIをインストールし、ローカルで利用する方法を紹介しました。
 ローカルで利用することで、制限があったり、費用がかかったりするwebアプリケーションを利用するよりも、自由に画像を生成することができます。
-

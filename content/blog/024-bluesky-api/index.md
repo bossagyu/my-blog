@@ -51,7 +51,7 @@ API実行用パスワードは `設定` → `アプリパスワード` から生
 ## Python実行環境の構築
 
 Pythonの実行環境をセットアップしてください。  
-venvを用いたセットアップについては、[こちら](https://bossagyu.com/blog/004-paython-setup/) にまとめています。  
+venvを用いたセットアップについては、[こちら](https://bossagyu.com/blog/004-python-setup/) にまとめています。  
 
 [公式ドキュメント](https://atproto.blue/en/latest/) によると、Pythonのバージョンは3.7.1以上を利用する必要がありますので注意しておいてください。  
 
@@ -103,4 +103,3 @@ $ python post_bluesky.py
 
 今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。  
 Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。
-

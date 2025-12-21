@@ -45,7 +45,7 @@ Once the password is generated, ensure to copy it as it won't be displayed again
 
 ## Setting Up the Python Environment
 
-Prepare your Python environment. For setup using venv, refer to [this guide](https://bossagyu.com/blog/004-paython-setup/).
+Prepare your Python environment. For setup using venv, refer to [this guide](https://bossagyu.com/blog/004-python-setup/).
 
 According to the [official documentation](https://atproto.com/docs), Python version 3.7.1 or higher is required.
 
@@ -97,4 +97,3 @@ Upon execution, the post successfully appears on Bluesky.
 
 This article covered how to execute Bluesky's API using Python.  
 While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.
-
