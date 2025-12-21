@@ -236,7 +236,7 @@ data-flex-basis="240px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>pyenvを用いて、Python環境のセットアップ。複数のPythonのバージョンを使い分けられるようにします。
-このあとにvenvも登場します。pythonの環境の構築については&lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+このあとにvenvも登場します。pythonの環境の構築については&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" target="_blank" rel="noopener"
 >こちら&lt;/a>の記事を参考にしてください。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">

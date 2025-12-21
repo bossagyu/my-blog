@@ -1978,7 +1978,7 @@ data-flex-basis="576px"
 >&lt;/p>
 &lt;p>Once the password is generated, ensure to copy it as it won&amp;rsquo;t be displayed again. If you forget to copy, simply generate a new one.&lt;/p>
 &lt;h2 id="setting-up-the-python-environment">Setting Up the Python Environment&lt;/h2>
-&lt;p>Prepare your Python environment. For setup using venv, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+&lt;p>Prepare your Python environment. For setup using venv, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" target="_blank" rel="noopener"
 >this guide&lt;/a>.&lt;/p>
 &lt;p>According to the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
 >official documentation&lt;/a>, Python version 3.7.1 or higher is required.&lt;/p>
@@ -2507,7 +2507,7 @@ In my experience, discussions about performance and availability often go hand i
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install cmake protobuf rust pyenv git wget
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Set up the Python environment using pyenv. This allows you to use multiple versions of Python. For building the Python environment, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+&lt;/div>&lt;p>Set up the Python environment using pyenv. This allows you to use multiple versions of Python. For building the Python environment, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" target="_blank" rel="noopener"
 >this article&lt;/a>.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -3830,7 +3830,7 @@ data-flex-basis="984px"
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use GitHub Copilot in IntelliJ.
-It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-paython-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-paython-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-python-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article documents how to set up a Python environment for development on a Mac local environment.&lt;br>
 In this case, we will use two systems to manage different versions of Python and virtual environments:&lt;/p>
 &lt;ul>
@@ -3968,6 +3968,49 @@ In this case, we will use two systems to manage different versions of Python and
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">deactivate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-update-a-venv">How to Update a venv&lt;/h2>
+&lt;p>If you need to refresh dependencies, activate the virtual environment and run the following. When using &lt;code>requirements.txt&lt;/code>, update the file first and then reinstall.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip install --upgrade pip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip install -U -r requirements.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>When upgrading Python to a new minor version, install the new version with &lt;code>pyenv&lt;/code>, recreate the virtual environment, and reinstall dependencies to avoid mismatches.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pyenv install 3.12.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pyenv &lt;span class="nb">local&lt;/span> 3.12.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -rf venv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -m venv venv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip install -U -r requirements.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-delete-a-venv">How to Delete a venv&lt;/h2>
+&lt;p>When the virtual environment is no longer needed, delete the directory. Confirm you are in the correct working directory before running the command.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p></description></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>

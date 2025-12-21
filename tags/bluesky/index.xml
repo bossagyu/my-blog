@@ -65,7 +65,7 @@ data-flex-basis="576px"
 ちなみに二度と表示されなくなるので、コピーを忘れないようにしましょう。コピーを忘れた場合は再生成すればOKです。&lt;/p>
 &lt;h2 id="python実行環境の構築">Python実行環境の構築&lt;/h2>
 &lt;p>Pythonの実行環境をセットアップしてください。&lt;br>
-venvを用いたセットアップについては、&lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+venvを用いたセットアップについては、&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" target="_blank" rel="noopener"
 >こちら&lt;/a> にまとめています。&lt;/p>
 &lt;p>&lt;a class="link" href="https://atproto.blue/en/latest/" target="_blank" rel="noopener"
 >公式ドキュメント&lt;/a> によると、Pythonのバージョンは3.7.1以上を利用する必要がありますので注意しておいてください。&lt;/p>

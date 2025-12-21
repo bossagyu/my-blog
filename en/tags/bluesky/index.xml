@@ -59,7 +59,7 @@ data-flex-basis="576px"
 >&lt;/p>
 &lt;p>Once the password is generated, ensure to copy it as it won&amp;rsquo;t be displayed again. If you forget to copy, simply generate a new one.&lt;/p>
 &lt;h2 id="setting-up-the-python-environment">Setting Up the Python Environment&lt;/h2>
-&lt;p>Prepare your Python environment. For setup using venv, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-paython-setup/" target="_blank" rel="noopener"
+&lt;p>Prepare your Python environment. For setup using venv, refer to &lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" target="_blank" rel="noopener"
 >this guide&lt;/a>.&lt;/p>
 &lt;p>According to the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
 >official documentation&lt;/a>, Python version 3.7.1 or higher is required.&lt;/p>
