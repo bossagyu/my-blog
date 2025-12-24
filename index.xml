@@ -731,7 +731,89 @@ data-flex-grow="83"
 data-flex-basis="199px"
 >&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>JetBrains製品のメジャーバージョンを上げる際は、JetBrains Toolbox Appを利用することで簡単にアップデートが可能です。&lt;/p></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>JetBrains製品のメジャーバージョンを上げる際は、JetBrains Toolbox Appを利用することで簡単にアップデートが可能です。&lt;/p></description></item><item><title>OpenAI Response APIの使い方まとめ</title><link>https://bossagyu.com/blog/044-openai-response-api/</link><pubDate>Sat, 15 Feb 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/044-openai-response-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>OpenAIのResponse APIを使ってテキスト生成を行う手順をまとめました。
+公式ドキュメントの場所、APIキーの取得方法、Pythonからの最小サンプルまでを確認できます。&lt;/p>
+&lt;h2 id="response-apiとは">Response APIとは&lt;/h2>
+&lt;p>Response APIは、テキスト生成やツール呼び出しなどを統一的に扱えるOpenAIのAPIです。
+単発の問い合わせから、会話形式のやり取りまで幅広く利用できます。&lt;/p>
+&lt;h2 id="公式ドキュメント">公式ドキュメント&lt;/h2>
+&lt;p>最新の仕様は公式ドキュメントを参照するのが確実です。&lt;/p>
+&lt;ul>
+&lt;li>Response API リファレンス: &lt;a class="link" href="https://platform.openai.com/docs/api-reference/responses" target="_blank" rel="noopener"
+>https://platform.openai.com/docs/api-reference/responses&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="apiキーの取得方法">APIキーの取得方法&lt;/h2>
+&lt;p>Response APIを利用するにはOpenAIのAPIキーが必要です。
+以下の手順で取得できます。&lt;/p>
+&lt;ol>
+&lt;li>OpenAIのダッシュボードにサインインする&lt;/li>
+&lt;li>API Keysページ（&lt;a class="link" href="https://platform.openai.com/api-keys" target="_blank" rel="noopener"
+>https://platform.openai.com/api-keys&lt;/a>）を開く&lt;/li>
+&lt;li>「Create new secret key」から新しいキーを発行する&lt;/li>
+&lt;/ol>
+&lt;p>取得したキーは環境変数に設定しておくと安全です。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">OPENAI_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;YOUR_API_KEY&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="pythonのサンプルコード">Pythonのサンプルコード&lt;/h2>
+&lt;p>Python SDKを使う場合は、まずuvでパッケージをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">uv pip install openai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以下はResponse APIでテキストを生成する最小サンプルです。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">openai&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">OpenAI&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">OpenAI&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">responses&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">model&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;gpt-4.1-mini&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">input&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Response APIの特徴を3行で教えてください。&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">output_text&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="実行イメージ">実行イメージ&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">Response APIは単発の生成にも対話にも使える統一APIです。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">シンプルなリクエストでモデル出力を取得できます。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">公式ドキュメントを確認しながら用途に合わせて拡張できます。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAPIです。
+公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>今回は&lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feastのチュートリアル&lt;/a>を参考に、Macで実行してみます。&lt;/p>
 &lt;h2 id="事前準備">事前準備&lt;/h2>
