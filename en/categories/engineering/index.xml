@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 12 Oct 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use Codex CLI</title><link>https://bossagyu.com/en/blog/043-codex/</link><pubDate>Sun, 12 Oct 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/043-codex/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 24 Dec 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use the OpenAI Response API</title><link>https://bossagyu.com/en/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/044-openai-response-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article summarizes how to use the OpenAI Response API for text generation. It covers the official documentation, how to obtain an API key, and a minimal Python example.&lt;/p>
+&lt;h2 id="what-is-the-response-api">What is the Response API?&lt;/h2>
+&lt;p>The Response API is OpenAI&amp;rsquo;s unified API for text generation, tool calls, and multi-turn interactions. It works for both one-off requests and conversational workflows.&lt;/p>
+&lt;h2 id="official-documentation">Official documentation&lt;/h2>
+&lt;p>The most reliable source for the latest specs is the official documentation.&lt;/p>
+&lt;ul>
+&lt;li>Response API reference: &lt;a class="link" href="https://platform.openai.com/docs/api-reference/responses" target="_blank" rel="noopener"
+>https://platform.openai.com/docs/api-reference/responses&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="how-to-get-an-api-key">How to get an API key&lt;/h2>
+&lt;p>You need an OpenAI API key to use the Response API. Follow these steps:&lt;/p>
+&lt;ol>
+&lt;li>Sign in to the OpenAI dashboard&lt;/li>
+&lt;li>Open the API Keys page: &lt;a class="link" href="https://platform.openai.com/api-keys" target="_blank" rel="noopener"
+>https://platform.openai.com/api-keys&lt;/a>&lt;/li>
+&lt;li>Create a new key with “Create new secret key”&lt;/li>
+&lt;/ol>
+&lt;p>Store the key in an environment variable for safety.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">OPENAI_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;YOUR_API_KEY&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="python-sample-code">Python sample code&lt;/h2>
+&lt;p>Install the Python SDK with uv:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">uv pip install openai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Below is a minimal sample that calls the Response API.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">openai&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">OpenAI&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">OpenAI&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">responses&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">model&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;gpt-4.1-mini&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">input&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Summarize the key features of the Response API in 3 lines.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">output_text&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="example-output">Example output&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">The Response API is a unified endpoint for one-off and conversational generation.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">It lets you retrieve model output with a simple request structure.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Start with the docs and expand as your use case grows.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p></description></item><item><title>How to Use Codex CLI</title><link>https://bossagyu.com/en/blog/043-codex/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/043-codex/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to access Codex from your local environment via the command line with Codex CLI. It covers installation, sign-in methods, command execution examples, and common commands.&lt;/p>
 &lt;h2 id="how-to-install-codex-cli">How to Install Codex CLI&lt;/h2>
 &lt;p>If you already have Node.js, you can install it via npm:&lt;/p>
@@ -707,85 +785,7 @@ data-flex-basis="657px"
 >&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.&lt;br>
-You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p></description></item><item><title>How to Use the OpenAI Response API</title><link>https://bossagyu.com/en/blog/044-openai-response-api/</link><pubDate>Sat, 15 Feb 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/044-openai-response-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article summarizes how to use the OpenAI Response API for text generation. It covers the official documentation, how to obtain an API key, and a minimal Python example.&lt;/p>
-&lt;h2 id="what-is-the-response-api">What is the Response API?&lt;/h2>
-&lt;p>The Response API is OpenAI&amp;rsquo;s unified API for text generation, tool calls, and multi-turn interactions. It works for both one-off requests and conversational workflows.&lt;/p>
-&lt;h2 id="official-documentation">Official documentation&lt;/h2>
-&lt;p>The most reliable source for the latest specs is the official documentation.&lt;/p>
-&lt;ul>
-&lt;li>Response API reference: &lt;a class="link" href="https://platform.openai.com/docs/api-reference/responses" target="_blank" rel="noopener"
->https://platform.openai.com/docs/api-reference/responses&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="how-to-get-an-api-key">How to get an API key&lt;/h2>
-&lt;p>You need an OpenAI API key to use the Response API. Follow these steps:&lt;/p>
-&lt;ol>
-&lt;li>Sign in to the OpenAI dashboard&lt;/li>
-&lt;li>Open the API Keys page: &lt;a class="link" href="https://platform.openai.com/api-keys" target="_blank" rel="noopener"
->https://platform.openai.com/api-keys&lt;/a>&lt;/li>
-&lt;li>Create a new key with “Create new secret key”&lt;/li>
-&lt;/ol>
-&lt;p>Store the key in an environment variable for safety.&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">OPENAI_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;YOUR_API_KEY&amp;gt;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="python-sample-code">Python sample code&lt;/h2>
-&lt;p>Install the Python SDK with uv:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">uv pip install openai
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Below is a minimal sample that calls the Response API.&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">openai&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">OpenAI&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">OpenAI&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">responses&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">model&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;gpt-4.1-mini&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">input&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Summarize the key features of the Response API in 3 lines.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">output_text&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="example-output">Example output&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">The Response API is a unified endpoint for one-off and conversational generation.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">It lets you retrieve model output with a simple request structure.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Start with the docs and expand as your use case grows.
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In this article, we’ll follow the &lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feast tutorial&lt;/a> and run it on a Mac.&lt;/p>
 &lt;h2 id="prerequisites">Prerequisites&lt;/h2>
