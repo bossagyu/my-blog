@@ -1,6 +1,6 @@
 +++
 title = 'OpenAI Response APIの使い方まとめ'
-date = 2025-02-15T10:00:00+09:00
+date = 2025-12-24T10:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['OpenAI', 'ResponseAPI', 'Python', 'API']
