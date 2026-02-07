@@ -11,6 +11,10 @@
 &lt;li>&lt;a class="link" href="https://github.com/bossagyu" target="_blank" rel="noopener"
 >Github&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;h2 id="products">Products&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a> - 掃除タスクを管理するLINE Bot&lt;/li>
+&lt;/ul>
 &lt;h2 id="skill">Skill&lt;/h2>
 &lt;ul>
 &lt;li>Management&lt;/li>

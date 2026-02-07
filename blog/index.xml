@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Wed, 24 Dec 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenAI Response APIの使い方まとめ</title><link>https://bossagyu.com/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/044-openai-response-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 07 Feb 2026 18:30:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>掃除を忘れない！掃除リマインダーLINE Bot</title><link>https://bossagyu.com/blog/045-clean-bot/</link><pubDate>Sat, 07 Feb 2026 18:30:00 +0900</pubDate><guid>https://bossagyu.com/blog/045-clean-bot/</guid><description>&lt;h2 id="こんな悩みはありませんか">こんな悩みはありませんか？&lt;/h2>
+&lt;ul>
+&lt;li>「掃除機、最後にかけたのいつだっけ&amp;hellip;」&lt;/li>
+&lt;li>「トイレ掃除、そろそろやらないと」&lt;/li>
+&lt;li>「換気扇の掃除、忘れてた！」&lt;/li>
+&lt;/ul>
+&lt;p>掃除は「やらなきゃ」と思っていても、つい忘れがち。特に週1回、月1回といった定期的な掃除は、気づいたら期限を過ぎていることが多いですよね。&lt;/p>
+&lt;h2 id="掃除リマインダーbotを作りました">掃除リマインダーBotを作りました&lt;/h2>
+&lt;p>そんな悩みを解決するために、&lt;strong>掃除リマインダーLINE Bot&lt;/strong>を作りました。&lt;/p>
+&lt;p>このBotは、掃除タスクごとに「何日ごとにやるか」を設定でき、期限が来たらLINEで通知してくれます。&lt;/p>
+&lt;h3 id="主な機能">主な機能&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>タスク登録&lt;/strong>: 「掃除機 7日」「トイレ 3日」など、タスクと間隔を設定&lt;/li>
+&lt;li>&lt;strong>完了報告&lt;/strong>: 掃除が終わったらLINEで報告するだけ&lt;/li>
+&lt;li>&lt;strong>リマインド通知&lt;/strong>: 設定した曜日・時間に期限切れタスクを通知&lt;/li>
+&lt;li>&lt;strong>一時停止&lt;/strong>: 旅行中などはタスクを停止できる&lt;/li>
+&lt;/ul>
+&lt;h2 id="使い方">使い方&lt;/h2>
+&lt;h3 id="1-友だち追加">1. 友だち追加&lt;/h3>
+&lt;p>以下のQRコードまたはリンクから友だち追加してください。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/045-clean-bot/qrcode.png"
+width="360"
+height="360"
+srcset="https://bossagyu.com/blog/045-clean-bot/qrcode_hu95bee7a533128dc6d7ed5659019be1cb_23771_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/045-clean-bot/qrcode_hu95bee7a533128dc6d7ed5659019be1cb_23771_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="QRコード"
+class="gallery-image"
+data-flex-grow="100"
+data-flex-basis="240px"
+>&lt;/p>
+&lt;p>&lt;a class="link" href="https://lin.ee/kdwsLys" target="_blank" rel="noopener"
+>友だち追加はこちら&lt;/a>&lt;/p>
+&lt;h3 id="2-タスクを追加する">2. タスクを追加する&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">追加 掃除機 7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これで「7日ごとに掃除機」というタスクが登録されます。&lt;/p>
+&lt;h3 id="3-掃除が終わったら報告">3. 掃除が終わったら報告&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">完了 掃除機
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>タスクの期限がリセットされ、次の通知まで7日間になります。&lt;/p>
+&lt;h3 id="4-残りのタスクを確認">4. 残りのタスクを確認&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">残り
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>期限切れのタスクが一覧で表示されます。何日超過しているかも分かります。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">タスクは以下の通りです。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">掃除機 (+3日)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">トイレ (+1日)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-通知設定">5. 通知設定&lt;/h3>
+&lt;p>好きな曜日と時間に通知を受け取れます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">通知設定 月水金 7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これで月・水・金の7時に通知が届きます。&lt;/p>
+&lt;h2 id="コマンド一覧">コマンド一覧&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コマンド&lt;/th>
+&lt;th>説明&lt;/th>
+&lt;th>例&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>追加 [タスク名] [日数]&lt;/td>
+&lt;td>タスクを追加&lt;/td>
+&lt;td>追加 掃除機 7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>完了 [タスク名]&lt;/td>
+&lt;td>タスクを完了&lt;/td>
+&lt;td>完了 掃除機&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>削除 [タスク名]&lt;/td>
+&lt;td>タスクを削除&lt;/td>
+&lt;td>削除 掃除機&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>停止 [タスク名]&lt;/td>
+&lt;td>一時停止&lt;/td>
+&lt;td>停止 掃除機&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>再開 [タスク名]&lt;/td>
+&lt;td>再開&lt;/td>
+&lt;td>再開 掃除機&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>残り&lt;/td>
+&lt;td>期限切れタスク表示&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>確認&lt;/td>
+&lt;td>全タスク詳細表示&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>通知設定 [曜日] [時間]&lt;/td>
+&lt;td>通知設定&lt;/td>
+&lt;td>通知設定 月水金 7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>使い方&lt;/td>
+&lt;td>ヘルプ表示&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="なぜ日数経過で管理するのか">なぜ「日数経過」で管理するのか&lt;/h2>
+&lt;p>一般的なTODOアプリは「期日」を設定しますが、掃除は「前回からどれくらい経ったか」で判断することが多いです。&lt;/p>
+&lt;ul>
+&lt;li>掃除機は「1週間に1回くらい」&lt;/li>
+&lt;li>トイレは「3日に1回」&lt;/li>
+&lt;li>換気扇は「月に1回」&lt;/li>
+&lt;/ul>
+&lt;p>このBotは、完了報告をするたびに自動で次の期限が設定されるので、毎回日付を入力する手間がありません。&lt;/p>
+&lt;h2 id="無料で使えます">無料で使えます&lt;/h2>
+&lt;p>このBotは完全無料で利用できます。ぜひお試しください！&lt;/p>
+&lt;p>&lt;a class="link" href="https://lin.ee/kdwsLys" target="_blank" rel="noopener"
+>友だち追加はこちら&lt;/a>&lt;/p></description></item><item><title>OpenAI Response APIの使い方まとめ</title><link>https://bossagyu.com/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/044-openai-response-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>OpenAIのResponse APIを使ってテキスト生成を行う手順をまとめました。
 公式ドキュメントの場所、APIキーの取得方法、Pythonからの最小サンプルまでを確認できます。&lt;/p>
 &lt;h2 id="response-apiとは">Response APIとは&lt;/h2>
