@@ -1,4 +1,543 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 24 Dec 2025 10:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Use the OpenAI Response API</title><link>https://bossagyu.com/en/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/044-openai-response-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 07 Feb 2026 19:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Cleaning Reminder Bot with AWS Lambda + LINE</title><link>https://bossagyu.com/en/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.&lt;/p>
+&lt;p>See the completed Bot here: &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >Cleaning Reminder Bot&lt;/a>&lt;/p>
+&lt;h2 id="architecture">Architecture&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ LINE User │────▶│ API Gateway │────▶│ Lambda │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└─────────────┘ └─────────────┘ │ (process_user_ │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> │ message) │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └──────────┬──────────┘
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">┌─────────────┐ ┌─────────────────────┐ │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ LINE User │◀────│ Lambda │ │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ (notify) │ │ (push_message_ │ ▼
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└─────────────┘ │ periodically) │ ┌─────────┐
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └──────────┬──────────┘ │ S3 │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> │ │ (JSON) │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">┌─────────────┐ │ └─────────┘
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ EventBridge │────────────────┘
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ (hourly) │
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└─────────────┘
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="services-used">Services Used&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Service&lt;/th>
+&lt;th>Purpose&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>API Gateway (HTTP API)&lt;/td>
+&lt;td>Receive LINE Webhooks&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Lambda&lt;/td>
+&lt;td>Message processing, scheduled notifications&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>S3&lt;/td>
+&lt;td>Store per-user task data&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>EventBridge&lt;/td>
+&lt;td>Scheduled execution&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="why-this-architecture">Why This Architecture&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Serverless&lt;/strong>: Pay only for what you use, zero operational overhead&lt;/li>
+&lt;li>&lt;strong>S3&lt;/strong>: Cheaper than RDS, simple JSON management&lt;/li>
+&lt;li>&lt;strong>SAM&lt;/strong>: Infrastructure as Code for deployment management&lt;/li>
+&lt;/ul>
+&lt;h2 id="project-structure">Project Structure&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">clean-bot/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── lib/ # Core modules
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── clean_task.py # Task state management
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── message.py # Command parser
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── line.py # LINE API
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── s3_client.py # S3 operations
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── test/ # Tests
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── line_clean_bot.py # Lambda entry point
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── template.yaml # SAM template
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── Makefile # Development commands
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="implementation-details">Implementation Details&lt;/h2>
+&lt;h3 id="1-lambda-entry-points">1. Lambda Entry Points&lt;/h3>
+&lt;p>Two Lambda functions are defined.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># line_clean_bot.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">process_user_message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;LINE message webhook handler&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">json&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">loads&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;body&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Get user ID or group ID&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;events&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;source&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;type&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">line_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;events&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;source&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;userId&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">line_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;events&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;source&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;groupId&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">message&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;events&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;message&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;text&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Fetch user data from S3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">S3client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">BUCKET_NAME&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">obj_key&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">line_id&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s1">&amp;#39;.json&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">s3client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">check_exist_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj_key&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj_key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;{&amp;#34;tasks&amp;#34;: []}&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Process message and reply&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">push_message_periodically&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">context&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;Send reminder notifications on schedule&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">current_time&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">datetime&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">now&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">timedelta&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">hours&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">9&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># JST&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">S3client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">BUCKET_NAME&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">obj_list&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">s3client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">list_objects&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">clean_task&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">CleanTask&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">s3client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_object_body&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj_list&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Check if notification conditions are met&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">clean_task&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">should_notify&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">current_time&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Send message&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-task-deadline-management">2. Task Deadline Management&lt;/h3>
+&lt;p>Tasks are evaluated based on &amp;ldquo;days since last completed.&amp;rdquo;&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># lib/clean_task.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">__evaluate_cleanup_timing&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;Determine if task is overdue&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">task_time&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">datetime&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">strptime&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">task&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;updated_at&amp;#39;&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">date_format&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">now&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">task_time&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">days&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">task&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;duration&amp;#39;&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">get_todo_tasks&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;Get list of overdue tasks&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">task&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">task&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">tasks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;paused&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">False&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="ow">and&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__evaluate_cleanup_timing&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">task&lt;/span>&lt;span class="p">)]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-notification-logic">3. Notification Logic&lt;/h3>
+&lt;p>Notifications are sent only on user-specified days and times.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">should_notify&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">current_time&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;Determine if notification should be sent&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">notification&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;enabled&amp;#39;&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Check day of week&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">weekday_map&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Mon&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Tue&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Wed&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Thu&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Fri&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Sat&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">6&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;Sun&amp;#39;&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">current_weekday&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">weekday_map&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">current_time&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">weekday&lt;/span>&lt;span class="p">()]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">current_weekday&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">notification&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;days&amp;#39;&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Check time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">current_time&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hour&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">notification&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;hour&amp;#39;&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Check if already notified today&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-command-parser">4. Command Parser&lt;/h3>
+&lt;p>Commands are parsed using simple string splitting.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># lib/message.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">get_return_message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">message&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">s3client&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">task_operation&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__get_task_operation_name&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># First word&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">task_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__get_task_name&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Second word&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">task_operation&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;done&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">task_name&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__get_all_task_name&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">clean_task&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update_task_updated_at&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">task_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">object_keyname&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">clean_task&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_json&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;Completed&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">task_operation&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;add&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">duration&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__get_duration&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Third word&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">clean_task&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add_task&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">task_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">duration&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-data-structure-json">5. Data Structure (JSON)&lt;/h3>
+&lt;p>One JSON file per user is stored in S3.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;tasks&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;task_name&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;vacuum&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;updated_at&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;2024-01-01 12:00:00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;duration&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">7&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;paused&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;notification&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;enabled&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;days&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;Mon&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;Wed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;Fri&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;hour&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">7&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;last_notified_at&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;2024-01-01 07:00:00&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="sam-template">SAM Template&lt;/h2>
+&lt;p>Infrastructure is defined using AWS SAM.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># template.yaml&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">AWSTemplateFormatVersion&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;2010-09-09&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Transform&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">AWS::Serverless-2016-10-31&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Parameters&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ChannelAccessToken&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Type&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">String&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">NoEcho&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">BucketName&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Type&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">String&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Default&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">your-bucket-name&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Globals&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Function&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Runtime&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">python3.11&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Timeout&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">300&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Variables&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">CHANNEL_ACCESS_TOKEN&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>!&lt;span class="l">Ref ChannelAccessToken&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">BUCKET_NAME&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>!&lt;span class="l">Ref BucketName&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Resources&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># Message processing Lambda&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ProcessUserMessageFunction&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Type&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">AWS::Serverless::Function&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Properties&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Handler&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">line_clean_bot.process_user_message&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">CodeUri&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Policies&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">S3CrudPolicy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">BucketName&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>!&lt;span class="l">Ref BucketName&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Events&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ApiEvent&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Type&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">HttpApi&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Properties&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Path&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">/process_user_message&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Method&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ANY&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># Scheduled notification Lambda&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">PushMessagePeriodicallyFunction&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Type&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">AWS::Serverless::Function&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Properties&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Handler&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">line_clean_bot.push_message_periodically&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">CodeUri&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Policies&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">S3CrudPolicy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">BucketName&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>!&lt;span class="l">Ref BucketName&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Events&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ScheduleEvent&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Type&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Schedule&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Properties&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">Schedule&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">cron(0 * * * ? *) &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Every hour at minute 0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="deployment">Deployment&lt;/h2>
+&lt;h3 id="1-prerequisites">1. Prerequisites&lt;/h3>
+&lt;ul>
+&lt;li>AWS CLI configured&lt;/li>
+&lt;li>SAM CLI installed&lt;/li>
+&lt;li>LINE Messaging API channel access token obtained&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-build--deploy">2. Build &amp;amp; Deploy&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Build&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sam build
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Deploy&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sam deploy --parameter-overrides &lt;span class="nv">ChannelAccessToken&lt;/span>&lt;span class="o">=&lt;/span>your_token
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-configure-line-webhook">3. Configure LINE Webhook&lt;/h3>
+&lt;p>Set the API endpoint URL output after deployment as the Webhook URL in the LINE Developers console.&lt;/p>
+&lt;h2 id="local-development">Local Development&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Start local API server&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sam &lt;span class="nb">local&lt;/span> start-api --env-vars env.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Run tests&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -X POST http://localhost:3000/process_user_message &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -H &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -d @events/line_message.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="cost">Cost&lt;/h2>
+&lt;p>Estimated monthly cost (assuming 100 users):&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Service&lt;/th>
+&lt;th>Cost&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Lambda&lt;/td>
+&lt;td>Nearly free (within free tier)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>API Gateway&lt;/td>
+&lt;td>Nearly free (within free tier)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>S3&lt;/td>
+&lt;td>A few cents/month&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Total&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>A few cents to a few dollars/month&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;ul>
+&lt;li>Serverless architecture minimizes operational costs&lt;/li>
+&lt;li>S3 + JSON for simple data management&lt;/li>
+&lt;li>SAM for infrastructure as code&lt;/li>
+&lt;li>&amp;ldquo;Days elapsed&amp;rdquo; deadline management suited for cleaning tasks&lt;/li>
+&lt;/ul>
+&lt;p>Source code is available on &lt;a class="link" href="https://github.com/bossagyu/line-clean-bot" target="_blank" rel="noopener"
+>GitHub&lt;/a>.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Use the OpenAI Response API</title><link>https://bossagyu.com/en/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/044-openai-response-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to use the OpenAI Response API for text generation. It covers the official documentation, how to obtain an API key, and a minimal Python example.&lt;/p>
 &lt;h2 id="what-is-the-response-api">What is the Response API?&lt;/h2>
 &lt;p>The Response API is OpenAI&amp;rsquo;s unified API for text generation, tool calls, and multi-turn interactions. It works for both one-off requests and conversational workflows.&lt;/p>
@@ -246,70 +785,7 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item><item><title>How to Use GitHub Copilot More Effectively with Chat Tools</title><link>https://bossagyu.com/en/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/en/blog/042-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article explains how to use Chat Tools to make GitHub Copilot Chat even more powerful.
-By using Chat Tools, you can perform various tasks directly within your conversation with Copilot.&lt;/p>
-&lt;h2 id="what-are-chat-tools">What Are Chat Tools?&lt;/h2>
-&lt;p>Chat Tools are features within GitHub Copilot Chat that allow you to execute special tasks.
-For example, you can fetch terminal outputs or retrieve information from URLs—all from within the chat interface.&lt;/p>
-&lt;h2 id="how-to-use-chat-tools">How to Use Chat Tools&lt;/h2>
-&lt;p>Here’s how to use Chat Tools in VSCode.&lt;/p>
-&lt;p>Basically, you can execute them by typing a command in the following format:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/en/blog/042-github-copilot/image.png"
-width="940"
-height="119"
-srcset="https://bossagyu.com/en/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Example of running a Chat Tool"
-class="gallery-image"
-data-flex-grow="789"
-data-flex-basis="1895px"
->&lt;/p>
-&lt;p>That’s all there is to it.&lt;/p>
-&lt;h2 id="common-chat-tool-commands">Common Chat Tool Commands&lt;/h2>
-&lt;p>Below are some of the most useful Chat Tool commands:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Command&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
-&lt;td>Searches the entire current workspace.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
-&lt;td>Adds the currently selected code in the editor as context to the prompt.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
-&lt;td>Adds the selected output in the terminal as context to the prompt.&lt;br>Useful when referencing terminal output after an error occurs.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
-&lt;td>Retrieves content from a specified URL and adds it as context to the prompt.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>There are many more useful commands available—refer to the official documentation for details:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
->GitHub Copilot Chat Tools&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>In this article, we covered how to use Chat Tools within GitHub Copilot Chat.
-By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p></description></item><item><title>How to Use Redis with Go</title><link>https://bossagyu.com/en/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/en/blog/041-redis-go/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item><item><title>How to Use Redis with Go</title><link>https://bossagyu.com/en/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/en/blog/041-redis-go/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use Redis with Go.&lt;/p>
 &lt;h2 id="starting-redis">Starting Redis&lt;/h2>
 &lt;p>For an explanation of Redis and how to start it using Docker, refer to &lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" target="_blank" rel="noopener"
@@ -616,50 +1092,7 @@ class="gallery-image"
 data-flex-grow="284"
 data-flex-basis="682px"
 >&lt;/p>
-&lt;p>Now, you can use AWS Toolkit in the Asia Pacific Tokyo region.&lt;/p></description></item><item><title>How to Update Visual Studio Code</title><link>https://bossagyu.com/en/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/en/blog/038-update-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article explains how to update Visual Studio Code (VSCode) on Mac.&lt;/p>
-&lt;h2 id="how-to-update-vscode">How to Update VSCode&lt;/h2>
-&lt;ol>
-&lt;li>Launch VSCode.&lt;/li>
-&lt;li>Go to Code → &amp;ldquo;Check for Updates&amp;rdquo;.&lt;br>
-If your interface is in English, select &amp;ldquo;Update Visual Studio Code&amp;rdquo;.&lt;/li>
-&lt;/ol>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/038-update-vscode/image.png"
-width="362"
-height="266"
-srcset="https://bossagyu.com/en/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Check for Updates"
-class="gallery-image"
-data-flex-grow="136"
-data-flex-basis="326px"
->&lt;/p>
-&lt;p>When the update starts, you will see a screen like this:&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/038-update-vscode/image-1.png"
-width="322"
-height="260"
-srcset="https://bossagyu.com/en/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="alt text"
-class="gallery-image"
-data-flex-grow="123"
-data-flex-basis="297px"
->&lt;/p>
-&lt;p>Once the download is complete, &amp;ldquo;Restart to Update&amp;rdquo; will be displayed.&lt;/p>
-&lt;p>After restarting, click &amp;ldquo;About Visual Studio Code&amp;rdquo; to confirm that the version has been updated.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/038-update-vscode/image-3.png"
-width="243"
-height="338"
-srcset="https://bossagyu.com/en/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Version"
-class="gallery-image"
-data-flex-grow="71"
-data-flex-basis="172px"
->&lt;/p>
-&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Updating VSCode is very simple and can be done in just a few clicks. By updating regularly, you can take advantage of new features and security patches, so it is important to always keep your environment up to date.&lt;br>
-After updating, be sure to check the version information to confirm that the update was successful.&lt;/p></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Now, you can use AWS Toolkit in the Asia Pacific Tokyo region.&lt;/p></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In Visual Studio Code (VSCode), you can customize the colors of indent guides.&lt;br>
 This article explains how to change the colors of indent guides.&lt;br>
 While extensions like indent-rainbow often have issues such as guides being cut off, you can achieve this simply by editing the VSCode settings file.&lt;/p>
@@ -756,68 +1189,7 @@ data-flex-basis="350px"
 &lt;p>In VSCode, you can easily customize the colors of indent guides.&lt;br>
 By simply adding the necessary items to the settings file, you can change them to your preferred colors.&lt;br>
 This improves code readability and makes it easier to visually grasp the depth of indents.&lt;br>
-Give it a try!&lt;/p></description></item><item><title>How to Enable GitHub Copilot for Markdown</title><link>https://bossagyu.com/en/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>By default, GitHub Copilot is disabled for Markdown files.&lt;br>
-This article explains how to enable GitHub Copilot for Markdown.&lt;/p>
-&lt;h2 id="configuring-github-copilot">Configuring GitHub Copilot&lt;/h2>
-&lt;p>Open the GitHub Copilot plugin page in VSCode.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/035-github-copilot-markdown/image.png"
-width="1032"
-height="485"
-srcset="https://bossagyu.com/en/blog/035-github-copilot-markdown/image_hu4f0b967461f0cc9ec012b506a04e858f_139974_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/035-github-copilot-markdown/image_hu4f0b967461f0cc9ec012b506a04e858f_139974_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Copilot Settings Screen"
-class="gallery-image"
-data-flex-grow="212"
-data-flex-basis="510px"
->&lt;/p>
-&lt;p>Click the gear icon to open the settings.&lt;/p>
-&lt;p>In the settings screen, change &lt;code>markdown&lt;/code> from &lt;code>false&lt;/code> to &lt;code>true&lt;/code>.&lt;br>
-&lt;img src="https://bossagyu.com/en/blog/035-github-copilot-markdown/image-1.png"
-width="817"
-height="298"
-srcset="https://bossagyu.com/en/blog/035-github-copilot-markdown/image-1_hua6c26bb551050949dee2247188038d10_37461_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/035-github-copilot-markdown/image-1_hua6c26bb551050949dee2247188038d10_37461_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Enable Markdown Screen"
-class="gallery-image"
-data-flex-grow="274"
-data-flex-basis="657px"
->&lt;/p>
-&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.&lt;br>
-You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p></description></item><item><title>How to Upgrade JetBrains Products to a Major Version</title><link>https://bossagyu.com/en/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/034-jetbrains-update/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>When upgrading major versions of JetBrains products such as IntelliJ or PyCharm, you need to manually download the new version.&lt;br>
-This article explains how to update easily while preserving your settings.&lt;/p>
-&lt;h2 id="installing-the-jetbrains-toolbox-app">Installing the JetBrains Toolbox App&lt;/h2>
-&lt;p>When upgrading to a major version of a JetBrains product, it is recommended to use the &lt;a class="link" href="https://www.jetbrains.com/toolbox-app/" target="_blank" rel="noopener"
->JetBrains Toolbox App&lt;/a>.&lt;/p>
-&lt;p>Download and install the JetBrains Toolbox App from the link above.&lt;/p>
-&lt;h2 id="update">Update&lt;/h2>
-&lt;p>Launch the JetBrains Toolbox App and select the product you want to update.&lt;/p>
-&lt;p>In this example, we will update PyCharm. Click on it to start the update.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/034-jetbrains-update/img.png"
-width="443"
-height="691"
-srcset="https://bossagyu.com/en/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Update selection screen"
-class="gallery-image"
-data-flex-grow="64"
-data-flex-basis="153px"
->&lt;/p>
-&lt;p>Once the update is complete, the new version will be installed as shown below.&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/en/blog/034-jetbrains-update/img_1.png"
-width="423"
-height="509"
-srcset="https://bossagyu.com/en/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Screen after update"
-class="gallery-image"
-data-flex-grow="83"
-data-flex-basis="199px"
->&lt;/p>
-&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>When upgrading to a major version of a JetBrains product, using the JetBrains Toolbox App makes the update process easy.&lt;/p></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Give it a try!&lt;/p></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In this article, we’ll follow the &lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feast tutorial&lt;/a> and run it on a Mac.&lt;/p>
 &lt;h2 id="prerequisites">Prerequisites&lt;/h2>
@@ -2734,8 +3106,8 @@ data-flex-basis="426px"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Business analysis management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Setting Up and Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article explains how to set up and use GitHub Copilot in VSCode. A GitHub Copilot account is required as a prerequisite.&lt;/p>
+&lt;/ul></description></item><item><title>Complete Guide to Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article comprehensively covers how to set up GitHub Copilot in VSCode, enable it for Markdown files, and use Chat tools. A GitHub Copilot account is required as a prerequisite.&lt;/p>
 &lt;h2 id="getting-started-with-github-copilot-in-vscode">Getting Started with GitHub Copilot in VSCode&lt;/h2>
 &lt;h3 id="installing-the-extension">Installing the Extension&lt;/h3>
 &lt;p>First, you need to install the extension in VSCode.
@@ -2823,10 +3195,62 @@ Use the following commands to write code efficiently with the suggested completi
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;h2 id="enabling-completions-for-markdown-files">Enabling Completions for Markdown Files&lt;/h2>
+&lt;p>By default, GitHub Copilot has completions disabled for Markdown files.
+If you write blogs or documentation in Markdown, enabling this feature is quite useful.&lt;/p>
+&lt;h3 id="how-to-enable">How to Enable&lt;/h3>
+&lt;ol>
+&lt;li>Open the GitHub Copilot plugin page in VSCode&lt;/li>
+&lt;li>Click the gear icon to open settings&lt;/li>
+&lt;li>Change &lt;code>markdown&lt;/code> from &lt;code>false&lt;/code> to &lt;code>true&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>This enables Copilot completions in Markdown files.
+This blog was also written with GitHub Copilot assistance, significantly improving efficiency.&lt;/p>
+&lt;h2 id="using-chat-tools-for-even-more-power">Using Chat Tools for Even More Power&lt;/h2>
+&lt;p>GitHub Copilot Chat has a feature called &amp;ldquo;Chat tools&amp;rdquo; that lets you execute various tasks within the chat.&lt;/p>
+&lt;h3 id="how-to-use-chat-tools">How to Use Chat Tools&lt;/h3>
+&lt;p>Simply enter commands in the format &lt;code>#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;&lt;/code>.&lt;/p>
+&lt;h3 id="common-chat-tool-commands">Common Chat Tool Commands&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Function&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>Search the entire current workspace&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>Add currently selected code in the editor as context&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>Add currently selected terminal output as context. Useful for referencing error output.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>Fetch content from a URL and add it as context&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For more useful commands, check the official documentation:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>Github Copilot Chat tools&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article covered how to set up and use GitHub Copilot in VSCode.&lt;br>
-GitHub Copilot not only provides code completions but also assists with writing text.&lt;/p>
-&lt;p>This blog was also written with the assistance of GitHub Copilot, significantly improving efficiency.&lt;br>
+&lt;p>This article covered how to set up and use GitHub Copilot in VSCode.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Basic Setup&lt;/strong>: Extension installation and GitHub integration&lt;/li>
+&lt;li>&lt;strong>Shortcuts&lt;/strong>: Tab/Esc to accept/reject suggestions&lt;/li>
+&lt;li>&lt;strong>Markdown Support&lt;/strong>: Change markdown setting to true&lt;/li>
+&lt;li>&lt;strong>Chat Tools&lt;/strong>: Add context with &lt;code>#codebase&lt;/code> and &lt;code>#selection&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>GitHub Copilot not only provides code completions but also assists with writing text.
 Give it a try and see how it can help you.&lt;/p></description></item><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains availability management as defined in ITIL v4. I will also relate my own experiences to explain the processes involved in availability management.&lt;/p>
 &lt;h2 id="what-is-availability-management">What is Availability Management?&lt;/h2>
@@ -3320,44 +3744,7 @@ data-flex-basis="717px"
 &lt;/div>&lt;p>In the English directory, naming files as &lt;code>article-name.en.md&lt;/code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.&lt;/p>
-&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.&lt;/p>
-&lt;h2 id="what-is-a-favicon">What is a Favicon?&lt;/h2>
-&lt;p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
->guidelines for favicons&lt;/a> that appear in search results. Adhering to these guidelines can help your favicon appear in search results.&lt;/p>
-&lt;h2 id="creating-a-favicon">Creating a Favicon&lt;/h2>
-&lt;p>To create a favicon, use the following site:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
->Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>When you visit the site, you&amp;rsquo;ll see a screen like this.&lt;br>
-&lt;img src="https://bossagyu.com/en/blog/010-favicon/img-010-001.png"
-width="3336"
-height="1510"
-srcset="https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Favicon Generator"
-class="gallery-image"
-data-flex-grow="220"
-data-flex-basis="530px"
->&lt;/p>
-&lt;p>Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the &amp;lsquo;Download the generated favicon&amp;rsquo; link to download the favicon.&lt;/p>
-&lt;h2 id="displaying-a-favicon-in-hugo">Displaying a Favicon in Hugo&lt;/h2>
-&lt;p>To display a favicon in Hugo, the process varies depending on the theme. For the &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
->bearcub theme&lt;/a>, you can simply set it in the toml like this:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to create a favicon and display it in Hugo. Favicons are displayed in bookmarks, tabs, and home screens, so it&amp;rsquo;s a good idea to create one for your blog.&lt;/p></description></item><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to measure your blog&amp;rsquo;s performance using Lighthouse.&lt;/p>
 &lt;h2 id="what-is-lighthouse">What is Lighthouse?&lt;/h2>
 &lt;p>Lighthouse is a performance measurement tool for websites provided by Google. It&amp;rsquo;s available as a Google Chrome extension and can be used by installing the plugin.&lt;/p>
@@ -4216,13 +4603,15 @@ Get &amp;lsquo;Your User ID&amp;rsquo; from the channel basic settings.&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.&lt;br>
+&lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
 With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
+&lt;p>This guide also covers how to set up a favicon.&lt;/p>
 &lt;h2 id="process">Process&lt;/h2>
 &lt;ol>
 &lt;li>Generate a site with Hugo&lt;/li>
 &lt;li>Push to Github&lt;/li>
 &lt;li>Deploy with Netlify&lt;/li>
+&lt;li>Set up Favicon&lt;/li>
 &lt;/ol>
 &lt;h2 id="generating-a-static-site-with-hugo">Generating a Static Site with Hugo&lt;/h2>
 &lt;p>First, install Hugo.&lt;/p>
@@ -4350,4 +4739,39 @@ data-flex-grow="308"
 data-flex-basis="739px"
 >&lt;/p>
 &lt;p>This completes the deployment process.
-After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p></description></item><item><title/><link>https://bossagyu.com/en/blog/030-covariance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bossagyu.com/en/blog/030-covariance/</guid><description/></item></channel></rss>
+After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p>
+&lt;h2 id="setting-up-favicon">Setting Up Favicon&lt;/h2>
+&lt;p>A favicon is an icon displayed in bookmarks, browser tabs, and home screens.
+Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search" target="_blank" rel="noopener"
+>favicon guidelines&lt;/a> for appearing in search results.
+Following these guidelines will help your favicon appear in search results.&lt;/p>
+&lt;h3 id="creating-a-favicon">Creating a Favicon&lt;/h3>
+&lt;p>To create a favicon, use the following website:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Access the site, upload the image you want to use as a favicon, and click &amp;ldquo;Generate Favicon&amp;rdquo;.
+Then click &amp;ldquo;Download the generated favicon&amp;rdquo; to download your favicon.&lt;/p>
+&lt;h3 id="displaying-favicon-in-hugo">Displaying Favicon in Hugo&lt;/h3>
+&lt;p>To display a favicon in Hugo, the method varies by theme, but most themes allow you to simply add the following to your toml configuration:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">favicon&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Place the downloaded favicon.ico in the &lt;code>static/images/&lt;/code> directory and add the above configuration.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This guide covered how to publish a blog with Hugo + Netlify + Github.&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Hugo&lt;/strong>: Generate static site&lt;/li>
+&lt;li>&lt;strong>Github&lt;/strong>: Manage source code&lt;/li>
+&lt;li>&lt;strong>Netlify&lt;/strong>: Automatic deployment&lt;/li>
+&lt;li>&lt;strong>Favicon&lt;/strong>: Branding configuration&lt;/li>
+&lt;/ol>
+&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p></description></item><item><title/><link>https://bossagyu.com/en/blog/030-covariance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bossagyu.com/en/blog/030-covariance/</guid><description/></item></channel></rss>

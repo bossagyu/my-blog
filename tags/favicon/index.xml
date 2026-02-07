@@ -1,44 +1,173 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Favicon on Bossagyu Blog</title><link>https://bossagyu.com/tags/favicon/</link><description>Recent content in Favicon on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 24 Dec 2023 22:14:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/favicon/index.xml" rel="self" type="application/rss+xml"/><item><title>Faviconを作ってHugoで表示する方法</title><link>https://bossagyu.com/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/blog/010-favicon/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Faviconを簡単に作る方法を解説します。
-また、HugoでFaviconを表示する方法も解説します。&lt;/p>
-&lt;h2 id="faviconとは">Faviconとは&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Favicon on Bossagyu Blog</title><link>https://bossagyu.com/tags/favicon/</link><description>Recent content in Favicon on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/favicon/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
+この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。&lt;/p>
+&lt;p>Faviconの設定方法も合わせて解説します。&lt;/p>
+&lt;h2 id="流れ">流れ&lt;/h2>
+&lt;ol>
+&lt;li>Hugoでサイトを生成&lt;/li>
+&lt;li>Githubにプッシュ&lt;/li>
+&lt;li>Netlifyでデプロイ&lt;/li>
+&lt;li>Faviconを設定&lt;/li>
+&lt;/ol>
+&lt;h2 id="hugoで静的サイトを生成">Hugoで静的サイトを生成&lt;/h2>
+&lt;p>まずはHugoをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>blogの雛形を作成します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo new site my-blog
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ブログに適応するテーマをsubmoduleとして追加します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># テーマをgithubのsubmoduleとして追加&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>hugo.tomlに記載することでテーマを適応する。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;theme = &amp;#39;ananke&amp;#39;&amp;#34;&lt;/span> &amp;gt;&amp;gt; config.toml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>サーバを起動させます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>起動ログの &lt;code>Web Server is available at http://localhost:51517/ (bind address 127.0.0.1)&lt;/code> のような記述の &lt;code>http://localhost:51517/&lt;/code> にアクセスすればローカルに起動した静的サイトが閲覧できます。&lt;/p>
+&lt;h3 id="tips">Tips&lt;/h3>
+&lt;ul>
+&lt;li>Hugoのテーマを変えたい場合は、&lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+>Hugo Themas&lt;/a> から好きなものを選んで変えてください。
+&lt;ul>
+&lt;li>これは後からでも変えられるのでとりあえずNetlifyでビルドするところまで走り切るのがおすすめ。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Tomlファイルの書き方は &lt;a class="link" href="https://gohugo.io/getting-started/configuration/" target="_blank" rel="noopener"
+>Configure Hugo&lt;/a> に記載されています。&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;h2 id="githubにpush">Githubにpush&lt;/h2>
+&lt;p>&lt;a class="link" href="https://github.com/" target="_blank" rel="noopener"
+>Github&lt;/a> にリポジトリを作成。&lt;br>
+作成後以下のコマンドを実行し、サイトをpushします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> .hugo_build.lock &amp;gt;&amp;gt; .gitignore
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s2">&amp;#34;first commit&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -M main
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># &amp;lt;user name&amp;gt;は自分のユーザー名に置き換えてください。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 今回はmy-blogというリポジトリを作成している例です。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote add origin git@github.com:&amp;lt;user name&amp;gt;/my-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -u origin main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>pushが完了するとGithubのUI上でソースコードが閲覧できる状態になっています。&lt;/p>
+&lt;h2 id="netlifyでデプロイ">Netlifyでデプロイ&lt;/h2>
+&lt;p>&lt;a class="link" href="https://www.netlify.com/" target="_blank" rel="noopener"
+>netlify&lt;/a> へアクセスし、デプロイを行う。&lt;br>
+&lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-netlify/" target="_blank" rel="noopener"
+>Hugoの公式で案内&lt;/a> があるのでこちらを参考に連携を行う。&lt;/p>
+&lt;p>指示に従いデプロイを完了すると以下のようにDeployの結果が &lt;code>published&lt;/code> になる。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-001.png"
+width="1259"
+height="781"
+srcset="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/001-hugo-netlify-build/img-001-001_hu712c6624ab1de9c2a2e527b803a3005e_132140_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="デプロイの実行結果画面"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="386px"
+>&lt;/p>
+&lt;p>サイト上に表示されたURLをクリックするとデプロイされたサイトにアクセスできる。
+&lt;img src="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-002.png"
+width="844"
+height="274"
+srcset="https://bossagyu.com/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/001-hugo-netlify-build/img-001-002_hu73c75e92b3844c61fd78de6d6904914d_56626_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="リンク表示画面"
+class="gallery-image"
+data-flex-grow="308"
+data-flex-basis="739px"
+>&lt;/p>
+&lt;p>これでデプロイまではおしまい。
+以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。&lt;/p>
+&lt;h2 id="faviconを設定する">Faviconを設定する&lt;/h2>
 &lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
 Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
 >faviconのガイドライン&lt;/a>が公開されており、
-こちらに従うことで検索結果に表示されるようになります。&lt;/p>
-&lt;h2 id="faviconの作成">Faviconの作成&lt;/h2>
+こちらに従うことで検索結果にも表示されるようになります。&lt;/p>
+&lt;h3 id="faviconの作成">Faviconの作成&lt;/h3>
 &lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
 >Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>サイトにアクセスすると、以下のような画面が表示されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/010-favicon/img-010-001.png"
-width="3336"
-height="1510"
-srcset="https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Favicon Generator"
-class="gallery-image"
-data-flex-grow="220"
-data-flex-basis="530px"
->&lt;/p>
-&lt;p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
+&lt;p>サイトにアクセスし、faviconにしたい画像をアップロードして「Generate Favicon」をクリックします。
 その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
-&lt;h2 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h2>
-&lt;p>HugoでFaviconを表示するには、themeによっても違うますが、 &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
->bearcub&lt;/a> の場合は
-以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
+&lt;h3 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h3>
+&lt;p>HugoでFaviconを表示するには、themeによっても違いますが、多くのテーマでは以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">favicon&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。&lt;br>
-Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>ダウンロードしたfavicon.icoを&lt;code>static/images/&lt;/code>ディレクトリに配置して、上記の設定を追加してください。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Hugo + Netlify + Githubでブログを公開する方法を解説しました。&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Hugo&lt;/strong>: 静的サイトを生成&lt;/li>
+&lt;li>&lt;strong>Github&lt;/strong>: ソースコードを管理&lt;/li>
+&lt;li>&lt;strong>Netlify&lt;/strong>: 自動デプロイ&lt;/li>
+&lt;li>&lt;strong>Favicon&lt;/strong>: ブランディングのための設定&lt;/li>
+&lt;/ol>
+&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p></description></item></channel></rss>

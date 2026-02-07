@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>copilot on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/copilot/</link><description>Recent content in copilot on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/copilot/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up and Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This article explains how to set up and use GitHub Copilot in VSCode. A GitHub Copilot account is required as a prerequisite.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>copilot on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/copilot/</link><description>Recent content in copilot on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/copilot/index.xml" rel="self" type="application/rss+xml"/><item><title>Complete Guide to Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article comprehensively covers how to set up GitHub Copilot in VSCode, enable it for Markdown files, and use Chat tools. A GitHub Copilot account is required as a prerequisite.&lt;/p>
 &lt;h2 id="getting-started-with-github-copilot-in-vscode">Getting Started with GitHub Copilot in VSCode&lt;/h2>
 &lt;h3 id="installing-the-extension">Installing the Extension&lt;/h3>
 &lt;p>First, you need to install the extension in VSCode.
@@ -87,10 +87,62 @@ Use the following commands to write code efficiently with the suggested completi
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;h2 id="enabling-completions-for-markdown-files">Enabling Completions for Markdown Files&lt;/h2>
+&lt;p>By default, GitHub Copilot has completions disabled for Markdown files.
+If you write blogs or documentation in Markdown, enabling this feature is quite useful.&lt;/p>
+&lt;h3 id="how-to-enable">How to Enable&lt;/h3>
+&lt;ol>
+&lt;li>Open the GitHub Copilot plugin page in VSCode&lt;/li>
+&lt;li>Click the gear icon to open settings&lt;/li>
+&lt;li>Change &lt;code>markdown&lt;/code> from &lt;code>false&lt;/code> to &lt;code>true&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>This enables Copilot completions in Markdown files.
+This blog was also written with GitHub Copilot assistance, significantly improving efficiency.&lt;/p>
+&lt;h2 id="using-chat-tools-for-even-more-power">Using Chat Tools for Even More Power&lt;/h2>
+&lt;p>GitHub Copilot Chat has a feature called &amp;ldquo;Chat tools&amp;rdquo; that lets you execute various tasks within the chat.&lt;/p>
+&lt;h3 id="how-to-use-chat-tools">How to Use Chat Tools&lt;/h3>
+&lt;p>Simply enter commands in the format &lt;code>#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;&lt;/code>.&lt;/p>
+&lt;h3 id="common-chat-tool-commands">Common Chat Tool Commands&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Function&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>Search the entire current workspace&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>Add currently selected code in the editor as context&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>Add currently selected terminal output as context. Useful for referencing error output.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>Fetch content from a URL and add it as context&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For more useful commands, check the official documentation:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>Github Copilot Chat tools&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article covered how to set up and use GitHub Copilot in VSCode.&lt;br>
-GitHub Copilot not only provides code completions but also assists with writing text.&lt;/p>
-&lt;p>This blog was also written with the assistance of GitHub Copilot, significantly improving efficiency.&lt;br>
+&lt;p>This article covered how to set up and use GitHub Copilot in VSCode.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Basic Setup&lt;/strong>: Extension installation and GitHub integration&lt;/li>
+&lt;li>&lt;strong>Shortcuts&lt;/strong>: Tab/Esc to accept/reject suggestions&lt;/li>
+&lt;li>&lt;strong>Markdown Support&lt;/strong>: Change markdown setting to true&lt;/li>
+&lt;li>&lt;strong>Chat Tools&lt;/strong>: Add context with &lt;code>#codebase&lt;/code> and &lt;code>#selection&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>GitHub Copilot not only provides code completions but also assists with writing text.
 Give it a try and see how it can help you.&lt;/p></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use GitHub Copilot in IntelliJ.
 Additionally, a cheat sheet of shortcuts is provided.&lt;/p>

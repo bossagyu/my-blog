@@ -242,50 +242,7 @@ GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正し�
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
 ChatGPTを利用することで、英語化を簡単に行うことができます。
 また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。&lt;/p>
-&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item><item><title>Faviconを作ってHugoで表示する方法</title><link>https://bossagyu.com/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/blog/010-favicon/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Faviconを簡単に作る方法を解説します。
-また、HugoでFaviconを表示する方法も解説します。&lt;/p>
-&lt;h2 id="faviconとは">Faviconとは&lt;/h2>
-&lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
-Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
->faviconのガイドライン&lt;/a>が公開されており、
-こちらに従うことで検索結果に表示されるようになります。&lt;/p>
-&lt;h2 id="faviconの作成">Faviconの作成&lt;/h2>
-&lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
->Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>サイトにアクセスすると、以下のような画面が表示されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/010-favicon/img-010-001.png"
-width="3336"
-height="1510"
-srcset="https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Favicon Generator"
-class="gallery-image"
-data-flex-grow="220"
-data-flex-basis="530px"
->&lt;/p>
-&lt;p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
-その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
-&lt;h2 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h2>
-&lt;p>HugoでFaviconを表示するには、themeによっても違うますが、 &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
->bearcub&lt;/a> の場合は
-以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。&lt;br>
-Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。&lt;/p></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説します。&lt;/p>
 &lt;h2 id="lighthouseとは">Lighthouseとは&lt;/h2>
 &lt;p>LighthouseはGoogleが提供している、Webサイトのパフォーマンスを計測するツールです。
@@ -518,13 +475,15 @@ data-flex-basis="782px"
 &lt;h2 id="tips">tips&lt;/h2>
 &lt;p>こちらの対応をしても、Google Analyticsにデータが連携されていないように見える場合は、タグの追加がうまくいっていない可能性があります。&lt;br>
 まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。&lt;/p></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。&lt;br>
+&lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。&lt;/p>
+&lt;p>Faviconの設定方法も合わせて解説します。&lt;/p>
 &lt;h2 id="流れ">流れ&lt;/h2>
 &lt;ol>
 &lt;li>Hugoでサイトを生成&lt;/li>
 &lt;li>Githubにプッシュ&lt;/li>
 &lt;li>Netlifyでデプロイ&lt;/li>
+&lt;li>Faviconを設定&lt;/li>
 &lt;/ol>
 &lt;h2 id="hugoで静的サイトを生成">Hugoで静的サイトを生成&lt;/h2>
 &lt;p>まずはHugoをインストールします。&lt;/p>
@@ -651,5 +610,40 @@ class="gallery-image"
 data-flex-grow="308"
 data-flex-basis="739px"
 >&lt;/p>
-&lt;p>これでデプロイまではおしまい。&lt;br>
-以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。&lt;/p></description></item></channel></rss>
+&lt;p>これでデプロイまではおしまい。
+以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。&lt;/p>
+&lt;h2 id="faviconを設定する">Faviconを設定する&lt;/h2>
+&lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
+Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>faviconのガイドライン&lt;/a>が公開されており、
+こちらに従うことで検索結果にも表示されるようになります。&lt;/p>
+&lt;h3 id="faviconの作成">Faviconの作成&lt;/h3>
+&lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>サイトにアクセスし、faviconにしたい画像をアップロードして「Generate Favicon」をクリックします。
+その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
+&lt;h3 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h3>
+&lt;p>HugoでFaviconを表示するには、themeによっても違いますが、多くのテーマでは以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">favicon&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ダウンロードしたfavicon.icoを&lt;code>static/images/&lt;/code>ディレクトリに配置して、上記の設定を追加してください。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Hugo + Netlify + Githubでブログを公開する方法を解説しました。&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Hugo&lt;/strong>: 静的サイトを生成&lt;/li>
+&lt;li>&lt;strong>Github&lt;/strong>: ソースコードを管理&lt;/li>
+&lt;li>&lt;strong>Netlify&lt;/strong>: 自動デプロイ&lt;/li>
+&lt;li>&lt;strong>Favicon&lt;/strong>: ブランディングのための設定&lt;/li>
+&lt;/ol>
+&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p></description></item></channel></rss>

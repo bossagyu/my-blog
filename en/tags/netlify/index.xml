@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Netlify on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/netlify/</link><description>Recent content in Netlify on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/netlify/index.xml" rel="self" type="application/rss+xml"/><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.&lt;br>
+&lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
 With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
+&lt;p>This guide also covers how to set up a favicon.&lt;/p>
 &lt;h2 id="process">Process&lt;/h2>
 &lt;ol>
 &lt;li>Generate a site with Hugo&lt;/li>
 &lt;li>Push to Github&lt;/li>
 &lt;li>Deploy with Netlify&lt;/li>
+&lt;li>Set up Favicon&lt;/li>
 &lt;/ol>
 &lt;h2 id="generating-a-static-site-with-hugo">Generating a Static Site with Hugo&lt;/h2>
 &lt;p>First, install Hugo.&lt;/p>
@@ -133,4 +135,39 @@ data-flex-grow="308"
 data-flex-basis="739px"
 >&lt;/p>
 &lt;p>This completes the deployment process.
-After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p></description></item></channel></rss>
+After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.&lt;/p>
+&lt;h2 id="setting-up-favicon">Setting Up Favicon&lt;/h2>
+&lt;p>A favicon is an icon displayed in bookmarks, browser tabs, and home screens.
+Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search" target="_blank" rel="noopener"
+>favicon guidelines&lt;/a> for appearing in search results.
+Following these guidelines will help your favicon appear in search results.&lt;/p>
+&lt;h3 id="creating-a-favicon">Creating a Favicon&lt;/h3>
+&lt;p>To create a favicon, use the following website:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Access the site, upload the image you want to use as a favicon, and click &amp;ldquo;Generate Favicon&amp;rdquo;.
+Then click &amp;ldquo;Download the generated favicon&amp;rdquo; to download your favicon.&lt;/p>
+&lt;h3 id="displaying-favicon-in-hugo">Displaying Favicon in Hugo&lt;/h3>
+&lt;p>To display a favicon in Hugo, the method varies by theme, but most themes allow you to simply add the following to your toml configuration:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">favicon&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Place the downloaded favicon.ico in the &lt;code>static/images/&lt;/code> directory and add the above configuration.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This guide covered how to publish a blog with Hugo + Netlify + Github.&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Hugo&lt;/strong>: Generate static site&lt;/li>
+&lt;li>&lt;strong>Github&lt;/strong>: Manage source code&lt;/li>
+&lt;li>&lt;strong>Netlify&lt;/strong>: Automatic deployment&lt;/li>
+&lt;li>&lt;strong>Favicon&lt;/strong>: Branding configuration&lt;/li>
+&lt;/ol>
+&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p></description></item></channel></rss>

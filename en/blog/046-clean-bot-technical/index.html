@@ -1,0 +1,396 @@
+<!doctype html><html lang=en-US dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Overview I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.
+See the completed Bot here: Cleaning Reminder Bot
+Architecture 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │ LINE User │────▶│ API Gateway │────▶│ Lambda │ └─────────────┘ └─────────────┘ │ (process_user_ │ │ message) │ └──────────┬──────────┘ │ ┌─────────────┐ ┌─────────────────────┐ │ │ LINE User │◀────│ Lambda │ │ │ (notify) │ │ (push_message_ │ ▼ └─────────────┘ │ periodically) │ ┌─────────┐ └──────────┬──────────┘ │ S3 │ │ │ (JSON) │ ┌─────────────┐ │ └─────────┘ │ EventBridge │────────────────┘ │ (hourly) │ └─────────────┘ Services Used Service Purpose API Gateway (HTTP API) Receive LINE Webhooks Lambda Message processing, scheduled notifications S3 Store per-user task data EventBridge Scheduled execution Why This Architecture Serverless: Pay only for what you use, zero operational overhead S3: Cheaper than RDS, simple JSON management SAM: Infrastructure as Code for deployment management Project Structure 1 2 3 4 5 6 7 8 9 10 clean-bot/ ├── lib/ # Core modules │ ├── clean_task."><title>Building a Cleaning Reminder Bot with AWS Lambda + LINE</title><link rel=canonical href=https://bossagyu.com/en/blog/046-clean-bot-technical/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="Building a Cleaning Reminder Bot with AWS Lambda + LINE"><meta property="og:description" content="Overview I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.
+See the completed Bot here: Cleaning Reminder Bot
+Architecture 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │ LINE User │────▶│ API Gateway │────▶│ Lambda │ └─────────────┘ └─────────────┘ │ (process_user_ │ │ message) │ └──────────┬──────────┘ │ ┌─────────────┐ ┌─────────────────────┐ │ │ LINE User │◀────│ Lambda │ │ │ (notify) │ │ (push_message_ │ ▼ └─────────────┘ │ periodically) │ ┌─────────┐ └──────────┬──────────┘ │ S3 │ │ │ (JSON) │ ┌─────────────┐ │ └─────────┘ │ EventBridge │────────────────┘ │ (hourly) │ └─────────────┘ Services Used Service Purpose API Gateway (HTTP API) Receive LINE Webhooks Lambda Message processing, scheduled notifications S3 Store per-user task data EventBridge Scheduled execution Why This Architecture Serverless: Pay only for what you use, zero operational overhead S3: Cheaper than RDS, simple JSON management SAM: Infrastructure as Code for deployment management Project Structure 1 2 3 4 5 6 7 8 9 10 clean-bot/ ├── lib/ # Core modules │ ├── clean_task."><meta property="og:url" content="https://bossagyu.com/en/blog/046-clean-bot-technical/"><meta property="og:site_name" content="Bossagyu Blog"><meta property="og:type" content="article"><meta property="article:section" content="Blog"><meta property="article:tag" content="LINE BOT"><meta property="article:tag" content="AWS Lambda"><meta property="article:tag" content="Python"><meta property="article:tag" content="SAM"><meta property="article:tag" content="S3"><meta property="article:published_time" content="2026-02-07T19:00:00+09:00"><meta property="article:modified_time" content="2026-02-07T19:00:00+09:00"><meta property="og:image" content="https://bossagyu.com/images/share.webp"><meta name=twitter:title content="Building a Cleaning Reminder Bot with AWS Lambda + LINE"><meta name=twitter:description content="Overview I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.
+See the completed Bot here: Cleaning Reminder Bot
+Architecture 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │ LINE User │────▶│ API Gateway │────▶│ Lambda │ └─────────────┘ └─────────────┘ │ (process_user_ │ │ message) │ └──────────┬──────────┘ │ ┌─────────────┐ ┌─────────────────────┐ │ │ LINE User │◀────│ Lambda │ │ │ (notify) │ │ (push_message_ │ ▼ └─────────────┘ │ periodically) │ ┌─────────┐ └──────────┬──────────┘ │ S3 │ │ │ (JSON) │ ┌─────────────┐ │ └─────────┘ │ EventBridge │────────────────┘ │ (hourly) │ └─────────────┘ Services Used Service Purpose API Gateway (HTTP API) Receive LINE Webhooks Lambda Message processing, scheduled notifications S3 Store per-user task data EventBridge Scheduled execution Why This Architecture Serverless: Pay only for what you use, zero operational overhead S3: Cheaper than RDS, simple JSON management SAM: Infrastructure as Code for deployment management Project Structure 1 2 3 4 5 6 7 8 9 10 clean-bot/ ├── lib/ # Core modules │ ├── clean_task."><meta name=twitter:card content="summary"><meta name=twitter:image content="https://bossagyu.com/images/share.webp"><link rel="shortcut icon" href=/images/favicon.png><script async src="https://www.googletagmanager.com/gtag/js?id=G-5JL2R6XT6H"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-5JL2R6XT6H",{anonymize_ip:!1})}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/en><img src=/images/share.webp width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/en>Bossagyu Blog</a></h1><h2 class=site-description>エンジニアリングマネージャーがエンジニアリングとマネジメントについてまとめていくブログ</h2></div></header><ol class=social-menu><li><a href=https://github.com/bossagyu target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=mailto:Bossagyu@yahoo.co.jp target=_blank title=Mail rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://twitter.com/bossagyu target=_blank title=Twitter rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/en/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/en/page/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/en/page/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/en/page/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://bossagyu.com/en/ selected>en-US 🇺🇸</option><option value=https://bossagyu.com/>ja-jp 🇯🇵</option></select></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#overview>Overview</a></li><li><a href=#architecture>Architecture</a><ol><li><a href=#services-used>Services Used</a></li><li><a href=#why-this-architecture>Why This Architecture</a></li></ol></li><li><a href=#project-structure>Project Structure</a></li><li><a href=#implementation-details>Implementation Details</a><ol><li><a href=#1-lambda-entry-points>1. Lambda Entry Points</a></li><li><a href=#2-task-deadline-management>2. Task Deadline Management</a></li><li><a href=#3-notification-logic>3. Notification Logic</a></li><li><a href=#4-command-parser>4. Command Parser</a></li><li><a href=#5-data-structure-json>5. Data Structure (JSON)</a></li></ol></li><li><a href=#sam-template>SAM Template</a></li><li><a href=#deployment>Deployment</a><ol><li><a href=#1-prerequisites>1. Prerequisites</a></li><li><a href=#2-build--deploy>2. Build & Deploy</a></li><li><a href=#3-configure-line-webhook>3. Configure LINE Webhook</a></li></ol></li><li><a href=#local-development>Local Development</a></li><li><a href=#cost>Cost</a></li><li><a href=#summary>Summary</a></li><li><a href=#related-articles>Related Articles</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/en/categories/engineering/>Engineering</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/en/blog/046-clean-bot-technical/>Building a Cleaning Reminder Bot with AWS Lambda + LINE</a></h2></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg><time class=article-time--published>Feb 07, 2026</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--reading>5 minute read</time></div></footer><footer class=article-translations><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://bossagyu.com/blog/046-clean-bot-technical/ class=link>ja-jp 🇯🇵</a></div></footer></div></header><section class=article-content><h2 id=overview>Overview</h2><p>I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.</p><p>See the completed Bot here: <a class=link href=/blog/045-clean-bot/>Cleaning Reminder Bot</a></p><h2 id=architecture>Architecture</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>┌─────────────┐     ┌─────────────┐     ┌─────────────────────┐
+</span></span><span class=line><span class=cl>│  LINE User  │────▶│ API Gateway │────▶│ Lambda              │
+</span></span><span class=line><span class=cl>└─────────────┘     └─────────────┘     │ (process_user_      │
+</span></span><span class=line><span class=cl>                                        │  message)           │
+</span></span><span class=line><span class=cl>                                        └──────────┬──────────┘
+</span></span><span class=line><span class=cl>                                                   │
+</span></span><span class=line><span class=cl>┌─────────────┐     ┌─────────────────────┐       │
+</span></span><span class=line><span class=cl>│  LINE User  │◀────│ Lambda              │       │
+</span></span><span class=line><span class=cl>│  (notify)   │     │ (push_message_      │       ▼
+</span></span><span class=line><span class=cl>└─────────────┘     │  periodically)      │  ┌─────────┐
+</span></span><span class=line><span class=cl>                    └──────────┬──────────┘  │   S3    │
+</span></span><span class=line><span class=cl>                               │             │ (JSON)  │
+</span></span><span class=line><span class=cl>┌─────────────┐                │             └─────────┘
+</span></span><span class=line><span class=cl>│ EventBridge │────────────────┘
+</span></span><span class=line><span class=cl>│ (hourly)    │
+</span></span><span class=line><span class=cl>└─────────────┘
+</span></span></code></pre></td></tr></table></div></div><h3 id=services-used>Services Used</h3><div class=table-wrapper><table><thead><tr><th>Service</th><th>Purpose</th></tr></thead><tbody><tr><td>API Gateway (HTTP API)</td><td>Receive LINE Webhooks</td></tr><tr><td>Lambda</td><td>Message processing, scheduled notifications</td></tr><tr><td>S3</td><td>Store per-user task data</td></tr><tr><td>EventBridge</td><td>Scheduled execution</td></tr></tbody></table></div><h3 id=why-this-architecture>Why This Architecture</h3><ul><li><strong>Serverless</strong>: Pay only for what you use, zero operational overhead</li><li><strong>S3</strong>: Cheaper than RDS, simple JSON management</li><li><strong>SAM</strong>: Infrastructure as Code for deployment management</li></ul><h2 id=project-structure>Project Structure</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>clean-bot/
+</span></span><span class=line><span class=cl>├── lib/                      # Core modules
+</span></span><span class=line><span class=cl>│   ├── clean_task.py         # Task state management
+</span></span><span class=line><span class=cl>│   ├── message.py            # Command parser
+</span></span><span class=line><span class=cl>│   ├── line.py               # LINE API
+</span></span><span class=line><span class=cl>│   └── s3_client.py          # S3 operations
+</span></span><span class=line><span class=cl>├── test/                     # Tests
+</span></span><span class=line><span class=cl>├── line_clean_bot.py         # Lambda entry point
+</span></span><span class=line><span class=cl>├── template.yaml             # SAM template
+</span></span><span class=line><span class=cl>└── Makefile                  # Development commands
+</span></span></code></pre></td></tr></table></div></div><h2 id=implementation-details>Implementation Details</h2><h3 id=1-lambda-entry-points>1. Lambda Entry Points</h3><p>Two Lambda functions are defined.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># line_clean_bot.py</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>process_user_message</span><span class=p>(</span><span class=n>event</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;LINE message webhook handler&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>body</span> <span class=o>=</span> <span class=n>json</span><span class=o>.</span><span class=n>loads</span><span class=p>(</span><span class=n>event</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;body&#39;</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Get user ID or group ID</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;source&#39;</span><span class=p>][</span><span class=s1>&#39;type&#39;</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;user&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>line_id</span> <span class=o>=</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;source&#39;</span><span class=p>][</span><span class=s1>&#39;userId&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>line_id</span> <span class=o>=</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;source&#39;</span><span class=p>][</span><span class=s1>&#39;groupId&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>message</span> <span class=o>=</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;message&#39;</span><span class=p>][</span><span class=s1>&#39;text&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Fetch user data from S3</span>
+</span></span><span class=line><span class=cl>    <span class=n>s3client</span> <span class=o>=</span> <span class=n>S3client</span><span class=p>(</span><span class=n>BUCKET_NAME</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>obj_key</span> <span class=o>=</span> <span class=n>line_id</span> <span class=o>+</span> <span class=s1>&#39;.json&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=n>s3client</span><span class=o>.</span><span class=n>check_exist_object</span><span class=p>(</span><span class=n>obj_key</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>s3client</span><span class=o>.</span><span class=n>update_object</span><span class=p>(</span><span class=n>obj_key</span><span class=p>,</span> <span class=s1>&#39;{&#34;tasks&#34;: []}&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Process message and reply</span>
+</span></span><span class=line><span class=cl>    <span class=c1># ...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>push_message_periodically</span><span class=p>(</span><span class=n>event</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Send reminder notifications on schedule&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>current_time</span> <span class=o>=</span> <span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span> <span class=o>+</span> <span class=n>timedelta</span><span class=p>(</span><span class=n>hours</span><span class=o>=</span><span class=mi>9</span><span class=p>)</span>  <span class=c1># JST</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>s3client</span> <span class=o>=</span> <span class=n>S3client</span><span class=p>(</span><span class=n>BUCKET_NAME</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>obj_list</span> <span class=ow>in</span> <span class=n>s3client</span><span class=o>.</span><span class=n>list_objects</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>        <span class=n>clean_task</span> <span class=o>=</span> <span class=n>CleanTask</span><span class=p>(</span><span class=n>s3client</span><span class=o>.</span><span class=n>get_object_body</span><span class=p>(</span><span class=n>obj_list</span><span class=o>.</span><span class=n>key</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Check if notification conditions are met</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>clean_task</span><span class=o>.</span><span class=n>should_notify</span><span class=p>(</span><span class=n>current_time</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=c1># Send message</span>
+</span></span><span class=line><span class=cl>            <span class=c1># ...</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-task-deadline-management>2. Task Deadline Management</h3><p>Tasks are evaluated based on &ldquo;days since last completed.&rdquo;</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># lib/clean_task.py</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>__evaluate_cleanup_timing</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>task</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Determine if task is overdue&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>task_time</span> <span class=o>=</span> <span class=n>datetime</span><span class=o>.</span><span class=n>strptime</span><span class=p>(</span><span class=n>task</span><span class=p>[</span><span class=s1>&#39;updated_at&#39;</span><span class=p>],</span> <span class=bp>self</span><span class=o>.</span><span class=n>date_format</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>now</span> <span class=o>-</span> <span class=n>task_time</span><span class=p>)</span><span class=o>.</span><span class=n>days</span> <span class=o>&gt;=</span> <span class=nb>int</span><span class=p>(</span><span class=n>task</span><span class=p>[</span><span class=s1>&#39;duration&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_todo_tasks</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Get list of overdue tasks&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[</span><span class=n>task</span> <span class=k>for</span> <span class=n>task</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>tasks</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=ow>not</span> <span class=n>task</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;paused&#39;</span><span class=p>,</span> <span class=kc>False</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=ow>and</span> <span class=bp>self</span><span class=o>.</span><span class=n>__evaluate_cleanup_timing</span><span class=p>(</span><span class=n>task</span><span class=p>)]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-notification-logic>3. Notification Logic</h3><p>Notifications are sent only on user-specified days and times.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>should_notify</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>current_time</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Determine if notification should be sent&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=bp>self</span><span class=o>.</span><span class=n>notification</span><span class=p>[</span><span class=s1>&#39;enabled&#39;</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Check day of week</span>
+</span></span><span class=line><span class=cl>    <span class=n>weekday_map</span> <span class=o>=</span> <span class=p>{</span><span class=mi>0</span><span class=p>:</span> <span class=s1>&#39;Mon&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>:</span> <span class=s1>&#39;Tue&#39;</span><span class=p>,</span> <span class=mi>2</span><span class=p>:</span> <span class=s1>&#39;Wed&#39;</span><span class=p>,</span> <span class=mi>3</span><span class=p>:</span> <span class=s1>&#39;Thu&#39;</span><span class=p>,</span> <span class=mi>4</span><span class=p>:</span> <span class=s1>&#39;Fri&#39;</span><span class=p>,</span> <span class=mi>5</span><span class=p>:</span> <span class=s1>&#39;Sat&#39;</span><span class=p>,</span> <span class=mi>6</span><span class=p>:</span> <span class=s1>&#39;Sun&#39;</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>current_weekday</span> <span class=o>=</span> <span class=n>weekday_map</span><span class=p>[</span><span class=n>current_time</span><span class=o>.</span><span class=n>weekday</span><span class=p>()]</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>current_weekday</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>notification</span><span class=p>[</span><span class=s1>&#39;days&#39;</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Check time</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>current_time</span><span class=o>.</span><span class=n>hour</span> <span class=o>&lt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>notification</span><span class=p>[</span><span class=s1>&#39;hour&#39;</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Check if already notified today</span>
+</span></span><span class=line><span class=cl>    <span class=c1># ...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>True</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=4-command-parser>4. Command Parser</h3><p>Commands are parsed using simple string splitting.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># lib/message.py</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_return_message</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>message</span><span class=p>,</span> <span class=n>s3client</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>task_operation</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_task_operation_name</span><span class=p>(</span><span class=n>message</span><span class=p>)</span>  <span class=c1># First word</span>
+</span></span><span class=line><span class=cl>    <span class=n>task_name</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_task_name</span><span class=p>(</span><span class=n>message</span><span class=p>)</span>                  <span class=c1># Second word</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>task_operation</span> <span class=o>==</span> <span class=s1>&#39;done&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>task_name</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_all_task_name</span><span class=p>(</span><span class=n>message</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>clean_task</span><span class=o>.</span><span class=n>update_task_updated_at</span><span class=p>(</span><span class=n>task_name</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>s3client</span><span class=o>.</span><span class=n>update_object</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>object_keyname</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>clean_task</span><span class=o>.</span><span class=n>get_json</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Completed&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>task_operation</span> <span class=o>==</span> <span class=s1>&#39;add&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>duration</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_duration</span><span class=p>(</span><span class=n>message</span><span class=p>)</span>  <span class=c1># Third word</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>clean_task</span><span class=o>.</span><span class=n>add_task</span><span class=p>(</span><span class=n>task_name</span><span class=p>,</span> <span class=n>duration</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># ...</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=5-data-structure-json>5. Data Structure (JSON)</h3><p>One JSON file per user is stored in S3.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;tasks&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;task_name&#34;</span><span class=p>:</span> <span class=s2>&#34;vacuum&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;updated_at&#34;</span><span class=p>:</span> <span class=s2>&#34;2024-01-01 12:00:00&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;duration&#34;</span><span class=p>:</span> <span class=mi>7</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;paused&#34;</span><span class=p>:</span> <span class=kc>false</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>],</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;notification&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;enabled&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;days&#34;</span><span class=p>:</span> <span class=p>[</span><span class=s2>&#34;Mon&#34;</span><span class=p>,</span> <span class=s2>&#34;Wed&#34;</span><span class=p>,</span> <span class=s2>&#34;Fri&#34;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;hour&#34;</span><span class=p>:</span> <span class=mi>7</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;last_notified_at&#34;</span><span class=p>:</span> <span class=s2>&#34;2024-01-01 07:00:00&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=sam-template>SAM Template</h2><p>Infrastructure is defined using AWS SAM.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=c># template.yaml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>AWSTemplateFormatVersion</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2010-09-09&#39;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Transform</span><span class=p>:</span><span class=w> </span><span class=l>AWS::Serverless-2016-10-31</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Parameters</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ChannelAccessToken</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>String</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>NoEcho</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>BucketName</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>String</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Default</span><span class=p>:</span><span class=w> </span><span class=l>your-bucket-name</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Globals</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>Function</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Runtime</span><span class=p>:</span><span class=w> </span><span class=l>python3.11</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Timeout</span><span class=p>:</span><span class=w> </span><span class=m>300</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Environment</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Variables</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>CHANNEL_ACCESS_TOKEN</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref ChannelAccessToken</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>BUCKET_NAME</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref BucketName</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Resources</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c># Message processing Lambda</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ProcessUserMessageFunction</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>AWS::Serverless::Function</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Handler</span><span class=p>:</span><span class=w> </span><span class=l>line_clean_bot.process_user_message</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>CodeUri</span><span class=p>:</span><span class=w> </span><span class=l>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Policies</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>S3CrudPolicy</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>BucketName</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref BucketName</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Events</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>ApiEvent</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>HttpApi</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>Path</span><span class=p>:</span><span class=w> </span><span class=l>/process_user_message</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>Method</span><span class=p>:</span><span class=w> </span><span class=l>ANY</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c># Scheduled notification Lambda</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>PushMessagePeriodicallyFunction</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>AWS::Serverless::Function</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Handler</span><span class=p>:</span><span class=w> </span><span class=l>line_clean_bot.push_message_periodically</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>CodeUri</span><span class=p>:</span><span class=w> </span><span class=l>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Policies</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>S3CrudPolicy</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>BucketName</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref BucketName</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Events</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>ScheduleEvent</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>Schedule</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>Schedule</span><span class=p>:</span><span class=w> </span><span class=l>cron(0 * * * ? *) </span><span class=w> </span><span class=c># Every hour at minute 0</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><h2 id=deployment>Deployment</h2><h3 id=1-prerequisites>1. Prerequisites</h3><ul><li>AWS CLI configured</li><li>SAM CLI installed</li><li>LINE Messaging API channel access token obtained</li></ul><h3 id=2-build--deploy>2. Build & Deploy</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># Build</span>
+</span></span><span class=line><span class=cl>sam build
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Deploy</span>
+</span></span><span class=line><span class=cl>sam deploy --parameter-overrides <span class=nv>ChannelAccessToken</span><span class=o>=</span>your_token
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-configure-line-webhook>3. Configure LINE Webhook</h3><p>Set the API endpoint URL output after deployment as the Webhook URL in the LINE Developers console.</p><h2 id=local-development>Local Development</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># Start local API server</span>
+</span></span><span class=line><span class=cl>sam <span class=nb>local</span> start-api --env-vars env.json
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Run tests</span>
+</span></span><span class=line><span class=cl>curl -X POST http://localhost:3000/process_user_message <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -H <span class=s2>&#34;Content-Type: application/json&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -d @events/line_message.json
+</span></span></code></pre></td></tr></table></div></div><h2 id=cost>Cost</h2><p>Estimated monthly cost (assuming 100 users):</p><div class=table-wrapper><table><thead><tr><th>Service</th><th>Cost</th></tr></thead><tbody><tr><td>Lambda</td><td>Nearly free (within free tier)</td></tr><tr><td>API Gateway</td><td>Nearly free (within free tier)</td></tr><tr><td>S3</td><td>A few cents/month</td></tr><tr><td><strong>Total</strong></td><td><strong>A few cents to a few dollars/month</strong></td></tr></tbody></table></div><h2 id=summary>Summary</h2><ul><li>Serverless architecture minimizes operational costs</li><li>S3 + JSON for simple data management</li><li>SAM for infrastructure as code</li><li>&ldquo;Days elapsed&rdquo; deadline management suited for cleaning tasks</li></ul><p>Source code is available on <a class=link href=https://github.com/bossagyu/line-clean-bot target=_blank rel=noopener>GitHub</a>.</p><h2 id=related-articles>Related Articles</h2><ul><li><a class=link href=/blog/045-clean-bot/>How to Use the Cleaning Reminder Bot</a></li><li><a class=link href=/blog/002-line-messaging-api/>LINE Messaging API Registration and Usage</a></li></ul></section><footer class=article-footer><section class=article-tags><a href=/en/tags/line-bot/>LINE BOT</a>
+<a href=/en/tags/aws-lambda/>AWS Lambda</a>
+<a href=/en/tags/python/>python</a>
+<a href=/en/tags/sam/>SAM</a>
+<a href=/en/tags/s3/>S3</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/en/blog/015-s3-object-check/><div class=article-details><h2 class=article-title>Checking for the Existence of an Object in S3</h2></div></a></article><article><a href=/en/blog/044-openai-response-api/><div class=article-details><h2 class=article-title>How to Use the OpenAI Response API</h2></div></a></article><article><a href=/en/blog/033-feast-tutorial/><div class=article-details><h2 class=article-title>Running the Feast Tutorial on macOS</h2></div></a></article><article><a href=/en/blog/032-python-uv/><div class=article-details><h2 class=article-title>Setting Up a Python Development Environment on Mac with UV</h2></div></a></article><article><a href=/en/blog/024-bluesky-api/><div class=article-details><h2 class=article-title>Using Bluesky API for Automated Posting with Python</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2023 -
+2026 Bossagyu Blog</section><section class=powerby><a href=/en/others/contact/>Contact</br></a><a href=/en/others/privacy-policy/>Privacy Policy</br></a></br></section><section class=powerby>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.21.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

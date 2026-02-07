@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>copilot on Bossagyu Blog</title><link>https://bossagyu.com/tags/copilot/</link><description>Recent content in copilot on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/copilot/index.xml" rel="self" type="application/rss+xml"/><item><title>VSCodeでGithub Copilotを設定して使う方法</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>この記事では、VSCodeでGithub Copilotを設定して使う方法を説明します。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>copilot on Bossagyu Blog</title><link>https://bossagyu.com/tags/copilot/</link><description>Recent content in copilot on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 04 Feb 2024 22:34:51 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/copilot/index.xml" rel="self" type="application/rss+xml"/><item><title>VSCodeでGithub Copilotを使いこなす完全ガイド</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、VSCodeでGithub Copilotを設定して使う方法から、Markdownでの活用、Chat toolの使い方まで網羅的に説明します。
 前提としてGithub Copilotのアカウントが必要です。&lt;/p>
 &lt;h2 id="vscodeでgithub-copilotを使えるようにするまで">VSCodeでGithub Copilotを使えるようにするまで&lt;/h2>
 &lt;h3 id="拡張機能をインストール">拡張機能をインストール&lt;/h3>
@@ -52,8 +52,8 @@ data-flex-basis="213px"
 >&lt;/p>
 &lt;p>これでGithub CopilotとVSCodeの連携が完了し、使えるようになりました。&lt;/p>
 &lt;h2 id="使い方">使い方&lt;/h2>
-&lt;p>基本的には、コードを書いていくだけで自動的に保管されるようになります。
-保管内容が提案されるので以下のコマンドを使いながらコードを書いていくと良いでしょう。&lt;/p>
+&lt;p>基本的には、コードを書いていくだけで自動的に補完されるようになります。
+補完内容が提案されるので以下のショートカットを使いながらコードを書いていくと良いでしょう。&lt;/p>
 &lt;h3 id="チートシート">チートシート&lt;/h3>
 &lt;table>
 &lt;thead>
@@ -89,11 +89,63 @@ data-flex-basis="213px"
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;h2 id="markdownファイルでの補完を有効にする">Markdownファイルでの補完を有効にする&lt;/h2>
+&lt;p>Github Copilotは、デフォルトではMarkdownファイルでの補完が無効になっています。
+ブログ執筆などでMarkdownを使う場合は、有効化しておくと便利です。&lt;/p>
+&lt;h3 id="設定方法">設定方法&lt;/h3>
+&lt;ol>
+&lt;li>VSCodeでGitHub Copilotのプラグインのページを開きます&lt;/li>
+&lt;li>歯車アイコンをクリックし、設定を開きます&lt;/li>
+&lt;li>設定画面で &lt;code>markdown&lt;/code> が &lt;code>false&lt;/code> になっているので &lt;code>true&lt;/code> に変更します&lt;/li>
+&lt;/ol>
+&lt;p>これでMarkdownファイルでもCopilotの補完が効くようになります。
+このブログもGithub Copilotで補完を行いながら書いており、かなり効率化できています。&lt;/p>
+&lt;h2 id="chat-toolを使ってさらに便利に">Chat toolを使ってさらに便利に&lt;/h2>
+&lt;p>Github Copilot Chatには「Chat tool」という機能があり、チャット内で様々なタスクを実行できます。&lt;/p>
+&lt;h3 id="chat-toolの実行方法">Chat toolの実行方法&lt;/h3>
+&lt;p>基本的には &lt;code>#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;&lt;/code> の形式でコマンドを入力します。&lt;/p>
+&lt;h3 id="代表的なchat-toolのコマンド">代表的なChat toolのコマンド&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コマンド&lt;/th>
+&lt;th>機能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>現在のワークスペースを全部検索する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>現在のエディタで選択しているコードをコンテキストとしてプロンプトに追加する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>現在のターミナルで選択している部分をコンテキストとしてプロンプトに追加する。エラーが出たときにターミナルの出力を参照するのに便利です。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>URLを指定してwebページからコンテンツを取得してコンテキストとしてプロンプトに追加する&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>他にも便利なコマンドがあるので、公式ドキュメントを参照してください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>Github Copilot Chat tools&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>VSCodeでGithub Copilotを設定して使う方法について説明しました。&lt;br>
-また、Github Copilotはソースコードだけではなく文章にも保管を行ってくれます。&lt;/p>
-&lt;p>このブログもGithub Copilotで保管を行いながら書いており、かなり効率化できています。&lt;br>
-ぜひ使ってみてください。&lt;/p></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>VSCodeでGithub Copilotを設定して使う方法について説明しました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>基本設定&lt;/strong>: 拡張機能のインストールとGitHub連携&lt;/li>
+&lt;li>&lt;strong>ショートカット&lt;/strong>: Tab/Escで提案の受け入れ・拒否&lt;/li>
+&lt;li>&lt;strong>Markdown対応&lt;/strong>: 設定でmarkdownをtrueに変更&lt;/li>
+&lt;li>&lt;strong>Chat tool&lt;/strong>: &lt;code>#codebase&lt;/code>や&lt;code>#selection&lt;/code>でコンテキストを追加&lt;/li>
+&lt;/ul>
+&lt;p>Github Copilotはソースコードだけではなく文章にも補完を行ってくれます。
+ぜひ活用してみてください。&lt;/p></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Github CopilotをIntellijで使う方法を解説します。
 合わせてショートカットのチートシートを記載します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>

@@ -944,62 +944,7 @@ data-flex-basis="240px"
 &lt;/table>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Codex CLIはインストール後にサインインを済ませるだけで、コマンドラインからすぐにCodexを活用できます。
-よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p></description></item><item><title>Github CopilotをChat toolを使って便利に使う方法</title><link>https://bossagyu.com/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/blog/042-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>この記事では、Github Copilot Chatをより便利に使うためのChat toolを使う方法について説明します。
-Chat toolを利用することで、Copilotとのチャットの中で様々なタスクを実行できるようになります。&lt;/p>
-&lt;h2 id="chat-toolとは">Chat toolとは&lt;/h2>
-&lt;p>Chat toolとはGithub Copilotのチャット内で特殊なタスクを実行できる機能です。
-例えば、ターミナルからの出力を取得したり、URLから情報を取得したりすることができます。&lt;/p>
-&lt;h2 id="chat-toolの実行方法">Chat toolの実行方法&lt;/h2>
-&lt;p>今回はVSCodeでChat toolを利用する方法を説明します。&lt;/p>
-&lt;p>基本的には &lt;code>#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;&lt;/code> の形式でコマンドを入力します。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/042-github-copilot/image.png"
-width="940"
-height="119"
-srcset="https://bossagyu.com/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Chat toolの実行例"
-class="gallery-image"
-data-flex-grow="789"
-data-flex-basis="1895px"
->&lt;/p>
-&lt;p>これだけです。&lt;/p>
-&lt;h2 id="代表的なchat-toolのコマンド">代表的なChat toolのコマンド&lt;/h2>
-&lt;p>以下に代表的なChat toolのコマンドを紹介します。&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>コマンド&lt;/th>
-&lt;th>機能&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
-&lt;td>現在のワークスペースを全部検索する&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
-&lt;td>現在のエディタで選択しているコードをコンテキストとしてプロンプトに追加する&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
-&lt;td>現在のターミナルで選択している部分をコンテキストとしてプロンプトに追加する。&lt;br>エラーが出たときにターミナルの出力を参照するのに便利です。&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
-&lt;td>URLを指定してwebページからコンテンツを取得してコンテキストとしてプロンプトに追加する&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>他にもたくさん便利な使い方があるので、公式ドキュメントを参照してください。&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
->Github Copilot Chat tools&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>この記事では、Github Copilot ChatでChat toolを使う方法について説明しました。
-Chat toolを使うことで、より便利にCopilotを利用できるようになるので、ぜひ活用してみてください。&lt;/p></description></item><item><title>RedisをGoで使う方法</title><link>https://bossagyu.com/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/blog/041-redis-go/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p></description></item><item><title>RedisをGoで使う方法</title><link>https://bossagyu.com/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/blog/041-redis-go/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、GoでRedisを使う方法について説明します。&lt;/p>
 &lt;h2 id="redisの起動方法">Redisの起動方法&lt;/h2>
 &lt;p>Redisの説明やDockerでの起動方法については、&lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" target="_blank" rel="noopener"
@@ -1304,50 +1249,7 @@ class="gallery-image"
 data-flex-grow="284"
 data-flex-basis="682px"
 >&lt;/p>
-&lt;p>これで、AWS ToolkitがAsia Pacific Tokyoリージョンで使用できるようになります。&lt;/p></description></item><item><title>Visual Studio Codeのアップデート方法</title><link>https://bossagyu.com/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/blog/038-update-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>MacでVisual Studio Code (VSCode) のアップデート方法を説明します。&lt;/p>
-&lt;h2 id="vscodeのアップデート方法">VSCodeのアップデート方法&lt;/h2>
-&lt;ol>
-&lt;li>VScodeを起動します。&lt;/li>
-&lt;li>Code → 「更新の確認」&lt;br>
-英語の場合は Update Visual Studio Code を選択します。&lt;/li>
-&lt;/ol>
-&lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image.png"
-width="362"
-height="266"
-srcset="https://bossagyu.com/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image_hu4cb88fc77c0541cdf7c5ee55b378b842_31419_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="更新の確認"
-class="gallery-image"
-data-flex-grow="136"
-data-flex-basis="326px"
->&lt;/p>
-&lt;p>更新が始まると以下のような画面になります&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image-1.png"
-width="322"
-height="260"
-srcset="https://bossagyu.com/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="alt text"
-class="gallery-image"
-data-flex-grow="123"
-data-flex-basis="297px"
->&lt;/p>
-&lt;p>ダウンロードが完了すると「再起動して更新」が表示されます。&lt;/p>
-&lt;p>再起動後「Visual Studio Codeのバージョン情報」をクリックして、バージョンが上がっていることを確認します。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image-3.png"
-width="243"
-height="338"
-srcset="https://bossagyu.com/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="バージョン"
-class="gallery-image"
-data-flex-grow="71"
-data-flex-basis="172px"
->&lt;/p>
-&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>VSCodeのアップデートは非常に簡単で、数クリックで完了します。定期的にアップデートを行うことで、新機能やセキュリティパッチを利用できるため、常に最新の状態を保つことが重要です。
-アップデート後は、必ずバージョン情報を確認して、正しくアップデートが行われたかをチェックしましょう。&lt;/p></description></item><item><title>vscodeのインデントガイドをカスタマイズする方法</title><link>https://bossagyu.com/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/blog/036-vscode-indent/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>これで、AWS ToolkitがAsia Pacific Tokyoリージョンで使用できるようになります。&lt;/p></description></item><item><title>vscodeのインデントガイドをカスタマイズする方法</title><link>https://bossagyu.com/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/blog/036-vscode-indent/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Visual Studio Code (VSCode) では、インデントガイドの色をカスタマイズすることができます。
 この記事では、インデントガイドの色を変更する方法を説明します。
 indent-rainbowのような拡張機能はインデントガイドが途中で切れるなどの問題がありましたが、VSCodeの設定ファイルを編集するだけで実現できます。&lt;/p>
@@ -1444,68 +1346,7 @@ data-flex-basis="350px"
 &lt;p>VSCodeでは、インデントガイドの色を簡単にカスタマイズできます。
 設定ファイルに必要な項目を追加するだけで、好みの色に変更できます。
 これにより、コードの可読性が向上し、インデントの深さを視覚的に把握しやすくなります。
-ぜひ試してみてください。&lt;/p></description></item><item><title>GitHub CopilotをMarkdownで有効にする方法</title><link>https://bossagyu.com/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Github Copilotは、デフォルトではMarkdownファイルでの補完が無効になっています。
-この記事では、GitHub CopilotをMarkdownで有効にする方法を説明します。&lt;/p>
-&lt;h2 id="github-copilotの設定">GitHub Copilotの設定&lt;/h2>
-&lt;p>VSCodeでGitHub Copilotのプラグインのページを開きます。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/035-github-copilot-markdown/image.png"
-width="1032"
-height="485"
-srcset="https://bossagyu.com/blog/035-github-copilot-markdown/image_hu4f0b967461f0cc9ec012b506a04e858f_139974_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/035-github-copilot-markdown/image_hu4f0b967461f0cc9ec012b506a04e858f_139974_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Copilotの設定画面"
-class="gallery-image"
-data-flex-grow="212"
-data-flex-basis="510px"
->&lt;/p>
-&lt;p>歯車アイコンをクリックし、設定を開きます。&lt;/p>
-&lt;p>設定画面で &lt;code>mardown&lt;/code> が &lt;code>false&lt;/code> になっているので &lt;code>true&lt;/code> に変更します。
-&lt;img src="https://bossagyu.com/blog/035-github-copilot-markdown/image-1.png"
-width="817"
-height="298"
-srcset="https://bossagyu.com/blog/035-github-copilot-markdown/image-1_hua6c26bb551050949dee2247188038d10_37461_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/035-github-copilot-markdown/image-1_hua6c26bb551050949dee2247188038d10_37461_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Markdown 有効化の画面"
-class="gallery-image"
-data-flex-grow="274"
-data-flex-basis="657px"
->&lt;/p>
-&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>GitHub CopilotをMarkdownで有効にすることで、Markdownファイルの編集がより効率的になります。
-VSCodeの設定を変更するだけで簡単に有効化できるので、ぜひ試してみてください。&lt;/p></description></item><item><title>JetBrains製品のメジャーバージョンを上げる方法</title><link>https://bossagyu.com/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/blog/034-jetbrains-update/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>IntelliJやPyCharmなどの JetBrains製品のメジャーバージョンを上げる際にサイドダウンロードするが必要になります。
-設定を引き継ぎつつなるべく簡単にアップデートする方法について説明します。&lt;/p>
-&lt;h2 id="jetbrains-toolbox-appのインストール">JetBrains Toolbox Appのインストール&lt;/h2>
-&lt;p>JetBrains製品のメジャーバージョンを上げる際は、&lt;a class="link" href="https://www.jetbrains.com/toolbox-app/" target="_blank" rel="noopener"
->JetBrains Toolbox App&lt;/a>を利用することをおすすめします。&lt;/p>
-&lt;p>上記リンクよりJetBrains Toolbox Appをダウンロードし、インストールします。&lt;/p>
-&lt;h2 id="アップデート">アップデート&lt;/h2>
-&lt;p>JetBrains Toolbox Appを起動し、アップデートしたい製品を選択します。&lt;/p>
-&lt;p>今回はPyCharmをの更新を行うのでクリックすると、アップデートが開始されます。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/034-jetbrains-update/img.png"
-width="443"
-height="691"
-srcset="https://bossagyu.com/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/034-jetbrains-update/img_hu942b99710855521c5f32d9b20e79451d_198115_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="アップデートの選択画面"
-class="gallery-image"
-data-flex-grow="64"
-data-flex-basis="153px"
->&lt;/p>
-&lt;p>アップデートが完了すると、以下のように新しいバージョンがインストールされます。&lt;/p>
-&lt;p>&lt;img src="https://bossagyu.com/blog/034-jetbrains-update/img_1.png"
-width="423"
-height="509"
-srcset="https://bossagyu.com/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/034-jetbrains-update/img_1_hu8eb35234db364754b9c1db3a37ad674a_94027_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="アップデート後の画面"
-class="gallery-image"
-data-flex-grow="83"
-data-flex-basis="199px"
->&lt;/p>
-&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>JetBrains製品のメジャーバージョンを上げる際は、JetBrains Toolbox Appを利用することで簡単にアップデートが可能です。&lt;/p></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+ぜひ試してみてください。&lt;/p></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>今回は&lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feastのチュートリアル&lt;/a>を参考に、Macで実行してみます。&lt;/p>
 &lt;h2 id="事前準備">事前準備&lt;/h2>
@@ -3585,8 +3426,8 @@ data-flex-basis="426px"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Business analysis management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>VSCodeでGithub Copilotを設定して使う方法</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>この記事では、VSCodeでGithub Copilotを設定して使う方法を説明します。
+&lt;/ul></description></item><item><title>VSCodeでGithub Copilotを使いこなす完全ガイド</title><link>https://bossagyu.com/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/blog/017-vscode-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、VSCodeでGithub Copilotを設定して使う方法から、Markdownでの活用、Chat toolの使い方まで網羅的に説明します。
 前提としてGithub Copilotのアカウントが必要です。&lt;/p>
 &lt;h2 id="vscodeでgithub-copilotを使えるようにするまで">VSCodeでGithub Copilotを使えるようにするまで&lt;/h2>
 &lt;h3 id="拡張機能をインストール">拡張機能をインストール&lt;/h3>
@@ -3639,8 +3480,8 @@ data-flex-basis="213px"
 >&lt;/p>
 &lt;p>これでGithub CopilotとVSCodeの連携が完了し、使えるようになりました。&lt;/p>
 &lt;h2 id="使い方">使い方&lt;/h2>
-&lt;p>基本的には、コードを書いていくだけで自動的に保管されるようになります。
-保管内容が提案されるので以下のコマンドを使いながらコードを書いていくと良いでしょう。&lt;/p>
+&lt;p>基本的には、コードを書いていくだけで自動的に補完されるようになります。
+補完内容が提案されるので以下のショートカットを使いながらコードを書いていくと良いでしょう。&lt;/p>
 &lt;h3 id="チートシート">チートシート&lt;/h3>
 &lt;table>
 &lt;thead>
@@ -3676,11 +3517,63 @@ data-flex-basis="213px"
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;h2 id="markdownファイルでの補完を有効にする">Markdownファイルでの補完を有効にする&lt;/h2>
+&lt;p>Github Copilotは、デフォルトではMarkdownファイルでの補完が無効になっています。
+ブログ執筆などでMarkdownを使う場合は、有効化しておくと便利です。&lt;/p>
+&lt;h3 id="設定方法">設定方法&lt;/h3>
+&lt;ol>
+&lt;li>VSCodeでGitHub Copilotのプラグインのページを開きます&lt;/li>
+&lt;li>歯車アイコンをクリックし、設定を開きます&lt;/li>
+&lt;li>設定画面で &lt;code>markdown&lt;/code> が &lt;code>false&lt;/code> になっているので &lt;code>true&lt;/code> に変更します&lt;/li>
+&lt;/ol>
+&lt;p>これでMarkdownファイルでもCopilotの補完が効くようになります。
+このブログもGithub Copilotで補完を行いながら書いており、かなり効率化できています。&lt;/p>
+&lt;h2 id="chat-toolを使ってさらに便利に">Chat toolを使ってさらに便利に&lt;/h2>
+&lt;p>Github Copilot Chatには「Chat tool」という機能があり、チャット内で様々なタスクを実行できます。&lt;/p>
+&lt;h3 id="chat-toolの実行方法">Chat toolの実行方法&lt;/h3>
+&lt;p>基本的には &lt;code>#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;&lt;/code> の形式でコマンドを入力します。&lt;/p>
+&lt;h3 id="代表的なchat-toolのコマンド">代表的なChat toolのコマンド&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コマンド&lt;/th>
+&lt;th>機能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>現在のワークスペースを全部検索する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>現在のエディタで選択しているコードをコンテキストとしてプロンプトに追加する&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>現在のターミナルで選択している部分をコンテキストとしてプロンプトに追加する。エラーが出たときにターミナルの出力を参照するのに便利です。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>URLを指定してwebページからコンテンツを取得してコンテキストとしてプロンプトに追加する&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>他にも便利なコマンドがあるので、公式ドキュメントを参照してください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>Github Copilot Chat tools&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>VSCodeでGithub Copilotを設定して使う方法について説明しました。&lt;br>
-また、Github Copilotはソースコードだけではなく文章にも保管を行ってくれます。&lt;/p>
-&lt;p>このブログもGithub Copilotで保管を行いながら書いており、かなり効率化できています。&lt;br>
-ぜひ使ってみてください。&lt;/p></description></item><item><title>ITIL v4 可用性管理について解説</title><link>https://bossagyu.com/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>VSCodeでGithub Copilotを設定して使う方法について説明しました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>基本設定&lt;/strong>: 拡張機能のインストールとGitHub連携&lt;/li>
+&lt;li>&lt;strong>ショートカット&lt;/strong>: Tab/Escで提案の受け入れ・拒否&lt;/li>
+&lt;li>&lt;strong>Markdown対応&lt;/strong>: 設定でmarkdownをtrueに変更&lt;/li>
+&lt;li>&lt;strong>Chat tool&lt;/strong>: &lt;code>#codebase&lt;/code>や&lt;code>#selection&lt;/code>でコンテキストを追加&lt;/li>
+&lt;/ul>
+&lt;p>Github Copilotはソースコードだけではなく文章にも補完を行ってくれます。
+ぜひ活用してみてください。&lt;/p></description></item><item><title>ITIL v4 可用性管理について解説</title><link>https://bossagyu.com/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、ITIL v4の可用性管理について説明します。
 また、理解した内容をもとに自分の経験を当てはあめ、可用性管理のプロセスについて説明します。&lt;/p>
 &lt;h2 id="可用性管理とは">可用性管理とは&lt;/h2>
@@ -4205,50 +4098,7 @@ GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正し�
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
 ChatGPTを利用することで、英語化を簡単に行うことができます。
 また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。&lt;/p>
-&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item><item><title>Faviconを作ってHugoで表示する方法</title><link>https://bossagyu.com/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/blog/010-favicon/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Faviconを簡単に作る方法を解説します。
-また、HugoでFaviconを表示する方法も解説します。&lt;/p>
-&lt;h2 id="faviconとは">Faviconとは&lt;/h2>
-&lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
-Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
->faviconのガイドライン&lt;/a>が公開されており、
-こちらに従うことで検索結果に表示されるようになります。&lt;/p>
-&lt;h2 id="faviconの作成">Faviconの作成&lt;/h2>
-&lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
->Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>サイトにアクセスすると、以下のような画面が表示されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/010-favicon/img-010-001.png"
-width="3336"
-height="1510"
-srcset="https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Favicon Generator"
-class="gallery-image"
-data-flex-grow="220"
-data-flex-basis="530px"
->&lt;/p>
-&lt;p>faviconを作成したいサイトのURLを入力し、Generate Faviconをクリックします。
-その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
-&lt;h2 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h2>
-&lt;p>HugoでFaviconを表示するには、themeによっても違うますが、 &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
->bearcub&lt;/a> の場合は
-以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>Faviconを作成する方法と、HugoでFaviconを表示する方法を解説しました。&lt;br>
-Faviconは、ブログのブックマークやタブ、ホーム画面などに表示されるので、作成しておくと良いでしょう。&lt;/p></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説します。&lt;/p>
 &lt;h2 id="lighthouseとは">Lighthouseとは&lt;/h2>
 &lt;p>LighthouseはGoogleが提供している、Webサイトのパフォーマンスを計測するツールです。
@@ -5131,13 +4981,15 @@ data-flex-basis="762px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！&lt;/p></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。&lt;br>
+&lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。&lt;/p>
+&lt;p>Faviconの設定方法も合わせて解説します。&lt;/p>
 &lt;h2 id="流れ">流れ&lt;/h2>
 &lt;ol>
 &lt;li>Hugoでサイトを生成&lt;/li>
 &lt;li>Githubにプッシュ&lt;/li>
 &lt;li>Netlifyでデプロイ&lt;/li>
+&lt;li>Faviconを設定&lt;/li>
 &lt;/ol>
 &lt;h2 id="hugoで静的サイトを生成">Hugoで静的サイトを生成&lt;/h2>
 &lt;p>まずはHugoをインストールします。&lt;/p>
@@ -5264,5 +5116,40 @@ class="gallery-image"
 data-flex-grow="308"
 data-flex-basis="739px"
 >&lt;/p>
-&lt;p>これでデプロイまではおしまい。&lt;br>
-以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。&lt;/p></description></item></channel></rss>
+&lt;p>これでデプロイまではおしまい。
+以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。&lt;/p>
+&lt;h2 id="faviconを設定する">Faviconを設定する&lt;/h2>
+&lt;p>Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
+Googleより検索結果に表示されるための&lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>faviconのガイドライン&lt;/a>が公開されており、
+こちらに従うことで検索結果にも表示されるようになります。&lt;/p>
+&lt;h3 id="faviconの作成">Faviconの作成&lt;/h3>
+&lt;p>Faviconを作成するには、以下のサイトを利用します。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>サイトにアクセスし、faviconにしたい画像をアップロードして「Generate Favicon」をクリックします。
+その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。&lt;/p>
+&lt;h3 id="hugoでfaviconを表示する">HugoでFaviconを表示する&lt;/h3>
+&lt;p>HugoでFaviconを表示するには、themeによっても違いますが、多くのテーマでは以下のようにtomlに設定するだけでfaviconが表示できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">params&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">favicon&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ダウンロードしたfavicon.icoを&lt;code>static/images/&lt;/code>ディレクトリに配置して、上記の設定を追加してください。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Hugo + Netlify + Githubでブログを公開する方法を解説しました。&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Hugo&lt;/strong>: 静的サイトを生成&lt;/li>
+&lt;li>&lt;strong>Github&lt;/strong>: ソースコードを管理&lt;/li>
+&lt;li>&lt;strong>Netlify&lt;/strong>: 自動デプロイ&lt;/li>
+&lt;li>&lt;strong>Favicon&lt;/strong>: ブランディングのための設定&lt;/li>
+&lt;/ol>
+&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p></description></item></channel></rss>
