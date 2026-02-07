@@ -18,6 +18,9 @@ menu:
 * [Twitter(X)](https://twitter.com/bossagyu)
 * [Github](https://github.com/bossagyu)
 
+## Products
+* [掃除リマインダーBot](/blog/045-clean-bot/) - 掃除タスクを管理するLINE Bot
+
 ## Skill
 * Management
 * Java, Python, JavaScript, PHP
