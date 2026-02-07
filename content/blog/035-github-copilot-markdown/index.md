@@ -1,7 +1,7 @@
 +++
 title = 'GitHub CopilotをMarkdownで有効にする方法'
 date = 2025-07-21T10:00:00+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['GitHub Copilot', 'Markdown', 'vscode']
 +++

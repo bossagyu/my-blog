@@ -3,16 +3,19 @@ title = 'Hugo + Netlify + Githubでブログを公開する'
 date = 2023-12-02T00:59:37+09:00
 draft = false
 categories = ['Engineering']
-tags = ['Hugo', 'Netlify', 'Github']
+tags = ['Hugo', 'Netlify', 'Github', 'Favicon']
 +++
 ## 概要
-Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。  
+Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。
+
+Faviconの設定方法も合わせて解説します。
 
 ## 流れ
 1. Hugoでサイトを生成
 2. Githubにプッシュ
 3. Netlifyでデプロイ
+4. Faviconを設定
 
 ## Hugoで静的サイトを生成
 まずはHugoをインストールします。
@@ -86,5 +89,42 @@ pushが完了するとGithubのUI上でソースコードが閲覧できる状�
 ![リンク表示画面](img-001-002.png)
 
 
-これでデプロイまではおしまい。  
+これでデプロイまではおしまい。
 以降は変更を加えてmainにpushするだけで自動デプロイが走り、サイトの内容が更新されるようになる。
+
+## Faviconを設定する
+
+Faviconとは、ウェブサイトのブックマークやタブ、ホーム画面などに表示されるアイコンのことです。
+Googleより検索結果に表示されるための[faviconのガイドライン](https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines)が公開されており、
+こちらに従うことで検索結果にも表示されるようになります。
+
+### Faviconの作成
+
+Faviconを作成するには、以下のサイトを利用します。
+
+* [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/)
+
+サイトにアクセスし、faviconにしたい画像をアップロードして「Generate Favicon」をクリックします。
+その後表示される画面で、「Download the generated favicon」のリンクをクリックすると、faviconがダウンロードできます。
+
+### HugoでFaviconを表示する
+
+HugoでFaviconを表示するには、themeによっても違いますが、多くのテーマでは以下のようにtomlに設定するだけでfaviconが表示できます。
+
+```toml
+[params]
+  favicon = "images/favicon.ico"
+```
+
+ダウンロードしたfavicon.icoを`static/images/`ディレクトリに配置して、上記の設定を追加してください。
+
+## まとめ
+
+Hugo + Netlify + Githubでブログを公開する方法を解説しました。
+
+1. **Hugo**: 静的サイトを生成
+2. **Github**: ソースコードを管理
+3. **Netlify**: 自動デプロイ
+4. **Favicon**: ブランディングのための設定
+
+この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。

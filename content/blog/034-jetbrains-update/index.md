@@ -1,7 +1,7 @@
 +++
 title = 'JetBrains製品のメジャーバージョンを上げる方法'
 date = 2025-06-12T20:46:53+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['jetBrains', 'Intellij']
 +++

@@ -1,7 +1,7 @@
 +++
 title = 'How to Upgrade JetBrains Products to a Major Version'
 date = 2025-06-12T20:46:53+09:00
-draft = false
+draft = true
 +++
 
 ## Overview

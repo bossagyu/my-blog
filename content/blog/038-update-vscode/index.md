@@ -1,7 +1,7 @@
 +++
 title = 'Visual Studio Codeのアップデート方法'
 date = 2025-07-27T18:12:16+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['vscode', 'update']
 +++

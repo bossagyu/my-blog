@@ -4,16 +4,19 @@ date = 2023-12-02T00:59:37+09:00
 draft = false
 toc = true
 categories = ['Engineering']
-tags = ['Hugo', 'Netlify', 'Github']
+tags = ['Hugo', 'Netlify', 'Github', 'Favicon']
 +++
 ## Overview
-This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.  
+This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
 With this method, you can easily publish by just pushing your Markdown-written blog to Github.
+
+This guide also covers how to set up a favicon.
 
 ## Process
 1. Generate a site with Hugo
 2. Push to Github
 3. Deploy with Netlify
+4. Set up Favicon
 
 ## Generating a Static Site with Hugo
 First, install Hugo.
@@ -89,3 +92,40 @@ Click on the URL displayed on the site to access the deployed site.
 
 This completes the deployment process.
 After this, any changes made and pushed to main will automatically trigger deployment, updating the site content.
+
+## Setting Up Favicon
+
+A favicon is an icon displayed in bookmarks, browser tabs, and home screens.
+Google has published [favicon guidelines](https://developers.google.com/search/docs/appearance/favicon-in-search) for appearing in search results.
+Following these guidelines will help your favicon appear in search results.
+
+### Creating a Favicon
+
+To create a favicon, use the following website:
+
+* [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/)
+
+Access the site, upload the image you want to use as a favicon, and click "Generate Favicon".
+Then click "Download the generated favicon" to download your favicon.
+
+### Displaying Favicon in Hugo
+
+To display a favicon in Hugo, the method varies by theme, but most themes allow you to simply add the following to your toml configuration:
+
+```toml
+[params]
+  favicon = "images/favicon.ico"
+```
+
+Place the downloaded favicon.ico in the `static/images/` directory and add the above configuration.
+
+## Summary
+
+This guide covered how to publish a blog with Hugo + Netlify + Github.
+
+1. **Hugo**: Generate static site
+2. **Github**: Manage source code
+3. **Netlify**: Automatic deployment
+4. **Favicon**: Branding configuration
+
+With this setup, you just write articles in Markdown and push to Github for automatic site updates.

@@ -1,7 +1,7 @@
 +++
 title = 'How to Use GitHub Copilot More Effectively with Chat Tools'
 date = 2025-10-07T08:39:41+09:00
-draft = false
+draft = true
 categories = ['Engineering']
 tags = ['GitHub Copilot', 'VSCode', 'Chat tool']
 +++
