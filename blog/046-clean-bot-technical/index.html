@@ -1,0 +1,396 @@
+<!doctype html><html lang=ja-jp dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="概要 家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。
+完成したBotはこちら: 掃除リマインダーBot
+アーキテクチャ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │ LINE User │────▶│ API Gateway │────▶│ Lambda │ └─────────────┘ └─────────────┘ │ (process_user_ │ │ message) │ └──────────┬──────────┘ │ ┌─────────────┐ ┌─────────────────────┐ │ │ LINE User │◀────│ Lambda │ │ │ (通知) │ │ (push_message_ │ ▼ └─────────────┘ │ periodically) │ ┌─────────┐ └──────────┬──────────┘ │ S3 │ │ │ (JSON) │ ┌─────────────┐ │ └─────────┘ │ EventBridge │────────────────┘ │ (毎時実行) │ └─────────────┘ 使用サービス サービス 用途 API Gateway (HTTP API) LINEのWebhook受信 Lambda メッセージ処理、定期通知 S3 ユーザーごとのタスクデータ保存 EventBridge 定期実行スケジュール なぜこの構成か サーバーレス: 使った分だけ課金、運用負荷ゼロ S3: RDSより安価、JSONでシンプルに管理 SAM: Infrastructure as Codeでデプロイ管理 プロジェクト構成 1 2 3 4 5 6 7 8 9 10 clean-bot/ ├── lib/ # コアモジュール │ ├── clean_task."><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link rel=canonical href=https://bossagyu.com/blog/046-clean-bot-technical/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="AWS Lambda + LINE Botで掃除リマインダーを作る"><meta property="og:description" content="概要 家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。
+完成したBotはこちら: 掃除リマインダーBot
+アーキテクチャ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │ LINE User │────▶│ API Gateway │────▶│ Lambda │ └─────────────┘ └─────────────┘ │ (process_user_ │ │ message) │ └──────────┬──────────┘ │ ┌─────────────┐ ┌─────────────────────┐ │ │ LINE User │◀────│ Lambda │ │ │ (通知) │ │ (push_message_ │ ▼ └─────────────┘ │ periodically) │ ┌─────────┐ └──────────┬──────────┘ │ S3 │ │ │ (JSON) │ ┌─────────────┐ │ └─────────┘ │ EventBridge │────────────────┘ │ (毎時実行) │ └─────────────┘ 使用サービス サービス 用途 API Gateway (HTTP API) LINEのWebhook受信 Lambda メッセージ処理、定期通知 S3 ユーザーごとのタスクデータ保存 EventBridge 定期実行スケジュール なぜこの構成か サーバーレス: 使った分だけ課金、運用負荷ゼロ S3: RDSより安価、JSONでシンプルに管理 SAM: Infrastructure as Codeでデプロイ管理 プロジェクト構成 1 2 3 4 5 6 7 8 9 10 clean-bot/ ├── lib/ # コアモジュール │ ├── clean_task."><meta property="og:url" content="https://bossagyu.com/blog/046-clean-bot-technical/"><meta property="og:site_name" content="Bossagyu Blog"><meta property="og:type" content="article"><meta property="article:section" content="Blog"><meta property="article:tag" content="LINE BOT"><meta property="article:tag" content="AWS Lambda"><meta property="article:tag" content="Python"><meta property="article:tag" content="SAM"><meta property="article:tag" content="S3"><meta property="article:published_time" content="2026-02-07T19:00:00+09:00"><meta property="article:modified_time" content="2026-02-07T19:00:00+09:00"><meta property="og:image" content="https://bossagyu.com/images/share.webp"><meta name=twitter:title content="AWS Lambda + LINE Botで掃除リマインダーを作る"><meta name=twitter:description content="概要 家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。
+完成したBotはこちら: 掃除リマインダーBot
+アーキテクチャ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │ LINE User │────▶│ API Gateway │────▶│ Lambda │ └─────────────┘ └─────────────┘ │ (process_user_ │ │ message) │ └──────────┬──────────┘ │ ┌─────────────┐ ┌─────────────────────┐ │ │ LINE User │◀────│ Lambda │ │ │ (通知) │ │ (push_message_ │ ▼ └─────────────┘ │ periodically) │ ┌─────────┐ └──────────┬──────────┘ │ S3 │ │ │ (JSON) │ ┌─────────────┐ │ └─────────┘ │ EventBridge │────────────────┘ │ (毎時実行) │ └─────────────┘ 使用サービス サービス 用途 API Gateway (HTTP API) LINEのWebhook受信 Lambda メッセージ処理、定期通知 S3 ユーザーごとのタスクデータ保存 EventBridge 定期実行スケジュール なぜこの構成か サーバーレス: 使った分だけ課金、運用負荷ゼロ S3: RDSより安価、JSONでシンプルに管理 SAM: Infrastructure as Codeでデプロイ管理 プロジェクト構成 1 2 3 4 5 6 7 8 9 10 clean-bot/ ├── lib/ # コアモジュール │ ├── clean_task."><meta name=twitter:card content="summary"><meta name=twitter:image content="https://bossagyu.com/images/share.webp"><link rel="shortcut icon" href=/images/favicon.png><script async src="https://www.googletagmanager.com/gtag/js?id=G-5JL2R6XT6H"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-5JL2R6XT6H",{anonymize_ip:!1})}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/images/share.webp width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>Bossagyu Blog</a></h1><h2 class=site-description>エンジニアリングマネージャーがエンジニアリングとマネジメントについてまとめていくブログ</h2></div></header><ol class=social-menu><li><a href=https://github.com/bossagyu target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=mailto:Bossagyu@yahoo.co.jp target=_blank title=Mail rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://twitter.com/bossagyu target=_blank title=Twitter rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/page/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/page/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/page/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://bossagyu.com/ selected>ja-jp 🇯🇵</option><option value=https://bossagyu.com/en/>en-US 🇺🇸</option></select></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目次</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#概要>概要</a></li><li><a href=#アーキテクチャ>アーキテクチャ</a><ol><li><a href=#使用サービス>使用サービス</a></li><li><a href=#なぜこの構成か>なぜこの構成か</a></li></ol></li><li><a href=#プロジェクト構成>プロジェクト構成</a></li><li><a href=#実装のポイント>実装のポイント</a><ol><li><a href=#1-lambdaエントリーポイント>1. Lambdaエントリーポイント</a></li><li><a href=#2-タスクの期限管理>2. タスクの期限管理</a></li><li><a href=#3-通知判定ロジック>3. 通知判定ロジック</a></li><li><a href=#4-コマンドパーサー>4. コマンドパーサー</a></li><li><a href=#5-データ構造json>5. データ構造（JSON）</a></li></ol></li><li><a href=#samテンプレート>SAMテンプレート</a></li><li><a href=#デプロイ方法>デプロイ方法</a><ol><li><a href=#1-事前準備>1. 事前準備</a></li><li><a href=#2-ビルド--デプロイ>2. ビルド & デプロイ</a></li><li><a href=#3-line-webhook設定>3. LINE Webhook設定</a></li></ol></li><li><a href=#ローカル開発>ローカル開発</a></li><li><a href=#コスト>コスト</a></li><li><a href=#まとめ>まとめ</a></li><li><a href=#関連記事>関連記事</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/engineering/>Engineering</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/blog/046-clean-bot-technical/>AWS Lambda + LINE Botで掃除リマインダーを作る</a></h2></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg><time class=article-time--published>Feb 07, 2026</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--reading>4 minute read</time></div></footer></div></header><section class=article-content><h2 id=概要>概要</h2><p>家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。</p><p>完成したBotはこちら: <a class=link href=/blog/045-clean-bot/>掃除リマインダーBot</a></p><h2 id=アーキテクチャ>アーキテクチャ</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>┌─────────────┐     ┌─────────────┐     ┌─────────────────────┐
+</span></span><span class=line><span class=cl>│  LINE User  │────▶│ API Gateway │────▶│ Lambda              │
+</span></span><span class=line><span class=cl>└─────────────┘     └─────────────┘     │ (process_user_      │
+</span></span><span class=line><span class=cl>                                        │  message)           │
+</span></span><span class=line><span class=cl>                                        └──────────┬──────────┘
+</span></span><span class=line><span class=cl>                                                   │
+</span></span><span class=line><span class=cl>┌─────────────┐     ┌─────────────────────┐       │
+</span></span><span class=line><span class=cl>│  LINE User  │◀────│ Lambda              │       │
+</span></span><span class=line><span class=cl>│  (通知)     │     │ (push_message_      │       ▼
+</span></span><span class=line><span class=cl>└─────────────┘     │  periodically)      │  ┌─────────┐
+</span></span><span class=line><span class=cl>                    └──────────┬──────────┘  │   S3    │
+</span></span><span class=line><span class=cl>                               │             │ (JSON)  │
+</span></span><span class=line><span class=cl>┌─────────────┐                │             └─────────┘
+</span></span><span class=line><span class=cl>│ EventBridge │────────────────┘
+</span></span><span class=line><span class=cl>│ (毎時実行)  │
+</span></span><span class=line><span class=cl>└─────────────┘
+</span></span></code></pre></td></tr></table></div></div><h3 id=使用サービス>使用サービス</h3><div class=table-wrapper><table><thead><tr><th>サービス</th><th>用途</th></tr></thead><tbody><tr><td>API Gateway (HTTP API)</td><td>LINEのWebhook受信</td></tr><tr><td>Lambda</td><td>メッセージ処理、定期通知</td></tr><tr><td>S3</td><td>ユーザーごとのタスクデータ保存</td></tr><tr><td>EventBridge</td><td>定期実行スケジュール</td></tr></tbody></table></div><h3 id=なぜこの構成か>なぜこの構成か</h3><ul><li><strong>サーバーレス</strong>: 使った分だけ課金、運用負荷ゼロ</li><li><strong>S3</strong>: RDSより安価、JSONでシンプルに管理</li><li><strong>SAM</strong>: Infrastructure as Codeでデプロイ管理</li></ul><h2 id=プロジェクト構成>プロジェクト構成</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>clean-bot/
+</span></span><span class=line><span class=cl>├── lib/                      # コアモジュール
+</span></span><span class=line><span class=cl>│   ├── clean_task.py         # タスク状態管理
+</span></span><span class=line><span class=cl>│   ├── message.py            # コマンドパーサー
+</span></span><span class=line><span class=cl>│   ├── line.py               # LINE API
+</span></span><span class=line><span class=cl>│   └── s3_client.py          # S3操作
+</span></span><span class=line><span class=cl>├── test/                     # テスト
+</span></span><span class=line><span class=cl>├── line_clean_bot.py         # Lambdaエントリーポイント
+</span></span><span class=line><span class=cl>├── template.yaml             # SAMテンプレート
+</span></span><span class=line><span class=cl>└── Makefile                  # 開発コマンド
+</span></span></code></pre></td></tr></table></div></div><h2 id=実装のポイント>実装のポイント</h2><h3 id=1-lambdaエントリーポイント>1. Lambdaエントリーポイント</h3><p>2つのLambda関数を用意しています。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># line_clean_bot.py</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>process_user_message</span><span class=p>(</span><span class=n>event</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;LINEメッセージのWebhookハンドラ&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>body</span> <span class=o>=</span> <span class=n>json</span><span class=o>.</span><span class=n>loads</span><span class=p>(</span><span class=n>event</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;body&#39;</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># ユーザーID or グループIDを取得</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;source&#39;</span><span class=p>][</span><span class=s1>&#39;type&#39;</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;user&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>line_id</span> <span class=o>=</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;source&#39;</span><span class=p>][</span><span class=s1>&#39;userId&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>line_id</span> <span class=o>=</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;source&#39;</span><span class=p>][</span><span class=s1>&#39;groupId&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>message</span> <span class=o>=</span> <span class=n>body</span><span class=p>[</span><span class=s1>&#39;events&#39;</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=s1>&#39;message&#39;</span><span class=p>][</span><span class=s1>&#39;text&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># S3からユーザーデータを取得</span>
+</span></span><span class=line><span class=cl>    <span class=n>s3client</span> <span class=o>=</span> <span class=n>S3client</span><span class=p>(</span><span class=n>BUCKET_NAME</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>obj_key</span> <span class=o>=</span> <span class=n>line_id</span> <span class=o>+</span> <span class=s1>&#39;.json&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=n>s3client</span><span class=o>.</span><span class=n>check_exist_object</span><span class=p>(</span><span class=n>obj_key</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>s3client</span><span class=o>.</span><span class=n>update_object</span><span class=p>(</span><span class=n>obj_key</span><span class=p>,</span> <span class=s1>&#39;{&#34;tasks&#34;: []}&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># メッセージを処理して返信</span>
+</span></span><span class=line><span class=cl>    <span class=c1># ...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>push_message_periodically</span><span class=p>(</span><span class=n>event</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;定期実行でリマインド通知を送信&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>current_time</span> <span class=o>=</span> <span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span> <span class=o>+</span> <span class=n>timedelta</span><span class=p>(</span><span class=n>hours</span><span class=o>=</span><span class=mi>9</span><span class=p>)</span>  <span class=c1># JST</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>s3client</span> <span class=o>=</span> <span class=n>S3client</span><span class=p>(</span><span class=n>BUCKET_NAME</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>obj_list</span> <span class=ow>in</span> <span class=n>s3client</span><span class=o>.</span><span class=n>list_objects</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>        <span class=n>clean_task</span> <span class=o>=</span> <span class=n>CleanTask</span><span class=p>(</span><span class=n>s3client</span><span class=o>.</span><span class=n>get_object_body</span><span class=p>(</span><span class=n>obj_list</span><span class=o>.</span><span class=n>key</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 通知条件を満たすか判定</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>clean_task</span><span class=o>.</span><span class=n>should_notify</span><span class=p>(</span><span class=n>current_time</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=c1># メッセージ送信</span>
+</span></span><span class=line><span class=cl>            <span class=c1># ...</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-タスクの期限管理>2. タスクの期限管理</h3><p>「前回から何日経過したか」でタスクの期限を判定します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># lib/clean_task.py</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>__evaluate_cleanup_timing</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>task</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;タスクが期限切れか判定&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>task_time</span> <span class=o>=</span> <span class=n>datetime</span><span class=o>.</span><span class=n>strptime</span><span class=p>(</span><span class=n>task</span><span class=p>[</span><span class=s1>&#39;updated_at&#39;</span><span class=p>],</span> <span class=bp>self</span><span class=o>.</span><span class=n>date_format</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>now</span> <span class=o>-</span> <span class=n>task_time</span><span class=p>)</span><span class=o>.</span><span class=n>days</span> <span class=o>&gt;=</span> <span class=nb>int</span><span class=p>(</span><span class=n>task</span><span class=p>[</span><span class=s1>&#39;duration&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_todo_tasks</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;期限切れのタスク一覧を取得&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[</span><span class=n>task</span> <span class=k>for</span> <span class=n>task</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>tasks</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=ow>not</span> <span class=n>task</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;paused&#39;</span><span class=p>,</span> <span class=kc>False</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=ow>and</span> <span class=bp>self</span><span class=o>.</span><span class=n>__evaluate_cleanup_timing</span><span class=p>(</span><span class=n>task</span><span class=p>)]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-通知判定ロジック>3. 通知判定ロジック</h3><p>ユーザーが設定した曜日・時間にのみ通知します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>should_notify</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>current_time</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;通知すべきか判定&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=bp>self</span><span class=o>.</span><span class=n>notification</span><span class=p>[</span><span class=s1>&#39;enabled&#39;</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 曜日チェック</span>
+</span></span><span class=line><span class=cl>    <span class=n>weekday_map</span> <span class=o>=</span> <span class=p>{</span><span class=mi>0</span><span class=p>:</span> <span class=s1>&#39;月&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>:</span> <span class=s1>&#39;火&#39;</span><span class=p>,</span> <span class=mi>2</span><span class=p>:</span> <span class=s1>&#39;水&#39;</span><span class=p>,</span> <span class=mi>3</span><span class=p>:</span> <span class=s1>&#39;木&#39;</span><span class=p>,</span> <span class=mi>4</span><span class=p>:</span> <span class=s1>&#39;金&#39;</span><span class=p>,</span> <span class=mi>5</span><span class=p>:</span> <span class=s1>&#39;土&#39;</span><span class=p>,</span> <span class=mi>6</span><span class=p>:</span> <span class=s1>&#39;日&#39;</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>current_weekday</span> <span class=o>=</span> <span class=n>weekday_map</span><span class=p>[</span><span class=n>current_time</span><span class=o>.</span><span class=n>weekday</span><span class=p>()]</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>current_weekday</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>notification</span><span class=p>[</span><span class=s1>&#39;days&#39;</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 時刻チェック</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>current_time</span><span class=o>.</span><span class=n>hour</span> <span class=o>&lt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>notification</span><span class=p>[</span><span class=s1>&#39;hour&#39;</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 今日すでに通知済みかチェック</span>
+</span></span><span class=line><span class=cl>    <span class=c1># ...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>True</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=4-コマンドパーサー>4. コマンドパーサー</h3><p>シンプルな文字列分割でコマンドを解析します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># lib/message.py</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_return_message</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>message</span><span class=p>,</span> <span class=n>s3client</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>task_operation</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_task_operation_name</span><span class=p>(</span><span class=n>message</span><span class=p>)</span>  <span class=c1># 最初の単語</span>
+</span></span><span class=line><span class=cl>    <span class=n>task_name</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_task_name</span><span class=p>(</span><span class=n>message</span><span class=p>)</span>                  <span class=c1># 2番目の単語</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>task_operation</span> <span class=o>==</span> <span class=s1>&#39;完了&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>task_name</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_all_task_name</span><span class=p>(</span><span class=n>message</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>clean_task</span><span class=o>.</span><span class=n>update_task_updated_at</span><span class=p>(</span><span class=n>task_name</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>s3client</span><span class=o>.</span><span class=n>update_object</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>object_keyname</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>clean_task</span><span class=o>.</span><span class=n>get_json</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;完了しました&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>task_operation</span> <span class=o>==</span> <span class=s1>&#39;追加&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>duration</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>__get_duration</span><span class=p>(</span><span class=n>message</span><span class=p>)</span>  <span class=c1># 3番目の単語</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>clean_task</span><span class=o>.</span><span class=n>add_task</span><span class=p>(</span><span class=n>task_name</span><span class=p>,</span> <span class=n>duration</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># ...</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=5-データ構造json>5. データ構造（JSON）</h3><p>ユーザーごとに1つのJSONファイルをS3に保存します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;tasks&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;task_name&#34;</span><span class=p>:</span> <span class=s2>&#34;掃除機&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;updated_at&#34;</span><span class=p>:</span> <span class=s2>&#34;2024-01-01 12:00:00&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;duration&#34;</span><span class=p>:</span> <span class=mi>7</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;paused&#34;</span><span class=p>:</span> <span class=kc>false</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>],</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;notification&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;enabled&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;days&#34;</span><span class=p>:</span> <span class=p>[</span><span class=s2>&#34;月&#34;</span><span class=p>,</span> <span class=s2>&#34;水&#34;</span><span class=p>,</span> <span class=s2>&#34;金&#34;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;hour&#34;</span><span class=p>:</span> <span class=mi>7</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;last_notified_at&#34;</span><span class=p>:</span> <span class=s2>&#34;2024-01-01 07:00:00&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=samテンプレート>SAMテンプレート</h2><p>AWS SAMを使ってインフラを定義します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=c># template.yaml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>AWSTemplateFormatVersion</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2010-09-09&#39;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Transform</span><span class=p>:</span><span class=w> </span><span class=l>AWS::Serverless-2016-10-31</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Parameters</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ChannelAccessToken</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>String</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>NoEcho</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>BucketName</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>String</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Default</span><span class=p>:</span><span class=w> </span><span class=l>your-bucket-name</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Globals</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>Function</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Runtime</span><span class=p>:</span><span class=w> </span><span class=l>python3.11</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Timeout</span><span class=p>:</span><span class=w> </span><span class=m>300</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Environment</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Variables</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>CHANNEL_ACCESS_TOKEN</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref ChannelAccessToken</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>BUCKET_NAME</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref BucketName</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Resources</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c># メッセージ処理Lambda</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ProcessUserMessageFunction</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>AWS::Serverless::Function</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Handler</span><span class=p>:</span><span class=w> </span><span class=l>line_clean_bot.process_user_message</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>CodeUri</span><span class=p>:</span><span class=w> </span><span class=l>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Policies</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>S3CrudPolicy</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>BucketName</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref BucketName</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Events</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>ApiEvent</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>HttpApi</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>Path</span><span class=p>:</span><span class=w> </span><span class=l>/process_user_message</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>Method</span><span class=p>:</span><span class=w> </span><span class=l>ANY</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c># 定期通知Lambda</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>PushMessagePeriodicallyFunction</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>AWS::Serverless::Function</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Handler</span><span class=p>:</span><span class=w> </span><span class=l>line_clean_bot.push_message_periodically</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>CodeUri</span><span class=p>:</span><span class=w> </span><span class=l>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Policies</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>S3CrudPolicy</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>BucketName</span><span class=p>:</span><span class=w> </span>!<span class=l>Ref BucketName</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>Events</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>ScheduleEvent</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Type</span><span class=p>:</span><span class=w> </span><span class=l>Schedule</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>Properties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>Schedule</span><span class=p>:</span><span class=w> </span><span class=l>cron(0 * * * ? *) </span><span class=w> </span><span class=c># 毎時0分</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><h2 id=デプロイ方法>デプロイ方法</h2><h3 id=1-事前準備>1. 事前準備</h3><ul><li>AWS CLIの設定</li><li>SAM CLIのインストール</li><li>LINE Messaging APIのチャンネルアクセストークン取得</li></ul><h3 id=2-ビルド--デプロイ>2. ビルド & デプロイ</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># ビルド</span>
+</span></span><span class=line><span class=cl>sam build
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># デプロイ</span>
+</span></span><span class=line><span class=cl>sam deploy --parameter-overrides <span class=nv>ChannelAccessToken</span><span class=o>=</span>your_token
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-line-webhook設定>3. LINE Webhook設定</h3><p>デプロイ後に出力されるAPIエンドポイントを、LINE DevelopersコンソールでWebhook URLとして設定します。</p><h2 id=ローカル開発>ローカル開発</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># ローカルAPIサーバー起動</span>
+</span></span><span class=line><span class=cl>sam <span class=nb>local</span> start-api --env-vars env.json
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># テスト実行</span>
+</span></span><span class=line><span class=cl>curl -X POST http://localhost:3000/process_user_message <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -H <span class=s2>&#34;Content-Type: application/json&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -d @events/line_message.json
+</span></span></code></pre></td></tr></table></div></div><h2 id=コスト>コスト</h2><p>月間コストの目安（100ユーザー想定）:</p><div class=table-wrapper><table><thead><tr><th>サービス</th><th>コスト</th></tr></thead><tbody><tr><td>Lambda</td><td>ほぼ無料（無料枠内）</td></tr><tr><td>API Gateway</td><td>ほぼ無料（無料枠内）</td></tr><tr><td>S3</td><td>数円/月</td></tr><tr><td><strong>合計</strong></td><td><strong>数円〜数十円/月</strong></td></tr></tbody></table></div><h2 id=まとめ>まとめ</h2><ul><li>サーバーレス構成で運用コストを最小化</li><li>S3 + JSONでシンプルなデータ管理</li><li>SAMでインフラをコード管理</li><li>「日数経過」という掃除に適した期限管理</li></ul><p>ソースコードは<a class=link href=https://github.com/bossagyu/line-clean-bot target=_blank rel=noopener>GitHub</a>で公開しています。</p><h2 id=関連記事>関連記事</h2><ul><li><a class=link href=/blog/045-clean-bot/>掃除リマインダーBotの使い方</a></li><li><a class=link href=/blog/002-line-messaging-api/>LINE Messaging APIの登録と使い方</a></li></ul></section><footer class=article-footer><section class=article-tags><a href=/tags/line-bot/>LINE BOT</a>
+<a href=/tags/aws-lambda/>AWS Lambda</a>
+<a href=/tags/python/>python</a>
+<a href=/tags/sam/>SAM</a>
+<a href=/tags/s3/>S3</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>関連するコンテンツ</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/blog/045-clean-bot/><div class=article-details><h2 class=article-title>掃除を忘れない！掃除リマインダーLINE Bot</h2></div></a></article><article><a href=/blog/044-openai-response-api/><div class=article-details><h2 class=article-title>OpenAI Response APIの使い方まとめ</h2></div></a></article><article><a href=/blog/033-feast-tutorial/><div class=article-details><h2 class=article-title>FeastのチュートリアルをMacで実行する</h2></div></a></article><article><a href=/blog/032-python-uv/><div class=article-details><h2 class=article-title>MacでUVを用いてPythonの開発環境を構築する</h2></div></a></article><article><a href=/blog/024-bluesky-api/><div class=article-details><h2 class=article-title>PythonでBluesky APIを用いて自動投稿する方法</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2023 -
+2026 Bossagyu Blog</section><section class=powerby><a href=/others/privacy-policy/>プライバシーポリシー</br></a><a href=/others/contact/>問い合わせ</br></a></br></section><section class=powerby>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.21.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
