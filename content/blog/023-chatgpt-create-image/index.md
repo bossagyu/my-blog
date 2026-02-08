@@ -2,7 +2,7 @@
 title = 'chatGPTで画像を生成する方法'
 date = 2024-03-31T17:35:07+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['chatGPT', '画像生成']
 +++
 

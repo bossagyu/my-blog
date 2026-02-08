@@ -2,7 +2,7 @@
 title = 'TyeScriptにおけるEnumの使い方'
 date = 2024-03-23T13:11:13+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']
 +++
 

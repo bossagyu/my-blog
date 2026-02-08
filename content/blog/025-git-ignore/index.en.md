@@ -2,7 +2,7 @@
 title = 'Setting Up a Global gitignore for All Projects'
 date = 2024-04-16T23:16:25+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['git', 'gitignore']
 +++
 

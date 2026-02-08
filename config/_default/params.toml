@@ -65,7 +65,7 @@ src = "/images/share.webp"
 
 [colorScheme]
 toggle = true
-default = "auto"
+default = "dark"
 
 [imageProcessing.cover]
 enabled = true

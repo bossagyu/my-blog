@@ -2,7 +2,7 @@
 title = 'グローバルなgitignoreを設定してプロジェクト全体に適応する方法'
 date = 2024-04-16T23:16:25+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['git', 'gitignore']
 +++
 

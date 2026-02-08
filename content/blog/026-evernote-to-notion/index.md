@@ -2,7 +2,7 @@
 title = 'EvernoteからNotionへの移行方法'
 date = 2024-04-29T19:32:38+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['Evernote', 'Notion']
 +++
 

@@ -2,7 +2,7 @@
 title = 'Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法'
 date = 2024-03-10T13:11:13+09:00
 draft = false
-categories = ['Development']
+categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']
 +++
 
