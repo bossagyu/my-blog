@@ -1,5 +1,6 @@
 +++
 title = '掃除を忘れない！掃除リマインダーLINE Bot'
+description = '定期的な掃除を忘れがちな方へ。掃除機、トイレ、換気扇など、前回からの経過日数で自動リマインドするLINE Botの使い方を紹介します。'
 date = 2026-02-07T18:30:00+09:00
 draft = false
 categories = ['Product']

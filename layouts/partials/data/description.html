@@ -1,0 +1,35 @@
+<!-- Use site subtitle by default -->
+{{ $description := .Site.Params.sidebar.subtitle }}
+
+<!-- Separate description exists -->
+{{ if .Site.Params.description }}
+    {{ $description = .Site.Params.description }}
+{{ end }}
+
+{{ if .Description }}
+    <!-- Page description exists in front matter -->
+    {{ $description = .Description }}
+{{ else if .IsPage }}
+    <!-- Use raw content and strip code blocks -->
+    {{ $content := .RawContent }}
+    <!-- Remove fenced code blocks (```...```) -->
+    {{ $content = replaceRE "(?s)```.*?```" "" $content }}
+    <!-- Remove inline code (`...`) -->
+    {{ $content = replaceRE "`[^`]+`" "" $content }}
+    <!-- Remove markdown headers -->
+    {{ $content = replaceRE "(?m)^#{1,6}\\s+" "" $content }}
+    <!-- Remove markdown links but keep text -->
+    {{ $content = replaceRE "\\[([^\\]]+)\\]\\([^)]+\\)" "$1" $content }}
+    <!-- Remove markdown formatting -->
+    {{ $content = replaceRE "[*_]{1,2}([^*_]+)[*_]{1,2}" "$1" $content }}
+    <!-- Remove markdown tables -->
+    {{ $content = replaceRE "(?m)^\\|.*\\|$" "" $content }}
+    {{ $content = replaceRE "(?m)^[-|: ]+$" "" $content }}
+    <!-- Remove extra whitespace and newlines -->
+    {{ $content = replaceRE "\\s+" " " $content }}
+    {{ $content = trim $content " " }}
+    <!-- Truncate to ~160 characters (SEO best practice) -->
+    {{ $description = $content | truncate 160 }}
+{{ end }}
+
+{{ return ($description | plainify)}}

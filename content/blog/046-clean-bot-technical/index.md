@@ -1,5 +1,6 @@
 +++
 title = 'AWS Lambda + LINE Botで掃除リマインダーを作る'
+description = 'AWS Lambda、API Gateway、S3、EventBridgeを使った掃除リマインダーLINE Botの実装解説。SAMによるサーバーレス構成とPythonコードを詳しく紹介します。'
 date = 2026-02-07T19:00:00+09:00
 draft = false
 categories = ['Engineering']

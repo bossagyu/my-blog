@@ -1,5 +1,6 @@
 +++
 title = 'OpenAI Response APIの使い方まとめ'
+description = 'OpenAI Response APIの基本的な使い方を解説。APIキー取得からPythonでのテキスト生成、ツール呼び出しまで、最小限のコードで始められます。'
 date = 2025-12-24T10:00:00+09:00
 draft = false
 categories = ['Engineering']
