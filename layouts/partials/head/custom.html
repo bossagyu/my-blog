@@ -1,0 +1,56 @@
+{{- if .IsPage }}
+{{- $description := partial "data/description" . }}
+{{- $image := .Site.Params.defaultImage.opengraph.src | default "/images/share.webp" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title | safeJS }}",
+  "description": "{{ $description | safeJS }}",
+  "image": "{{ .Site.BaseURL }}{{ $image }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Author.name | default "bossagyu" }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}{{ $image }}"
+    }
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+  {{- with .Params.categories }},
+  "articleSection": "{{ index . 0 }}"
+  {{- end }}
+  {{- with .Params.tags }},
+  "keywords": "{{ delimit . ", " }}"
+  {{- end }}
+}
+</script>
+{{- end }}
+
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.sidebar.subtitle | safeJS }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{- end }}
