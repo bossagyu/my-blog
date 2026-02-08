@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Product on Bossagyu Blog</title><link>https://bossagyu.com/categories/product/</link><description>Recent content in Product on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 07 Feb 2026 18:30:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/product/index.xml" rel="self" type="application/rss+xml"/><item><title>掃除を忘れない！掃除リマインダーLINE Bot</title><link>https://bossagyu.com/blog/045-clean-bot/</link><pubDate>Sat, 07 Feb 2026 18:30:00 +0900</pubDate><guid>https://bossagyu.com/blog/045-clean-bot/</guid><description>&lt;h2 id="こんな悩みはありませんか">こんな悩みはありませんか？&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Product on Bossagyu Blog</title><link>https://bossagyu.com/categories/product/</link><description>Recent content in Product on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 07 Feb 2026 20:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/product/index.xml" rel="self" type="application/rss+xml"/><item><title>【初心者向け】掃除リマインダーBotの使い方チュートリアル</title><link>https://bossagyu.com/blog/047-clean-bot-tutorial/</link><pubDate>Sat, 07 Feb 2026 20:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/047-clean-bot-tutorial/</guid><description>&lt;h2 id="このチュートリアルで学べること">このチュートリアルで学べること&lt;/h2>
+&lt;p>掃除リマインダーBotの基本的な使い方を、5つのステップで学びます。&lt;/p>
+&lt;ol>
+&lt;li>友だち追加&lt;/li>
+&lt;li>タスクを追加する&lt;/li>
+&lt;li>通知を設定する&lt;/li>
+&lt;li>通知を受け取る&lt;/li>
+&lt;li>タスクを完了する&lt;/li>
+&lt;/ol>
+&lt;p>所要時間は約5分です。一緒にやってみましょう！&lt;/p>
+&lt;hr>
+&lt;h2 id="step-1-友だち追加">Step 1: 友だち追加&lt;/h2>
+&lt;p>まずはBotを友だちに追加します。&lt;/p>
+&lt;p>以下のQRコードをLINEで読み取るか、リンクをタップしてください。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/047-clean-bot-tutorial/qrcode.png"
+width="360"
+height="360"
+srcset="https://bossagyu.com/blog/047-clean-bot-tutorial/qrcode_hu95bee7a533128dc6d7ed5659019be1cb_23771_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/047-clean-bot-tutorial/qrcode_hu95bee7a533128dc6d7ed5659019be1cb_23771_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="QRコード"
+class="gallery-image"
+data-flex-grow="100"
+data-flex-basis="240px"
+>&lt;/p>
+&lt;p>&lt;a class="link" href="https://lin.ee/kdwsLys" target="_blank" rel="noopener"
+>友だち追加はこちら&lt;/a>&lt;/p>
+&lt;p>友だち追加が完了すると、トーク画面が開きます。&lt;/p>
+&lt;hr>
+&lt;h2 id="step-2-タスクを追加する">Step 2: タスクを追加する&lt;/h2>
+&lt;p>次に、管理したい掃除タスクを登録します。&lt;/p>
+&lt;p>トーク画面で以下のように入力して送信してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">追加 掃除機 7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これは「&lt;strong>掃除機&lt;/strong>を&lt;strong>7日ごと&lt;/strong>にリマインドする」という意味です。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/047-clean-bot-tutorial/image.png"
+width="533"
+height="236"
+srcset="https://bossagyu.com/blog/047-clean-bot-tutorial/image_huc08a9d1732aa8d0ae3b083392db511d7_31589_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/047-clean-bot-tutorial/image_huc08a9d1732aa8d0ae3b083392db511d7_31589_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="タスク追加"
+class="gallery-image"
+data-flex-grow="225"
+data-flex-basis="542px"
+>&lt;/p>
+&lt;p>Botから「掃除機を追加しました」と返信が来れば成功です。&lt;/p>
+&lt;h3 id="ポイント">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>「追加」の後にスペースを入れる&lt;/li>
+&lt;li>タスク名は自由（トイレ、お風呂、換気扇など）&lt;/li>
+&lt;li>日数は何日ごとにリマインドするかを指定&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="step-3-通知を設定する">Step 3: 通知を設定する&lt;/h2>
+&lt;p>タスクを追加したら、通知を受け取る曜日と時間を設定しましょう。&lt;/p>
+&lt;p>以下のように入力して送信してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">通知設定 月水金 7
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これは「&lt;strong>月・水・金&lt;/strong>の&lt;strong>7時&lt;/strong>に通知する」という意味です。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/047-clean-bot-tutorial/image-1.png"
+width="533"
+height="215"
+srcset="https://bossagyu.com/blog/047-clean-bot-tutorial/image-1_hue39ccd1901424b77d43674ee1ebfb08c_26209_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/047-clean-bot-tutorial/image-1_hue39ccd1901424b77d43674ee1ebfb08c_26209_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="通知設定"
+class="gallery-image"
+data-flex-grow="247"
+data-flex-basis="594px"
+>&lt;/p>
+&lt;p>「通知設定を更新しました」と返信が来れば設定完了です。&lt;/p>
+&lt;h3 id="ポイント-1">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>曜日は続けて入力（月水金、毎日なら月火水木金土日）&lt;/li>
+&lt;li>時間は0〜23の数字で指定&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="step-4-通知を受け取る">Step 4: 通知を受け取る&lt;/h2>
+&lt;p>設定した曜日・時間になると、期限切れのタスクがあれば通知が届きます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/047-clean-bot-tutorial/image-4.png"
+width="570"
+height="139"
+srcset="https://bossagyu.com/blog/047-clean-bot-tutorial/image-4_hu3c9aefd24389e58c00d5d9b27a8218d8_19622_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/047-clean-bot-tutorial/image-4_hu3c9aefd24389e58c00d5d9b27a8218d8_19622_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="通知受診"
+class="gallery-image"
+data-flex-grow="410"
+data-flex-basis="984px"
+>&lt;/p>
+&lt;p>通知には以下の情報が含まれます。&lt;/p>
+&lt;ul>
+&lt;li>タスク名&lt;/li>
+&lt;li>何日超過しているか（例: +3日）&lt;/li>
+&lt;/ul>
+&lt;p>超過日数が多いほど、優先的に掃除すべきタスクです。&lt;/p>
+&lt;hr>
+&lt;h2 id="step-5-タスクを完了する">Step 5: タスクを完了する&lt;/h2>
+&lt;p>掃除が終わったら、Botに報告しましょう。&lt;/p>
+&lt;p>以下のように入力して送信してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">完了 掃除機
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/blog/047-clean-bot-tutorial/image-2.png"
+width="533"
+height="214"
+srcset="https://bossagyu.com/blog/047-clean-bot-tutorial/image-2_hu9ea239d6fbc92079178c5229c5346eea_27479_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/047-clean-bot-tutorial/image-2_hu9ea239d6fbc92079178c5229c5346eea_27479_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="タスク完了"
+class="gallery-image"
+data-flex-grow="249"
+data-flex-basis="597px"
+>&lt;/p>
+&lt;p>「掃除機を完了しました」と返信が来れば完了です。&lt;/p>
+&lt;p>タスクの期限がリセットされ、次は7日後に再び通知されます。&lt;/p>
+&lt;h3 id="ポイント-2">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>完了のタスクはスペース区切りで複数複数指定可能です。
+&lt;ul>
+&lt;li>&lt;code>完了 掃除機 トイレ&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>お疲れさまでした！これで基本的な使い方は完了です。&lt;/p>
+&lt;h3 id="覚えておきたいコマンド">覚えておきたいコマンド&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>やりたいこと&lt;/th>
+&lt;th>コマンド&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>タスクを追加&lt;/td>
+&lt;td>&lt;code>追加 [タスク名] [日数]&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>タスクを完了&lt;/td>
+&lt;td>&lt;code>完了 [タスク名]&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>通知を設定&lt;/td>
+&lt;td>&lt;code>通知設定 [曜日] [時間]&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>残りタスクを確認&lt;/td>
+&lt;td>&lt;code>残り&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="次のステップ">次のステップ&lt;/h3>
+&lt;p>より詳しい機能については、以下の記事をご覧ください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの全機能紹介&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>ぜひ活用して、掃除を習慣化しましょう！&lt;/p></description></item><item><title>掃除を忘れない！掃除リマインダーLINE Bot</title><link>https://bossagyu.com/blog/045-clean-bot/</link><pubDate>Sat, 07 Feb 2026 18:30:00 +0900</pubDate><guid>https://bossagyu.com/blog/045-clean-bot/</guid><description>&lt;h2 id="こんな悩みはありませんか">こんな悩みはありませんか？&lt;/h2>
 &lt;ul>
 &lt;li>「掃除機、最後にかけたのいつだっけ&amp;hellip;」&lt;/li>
 &lt;li>「トイレ掃除、そろそろやらないと」&lt;/li>
