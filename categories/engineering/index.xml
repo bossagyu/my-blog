@@ -2282,7 +2282,609 @@ ChatGPTのモデルの精度の向上はめざましく、どんどん人間の�
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
 >Hello ChatGPT-4o&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;/ul></description></item><item><title>EvernoteからNotionへの移行方法</title><link>https://bossagyu.com/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>2024年4月26日にEvernoteの日本法人が解散するなど、Evernoteのサービスは終了しないもののいよいよEvernoteの雲行きが怪しくなってきました。&lt;br>
+Evernoteは無料プランに制限が多いため、有料プランを利用しており費用がかさむこともあり、他のノートアプリへの移行を検討しました。&lt;/p>
+&lt;p>以下の理由から移行先はNotionを選択しました。&lt;/p>
+&lt;ol>
+&lt;li>ノートアプリととして基本的な機能を揃えており、Evernoteの代替として十分利用できる。&lt;/li>
+&lt;li>Notionは無料プランの制限がゆるく無料プランで十分使え移行することで有料プランの費用を削減できる。&lt;/li>
+&lt;li>Evernoteからインポートする機能がNotion側で提供されており、移行コストが非常に低い。&lt;/li>
+&lt;/ol>
+&lt;p>今回はEvernoteからNotionへの移行方法をまとめます。&lt;/p>
+&lt;h2 id="移行方法">移行方法&lt;/h2>
+&lt;p>NotionにはEvernoteからのインポート機能が提供されているため、こちらを利用するだけで簡単に移行ができます。&lt;/p>
+&lt;p>Notionのアプリのメニューから &lt;code>設定&lt;/code> を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/026-evernote-to-notion/img-026-001.png"
+width="476"
+height="109"
+srcset="https://bossagyu.com/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/026-evernote-to-notion/img-026-001_hue34c4fc34d425abb2cb8a7822cb5448a_12099_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notionの設定"
+class="gallery-image"
+data-flex-grow="436"
+data-flex-basis="1048px"
+>&lt;/p>
+&lt;p>設定をクリックすると &lt;code>インポート&lt;/code> が表示されるので、これをクリックします。&lt;br>
+インポートをクリックすると、インポート元のアプリケーションが表示されるので、ここで &lt;code>Evernote&lt;/code> を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/026-evernote-to-notion/img-026-002.png"
+width="1107"
+height="553"
+srcset="https://bossagyu.com/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/026-evernote-to-notion/img-026-002_hu5671edaff82d6b0627f9e68841ee4894_113782_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notionのインポート"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;p>連携が完了するとインポートするノートブックが選択できるようになります。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/026-evernote-to-notion/img-026-003.png"
+width="262"
+height="131"
+srcset="https://bossagyu.com/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/026-evernote-to-notion/img-026-003_hu22ab7887a397f6d4d5c09ac7940595a1_12909_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Notionのインポート"
+class="gallery-image"
+data-flex-grow="200"
+data-flex-basis="480px"
+>&lt;/p>
+&lt;p>ここでの注意点です！&lt;br>
+ノートブックを複数選択すると一気にインポートできるように見えるのですが、一気にインポートするととんでもない時間がかかった挙げ句エラーが出ることがあります。
+このため、ノートブックは一つづつインポートすることをおすすめします。&lt;/p>
+&lt;p>一つずつインポートした場合でも、ノートの分量が多いと数時間かかったりするので、気長に対応するとよいです。&lt;/p>
+&lt;p>インポート後は特に体裁が崩れることもなく、画像やリンク、ラベルも正常にインポートされるので問題なく利用ができました。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>EvernoteからNotionへの移行方法をまとめました。
+無料で機能が豊富なNotionに簡単に移行できるので、ぜひ移行を検討してみてください。&lt;/p></description></item><item><title>グローバルなgitignoreを設定してプロジェクト全体に適応する方法</title><link>https://bossagyu.com/blog/025-git-ignore/</link><pubDate>Tue, 16 Apr 2024 23:16:25 +0900</pubDate><guid>https://bossagyu.com/blog/025-git-ignore/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>&lt;code>.gitignore&lt;/code> ファイルをプロジェクトに追加することでプロジェクト事にgitのトラッキング対象から外すことができます。&lt;br>
+しかしながら&lt;code>.idea&lt;/code> などIDEがデフォルトで生成するディレクトリを毎回プロジェクト毎にgitignoreに追加するのが面倒です。&lt;br>
+本記事では &lt;code>gitignore&lt;/code> に設定した内容をすべてのプロジェクトに 適応する方法をまとめます。&lt;/p>
+&lt;h2 id="gitignoreを全体に適応する方法">gitignoreを全体に適応する方法&lt;/h2>
+&lt;p>gitはデフォルトで &lt;code>~/.config/git/ignore&lt;/code> へignore設定を見に行きます。&lt;br>
+このため、&lt;code>~/.config/git/ignore&lt;/code> にignore設定を記述することですべてのプロジェクトにgitignoreの内容を適応できます。&lt;/p>
+&lt;p>よく &lt;code>.gitignore_global&lt;/code> を作成して、&lt;code>core.excludesfile&lt;/code> に登録する方法が案内されていますが、この方法だと &lt;code>.gitconfig&lt;/code> に無駄な設定をいれる必要があるため、こちらの方法をおすすめします。&lt;/p>
+&lt;h2 id="プロジェクト全体にgitignoreを適応する手順">プロジェクト全体にgitignoreを適応する手順&lt;/h2>
+&lt;p>ignoreファイルを格納するためのディレクトリを作成します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir -p ~/.config/git/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ignoreファイルを作成し、全プロジェクトで無視したい内容を記述してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">vim ~/.config/git/ignore
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>記載例&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">.idea/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*.log
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node_modules/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>この設定を行うことで、全プロジェクトで同じignore設定を適応できます。&lt;br>
+すでにトラッキングしているファイルを含む場合は、一度 &lt;code>git rm --cached&lt;/code> でトラッキングを解除してください。&lt;/p>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://git-scm.com/docs/gitignore" target="_blank" rel="noopener"
+>Git - gitignore&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>PythonでBluesky APIを用いて自動投稿する方法</title><link>https://bossagyu.com/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/blog/024-bluesky-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>&lt;a class="link" href="https://bsky.app/" target="_blank" rel="noopener"
+>Bluesky&lt;/a> とは、旧Twitter社の元CEOであるジャック・ドーシー氏が立ち上げた分散型SNSです。&lt;br>
+&lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
+>ATProtocl&lt;/a> というプロトコルを用いて構築されたSNSで、簡単に言うと中央管理者がいないTwitterのようなものです。&lt;br>
+昨今の中央集権である通貨から分散型である仮想通貨への流れのように、SNSも分散型への流れがあるのかなと感じます。&lt;/p>
+&lt;p>今回はそんなBlueskyのAPIをPythonを用いて実行する方法をまとめます。&lt;/p>
+&lt;h2 id="bluesky-apiを使うまでのステップ">Bluesky APIを使うまでのステップ&lt;/h2>
+&lt;ul>
+&lt;li>API実行用パスワードの生成&lt;/li>
+&lt;li>Python実行環境の構築&lt;/li>
+&lt;li>スクリプトの作成と実行&lt;/li>
+&lt;/ul>
+&lt;h2 id="api実行用パスワードの生成">API実行用パスワードの生成&lt;/h2>
+&lt;p>APIを実行するためにはアカウント名とAPI実行用のパスワードの発行が必要です。&lt;/p>
+&lt;p>まずは、APIの実行に利用するアカウント名を確認します。&lt;br>
+アカウント名は、Blueskyにログインした際に画像の箇所に表示される名前となります。&lt;br>
+この際先頭の &lt;code>@&lt;/code> は不要で、私のアカウントであれば &lt;code>bossagyu.bsky.social&lt;/code> がアカウント名となります。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-001.png"
+width="1246"
+height="494"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-001_huf800b51d6508b8d55f734f90e398ecce_69330_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアカウント名"
+class="gallery-image"
+data-flex-grow="252"
+data-flex-basis="605px"
+>&lt;/p>
+&lt;p>次に、API実行用のパスワードを生成します。&lt;/p>
+&lt;p>API実行用パスワードは &lt;code>設定&lt;/code> → &lt;code>アプリパスワード&lt;/code> から生成できます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-002.png"
+width="702"
+height="599"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-002_hu4ae5c012eccb5c32725cc4f577581c4d_72656_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアプリパスワード1"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="281px"
+>&lt;/p>
+&lt;p>その後、&lt;code>アプリパスワードを追加&lt;/code> をクリックします。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-003.png"
+width="589"
+height="281"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-003_hu581c5fcbb0f6fca5bc47923c36751a59_43772_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアプリパスワード2"
+class="gallery-image"
+data-flex-grow="209"
+data-flex-basis="503px"
+>&lt;/p>
+&lt;p>追加ボタンを押すと、パスワードにつける名前を聞かれます。&lt;br>
+これ自体はパスワードとならず管理を容易にすることが目的なので、特にこだわりがなければそのまま作成します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-004.png"
+width="588"
+height="245"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-004_hude180766a2493746a1dec1e2149d4e83_41902_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyのアプリパスワード3"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="576px"
+>&lt;/p>
+&lt;p>パスワードが生成されるので、これをコピーしておきます。&lt;br>
+ちなみに二度と表示されなくなるので、コピーを忘れないようにしましょう。コピーを忘れた場合は再生成すればOKです。&lt;/p>
+&lt;h2 id="python実行環境の構築">Python実行環境の構築&lt;/h2>
+&lt;p>Pythonの実行環境をセットアップしてください。&lt;br>
+venvを用いたセットアップについては、&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" target="_blank" rel="noopener"
+>こちら&lt;/a> にまとめています。&lt;/p>
+&lt;p>&lt;a class="link" href="https://atproto.blue/en/latest/" target="_blank" rel="noopener"
+>公式ドキュメント&lt;/a> によると、Pythonのバージョンは3.7.1以上を利用する必要がありますので注意しておいてください。&lt;/p>
+&lt;p>Pythonの実行環境が整えば、ATProtocolを利用するためにライブラリをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip install atproto
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストールの確認&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ pip list &lt;span class="p">|&lt;/span> grep atproto
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">atproto 0.0.46
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これで準備は完了です。&lt;/p>
+&lt;h2 id="スクリプトの作成と実行">スクリプトの作成と実行&lt;/h2>
+&lt;p>Blueskyに投稿するスクリプトを作成します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">atproto&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Client&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Client&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">user_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;bossagyu.bsky.social&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;*******&amp;#34;&lt;/span> &lt;span class="c1"># 生成したAPI実行用パスワードを入力&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;APIからの投稿です&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>スクリプトはこれだけで、APIを用いてBlueskyに投稿できます。&lt;/p>
+&lt;p>それでは実行してみましょう。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ python post_bluesky.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>実行すると、Blueskyに以下のように無事投稿されました。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/024-bluesky-api/img-024-005.png"
+width="1244"
+height="512"
+srcset="https://bossagyu.com/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/024-bluesky-api/img-024-005_hu4f39cd8b24c00a6a84572b28046e189d_95124_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Blueskyに投稿された投稿"
+class="gallery-image"
+data-flex-grow="242"
+data-flex-basis="583px"
+>&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。&lt;br>
+Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。&lt;/p></description></item><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Stable Diffusionなどの画像生成用のモデルではなく ChatGPTでも画像が生成できるので、生成の方法を説明します。&lt;br>
+ChatGPTの有料プランを利用している人は新たに課金などせずに利用できるので、大きな手間をかけずに商用利用可能な画像を生成できます。&lt;/p>
+&lt;p>今回は、DALL-Eと呼ばれるChatGPT Plusの機能を利用して画像を生成します。
+DALL-E3については OpenAI の&lt;a class="link" href="https://openai.com/dall-e-3" target="_blank" rel="noopener"
+>公式ページ&lt;/a>を参照してください。&lt;/p>
+&lt;h2 id="画像生成の方法">画像生成の方法&lt;/h2>
+&lt;p>サイドバーから 「Explore GPTs」を選択&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-001.png"
+width="265"
+height="116"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-001_hud4b55173ac45fc1d51204f1be6812280_8545_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Explore GPTs"
+class="gallery-image"
+data-flex-grow="228"
+data-flex-basis="548px"
+>&lt;/p>
+&lt;p>検索窓で &lt;code>DALL-E&lt;/code> と入力し検索を行う。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-002.png"
+width="1303"
+height="365"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-002_hu7cb4a7e18b89e3c24f69774acd94f41c_41824_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="DALL-E"
+class="gallery-image"
+data-flex-grow="356"
+data-flex-basis="856px"
+>&lt;/p>
+&lt;p>&lt;code>Start Chat&lt;/code> をクリックし、画像生成を開始する。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-003.png"
+width="1145"
+height="540"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-003_huafd50c1ff19a49756eba7cc08e0d5a58_52595_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Start Chat"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="508px"
+>&lt;/p>
+&lt;p>後は、生成したい画像の説明を入力するだけで画像が生成されます。&lt;/p>
+&lt;h2 id="実際に画像を生成してみる">実際に画像を生成してみる&lt;/h2>
+&lt;p>このブログで利用されている、ピンク色のサングラスを掛けた犬の画像を生成してみます。&lt;/p>
+&lt;p>とりあえず &lt;code>ピンク色のサングラスをかけた犬&lt;/code> というプロンプトで打ってみます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-004.png"
+width="986"
+height="599"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-004_hu5e0a02deff970890b46e4e180aa8365f_498318_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTで生成された画像1"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="395px"
+>&lt;/p>
+&lt;p>また、普段のChat GPTを使うように出力された画像に対して追加のプロンプトを入力することで加工できます。&lt;br>
+今回は &lt;code>アニメ調にしてください&lt;/code> と追加のプロンプトを入力してみます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-005.png"
+width="1055"
+height="549"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-005_hu987fb5d0bfb771c9b7617c23bc8f5dba_474840_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTで生成された画像2"
+class="gallery-image"
+data-flex-grow="192"
+data-flex-basis="461px"
+>&lt;/p>
+&lt;p>アニメ調になっているのがわかります。
+このように追加のオーダーをすることでどんどん目的の画像に近づけつつ生成できます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>今回はChatGPTを利用して画像を生成する方法を説明しました。&lt;/p>
+&lt;p>簡単に画像を生成できるのが非常に便利ですが、Stable Diffusion同様期待する画像を出力することはなかなか難しく、プロンプトを調整する必要があります。
+Stable Diffusionを利用したときよりもプロンプトを工夫しなくても良い画像が生成されるので、このあたりはモデルの性能差なのかなと思いました。&lt;/p>
+&lt;p>ちなみに、やりすぎると以下のような文章が出力され、待つように言われるので生成回数には制限がついていそうです。
+マシンソースがある人はやっぱりローカルmacでStable Diffusionでやるのが良さそうですね。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-006.png"
+width="866"
+height="238"
+srcset="https://bossagyu.com/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/023-chatgpt-create-image/img-023-006_hue0d0043ad8a0a3a907671d165ec53110_40149_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="ChatGPTで画像の生成が制限"
+class="gallery-image"
+data-flex-grow="363"
+data-flex-basis="873px"
+>&lt;/p></description></item><item><title>TyeScriptにおけるEnumの使い方</title><link>https://bossagyu.com/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/022-typescript-enum/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、TypeScriptにおけるEnumの使い方について説明します。&lt;/p>
+&lt;h2 id="enumとは">Enumとは&lt;/h2>
+&lt;p>Enum（列挙型）は、特定の値の集合を表す型です。&lt;br>
+多くの言語に実装されていますが、JavaScriptには存在しません。しかし、TypeScriptではEnumがサポートされています。&lt;/p>
+&lt;h2 id="enumの使い方">Enumの使い方&lt;/h2>
+&lt;p>以下のようにEnumを定義します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">enum&lt;/span> &lt;span class="nx">Status&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">zero&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">one&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">two&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Enumは、デフォルトで数値を割り当てられ、0から始まります。
+生成されるJavaScriptコードは以下の通りです。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">var&lt;/span> &lt;span class="nx">Status&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;zero&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;zero&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;one&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;one&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;two&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;two&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">})(&lt;/span>&lt;span class="nx">Status&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{}));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 0
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>また、enumの値を文字列で指定することもできます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">enum&lt;/span> &lt;span class="nx">Status&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">zero&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;zero&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">one&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;one&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">two&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;two&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">Status&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// zero
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>文字列比較を行う場合は、以下のように記述します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">stringZero&lt;/span> :&lt;span class="kt">String&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;zero&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">stringZero&lt;/span> &lt;span class="kr">as&lt;/span> &lt;span class="nx">StringStatus&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">value&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="nx">StringStatus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">zero&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;value is zero&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;value is not zero&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>この記事では、TypeScriptにおけるEnumの使い方について説明しました。&lt;br>
+enumを利用することで、コードの可読性、保守性を向上させることができます。&lt;/p></description></item><item><title>Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法</title><link>https://bossagyu.com/blog/021-typescript-setup/</link><pubDate>Sun, 10 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/021-typescript-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、TypeScriptの開発環境を簡単にセットアップする方法について説明します。
+本記事ではMacOSを対象にしています。&lt;/p>
+&lt;h2 id="voltaとは">Voltaとは&lt;/h2>
+&lt;p>VoltaはNode.jsのバージョン管理ツールです。&lt;br>
+&lt;a class="link" href="https://volta.sh/" target="_blank" rel="noopener"
+>Voltaの公式サイト&lt;/a> で紹介されている通り以下の特徴を備えています。&lt;/p>
+&lt;ul>
+&lt;li>高速
+&lt;ul>
+&lt;li>Rustで構築されており、Node.jsのバージョン切り替えが高速です。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>信頼できる
+&lt;ul>
+&lt;li>プロジェクトの全員が同じツールを利用可能&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>ユニバーサル
+&lt;ul>
+&lt;li>パッケージマネージャー、ノードランタイム、OSに依存なく利用可能。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>今まではnodebrewなどを利用することが、一般的でしたが、現在はVoltaを利用するケースが増えている印象です。&lt;/p>
+&lt;h2 id="voltaとnodejsのインストール">VoltaとNode.jsのインストール&lt;/h2>
+&lt;p>voltaのインストールは以下のコマンドだけで完了です。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">curl https://get.volta.sh &lt;span class="p">|&lt;/span> bash
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>パスが通っていないことがあるのでzshを利用している方は以下のコマンドでパスを通してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;VOLTA_HOME=$HOME/.volta&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PATH=$VOLTA_HOME/bin:$PATH&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>動作を確認。バージョンが表示されれば問題なくインストールができています。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta -v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>voltaを利用してNode.jsをインストールします。&lt;br>
+バージョンの指定をしない場合最新のLTSがインストールされます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta install node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="yarnをインストールしてtypescriptのプロジェクトを作成">yarnをインストールしてTypeScriptのプロジェクトを作成&lt;/h2>
+&lt;h3 id="npmとyarnの違い">npmとyarnの違い&lt;/h3>
+&lt;p>npm, yarnともにNode.jsのパッケージマネージャーとなります。&lt;br>
+それぞれの特徴は以下の通りです。&lt;/p>
+&lt;p>npm&lt;/p>
+&lt;ul>
+&lt;li>Node.jsがリリースされた翌年（2010年）リリース&lt;/li>
+&lt;li>Node Package Managerの略&lt;/li>
+&lt;li>package-lock.jsonファイルを自動的に生成する&lt;/li>
+&lt;li>Node.jsをインストールすれば自動的にインストールされる&lt;/li>
+&lt;/ul>
+&lt;p>yarn&lt;/p>
+&lt;ul>
+&lt;li>2016年リリース&lt;/li>
+&lt;li>Facebook、Google、Exponent、Tildeによって開発された新しいJavaScriptパッケージマネージャー&lt;/li>
+&lt;li>npｍと互換性がある
+&lt;ul>
+&lt;li>同じpackage.jsonが使える&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>npmより厳密にモジュールのバージョンを固定できる&lt;/li>
+&lt;li>npmよりインストールが速い&lt;/li>
+&lt;/ul>
+&lt;p>yarnの方が優れているように見えますが、最近ではnpmがアップデートされて機能の差はあまりないようです。&lt;br>
+今回はyarnを利用してTypeScriptのプロジェクトを作成します。&lt;/p>
+&lt;h3 id="yarnのインストール">yarnのインストール&lt;/h3>
+&lt;p>voltaを利用してyarnをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta install yarn
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>インストールされているかを確認します。&lt;br>
+listの結果にyarnが表示されれば問題なくインストールされています。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="typescriptのプロジェクトを作成">TypeScriptのプロジェクトを作成&lt;/h3>
+&lt;p>yarnの初期化&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn init -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Node.jsのインストール&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">volta pin node@20.0.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>TypeScriptのインストール&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn add typescript
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>node-tsのインストール&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn add --dev ts-node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>tsconfig.jsonを作成します。&lt;br>
+tsconfig.jsonはTypeScriptの設定ファイルで、コンパイル時の設定を記述します。&lt;br>
+今回は、console.logを利用するため、今回はtargetを &lt;code>es2016&lt;/code> に設定します。特にデフォルトで生成されるものから変更する必要はありません。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yarn tsc --init
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>サンプルプログラムを実行してみる。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;console.log(&amp;#39;Hello, TypeScript!&amp;#39;);&amp;#34;&lt;/span> &amp;gt; hello.ts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yarn ts-node hello.ts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 以下のように表示されれば成功&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hello, TypeScript!
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>無事にテストスクリプトが動きました。&lt;br>
+以上でTypeScriptの開発環境のセットアップが完了です。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>本記事では、Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法について説明しました。
+Voltaを利用することで、Node.jsのバージョン管理が簡単になり、開発環境のセットアップがスムーズに行えます。
+また、VoltaでNode.jsのバージョンを指定すると、package.jsonにバージョンが記述され、他の開発者とのバージョンの差異を解消することができる点も魅力的ですね。&lt;/p></description></item><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事ではMacにStable Diffusion Web UIをインストールし、ローカルで利用する方法を紹介します。&lt;/p>
 &lt;h2 id="stable-diffusionとは">Stable Diffusionとは&lt;/h2>
 &lt;p>Stable Diffusionは、AIを用いた画像処理技術の一つです。
@@ -2593,67 +3195,173 @@ data-flex-basis="213px"
 &lt;li>&lt;strong>Chat tool&lt;/strong>: &lt;code>#codebase&lt;/code>や&lt;code>#selection&lt;/code>でコンテキストを追加&lt;/li>
 &lt;/ul>
 &lt;p>Github Copilotはソースコードだけではなく文章にも補完を行ってくれます。
-ぜひ活用してみてください。&lt;/p></description></item><item><title>s3のオブジェクトの存在確認をする方法</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>このページではPythonでs3のオブジェクトの存在確認をする方法を説明します。&lt;/p>
-&lt;h2 id="boto3を利用して確認する方法">boto3を利用して確認する方法&lt;/h2>
-&lt;p>boto3.resourceを利用する場合は以下のようなコードでチェックできます。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;bucket_name&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;object_name&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;True&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Object does not exist.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;An error occurred: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>boto3.clientを利用する場合は以下のようなコードでチェックできます。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Bucket&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;bucket_name&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;object_name&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;True&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Object does not exist.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;An error occurred: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="参考">参考&lt;/h2>
+ぜひ活用してみてください。&lt;/p></description></item><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>PythonでS3のオブジェクトが存在するかどうかを確認する方法を説明します。
+boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPIがあり、それぞれの方法を紹介します。&lt;/p>
+&lt;p>実際にLINE Botの開発で、ユーザーごとの設定ファイルがS3に存在するかチェックする必要があり、この方法を使いました。&lt;/p>
+&lt;h2 id="resource-vs-client-どちらを使うべきか">resource vs client どちらを使うべきか&lt;/h2>
+&lt;p>boto3には2つのAPIレベルがあります。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>特徴&lt;/th>
+&lt;th>適したユースケース&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>resource&lt;/code>&lt;/td>
+&lt;td>高レベルAPI、オブジェクト指向&lt;/td>
+&lt;td>シンプルな操作、可読性重視&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>client&lt;/code>&lt;/td>
+&lt;td>低レベルAPI、AWS APIに近い&lt;/td>
+&lt;td>細かい制御、パフォーマンス重視&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>結論&lt;/strong>: 単純な存在確認なら&lt;code>client&lt;/code>の&lt;code>head_object&lt;/code>がおすすめです。理由は以下の通りです。&lt;/p>
 &lt;ul>
+&lt;li>&lt;code>head_object&lt;/code>はオブジェクトのメタデータのみを取得するため軽量&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>の&lt;code>load()&lt;/code>も内部的には&lt;code>head_object&lt;/code>を呼んでいる&lt;/li>
+&lt;li>&lt;code>client&lt;/code>の方がAWS APIに近く、挙動が明確&lt;/li>
+&lt;/ul>
+&lt;h2 id="boto3clientを利用する方法推奨">boto3.clientを利用する方法（推奨）&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;S3オブジェクトの存在確認&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Bucket&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 404以外のエラー（権限不足など）は再raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;my-bucket&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;path/to/file.json&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;オブジェクトが存在します&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;オブジェクトが存在しません&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ポイント">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>head_object&lt;/code>はオブジェクトの内容をダウンロードせず、メタデータのみを取得&lt;/li>
+&lt;li>404エラー以外（403: アクセス拒否など）は別のエラーなので再raiseする&lt;/li>
+&lt;li>関数化しておくとテストしやすい&lt;/li>
+&lt;/ul>
+&lt;h2 id="boto3resourceを利用する方法">boto3.resourceを利用する方法&lt;/h2>
+&lt;p>オブジェクト指向的に書きたい場合はこちらも使えます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists_resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;S3オブジェクトの存在確認（resource版）&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="よくあるハマりポイント">よくあるハマりポイント&lt;/h2>
+&lt;h3 id="1-権限不足を404と間違える">1. 権限不足を404と間違える&lt;/h3>
+&lt;p>S3バケットへのアクセス権限がない場合、403エラーが返ります。
+404だけをキャッチして「存在しない」と判断すると、権限の問題を見逃します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># NG: 404以外のエラーを握りつぶしている&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span> &lt;span class="c1"># 権限エラーも「存在しない」扱いになる&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># OK: 404以外は再raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span> &lt;span class="c1"># 権限エラーなどは呼び出し元で処理&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-list_objectsを使う方法は非効率">2. list_objectsを使う方法は非効率&lt;/h3>
+&lt;p>&lt;code>list_objects&lt;/code>でプレフィックス検索する方法もありますが、オブジェクト数が多いと遅くなります。
+単一オブジェクトの存在確認には&lt;code>head_object&lt;/code>を使いましょう。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;ul>
+&lt;li>S3オブジェクトの存在確認には&lt;code>head_object&lt;/code>を使う&lt;/li>
+&lt;li>404エラー以外は権限不足などの可能性があるので適切に処理する&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>どちらでも可能だが、&lt;code>client&lt;/code>の方がシンプル&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html" target="_blank" rel="noopener"
+>boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
->check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+>Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>AWS API GatewayとLambdaを連携させる方法</title><link>https://bossagyu.com/blog/014-aws-apigateway-lambda/</link><pubDate>Sat, 13 Jan 2024 18:06:52 +0900</pubDate><guid>https://bossagyu.com/blog/014-aws-apigateway-lambda/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS API GatewayとLambdaを連携させることで、API GatewayからLambdaを呼び出すことができます。
 本記事AWS API GatewayとLambdaを連携させる方法を紹介します。&lt;/p>
@@ -2977,18 +3685,47 @@ data-flex-basis="189px"
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
 特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
+&lt;p>私はこの仕組みを使って、LINE Botに定期的にリマインド通知を送る機能を実装しました。
+たとえば「毎朝7時に掃除のリマインドを送る」といった処理を、サーバーを用意せずに実現できます。&lt;/p>
 &lt;h2 id="aws-eventbridgeとは">AWS EventBridgeとは&lt;/h2>
 &lt;p>AWS EventBridgeは、AWSのサービス間でイベントを受け渡すためのサービスです。
-EventBridgeを利用することで、イベント駆動型のアーキテクチャを構築することができます。&lt;/p>
-&lt;p>詳細な説明は &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-what-is.html" target="_blank" rel="noopener"
->AWS公式ドキュメント&lt;/a> を参照してください。&lt;/p>
+主な用途は以下の2つです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>用途&lt;/th>
+&lt;th>説明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>スケジュール実行&lt;/td>
+&lt;td>cron式やrate式で定期的にLambdaを実行&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>イベント駆動&lt;/td>
+&lt;td>S3へのファイルアップロードなどをトリガーにLambdaを実行&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>今回はスケジュール実行の方法を解説します。&lt;/p>
+&lt;h2 id="実際のユースケース">実際のユースケース&lt;/h2>
+&lt;p>EventBridge + Lambdaの定期実行は、以下のようなケースで役立ちます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>リマインド通知&lt;/strong>: 毎日決まった時間にSlackやLINEに通知&lt;/li>
+&lt;li>&lt;strong>バッチ処理&lt;/strong>: 毎時データを集計してDBに保存&lt;/li>
+&lt;li>&lt;strong>ヘルスチェック&lt;/strong>: 5分ごとに外部APIの死活監視&lt;/li>
+&lt;li>&lt;strong>クリーンアップ&lt;/strong>: 毎日深夜に古いログを削除&lt;/li>
+&lt;/ul>
+&lt;p>私の場合は、&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a>で毎時ユーザーへの通知判定を行うために使っています。&lt;/p>
 &lt;h2 id="前提">前提&lt;/h2>
 &lt;p>Lambda関数についてはすでに作成されていることを前提としています。
 Lambda関数の作成方法については、&lt;a class="link" href="https://aws.amazon.com/jp/lambda/getting-started/" target="_blank" rel="noopener"
->AWA Labda 開始方法&lt;/a> を参照して作成してください。&lt;/p>
+>AWS Lambda 開始方法&lt;/a> を参照して作成してください。&lt;/p>
 &lt;h2 id="手順">手順&lt;/h2>
-&lt;p>EventBridgeで実行する予定のLambda関数を選択し「トリガーを追加」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
+&lt;h3 id="1-トリガーを追加">1. トリガーを追加&lt;/h3>
+&lt;p>EventBridgeで実行する予定のLambda関数を選択し「トリガーを追加」を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
 width="1682"
 height="608"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
@@ -2998,8 +3735,9 @@ class="gallery-image"
 data-flex-grow="276"
 data-flex-basis="663px"
 >&lt;/p>
-&lt;p>トリガーから「EventBridge」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
+&lt;h3 id="2-eventbridgeを選択">2. EventBridgeを選択&lt;/h3>
+&lt;p>トリガーから「EventBridge (CloudWatch Events)」を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
 width="930"
 height="400"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
@@ -3009,11 +3747,9 @@ class="gallery-image"
 data-flex-grow="232"
 data-flex-basis="558px"
 >&lt;/p>
-&lt;p>トリガーの選択を行うと、ルールの作成画面が表示されるので設定します。&lt;br>
-今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
-cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
->Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
+&lt;h3 id="3-スケジュールを設定">3. スケジュールを設定&lt;/h3>
+&lt;p>トリガーの選択を行うと、ルールの作成画面が表示されるので設定します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
 width="891"
 height="903"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
@@ -3023,8 +3759,9 @@ class="gallery-image"
 data-flex-grow="98"
 data-flex-basis="236px"
 >&lt;/p>
-&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
+&lt;h3 id="4-設定完了">4. 設定完了&lt;/h3>
+&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
 width="1761"
 height="976"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
@@ -3034,8 +3771,57 @@ class="gallery-image"
 data-flex-grow="180"
 data-flex-basis="433px"
 >&lt;/p>
-&lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
-こんな感じで5分に1回通知がくるようになりました。&lt;/p>
+&lt;h2 id="cron式の書き方">cron式の書き方&lt;/h2>
+&lt;p>EventBridgeのcron式は6つのフィールドで構成されます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">cron(分 時 日 月 曜日 年)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="よく使うパターン">よく使うパターン&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>実行タイミング&lt;/th>
+&lt;th>cron式&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>毎日9時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 9 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎日9時（JST = UTC+9）&lt;/td>
+&lt;td>&lt;code>cron(0 0 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎時0分&lt;/td>
+&lt;td>&lt;code>cron(0 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5分ごと&lt;/td>
+&lt;td>&lt;code>cron(0/5 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>平日のみ毎朝9時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 9 ? * MON-FRI *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎月1日の0時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 0 1 * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="注意-タイムゾーンはutc">注意: タイムゾーンはUTC&lt;/h3>
+&lt;p>EventBridgeのcron式は&lt;strong>UTC基準&lt;/strong>です。日本時間（JST）で設定したい場合は9時間引いてください。&lt;/p>
+&lt;p>例: 毎朝7時（JST）に実行 → &lt;code>cron(0 22 * * ? *)&lt;/code> （前日の22時UTC）&lt;/p>
+&lt;h2 id="実際に動かしてみた結果">実際に動かしてみた結果&lt;/h2>
+&lt;p>私はLINEにメッセージを通知するFunctionを作って動かしてみました。
+5分に1回通知がくるようになりました。&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
 width="1494"
 height="256"
@@ -3046,9 +3832,54 @@ class="gallery-image"
 data-flex-grow="583"
 data-flex-basis="1400px"
 >&lt;/p>
+&lt;p>テストの際は短い間隔（5分など）で設定して動作確認し、本番では適切な間隔に変更するのがおすすめです。&lt;/p>
+&lt;h2 id="コストについて">コストについて&lt;/h2>
+&lt;p>EventBridge + Lambdaの組み合わせは非常に低コストです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>サービス&lt;/th>
+&lt;th>無料枠&lt;/th>
+&lt;th>超過時の料金&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>EventBridge&lt;/td>
+&lt;td>無料&lt;/td>
+&lt;td>スケジュールルールは無料&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Lambda&lt;/td>
+&lt;td>月100万リクエスト無料&lt;/td>
+&lt;td>$0.20/100万リクエスト&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>個人開発のリマインダーBot程度なら、ほぼ無料で運用できます。&lt;/p>
+&lt;h2 id="ハマりポイント">ハマりポイント&lt;/h2>
+&lt;h3 id="1-タイムゾーンの罠">1. タイムゾーンの罠&lt;/h3>
+&lt;p>前述の通り、EventBridgeはUTC基準です。「毎朝9時」と設定したつもりが「夕方18時」に動いていた、というのはよくある失敗です。&lt;/p>
+&lt;h3 id="2-初回実行のタイミング">2. 初回実行のタイミング&lt;/h3>
+&lt;p>cron式を設定した直後は、次のスケジュールまで待つ必要があります。
+すぐにテストしたい場合は、Lambdaのテスト機能を使いましょう。&lt;/p>
+&lt;h3 id="3-削除を忘れずに">3. 削除を忘れずに&lt;/h3>
+&lt;p>テスト用に作成したEventBridgeルールを放置すると、Lambdaが実行され続けます。
+不要になったルールは必ず削除しましょう。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。
-今回設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。&lt;/p></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;/p>
+&lt;ul>
+&lt;li>EventBridgeはスケジュール実行とイベント駆動の2つの用途がある&lt;/li>
+&lt;li>cron式はUTC基準なので、JSTで設定したい場合は9時間引く&lt;/li>
+&lt;li>個人開発レベルならほぼ無料で運用可能&lt;/li>
+&lt;li>不要になったルールは削除を忘れずに&lt;/li>
+&lt;/ul>
+&lt;p>サーバーレスで定期実行を実現できるので、リマインダーBotやバッチ処理などに活用してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >掃除リマインダーBotの技術解説&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。
 この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>

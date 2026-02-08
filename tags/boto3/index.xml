@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>boto3 on Bossagyu Blog</title><link>https://bossagyu.com/tags/boto3/</link><description>Recent content in boto3 on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 27 Jan 2024 21:41:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/boto3/index.xml" rel="self" type="application/rss+xml"/><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>PythonでS3のオブジェクトが存在するかどうかを確認する方法を説明します。
+boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPIがあり、それぞれの方法を紹介します。&lt;/p>
+&lt;p>実際にLINE Botの開発で、ユーザーごとの設定ファイルがS3に存在するかチェックする必要があり、この方法を使いました。&lt;/p>
+&lt;h2 id="resource-vs-client-どちらを使うべきか">resource vs client どちらを使うべきか&lt;/h2>
+&lt;p>boto3には2つのAPIレベルがあります。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>特徴&lt;/th>
+&lt;th>適したユースケース&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>resource&lt;/code>&lt;/td>
+&lt;td>高レベルAPI、オブジェクト指向&lt;/td>
+&lt;td>シンプルな操作、可読性重視&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>client&lt;/code>&lt;/td>
+&lt;td>低レベルAPI、AWS APIに近い&lt;/td>
+&lt;td>細かい制御、パフォーマンス重視&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>結論&lt;/strong>: 単純な存在確認なら&lt;code>client&lt;/code>の&lt;code>head_object&lt;/code>がおすすめです。理由は以下の通りです。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>head_object&lt;/code>はオブジェクトのメタデータのみを取得するため軽量&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>の&lt;code>load()&lt;/code>も内部的には&lt;code>head_object&lt;/code>を呼んでいる&lt;/li>
+&lt;li>&lt;code>client&lt;/code>の方がAWS APIに近く、挙動が明確&lt;/li>
+&lt;/ul>
+&lt;h2 id="boto3clientを利用する方法推奨">boto3.clientを利用する方法（推奨）&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;S3オブジェクトの存在確認&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Bucket&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 404以外のエラー（権限不足など）は再raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;my-bucket&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;path/to/file.json&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;オブジェクトが存在します&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;オブジェクトが存在しません&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ポイント">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>head_object&lt;/code>はオブジェクトの内容をダウンロードせず、メタデータのみを取得&lt;/li>
+&lt;li>404エラー以外（403: アクセス拒否など）は別のエラーなので再raiseする&lt;/li>
+&lt;li>関数化しておくとテストしやすい&lt;/li>
+&lt;/ul>
+&lt;h2 id="boto3resourceを利用する方法">boto3.resourceを利用する方法&lt;/h2>
+&lt;p>オブジェクト指向的に書きたい場合はこちらも使えます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists_resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;S3オブジェクトの存在確認（resource版）&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="よくあるハマりポイント">よくあるハマりポイント&lt;/h2>
+&lt;h3 id="1-権限不足を404と間違える">1. 権限不足を404と間違える&lt;/h3>
+&lt;p>S3バケットへのアクセス権限がない場合、403エラーが返ります。
+404だけをキャッチして「存在しない」と判断すると、権限の問題を見逃します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># NG: 404以外のエラーを握りつぶしている&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span> &lt;span class="c1"># 権限エラーも「存在しない」扱いになる&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># OK: 404以外は再raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span> &lt;span class="c1"># 権限エラーなどは呼び出し元で処理&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-list_objectsを使う方法は非効率">2. list_objectsを使う方法は非効率&lt;/h3>
+&lt;p>&lt;code>list_objects&lt;/code>でプレフィックス検索する方法もありますが、オブジェクト数が多いと遅くなります。
+単一オブジェクトの存在確認には&lt;code>head_object&lt;/code>を使いましょう。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;ul>
+&lt;li>S3オブジェクトの存在確認には&lt;code>head_object&lt;/code>を使う&lt;/li>
+&lt;li>404エラー以外は権限不足などの可能性があるので適切に処理する&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>どちらでも可能だが、&lt;code>client&lt;/code>の方がシンプル&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html" target="_blank" rel="noopener"
+>boto3 S3 head_object&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
+>Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

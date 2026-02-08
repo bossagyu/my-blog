@@ -3650,67 +3650,173 @@ data-flex-basis="213px"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Availability management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>s3のオブジェクトの存在確認をする方法</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>このページではPythonでs3のオブジェクトの存在確認をする方法を説明します。&lt;/p>
-&lt;h2 id="boto3を利用して確認する方法">boto3を利用して確認する方法&lt;/h2>
-&lt;p>boto3.resourceを利用する場合は以下のようなコードでチェックできます。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;bucket_name&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;object_name&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;True&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Object does not exist.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;An error occurred: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>boto3.clientを利用する場合は以下のようなコードでチェックできます。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Bucket&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;bucket_name&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;object_name&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;True&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Object does not exist.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;An error occurred: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="参考">参考&lt;/h2>
+&lt;/ul></description></item><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>PythonでS3のオブジェクトが存在するかどうかを確認する方法を説明します。
+boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPIがあり、それぞれの方法を紹介します。&lt;/p>
+&lt;p>実際にLINE Botの開発で、ユーザーごとの設定ファイルがS3に存在するかチェックする必要があり、この方法を使いました。&lt;/p>
+&lt;h2 id="resource-vs-client-どちらを使うべきか">resource vs client どちらを使うべきか&lt;/h2>
+&lt;p>boto3には2つのAPIレベルがあります。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>特徴&lt;/th>
+&lt;th>適したユースケース&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>resource&lt;/code>&lt;/td>
+&lt;td>高レベルAPI、オブジェクト指向&lt;/td>
+&lt;td>シンプルな操作、可読性重視&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>client&lt;/code>&lt;/td>
+&lt;td>低レベルAPI、AWS APIに近い&lt;/td>
+&lt;td>細かい制御、パフォーマンス重視&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>結論&lt;/strong>: 単純な存在確認なら&lt;code>client&lt;/code>の&lt;code>head_object&lt;/code>がおすすめです。理由は以下の通りです。&lt;/p>
 &lt;ul>
+&lt;li>&lt;code>head_object&lt;/code>はオブジェクトのメタデータのみを取得するため軽量&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>の&lt;code>load()&lt;/code>も内部的には&lt;code>head_object&lt;/code>を呼んでいる&lt;/li>
+&lt;li>&lt;code>client&lt;/code>の方がAWS APIに近く、挙動が明確&lt;/li>
+&lt;/ul>
+&lt;h2 id="boto3clientを利用する方法推奨">boto3.clientを利用する方法（推奨）&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;S3オブジェクトの存在確認&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Bucket&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 404以外のエラー（権限不足など）は再raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;my-bucket&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;path/to/file.json&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;オブジェクトが存在します&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;オブジェクトが存在しません&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ポイント">ポイント&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>head_object&lt;/code>はオブジェクトの内容をダウンロードせず、メタデータのみを取得&lt;/li>
+&lt;li>404エラー以外（403: アクセス拒否など）は別のエラーなので再raiseする&lt;/li>
+&lt;li>関数化しておくとテストしやすい&lt;/li>
+&lt;/ul>
+&lt;h2 id="boto3resourceを利用する方法">boto3.resourceを利用する方法&lt;/h2>
+&lt;p>オブジェクト指向的に書きたい場合はこちらも使えます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists_resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;S3オブジェクトの存在確認（resource版）&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="よくあるハマりポイント">よくあるハマりポイント&lt;/h2>
+&lt;h3 id="1-権限不足を404と間違える">1. 権限不足を404と間違える&lt;/h3>
+&lt;p>S3バケットへのアクセス権限がない場合、403エラーが返ります。
+404だけをキャッチして「存在しない」と判断すると、権限の問題を見逃します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># NG: 404以外のエラーを握りつぶしている&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span> &lt;span class="c1"># 権限エラーも「存在しない」扱いになる&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># OK: 404以外は再raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span> &lt;span class="c1"># 権限エラーなどは呼び出し元で処理&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-list_objectsを使う方法は非効率">2. list_objectsを使う方法は非効率&lt;/h3>
+&lt;p>&lt;code>list_objects&lt;/code>でプレフィックス検索する方法もありますが、オブジェクト数が多いと遅くなります。
+単一オブジェクトの存在確認には&lt;code>head_object&lt;/code>を使いましょう。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;ul>
+&lt;li>S3オブジェクトの存在確認には&lt;code>head_object&lt;/code>を使う&lt;/li>
+&lt;li>404エラー以外は権限不足などの可能性があるので適切に処理する&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>どちらでも可能だが、&lt;code>client&lt;/code>の方がシンプル&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html" target="_blank" rel="noopener"
+>boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
->check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+>Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>AWS API GatewayとLambdaを連携させる方法</title><link>https://bossagyu.com/blog/014-aws-apigateway-lambda/</link><pubDate>Sat, 13 Jan 2024 18:06:52 +0900</pubDate><guid>https://bossagyu.com/blog/014-aws-apigateway-lambda/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS API GatewayとLambdaを連携させることで、API GatewayからLambdaを呼び出すことができます。
 本記事AWS API GatewayとLambdaを連携させる方法を紹介します。&lt;/p>
@@ -4212,18 +4318,47 @@ data-flex-basis="189px"
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
 特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
+&lt;p>私はこの仕組みを使って、LINE Botに定期的にリマインド通知を送る機能を実装しました。
+たとえば「毎朝7時に掃除のリマインドを送る」といった処理を、サーバーを用意せずに実現できます。&lt;/p>
 &lt;h2 id="aws-eventbridgeとは">AWS EventBridgeとは&lt;/h2>
 &lt;p>AWS EventBridgeは、AWSのサービス間でイベントを受け渡すためのサービスです。
-EventBridgeを利用することで、イベント駆動型のアーキテクチャを構築することができます。&lt;/p>
-&lt;p>詳細な説明は &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-what-is.html" target="_blank" rel="noopener"
->AWS公式ドキュメント&lt;/a> を参照してください。&lt;/p>
+主な用途は以下の2つです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>用途&lt;/th>
+&lt;th>説明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>スケジュール実行&lt;/td>
+&lt;td>cron式やrate式で定期的にLambdaを実行&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>イベント駆動&lt;/td>
+&lt;td>S3へのファイルアップロードなどをトリガーにLambdaを実行&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>今回はスケジュール実行の方法を解説します。&lt;/p>
+&lt;h2 id="実際のユースケース">実際のユースケース&lt;/h2>
+&lt;p>EventBridge + Lambdaの定期実行は、以下のようなケースで役立ちます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>リマインド通知&lt;/strong>: 毎日決まった時間にSlackやLINEに通知&lt;/li>
+&lt;li>&lt;strong>バッチ処理&lt;/strong>: 毎時データを集計してDBに保存&lt;/li>
+&lt;li>&lt;strong>ヘルスチェック&lt;/strong>: 5分ごとに外部APIの死活監視&lt;/li>
+&lt;li>&lt;strong>クリーンアップ&lt;/strong>: 毎日深夜に古いログを削除&lt;/li>
+&lt;/ul>
+&lt;p>私の場合は、&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a>で毎時ユーザーへの通知判定を行うために使っています。&lt;/p>
 &lt;h2 id="前提">前提&lt;/h2>
 &lt;p>Lambda関数についてはすでに作成されていることを前提としています。
 Lambda関数の作成方法については、&lt;a class="link" href="https://aws.amazon.com/jp/lambda/getting-started/" target="_blank" rel="noopener"
->AWA Labda 開始方法&lt;/a> を参照して作成してください。&lt;/p>
+>AWS Lambda 開始方法&lt;/a> を参照して作成してください。&lt;/p>
 &lt;h2 id="手順">手順&lt;/h2>
-&lt;p>EventBridgeで実行する予定のLambda関数を選択し「トリガーを追加」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
+&lt;h3 id="1-トリガーを追加">1. トリガーを追加&lt;/h3>
+&lt;p>EventBridgeで実行する予定のLambda関数を選択し「トリガーを追加」を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
 width="1682"
 height="608"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
@@ -4233,8 +4368,9 @@ class="gallery-image"
 data-flex-grow="276"
 data-flex-basis="663px"
 >&lt;/p>
-&lt;p>トリガーから「EventBridge」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
+&lt;h3 id="2-eventbridgeを選択">2. EventBridgeを選択&lt;/h3>
+&lt;p>トリガーから「EventBridge (CloudWatch Events)」を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
 width="930"
 height="400"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
@@ -4244,11 +4380,9 @@ class="gallery-image"
 data-flex-grow="232"
 data-flex-basis="558px"
 >&lt;/p>
-&lt;p>トリガーの選択を行うと、ルールの作成画面が表示されるので設定します。&lt;br>
-今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
-cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
->Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
+&lt;h3 id="3-スケジュールを設定">3. スケジュールを設定&lt;/h3>
+&lt;p>トリガーの選択を行うと、ルールの作成画面が表示されるので設定します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
 width="891"
 height="903"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
@@ -4258,8 +4392,9 @@ class="gallery-image"
 data-flex-grow="98"
 data-flex-basis="236px"
 >&lt;/p>
-&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
+&lt;h3 id="4-設定完了">4. 設定完了&lt;/h3>
+&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
 width="1761"
 height="976"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
@@ -4269,8 +4404,57 @@ class="gallery-image"
 data-flex-grow="180"
 data-flex-basis="433px"
 >&lt;/p>
-&lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
-こんな感じで5分に1回通知がくるようになりました。&lt;/p>
+&lt;h2 id="cron式の書き方">cron式の書き方&lt;/h2>
+&lt;p>EventBridgeのcron式は6つのフィールドで構成されます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">cron(分 時 日 月 曜日 年)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="よく使うパターン">よく使うパターン&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>実行タイミング&lt;/th>
+&lt;th>cron式&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>毎日9時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 9 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎日9時（JST = UTC+9）&lt;/td>
+&lt;td>&lt;code>cron(0 0 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎時0分&lt;/td>
+&lt;td>&lt;code>cron(0 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5分ごと&lt;/td>
+&lt;td>&lt;code>cron(0/5 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>平日のみ毎朝9時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 9 ? * MON-FRI *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎月1日の0時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 0 1 * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="注意-タイムゾーンはutc">注意: タイムゾーンはUTC&lt;/h3>
+&lt;p>EventBridgeのcron式は&lt;strong>UTC基準&lt;/strong>です。日本時間（JST）で設定したい場合は9時間引いてください。&lt;/p>
+&lt;p>例: 毎朝7時（JST）に実行 → &lt;code>cron(0 22 * * ? *)&lt;/code> （前日の22時UTC）&lt;/p>
+&lt;h2 id="実際に動かしてみた結果">実際に動かしてみた結果&lt;/h2>
+&lt;p>私はLINEにメッセージを通知するFunctionを作って動かしてみました。
+5分に1回通知がくるようになりました。&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
 width="1494"
 height="256"
@@ -4281,9 +4465,54 @@ class="gallery-image"
 data-flex-grow="583"
 data-flex-basis="1400px"
 >&lt;/p>
+&lt;p>テストの際は短い間隔（5分など）で設定して動作確認し、本番では適切な間隔に変更するのがおすすめです。&lt;/p>
+&lt;h2 id="コストについて">コストについて&lt;/h2>
+&lt;p>EventBridge + Lambdaの組み合わせは非常に低コストです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>サービス&lt;/th>
+&lt;th>無料枠&lt;/th>
+&lt;th>超過時の料金&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>EventBridge&lt;/td>
+&lt;td>無料&lt;/td>
+&lt;td>スケジュールルールは無料&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Lambda&lt;/td>
+&lt;td>月100万リクエスト無料&lt;/td>
+&lt;td>$0.20/100万リクエスト&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>個人開発のリマインダーBot程度なら、ほぼ無料で運用できます。&lt;/p>
+&lt;h2 id="ハマりポイント">ハマりポイント&lt;/h2>
+&lt;h3 id="1-タイムゾーンの罠">1. タイムゾーンの罠&lt;/h3>
+&lt;p>前述の通り、EventBridgeはUTC基準です。「毎朝9時」と設定したつもりが「夕方18時」に動いていた、というのはよくある失敗です。&lt;/p>
+&lt;h3 id="2-初回実行のタイミング">2. 初回実行のタイミング&lt;/h3>
+&lt;p>cron式を設定した直後は、次のスケジュールまで待つ必要があります。
+すぐにテストしたい場合は、Lambdaのテスト機能を使いましょう。&lt;/p>
+&lt;h3 id="3-削除を忘れずに">3. 削除を忘れずに&lt;/h3>
+&lt;p>テスト用に作成したEventBridgeルールを放置すると、Lambdaが実行され続けます。
+不要になったルールは必ず削除しましょう。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。
-今回設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。&lt;/p></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;/p>
+&lt;ul>
+&lt;li>EventBridgeはスケジュール実行とイベント駆動の2つの用途がある&lt;/li>
+&lt;li>cron式はUTC基準なので、JSTで設定したい場合は9時間引く&lt;/li>
+&lt;li>個人開発レベルならほぼ無料で運用可能&lt;/li>
+&lt;li>不要になったルールは削除を忘れずに&lt;/li>
+&lt;/ul>
+&lt;p>サーバーレスで定期実行を実現できるので、リマインダーBotやバッチ処理などに活用してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >掃除リマインダーBotの技術解説&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Google検索で引っかかるようにするために、SEO対策を行いましょうとありますが、まずはGoogle検索に認識されないと話になりません。
 この記事では、Google Search Consoleを用いて自身が作成した独自ドメインのブログが、Google検索の対象となる方法を解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>

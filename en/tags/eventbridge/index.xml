@@ -1,16 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>EventBridge on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/eventbridge/</link><description>Recent content in EventBridge on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Thu, 21 Dec 2023 23:03:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/eventbridge/index.xml" rel="self" type="application/rss+xml"/><item><title>Using AWS EventBridge to Schedule Lambda Functions</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>eventbridge on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/eventbridge/</link><description>Recent content in eventbridge on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Thu, 21 Dec 2023 23:03:13 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/eventbridge/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Schedule Lambda Functions with AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use AWS EventBridge to schedule Lambda functions for periodic execution.&lt;/p>
+&lt;p>I used this approach to implement scheduled reminder notifications for a LINE Bot.
+For example, you can send cleaning reminders every morning at 7 AM without managing any servers.&lt;/p>
 &lt;h2 id="what-is-aws-eventbridge">What is AWS EventBridge?&lt;/h2>
-&lt;p>AWS EventBridge is a service that facilitates the passing of events between AWS services, enabling the creation of event-driven architectures. For a detailed explanation, refer to the &lt;a class="link" href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html" target="_blank" rel="noopener"
->AWS official documentation on EventBridge&lt;/a>.&lt;/p>
+&lt;p>AWS EventBridge is a service that facilitates event passing between AWS services.
+It has two main use cases:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Use Case&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Scheduled Execution&lt;/td>
+&lt;td>Run Lambda periodically using cron or rate expressions&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Event-Driven&lt;/td>
+&lt;td>Trigger Lambda on events like S3 file uploads&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>This article focuses on scheduled execution.&lt;/p>
+&lt;h2 id="real-world-use-cases">Real-World Use Cases&lt;/h2>
+&lt;p>EventBridge + Lambda scheduled execution is useful for:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Reminder notifications&lt;/strong>: Send daily notifications to Slack or LINE at fixed times&lt;/li>
+&lt;li>&lt;strong>Batch processing&lt;/strong>: Aggregate data hourly and save to database&lt;/li>
+&lt;li>&lt;strong>Health checks&lt;/strong>: Monitor external API availability every 5 minutes&lt;/li>
+&lt;li>&lt;strong>Cleanup tasks&lt;/strong>: Delete old logs every night&lt;/li>
+&lt;/ul>
+&lt;p>I use this for my &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >Cleaning Reminder Bot&lt;/a> to check notification conditions every hour.&lt;/p>
 &lt;h2 id="prerequisites">Prerequisites&lt;/h2>
-&lt;p>It is assumed that you have already created a Lambda function. For instructions on creating Lambda functions, please see the &lt;a class="link" href="https://aws.amazon.com/lambda/getting-started/" target="_blank" rel="noopener"
+&lt;p>This guide assumes you have already created a Lambda function.
+For instructions on creating Lambda functions, see the &lt;a class="link" href="https://aws.amazon.com/lambda/getting-started/" target="_blank" rel="noopener"
 >AWS Lambda Getting Started guide&lt;/a>.&lt;/p>
-&lt;h2 id="steps-to-schedule-a-lambda-function-with-eventbridge">Steps to Schedule a Lambda Function with EventBridge&lt;/h2>
-&lt;p>To schedule your Lambda function with EventBridge, follow these steps:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Select the Lambda Function:&lt;/strong> Open the AWS Management Console, navigate to the Lambda service, and select the function you want to schedule.&lt;/p>
+&lt;h2 id="steps">Steps&lt;/h2>
+&lt;h3 id="1-add-a-trigger">1. Add a Trigger&lt;/h3>
+&lt;p>Select the Lambda function you want to schedule with EventBridge and click &amp;ldquo;Add trigger&amp;rdquo;.&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-001.png"
 width="1682"
 height="608"
@@ -21,9 +50,8 @@ class="gallery-image"
 data-flex-grow="276"
 data-flex-basis="663px"
 >&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Add a Trigger:&lt;/strong> Choose &amp;lsquo;Add trigger&amp;rsquo; and select &amp;lsquo;EventBridge (CloudWatch Events)&amp;rsquo; from the list of available triggers.&lt;/p>
+&lt;h3 id="2-select-eventbridge">2. Select EventBridge&lt;/h3>
+&lt;p>Choose &amp;ldquo;EventBridge (CloudWatch Events)&amp;rdquo; from the trigger options.&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-002.png"
 width="930"
 height="400"
@@ -34,10 +62,8 @@ class="gallery-image"
 data-flex-grow="232"
 data-flex-basis="558px"
 >&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Create a Rule:&lt;/strong> Once you select EventBridge, you will be prompted to create a new rule. Set up the rule to trigger the Lambda function at desired intervals. For this tutorial, we are using a cron expression to execute the function every 5 minutes. You can find more about cron syntax in the &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
->EventBridge Scheduler documentation&lt;/a>.&lt;/p>
+&lt;h3 id="3-configure-the-schedule">3. Configure the Schedule&lt;/h3>
+&lt;p>After selecting EventBridge, you&amp;rsquo;ll be prompted to create a rule. Configure the schedule as needed.&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-003.png"
 width="891"
 height="903"
@@ -48,9 +74,8 @@ class="gallery-image"
 data-flex-grow="98"
 data-flex-basis="236px"
 >&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Complete the Setup:&lt;/strong> After configuring the rule, it will appear in the Lambda function&amp;rsquo;s diagram as an associated trigger.&lt;/p>
+&lt;h3 id="4-setup-complete">4. Setup Complete&lt;/h3>
+&lt;p>Once configured, EventBridge will appear as a trigger in the Lambda function diagram.&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-004.png"
 width="1761"
 height="976"
@@ -61,9 +86,56 @@ class="gallery-image"
 data-flex-grow="180"
 data-flex-basis="433px"
 >&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Test the Setup:&lt;/strong> As a practical application, I set up a function to send messages to LINE. The setup now sends notifications every 5 minutes, as shown in the screenshot below.&lt;/p>
+&lt;h2 id="cron-expression-syntax">Cron Expression Syntax&lt;/h2>
+&lt;p>EventBridge cron expressions consist of 6 fields:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">cron(minute hour day month day-of-week year)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="common-patterns">Common Patterns&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Timing&lt;/th>
+&lt;th>Cron Expression&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Daily at 9 AM (UTC)&lt;/td>
+&lt;td>&lt;code>cron(0 9 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Daily at 9 AM (JST = UTC+9)&lt;/td>
+&lt;td>&lt;code>cron(0 0 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Every hour at minute 0&lt;/td>
+&lt;td>&lt;code>cron(0 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Every 5 minutes&lt;/td>
+&lt;td>&lt;code>cron(0/5 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Weekdays only at 9 AM (UTC)&lt;/td>
+&lt;td>&lt;code>cron(0 9 ? * MON-FRI *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>First day of each month at midnight (UTC)&lt;/td>
+&lt;td>&lt;code>cron(0 0 1 * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="note-timezone-is-utc">Note: Timezone is UTC&lt;/h3>
+&lt;p>EventBridge cron expressions use &lt;strong>UTC timezone&lt;/strong>. To schedule in JST (Japan Standard Time), subtract 9 hours.&lt;/p>
+&lt;p>Example: Run at 7 AM JST → &lt;code>cron(0 22 * * ? *)&lt;/code> (10 PM UTC the previous day)&lt;/p>
+&lt;h2 id="testing-the-setup">Testing the Setup&lt;/h2>
+&lt;p>I set up a function to send messages to LINE. The setup now sends notifications every 5 minutes:&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/en/blog/008-aws-eventbrdge/img-008-005.png"
 width="1494"
 height="256"
@@ -74,7 +146,51 @@ class="gallery-image"
 data-flex-grow="583"
 data-flex-basis="1400px"
 >&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>We&amp;rsquo;ve outlined how to use AWS EventBridge to schedule Lambda functions periodically. Remember, leaving the EventBridge setup as is will incur charges, so be sure to delete it if it&amp;rsquo;s no longer needed.&lt;/p></description></item></channel></rss>
+&lt;p>For testing, set a short interval (like 5 minutes) to verify it works, then change to an appropriate interval for production.&lt;/p>
+&lt;h2 id="cost">Cost&lt;/h2>
+&lt;p>The EventBridge + Lambda combination is very cost-effective:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Service&lt;/th>
+&lt;th>Free Tier&lt;/th>
+&lt;th>Cost After Free Tier&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>EventBridge&lt;/td>
+&lt;td>Free&lt;/td>
+&lt;td>Schedule rules are free&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Lambda&lt;/td>
+&lt;td>1M requests/month free&lt;/td>
+&lt;td>$0.20 per 1M requests&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For personal projects like reminder bots, you can run nearly for free.&lt;/p>
+&lt;h2 id="common-pitfalls">Common Pitfalls&lt;/h2>
+&lt;h3 id="1-timezone-confusion">1. Timezone Confusion&lt;/h3>
+&lt;p>As mentioned, EventBridge uses UTC. A common mistake is setting &amp;ldquo;9 AM&amp;rdquo; and finding it runs at 6 PM instead.&lt;/p>
+&lt;h3 id="2-initial-execution-timing">2. Initial Execution Timing&lt;/h3>
+&lt;p>After setting up a cron expression, you need to wait for the next scheduled time.
+To test immediately, use Lambda&amp;rsquo;s built-in test feature.&lt;/p>
+&lt;h3 id="3-dont-forget-to-delete">3. Don&amp;rsquo;t Forget to Delete&lt;/h3>
+&lt;p>Test EventBridge rules left running will keep triggering Lambda.
+Always delete rules you no longer need.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article covered how to schedule Lambda functions with AWS EventBridge.&lt;/p>
+&lt;ul>
+&lt;li>EventBridge supports both scheduled execution and event-driven triggers&lt;/li>
+&lt;li>Cron expressions use UTC timezone - subtract 9 hours for JST&lt;/li>
+&lt;li>Running costs are nearly free for personal projects&lt;/li>
+&lt;li>Don&amp;rsquo;t forget to delete unused rules&lt;/li>
+&lt;/ul>
+&lt;p>Serverless scheduled execution is great for reminder bots and batch processing. Give it a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

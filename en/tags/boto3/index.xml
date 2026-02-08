@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>boto3 on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/boto3/</link><description>Recent content in boto3 on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 27 Jan 2024 21:41:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/boto3/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Check if an S3 Object Exists in Python boto3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to check whether an S3 object exists using Python.
+boto3 provides two API levels: &lt;code>resource&lt;/code> and &lt;code>client&lt;/code>. I&amp;rsquo;ll cover both methods.&lt;/p>
+&lt;p>I used this approach when developing a LINE Bot where I needed to check if a user&amp;rsquo;s configuration file existed in S3.&lt;/p>
+&lt;h2 id="resource-vs-client-which-should-you-use">resource vs client: Which Should You Use?&lt;/h2>
+&lt;p>boto3 has two API levels:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>Characteristics&lt;/th>
+&lt;th>Best For&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>resource&lt;/code>&lt;/td>
+&lt;td>High-level API, object-oriented&lt;/td>
+&lt;td>Simple operations, readability&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>client&lt;/code>&lt;/td>
+&lt;td>Low-level API, closer to AWS API&lt;/td>
+&lt;td>Fine-grained control, performance&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Conclusion&lt;/strong>: For simple existence checks, I recommend using &lt;code>client&lt;/code>&amp;rsquo;s &lt;code>head_object&lt;/code>. Here&amp;rsquo;s why:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>head_object&lt;/code> only retrieves object metadata, making it lightweight&lt;/li>
+&lt;li>&lt;code>resource&lt;/code>&amp;rsquo;s &lt;code>load()&lt;/code> internally calls &lt;code>head_object&lt;/code> anyway&lt;/li>
+&lt;li>&lt;code>client&lt;/code> is closer to the AWS API with more predictable behavior&lt;/li>
+&lt;/ul>
+&lt;h2 id="using-boto3client-recommended">Using boto3.client (Recommended)&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;Check if an S3 object exists&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">head_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Bucket&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Re-raise non-404 errors (e.g., permission issues)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Usage example&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">check_s3_object_exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;my-bucket&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;path/to/file.json&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Object exists&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Object does not exist&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="key-points">Key Points&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>head_object&lt;/code> retrieves only metadata without downloading the object content&lt;/li>
+&lt;li>Non-404 errors (e.g., 403: Access Denied) should be re-raised for proper handling&lt;/li>
+&lt;li>Wrapping in a function makes it easier to test&lt;/li>
+&lt;/ul>
+&lt;h2 id="using-boto3resource">Using boto3.resource&lt;/h2>
+&lt;p>If you prefer an object-oriented approach, this method also works:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">boto3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">botocore.exceptions&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientError&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">check_s3_object_exists_resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="nb">bool&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;Check if an S3 object exists (resource version)&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">boto3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">resource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;s3&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">s3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">object_key&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_code&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">error_code&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="common-pitfalls">Common Pitfalls&lt;/h2>
+&lt;h3 id="1-confusing-permission-errors-with-404">1. Confusing Permission Errors with 404&lt;/h3>
+&lt;p>If you lack permissions to access the S3 bucket, you&amp;rsquo;ll get a 403 error.
+Catching only 404 and treating it as &amp;ldquo;doesn&amp;rsquo;t exist&amp;rdquo; will mask permission issues.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># BAD: Swallowing all errors&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span> &lt;span class="c1"># Permission errors also treated as &amp;#34;doesn&amp;#39;t exist&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># GOOD: Re-raise non-404 errors&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">except&lt;/span> &lt;span class="n">ClientError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Error&amp;#39;&lt;/span>&lt;span class="p">][&lt;/span>&lt;span class="s1">&amp;#39;Code&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;404&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">raise&lt;/span> &lt;span class="c1"># Let caller handle permission errors&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-using-list_objects-is-inefficient">2. Using list_objects is Inefficient&lt;/h3>
+&lt;p>You could use &lt;code>list_objects&lt;/code> with prefix search, but it becomes slow with many objects.
+For single object existence checks, use &lt;code>head_object&lt;/code>.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;ul>
+&lt;li>Use &lt;code>head_object&lt;/code> to check S3 object existence&lt;/li>
+&lt;li>Handle non-404 errors properly (they may indicate permission issues)&lt;/li>
+&lt;li>Both &lt;code>resource&lt;/code> and &lt;code>client&lt;/code> work, but &lt;code>client&lt;/code> is simpler&lt;/li>
+&lt;/ul>
+&lt;h2 id="references">References&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html" target="_blank" rel="noopener"
+>boto3 S3 head_object&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
+>Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

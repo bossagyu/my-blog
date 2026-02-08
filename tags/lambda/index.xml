@@ -95,18 +95,47 @@ data-flex-basis="345px"
 &lt;p>本記事ではAWS API GatewayとLambdaを連携させる方法を紹介しました。
 API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
+&lt;p>私はこの仕組みを使って、LINE Botに定期的にリマインド通知を送る機能を実装しました。
+たとえば「毎朝7時に掃除のリマインドを送る」といった処理を、サーバーを用意せずに実現できます。&lt;/p>
 &lt;h2 id="aws-eventbridgeとは">AWS EventBridgeとは&lt;/h2>
 &lt;p>AWS EventBridgeは、AWSのサービス間でイベントを受け渡すためのサービスです。
-EventBridgeを利用することで、イベント駆動型のアーキテクチャを構築することができます。&lt;/p>
-&lt;p>詳細な説明は &lt;a class="link" href="https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-what-is.html" target="_blank" rel="noopener"
->AWS公式ドキュメント&lt;/a> を参照してください。&lt;/p>
+主な用途は以下の2つです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>用途&lt;/th>
+&lt;th>説明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>スケジュール実行&lt;/td>
+&lt;td>cron式やrate式で定期的にLambdaを実行&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>イベント駆動&lt;/td>
+&lt;td>S3へのファイルアップロードなどをトリガーにLambdaを実行&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>今回はスケジュール実行の方法を解説します。&lt;/p>
+&lt;h2 id="実際のユースケース">実際のユースケース&lt;/h2>
+&lt;p>EventBridge + Lambdaの定期実行は、以下のようなケースで役立ちます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>リマインド通知&lt;/strong>: 毎日決まった時間にSlackやLINEに通知&lt;/li>
+&lt;li>&lt;strong>バッチ処理&lt;/strong>: 毎時データを集計してDBに保存&lt;/li>
+&lt;li>&lt;strong>ヘルスチェック&lt;/strong>: 5分ごとに外部APIの死活監視&lt;/li>
+&lt;li>&lt;strong>クリーンアップ&lt;/strong>: 毎日深夜に古いログを削除&lt;/li>
+&lt;/ul>
+&lt;p>私の場合は、&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a>で毎時ユーザーへの通知判定を行うために使っています。&lt;/p>
 &lt;h2 id="前提">前提&lt;/h2>
 &lt;p>Lambda関数についてはすでに作成されていることを前提としています。
 Lambda関数の作成方法については、&lt;a class="link" href="https://aws.amazon.com/jp/lambda/getting-started/" target="_blank" rel="noopener"
->AWA Labda 開始方法&lt;/a> を参照して作成してください。&lt;/p>
+>AWS Lambda 開始方法&lt;/a> を参照して作成してください。&lt;/p>
 &lt;h2 id="手順">手順&lt;/h2>
-&lt;p>EventBridgeで実行する予定のLambda関数を選択し「トリガーを追加」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
+&lt;h3 id="1-トリガーを追加">1. トリガーを追加&lt;/h3>
+&lt;p>EventBridgeで実行する予定のLambda関数を選択し「トリガーを追加」を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001.png"
 width="1682"
 height="608"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-001_hua3391a0a4e37513ed67145a092be2b5f_101439_1024x0_resize_box_3.png 1024w"
@@ -116,8 +145,9 @@ class="gallery-image"
 data-flex-grow="276"
 data-flex-basis="663px"
 >&lt;/p>
-&lt;p>トリガーから「EventBridge」を選択します。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
+&lt;h3 id="2-eventbridgeを選択">2. EventBridgeを選択&lt;/h3>
+&lt;p>トリガーから「EventBridge (CloudWatch Events)」を選択します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002.png"
 width="930"
 height="400"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-002_hu8fd7668508fa3ea65743ea0e537fb483_58214_1024x0_resize_box_3.png 1024w"
@@ -127,11 +157,9 @@ class="gallery-image"
 data-flex-grow="232"
 data-flex-basis="558px"
 >&lt;/p>
-&lt;p>トリガーの選択を行うと、ルールの作成画面が表示されるので設定します。&lt;br>
-今回はcron形式で5分ごとに実行するように設定しています。&lt;br>
-cronのsyntaxについては &lt;a class="link" href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html#cron-based" target="_blank" rel="noopener"
->Schedule type on EventBridge Scheduler&lt;/a> のページを参考にしてください。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
+&lt;h3 id="3-スケジュールを設定">3. スケジュールを設定&lt;/h3>
+&lt;p>トリガーの選択を行うと、ルールの作成画面が表示されるので設定します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003.png"
 width="891"
 height="903"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-003_hub807cbe0354fdfc130d1a185b4a890c6_114907_1024x0_resize_box_3.png 1024w"
@@ -141,8 +169,9 @@ class="gallery-image"
 data-flex-grow="98"
 data-flex-basis="236px"
 >&lt;/p>
-&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;br>
-&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
+&lt;h3 id="4-設定完了">4. 設定完了&lt;/h3>
+&lt;p>設定が完了するとLambda関数のダイアグラムのトリガーにEventBridgeが追加されます。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004.png"
 width="1761"
 height="976"
 srcset="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/008-aws-eventbrdge/img-008-004_huc419c6d31f69165530a8b0d8165aa994_183418_1024x0_resize_box_3.png 1024w"
@@ -152,8 +181,57 @@ class="gallery-image"
 data-flex-grow="180"
 data-flex-basis="433px"
 >&lt;/p>
-&lt;p>ちなみに私はLINEにメッセージを通知するFunctionを作って動かしてみました。&lt;br>
-こんな感じで5分に1回通知がくるようになりました。&lt;/p>
+&lt;h2 id="cron式の書き方">cron式の書き方&lt;/h2>
+&lt;p>EventBridgeのcron式は6つのフィールドで構成されます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">cron(分 時 日 月 曜日 年)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="よく使うパターン">よく使うパターン&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>実行タイミング&lt;/th>
+&lt;th>cron式&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>毎日9時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 9 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎日9時（JST = UTC+9）&lt;/td>
+&lt;td>&lt;code>cron(0 0 * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎時0分&lt;/td>
+&lt;td>&lt;code>cron(0 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5分ごと&lt;/td>
+&lt;td>&lt;code>cron(0/5 * * * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>平日のみ毎朝9時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 9 ? * MON-FRI *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>毎月1日の0時（UTC）&lt;/td>
+&lt;td>&lt;code>cron(0 0 1 * ? *)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="注意-タイムゾーンはutc">注意: タイムゾーンはUTC&lt;/h3>
+&lt;p>EventBridgeのcron式は&lt;strong>UTC基準&lt;/strong>です。日本時間（JST）で設定したい場合は9時間引いてください。&lt;/p>
+&lt;p>例: 毎朝7時（JST）に実行 → &lt;code>cron(0 22 * * ? *)&lt;/code> （前日の22時UTC）&lt;/p>
+&lt;h2 id="実際に動かしてみた結果">実際に動かしてみた結果&lt;/h2>
+&lt;p>私はLINEにメッセージを通知するFunctionを作って動かしてみました。
+5分に1回通知がくるようになりました。&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/blog/008-aws-eventbrdge/img-008-005.png"
 width="1494"
 height="256"
@@ -164,9 +242,54 @@ class="gallery-image"
 data-flex-grow="583"
 data-flex-basis="1400px"
 >&lt;/p>
+&lt;p>テストの際は短い間隔（5分など）で設定して動作確認し、本番では適切な間隔に変更するのがおすすめです。&lt;/p>
+&lt;h2 id="コストについて">コストについて&lt;/h2>
+&lt;p>EventBridge + Lambdaの組み合わせは非常に低コストです。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>サービス&lt;/th>
+&lt;th>無料枠&lt;/th>
+&lt;th>超過時の料金&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>EventBridge&lt;/td>
+&lt;td>無料&lt;/td>
+&lt;td>スケジュールルールは無料&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Lambda&lt;/td>
+&lt;td>月100万リクエスト無料&lt;/td>
+&lt;td>$0.20/100万リクエスト&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>個人開発のリマインダーBot程度なら、ほぼ無料で運用できます。&lt;/p>
+&lt;h2 id="ハマりポイント">ハマりポイント&lt;/h2>
+&lt;h3 id="1-タイムゾーンの罠">1. タイムゾーンの罠&lt;/h3>
+&lt;p>前述の通り、EventBridgeはUTC基準です。「毎朝9時」と設定したつもりが「夕方18時」に動いていた、というのはよくある失敗です。&lt;/p>
+&lt;h3 id="2-初回実行のタイミング">2. 初回実行のタイミング&lt;/h3>
+&lt;p>cron式を設定した直後は、次のスケジュールまで待つ必要があります。
+すぐにテストしたい場合は、Lambdaのテスト機能を使いましょう。&lt;/p>
+&lt;h3 id="3-削除を忘れずに">3. 削除を忘れずに&lt;/h3>
+&lt;p>テスト用に作成したEventBridgeルールを放置すると、Lambdaが実行され続けます。
+不要になったルールは必ず削除しましょう。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。
-今回設定したEventBridgeについてはこのまま放置しておくと、課金が発生するので、不要になったら削除しておきましょう。&lt;/p></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説しました。&lt;/p>
+&lt;ul>
+&lt;li>EventBridgeはスケジュール実行とイベント駆動の2つの用途がある&lt;/li>
+&lt;li>cron式はUTC基準なので、JSTで設定したい場合は9時間引く&lt;/li>
+&lt;li>個人開発レベルならほぼ無料で運用可能&lt;/li>
+&lt;li>不要になったルールは削除を忘れずに&lt;/li>
+&lt;/ul>
+&lt;p>サーバーレスで定期実行を実現できるので、リマインダーBotやバッチ処理などに活用してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >掃除リマインダーBotの技術解説&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
 &lt;ol>
