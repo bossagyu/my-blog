@@ -1,0 +1,7 @@
+<div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+  <pre class="mermaid">
+{{- .Inner | safeHTML }}
+  </pre>
+  <span class="mermaid-hint">クリックで拡大</span>
+</div>
+{{- .Page.Store.Set "hasMermaid" true }}

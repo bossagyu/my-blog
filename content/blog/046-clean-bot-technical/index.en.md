@@ -14,23 +14,26 @@ See the completed Bot here: [Cleaning Reminder Bot](/blog/045-clean-bot/)
 
 ## Architecture
 
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────────────┐
-│  LINE User  │────▶│ API Gateway │────▶│ Lambda              │
-└─────────────┘     └─────────────┘     │ (process_user_      │
-                                        │  message)           │
-                                        └──────────┬──────────┘
-                                                   │
-┌─────────────┐     ┌─────────────────────┐       │
-│  LINE User  │◀────│ Lambda              │       │
-│  (notify)   │     │ (push_message_      │       ▼
-└─────────────┘     │  periodically)      │  ┌─────────┐
-                    └──────────┬──────────┘  │   S3    │
-                               │             │ (JSON)  │
-┌─────────────┐                │             └─────────┘
-│ EventBridge │────────────────┘
-│ (hourly)    │
-└─────────────┘
+```mermaid
+flowchart LR
+    subgraph User
+        A[LINE User]
+    end
+
+    subgraph AWS
+        B[API Gateway]
+        C[Lambda<br/>process_user_message]
+        D[(S3<br/>JSON)]
+        E[Lambda<br/>push_message_periodically]
+        F[EventBridge<br/>hourly]
+    end
+
+    A -->|Send message| B
+    B --> C
+    C <--> D
+    E <--> D
+    F -->|Trigger| E
+    E -->|Notify| A
 ```
 
 ### Services Used

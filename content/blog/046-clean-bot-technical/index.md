@@ -14,23 +14,26 @@ tags = ['LINE BOT', 'AWS Lambda', 'Python', 'SAM', 'S3']
 
 ## アーキテクチャ
 
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────────────┐
-│  LINE User  │────▶│ API Gateway │────▶│ Lambda              │
-└─────────────┘     └─────────────┘     │ (process_user_      │
-                                        │  message)           │
-                                        └──────────┬──────────┘
-                                                   │
-┌─────────────┐     ┌─────────────────────┐       │
-│  LINE User  │◀────│ Lambda              │       │
-│  (通知)     │     │ (push_message_      │       ▼
-└─────────────┘     │  periodically)      │  ┌─────────┐
-                    └──────────┬──────────┘  │   S3    │
-                               │             │ (JSON)  │
-┌─────────────┐                │             └─────────┘
-│ EventBridge │────────────────┘
-│ (毎時実行)  │
-└─────────────┘
+```mermaid
+flowchart LR
+    subgraph ユーザー操作
+        A[LINE User]
+    end
+
+    subgraph AWS
+        B[API Gateway]
+        C[Lambda<br/>process_user_message]
+        D[(S3<br/>JSON)]
+        E[Lambda<br/>push_message_periodically]
+        F[EventBridge<br/>毎時実行]
+    end
+
+    A -->|メッセージ送信| B
+    B --> C
+    C <--> D
+    E <--> D
+    F -->|トリガー| E
+    E -->|通知| A
 ```
 
 ### 使用サービス
