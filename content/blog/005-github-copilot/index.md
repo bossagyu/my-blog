@@ -1,5 +1,6 @@
 +++
 title = 'IntellijでのGithub Copilotの使い方'
+description = 'IntelliJでGitHub Copilotを使う方法を解説。プラグインのインストールからMacのショートカット一覧、コメントによるコード補完機能までを紹介します。'
 date = 2023-12-11T22:45:40+09:00
 draft = false
 categories = ['Engineering']

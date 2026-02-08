@@ -1,5 +1,6 @@
 +++
 title = 'macでGoの開発環境を構築して最速でHello Worldする'
+description = 'MacでGo言語の開発環境を最速で構築する方法を解説。Homebrewでのインストールから、Hello Worldプログラムの作成・実行、バイナリビルドまでの手順を紹介します。'
 date = 2024-09-15T16:52:04+09:00
 draft = false
 categories = ['Engineering']

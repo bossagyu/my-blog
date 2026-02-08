@@ -1,5 +1,6 @@
 +++
 title = 'Pyenvとvenvを用いたローカル環境のセットアップ方法'
+description = 'MacでPyenvとvenvを使ったPython環境構築方法を解説。Pythonバージョン管理と仮想環境の作成、更新、削除までの手順を初心者向けに詳しく説明します。'
 date = 2023-12-10T23:19:33+09:00
 draft = false
 categories = ['Engineering']

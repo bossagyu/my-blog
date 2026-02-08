@@ -1,5 +1,6 @@
 +++
 title = 'AWS EventBridgeを用いてLambdaを定期実行する方法'
+description = 'AWS EventBridgeでLambdaを定期実行する方法を解説。cron式の書き方、JSTタイムゾーン設定、コスト、よくあるハマりポイントまで実践的に説明します。'
 date = 2023-12-21T23:03:13+09:00
 draft = false
 categories = ['Engineering']

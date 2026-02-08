@@ -1,5 +1,6 @@
 +++
 title = 'JetBrains製品のメジャーバージョンを上げる方法'
+description = 'IntelliJやPyCharmなどJetBrains製品のメジャーバージョンアップ方法を解説。JetBrains Toolbox Appを使って設定を引き継ぎながら簡単にアップデートする手順を紹介します。'
 date = 2025-06-12T20:46:53+09:00
 draft = true
 categories = ['Engineering']

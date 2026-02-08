@@ -1,5 +1,6 @@
 +++
 title = '共分散についての調査'
+description = '共分散の基本概念と計算式をわかりやすく解説。Pythonのnumpyを使った計算例と、相関係数との違いをスケール依存性の観点から紹介します。'
 date = 2024-09-02T10:00:00+09:00
 draft = false
 categories = ['Engineering']

@@ -1,5 +1,6 @@
 +++
 title = 'VSCodeでGithub Copilotを使いこなす完全ガイド'
+description = 'VSCodeでGitHub Copilotを設定・活用する方法を解説。拡張機能のインストールからMarkdown対応、Chat toolの使い方まで網羅的に紹介します。'
 date = 2024-02-04T22:34:51+09:00
 draft = false
 categories = ['Engineering']

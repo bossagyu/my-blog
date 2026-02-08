@@ -1,5 +1,6 @@
 +++
 title = 'ITIL v4 事業分析について解説'
+description = 'ITIL v4の事業分析プロセスを解説。SWOT分析やカスタマージャーニーマップなどの手法から、ソリューション特定・評価までの流れを実務経験を交えて紹介します。'
 date = 2024-02-09T09:00:56+09:00
 draft = false
 categories = ['Management']

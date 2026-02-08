@@ -1,5 +1,6 @@
 +++
 title = 'Lighthouseの使い方の紹介'
+description = 'Google Lighthouseでブログのパフォーマンスを計測する方法を解説。Performance、Accessibility、SEO、Best Practicesの各指標の見方を紹介します。'
 date = 2023-12-22T23:08:00+09:00
 draft = false
 categories = ['Engineering']

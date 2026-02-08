@@ -37,12 +37,35 @@ TOML形式で `+++` 区切りを使用:
 ```toml
 +++
 title = "日本語タイトル"
+description = "SEO用の説明文（120-160文字）"
 date = 2026-02-07T00:00:00+09:00
 draft = false
-categories = ["Engineering"]  # Engineering | Management | Blog
+categories = ["Engineering"]  # Engineering | Management | Product | Blog
 tags = ["tool-name", "topic"]  # 英語で記載、既存のタグを参照
 +++
 ```
+
+## SEO description のルール
+
+すべての記事に `description` フィールドを設定すること。これはGoogle検索結果に表示される説明文として使用される。
+
+**description の書き方:**
+- **文字数**: 120〜160文字（日本語）
+- **内容**: 記事の要点を簡潔に説明
+- **キーワード**: 記事の主要なキーワードを含める（ツール名、技術名など）
+- **読者へのメリット**: 「〜の方法を解説」「〜をサンプルコード付きで紹介」など
+
+**良い例:**
+```
+description = 'AWS Lambda、API Gateway、S3を使ったLINE Botの実装解説。SAMによるサーバーレス構成とPythonコードを詳しく紹介します。'
+```
+
+**避けるべき内容:**
+- Markdownの記法（`**太字**`、`` `コード` `` など）
+- 「この記事では」などの冗長な書き出し
+- 記事本文のコピペ（要約すること）
+
+**注意**: descriptionはmeta tagにのみ使用され、記事カードには表示されない。
 
 ## 執筆ガイドライン（AGENTS.mdより）
 

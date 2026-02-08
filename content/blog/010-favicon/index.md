@@ -1,5 +1,6 @@
 +++
 title = 'Faviconを作ってHugoで表示する方法'
+description = 'Faviconの作成方法とHugoブログへの設定手順を解説。Favicon Generatorでの画像生成からconfig.tomlへの設定方法まで初心者向けに説明します。'
 date = 2023-12-24T22:14:39+09:00
 draft = true
 categories = ['Engineering']

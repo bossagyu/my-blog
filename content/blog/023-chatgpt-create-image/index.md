@@ -1,5 +1,6 @@
 +++
 title = 'chatGPTで画像を生成する方法'
+description = 'ChatGPT PlusのDALL-E機能を使って画像を生成する方法を解説。Explore GPTsからの起動方法、プロンプトの入力例、追加指示による画像加工まで紹介します。'
 date = 2024-03-31T17:35:07+09:00
 draft = false
 categories = ['Engineering']

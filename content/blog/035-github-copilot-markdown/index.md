@@ -1,5 +1,6 @@
 +++
 title = 'GitHub CopilotをMarkdownで有効にする方法'
+description = 'VSCodeでGitHub CopilotのMarkdown補完を有効にする設定方法を解説。デフォルトで無効になっている設定を変更し、Markdownファイル編集を効率化する手順を紹介します。'
 date = 2025-07-21T10:00:00+09:00
 draft = true
 categories = ['Engineering']

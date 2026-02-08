@@ -1,5 +1,6 @@
 +++
 title = 'Visual Studio Codeのアップデート方法'
+description = 'MacでVisual Studio Codeをアップデートする手順を解説。更新の確認から再起動、バージョン確認まで画像付きでわかりやすく紹介します。'
 date = 2025-07-27T18:12:16+09:00
 draft = true
 categories = ['Engineering']

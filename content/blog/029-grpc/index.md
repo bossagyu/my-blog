@@ -1,5 +1,6 @@
 +++
 title = 'gRPCについての調査'
+description = 'gRPCの基礎からPythonでの実装まで解説。Protocol Buffersによるスキーマ定義、.protoファイルの書き方、Quick Startチュートリアルの実践例を紹介します。'
 date = 2024-09-01T17:53:57+09:00
 draft = false
 categories = ['Engineering']

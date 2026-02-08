@@ -1,5 +1,6 @@
 +++
 title = 'S3のオブジェクトの存在確認をする方法【Python boto3】'
+description = 'Python boto3でS3オブジェクトの存在確認をする方法を解説。head_objectを使った推奨方法、resourceとclientの違い、よくあるハマりポイントを紹介します。'
 date = 2024-01-27T21:41:37+09:00
 draft = false
 categories = ['Engineering']

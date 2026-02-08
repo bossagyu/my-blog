@@ -1,5 +1,6 @@
 +++
 title = 'MacでGemini CLIをセットアップする方法'
+description = 'MacでGemini CLIをHomebrewでインストールし、ターミナルからGemini AIを利用する方法を解説。Googleアカウント連携からコード生成まで実践的に紹介します。'
 date = 2025-07-22T23:21:19+09:00
 draft = true
 categories = ['Engineering']

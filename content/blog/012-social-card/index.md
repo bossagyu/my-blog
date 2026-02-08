@@ -1,5 +1,6 @@
 +++
 title = 'Twitter Social Cardの設定方法'
+description = 'HugoブログにTwitter Social Cardを設定する方法を解説。Summary Card、Large Imageの違いやテーマ別設定方法、デバッグツールの使い方を紹介します。'
 date = 2024-01-06T21:45:12+09:00
 draft = false
 categories = ['Blog']

@@ -1,5 +1,6 @@
 +++
 title = 'HugoでGoogle Analyticsの設定をする方法'
+description = 'HugoブログにGoogle Analytics GA4を設定する方法を解説。トラッキングIDの取得からconfig.tomlへの設定、テンプレートへのタグ埋め込みまで詳しく説明します。'
 date = 2023-12-09T18:09:42+09:00
 draft = false
 categories = ['Engineering']

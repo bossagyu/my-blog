@@ -1,5 +1,6 @@
 +++
 title = 'RedisをDockerで起動する方法'
+description = 'DockerでRedisコンテナを起動する方法を解説。インメモリデータベースRedisのセットアップから動作確認、コンテナの停止・削除まで実践的に紹介します。'
 date = 2025-10-03T07:29:31+09:00
 draft = false
 categories = ['Engineering']

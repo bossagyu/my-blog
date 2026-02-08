@@ -1,5 +1,6 @@
 +++
 title = 'Google Search Consoleを用いてブログをGoogle検索の対象にする方法'
+description = 'Google Search Consoleでブログを検索対象にする方法を解説。ドメイン所有権の確認、サイトマップ登録、インデックス登録リクエストの手順を詳しく説明します。'
 date = 2023-12-18T19:10:04+09:00
 draft = false
 categories = ['Engineering']

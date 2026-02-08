@@ -1,5 +1,6 @@
 +++
 title = 'Visual Studio CodeでAWS Toolkitを使う方法'
+description = 'VSCodeにAWS Toolkitをインストールし、東京リージョン(ap-northeast-1)を設定する方法を解説。AWS Explorerでリージョンを切り替える手順を紹介します。'
 date = 2025-08-11T20:33:30+09:00
 draft = false
 categories = ['Engineering']
