@@ -48,12 +48,13 @@ data-flex-grow="284"
 data-flex-basis="682px"
 >&lt;/p>
 &lt;p>これで、AWS ToolkitがAsia Pacific Tokyoリージョンで使用できるようになります。&lt;/p></description></item><item><title>Visual Studio Codeのアップデート方法</title><link>https://bossagyu.com/blog/038-update-vscode/</link><pubDate>Sun, 27 Jul 2025 18:12:16 +0900</pubDate><guid>https://bossagyu.com/blog/038-update-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>MacでVisual Studio Code (VSCode) のアップデート方法を説明します。&lt;/p>
-&lt;h2 id="vscodeのアップデート方法">VSCodeのアップデート方法&lt;/h2>
+&lt;p>MacでVisual Studio Code（VSCode）のアップデート方法を説明します。
+GUIからの手動アップデートに加え、コマンドラインでの更新方法や自動アップデートの設定についても解説します。&lt;/p>
+&lt;h2 id="guiからアップデートする方法">GUIからアップデートする方法&lt;/h2>
 &lt;ol>
-&lt;li>VScodeを起動します。&lt;/li>
-&lt;li>Code → 「更新の確認」&lt;br>
-英語の場合は Update Visual Studio Code を選択します。&lt;/li>
+&lt;li>VSCodeを起動します。&lt;/li>
+&lt;li>Code → 「更新の確認」を選択します。
+英語の場合は Code → &amp;ldquo;Check for Updates&amp;rdquo; を選択します。&lt;/li>
 &lt;/ol>
 &lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image.png"
 width="362"
@@ -65,13 +66,13 @@ class="gallery-image"
 data-flex-grow="136"
 data-flex-basis="326px"
 >&lt;/p>
-&lt;p>更新が始まると以下のような画面になります&lt;/p>
+&lt;p>更新が始まると以下のような画面になります。&lt;/p>
 &lt;p>&lt;img src="https://bossagyu.com/blog/038-update-vscode/image-1.png"
 width="322"
 height="260"
 srcset="https://bossagyu.com/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image-1_hu467c1c2e48f82f20717d31d719e9ad63_31541_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="alt text"
+alt="アップデートのダウンロード中"
 class="gallery-image"
 data-flex-grow="123"
 data-flex-basis="297px"
@@ -83,13 +84,135 @@ width="243"
 height="338"
 srcset="https://bossagyu.com/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_480x0_resize_box_3.png 480w, https://bossagyu.com/blog/038-update-vscode/image-3_hud4f1281fbbaa937e53ab24c19c8a91ab_31593_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="バージョン"
+alt="バージョン確認画面"
 class="gallery-image"
 data-flex-grow="71"
 data-flex-basis="172px"
 >&lt;/p>
+&lt;h2 id="コマンドラインからアップデートする方法">コマンドラインからアップデートする方法&lt;/h2>
+&lt;p>Homebrewを使ってVSCodeをインストールしている場合は、ターミナルからアップデートできます。&lt;/p>
+&lt;h3 id="現在のバージョンを確認">現在のバージョンを確認&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">code --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="homebrewでアップデート">Homebrewでアップデート&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew upgrade --cask visual-studio-code
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Homebrewでインストールしていない場合は、既存のVSCodeをアプリケーションフォルダから削除した上で、以下のコマンドでHomebrewによる管理に切り替えられます。
+設定やインストール済みの拡張機能はアカウント同期で復元できるため、削除しても問題ありません。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install --cask visual-studio-code
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以降は &lt;code>brew upgrade --cask visual-studio-code&lt;/code> でアップデートが可能になります。&lt;/p>
+&lt;h2 id="自動アップデートの設定">自動アップデートの設定&lt;/h2>
+&lt;p>VSCodeにはアップデートの挙動を制御する &lt;code>update.mode&lt;/code> 設定があります。
+設定画面を開き（&lt;code>Cmd + ,&lt;/code>）、&lt;code>update mode&lt;/code> で検索すると変更できます。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>設定値&lt;/th>
+&lt;th>挙動&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>default&lt;/code>&lt;/td>
+&lt;td>バックグラウンドで自動的にアップデートをダウンロード・インストールします&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>manual&lt;/code>&lt;/td>
+&lt;td>アップデートの確認は行いますが、インストールは手動で行います&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>start&lt;/code>&lt;/td>
+&lt;td>VSCodeの起動時のみアップデートを確認します&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>none&lt;/code>&lt;/td>
+&lt;td>自動アップデートを完全に無効化します&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>settings.jsonで直接設定する場合は以下のように記述します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;update.mode&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;default&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>特別な理由がない限り &lt;code>default&lt;/code> のままで問題ありません。&lt;/p>
+&lt;h2 id="トラブルシューティング">トラブルシューティング&lt;/h2>
+&lt;h3 id="アップデートが更新の確認に表示されない">アップデートが「更新の確認」に表示されない&lt;/h3>
+&lt;p>自動アップデートが無効になっている可能性があります。
+設定の &lt;code>update.mode&lt;/code> が &lt;code>none&lt;/code> になっていないか確認してください。&lt;/p>
+&lt;h3 id="アップデートのダウンロードが失敗する">アップデートのダウンロードが失敗する&lt;/h3>
+&lt;p>プロキシやファイアウォールの設定が原因の場合があります。
+以下の設定を確認してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;http.proxy&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;http://proxy.example.com:8080&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;http.proxyStrictSSL&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="アップデート後に拡張機能が動作しなくなった">アップデート後に拡張機能が動作しなくなった&lt;/h3>
+&lt;p>拡張機能の互換性の問題が考えられます。以下の手順を試してください。&lt;/p>
+&lt;ol>
+&lt;li>コマンドパレット（&lt;code>Cmd + Shift + P&lt;/code>）を開く&lt;/li>
+&lt;li>「Extensions: Disable All Installed Extensions」を実行&lt;/li>
+&lt;li>VSCodeを再起動&lt;/li>
+&lt;li>拡張機能を1つずつ有効化して問題のある拡張機能を特定する&lt;/li>
+&lt;/ol>
+&lt;h3 id="それでも解決しない場合">それでも解決しない場合&lt;/h3>
+&lt;p>VSCodeを再インストールすることで解決する場合があります。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Homebrewの場合&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew reinstall --cask visual-studio-code
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>設定やインストール済みの拡張機能はGitHubアカウントやMicrosoftアカウントで同期しておくと、再インストール後に自動で復元されます。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>VSCodeのアップデートは非常に簡単で、数クリックで完了します。定期的にアップデートを行うことで、新機能やセキュリティパッチを利用できるため、常に最新の状態を保つことが重要です。
+&lt;p>VSCodeのアップデート方法について解説しました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>GUI&lt;/strong>: Code → 「更新の確認」から数クリックで完了&lt;/li>
+&lt;li>&lt;strong>コマンドライン&lt;/strong>: &lt;code>brew upgrade --cask visual-studio-code&lt;/code> で一括更新&lt;/li>
+&lt;li>&lt;strong>自動アップデート&lt;/strong>: &lt;code>update.mode&lt;/code> 設定で挙動を制御可能&lt;/li>
+&lt;/ul>
+&lt;p>定期的にアップデートを行うことで、新機能やセキュリティパッチを利用できます。
 アップデート後は、必ずバージョン情報を確認して、正しくアップデートが行われたかをチェックしましょう。&lt;/p></description></item><item><title>vscodeのインデントガイドをカスタマイズする方法</title><link>https://bossagyu.com/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/blog/036-vscode-indent/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Visual Studio Code (VSCode) では、インデントガイドの色をカスタマイズすることができます。
 この記事では、インデントガイドの色を変更する方法を説明します。
