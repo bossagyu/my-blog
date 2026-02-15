@@ -3,7 +3,7 @@ title = 'How to Customize Indent Guides in VSCode'
 date = 2025-07-22T21:01:13+09:00
 draft = false
 categories = ['Engineering']
-tags = ['vscode']
+tags = ['VSCode']
 +++
 
 ## Overview

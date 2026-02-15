@@ -4,7 +4,7 @@ description = 'Google Search Consoleでブログを検索対象にする方法�
 date = 2023-12-18T19:10:04+09:00
 draft = false
 categories = ['Engineering']
-tags = ['google search console', 'seo', 'blog']
+tags = ['google search console', 'SEO', 'blog']
 +++
 
 ## 概要

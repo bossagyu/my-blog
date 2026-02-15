@@ -4,7 +4,7 @@ description = 'IntelliJでGitHub Copilotを使う方法を解説。プラグイ�
 date = 2023-12-11T22:45:40+09:00
 draft = false
 categories = ['Engineering']
-tags = ['copilot', 'intellij']
+tags = ['Copilot', 'IntelliJ']
 +++
 
 ## 概要

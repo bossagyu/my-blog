@@ -4,7 +4,7 @@ description = 'VSCodeのインデントガイドの色を設定ファイルで�
 date = 2025-07-22T21:01:13+09:00
 draft = false
 categories = ['Engineering']
-tags = ['vscode']
+tags = ['VSCode']
 +++
 
 ## 概要

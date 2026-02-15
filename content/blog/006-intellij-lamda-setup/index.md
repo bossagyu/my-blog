@@ -4,7 +4,7 @@ description = 'IntelliJでAWS Toolkitを使ってLambda関数を開発する方�
 date = 2023-12-12T22:40:05+09:00
 draft = false
 categories = ['Engineering']
-tags = ['Intellij', 'AWS', 'Lambda']
+tags = ['IntelliJ', 'AWS', 'Lambda']
 +++
 ## 概要
 IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。

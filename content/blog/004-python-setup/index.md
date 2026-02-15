@@ -4,7 +4,7 @@ description = 'MacでPyenvとvenvを使ったPython環境構築方法を解説�
 date = 2023-12-10T23:19:33+09:00
 draft = false
 categories = ['Engineering']
-tags = ['python', 'mac']
+tags = ['Python', 'mac']
 aliases = ['/blog/004-paython-setup/']
 +++
 

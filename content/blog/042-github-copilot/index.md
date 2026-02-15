@@ -4,7 +4,7 @@ description = 'GitHub Copilot ChatのChat tool機能を使う方法を解説。c
 date = 2025-10-07T08:39:41+09:00
 draft = true
 categories = ['Engineering']
-tags = ['Github Copilot', 'VScode', 'Chat tool']
+tags = ['GitHub Copilot', 'VSCode', 'Chat tool']
 +++
 
 ## 概要

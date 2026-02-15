@@ -4,7 +4,7 @@ description = 'VSCodeにAWS Toolkitをインストールし、東京リージョ
 date = 2025-08-11T20:33:30+09:00
 draft = false
 categories = ['Engineering']
-tags = ['vscode', 'aws', 'toolkit']
+tags = ['VSCode', 'AWS', 'toolkit']
 +++
 
 ## 概要

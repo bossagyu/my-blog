@@ -3,7 +3,7 @@ title = 'How to Enable GitHub Copilot for Markdown'
 date = 2025-07-21T10:00:00+09:00
 draft = true
 categories = ['Engineering']
-tags = ['GitHub Copilot', 'Markdown', 'vscode']
+tags = ['GitHub Copilot', 'Markdown', 'VSCode']
 +++
 
 ## Overview
