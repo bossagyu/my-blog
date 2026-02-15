@@ -2,6 +2,8 @@
 title: "Search"
 slug: "search"
 layout: "search"
+aliases:
+    - /blog/search/
 outputs:
     - html
     - json

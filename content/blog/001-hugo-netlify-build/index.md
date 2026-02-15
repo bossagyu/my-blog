@@ -5,6 +5,7 @@ date = 2023-12-02T00:59:37+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'Netlify', 'Github', 'Favicon']
+aliases = ['/blog/010-favicon/']
 +++
 ## 概要
 Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。

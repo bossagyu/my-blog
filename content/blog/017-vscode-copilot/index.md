@@ -5,6 +5,7 @@ date = 2024-02-04T22:34:51+09:00
 draft = false
 categories = ['Engineering']
 tags = ['VSCode', 'Copilot', 'GitHub Copilot', 'Chat tool']
+aliases = ['/blog/035-github-copilot-markdown/', '/blog/042-github-copilot/']
 +++
 
 ## 概要
