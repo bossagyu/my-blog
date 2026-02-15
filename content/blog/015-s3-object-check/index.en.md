@@ -3,7 +3,7 @@ title = 'How to Check if an S3 Object Exists in Python boto3'
 date = 2024-01-27T21:41:37+09:00
 draft = false
 categories = ['Engineering']
-tags = ['aws', 's3', 'Python', 'boto3']
+tags = ['AWS', 'S3', 'Python', 'boto3']
 +++
 
 ## Overview

@@ -4,7 +4,7 @@ description = 'MacでGo言語の開発環境を最速で構築する方法を解
 date = 2024-09-15T16:52:04+09:00
 draft = false
 categories = ['Engineering']
-tags = ['go']
+tags = ['Go']
 +++
 
 ## 概要

@@ -3,7 +3,7 @@ title = 'How to Use AWS Toolkit in Visual Studio Code'
 date = 2025-08-11T20:33:30+09:00
 draft = false
 categories = ['Engineering']
-tags = ['vscode', 'aws', 'toolkit']
+tags = ['VSCode', 'AWS', 'toolkit']
 +++
 
 ## Overview

@@ -4,7 +4,7 @@ description = 'VSCodeでGitHub CopilotのMarkdown補完を有効にする設定�
 date = 2025-07-21T10:00:00+09:00
 draft = true
 categories = ['Engineering']
-tags = ['GitHub Copilot', 'Markdown', 'vscode']
+tags = ['GitHub Copilot', 'Markdown', 'VSCode']
 +++
 
 ## 概要

@@ -4,7 +4,7 @@ description = 'Python boto3でS3オブジェクトの存在確認をする方法
 date = 2024-01-27T21:41:37+09:00
 draft = false
 categories = ['Engineering']
-tags = ['aws', 's3', 'Python', 'boto3']
+tags = ['AWS', 'S3', 'Python', 'boto3']
 +++
 
 ## 概要

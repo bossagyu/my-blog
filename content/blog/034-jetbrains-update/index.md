@@ -4,7 +4,7 @@ description = 'IntelliJやPyCharmなどJetBrains製品のメジャーバージ�
 date = 2025-06-12T20:46:53+09:00
 draft = false
 categories = ['Engineering']
-tags = ['jetBrains', 'Intellij']
+tags = ['JetBrains', 'IntelliJ']
 +++
 
 ## 概要

@@ -3,7 +3,7 @@ title = 'Setting Up a Local Environment Using Pyenv and venv'
 date = 2023-12-10T23:19:33+09:00
 draft = false
 categories = ['Engineering']
-tags = ['python', 'mac']
+tags = ['Python', 'mac']
 aliases = ['/en/blog/004-paython-setup/']
 +++
 
