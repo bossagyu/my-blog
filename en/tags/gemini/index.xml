@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gemini on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/gemini/</link><description>Recent content in Gemini on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/gemini/index.xml" rel="self" type="application/rss+xml"/><item><title>Designing an Event-Driven Backend to Sync GCS with Gemini File Search API</title><link>https://bossagyu.com/en/blog/048-lawve-backend/</link><pubDate>Sun, 15 Feb 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/048-lawve-backend/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>I participated in the &amp;ldquo;Law x Digital&amp;rdquo; Hackathon (3rd edition) hosted by Japan&amp;rsquo;s Digital Agency and developed a cross-source legal document search product called &amp;ldquo;Lawve.&amp;rdquo; Lawve enables natural language search across e-Gov legal data and user-uploaded documents.&lt;/p>
+&lt;p>This article focuses on the backend architecture design that I was responsible for. The backend&amp;rsquo;s primary responsibility is to &amp;ldquo;automatically sync the state of Gemini File Search API whenever files are added to or removed from Google Cloud Storage (GCS).&amp;rdquo;&lt;/p>
+&lt;h2 id="system-architecture">System Architecture&lt;/h2>
+&lt;p>Here is the overall system architecture of Lawve.&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart TB
+subgraph User
+U[Browser]
+end
+subgraph GCP
+subgraph Frontend
+FE[Cloud Run&lt;br/>Next.js]
+end
+subgraph Backend
+CR[Cloud Run&lt;br/>FastAPI]
+end
+subgraph Storage &amp; Data
+GCS[(Cloud Storage)]
+FS[(Firestore)]
+end
+subgraph Event Infrastructure
+EA[Eventarc]
+end
+subgraph AI
+GEMINI[Gemini File&lt;br/>Search API]
+end
+end
+subgraph External API
+EGOV[e-Gov&lt;br/>Law API]
+end
+U --> FE
+FE --> GEMINI
+FE --> FS
+FE --> EGOV
+FE -->|File Upload| GCS
+GCS -->|Event Notification| EA
+EA -->|CloudEvents| CR
+CR -->|Register/Delete| GEMINI
+CR -->|Download| GCS
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;h3 id="component-roles">Component Roles&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Component&lt;/th>
+&lt;th>Role&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Cloud Run (Next.js)&lt;/td>
+&lt;td>Frontend: search UI, file upload, search result display&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cloud Run (FastAPI)&lt;/td>
+&lt;td>Backend: syncs Gemini File Search API in response to GCS events&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cloud Storage&lt;/td>
+&lt;td>Document storage, serves as the Single Source of Truth&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Eventarc&lt;/td>
+&lt;td>Routes GCS file change events to Cloud Run&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Gemini File Search API&lt;/td>
+&lt;td>Provides full-text and semantic search for documents&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Firestore&lt;/td>
+&lt;td>Manages document metadata and comments&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>e-Gov Law API&lt;/td>
+&lt;td>Retrieves legal data&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>This article focuses on the backend Cloud Run (FastAPI) design.&lt;/p>
+&lt;h2 id="event-driven-architecture-design">Event-Driven Architecture Design&lt;/h2>
+&lt;h3 id="why-event-driven">Why Event-Driven?&lt;/h3>
+&lt;p>In a legal document search product, documents need to be automatically registered with Gemini File Search API when placed in GCS. While a synchronous API approach from the frontend was an option, I chose an event-driven architecture for the following reasons:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Loose coupling&lt;/strong>: The frontend only needs to place files in GCS without knowing about the backend&lt;/li>
+&lt;li>&lt;strong>Reliability&lt;/strong>: Eventarc reliably detects GCS events and delivers them to Cloud Run&lt;/li>
+&lt;li>&lt;strong>Tool compatibility&lt;/strong>: Files placed via CLI or scripts are synced in the same way&lt;/li>
+&lt;/ul>
+&lt;h3 id="event-routing-with-eventarc">Event Routing with Eventarc&lt;/h3>
+&lt;p>Eventarc monitors two types of GCS events and routes them to the Cloud Run endpoint.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Event&lt;/th>
+&lt;th>Trigger Condition&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>google.cloud.storage.object.v1.finalized&lt;/code>&lt;/td>
+&lt;td>When a file is uploaded to GCS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>google.cloud.storage.object.v1.deleted&lt;/code>&lt;/td>
+&lt;td>When a file is deleted from GCS&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>The Cloud Run endpoint receives events in CloudEvents format.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@app.post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">async&lt;/span> &lt;span class="k">def&lt;/span> &lt;span class="nf">handle_storage_event&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Request&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">headers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">dict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">body&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">event&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">from_http&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">event_handler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">process&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">result&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="file-upload-processing-flow">File Upload Processing Flow&lt;/h3>
+&lt;p>When a file is placed in GCS, it is processed through the following flow:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Event reception and path filtering&lt;/strong>: Only files with the &lt;code>file-search/archive/&lt;/code> prefix are processed&lt;/li>
+&lt;li>&lt;strong>Metadata extraction&lt;/strong>: Automatically extract &lt;code>law_id&lt;/code> and &lt;code>source_type&lt;/code> from the GCS path&lt;/li>
+&lt;li>&lt;strong>Delete existing documents&lt;/strong>: Remove documents with the same &lt;code>source_path&lt;/code> to prevent duplicates&lt;/li>
+&lt;li>&lt;strong>File download&lt;/strong>: Download from GCS to a local temporary file&lt;/li>
+&lt;li>&lt;strong>Register with File Search Store&lt;/strong>: Upload to Gemini File Search API with metadata&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">EventHandler&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">_handle_event_by_type&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">event_type&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_name&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">event_type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;google.cloud.storage.object.v1.finalized&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_handle_file_upload&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elif&lt;/span> &lt;span class="n">event_type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;google.cloud.storage.object.v1.deleted&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_handle_file_delete&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="file-deletion-processing-flow">File Deletion Processing Flow&lt;/h3>
+&lt;p>When a file is deleted from GCS, the corresponding document is also deleted from Gemini File Search API.&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Event reception and path filtering&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>Search File Search Store by metadata&lt;/strong>: Identify the matching document using the &lt;code>source_path&lt;/code> metadata&lt;/li>
+&lt;li>&lt;strong>Delete document&lt;/strong>: Remove the document from File Search Store&lt;/li>
+&lt;/ol>
+&lt;h2 id="integration-with-gemini-file-search-api">Integration with Gemini File Search API&lt;/h2>
+&lt;h3 id="unified-gcp-ecosystem">Unified GCP Ecosystem&lt;/h3>
+&lt;p>Lawve adopts a policy of unifying the entire infrastructure on GCP. While other RAG services such as OpenAI and Pinecone were options, I chose Gemini File Search API for its seamless integration with Cloud Run, GCS, and Eventarc.&lt;/p>
+&lt;h3 id="file-search-store-overview">File Search Store Overview&lt;/h3>
+&lt;p>Gemini File Search Store is a managed service that vectorizes and indexes registered documents to provide semantic search. The backend performs the following operations:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Document registration&lt;/strong>: Upload files with metadata&lt;/li>
+&lt;li>&lt;strong>Document search&lt;/strong>: Search existing documents by metadata&lt;/li>
+&lt;li>&lt;strong>Document deletion&lt;/strong>: Remove documents that are no longer needed&lt;/li>
+&lt;/ul>
+&lt;h3 id="metadata-based-management">Metadata-Based Management&lt;/h3>
+&lt;p>Each document is tagged with three metadata fields for management purposes.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Metadata&lt;/th>
+&lt;th>Purpose&lt;/th>
+&lt;th>Example&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>law_id&lt;/code>&lt;/td>
+&lt;td>Legal document ID for unique identification&lt;/td>
+&lt;td>&lt;code>323AC0000000205&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>source_type&lt;/code>&lt;/td>
+&lt;td>Document classification&lt;/td>
+&lt;td>&lt;code>user&lt;/code>, &lt;code>doc&lt;/code>, &lt;code>admin&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>source_path&lt;/code>&lt;/td>
+&lt;td>Full GCS path for unique document identification&lt;/td>
+&lt;td>&lt;code>gs://bucket/file-search/archive/user/323AC0000000205/medical-law.txt&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Since &lt;code>source_path&lt;/code> is the GCS path itself, it uniquely maps GCS files to File Search Store documents.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">metadata&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;law_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">law_id&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;source_path&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">source_path&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;source_type&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">source_type&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">custom_metadata&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>&lt;span class="s2">&amp;#34;key&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;string_value&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">value&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">metadata&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">items&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="design-patterns-for-extensibility">Design Patterns for Extensibility&lt;/h2>
+&lt;h3 id="path-based-metadata-extraction">Path-Based Metadata Extraction&lt;/h3>
+&lt;p>The backend is designed to process any file placed in a specific GCS path, not limited to legal documents. The path convention is as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">gs://&amp;lt;bucket&amp;gt;/file-search/archive/&amp;lt;source_type&amp;gt;/&amp;lt;law_id&amp;gt;/&amp;lt;file_name&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The &lt;code>source_type&lt;/code> and &lt;code>law_id&lt;/code> are automatically extracted from the path using a regular expression.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Path pattern&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">GCS_PATH_PATTERN&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;file-search/archive/([^/]+)/([^/]+)/.+&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">parse_gcs_path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">gcs_path&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">Tuple&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">Optional&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">Optional&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">match&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">search&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">GCS_PATH_PATTERN&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">gcs_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This design allows any type of document, such as internal documents or technical documentation, to be managed through the same mechanism. You can add new classifications simply by changing the &lt;code>source_type&lt;/code>, and no backend code changes are required as long as the path convention is followed.&lt;/p>
+&lt;h3 id="guaranteeing-state-synchronization-between-gcs-and-gemini-file-search-api">Guaranteeing State Synchronization Between GCS and Gemini File Search API&lt;/h3>
+&lt;p>GCS serves as the Single Source of Truth, and the design principle is to always keep the File Search Store state in sync with GCS.&lt;/p>
+&lt;p>&lt;strong>Idempotent uploads&lt;/strong>: When the same file is re-uploaded, existing documents are deleted before re-registration. This prevents duplicates while supporting content updates.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">process_file_upload&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">source_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;gs://&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Check and delete existing documents&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_delete_existing_documents&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">source_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># New upload&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">law_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">extract_law_id&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">local_file_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">gcs_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">download_to_temp_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">success&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">store_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">upload_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">local_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">metadata&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">success&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Cascading deletes&lt;/strong>: When a file is deleted from GCS, the corresponding document is automatically removed from the File Search Store. The system searches by &lt;code>source_path&lt;/code> metadata and deletes the matching document.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">process_file_delete&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">source_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;gs://&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">documents&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">store_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">find_documents_by_source_path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">source_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">documents&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">store_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">delete_document&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">documents&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="local-download-design">Local Download Design&lt;/h3>
+&lt;p>Registration from GCS to Gemini File Search API is done by first downloading to a local temporary file.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">download_to_temp_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">_&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ext&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">splitext&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">ext&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ext&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;.txt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">temp_fd&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">temp_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tempfile&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mkstemp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">suffix&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ext&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp_fd&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">blob&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">download_to_filename&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">temp_path&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>While direct upload would be simpler, downloading locally first provides the following benefits:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Extensibility&lt;/strong>: Enables future file transformation steps such as converting Excel to CSV before upload&lt;/li>
+&lt;li>&lt;strong>MIME detection&lt;/strong>: Preserving the file extension enables accurate MIME type detection&lt;/li>
+&lt;li>&lt;strong>Debugging&lt;/strong>: Allows inspection of local file contents when issues occur&lt;/li>
+&lt;/ul>
+&lt;h2 id="error-handling-and-operational-design">Error Handling and Operational Design&lt;/h2>
+&lt;h3 id="always-return-200-ok">Always Return 200 OK&lt;/h3>
+&lt;p>The Cloud Run endpoint always returns 200 OK to Eventarc requests, even when errors occur.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@app.post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">async&lt;/span> &lt;span class="k">def&lt;/span> &lt;span class="nf">handle_storage_event&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Request&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">headers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">dict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">body&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">event&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">from_http&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">event_handler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">process&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">result&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="ne">Exception&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;status&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;error&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;message&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;Event processing failed: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;note&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Error logged and notified via Slack&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This design prevents Eventarc retries. If the endpoint returns 4xx/5xx, Eventarc resends the event, causing the same error to repeat. This results in duplicate Slack notifications and polluted logs. By returning 200 OK and handling errors through Slack notifications and logging, operational issues are avoided.&lt;/p>
+&lt;h3 id="error-monitoring-via-slack-notifications">Error Monitoring via Slack Notifications&lt;/h3>
+&lt;p>When a File Search Store upload fails, an error notification is sent via Slack Webhook. The notification includes the GCS path and error details, enabling operators to quickly identify the problem.&lt;/p>
+&lt;p>While this Slack-based monitoring is sufficient for hackathon-scale development, a production environment would require more robust monitoring and recovery mechanisms, such as Cloud Monitoring alerts, Cloud Logging integration, and Dead Letter Queues for reprocessing failed events.&lt;/p>
+&lt;h3 id="lazy-initialization-for-client-management">Lazy Initialization for Client Management&lt;/h3>
+&lt;p>Gemini API clients and GCS clients use lazy initialization.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@property&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">Optional&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">genai&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Client&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_client&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="kc">None&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">genai&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_client&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This allows the application to start even without API keys configured, making it easier to work in test environments or local development without providing all environment variables.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>The Lawve backend was built on the following design principles:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Loosely coupled automatic sync via event-driven architecture&lt;/strong>: Using Eventarc to keep the frontend and backend decoupled while automatically reflecting GCS changes in Gemini File Search API&lt;/li>
+&lt;li>&lt;strong>Metadata-driven extensible design&lt;/strong>: Automatically extracting metadata from path conventions to support documents beyond legal data&lt;/li>
+&lt;li>&lt;strong>GCS as Single Source of Truth&lt;/strong>: Idempotent uploads and cascading deletes ensure the GCS and File Search Store states always match&lt;/li>
+&lt;/ul>
+&lt;p>By combining an event-driven architecture with GCP managed services, I was able to build a reliable document synchronization platform with minimal code. The simplicity of making documents searchable just by placing files in GCS was a significant advantage during the time-limited hackathon development.&lt;/p>
+&lt;p>The source code is available on &lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
+>GitHub&lt;/a>.&lt;/p></description></item></channel></rss>

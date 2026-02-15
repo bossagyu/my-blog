@@ -1,4 +1,431 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 07 Feb 2026 20:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>【初心者向け】掃除リマインダーBotの使い方チュートリアル</title><link>https://bossagyu.com/blog/047-clean-bot-tutorial/</link><pubDate>Sat, 07 Feb 2026 20:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/047-clean-bot-tutorial/</guid><description>&lt;h2 id="このチュートリアルで学べること">このチュートリアルで学べること&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bossagyu Blog</title><link>https://bossagyu.com/</link><description>Recent content on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/index.xml" rel="self" type="application/rss+xml"/><item><title>GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計</title><link>https://bossagyu.com/blog/048-lawve-backend/</link><pubDate>Sun, 15 Feb 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/048-lawve-backend/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>デジタル庁主催の「法令×デジタル」ハッカソン第三弾に参加し、法令横断検索プロダクト「Lawve」を開発しました。Lawveは、e-Gov法令データやユーザーがアップロードしたドキュメントを横断的に自然言語検索できるプロダクトです。&lt;/p>
+&lt;p>この記事では、筆者が担当したバックエンドのアーキテクチャ設計について解説します。バックエンドの主な責務は「Google Cloud Storage（GCS）にファイルが配置・削除されたとき、Gemini File Search APIの状態を自動的に同期する」ことです。&lt;/p>
+&lt;h2 id="システム全体像">システム全体像&lt;/h2>
+&lt;p>Lawveのシステム構成は以下の通りです。&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart TB
+subgraph ユーザー
+U[ブラウザ]
+end
+subgraph GCP
+subgraph フロントエンド
+FE[Cloud Run&lt;br/>Next.js]
+end
+subgraph バックエンド
+CR[Cloud Run&lt;br/>FastAPI]
+end
+subgraph ストレージ・データ
+GCS[(Cloud Storage)]
+FS[(Firestore)]
+end
+subgraph イベント基盤
+EA[Eventarc]
+end
+subgraph AI
+GEMINI[Gemini File&lt;br/>Search API]
+end
+end
+subgraph 外部API
+EGOV[e-Gov&lt;br/>法令API]
+end
+U --> FE
+FE --> GEMINI
+FE --> FS
+FE --> EGOV
+FE -->|ファイルアップロード| GCS
+GCS -->|イベント通知| EA
+EA -->|CloudEvents| CR
+CR -->|登録・削除| GEMINI
+CR -->|ダウンロード| GCS
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;h3 id="各コンポーネントの役割">各コンポーネントの役割&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>コンポーネント&lt;/th>
+&lt;th>役割&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Cloud Run（Next.js）&lt;/td>
+&lt;td>フロントエンド。検索UI、ファイルアップロード、検索結果の表示&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cloud Run（FastAPI）&lt;/td>
+&lt;td>バックエンド。GCSのイベントを受けてGemini File Search APIを同期&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cloud Storage&lt;/td>
+&lt;td>ドキュメントの保管場所。Single Source of Truth&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Eventarc&lt;/td>
+&lt;td>GCSのファイル変更イベントをCloud Runにルーティング&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Gemini File Search API&lt;/td>
+&lt;td>ドキュメントの全文検索・セマンティック検索を提供&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Firestore&lt;/td>
+&lt;td>ドキュメントメタデータ、コメント情報の管理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>e-Gov法令API&lt;/td>
+&lt;td>法令データの取得&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>この記事では、バックエンドの Cloud Run（FastAPI）の設計に焦点を当てます。&lt;/p>
+&lt;h2 id="イベント駆動アーキテクチャの設計">イベント駆動アーキテクチャの設計&lt;/h2>
+&lt;h3 id="なぜイベント駆動を選んだか">なぜイベント駆動を選んだか&lt;/h3>
+&lt;p>法令検索プロダクトでは、ドキュメントがGCSに配置されたタイミングでGemini File Search APIに自動登録される必要があります。フロントエンドからの同期APIを作る方法もありますが、以下の理由でイベント駆動アーキテクチャを採用しました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>疎結合&lt;/strong>: フロントエンドはGCSにファイルを配置するだけでよく、バックエンドの存在を意識しない&lt;/li>
+&lt;li>&lt;strong>信頼性&lt;/strong>: GCSのイベントをEventarcが確実に検知し、Cloud Runに配信する&lt;/li>
+&lt;li>&lt;strong>運用ツールとの親和性&lt;/strong>: CLIやスクリプトからGCSにファイルを配置しても同じように同期される&lt;/li>
+&lt;/ul>
+&lt;h3 id="eventarcによるイベントルーティング">Eventarcによるイベントルーティング&lt;/h3>
+&lt;p>Eventarcは2種類のGCSイベントを監視し、Cloud Runのエンドポイントにルーティングします。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>イベント&lt;/th>
+&lt;th>トリガー条件&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>google.cloud.storage.object.v1.finalized&lt;/code>&lt;/td>
+&lt;td>ファイルがGCSにアップロードされたとき&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>google.cloud.storage.object.v1.deleted&lt;/code>&lt;/td>
+&lt;td>ファイルがGCSから削除されたとき&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Cloud RunのエンドポイントはCloudEventsフォーマットでイベントを受信します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@app.post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">async&lt;/span> &lt;span class="k">def&lt;/span> &lt;span class="nf">handle_storage_event&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Request&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">headers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">dict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">body&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">event&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">from_http&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">event_handler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">process&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">result&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ファイルアップロード時の処理フロー">ファイルアップロード時の処理フロー&lt;/h3>
+&lt;p>ファイルがGCSに配置されると、以下のフローで処理されます。&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>イベント受信・パスフィルタリング&lt;/strong>: &lt;code>file-search/archive/&lt;/code> プレフィックスを持つファイルのみ処理対象とする&lt;/li>
+&lt;li>&lt;strong>メタデータ抽出&lt;/strong>: GCSパスから &lt;code>law_id&lt;/code> と &lt;code>source_type&lt;/code> を自動抽出&lt;/li>
+&lt;li>&lt;strong>既存ドキュメント削除&lt;/strong>: 同じ &lt;code>source_path&lt;/code> を持つドキュメントがあれば削除（重複防止）&lt;/li>
+&lt;li>&lt;strong>ファイルダウンロード&lt;/strong>: GCSからローカルの一時ファイルにダウンロード&lt;/li>
+&lt;li>&lt;strong>File Search Storeに登録&lt;/strong>: メタデータを付与してGemini File Search APIに登録&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">EventHandler&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">_handle_event_by_type&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">event_type&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_name&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">event_type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;google.cloud.storage.object.v1.finalized&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_handle_file_upload&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elif&lt;/span> &lt;span class="n">event_type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;google.cloud.storage.object.v1.deleted&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_handle_file_delete&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ファイル削除時の処理フロー">ファイル削除時の処理フロー&lt;/h3>
+&lt;p>ファイルがGCSから削除されると、対応するドキュメントをGemini File Search APIからも削除します。&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>イベント受信・パスフィルタリング&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>メタデータでFile Search Store内を検索&lt;/strong>: &lt;code>source_path&lt;/code> メタデータで一致するドキュメントを特定&lt;/li>
+&lt;li>&lt;strong>ドキュメント削除&lt;/strong>: File Search Storeから該当ドキュメントを削除&lt;/li>
+&lt;/ol>
+&lt;h2 id="gemini-file-search-apiとの統合">Gemini File Search APIとの統合&lt;/h2>
+&lt;h3 id="gcpエコシステムでの統一">GCPエコシステムでの統一&lt;/h3>
+&lt;p>Lawveではインフラ全体をGCPで統一する方針を取りました。RAGサービスとしてOpenAIやPineconeなど他の選択肢もありますが、Cloud Run、GCS、EventarcとシームレスにつながるGemini File Search APIを採用しています。&lt;/p>
+&lt;h3 id="file-search-storeの概要">File Search Storeの概要&lt;/h3>
+&lt;p>Gemini File Search Storeは、ドキュメントを登録するとベクトル化・インデックス化を行い、セマンティック検索を提供するマネージドサービスです。バックエンドでは以下の操作を行います。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ドキュメント登録&lt;/strong>: ファイルとメタデータをアップロード&lt;/li>
+&lt;li>&lt;strong>ドキュメント検索&lt;/strong>: メタデータをキーに既存ドキュメントを検索&lt;/li>
+&lt;li>&lt;strong>ドキュメント削除&lt;/strong>: 不要になったドキュメントを削除&lt;/li>
+&lt;/ul>
+&lt;h3 id="メタデータを活用した管理">メタデータを活用した管理&lt;/h3>
+&lt;p>各ドキュメントには以下の3つのメタデータを付与し、管理に活用しています。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>メタデータ&lt;/th>
+&lt;th>用途&lt;/th>
+&lt;th>例&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>law_id&lt;/code>&lt;/td>
+&lt;td>法令ID。法令の一意識別に使用&lt;/td>
+&lt;td>&lt;code>323AC0000000205&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>source_type&lt;/code>&lt;/td>
+&lt;td>ドキュメントの分類&lt;/td>
+&lt;td>&lt;code>user&lt;/code>, &lt;code>doc&lt;/code>, &lt;code>admin&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>source_path&lt;/code>&lt;/td>
+&lt;td>GCSの完全パス。ドキュメントの一意識別に使用&lt;/td>
+&lt;td>&lt;code>gs://bucket/file-search/archive/user/323AC0000000205/医療法.txt&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;code>source_path&lt;/code> はGCSパスそのものであるため、GCSのファイルとFile Search Store内のドキュメントを一意に対応付けることができます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">metadata&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;law_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">law_id&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;source_path&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">source_path&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;source_type&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">source_type&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">custom_metadata&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>&lt;span class="s2">&amp;#34;key&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;string_value&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">value&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">key&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">metadata&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">items&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="汎用性を持たせた設計の工夫">汎用性を持たせた設計の工夫&lt;/h2>
+&lt;h3 id="パスベースのメタデータ抽出">パスベースのメタデータ抽出&lt;/h3>
+&lt;p>バックエンドは法令データに限定せず、GCSの特定パスに配置されたあらゆるファイルを処理できるよう設計しています。パスの規約は以下の通りです。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">gs://&amp;lt;bucket&amp;gt;/file-search/archive/&amp;lt;source_type&amp;gt;/&amp;lt;law_id&amp;gt;/&amp;lt;file_name&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>パスから &lt;code>source_type&lt;/code> と &lt;code>law_id&lt;/code> を正規表現で自動抽出します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># パスパターン&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">GCS_PATH_PATTERN&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;file-search/archive/([^/]+)/([^/]+)/.+&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">parse_gcs_path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">gcs_path&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">Tuple&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">Optional&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">Optional&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">]]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">match&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">search&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">GCS_PATH_PATTERN&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">gcs_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>この設計により、法令データだけでなく社内文書や技術ドキュメントなど、任意のドキュメントを同じ仕組みで管理できます。&lt;code>source_type&lt;/code> を変えるだけで分類を追加でき、パス規約さえ守ればバックエンドのコード変更は不要です。&lt;/p>
+&lt;h3 id="gcsとgemini-file-search-apiの状態同期の保証">GCSとGemini File Search APIの状態同期の保証&lt;/h3>
+&lt;p>GCSを Single Source of Truth（信頼できる唯一の情報源）とし、File Search Storeの状態を常にGCSと一致させることを設計原則としています。&lt;/p>
+&lt;p>&lt;strong>アップロード時の冪等性&lt;/strong>: 同じファイルを再度アップロードした場合、既存のドキュメントを削除してから再登録します。これにより重複を防ぎつつ、内容の更新にも対応できます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">process_file_upload&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">source_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;gs://&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 既存ドキュメントの確認・削除&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_delete_existing_documents&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">source_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 新規アップロード&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">law_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">extract_law_id&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">local_file_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">gcs_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">download_to_temp_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">success&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">store_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">upload_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">local_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">metadata&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">success&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>削除時の連動&lt;/strong>: GCSからファイルが削除されると、File Search Storeからも対応するドキュメントが自動的に削除されます。&lt;code>source_path&lt;/code> メタデータをキーに検索し、一致するドキュメントを削除します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">process_file_delete&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">source_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;gs://&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">bucket_name&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">documents&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">store_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">find_documents_by_source_path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">source_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">documents&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">store_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">delete_document&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">documents&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ローカルダウンロード経由の設計">ローカルダウンロード経由の設計&lt;/h3>
+&lt;p>GCSからGemini File Search APIへの登録は、一度ローカルの一時ファイルにダウンロードしてから行う設計にしています。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">download_to_temp_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bucket_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">file_path&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">_&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ext&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">splitext&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">ext&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ext&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;.txt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">temp_fd&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">temp_path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tempfile&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mkstemp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">suffix&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ext&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp_fd&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">blob&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">download_to_filename&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">temp_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">temp_path&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>直接アップロードする方がシンプルですが、ローカルに一度保存することで以下のメリットがあります。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>拡張性&lt;/strong>: 将来ExcelをCSVに変換するなど、アップロード前のファイル加工処理を挟める&lt;/li>
+&lt;li>&lt;strong>MIME判定&lt;/strong>: ファイル拡張子を保持することで正確なMIMEタイプ判定が可能&lt;/li>
+&lt;li>&lt;strong>デバッグ&lt;/strong>: 問題発生時にローカルファイルの内容を確認できる&lt;/li>
+&lt;/ul>
+&lt;h2 id="エラーハンドリングと運用設計">エラーハンドリングと運用設計&lt;/h2>
+&lt;h3 id="常に200-okを返す設計">常に200 OKを返す設計&lt;/h3>
+&lt;p>Cloud RunのエンドポイントはEventarcからのリクエストに対し、エラーが発生しても常に200 OKを返します。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@app.post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">async&lt;/span> &lt;span class="k">def&lt;/span> &lt;span class="nf">handle_storage_event&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Request&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">headers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">dict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">body&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">event&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">from_http&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">event_handler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">process&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">result&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="ne">Exception&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;status&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;error&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;message&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;Event processing failed: &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;note&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Error logged and notified via Slack&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>これはEventarcのリトライを防ぐための設計です。エラー時に4xx/5xxを返すとEventarcがイベントを再送し、同じエラーが繰り返し発生します。結果としてSlack通知が重複し、ログが汚染されます。エラーはSlack通知とログで把握し、200 OKで受け取り済みとすることで運用上の問題を防いでいます。&lt;/p>
+&lt;h3 id="slack通知によるエラー監視">Slack通知によるエラー監視&lt;/h3>
+&lt;p>File Search Storeへのアップロード失敗時にはSlack Webhookでエラー通知を送信します。通知にはGCSパスとエラー詳細を含め、運用者が問題箇所を素早く特定できるようにしています。&lt;/p>
+&lt;p>このSlack通知による監視はハッカソンの開発規模では十分ですが、実運用ではCloud Monitoringによるアラート設定やCloud Loggingとの連携、Dead Letter Queueによる失敗イベントの再処理など、より堅牢な監視・リカバリの仕組みが必要になるでしょう。&lt;/p>
+&lt;h3 id="遅延初期化によるクライアント管理">遅延初期化によるクライアント管理&lt;/h3>
+&lt;p>Gemini APIクライアントやGCSクライアントは遅延初期化（Lazy Initialization）を採用しています。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@property&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">Optional&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">genai&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Client&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_client&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="kc">None&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">genai&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_client&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>APIキーが未設定の場合でもアプリケーションが起動でき、テスト環境やローカル開発時にすべての環境変数を揃えなくても動作します。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>Lawveのバックエンドは、以下の設計原則に基づいて構築しました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>イベント駆動による疎結合な自動同期&lt;/strong>: Eventarcを活用し、フロントエンドとバックエンドを疎結合に保ちつつGCSの変更を自動的にGemini File Search APIに反映&lt;/li>
+&lt;li>&lt;strong>メタデータ駆動の汎用設計&lt;/strong>: パス規約からメタデータを自動抽出し、法令以外のドキュメントにも対応可能な拡張性を確保&lt;/li>
+&lt;li>&lt;strong>GCSをSingle Source of Truthとした状態管理&lt;/strong>: 冪等なアップロードと連動削除により、GCSとFile Search Storeの状態を常に一致させる&lt;/li>
+&lt;/ul>
+&lt;p>イベント駆動アーキテクチャとGCPのマネージドサービスを組み合わせることで、少ないコードで信頼性の高いドキュメント同期基盤を実現できました。GCSにファイルを配置するだけで検索可能になるシンプルさは、ハッカソンの限られた時間内での開発にも大きく貢献しました。&lt;/p>
+&lt;p>ソースコードは&lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
+>GitHub&lt;/a>で公開しています。&lt;/p></description></item><item><title>【初心者向け】掃除リマインダーBotの使い方チュートリアル</title><link>https://bossagyu.com/blog/047-clean-bot-tutorial/</link><pubDate>Sat, 07 Feb 2026 20:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/047-clean-bot-tutorial/</guid><description>&lt;h2 id="このチュートリアルで学べること">このチュートリアルで学べること&lt;/h2>
 &lt;p>掃除リマインダーBotの基本的な使い方を、5つのステップで学びます。&lt;/p>
 &lt;ol>
 &lt;li>友だち追加&lt;/li>
