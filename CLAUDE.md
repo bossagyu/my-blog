@@ -124,6 +124,14 @@ Hugo設定は `config/_default/` に分割:
 
 ## Gitワークフロー
 
-- `main`に直接コミットしない — 必ずフィーチャーブランチを作成する
-- 変更後、コミットしてPRを作成する
+作業は以下の手順で行うこと:
+
+1. **作業開始前に `main` を最新化する**: `git checkout main && git pull`
+2. **フィーチャーブランチを作成する**: `git checkout -b <type>/<description>`
+   - ブランチ名の例: `feat/add-new-article`, `fix/redirect-404`, `chore/fix-tags`
+3. **変更をコミットする**: コミットメッセージは `<type>: <description>` 形式（例: `feat: 新しい記事を追加`）
+4. **リモートにプッシュしてPRを作成する**: `git push -u origin <branch-name>` → `gh pr create`
+
+**注意:**
+- `main`に直接コミットしない
 - テーマはgit submodule — `git clone --recurse-submodules`または`git submodule update --init`を使用
