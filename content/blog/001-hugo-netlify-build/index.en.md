@@ -5,6 +5,7 @@ draft = false
 toc = true
 categories = ['Engineering']
 tags = ['Hugo', 'Netlify', 'Github', 'Favicon']
+aliases = ['/en/blog/010-favicon/']
 +++
 ## Overview
 This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
