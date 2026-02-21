@@ -24,6 +24,8 @@ images = ["images/share.webp"]
     languageName = "en-US 🇺🇸"
     LanguageCode = "en-US"
     [languages.en.params]
+    [languages.en.params.sidebar]
+      subtitle = "A blog about engineering and management by an engineering manager"
 
 
 [social]
