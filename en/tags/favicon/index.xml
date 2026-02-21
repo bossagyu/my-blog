@@ -1,4 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Favicon on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/favicon/</link><description>Recent content in Favicon on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 02 Dec 2023 00:59:37 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/favicon/index.xml" rel="self" type="application/rss+xml"/><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Favicon on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/favicon/</link><description>Recent content in Favicon on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 24 Dec 2023 22:14:39 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/favicon/index.xml" rel="self" type="application/rss+xml"/><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.&lt;/p>
+&lt;h2 id="what-is-a-favicon">What is a Favicon?&lt;/h2>
+&lt;p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>guidelines for favicons&lt;/a> that appear in search results. Adhering to these guidelines can help your favicon appear in search results.&lt;/p>
+&lt;h2 id="creating-a-favicon">Creating a Favicon&lt;/h2>
+&lt;p>To create a favicon, use the following site:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>When you visit the site, you&amp;rsquo;ll see a screen like this.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/010-favicon/img-010-001.png"
+width="3336"
+height="1510"
+srcset="https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Favicon Generator"
+class="gallery-image"
+data-flex-grow="220"
+data-flex-basis="530px"
+>&lt;/p>
+&lt;p>Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the &amp;lsquo;Download the generated favicon&amp;rsquo; link to download the favicon.&lt;/p>
+&lt;h2 id="displaying-a-favicon-in-hugo">Displaying a Favicon in Hugo&lt;/h2>
+&lt;p>To display a favicon in Hugo, the process varies depending on the theme. For the &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub theme&lt;/a>, you can simply set it in the toml like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to create a favicon and display it in Hugo. Favicons are displayed in bookmarks, tabs, and home screens, so it&amp;rsquo;s a good idea to create one for your blog.&lt;/p></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
 With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
 &lt;p>This guide also covers how to set up a favicon.&lt;/p>

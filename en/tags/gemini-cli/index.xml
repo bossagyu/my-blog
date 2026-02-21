@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gemini CLI on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/gemini-cli/</link><description>Recent content in Gemini CLI on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 22 Jul 2025 23:21:19 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/gemini-cli/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Set Up Gemini CLI on Mac</title><link>https://bossagyu.com/en/blog/037-gemini-cli/</link><pubDate>Tue, 22 Jul 2025 23:21:19 +0900</pubDate><guid>https://bossagyu.com/en/blog/037-gemini-cli/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to set up Gemini CLI.&lt;/p>
+&lt;h2 id="how-to-set-up-gemini-cli">How to Set Up Gemini CLI&lt;/h2>
+&lt;h3 id="1-install-gemini-cli">1. Install Gemini CLI&lt;/h3>
+&lt;p>Use Homebrew to install Gemini CLI.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install gemini-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-configure-gemini-cli">2. Configure Gemini CLI&lt;/h3>
+&lt;p>Run the &lt;code>gemini&lt;/code> command.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gemini
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image.png"
+width="1306"
+height="870"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image_hu0be541ce16dda5305ce2cda0e13985ce_167999_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image_hu0be541ce16dda5305ce2cda0e13985ce_167999_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini Startup Screen"
+class="gallery-image"
+data-flex-grow="150"
+data-flex-basis="360px"
+>&lt;/p>
+&lt;p>You can choose to log in or enter an API key to use it.&lt;br>
+This time, we will select &amp;ldquo;Login with Google&amp;rdquo; to log in.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-1.png"
+width="1224"
+height="572"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-1_hudec8bce04a90cc5853f77858dc3fe150_85544_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-1_hudec8bce04a90cc5853f77858dc3fe150_85544_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini Selection Screen"
+class="gallery-image"
+data-flex-grow="213"
+data-flex-basis="513px"
+>&lt;/p>
+&lt;p>The screen transitions to the login page.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/image-2.png"
+loading="lazy"
+alt="Login Screen"
+>&lt;/p>
+&lt;p>Once logged in, Gemini CLI becomes available.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-3.png"
+width="1236"
+height="514"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-3_hu7826108cbaae69c4267c397afc695858_101200_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-3_hu7826108cbaae69c4267c397afc695858_101200_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini Terminal"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="577px"
+>&lt;/p>
+&lt;h3 id="3-how-to-use-gemini-cli">3. How to Use Gemini CLI&lt;/h3>
+&lt;p>You can ask questions or request tasks using Gemini CLI.&lt;/p>
+&lt;p>This time, we will ask it to solve the FizzBuzz problem.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gemini
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Type &amp;ldquo;Please write the code for FizzBuzz&amp;rdquo; into the Gemini CLI prompt.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-4.png"
+width="1528"
+height="1054"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-4_hu27c9819eb3a319aacaaf80a7a560f69d_462615_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-4_hu27c9819eb3a319aacaaf80a7a560f69d_462615_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini CLI Prompt"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="347px"
+>&lt;/p>
+&lt;p>After inputting, Gemini will generate the code for you.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-5.png"
+width="1166"
+height="842"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-5_hu3abc355b9f0f59267401931abc93d618_167247_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-5_hu3abc355b9f0f59267401931abc93d618_167247_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini CLI Execution Result"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="332px"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>By setting up Gemini CLI, you can use Gemini AI directly from the terminal.&lt;br>
+This enables efficient development and task management using AI.&lt;br>
+Gemini CLI is very user-friendly and makes terminal work smoother.&lt;br>
+Give it a try!&lt;/p></description></item></channel></rss>

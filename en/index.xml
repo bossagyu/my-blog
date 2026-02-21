@@ -1195,7 +1195,70 @@ E -->|Notify| A
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item><item><title>How to Use Redis with Go</title><link>https://bossagyu.com/en/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/en/blog/041-redis-go/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item><item><title>How to Use GitHub Copilot More Effectively with Chat Tools</title><link>https://bossagyu.com/en/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/en/blog/042-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to use Chat Tools to make GitHub Copilot Chat even more powerful.
+By using Chat Tools, you can perform various tasks directly within your conversation with Copilot.&lt;/p>
+&lt;h2 id="what-are-chat-tools">What Are Chat Tools?&lt;/h2>
+&lt;p>Chat Tools are features within GitHub Copilot Chat that allow you to execute special tasks.
+For example, you can fetch terminal outputs or retrieve information from URLs—all from within the chat interface.&lt;/p>
+&lt;h2 id="how-to-use-chat-tools">How to Use Chat Tools&lt;/h2>
+&lt;p>Here’s how to use Chat Tools in VSCode.&lt;/p>
+&lt;p>Basically, you can execute them by typing a command in the following format:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">#&amp;lt;command&amp;gt; &amp;lt;args&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/en/blog/042-github-copilot/image.png"
+width="940"
+height="119"
+srcset="https://bossagyu.com/en/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/042-github-copilot/image_hu36d6687e3f7736497a6806aaa78e3847_23791_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Example of running a Chat Tool"
+class="gallery-image"
+data-flex-grow="789"
+data-flex-basis="1895px"
+>&lt;/p>
+&lt;p>That’s all there is to it.&lt;/p>
+&lt;h2 id="common-chat-tool-commands">Common Chat Tool Commands&lt;/h2>
+&lt;p>Below are some of the most useful Chat Tool commands:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>#codebase&lt;/code>&lt;/td>
+&lt;td>Searches the entire current workspace.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#selection&lt;/code>&lt;/td>
+&lt;td>Adds the currently selected code in the editor as context to the prompt.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#terminal_selection&lt;/code>&lt;/td>
+&lt;td>Adds the selected output in the terminal as context to the prompt.&lt;br>Useful when referencing terminal output after an error occurs.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>#fetch_webpage&lt;/code>&lt;/td>
+&lt;td>Retrieves content from a specified URL and adds it as context to the prompt.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>There are many more useful commands available—refer to the official documentation for details:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features#_chat-tools" target="_blank" rel="noopener"
+>GitHub Copilot Chat Tools&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>In this article, we covered how to use Chat Tools within GitHub Copilot Chat.
+By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p></description></item><item><title>How to Use Redis with Go</title><link>https://bossagyu.com/en/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/en/blog/041-redis-go/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use Redis with Go.&lt;/p>
 &lt;h2 id="starting-redis">Starting Redis&lt;/h2>
 &lt;p>For an explanation of Redis and how to start it using Docker, refer to &lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" target="_blank" rel="noopener"
@@ -1665,7 +1728,105 @@ Open Settings (&lt;code>Cmd + ,&lt;/code>) and search for &lt;code>update mode&l
 &lt;li>&lt;strong>Auto-update&lt;/strong>: Control behavior with the &lt;code>update.mode&lt;/code> setting&lt;/li>
 &lt;/ul>
 &lt;p>By updating regularly, you can take advantage of new features and security patches.
-After updating, always check the version information to confirm the update was successful.&lt;/p></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+After updating, always check the version information to confirm the update was successful.&lt;/p></description></item><item><title>How to Set Up Gemini CLI on Mac</title><link>https://bossagyu.com/en/blog/037-gemini-cli/</link><pubDate>Tue, 22 Jul 2025 23:21:19 +0900</pubDate><guid>https://bossagyu.com/en/blog/037-gemini-cli/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains how to set up Gemini CLI.&lt;/p>
+&lt;h2 id="how-to-set-up-gemini-cli">How to Set Up Gemini CLI&lt;/h2>
+&lt;h3 id="1-install-gemini-cli">1. Install Gemini CLI&lt;/h3>
+&lt;p>Use Homebrew to install Gemini CLI.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install gemini-cli
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-configure-gemini-cli">2. Configure Gemini CLI&lt;/h3>
+&lt;p>Run the &lt;code>gemini&lt;/code> command.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gemini
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image.png"
+width="1306"
+height="870"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image_hu0be541ce16dda5305ce2cda0e13985ce_167999_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image_hu0be541ce16dda5305ce2cda0e13985ce_167999_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini Startup Screen"
+class="gallery-image"
+data-flex-grow="150"
+data-flex-basis="360px"
+>&lt;/p>
+&lt;p>You can choose to log in or enter an API key to use it.&lt;br>
+This time, we will select &amp;ldquo;Login with Google&amp;rdquo; to log in.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-1.png"
+width="1224"
+height="572"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-1_hudec8bce04a90cc5853f77858dc3fe150_85544_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-1_hudec8bce04a90cc5853f77858dc3fe150_85544_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini Selection Screen"
+class="gallery-image"
+data-flex-grow="213"
+data-flex-basis="513px"
+>&lt;/p>
+&lt;p>The screen transitions to the login page.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/image-2.png"
+loading="lazy"
+alt="Login Screen"
+>&lt;/p>
+&lt;p>Once logged in, Gemini CLI becomes available.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-3.png"
+width="1236"
+height="514"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-3_hu7826108cbaae69c4267c397afc695858_101200_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-3_hu7826108cbaae69c4267c397afc695858_101200_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini Terminal"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="577px"
+>&lt;/p>
+&lt;h3 id="3-how-to-use-gemini-cli">3. How to Use Gemini CLI&lt;/h3>
+&lt;p>You can ask questions or request tasks using Gemini CLI.&lt;/p>
+&lt;p>This time, we will ask it to solve the FizzBuzz problem.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gemini
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Type &amp;ldquo;Please write the code for FizzBuzz&amp;rdquo; into the Gemini CLI prompt.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-4.png"
+width="1528"
+height="1054"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-4_hu27c9819eb3a319aacaaf80a7a560f69d_462615_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-4_hu27c9819eb3a319aacaaf80a7a560f69d_462615_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini CLI Prompt"
+class="gallery-image"
+data-flex-grow="144"
+data-flex-basis="347px"
+>&lt;/p>
+&lt;p>After inputting, Gemini will generate the code for you.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/037-gemini-cli/image-5.png"
+width="1166"
+height="842"
+srcset="https://bossagyu.com/en/blog/037-gemini-cli/image-5_hu3abc355b9f0f59267401931abc93d618_167247_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/037-gemini-cli/image-5_hu3abc355b9f0f59267401931abc93d618_167247_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Gemini CLI Execution Result"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="332px"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>By setting up Gemini CLI, you can use Gemini AI directly from the terminal.&lt;br>
+This enables efficient development and task management using AI.&lt;br>
+Gemini CLI is very user-friendly and makes terminal work smoother.&lt;br>
+Give it a try!&lt;/p></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In Visual Studio Code (VSCode), you can customize the colors of indent guides.&lt;br>
 This article explains how to change the colors of indent guides.&lt;br>
 While extensions like indent-rainbow often have issues such as guides being cut off, you can achieve this simply by editing the VSCode settings file.&lt;/p>
@@ -1762,7 +1923,36 @@ data-flex-basis="350px"
 &lt;p>In VSCode, you can easily customize the colors of indent guides.&lt;br>
 By simply adding the necessary items to the settings file, you can change them to your preferred colors.&lt;br>
 This improves code readability and makes it easier to visually grasp the depth of indents.&lt;br>
-Give it a try!&lt;/p></description></item><item><title>How to Upgrade JetBrains Products to a Major Version</title><link>https://bossagyu.com/en/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/034-jetbrains-update/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Give it a try!&lt;/p></description></item><item><title>How to Enable GitHub Copilot for Markdown</title><link>https://bossagyu.com/en/blog/035-github-copilot-markdown/</link><pubDate>Mon, 21 Jul 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/035-github-copilot-markdown/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>By default, GitHub Copilot is disabled for Markdown files.&lt;br>
+This article explains how to enable GitHub Copilot for Markdown.&lt;/p>
+&lt;h2 id="configuring-github-copilot">Configuring GitHub Copilot&lt;/h2>
+&lt;p>Open the GitHub Copilot plugin page in VSCode.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/035-github-copilot-markdown/image.png"
+width="1032"
+height="485"
+srcset="https://bossagyu.com/en/blog/035-github-copilot-markdown/image_hu4f0b967461f0cc9ec012b506a04e858f_139974_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/035-github-copilot-markdown/image_hu4f0b967461f0cc9ec012b506a04e858f_139974_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Copilot Settings Screen"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="510px"
+>&lt;/p>
+&lt;p>Click the gear icon to open the settings.&lt;/p>
+&lt;p>In the settings screen, change &lt;code>markdown&lt;/code> from &lt;code>false&lt;/code> to &lt;code>true&lt;/code>.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/035-github-copilot-markdown/image-1.png"
+width="817"
+height="298"
+srcset="https://bossagyu.com/en/blog/035-github-copilot-markdown/image-1_hua6c26bb551050949dee2247188038d10_37461_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/035-github-copilot-markdown/image-1_hua6c26bb551050949dee2247188038d10_37461_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Enable Markdown Screen"
+class="gallery-image"
+data-flex-grow="274"
+data-flex-basis="657px"
+>&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.&lt;br>
+You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p></description></item><item><title>How to Upgrade JetBrains Products to a Major Version</title><link>https://bossagyu.com/en/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/034-jetbrains-update/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>When upgrading major versions of JetBrains products such as IntelliJ or PyCharm, you need to manually download the new version.&lt;br>
 This article explains how to update easily while preserving your settings.&lt;/p>
 &lt;h2 id="installing-the-jetbrains-toolbox-app">Installing the JetBrains Toolbox App&lt;/h2>
@@ -4541,7 +4731,44 @@ data-flex-basis="717px"
 &lt;/div>&lt;p>In the English directory, naming files as &lt;code>article-name.en.md&lt;/code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.&lt;/p>
-&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.&lt;/p>
+&lt;h2 id="what-is-a-favicon">What is a Favicon?&lt;/h2>
+&lt;p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
+>guidelines for favicons&lt;/a> that appear in search results. Adhering to these guidelines can help your favicon appear in search results.&lt;/p>
+&lt;h2 id="creating-a-favicon">Creating a Favicon&lt;/h2>
+&lt;p>To create a favicon, use the following site:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.favicon-generator.org/" target="_blank" rel="noopener"
+>Favicon.ico &amp;amp; App Icon Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>When you visit the site, you&amp;rsquo;ll see a screen like this.&lt;br>
+&lt;img src="https://bossagyu.com/en/blog/010-favicon/img-010-001.png"
+width="3336"
+height="1510"
+srcset="https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_480x0_resize_box_3.png 480w, https://bossagyu.com/en/blog/010-favicon/img-010-001_hu49ad1e6722066171a92ca460c1768e6d_699110_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Favicon Generator"
+class="gallery-image"
+data-flex-grow="220"
+data-flex-basis="530px"
+>&lt;/p>
+&lt;p>Enter the URL of the site you want a favicon for and click on Generate Favicon. Then, on the displayed screen, click the &amp;lsquo;Download the generated favicon&amp;rsquo; link to download the favicon.&lt;/p>
+&lt;h2 id="displaying-a-favicon-in-hugo">Displaying a Favicon in Hugo&lt;/h2>
+&lt;p>To display a favicon in Hugo, the process varies depending on the theme. For the &lt;a class="link" href="https://github.com/clente/hugo-bearcub/tree/main" target="_blank" rel="noopener"
+>bearcub theme&lt;/a>, you can simply set it in the toml like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">favicon&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;images/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>This article explained how to create a favicon and display it in Hugo. Favicons are displayed in bookmarks, tabs, and home screens, so it&amp;rsquo;s a good idea to create one for your blog.&lt;/p></description></item><item><title>Introduction to Using Lighthouse</title><link>https://bossagyu.com/en/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/009-light-house/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to measure your blog&amp;rsquo;s performance using Lighthouse.&lt;/p>
 &lt;h2 id="what-is-lighthouse">What is Lighthouse?&lt;/h2>
 &lt;p>Lighthouse is a performance measurement tool for websites provided by Google. It&amp;rsquo;s available as a Google Chrome extension and can be used by installing the plugin.&lt;/p>
