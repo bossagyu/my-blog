@@ -1,5 +1,6 @@
 +++
 title = 'Introduction to Using Lighthouse'
+description = 'How to use Google Lighthouse to measure blog performance. Covers Performance, Accessibility, SEO, and Best Practices scores and how to interpret them.'
 date = 2023-12-22T23:08:00+09:00
 draft = false
 categories = ['Engineering']

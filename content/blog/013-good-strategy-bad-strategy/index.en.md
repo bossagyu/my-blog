@@ -1,5 +1,6 @@
 +++
 title = 'How to Create a Product Strategy'
+description = 'How to create an effective product strategy based on "Good Strategy Bad Strategy." Covers the three core elements: diagnosis, guiding policy, and coherent actions.'
 date = 2024-01-08T21:55:15+09:00
 draft = false
 categories = ['Management']

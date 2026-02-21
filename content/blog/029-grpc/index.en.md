@@ -1,5 +1,6 @@
 +++
 title = 'Research on gRPC'
+description = 'Introduction to gRPC with Python implementation. Covers Protocol Buffers schema definition, .proto file syntax, and a hands-on Quick Start tutorial.'
 date = 2024-09-01T17:53:57+09:00
 draft = false
 categories = ['Engineering']

@@ -1,5 +1,6 @@
 +++
 title = 'How to Check if an S3 Object Exists in Python boto3'
+description = 'How to check if an S3 object exists using Python boto3. Covers the recommended head_object method, resource vs client differences, and common pitfalls.'
 date = 2024-01-27T21:41:37+09:00
 draft = false
 categories = ['Engineering']

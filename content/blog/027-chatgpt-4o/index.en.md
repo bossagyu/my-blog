@@ -1,5 +1,6 @@
 +++
 title = 'Introduction to ChatGPT 4o'
+description = 'Overview of OpenAI GPT-4o features. Covers real-time voice interaction, faster responses, improved multilingual support, and key upgrades from previous models.'
 date = 2024-05-14T23:22:39+09:00
 draft = false
 categories = ['Engineering']

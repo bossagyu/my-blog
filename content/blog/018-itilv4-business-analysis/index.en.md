@@ -1,5 +1,6 @@
 +++
 title = 'Explaining Business Analysis in ITIL v4'
+description = 'Understanding ITIL v4 business analysis. Covers SWOT analysis, customer journey mapping, and solution identification processes with practical insights.'
 date = 2024-02-09T09:00:56+09:00
 draft = false
 categories = ['Management']

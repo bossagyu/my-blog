@@ -1,5 +1,6 @@
 +++
 title = 'Building a Cleaning Reminder Bot with AWS Lambda + LINE'
+description = 'Building a cleaning reminder LINE Bot with AWS Lambda, API Gateway, S3, and EventBridge. Covers SAM serverless architecture and Python implementation details.'
 date = 2026-02-07T19:00:00+09:00
 draft = false
 categories = ['Engineering']
