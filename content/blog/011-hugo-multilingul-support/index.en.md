@@ -1,5 +1,6 @@
 +++
 title = 'Using ChatGPT to Make a Hugo Blog Multilingual'
+description = 'How to make a Hugo blog multilingual using ChatGPT. Covers Markdown translation prompts, config.toml settings, and directory structure for i18n support.'
 date = 2023-12-31T20:46:36+09:00
 draft = false
 categories = ['Engineering']

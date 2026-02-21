@@ -1,5 +1,6 @@
 +++
 title = 'Setting Up a Global gitignore for All Projects'
+description = 'How to set up a global gitignore at ~/.config/git/ignore for all projects. Includes config examples for .idea, node_modules, and other common exclusions.'
 date = 2024-04-16T23:16:25+09:00
 draft = false
 categories = ['Engineering']

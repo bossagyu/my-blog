@@ -1,5 +1,6 @@
 +++
 title = 'Integrating AWS API Gateway with Lambda'
+description = 'How to integrate AWS API Gateway with Lambda. Covers REST API vs HTTP API selection, proxy integration setup, and trigger configuration steps.'
 date = 2024-01-13T18:06:52+09:00
 draft = false
 categories = ['Engineering']

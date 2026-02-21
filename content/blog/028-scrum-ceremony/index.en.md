@@ -1,5 +1,6 @@
 +++
 title = 'Improving Team Performance by Revisiting Scrum Ceremonies'
+description = 'How to improve team performance through Scrum ceremonies. Covers optimization tips for daily standups, sprint reviews, and backlog refinement.'
 date = 2024-11-18T09:36:05+09:00
 draft = false
 categories = ['Management']

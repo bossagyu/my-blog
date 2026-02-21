@@ -1,7 +1,8 @@
 +++
 title = 'How to Enable GitHub Copilot for Markdown'
+description = 'How to enable GitHub Copilot suggestions for Markdown files in VSCode. A quick settings change to boost your Markdown editing productivity.'
 date = 2025-07-21T10:00:00+09:00
-draft = true
+draft = false
 categories = ['Engineering']
 tags = ['GitHub Copilot', 'Markdown', 'VSCode']
 +++

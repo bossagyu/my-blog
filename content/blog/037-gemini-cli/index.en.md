@@ -1,7 +1,8 @@
 +++
 title = 'How to Set Up Gemini CLI on Mac'
+description = 'How to install Gemini CLI on Mac with Homebrew and use Google Gemini AI from the terminal. Covers setup, Google account linking, and code generation.'
 date = 2025-07-22T23:21:19+09:00
-draft = true
+draft = false
 categories = ['Engineering']
 tags = ['Gemini CLI', 'AI']
 +++

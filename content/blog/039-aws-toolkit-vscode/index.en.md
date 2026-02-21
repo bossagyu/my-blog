@@ -1,5 +1,6 @@
 +++
 title = 'How to Use AWS Toolkit in Visual Studio Code'
+description = 'How to install AWS Toolkit in VSCode and configure Tokyo region (ap-northeast-1). Covers AWS Explorer region switching steps.'
 date = 2025-08-11T20:33:30+09:00
 draft = false
 categories = ['Engineering']

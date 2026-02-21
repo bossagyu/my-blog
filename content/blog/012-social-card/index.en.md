@@ -1,5 +1,6 @@
 +++
 title = 'Setting Up Twitter Social Cards'
+description = 'How to set up Twitter Social Cards for a Hugo blog. Covers Summary Card vs Large Image types, theme-specific settings, and debugging tools.'
 date = 2024-01-06T21:45:12+09:00
 draft = false
 categories = ['Blog']

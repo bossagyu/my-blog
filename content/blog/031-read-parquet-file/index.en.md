@@ -1,5 +1,6 @@
 +++
 title = 'How to Read Parquet Files on macOS'
+description = 'How to read Parquet files on macOS from the command line. Covers parquet-cli installation and usage of meta, head, and schema commands.'
 date = 2024-09-15T16:52:04+09:00
 draft = false
 categories = ['Engineering']

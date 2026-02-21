@@ -1,5 +1,6 @@
 +++
 title = 'Explaining Capacity and Performance Management in ITIL v4'
+description = 'Understanding ITIL v4 capacity and performance management. Covers latency requirements, throughput measurement, and Dynatrace monitoring with practical examples.'
 date = 2024-02-27T08:53:36+09:00
 draft = false
 categories = ['Management']

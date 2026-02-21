@@ -1,5 +1,6 @@
 +++
 title = 'How to Use Stable Diffusion Web UI on Mac'
+description = 'How to install Stable Diffusion Web UI on Mac for local image generation. Covers Python environment setup, model placement, and image generation steps.'
 date = 2024-02-12T11:24:59+09:00
 draft = false
 categories = ['Engineering']

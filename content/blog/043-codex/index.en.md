@@ -1,5 +1,6 @@
 +++
 title = 'How to Use Codex CLI'
+description = 'How to install and use Codex CLI. Covers npm and Homebrew installation, sign-in process, basic commands, and local development workflow.'
 date = 2025-12-12T10:00:00+09:00
 draft = false
 categories = ['Engineering']
