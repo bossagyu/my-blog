@@ -121,3 +121,5 @@ except ClientError as e:
 ## 関連記事
 
 - [AWS Lambda + LINE Botで掃除リマインダーを作る](/blog/046-clean-bot-technical/)
+- [Pyenvとvenvを用いたローカル環境のセットアップ方法](/blog/004-python-setup/)（Python環境構築）
+- [MacでUVを用いてPythonの開発環境を構築する](/blog/032-python-uv/)（モダンなPython環境構築）

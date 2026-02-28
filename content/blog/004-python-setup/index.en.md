@@ -129,3 +129,7 @@ rm -rf venv
 ```
 
 This completes the setup of the local environment.
+
+## Related Articles
+
+- [Setting Up a Python Development Environment on Mac with UV](/en/blog/032-python-uv/) (as a modern alternative)

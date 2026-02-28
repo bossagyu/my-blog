@@ -313,3 +313,8 @@ Lawveのバックエンドは、以下の設計原則に基づいて構築しま
 イベント駆動アーキテクチャとGCPのマネージドサービスを組み合わせることで、少ないコードで信頼性の高いドキュメント同期基盤を実現できました。GCSにファイルを配置するだけで検索可能になるシンプルさは、ハッカソンの限られた時間内での開発にも大きく貢献しました。
 
 ソースコードは[GitHub](https://github.com/23-u-don/lawve-backend)で公開しています。
+
+## 関連記事
+
+- [MacでUVを用いてPythonの開発環境を構築する](/blog/032-python-uv/)（Python環境構築）
+- [OpenAI Response APIの使い方まとめ](/blog/044-openai-response-api/)（OpenAI APIの利用）

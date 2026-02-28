@@ -178,3 +178,9 @@ We’ve successfully materialized data in the Online Store and fetched it using 
 
 ## Summary
 We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.
+
+## Related Articles
+
+- [Setting Up a Python Development Environment on Mac with UV](/en/blog/032-python-uv/) (Python environment setup)
+- [Setting Up a Local Environment Using Pyenv and venv](/en/blog/004-python-setup/) (traditional Python environment setup)
+- [How to Read Parquet Files on macOS](/en/blog/031-read-parquet-file/) (Feast sample data format)

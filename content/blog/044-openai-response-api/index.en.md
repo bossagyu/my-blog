@@ -64,3 +64,7 @@ Start with the docs and expand as your use case grows.
 
 ## Summary
 The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.
+
+## Related Articles
+
+- [Designing an Event-Driven Backend to Sync GCS with Gemini File Search API](/en/blog/048-lawve-backend/) (a practical example of API integration patterns)

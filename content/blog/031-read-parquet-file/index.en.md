@@ -110,3 +110,7 @@ $ parquet schema driver_stats.parquet
 
 ## Conclusion
 This article explained how to easily read Parquet files on macOS.
+
+## Related Articles
+
+- [Running the Feast Tutorial on macOS](/en/blog/033-feast-tutorial/) (using Feast with Parquet files)

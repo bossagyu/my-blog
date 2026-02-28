@@ -68,3 +68,7 @@ Response APIは単発の生成にも対話にも使える統一APIです。
 ## まとめ
 Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAPIです。
 公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。
+
+## 関連記事
+
+- [GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計](/blog/048-lawve-backend/)（API統合パターンの実践例）

@@ -103,5 +103,10 @@ $ python post_bluesky.py
 
 ## まとめ
 
-今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。  
+今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。
 Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。
+
+## 関連記事
+
+- [Pyenvとvenvを用いたローカル環境のセットアップ方法](/blog/004-python-setup/)（Python環境構築）
+- [MacでUVを用いてPythonの開発環境を構築する](/blog/032-python-uv/)（モダンなPython環境構築）

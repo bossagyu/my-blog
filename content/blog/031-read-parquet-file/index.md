@@ -111,3 +111,7 @@ $ parquet schema driver_stats.parquet
 
 ## まとめ
 macでparquetファイルを簡単に読む方法を紹介しました。
+
+## 関連記事
+
+- [FeastのチュートリアルをMacで実行する](/blog/033-feast-tutorial/)（Parquetファイルを使ったFeastの活用）
