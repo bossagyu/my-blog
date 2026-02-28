@@ -143,5 +143,6 @@ AWS EventBridgeを用いてLambdaを定期実行する方法を解説しまし�
 
 ## 関連記事
 
+- [AWS API GatewayとLambdaを連携させる方法](/blog/014-aws-apigateway-lambda/)
 - [掃除リマインダーBotの使い方](/blog/045-clean-bot/)
 - [掃除リマインダーBotの技術解説](/blog/046-clean-bot-technical/)

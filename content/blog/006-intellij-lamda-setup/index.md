@@ -77,3 +77,8 @@ Runを選択すると、Lambdaがローカルで実行されます。
 ## まとめ
 IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
 Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。
+
+## 関連記事
+
+- [AWS API GatewayとLambdaを連携させる方法](/blog/014-aws-apigateway-lambda/)
+- [AWS Lambda + LINE Botで掃除リマインダーを作る](/blog/046-clean-bot-technical/)

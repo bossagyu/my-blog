@@ -77,3 +77,8 @@ Selecting Run will execute the Lambda locally.
 ## Summary
 This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
 Developing in IntelliJ and executing locally can significantly improve development efficiency.
+
+## Related Articles
+
+- [Integrating AWS API Gateway with Lambda](/blog/014-aws-apigateway-lambda/)
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/blog/046-clean-bot-technical/)

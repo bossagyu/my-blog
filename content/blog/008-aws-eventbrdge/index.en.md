@@ -142,5 +142,6 @@ Serverless scheduled execution is great for reminder bots and batch processing. 
 
 ## Related Articles
 
+- [Integrating AWS API Gateway with Lambda](/blog/014-aws-apigateway-lambda/)
 - [How to Use the Cleaning Reminder Bot](/blog/045-clean-bot/)
 - [Building a Cleaning Reminder Bot - Technical Guide](/blog/046-clean-bot-technical/)

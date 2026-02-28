@@ -117,3 +117,7 @@ For single object existence checks, use `head_object`.
 
 - [boto3 S3 head_object](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html)
 - [Stack Overflow: check if a file exists in s3 bucket using boto3](https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3)
+
+## Related Articles
+
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/blog/046-clean-bot-technical/)
