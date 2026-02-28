@@ -2,6 +2,7 @@
 title = 'Designing an Event-Driven Backend to Sync GCS with Gemini File Search API'
 description = 'Building a FastAPI backend that automatically syncs Google Cloud Storage files with Gemini File Search API via Eventarc. Covers event-driven architecture design and implementation patterns for extensibility.'
 date = 2026-02-15T00:00:00+09:00
+lastmod = 2026-02-15T00:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'GCP', 'Gemini', 'FastAPI']

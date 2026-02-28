@@ -2,6 +2,7 @@
 title = 'Understanding Availability Management in ITIL v4'
 description = 'Understanding ITIL v4 availability management. Covers service availability control, analysis, improvement processes, SLA design, and dashboard examples from real experience.'
 date = 2024-01-30T20:34:58+09:00
+lastmod = 2024-01-30T20:34:58+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL']

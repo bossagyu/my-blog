@@ -2,6 +2,7 @@
 title = 'Complete Guide to Using GitHub Copilot in VSCode'
 description = 'How to set up and use GitHub Copilot in VSCode. Covers extension installation, Markdown support configuration, and Chat tool usage for maximum productivity.'
 date = 2024-02-04T22:34:51+09:00
+lastmod = 2024-02-04T22:34:51+09:00
 draft = false
 categories = ['Engineering']
 tags = ['VSCode', 'Copilot', 'GitHub Copilot', 'Chat tool']

@@ -2,6 +2,7 @@
 title = 'PythonでBluesky APIを用いて自動投稿する方法'
 description = 'PythonとATProtocolライブラリを使ってBluesky APIで自動投稿する方法を解説。アプリパスワードの生成から、投稿スクリプトの作成・実行までの手順を紹介します。'
 date = 2024-04-07T23:52:09+09:00
+lastmod = 2024-04-07T23:52:09+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'Bluesky', 'API']

@@ -2,6 +2,7 @@
 title = 'Migrating from Evernote to Notion'
 description = 'How to migrate from Evernote to Notion easily. Covers the Notion import feature and tips for migrating notebooks one at a time.'
 date = 2024-04-29T19:32:38+09:00
+lastmod = 2024-04-29T19:32:38+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Evernote', 'Notion']

@@ -2,6 +2,7 @@
 title = 'How to Upgrade JetBrains Products to a Major Version'
 description = 'How to upgrade JetBrains products like IntelliJ and PyCharm to a major version. Use JetBrains Toolbox App to update while preserving settings.'
 date = 2025-06-12T20:46:53+09:00
+lastmod = 2025-06-12T20:46:53+09:00
 draft = false
 +++
 

@@ -2,6 +2,7 @@
 title = 'Publishing a Blog with Hugo + Netlify + Github'
 description = 'How to publish a blog using Hugo, Netlify, and GitHub. A beginner-friendly guide covering static site generation, GitHub integration, Netlify deployment, and favicon setup.'
 date = 2023-12-02T00:59:37+09:00
+lastmod = 2023-12-02T00:59:37+09:00
 draft = false
 toc = true
 categories = ['Engineering']

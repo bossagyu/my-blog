@@ -2,6 +2,7 @@
 title = 'Visual Studio Codeのアップデート方法'
 description = 'MacでVisual Studio Codeをアップデートする手順を解説。GUIでの更新、Homebrewを使ったコマンドラインでの更新、自動アップデート設定、トラブルシューティングまで網羅的に紹介します。'
 date = 2025-07-27T18:12:16+09:00
+lastmod = 2025-07-27T18:12:16+09:00
 draft = false
 categories = ['Engineering']
 tags = ['VSCode', 'update']

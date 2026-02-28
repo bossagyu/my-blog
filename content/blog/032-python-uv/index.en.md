@@ -2,6 +2,7 @@
 title = "Setting Up a Python Development Environment on Mac with UV"
 description = 'How to set up a Python environment on Mac with uv, a fast Rust-based package manager. Covers installation, virtual environment creation, and package management.'
 date = 2025-01-01T14:39:53+09:00
+lastmod = 2025-01-01T14:39:53+09:00
 draft = false
 categories = ["Engineering"]
 tags = ["Python", "uv"]

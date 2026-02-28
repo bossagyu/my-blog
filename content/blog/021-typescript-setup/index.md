@@ -2,6 +2,7 @@
 title = 'Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法'
 description = 'VoltaでNode.jsとTypeScriptの開発環境をMacにセットアップする方法を解説。yarnのインストールからプロジェクト作成、Hello World実行までの手順を紹介します。'
 date = 2024-03-10T13:11:13+09:00
+lastmod = 2024-03-10T13:11:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']

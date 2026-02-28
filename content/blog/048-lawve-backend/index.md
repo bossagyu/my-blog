@@ -2,6 +2,7 @@
 title = 'GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計'
 description = 'Google Cloud StorageのファイルをEventarc経由でGemini File Search APIと自動同期するバックエンドをFastAPIで構築。イベント駆動アーキテクチャの設計思想と汎用性を持たせた実装のポイントを解説します。'
 date = 2026-02-15T00:00:00+09:00
+lastmod = 2026-02-15T00:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'GCP', 'Gemini', 'FastAPI']

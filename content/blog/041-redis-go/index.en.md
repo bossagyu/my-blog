@@ -2,6 +2,7 @@
 title = 'How to Use Redis with Go'
 description = 'How to use Redis with Go. Covers go-redis library setup, connection, data read/write operations, and basic commands with sample code.'
 date = 2025-10-05T20:25:02+09:00
+lastmod = 2025-10-05T20:25:02+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Redis', 'Go', 'Database', 'NoSQL']

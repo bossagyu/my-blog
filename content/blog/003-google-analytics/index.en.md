@@ -2,6 +2,7 @@
 title = 'How to Set Up Google Analytics with Hugo'
 description = 'How to set up Google Analytics GA4 on a Hugo blog. Covers tracking ID setup, config.toml configuration, and embedding analytics tags in templates.'
 date = 2023-12-09T18:09:42+09:00
+lastmod = 2023-12-09T18:09:42+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'SEO', 'Google Analytics']

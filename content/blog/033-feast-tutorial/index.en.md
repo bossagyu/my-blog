@@ -2,6 +2,7 @@
 title = 'Running the Feast Tutorial on macOS'
 description = 'How to set up Feast Feature Store on macOS. Covers installation, UI launch, training data retrieval, and materialization to the online store.'
 date = 2025-01-13T11:49:53+09:00
+lastmod = 2025-01-13T11:49:53+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Feast', 'Python']

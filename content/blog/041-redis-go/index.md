@@ -2,6 +2,7 @@
 title = 'RedisをGoで使う方法'
 description = 'GoでRedisを操作する方法を解説。go-redisライブラリを使った接続、データの読み書き、基本的なコマンドの使い方をサンプルコード付きで紹介します。'
 date = 2025-10-05T20:25:02+09:00
+lastmod = 2025-10-05T20:25:02+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Redis', 'Go', 'Database', 'NoSQL']

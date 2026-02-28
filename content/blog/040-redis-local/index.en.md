@@ -2,6 +2,7 @@
 title = 'How to Run Redis with Docker'
 description = 'How to run Redis with Docker. Covers container setup for the in-memory database, basic operations, connection testing, and container cleanup.'
 date = 2025-10-03T07:29:31+09:00
+lastmod = 2025-10-03T07:29:31+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Redis', 'Database', 'NoSQL']

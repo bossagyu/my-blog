@@ -2,6 +2,7 @@
 title = 'ITIL v4 キャパシティ及びパフォーマンス管理について解説'
 description = 'ITIL v4のキャパシティ・パフォーマンス管理を解説。レイテンシー要件の特定からスループット測定、Dynatraceを使った可視化まで実務経験を交えて紹介します。'
 date = 2024-02-27T08:53:36+09:00
+lastmod = 2024-02-27T08:53:36+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL', 'Capacity Management', 'Performance Management']

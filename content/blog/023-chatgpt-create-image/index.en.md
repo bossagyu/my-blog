@@ -2,6 +2,7 @@
 title = 'Generating Images with ChatGPT'
 description = 'How to generate images with ChatGPT Plus using DALL-E. Covers launching from Explore GPTs, prompt input examples, and refining images with follow-up instructions.'
 date = 2024-03-31T17:35:07+09:00
+lastmod = 2024-03-31T17:35:07+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT', 'Image Generation']

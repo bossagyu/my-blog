@@ -2,6 +2,7 @@
 title = 'AWS API GatewayとLambdaを連携させる方法'
 description = 'AWS API GatewayとLambdaを連携させる方法を解説。REST APIとHTTP APIの選び方、プロキシ統合の設定、トリガー追加の手順を詳しく説明します。'
 date = 2024-01-13T18:06:52+09:00
+lastmod = 2024-01-13T18:06:52+09:00
 draft = false
 categories = ['Engineering']
 tags = ['AWS', 'API Gateway', 'Lambda']

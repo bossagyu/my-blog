@@ -2,6 +2,7 @@
 title = 'How to Use GitHub Copilot More Effectively with Chat Tools'
 description = 'How to use GitHub Copilot Chat tools in VSCode for better productivity. Covers codebase search, selection, terminal commands, and web page fetching.'
 date = 2025-10-07T08:39:41+09:00
+lastmod = 2025-10-07T08:39:41+09:00
 draft = false
 categories = ['Engineering']
 tags = ['GitHub Copilot', 'VSCode', 'Chat tool']

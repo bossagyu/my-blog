@@ -2,6 +2,7 @@
 title = 'FeastのチュートリアルをMacで実行する'
 description = 'MacでFeast Feature Storeをセットアップする方法を解説。インストールからUI起動、トレーニングデータの取得、オンラインストアへのマテリアライズまで紹介します。'
 date = 2025-01-13T11:49:53+09:00
+lastmod = 2025-01-13T11:49:53+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Feast', 'Python']

@@ -2,6 +2,7 @@
 title = 'EvernoteからNotionへの移行方法'
 description = 'EvernoteからNotionへ簡単に移行する方法を解説。Notionのインポート機能を使った手順と、ノートブックを一つずつ移行する際の注意点を紹介します。'
 date = 2024-04-29T19:32:38+09:00
+lastmod = 2024-04-29T19:32:38+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Evernote', 'Notion']

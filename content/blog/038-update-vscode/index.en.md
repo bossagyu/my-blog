@@ -2,6 +2,7 @@
 title = 'How to Update Visual Studio Code'
 description = 'A complete guide to updating Visual Studio Code on Mac. Covers GUI updates, Homebrew command-line updates, auto-update settings, and troubleshooting tips.'
 date = 2025-07-27T18:12:16+09:00
+lastmod = 2025-07-27T18:12:16+09:00
 draft = false
 categories = ['Engineering']
 tags = ['VSCode', 'update']

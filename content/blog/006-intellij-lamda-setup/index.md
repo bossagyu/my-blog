@@ -2,6 +2,7 @@
 title = 'IntellijでAWS Toolkitを使ってLambdaを効率よく開発する'
 description = 'IntelliJでAWS Toolkitを使ってLambda関数を開発する方法を解説。Docker・AWS CLIの準備からLambda作成、ローカル実行までの手順を紹介します。'
 date = 2023-12-12T22:40:05+09:00
+lastmod = 2023-12-12T22:40:05+09:00
 draft = false
 categories = ['Engineering']
 tags = ['IntelliJ', 'AWS', 'Lambda']

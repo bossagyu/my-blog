@@ -2,6 +2,7 @@
 title = 'LINE Messaging APIの登録と使い方'
 description = 'LINE Messaging APIの登録方法とcurlでメッセージを送信する手順を解説。プロバイダー作成からチャンネル設定、Botへの投稿までをステップバイステップで紹介します。'
 date = 2023-12-07T09:37:00+09:00
+lastmod = 2023-12-07T09:37:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['LINE BOT', 'LINE API']

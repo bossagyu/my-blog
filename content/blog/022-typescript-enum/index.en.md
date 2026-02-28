@@ -2,6 +2,7 @@
 title = 'Using Enums in TypeScript'
 description = 'How to use Enums in TypeScript. Covers numeric and string enum definitions, string comparison patterns, and JavaScript compilation output examples.'
 date = 2024-03-23T13:11:13+09:00
+lastmod = 2024-03-23T13:11:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']

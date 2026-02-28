@@ -2,6 +2,7 @@
 title = 'Using Google Search Console to Make Your Blog Searchable on Google'
 description = 'How to use Google Search Console to make your blog discoverable on Google. Covers domain verification, sitemap registration, and index request steps.'
 date = 2023-12-18T19:10:04+09:00
+lastmod = 2023-12-18T19:10:04+09:00
 draft = false
 categories = ['Engineering']
 tags = ['google search console', 'SEO', 'blog']

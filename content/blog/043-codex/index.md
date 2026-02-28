@@ -2,6 +2,7 @@
 title = 'Codex CLIの使い方まとめ'
 description = 'Codex CLIのインストールからサインイン、基本的なコマンドの使い方まで解説。npm/Homebrewでの導入方法とローカル環境での活用法を紹介します。'
 date = 2025-12-12T10:00:00+09:00
+lastmod = 2025-12-12T10:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Codex', 'CLI', 'AI', 'Tools']

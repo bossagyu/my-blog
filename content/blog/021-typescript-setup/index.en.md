@@ -2,6 +2,7 @@
 title = 'Setting Up TypeScript Development Environment Easily with Volta'
 description = 'How to set up a TypeScript development environment on Mac with Volta. Covers Node.js installation, yarn setup, project creation, and Hello World execution.'
 date = 2024-03-10T13:11:13+09:00
+lastmod = 2024-03-10T13:11:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']

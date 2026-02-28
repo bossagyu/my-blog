@@ -2,6 +2,7 @@
 title = 'MacでUVを用いてPythonの開発環境を構築する'
 description = 'Rustで書かれた高速なPythonパッケージ管理ツールuvのインストールから使い方まで解説。仮想環境の作成やパッケージインストールの手順を紹介します。'
 date = 2025-01-01T14:39:53+09:00
+lastmod = 2025-01-01T14:39:53+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'uv']

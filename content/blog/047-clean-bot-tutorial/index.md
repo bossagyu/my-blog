@@ -2,6 +2,7 @@
 title = '【初心者向け】掃除リマインダーBotの使い方チュートリアル'
 description = '掃除リマインダーLINE Botの基本的な使い方を5ステップで解説。友だち追加からタスク完了まで、画像付きで分かりやすく説明します。'
 date = 2026-02-07T20:00:00+09:00
+lastmod = 2026-02-07T20:00:00+09:00
 draft = false
 categories = ['Product']
 tags = ['LINE BOT', 'Clean Bot', '掃除', 'チュートリアル']

@@ -2,6 +2,7 @@
 title = 'TyeScriptにおけるEnumの使い方'
 description = 'TypeScriptのEnum（列挙型）の使い方を解説。数値型・文字列型Enumの定義方法から、文字列比較の実装例、JavaScriptへのコンパイル結果まで紹介します。'
 date = 2024-03-23T13:11:13+09:00
+lastmod = 2024-03-23T13:11:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']

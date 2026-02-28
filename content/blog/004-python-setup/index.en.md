@@ -2,6 +2,7 @@
 title = 'Setting Up a Local Environment Using Pyenv and venv'
 description = 'How to set up a Python development environment on Mac using Pyenv and venv. Covers version management, virtual environment creation, updates, and deletion.'
 date = 2023-12-10T23:19:33+09:00
+lastmod = 2023-12-10T23:19:33+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'mac']

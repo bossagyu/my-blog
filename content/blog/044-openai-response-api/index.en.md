@@ -2,6 +2,7 @@
 title = 'How to Use the OpenAI Response API'
 description = 'How to use the OpenAI Response API. Covers API key setup, Python text generation, and tool calling with minimal code examples to get started.'
 date = 2025-12-24T10:00:00+09:00
+lastmod = 2025-12-24T10:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['OpenAI', 'ResponseAPI', 'Python', 'API']

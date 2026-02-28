@@ -2,6 +2,7 @@
 title = 'Hugo + Netlify + Githubでブログを公開する'
 description = 'HugoとNetlify、Githubを使ってブログを公開する手順を解説。静的サイト生成からGitHub連携、Netlifyデプロイ、Favicon設定まで初心者向けに説明します。'
 date = 2023-12-02T00:59:37+09:00
+lastmod = 2023-12-02T00:59:37+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'Netlify', 'Github', 'Favicon']

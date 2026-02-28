@@ -2,6 +2,7 @@
 title = 'Creating and Displaying a Favicon with Hugo'
 description = 'How to create a favicon and set it up on a Hugo blog. Covers image generation with Favicon Generator and configuration in config.toml.'
 date = 2023-12-24T22:14:39+09:00
+lastmod = 2023-12-24T22:14:39+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'Favicon']

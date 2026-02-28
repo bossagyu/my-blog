@@ -2,6 +2,7 @@
 title = 'ChatGPT 4oの紹介'
 description = 'OpenAIが発表したGPT-4oの新機能を紹介。リアルタイム音声対話、高速応答、多言語対応の強化など、従来モデルからの進化ポイントを解説します。'
 date = 2024-05-14T23:22:39+09:00
+lastmod = 2024-05-14T23:22:39+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT']
