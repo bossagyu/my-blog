@@ -339,5 +339,9 @@ In Protocol Buffers, all values have types, which can be divided into scalar typ
 &lt;/div>
 &lt;/div>&lt;p>The newly added method is confirmed to be functioning correctly.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This time, we researched gRPC and followed the official documentation tutorial.&lt;br>
-gRPC allows for schema-first development and enables high-performance communication via HTTP/2. Recently, it has been gaining attention as an alternative to REST APIs, making it a technology worth familiarizing yourself with.&lt;/p></description></item></channel></rss>
+&lt;p>This time, we researched gRPC and followed the official documentation tutorial.
+gRPC allows for schema-first development and enables high-performance communication via HTTP/2. Recently, it has been gaining attention as an alternative to REST APIs, making it a technology worth familiarizing yourself with.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/030-go-environment-construction/" >Setting Up a Go Development Environment on Mac and Running Hello World&lt;/a> (Go environment setup)&lt;/li>
+&lt;/ul></description></item></channel></rss>

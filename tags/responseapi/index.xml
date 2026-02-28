@@ -80,4 +80,9 @@
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAPIです。
-公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p></description></item></channel></rss>
+公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/027-chatgpt-4o/" >ChatGPT 4oの紹介&lt;/a>（ChatGPTの最新機能紹介）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/048-lawve-backend/" >GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計&lt;/a>（API統合パターンの実践例）&lt;/li>
+&lt;/ul></description></item></channel></rss>

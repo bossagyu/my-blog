@@ -62,4 +62,9 @@ data-flex-basis="656px"
 &lt;p>If the settings don’t seem to work, it might be due to incorrect implementation or the meta tags not being properly set. In such cases, use the &lt;a class="link" href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener"
 >debugging tool&lt;/a> provided by Twitter to check if the settings have been correctly applied.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p></description></item></channel></rss>
+&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -61,7 +61,13 @@ data-flex-basis="1895px"
 &lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>In this article, we covered how to use Chat Tools within GitHub Copilot Chat.
-By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p></description></item><item><title>Complete Guide to Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/035-github-copilot-markdown/" >How to Enable GitHub Copilot for Markdown&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/043-codex/" >How to Use Codex CLI&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Complete Guide to Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article comprehensively covers how to set up GitHub Copilot in VSCode, enable it for Markdown files, and use Chat tools. A GitHub Copilot account is required as a prerequisite.&lt;/p>
 &lt;h2 id="getting-started-with-github-copilot-in-vscode">Getting Started with GitHub Copilot in VSCode&lt;/h2>
 &lt;h3 id="installing-the-extension">Installing the Extension&lt;/h3>
@@ -206,4 +212,11 @@ This blog was also written with GitHub Copilot assistance, significantly improvi
 &lt;li>&lt;strong>Chat Tools&lt;/strong>: Add context with &lt;code>#codebase&lt;/code> and &lt;code>#selection&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>GitHub Copilot not only provides code completions but also assists with writing text.
-Give it a try and see how it can help you.&lt;/p></description></item></channel></rss>
+Give it a try and see how it can help you.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/005-github-copilot/" >How to Use GitHub Copilot in IntelliJ&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/035-github-copilot-markdown/" >How to Enable GitHub Copilot for Markdown&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/043-codex/" >How to Use Codex CLI&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

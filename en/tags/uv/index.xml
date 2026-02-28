@@ -78,5 +78,9 @@ data-flex-basis="1047px"
 &lt;/div>&lt;p>For more details on UV, refer to the &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
 >official documentation&lt;/a>.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to set up a Python development environment on Mac.&lt;br>
-As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p></description></item></channel></rss>
+&lt;p>This article explained how to set up a Python development environment on Mac.
+As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (traditional Python environment setup)&lt;/li>
+&lt;/ul></description></item></channel></rss>

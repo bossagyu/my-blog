@@ -74,5 +74,10 @@
 &lt;/ul>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>今回はキャパシティ及びパフォーマンス管理について学習した内容に基づき筆者の経験を当てはめ説明しました。
-キャパシティ及びパフォーマンス管理では、可用性管理相当のことをキャパシティとパフォーマンスの観点から行うことが理解できました。&lt;br>
-筆者の経験ではパフォーマンスの話と可用性の話についてはセットで行うことが多いのであまり独立して行わないと感じました。&lt;/p></description></item></channel></rss>
+キャパシティ及びパフォーマンス管理では、可用性管理相当のことをキャパシティとパフォーマンスの観点から行うことが理解できました。
+筆者の経験ではパフォーマンスの話と可用性の話についてはセットで行うことが多いのであまり独立して行わないと感じました。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/016-itilv4-availability-management/" >ITIL v4 可用性管理について解説&lt;/a>（関連ITIL v4記事）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/018-itilv4-business-analysis/" >ITIL v4 事業分析について解説&lt;/a>（関連ITIL v4記事）&lt;/li>
+&lt;/ul></description></item></channel></rss>

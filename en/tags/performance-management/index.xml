@@ -71,5 +71,10 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.&lt;br>
-In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p></description></item></channel></rss>
+&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.
+In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/016-itilv4-availability-management/" >Understanding Availability Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/018-itilv4-business-analysis/" >Explaining Business Analysis in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;/ul></description></item></channel></rss>

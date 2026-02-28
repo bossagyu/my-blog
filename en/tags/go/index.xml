@@ -182,4 +182,9 @@
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use Redis with Go.
 When working with Redis in Go, use the &lt;a class="link" href="https://github.com/redis/go-redis" target="_blank" rel="noopener"
->go-redis&lt;/a> package.&lt;/p></description></item></channel></rss>
+>go-redis&lt;/a> package.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/040-redis-local/" >How to Run Redis with Docker&lt;/a> (how to start Redis)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/030-go-environment-construction/" >Setting Up a Go Development Environment on Mac and Running Hello World&lt;/a> (Go environment setup)&lt;/li>
+&lt;/ul></description></item></channel></rss>

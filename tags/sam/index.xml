@@ -520,4 +520,7 @@ E -->|通知| A
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/015-s3-object-check/" >S3のオブジェクトの存在確認をする方法【Python boto3】&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

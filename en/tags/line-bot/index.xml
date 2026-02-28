@@ -519,7 +519,10 @@ E -->|Notify| A
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/015-s3-object-check/" >How to Check if an S3 Object Exists in Python boto3&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Registering and Using the LINE Messaging API</title><link>https://bossagyu.com/en/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/002-line-messaging-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>I thought of creating an application using LINE&amp;rsquo;s Bot, so first, I will make the Bot usable.&lt;br>
 This page introduces how to register for the LINE Messaging API and how to send messages from the command line using curl.&lt;/p>
@@ -613,4 +616,8 @@ Get &amp;lsquo;Your User ID&amp;rsquo; from the channel basic settings.&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/045-clean-bot/" >Cleaning Reminder LINE Bot&lt;/a> (a practical LINE Bot project)&lt;/li>
+&lt;/ul></description></item></channel></rss>

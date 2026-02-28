@@ -284,5 +284,11 @@ data-flex-basis="338px"
 >&lt;/p>
 &lt;p>Feastのオンラインストアにマテリアラズして、オンラインストアからデータを取得することができました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>本記事では、Feastのチュートリアルを基に、Mac上でFeastを使用してデータを管理する方法を紹介しました。UVを使ったPython開発環境の構築から、Feastのインストール、UIの起動、そしてトレーニングデータの準備やオンラインストアへのデータマテリアライズまで、一連の操作を丁寧に解説しました。&lt;br>
-これにより、Feastを利用してトレーニングデータと推論データの管理を効率的に行うことができ、トレーニングスキューの回避が可能になります。&lt;/p></description></item></channel></rss>
+&lt;p>本記事では、Feastのチュートリアルを基に、Mac上でFeastを使用してデータを管理する方法を紹介しました。UVを使ったPython開発環境の構築から、Feastのインストール、UIの起動、そしてトレーニングデータの準備やオンラインストアへのデータマテリアライズまで、一連の操作を丁寧に解説しました。
+これにより、Feastを利用してトレーニングデータと推論データの管理を効率的に行うことができ、トレーニングスキューの回避が可能になります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（従来のPython環境構築方法）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/031-read-parquet-file/" >macでparquetファイルを読む方法&lt;/a>（Feastのサンプルデータ形式）&lt;/li>
+&lt;/ul></description></item></channel></rss>

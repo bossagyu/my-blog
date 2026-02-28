@@ -104,4 +104,9 @@ data-flex-basis="189px"
 &lt;p>Checks if the loading speed of web pages on smartphones is optimized and if it&amp;rsquo;s suitable for PWAs. This wasn&amp;rsquo;t checked in this case.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>The article explained how to measure the performance of a blog using Lighthouse.
-Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p></description></item></channel></rss>
+Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;/ul></description></item></channel></rss>

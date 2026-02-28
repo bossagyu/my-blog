@@ -110,7 +110,12 @@ data-flex-basis="189px"
 今回はチェックしてません。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
-特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析&lt;/li>
+&lt;/ul></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。&lt;/p>
 &lt;p>Faviconの設定方法も合わせて解説します。&lt;/p>
@@ -282,4 +287,12 @@ Googleより検索結果に表示されるための&lt;a class="link" href="http
 &lt;li>&lt;strong>Netlify&lt;/strong>: 自動デプロイ&lt;/li>
 &lt;li>&lt;strong>Favicon&lt;/strong>: ブランディングのための設定&lt;/li>
 &lt;/ol>
-&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p></description></item></channel></rss>
+&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析の導入&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/007-google-search-console/" >Google Search Consoleでブログを検索対象にする方法&lt;/a> - SEO対策&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/009-light-house/" >Lighthouseの使い方の紹介&lt;/a> - パフォーマンス計測&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/011-hugo-multilingul-support/" >ChatGPTを利用してHugoで作ったブログを多言語対応する方法&lt;/a> - 多言語対応&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/012-social-card/" >Twitter Social Cardの設定方法&lt;/a> - SNS共有の最適化&lt;/li>
+&lt;/ul></description></item></channel></rss>

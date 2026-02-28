@@ -180,7 +180,12 @@
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>GoでRedisを使う方法について説明しました。
 GoでRedisを使う場合は、&lt;a class="link" href="https://github.com/redis/go-redis" target="_blank" rel="noopener"
->go-redis&lt;/a>を使用します。&lt;/p></description></item><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>go-redis&lt;/a>を使用します。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" >RedisをDockerで起動する方法&lt;/a>（Redisの起動方法）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/030-go-environment-construction/" >macでGoの開発環境を構築して最速でHello Worldする&lt;/a>（Go環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介します。&lt;/p>
 &lt;h2 id="go言語のインストール">Go言語のインストール&lt;/h2>
 &lt;p>brewを使ってGo言語をインストールします。&lt;/p>
@@ -258,4 +263,9 @@ GoでRedisを使う場合は、&lt;a class="link" href="https://github.com/redis
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p></description></item></channel></rss>
+&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/029-grpc/" >gRPCについての調査&lt;/a>（gRPCの実践）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/041-redis-go/" >RedisをGoで使う方法&lt;/a>（Redis + Goの実践）&lt;/li>
+&lt;/ul></description></item></channel></rss>

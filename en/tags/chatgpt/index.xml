@@ -76,7 +76,12 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p></description></item><item><title>Introduction to ChatGPT 4o</title><link>https://bossagyu.com/en/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="introduction-of-gpt-4o">Introduction of GPT-4o&lt;/h2>
+&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/029-grpc/" >Research on gRPC&lt;/a> (practical gRPC implementation)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/041-redis-go/" >How to Use Redis with Go&lt;/a> (Redis + Go in practice)&lt;/li>
+&lt;/ul></description></item><item><title>Introduction to ChatGPT 4o</title><link>https://bossagyu.com/en/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="introduction-of-gpt-4o">Introduction of GPT-4o&lt;/h2>
 &lt;p>On May 13, 2024, OpenAI announced a new GPT model, ChatGPT-4o.&lt;/p>
 &lt;p>GPT-4o has the following improvements compared to previous models:&lt;/p>
 &lt;ul>
@@ -114,6 +119,11 @@ I believe that how well engineers can utilize generative AI will greatly affect 
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
 >Hello ChatGPT-4o&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/023-chatgpt-create-image/" >Generating Images with ChatGPT&lt;/a> (image generation with ChatGPT)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (OpenAI API integration)&lt;/li>
 &lt;/ul></description></item><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Unlike image generation models like Stable Diffusion, ChatGPT can also generate images. This guide explains how to do so.&lt;br>
 For those using the ChatGPT paid plan, images can be generated without any additional fees, allowing for the creation of commercially usable images with minimal effort.&lt;/p>
@@ -197,7 +207,11 @@ alt="ChatGPT image generation limit"
 class="gallery-image"
 data-flex-grow="363"
 data-flex-basis="873px"
->&lt;/p></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+>&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (overview of ChatGPT 4o features)&lt;/li>
+&lt;/ul></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
 &lt;h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT&lt;/h2>
 &lt;p>You can translate articles written in Markdown into English using &lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
@@ -305,4 +319,8 @@ data-flex-basis="717px"
 &lt;/div>&lt;p>In the English directory, naming files as &lt;code>article-name.en.md&lt;/code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.&lt;/p>
-&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item></channel></rss>
+&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;/ul></description></item></channel></rss>

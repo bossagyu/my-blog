@@ -62,7 +62,12 @@ data-flex-basis="656px"
 &lt;p>If the settings don’t seem to work, it might be due to incorrect implementation or the meta tags not being properly set. In such cases, use the &lt;a class="link" href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener"
 >debugging tool&lt;/a> provided by Twitter to check if the settings have been correctly applied.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
 &lt;h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT&lt;/h2>
 &lt;p>You can translate articles written in Markdown into English using &lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
@@ -170,7 +175,11 @@ data-flex-basis="717px"
 &lt;/div>&lt;p>In the English directory, naming files as &lt;code>article-name.en.md&lt;/code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.&lt;/p>
-&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;/ul></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.&lt;/p>
 &lt;h2 id="what-is-a-favicon">What is a Favicon?&lt;/h2>
 &lt;p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
@@ -324,7 +333,12 @@ data-flex-basis="782px"
 &lt;/div>&lt;p>After adding the above source code and rebuilding, data will be sent to Google Analytics.&lt;/p>
 &lt;h2 id="tips">Tips&lt;/h2>
 &lt;p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&amp;rsquo;s possible that the tags have not been added correctly.&lt;br>
-To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
 With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
 &lt;p>This guide also covers how to set up a favicon.&lt;/p>
@@ -496,4 +510,12 @@ Then click &amp;ldquo;Download the generated favicon&amp;rdquo; to download your
 &lt;li>&lt;strong>Netlify&lt;/strong>: Automatic deployment&lt;/li>
 &lt;li>&lt;strong>Favicon&lt;/strong>: Branding configuration&lt;/li>
 &lt;/ol>
-&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p></description></item></channel></rss>
+&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >How to Add Your Blog to Google Search Using Google Search Console&lt;/a> - SEO setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/009-light-house/" >Introduction to Using Lighthouse&lt;/a> - Performance measurement&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/011-hugo-multilingul-support/" >Using ChatGPT to Make a Hugo Blog Multilingual&lt;/a> - Multilingual support&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/012-social-card/" >Setting Up Twitter Social Cards&lt;/a> - Social media optimization&lt;/li>
+&lt;/ul></description></item></channel></rss>

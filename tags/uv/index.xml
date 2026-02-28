@@ -79,4 +79,8 @@ data-flex-basis="1047px"
 >公式のドキュメント&lt;/a> を参照してください。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>MacでPythonの開発環境を構築する方法を紹介しました。
-uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p></description></item></channel></rss>
+uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（従来のPython環境構築方法）&lt;/li>
+&lt;/ul></description></item></channel></rss>

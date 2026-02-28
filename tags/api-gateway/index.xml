@@ -93,4 +93,10 @@ data-flex-basis="345px"
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>本記事ではAWS API GatewayとLambdaを連携させる方法を紹介しました。
-API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p></description></item></channel></rss>
+API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/006-intellij-lamda-setup/" >IntellijでAWS Toolkitを使ってLambdaを効率よく開発する&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

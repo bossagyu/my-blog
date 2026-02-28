@@ -36,6 +36,11 @@ ChatGPTのモデルの精度の向上はめざましく、どんどん人間の�
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
 >Hello ChatGPT-4o&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/023-chatgpt-create-image/" >chatGPTで画像を生成する方法&lt;/a>（ChatGPTによる画像生成）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>（OpenAI API活用）&lt;/li>
 &lt;/ul></description></item><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Stable Diffusionなどの画像生成用のモデルではなく ChatGPTでも画像が生成できるので、生成の方法を説明します。&lt;br>
 ChatGPTの有料プランを利用している人は新たに課金などせずに利用できるので、大きな手間をかけずに商用利用可能な画像を生成できます。&lt;/p>
@@ -119,7 +124,11 @@ alt="ChatGPTで画像の生成が制限"
 class="gallery-image"
 data-flex-grow="363"
 data-flex-basis="873px"
->&lt;/p></description></item><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/027-chatgpt-4o/" >ChatGPT 4oの紹介&lt;/a>（ChatGPT 4oの新機能紹介）&lt;/li>
+&lt;/ul></description></item><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。&lt;/p>
 &lt;h2 id="ghatgptを利用して記事を英語化する方法">GhatGPTを利用して記事を英語化する方法&lt;/h2>
 &lt;p>Markdownで書かれた記事を&lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
@@ -233,4 +242,8 @@ GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正し�
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
 ChatGPTを利用することで、英語化を簡単に行うことができます。
 また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。&lt;/p>
-&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item></channel></rss>
+&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;/ul></description></item></channel></rss>

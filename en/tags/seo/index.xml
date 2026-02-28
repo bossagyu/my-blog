@@ -104,7 +104,12 @@ data-flex-basis="189px"
 &lt;p>Checks if the loading speed of web pages on smartphones is optimized and if it&amp;rsquo;s suitable for PWAs. This wasn&amp;rsquo;t checked in this case.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>The article explained how to measure the performance of a blog using Lighthouse.
-Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p></description></item><item><title>Using Google Search Console to Make Your Blog Searchable on Google</title><link>https://bossagyu.com/en/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/007-google-search-console/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;/ul></description></item><item><title>Using Google Search Console to Make Your Blog Searchable on Google</title><link>https://bossagyu.com/en/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/007-google-search-console/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>To appear in Google searches, it&amp;rsquo;s not enough just to apply SEO strategies; your site must first be recognized by Google. This article explains how to make your own custom domain blog appear in Google search results using Google Search Console.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
 &lt;ol>
@@ -211,7 +216,13 @@ data-flex-basis="801px"
 It took a few hours for the index to be registered after clicking.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make your custom domain blog searchable using Google Search Console.&lt;br>
-It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p></description></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/009-light-house/" >Introduction to Using Lighthouse&lt;/a> - Performance measurement&lt;/li>
+&lt;/ul></description></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article briefly explains how to set up Google Analytics with Hugo.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
 &lt;ol>
@@ -328,4 +339,9 @@ data-flex-basis="782px"
 &lt;/div>&lt;p>After adding the above source code and rebuilding, data will be sent to Google Analytics.&lt;/p>
 &lt;h2 id="tips">Tips&lt;/h2>
 &lt;p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&amp;rsquo;s possible that the tags have not been added correctly.&lt;br>
-To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p></description></item></channel></rss>
+To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -181,4 +181,8 @@ In this case, we will use two systems to manage different versions of Python and
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (as a modern alternative)&lt;/li>
+&lt;/ul></description></item></channel></rss>

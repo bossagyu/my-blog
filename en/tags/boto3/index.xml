@@ -165,4 +165,10 @@ For single object existence checks, use &lt;code>head_object&lt;/code>.&lt;/p>
 >boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
 >Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (modern Python environment setup)&lt;/li>
 &lt;/ul></description></item></channel></rss>

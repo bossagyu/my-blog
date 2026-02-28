@@ -115,4 +115,9 @@ data-flex-basis="782px"
 &lt;/div>&lt;p>After adding the above source code and rebuilding, data will be sent to Google Analytics.&lt;/p>
 &lt;h2 id="tips">Tips&lt;/h2>
 &lt;p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&amp;rsquo;s possible that the tags have not been added correctly.&lt;br>
-To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p></description></item></channel></rss>
+To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -192,6 +192,7 @@ data-flex-basis="1400px"
 &lt;p>サーバーレスで定期実行を実現できるので、リマインダーBotやバッチ処理などに活用してみてください。&lt;/p>
 &lt;h2 id="関連記事">関連記事&lt;/h2>
 &lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >掃除リマインダーBotの技術解説&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

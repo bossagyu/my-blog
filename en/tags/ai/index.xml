@@ -168,7 +168,13 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item><item><title>How to Set Up Gemini CLI on Mac</title><link>https://bossagyu.com/en/blog/037-gemini-cli/</link><pubDate>Tue, 22 Jul 2025 23:21:19 +0900</pubDate><guid>https://bossagyu.com/en/blog/037-gemini-cli/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Set Up Gemini CLI on Mac</title><link>https://bossagyu.com/en/blog/037-gemini-cli/</link><pubDate>Tue, 22 Jul 2025 23:21:19 +0900</pubDate><guid>https://bossagyu.com/en/blog/037-gemini-cli/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to set up Gemini CLI.&lt;/p>
 &lt;h2 id="how-to-set-up-gemini-cli">How to Set Up Gemini CLI&lt;/h2>
 &lt;h3 id="1-install-gemini-cli">1. Install Gemini CLI&lt;/h3>
@@ -263,10 +269,15 @@ data-flex-grow="138"
 data-flex-basis="332px"
 >&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>By setting up Gemini CLI, you can use Gemini AI directly from the terminal.&lt;br>
-This enables efficient development and task management using AI.&lt;br>
-Gemini CLI is very user-friendly and makes terminal work smoother.&lt;br>
-Give it a try!&lt;/p></description></item><item><title>How to Use Stable Diffusion Web UI on Mac</title><link>https://bossagyu.com/en/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/en/blog/019-stable-diffusion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>By setting up Gemini CLI, you can use Gemini AI directly from the terminal.
+This enables efficient development and task management using AI.
+Gemini CLI is very user-friendly and makes terminal work smoother.
+Give it a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (comparison with ChatGPT)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (API integration in practice)&lt;/li>
+&lt;/ul></description></item><item><title>How to Use Stable Diffusion Web UI on Mac</title><link>https://bossagyu.com/en/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/en/blog/019-stable-diffusion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article will guide you through installing Stable Diffusion Web UI on Mac and using it locally.&lt;/p>
 &lt;h2 id="what-is-stable-diffusion">What is Stable Diffusion?&lt;/h2>
 &lt;p>Stable Diffusion is a type of image processing technology using AI. By inputting text, it can generate images corresponding to that text.&lt;/p>

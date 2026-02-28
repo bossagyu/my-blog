@@ -146,7 +146,12 @@ data-flex-basis="721px"
 &lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
-Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Github CopilotをIntellijで使う方法を解説します。
 合わせてショートカットのチートシートを記載します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
@@ -220,5 +225,10 @@ data-flex-basis="984px"
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。&lt;br>
-この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p></description></item></channel></rss>
+&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/017-vscode-copilot/" >VSCodeでGithub Copilotを使いこなす完全ガイド&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/042-github-copilot/" >Github CopilotをChat toolを使って便利に使う方法&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

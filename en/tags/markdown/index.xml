@@ -26,5 +26,10 @@ data-flex-grow="274"
 data-flex-basis="657px"
 >&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.&lt;br>
-You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p></description></item></channel></rss>
+&lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.
+You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

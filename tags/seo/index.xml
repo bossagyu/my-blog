@@ -106,7 +106,13 @@ data-flex-basis="801px"
 クリックしてから数時間でインデックスが登録されました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。&lt;br>
-せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p></description></item><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/009-light-house/" >Lighthouseの使い方の紹介&lt;/a> - パフォーマンス計測&lt;/li>
+&lt;/ul></description></item><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>HugoをでGoogle Analyticsを設定する方法をサクッと解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
 &lt;ol>
@@ -226,4 +232,9 @@ data-flex-basis="782px"
 &lt;/div>&lt;p>上記ソースコードを追加した状態で、再度ビルドするとGoogle Analyticsにデータが送信されるようになります。&lt;/p>
 &lt;h2 id="tips">tips&lt;/h2>
 &lt;p>こちらの対応をしても、Google Analyticsにデータが連携されていないように見える場合は、タグの追加がうまくいっていない可能性があります。&lt;br>
-まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。&lt;/p></description></item></channel></rss>
+まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/007-google-search-console/" >Google Search Consoleでブログを検索対象にする方法&lt;/a> - SEO対策&lt;/li>
+&lt;/ul></description></item></channel></rss>

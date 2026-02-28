@@ -425,7 +425,12 @@ CR -->|Download| GCS
 &lt;/ul>
 &lt;p>By combining an event-driven architecture with GCP managed services, I was able to build a reliable document synchronization platform with minimal code. The simplicity of making documents searchable just by placing files in GCS was a significant advantage during the time-limited hackathon development.&lt;/p>
 &lt;p>The source code is available on &lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
->GitHub&lt;/a>.&lt;/p></description></item><item><title>Building a Cleaning Reminder Bot with AWS Lambda + LINE</title><link>https://bossagyu.com/en/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+>GitHub&lt;/a>.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (using OpenAI API)&lt;/li>
+&lt;/ul></description></item><item><title>Building a Cleaning Reminder Bot with AWS Lambda + LINE</title><link>https://bossagyu.com/en/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.&lt;/p>
 &lt;p>See the completed Bot here: &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >Cleaning Reminder Bot&lt;/a>&lt;/p>
 &lt;h2 id="architecture">Architecture&lt;/h2>
@@ -946,7 +951,10 @@ E -->|Notify| A
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/015-s3-object-check/" >How to Check if an S3 Object Exists in Python boto3&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>How to Use the OpenAI Response API</title><link>https://bossagyu.com/en/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/044-openai-response-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to use the OpenAI Response API for text generation. It covers the official documentation, how to obtain an API key, and a minimal Python example.&lt;/p>
 &lt;h2 id="what-is-the-response-api">What is the Response API?&lt;/h2>
@@ -1025,7 +1033,12 @@ E -->|Notify| A
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p></description></item><item><title>How to Use Codex CLI</title><link>https://bossagyu.com/en/blog/043-codex/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/043-codex/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (overview of ChatGPT&amp;rsquo;s latest features)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/048-lawve-backend/" >Designing an Event-Driven Backend to Sync GCS with Gemini File Search API&lt;/a> (a practical example of API integration patterns)&lt;/li>
+&lt;/ul></description></item><item><title>How to Use Codex CLI</title><link>https://bossagyu.com/en/blog/043-codex/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/043-codex/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to access Codex from your local environment via the command line with Codex CLI. It covers installation, sign-in methods, command execution examples, and common commands.&lt;/p>
 &lt;h2 id="how-to-install-codex-cli">How to Install Codex CLI&lt;/h2>
 &lt;p>If you already have Node.js, you can install it via npm:&lt;/p>
@@ -1195,7 +1208,13 @@ E -->|Notify| A
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p></description></item><item><title>How to Use GitHub Copilot More Effectively with Chat Tools</title><link>https://bossagyu.com/en/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/en/blog/042-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Use GitHub Copilot More Effectively with Chat Tools</title><link>https://bossagyu.com/en/blog/042-github-copilot/</link><pubDate>Tue, 07 Oct 2025 08:39:41 +0900</pubDate><guid>https://bossagyu.com/en/blog/042-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use Chat Tools to make GitHub Copilot Chat even more powerful.
 By using Chat Tools, you can perform various tasks directly within your conversation with Copilot.&lt;/p>
 &lt;h2 id="what-are-chat-tools">What Are Chat Tools?&lt;/h2>
@@ -1258,7 +1277,13 @@ data-flex-basis="1895px"
 &lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>In this article, we covered how to use Chat Tools within GitHub Copilot Chat.
-By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p></description></item><item><title>How to Use Redis with Go</title><link>https://bossagyu.com/en/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/en/blog/041-redis-go/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/035-github-copilot-markdown/" >How to Enable GitHub Copilot for Markdown&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/043-codex/" >How to Use Codex CLI&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Use Redis with Go</title><link>https://bossagyu.com/en/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/en/blog/041-redis-go/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use Redis with Go.&lt;/p>
 &lt;h2 id="starting-redis">Starting Redis&lt;/h2>
 &lt;p>For an explanation of Redis and how to start it using Docker, refer to &lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" target="_blank" rel="noopener"
@@ -1442,7 +1467,12 @@ By taking advantage of these tools, you can make Copilot even more convenient an
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use Redis with Go.
 When working with Redis in Go, use the &lt;a class="link" href="https://github.com/redis/go-redis" target="_blank" rel="noopener"
->go-redis&lt;/a> package.&lt;/p></description></item><item><title>How to Run Redis with Docker</title><link>https://bossagyu.com/en/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/en/blog/040-redis-local/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+>go-redis&lt;/a> package.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/040-redis-local/" >How to Run Redis with Docker&lt;/a> (how to start Redis)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/030-go-environment-construction/" >Setting Up a Go Development Environment on Mac and Running Hello World&lt;/a> (Go environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>How to Run Redis with Docker</title><link>https://bossagyu.com/en/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/en/blog/040-redis-local/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to run Redis with Docker.&lt;/p>
 &lt;h2 id="what-is-redis">What is Redis?&lt;/h2>
 &lt;p>Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. It provides high-speed read/write performance and supports various data structures such as strings, lists, sets, and hashes.&lt;/p>
@@ -1516,7 +1546,11 @@ If it is not installed, please download and install it from the &lt;a class="lin
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>In this article, we explained how to run Redis using Docker.
 Redis is widely used as a high-performance database, and with Docker, it can be easily set up.
-Give Redis a try and see how it can help you.&lt;/p></description></item><item><title>How to Use AWS Toolkit in Visual Studio Code</title><link>https://bossagyu.com/en/blog/039-aws-toolkit-vscode/</link><pubDate>Mon, 11 Aug 2025 20:33:30 +0900</pubDate><guid>https://bossagyu.com/en/blog/039-aws-toolkit-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Give Redis a try and see how it can help you.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/041-redis-go/" >How to Use Redis with Go&lt;/a> (practical example of using Redis in Go)&lt;/li>
+&lt;/ul></description></item><item><title>How to Use AWS Toolkit in Visual Studio Code</title><link>https://bossagyu.com/en/blog/039-aws-toolkit-vscode/</link><pubDate>Mon, 11 Aug 2025 20:33:30 +0900</pubDate><guid>https://bossagyu.com/en/blog/039-aws-toolkit-vscode/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use AWS Toolkit in Visual Studio Code (VSCode).&lt;/p>
 &lt;h2 id="installing-aws-toolkit">Installing AWS Toolkit&lt;/h2>
 &lt;ol>
@@ -1823,10 +1857,15 @@ data-flex-grow="138"
 data-flex-basis="332px"
 >&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>By setting up Gemini CLI, you can use Gemini AI directly from the terminal.&lt;br>
-This enables efficient development and task management using AI.&lt;br>
-Gemini CLI is very user-friendly and makes terminal work smoother.&lt;br>
-Give it a try!&lt;/p></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>By setting up Gemini CLI, you can use Gemini AI directly from the terminal.
+This enables efficient development and task management using AI.
+Gemini CLI is very user-friendly and makes terminal work smoother.
+Give it a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (comparison with ChatGPT)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (API integration in practice)&lt;/li>
+&lt;/ul></description></item><item><title>How to Customize Indent Guides in VSCode</title><link>https://bossagyu.com/en/blog/036-vscode-indent/</link><pubDate>Tue, 22 Jul 2025 21:01:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/036-vscode-indent/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In Visual Studio Code (VSCode), you can customize the colors of indent guides.&lt;br>
 This article explains how to change the colors of indent guides.&lt;br>
 While extensions like indent-rainbow often have issues such as guides being cut off, you can achieve this simply by editing the VSCode settings file.&lt;/p>
@@ -1951,8 +1990,13 @@ data-flex-grow="274"
 data-flex-basis="657px"
 >&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.&lt;br>
-You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p></description></item><item><title>How to Upgrade JetBrains Products to a Major Version</title><link>https://bossagyu.com/en/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/034-jetbrains-update/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.
+You can enable it easily by changing the settings in VSCode, so give it a try!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Upgrade JetBrains Products to a Major Version</title><link>https://bossagyu.com/en/blog/034-jetbrains-update/</link><pubDate>Thu, 12 Jun 2025 20:46:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/034-jetbrains-update/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>When upgrading major versions of JetBrains products such as IntelliJ or PyCharm, you need to manually download the new version.&lt;br>
 This article explains how to update easily while preserving your settings.&lt;/p>
 &lt;h2 id="installing-the-jetbrains-toolbox-app">Installing the JetBrains Toolbox App&lt;/h2>
@@ -2282,7 +2326,13 @@ data-flex-basis="338px"
 >&lt;/p>
 &lt;p>We’ve successfully materialized data in the Online Store and fetched it using Feast.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p></description></item><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (traditional Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/031-read-parquet-file/" >How to Read Parquet Files on macOS&lt;/a> (Feast sample data format)&lt;/li>
+&lt;/ul></description></item><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article introduces how to set up a Python development environment on Mac using UV.&lt;/p>
 &lt;h2 id="what-is-uv">What is UV?&lt;/h2>
 &lt;p>UV is a package management tool announced in mid-2024.&lt;br>
@@ -2362,8 +2412,12 @@ data-flex-basis="1047px"
 &lt;/div>&lt;p>For more details on UV, refer to the &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
 >official documentation&lt;/a>.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to set up a Python development environment on Mac.&lt;br>
-As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p></description></item><item><title>Improving Team Performance by Revisiting Scrum Ceremonies</title><link>https://bossagyu.com/en/blog/028-scrum-ceremony/</link><pubDate>Mon, 18 Nov 2024 09:36:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/028-scrum-ceremony/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explained how to set up a Python development environment on Mac.
+As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (traditional Python environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>Improving Team Performance by Revisiting Scrum Ceremonies</title><link>https://bossagyu.com/en/blog/028-scrum-ceremony/</link><pubDate>Mon, 18 Nov 2024 09:36:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/028-scrum-ceremony/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In Scrum teams, ceremonies are essential for aligning team members, sharing progress, addressing challenges, and planning for the next sprint. However, when these ceremonies are conducted out of habit without revisiting their purpose, they can become time-consuming and ineffective.&lt;/p>
 &lt;p>This article explores ways to improve team performance by revisiting and optimizing Scrum ceremonies.&lt;/p>
 &lt;h2 id="clarify-the-purpose-of-each-ceremony">Clarify the Purpose of Each Ceremony&lt;/h2>
@@ -2606,7 +2660,11 @@ As of January 2025, UV is both fast and easy to use, making it a valuable tool f
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>This article explained how to easily read Parquet files on macOS.&lt;/p></description></item><item><title>Setting Up a Go Development Environment on Mac and Running Hello World</title><link>https://bossagyu.com/en/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-go-environment-construction/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explained how to easily read Parquet files on macOS.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/033-feast-tutorial/" >Running the Feast Tutorial on macOS&lt;/a> (using Feast with Parquet files)&lt;/li>
+&lt;/ul></description></item><item><title>Setting Up a Go Development Environment on Mac and Running Hello World</title><link>https://bossagyu.com/en/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/030-go-environment-construction/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide introduces how to quickly set up a Go development environment on Mac and run a Hello World program.&lt;/p>
 &lt;h2 id="installing-go">Installing Go&lt;/h2>
 &lt;p>Install Go using Homebrew.&lt;/p>
@@ -2684,7 +2742,12 @@ As of January 2025, UV is both fast and easy to use, making it a valuable tool f
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p></description></item><item><title>Research on gRPC</title><link>https://bossagyu.com/en/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/en/blog/029-grpc/</guid><description>&lt;h2 id="what-is-grpc">What is gRPC?&lt;/h2>
+&lt;p>That&amp;rsquo;s how you can set up a Go development environment on Mac and quickly run a Hello World program.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/029-grpc/" >Research on gRPC&lt;/a> (practical gRPC implementation)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/041-redis-go/" >How to Use Redis with Go&lt;/a> (Redis + Go in practice)&lt;/li>
+&lt;/ul></description></item><item><title>Research on gRPC</title><link>https://bossagyu.com/en/blog/029-grpc/</link><pubDate>Sun, 01 Sep 2024 17:53:57 +0900</pubDate><guid>https://bossagyu.com/en/blog/029-grpc/</guid><description>&lt;h2 id="what-is-grpc">What is gRPC?&lt;/h2>
 &lt;ul>
 &lt;li>gRPC is a protocol developed by Google to implement RPC.&lt;/li>
 &lt;li>It uses Protocol Buffers to serialize data, enabling high-speed communication.&lt;/li>
@@ -3025,8 +3088,12 @@ In Protocol Buffers, all values have types, which can be divided into scalar typ
 &lt;/div>
 &lt;/div>&lt;p>The newly added method is confirmed to be functioning correctly.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This time, we researched gRPC and followed the official documentation tutorial.&lt;br>
-gRPC allows for schema-first development and enables high-performance communication via HTTP/2. Recently, it has been gaining attention as an alternative to REST APIs, making it a technology worth familiarizing yourself with.&lt;/p></description></item><item><title>Introduction to ChatGPT 4o</title><link>https://bossagyu.com/en/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="introduction-of-gpt-4o">Introduction of GPT-4o&lt;/h2>
+&lt;p>This time, we researched gRPC and followed the official documentation tutorial.
+gRPC allows for schema-first development and enables high-performance communication via HTTP/2. Recently, it has been gaining attention as an alternative to REST APIs, making it a technology worth familiarizing yourself with.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/030-go-environment-construction/" >Setting Up a Go Development Environment on Mac and Running Hello World&lt;/a> (Go environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>Introduction to ChatGPT 4o</title><link>https://bossagyu.com/en/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="introduction-of-gpt-4o">Introduction of GPT-4o&lt;/h2>
 &lt;p>On May 13, 2024, OpenAI announced a new GPT model, ChatGPT-4o.&lt;/p>
 &lt;p>GPT-4o has the following improvements compared to previous models:&lt;/p>
 &lt;ul>
@@ -3064,6 +3131,11 @@ I believe that how well engineers can utilize generative AI will greatly affect 
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
 >Hello ChatGPT-4o&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/023-chatgpt-create-image/" >Generating Images with ChatGPT&lt;/a> (image generation with ChatGPT)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (OpenAI API integration)&lt;/li>
 &lt;/ul></description></item><item><title>Migrating from Evernote to Notion</title><link>https://bossagyu.com/en/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/en/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>As of April 26, 2024, Evernote&amp;rsquo;s Japanese corporation was dissolved, which does not mean Evernote services are ending, but it certainly raises concerns about its future. Given the many restrictions on Evernote&amp;rsquo;s free plan and the cost associated with its premium plan, I considered switching to another note-taking app.&lt;/p>
 &lt;p>After some deliberation, I chose Notion for the following reasons:&lt;/p>
@@ -3298,8 +3370,13 @@ data-flex-grow="242"
 data-flex-basis="583px"
 >&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.&lt;br>
-While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p></description></item><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.
+While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (modern Python environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>Generating Images with ChatGPT</title><link>https://bossagyu.com/en/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/en/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Unlike image generation models like Stable Diffusion, ChatGPT can also generate images. This guide explains how to do so.&lt;br>
 For those using the ChatGPT paid plan, images can be generated without any additional fees, allowing for the creation of commercially usable images with minimal effort.&lt;/p>
 &lt;p>This tutorial utilizes DALL-E, a feature of ChatGPT Plus, to generate images.
@@ -3382,7 +3459,11 @@ alt="ChatGPT image generation limit"
 class="gallery-image"
 data-flex-grow="363"
 data-flex-basis="873px"
->&lt;/p></description></item><item><title>Using Enums in TypeScript</title><link>https://bossagyu.com/en/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/022-typescript-enum/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+>&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (overview of ChatGPT 4o features)&lt;/li>
+&lt;/ul></description></item><item><title>Using Enums in TypeScript</title><link>https://bossagyu.com/en/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/022-typescript-enum/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use Enums in TypeScript.&lt;/p>
 &lt;h2 id="what-are-enums">What are Enums?&lt;/h2>
 &lt;p>Enums (enumerated types) represent a collection of related values. While many languages implement Enums, JavaScript does not. However, TypeScript supports Enums, enriching the JavaScript experience.&lt;/p>
@@ -3474,7 +3555,11 @@ data-flex-basis="873px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to use Enums in TypeScript. By utilizing Enums, you can improve the readability and maintainability of your code.&lt;/p></description></item><item><title>Setting Up TypeScript Development Environment Easily with Volta</title><link>https://bossagyu.com/en/blog/021-typescript-setup/</link><pubDate>Sun, 10 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/021-typescript-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explained how to use Enums in TypeScript. By utilizing Enums, you can improve the readability and maintainability of your code.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/021-typescript-setup/" >Setting Up TypeScript Development Environment Easily with Volta&lt;/a> (TypeScript environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>Setting Up TypeScript Development Environment Easily with Volta</title><link>https://bossagyu.com/en/blog/021-typescript-setup/</link><pubDate>Sun, 10 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/021-typescript-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to easily set up a TypeScript development environment using Volta, with MacOS as the target platform.&lt;/p>
 &lt;h2 id="what-is-volta">What is Volta?&lt;/h2>
 &lt;p>Volta is a version management tool for Node.js, featuring the following characteristics as presented on &lt;a class="link" href="https://volta.sh/" target="_blank" rel="noopener"
@@ -3627,7 +3712,11 @@ data-flex-basis="873px"
 &lt;/div>
 &lt;/div>&lt;p>The test script ran successfully. This completes the setup of the TypeScript development environment.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article described how to set up a TypeScript development environment easily using Volta. By using Volta, managing Node.js versions becomes straightforward, making the development environment setup smoother. Additionally, specifying the Node.js version with Volta in your project&amp;rsquo;s package.json can help eliminate version discrepancies among developers, adding another layer of convenience to your workflow.&lt;/p></description></item><item><title>Explaining Capacity and Performance Management in ITIL v4</title><link>https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/</link><pubDate>Tue, 27 Feb 2024 08:53:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article described how to set up a TypeScript development environment easily using Volta. By using Volta, managing Node.js versions becomes straightforward, making the development environment setup smoother. Additionally, specifying the Node.js version with Volta in your project&amp;rsquo;s package.json can help eliminate version discrepancies among developers, adding another layer of convenience to your workflow.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/022-typescript-enum/" >Using Enums in TypeScript&lt;/a> (how to use TypeScript Enums)&lt;/li>
+&lt;/ul></description></item><item><title>Explaining Capacity and Performance Management in ITIL v4</title><link>https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/</link><pubDate>Tue, 27 Feb 2024 08:53:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains capacity and performance management as outlined in ITIL v4. I will also apply what I have understood to my own experiences, explaining the process of capacity and performance management.&lt;/p>
 &lt;h2 id="what-are-capacity-and-performance-management">What are Capacity and Performance Management?&lt;/h2>
 &lt;p>Capacity and Performance Management involves managing the performance of services and the resources supporting them. The goal is to optimize the performance of services and ensure that the capacity of services is appropriately maintained.&lt;/p>
@@ -3700,8 +3789,13 @@ data-flex-basis="873px"
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.&lt;br>
-In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p></description></item><item><title>How to Use Stable Diffusion Web UI on Mac</title><link>https://bossagyu.com/en/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/en/blog/019-stable-diffusion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.
+In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/016-itilv4-availability-management/" >Understanding Availability Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/018-itilv4-business-analysis/" >Explaining Business Analysis in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;/ul></description></item><item><title>How to Use Stable Diffusion Web UI on Mac</title><link>https://bossagyu.com/en/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/en/blog/019-stable-diffusion/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article will guide you through installing Stable Diffusion Web UI on Mac and using it locally.&lt;/p>
 &lt;h2 id="what-is-stable-diffusion">What is Stable Diffusion?&lt;/h2>
 &lt;p>Stable Diffusion is a type of image processing technology using AI. By inputting text, it can generate images corresponding to that text.&lt;/p>
@@ -3901,6 +3995,11 @@ data-flex-basis="426px"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Business analysis management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/016-itilv4-availability-management/" >Understanding Availability Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/" >Explaining Capacity and Performance Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
 &lt;/ul></description></item><item><title>Complete Guide to Using GitHub Copilot in VSCode</title><link>https://bossagyu.com/en/blog/017-vscode-copilot/</link><pubDate>Sun, 04 Feb 2024 22:34:51 +0900</pubDate><guid>https://bossagyu.com/en/blog/017-vscode-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article comprehensively covers how to set up GitHub Copilot in VSCode, enable it for Markdown files, and use Chat tools. A GitHub Copilot account is required as a prerequisite.&lt;/p>
 &lt;h2 id="getting-started-with-github-copilot-in-vscode">Getting Started with GitHub Copilot in VSCode&lt;/h2>
@@ -4046,7 +4145,14 @@ This blog was also written with GitHub Copilot assistance, significantly improvi
 &lt;li>&lt;strong>Chat Tools&lt;/strong>: Add context with &lt;code>#codebase&lt;/code> and &lt;code>#selection&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>GitHub Copilot not only provides code completions but also assists with writing text.
-Give it a try and see how it can help you.&lt;/p></description></item><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Give it a try and see how it can help you.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/005-github-copilot/" >How to Use GitHub Copilot in IntelliJ&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/035-github-copilot-markdown/" >How to Enable GitHub Copilot for Markdown&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/043-codex/" >How to Use Codex CLI&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains availability management as defined in ITIL v4. I will also relate my own experiences to explain the processes involved in availability management.&lt;/p>
 &lt;h2 id="what-is-availability-management">What is Availability Management?&lt;/h2>
 &lt;p>Availability management involves activities to ensure the availability of a service. The objective of availability management is to ensure that the service delivers an agreed level of availability to meet the needs of customers and users.&lt;/p>
@@ -4119,6 +4225,11 @@ Give it a try and see how it can help you.&lt;/p></description></item><item><tit
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Availability management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/018-itilv4-business-analysis/" >Explaining Business Analysis in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/" >Explaining Capacity and Performance Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
 &lt;/ul></description></item><item><title>How to Check if an S3 Object Exists in Python boto3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to check whether an S3 object exists using Python.
 boto3 provides two API levels: &lt;code>resource&lt;/code> and &lt;code>client&lt;/code>. I&amp;rsquo;ll cover both methods.&lt;/p>
@@ -4286,6 +4397,12 @@ For single object existence checks, use &lt;code>head_object&lt;/code>.&lt;/p>
 >boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
 >Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (modern Python environment setup)&lt;/li>
 &lt;/ul></description></item><item><title>Integrating AWS API Gateway with Lambda</title><link>https://bossagyu.com/en/blog/014-aws-apigateway-lambda/</link><pubDate>Sat, 13 Jan 2024 18:06:52 +0900</pubDate><guid>https://bossagyu.com/en/blog/014-aws-apigateway-lambda/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Integrating AWS API Gateway with Lambda enables you to call Lambda functions from API Gateway. This article introduces how to integrate AWS API Gateway with Lambda.&lt;/p>
 &lt;h2 id="prerequisites">Prerequisites&lt;/h2>
@@ -4375,7 +4492,13 @@ data-flex-basis="345px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>How to Create a Product Strategy</title><link>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/006-intellij-lamda-setup/" >Efficient Lambda Development with AWS Toolkit in IntelliJ&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Create a Product Strategy</title><link>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to create a good product strategy, based on the book &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
 &lt;h2 id="background">Background&lt;/h2>
 &lt;p>As a product owner in my job, I took over a product from the previous owner. The product lacked a clear strategy and direction, prompting me to develop a new product strategy.&lt;/p>
@@ -4537,7 +4660,12 @@ data-flex-basis="656px"
 &lt;p>If the settings don’t seem to work, it might be due to incorrect implementation or the meta tags not being properly set. In such cases, use the &lt;a class="link" href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener"
 >debugging tool&lt;/a> provided by Twitter to check if the settings have been correctly applied.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it&amp;rsquo;s definitely worth doing.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item><item><title>Using ChatGPT to Make a Hugo Blog Multilingual</title><link>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/en/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use ChatGPT to make a blog created with Hugo multilingual.&lt;/p>
 &lt;h2 id="translating-articles-into-english-with-chatgpt">Translating Articles into English with ChatGPT&lt;/h2>
 &lt;p>You can translate articles written in Markdown into English using &lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
@@ -4645,7 +4773,11 @@ data-flex-basis="717px"
 &lt;/div>&lt;p>In the English directory, naming files as &lt;code>article-name.en.md&lt;/code> identifies them as English versions of the default language articles, and language switch icons will be added to the articles. For the articles, just copy and paste the translations from ChatGPT.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.&lt;/p>
-&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Since it&amp;rsquo;s low-cost and efficient, it&amp;rsquo;s worth giving it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;/ul></description></item><item><title>Creating and Displaying a Favicon with Hugo</title><link>https://bossagyu.com/en/blog/010-favicon/</link><pubDate>Sun, 24 Dec 2023 22:14:39 +0900</pubDate><guid>https://bossagyu.com/en/blog/010-favicon/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains a simple method to create a favicon. It also covers how to display a favicon in Hugo.&lt;/p>
 &lt;h2 id="what-is-a-favicon">What is a Favicon?&lt;/h2>
 &lt;p>A favicon is an icon that appears in bookmarks, tabs, and home screens for websites. Google has published &lt;a class="link" href="https://developers.google.com/search/docs/appearance/favicon-in-search?hl=ja#guidelines" target="_blank" rel="noopener"
@@ -4788,7 +4920,12 @@ data-flex-basis="189px"
 &lt;p>Checks if the loading speed of web pages on smartphones is optimized and if it&amp;rsquo;s suitable for PWAs. This wasn&amp;rsquo;t checked in this case.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>The article explained how to measure the performance of a blog using Lighthouse.
-Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p></description></item><item><title>How to Schedule Lambda Functions with AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Especially for SEO, as it affects visibility in Google search results, it&amp;rsquo;s important to address these issues adequately.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;/ul></description></item><item><title>How to Schedule Lambda Functions with AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use AWS EventBridge to schedule Lambda functions for periodic execution.&lt;/p>
 &lt;p>I used this approach to implement scheduled reminder notifications for a LINE Bot.
 For example, you can send cleaning reminders every morning at 7 AM without managing any servers.&lt;/p>
@@ -4981,8 +5118,9 @@ Always delete rules you no longer need.&lt;/p>
 &lt;p>Serverless scheduled execution is great for reminder bots and batch processing. Give it a try!&lt;/p>
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Using Google Search Console to Make Your Blog Searchable on Google</title><link>https://bossagyu.com/en/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/en/blog/007-google-search-console/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>To appear in Google searches, it&amp;rsquo;s not enough just to apply SEO strategies; your site must first be recognized by Google. This article explains how to make your own custom domain blog appear in Google search results using Google Search Console.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
@@ -5090,7 +5228,13 @@ data-flex-basis="801px"
 It took a few hours for the index to be registered after clicking.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make your custom domain blog searchable using Google Search Console.&lt;br>
-It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/009-light-house/" >Introduction to Using Lighthouse&lt;/a> - Performance measurement&lt;/li>
+&lt;/ul></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
 &lt;ol>
@@ -5206,7 +5350,12 @@ data-flex-basis="721px"
 &lt;p>Selecting Run will execute the Lambda locally.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
-Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use GitHub Copilot in IntelliJ.
 Additionally, a cheat sheet of shortcuts is provided.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
@@ -5263,7 +5412,12 @@ data-flex-basis="984px"
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use GitHub Copilot in IntelliJ.
-It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-python-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-python-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article documents how to set up a Python environment for development on a Mac local environment.&lt;br>
 In this case, we will use two systems to manage different versions of Python and virtual environments:&lt;/p>
 &lt;ul>
@@ -5446,7 +5600,11 @@ In this case, we will use two systems to manage different versions of Python and
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p></description></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (as a modern alternative)&lt;/li>
+&lt;/ul></description></item><item><title>How to Set Up Google Analytics with Hugo</title><link>https://bossagyu.com/en/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/en/blog/003-google-analytics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article briefly explains how to set up Google Analytics with Hugo.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
 &lt;ol>
@@ -5563,7 +5721,12 @@ data-flex-basis="782px"
 &lt;/div>&lt;p>After adding the above source code and rebuilding, data will be sent to Google Analytics.&lt;/p>
 &lt;h2 id="tips">Tips&lt;/h2>
 &lt;p>If it seems like data is not being transmitted to Google Analytics despite these steps, it&amp;rsquo;s possible that the tags have not been added correctly.&lt;br>
-To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p></description></item><item><title>Registering and Using the LINE Messaging API</title><link>https://bossagyu.com/en/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/002-line-messaging-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >Using Google Search Console to Make Your Blog Searchable on Google&lt;/a> - SEO setup&lt;/li>
+&lt;/ul></description></item><item><title>Registering and Using the LINE Messaging API</title><link>https://bossagyu.com/en/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/002-line-messaging-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>I thought of creating an application using LINE&amp;rsquo;s Bot, so first, I will make the Bot usable.&lt;br>
 This page introduces how to register for the LINE Messaging API and how to send messages from the command line using curl.&lt;/p>
 &lt;h2 id="using-the-messaging-api">Using the Messaging API&lt;/h2>
@@ -5656,7 +5819,11 @@ Get &amp;lsquo;Your User ID&amp;rsquo; from the channel basic settings.&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;/div>&lt;p>If a response is returned and you see a post from the Bot in your LINE chat, it&amp;rsquo;s a success!&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/045-clean-bot/" >Cleaning Reminder LINE Bot&lt;/a> (a practical LINE Bot project)&lt;/li>
+&lt;/ul></description></item><item><title>Publishing a Blog with Hugo + Netlify + Github</title><link>https://bossagyu.com/en/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This document describes the steps to create a site with Hugo, manage it with Github, and build it with Netlify from scratch.
 With this method, you can easily publish by just pushing your Markdown-written blog to Github.&lt;/p>
 &lt;p>This guide also covers how to set up a favicon.&lt;/p>
@@ -5828,4 +5995,12 @@ Then click &amp;ldquo;Download the generated favicon&amp;rdquo; to download your
 &lt;li>&lt;strong>Netlify&lt;/strong>: Automatic deployment&lt;/li>
 &lt;li>&lt;strong>Favicon&lt;/strong>: Branding configuration&lt;/li>
 &lt;/ol>
-&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p></description></item></channel></rss>
+&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >How to Add Your Blog to Google Search Using Google Search Console&lt;/a> - SEO setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/009-light-house/" >Introduction to Using Lighthouse&lt;/a> - Performance measurement&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/011-hugo-multilingul-support/" >Using ChatGPT to Make a Hugo Blog Multilingual&lt;/a> - Multilingual support&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/012-social-card/" >Setting Up Twitter Social Cards&lt;/a> - Social media optimization&lt;/li>
+&lt;/ul></description></item></channel></rss>

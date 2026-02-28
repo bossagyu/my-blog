@@ -425,7 +425,12 @@ CR -->|ダウンロード| GCS
 &lt;/ul>
 &lt;p>イベント駆動アーキテクチャとGCPのマネージドサービスを組み合わせることで、少ないコードで信頼性の高いドキュメント同期基盤を実現できました。GCSにファイルを配置するだけで検索可能になるシンプルさは、ハッカソンの限られた時間内での開発にも大きく貢献しました。&lt;/p>
 &lt;p>ソースコードは&lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
->GitHub&lt;/a>で公開しています。&lt;/p></description></item><item><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link>https://bossagyu.com/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>GitHub&lt;/a>で公開しています。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>（OpenAI APIの利用）&lt;/li>
+&lt;/ul></description></item><item><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link>https://bossagyu.com/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。&lt;/p>
 &lt;p>完成したBotはこちら: &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a>&lt;/p>
 &lt;h2 id="アーキテクチャ">アーキテクチャ&lt;/h2>
@@ -947,6 +952,9 @@ E -->|通知| A
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/015-s3-object-check/" >S3のオブジェクトの存在確認をする方法【Python boto3】&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>OpenAI Response APIの使い方まとめ</title><link>https://bossagyu.com/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/044-openai-response-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>OpenAIのResponse APIを使ってテキスト生成を行う手順をまとめました。
 公式ドキュメントの場所、APIキーの取得方法、Pythonからの最小サンプルまでを確認できます。&lt;/p>
@@ -1029,7 +1037,12 @@ E -->|通知| A
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAPIです。
-公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/027-chatgpt-4o/" >ChatGPT 4oの紹介&lt;/a>（ChatGPTの最新機能紹介）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/048-lawve-backend/" >GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計&lt;/a>（API統合パターンの実践例）&lt;/li>
+&lt;/ul></description></item><item><title>FeastのチュートリアルをMacで実行する</title><link>https://bossagyu.com/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/blog/033-feast-tutorial/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>今回は&lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feastのチュートリアル&lt;/a>を参考に、Macで実行してみます。&lt;/p>
 &lt;h2 id="事前準備">事前準備&lt;/h2>
@@ -1315,8 +1328,14 @@ data-flex-basis="338px"
 >&lt;/p>
 &lt;p>Feastのオンラインストアにマテリアラズして、オンラインストアからデータを取得することができました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>本記事では、Feastのチュートリアルを基に、Mac上でFeastを使用してデータを管理する方法を紹介しました。UVを使ったPython開発環境の構築から、Feastのインストール、UIの起動、そしてトレーニングデータの準備やオンラインストアへのデータマテリアライズまで、一連の操作を丁寧に解説しました。&lt;br>
-これにより、Feastを利用してトレーニングデータと推論データの管理を効率的に行うことができ、トレーニングスキューの回避が可能になります。&lt;/p></description></item><item><title>MacでUVを用いてPythonの開発環境を構築する</title><link>https://bossagyu.com/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/blog/032-python-uv/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>本記事では、Feastのチュートリアルを基に、Mac上でFeastを使用してデータを管理する方法を紹介しました。UVを使ったPython開発環境の構築から、Feastのインストール、UIの起動、そしてトレーニングデータの準備やオンラインストアへのデータマテリアライズまで、一連の操作を丁寧に解説しました。
+これにより、Feastを利用してトレーニングデータと推論データの管理を効率的に行うことができ、トレーニングスキューの回避が可能になります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（従来のPython環境構築方法）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/031-read-parquet-file/" >macでparquetファイルを読む方法&lt;/a>（Feastのサンプルデータ形式）&lt;/li>
+&lt;/ul></description></item><item><title>MacでUVを用いてPythonの開発環境を構築する</title><link>https://bossagyu.com/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/blog/032-python-uv/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでPythonの開発環境を構築する方法を紹介します。&lt;/p>
 &lt;h2 id="uvとは">uvとは&lt;/h2>
 &lt;p>2024年中旬に発表されたばかりのパッケージ管理ツール。&lt;br>
@@ -1397,7 +1416,11 @@ data-flex-basis="1047px"
 >公式のドキュメント&lt;/a> を参照してください。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>MacでPythonの開発環境を構築する方法を紹介しました。
-uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p></description></item><item><title>PythonでBluesky APIを用いて自動投稿する方法</title><link>https://bossagyu.com/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/blog/024-bluesky-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（従来のPython環境構築方法）&lt;/li>
+&lt;/ul></description></item><item><title>PythonでBluesky APIを用いて自動投稿する方法</title><link>https://bossagyu.com/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/blog/024-bluesky-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>&lt;a class="link" href="https://bsky.app/" target="_blank" rel="noopener"
 >Bluesky&lt;/a> とは、旧Twitter社の元CEOであるジャック・ドーシー氏が立ち上げた分散型SNSです。&lt;br>
 &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
@@ -1539,8 +1562,13 @@ data-flex-grow="242"
 data-flex-basis="583px"
 >&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。&lt;br>
-Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。&lt;/p></description></item><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。
+Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンなPython環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>PythonでS3のオブジェクトが存在するかどうかを確認する方法を説明します。
 boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPIがあり、それぞれの方法を紹介します。&lt;/p>
 &lt;p>実際にLINE Botの開発で、ユーザーごとの設定ファイルがS3に存在するかチェックする必要があり、この方法を使いました。&lt;/p>
@@ -1707,6 +1735,12 @@ boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPI�
 >boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
 >Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンなPython環境構築）&lt;/li>
 &lt;/ul></description></item><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-python-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>macのローカル環境で開発を行う際のpythonの環境構築の方法について記載します。&lt;br>
 今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行います。&lt;/p>
@@ -1890,4 +1924,8 @@ boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPI�
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンな代替ツールとして）&lt;/li>
+&lt;/ul></description></item></channel></rss>

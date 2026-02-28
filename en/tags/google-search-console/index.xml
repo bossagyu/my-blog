@@ -105,4 +105,10 @@ data-flex-basis="801px"
 It took a few hours for the index to be registered after clicking.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to make your custom domain blog searchable using Google Search Console.&lt;br>
-It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p></description></item></channel></rss>
+It&amp;rsquo;s a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/001-hugo-netlify-build/" >Publishing a Blog with Hugo + Netlify + Github&lt;/a> - Blog initial setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/009-light-house/" >Introduction to Using Lighthouse&lt;/a> - Performance measurement&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -76,4 +76,9 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p></description></item></channel></rss>
+&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (overview of ChatGPT&amp;rsquo;s latest features)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/048-lawve-backend/" >Designing an Event-Driven Backend to Sync GCS with Gemini File Search API&lt;/a> (a practical example of API integration patterns)&lt;/li>
+&lt;/ul></description></item></channel></rss>

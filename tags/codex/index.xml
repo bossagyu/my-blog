@@ -170,4 +170,10 @@
 &lt;/table>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Codex CLIはインストール後にサインインを済ませるだけで、コマンドラインからすぐにCodexを活用できます。
-よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p></description></item></channel></rss>
+よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/017-vscode-copilot/" >VSCodeでGithub Copilotを使いこなす完全ガイド&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/042-github-copilot/" >Github CopilotをChat toolを使って便利に使う方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

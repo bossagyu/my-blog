@@ -519,5 +519,8 @@ E -->|Notify| A
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/015-s3-object-check/" >How to Check if an S3 Object Exists in Python boto3&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

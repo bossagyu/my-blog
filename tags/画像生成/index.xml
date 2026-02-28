@@ -81,4 +81,8 @@ alt="ChatGPTで画像の生成が制限"
 class="gallery-image"
 data-flex-grow="363"
 data-flex-basis="873px"
->&lt;/p></description></item></channel></rss>
+>&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/027-chatgpt-4o/" >ChatGPT 4oの紹介&lt;/a>（ChatGPT 4oの新機能紹介）&lt;/li>
+&lt;/ul></description></item></channel></rss>

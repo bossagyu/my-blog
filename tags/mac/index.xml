@@ -181,4 +181,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンな代替ツールとして）&lt;/li>
+&lt;/ul></description></item></channel></rss>

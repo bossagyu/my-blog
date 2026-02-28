@@ -425,7 +425,12 @@ CR -->|ダウンロード| GCS
 &lt;/ul>
 &lt;p>イベント駆動アーキテクチャとGCPのマネージドサービスを組み合わせることで、少ないコードで信頼性の高いドキュメント同期基盤を実現できました。GCSにファイルを配置するだけで検索可能になるシンプルさは、ハッカソンの限られた時間内での開発にも大きく貢献しました。&lt;/p>
 &lt;p>ソースコードは&lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
->GitHub&lt;/a>で公開しています。&lt;/p></description></item><item><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link>https://bossagyu.com/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>GitHub&lt;/a>で公開しています。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>（OpenAI APIの利用）&lt;/li>
+&lt;/ul></description></item><item><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link>https://bossagyu.com/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。&lt;/p>
 &lt;p>完成したBotはこちら: &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a>&lt;/p>
 &lt;h2 id="アーキテクチャ">アーキテクチャ&lt;/h2>
@@ -947,6 +952,9 @@ E -->|通知| A
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/015-s3-object-check/" >S3のオブジェクトの存在確認をする方法【Python boto3】&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>OpenAI Response APIの使い方まとめ</title><link>https://bossagyu.com/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/044-openai-response-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>OpenAIのResponse APIを使ってテキスト生成を行う手順をまとめました。
 公式ドキュメントの場所、APIキーの取得方法、Pythonからの最小サンプルまでを確認できます。&lt;/p>
@@ -1029,7 +1037,12 @@ E -->|通知| A
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAPIです。
-公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p></description></item><item><title>Codex CLIの使い方まとめ</title><link>https://bossagyu.com/blog/043-codex/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/043-codex/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/027-chatgpt-4o/" >ChatGPT 4oの紹介&lt;/a>（ChatGPTの最新機能紹介）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/048-lawve-backend/" >GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計&lt;/a>（API統合パターンの実践例）&lt;/li>
+&lt;/ul></description></item><item><title>Codex CLIの使い方まとめ</title><link>https://bossagyu.com/blog/043-codex/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/043-codex/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Codex CLIを使ってローカル環境からコマンドライン経由でCodexにアクセスする手順をまとめました。
 インストールからサインイン、代表的なコマンドの使い方まで一通り確認できます。&lt;/p>
 &lt;h2 id="codex-cliのインストール方法">Codex CLIのインストール方法&lt;/h2>
@@ -1201,7 +1214,13 @@ E -->|通知| A
 &lt;/table>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Codex CLIはインストール後にサインインを済ませるだけで、コマンドラインからすぐにCodexを活用できます。
-よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p></description></item><item><title>RedisをGoで使う方法</title><link>https://bossagyu.com/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/blog/041-redis-go/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/017-vscode-copilot/" >VSCodeでGithub Copilotを使いこなす完全ガイド&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/042-github-copilot/" >Github CopilotをChat toolを使って便利に使う方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>RedisをGoで使う方法</title><link>https://bossagyu.com/blog/041-redis-go/</link><pubDate>Sun, 05 Oct 2025 20:25:02 +0900</pubDate><guid>https://bossagyu.com/blog/041-redis-go/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、GoでRedisを使う方法について説明します。&lt;/p>
 &lt;h2 id="redisの起動方法">Redisの起動方法&lt;/h2>
 &lt;p>Redisの説明やDockerでの起動方法については、&lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" target="_blank" rel="noopener"
@@ -1383,7 +1402,12 @@ E -->|通知| A
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>GoでRedisを使う方法について説明しました。
 GoでRedisを使う場合は、&lt;a class="link" href="https://github.com/redis/go-redis" target="_blank" rel="noopener"
->go-redis&lt;/a>を使用します。&lt;/p></description></item><item><title>RedisをDockerで起動する方法</title><link>https://bossagyu.com/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/blog/040-redis-local/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>go-redis&lt;/a>を使用します。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" >RedisをDockerで起動する方法&lt;/a>（Redisの起動方法）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/030-go-environment-construction/" >macでGoの開発環境を構築して最速でHello Worldする&lt;/a>（Go環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>RedisをDockerで起動する方法</title><link>https://bossagyu.com/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/blog/040-redis-local/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、RedisをDockerで起動する方法について説明します。&lt;/p>
 &lt;h2 id="redisとは">Redisとは&lt;/h2>
 &lt;p>Redisは、オープンソースのインメモリデータ構造ストアであり、データベース、キャッシュ、メッセージブローカーとして使用されます。高速な読み書き性能を持ち、様々なデータ構造（文字列、リスト、セット、ハッシュなど）をサポートしています。&lt;/p>
@@ -1456,8 +1480,12 @@ GoでRedisを使う場合は、&lt;a class="link" href="https://github.com/redis
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>この記事では、Dockerを使用してRedisを起動する方法について説明しました。
-Redisは高速なデータベースとして広く利用されており、Dockerを使用することで簡単にセットアップできます。&lt;br>
-ぜひ、Redisを活用してみてください。&lt;/p></description></item><item><title>Visual Studio CodeでAWS Toolkitを使う方法</title><link>https://bossagyu.com/blog/039-aws-toolkit-vscode/</link><pubDate>Mon, 11 Aug 2025 20:33:30 +0900</pubDate><guid>https://bossagyu.com/blog/039-aws-toolkit-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+Redisは高速なデータベースとして広く利用されており、Dockerを使用することで簡単にセットアップできます。
+ぜひ、Redisを活用してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/041-redis-go/" >RedisをGoで使う方法&lt;/a>（GoでRedisを操作する実践例）&lt;/li>
+&lt;/ul></description></item><item><title>Visual Studio CodeでAWS Toolkitを使う方法</title><link>https://bossagyu.com/blog/039-aws-toolkit-vscode/</link><pubDate>Mon, 11 Aug 2025 20:33:30 +0900</pubDate><guid>https://bossagyu.com/blog/039-aws-toolkit-vscode/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、Visual Studio Code (VSCode) で AWS Toolkit を使用する方法について説明します。&lt;/p>
 &lt;h2 id="aws-toolkitのインストール">AWS Toolkitのインストール&lt;/h2>
 &lt;ol>
@@ -2087,8 +2115,14 @@ data-flex-basis="338px"
 >&lt;/p>
 &lt;p>Feastのオンラインストアにマテリアラズして、オンラインストアからデータを取得することができました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>本記事では、Feastのチュートリアルを基に、Mac上でFeastを使用してデータを管理する方法を紹介しました。UVを使ったPython開発環境の構築から、Feastのインストール、UIの起動、そしてトレーニングデータの準備やオンラインストアへのデータマテリアライズまで、一連の操作を丁寧に解説しました。&lt;br>
-これにより、Feastを利用してトレーニングデータと推論データの管理を効率的に行うことができ、トレーニングスキューの回避が可能になります。&lt;/p></description></item><item><title>MacでUVを用いてPythonの開発環境を構築する</title><link>https://bossagyu.com/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/blog/032-python-uv/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>本記事では、Feastのチュートリアルを基に、Mac上でFeastを使用してデータを管理する方法を紹介しました。UVを使ったPython開発環境の構築から、Feastのインストール、UIの起動、そしてトレーニングデータの準備やオンラインストアへのデータマテリアライズまで、一連の操作を丁寧に解説しました。
+これにより、Feastを利用してトレーニングデータと推論データの管理を効率的に行うことができ、トレーニングスキューの回避が可能になります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（従来のPython環境構築方法）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/031-read-parquet-file/" >macでparquetファイルを読む方法&lt;/a>（Feastのサンプルデータ形式）&lt;/li>
+&lt;/ul></description></item><item><title>MacでUVを用いてPythonの開発環境を構築する</title><link>https://bossagyu.com/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/blog/032-python-uv/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでPythonの開発環境を構築する方法を紹介します。&lt;/p>
 &lt;h2 id="uvとは">uvとは&lt;/h2>
 &lt;p>2024年中旬に発表されたばかりのパッケージ管理ツール。&lt;br>
@@ -2169,7 +2203,11 @@ data-flex-basis="1047px"
 >公式のドキュメント&lt;/a> を参照してください。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>MacでPythonの開発環境を構築する方法を紹介しました。
-uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p></description></item><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環境構築において有用なツールと言えるでしょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（従来のPython環境構築方法）&lt;/li>
+&lt;/ul></description></item><item><title>macでGoの開発環境を構築して最速でHello Worldする</title><link>https://bossagyu.com/blog/030-go-environment-construction/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/030-go-environment-construction/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介します。&lt;/p>
 &lt;h2 id="go言語のインストール">Go言語のインストール&lt;/h2>
 &lt;p>brewを使ってGo言語をインストールします。&lt;/p>
@@ -2247,7 +2285,12 @@ uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環�
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p></description></item><item><title>macでparquetファイルを読む方法</title><link>https://bossagyu.com/blog/031-read-parquet-file/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/031-read-parquet-file/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/029-grpc/" >gRPCについての調査&lt;/a>（gRPCの実践）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/041-redis-go/" >RedisをGoで使う方法&lt;/a>（Redis + Goの実践）&lt;/li>
+&lt;/ul></description></item><item><title>macでparquetファイルを読む方法</title><link>https://bossagyu.com/blog/031-read-parquet-file/</link><pubDate>Sun, 15 Sep 2024 16:52:04 +0900</pubDate><guid>https://bossagyu.com/blog/031-read-parquet-file/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>macでparquetファイルをコマンドラインで簡単に読む方法を紹介します。&lt;/p>
 &lt;h2 id="parquet-cliを使って読む">parquet-cliを使って読む&lt;/h2>
 &lt;p>今回は Feastのサンプルで提供されている&lt;a class="link" href="https://github.com/feast-dev/feast/tree/master/examples/podman_local/feature_repo/data" target="_blank" rel="noopener"
@@ -2427,7 +2470,11 @@ uvは高速かつ使いやすいので2025年1月時点ではPythonの開発環�
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>macでparquetファイルを簡単に読む方法を紹介しました。&lt;/p></description></item><item><title>共分散についての調査</title><link>https://bossagyu.com/blog/030-covariance/</link><pubDate>Mon, 02 Sep 2024 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/030-covariance/</guid><description>&lt;h2 id="共分散とは">共分散とは&lt;/h2>
+&lt;p>macでparquetファイルを簡単に読む方法を紹介しました。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/033-feast-tutorial/" >FeastのチュートリアルをMacで実行する&lt;/a>（Parquetファイルを使ったFeastの活用）&lt;/li>
+&lt;/ul></description></item><item><title>共分散についての調査</title><link>https://bossagyu.com/blog/030-covariance/</link><pubDate>Mon, 02 Sep 2024 10:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/030-covariance/</guid><description>&lt;h2 id="共分散とは">共分散とは&lt;/h2>
 &lt;p>共分散は、2つの変数がどのように連動して変化するかを示す統計量です。&lt;br>
 正の値なら同じ方向に変化しやすく、負の値なら逆方向に変化しやすいことを意味します。&lt;/p>
 &lt;h3 id="計算式">計算式&lt;/h3>
@@ -2851,8 +2898,12 @@ Protocol Buffersでは全ての値が型を持つ。型はスカラー型とメ�
 &lt;/div>
 &lt;/div>&lt;p>追加したメソッドが正常に動作していることが確認できました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>今回はgRPCについて調査の調査と公式ドキュメントのチュートリアルを行いました。&lt;br>
-gRPCはスキーマファーストで開発することができ、HTTP/2による高パフォーマンス通信が可能であることら、最近ではREST APIの代替手段として注目されている技術ですので、ぜひ抑えておきたいです。&lt;/p></description></item><item><title>ChatGPT 4oの紹介</title><link>https://bossagyu.com/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="gpt-4oの登場">GPT-4oの登場&lt;/h2>
+&lt;p>今回はgRPCについて調査の調査と公式ドキュメントのチュートリアルを行いました。
+gRPCはスキーマファーストで開発することができ、HTTP/2による高パフォーマンス通信が可能であることら、最近ではREST APIの代替手段として注目されている技術ですので、ぜひ抑えておきたいです。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/030-go-environment-construction/" >macでGoの開発環境を構築して最速でHello Worldする&lt;/a>（Go環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>ChatGPT 4oの紹介</title><link>https://bossagyu.com/blog/027-chatgpt-4o/</link><pubDate>Tue, 14 May 2024 23:22:39 +0900</pubDate><guid>https://bossagyu.com/blog/027-chatgpt-4o/</guid><description>&lt;h2 id="gpt-4oの登場">GPT-4oの登場&lt;/h2>
 &lt;p>2024年5月13日に、OpenAI社より新しいGPTモデル、ChatGPT-4oが発表されました。&lt;/p>
 &lt;p>GPT-4oは従来のモデルと比較して以下の内容が向上しています。&lt;/p>
 &lt;ul>
@@ -2890,6 +2941,11 @@ ChatGPTのモデルの精度の向上はめざましく、どんどん人間の�
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://openai.com/index/hello-gpt-4o/" target="_blank" rel="noopener"
 >Hello ChatGPT-4o&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/023-chatgpt-create-image/" >chatGPTで画像を生成する方法&lt;/a>（ChatGPTによる画像生成）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>（OpenAI API活用）&lt;/li>
 &lt;/ul></description></item><item><title>EvernoteからNotionへの移行方法</title><link>https://bossagyu.com/blog/026-evernote-to-notion/</link><pubDate>Mon, 29 Apr 2024 19:32:38 +0900</pubDate><guid>https://bossagyu.com/blog/026-evernote-to-notion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>2024年4月26日にEvernoteの日本法人が解散するなど、Evernoteのサービスは終了しないもののいよいよEvernoteの雲行きが怪しくなってきました。&lt;br>
 Evernoteは無料プランに制限が多いため、有料プランを利用しており費用がかさむこともあり、他のノートアプリへの移行を検討しました。&lt;/p>
@@ -3131,8 +3187,13 @@ data-flex-grow="242"
 data-flex-basis="583px"
 >&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。&lt;br>
-Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。&lt;/p></description></item><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。
+Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンなPython環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>chatGPTで画像を生成する方法</title><link>https://bossagyu.com/blog/023-chatgpt-create-image/</link><pubDate>Sun, 31 Mar 2024 17:35:07 +0900</pubDate><guid>https://bossagyu.com/blog/023-chatgpt-create-image/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Stable Diffusionなどの画像生成用のモデルではなく ChatGPTでも画像が生成できるので、生成の方法を説明します。&lt;br>
 ChatGPTの有料プランを利用している人は新たに課金などせずに利用できるので、大きな手間をかけずに商用利用可能な画像を生成できます。&lt;/p>
 &lt;p>今回は、DALL-Eと呼ばれるChatGPT Plusの機能を利用して画像を生成します。
@@ -3215,7 +3276,11 @@ alt="ChatGPTで画像の生成が制限"
 class="gallery-image"
 data-flex-grow="363"
 data-flex-basis="873px"
->&lt;/p></description></item><item><title>TyeScriptにおけるEnumの使い方</title><link>https://bossagyu.com/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/022-typescript-enum/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/027-chatgpt-4o/" >ChatGPT 4oの紹介&lt;/a>（ChatGPT 4oの新機能紹介）&lt;/li>
+&lt;/ul></description></item><item><title>TyeScriptにおけるEnumの使い方</title><link>https://bossagyu.com/blog/022-typescript-enum/</link><pubDate>Sat, 23 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/022-typescript-enum/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、TypeScriptにおけるEnumの使い方について説明します。&lt;/p>
 &lt;h2 id="enumとは">Enumとは&lt;/h2>
 &lt;p>Enum（列挙型）は、特定の値の集合を表す型です。&lt;br>
@@ -3309,8 +3374,12 @@ data-flex-basis="873px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>この記事では、TypeScriptにおけるEnumの使い方について説明しました。&lt;br>
-enumを利用することで、コードの可読性、保守性を向上させることができます。&lt;/p></description></item><item><title>Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法</title><link>https://bossagyu.com/blog/021-typescript-setup/</link><pubDate>Sun, 10 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/021-typescript-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>この記事では、TypeScriptにおけるEnumの使い方について説明しました。
+enumを利用することで、コードの可読性、保守性を向上させることができます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/021-typescript-setup/" >Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法&lt;/a>（TypeScript環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法</title><link>https://bossagyu.com/blog/021-typescript-setup/</link><pubDate>Sun, 10 Mar 2024 13:11:13 +0900</pubDate><guid>https://bossagyu.com/blog/021-typescript-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、TypeScriptの開発環境を簡単にセットアップする方法について説明します。
 本記事ではMacOSを対象にしています。&lt;/p>
 &lt;h2 id="voltaとは">Voltaとは&lt;/h2>
@@ -3492,7 +3561,11 @@ tsconfig.jsonはTypeScriptの設定ファイルで、コンパイル時の設定
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>本記事では、Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法について説明しました。
 Voltaを利用することで、Node.jsのバージョン管理が簡単になり、開発環境のセットアップがスムーズに行えます。
-また、VoltaでNode.jsのバージョンを指定すると、package.jsonにバージョンが記述され、他の開発者とのバージョンの差異を解消することができる点も魅力的ですね。&lt;/p></description></item><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+また、VoltaでNode.jsのバージョンを指定すると、package.jsonにバージョンが記述され、他の開発者とのバージョンの差異を解消することができる点も魅力的ですね。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/022-typescript-enum/" >TyeScriptにおけるEnumの使い方&lt;/a>（TypeScript Enumの使い方）&lt;/li>
+&lt;/ul></description></item><item><title>MacでStable Diffusion Web UIを使う方法</title><link>https://bossagyu.com/blog/019-stable-diffusion/</link><pubDate>Mon, 12 Feb 2024 11:24:59 +0900</pubDate><guid>https://bossagyu.com/blog/019-stable-diffusion/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事ではMacにStable Diffusion Web UIをインストールし、ローカルで利用する方法を紹介します。&lt;/p>
 &lt;h2 id="stable-diffusionとは">Stable Diffusionとは&lt;/h2>
 &lt;p>Stable Diffusionは、AIを用いた画像処理技術の一つです。
@@ -3803,7 +3876,14 @@ data-flex-basis="213px"
 &lt;li>&lt;strong>Chat tool&lt;/strong>: &lt;code>#codebase&lt;/code>や&lt;code>#selection&lt;/code>でコンテキストを追加&lt;/li>
 &lt;/ul>
 &lt;p>Github Copilotはソースコードだけではなく文章にも補完を行ってくれます。
-ぜひ活用してみてください。&lt;/p></description></item><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+ぜひ活用してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/005-github-copilot/" >IntellijでのGithub Copilotの使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/035-github-copilot-markdown/" >GitHub CopilotをMarkdownで有効にする方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/042-github-copilot/" >Github CopilotをChat toolを使って便利に使う方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/043-codex/" >Codex CLIの使い方まとめ&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>S3のオブジェクトの存在確認をする方法【Python boto3】</title><link>https://bossagyu.com/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/blog/015-s3-object-check/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>PythonでS3のオブジェクトが存在するかどうかを確認する方法を説明します。
 boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPIがあり、それぞれの方法を紹介します。&lt;/p>
 &lt;p>実際にLINE Botの開発で、ユーザーごとの設定ファイルがS3に存在するかチェックする必要があり、この方法を使いました。&lt;/p>
@@ -3970,6 +4050,12 @@ boto3には&lt;code>resource&lt;/code>と&lt;code>client&lt;/code>の2つのAPI�
 >boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
 >Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/004-python-setup/" >Pyenvとvenvを用いたローカル環境のセットアップ方法&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンなPython環境構築）&lt;/li>
 &lt;/ul></description></item><item><title>AWS API GatewayとLambdaを連携させる方法</title><link>https://bossagyu.com/blog/014-aws-apigateway-lambda/</link><pubDate>Sat, 13 Jan 2024 18:06:52 +0900</pubDate><guid>https://bossagyu.com/blog/014-aws-apigateway-lambda/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS API GatewayとLambdaを連携させることで、API GatewayからLambdaを呼び出すことができます。
 本記事AWS API GatewayとLambdaを連携させる方法を紹介します。&lt;/p>
@@ -4065,7 +4151,13 @@ data-flex-basis="345px"
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>本記事ではAWS API GatewayとLambdaを連携させる方法を紹介しました。
-API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p></description></item><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/006-intellij-lamda-setup/" >IntellijでAWS Toolkitを使ってLambdaを効率よく開発する&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>ChatGPTを利用してHugoで作ったブログを多言語対応する方法</title><link>https://bossagyu.com/blog/011-hugo-multilingul-support/</link><pubDate>Sun, 31 Dec 2023 20:46:36 +0900</pubDate><guid>https://bossagyu.com/blog/011-hugo-multilingul-support/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明します。&lt;/p>
 &lt;h2 id="ghatgptを利用して記事を英語化する方法">GhatGPTを利用して記事を英語化する方法&lt;/h2>
 &lt;p>Markdownで書かれた記事を&lt;a class="link" href="https://chat.openai.com/" target="_blank" rel="noopener"
@@ -4179,7 +4271,11 @@ GPT4は月々お金がかかりますが、GPT3.5と比べて圧倒的に正し�
 &lt;p>この記事では、ChatGPTを利用してHugoで作ったブログを多言語対応する方法を説明しました。
 ChatGPTを利用することで、英語化を簡単に行うことができます。
 また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。&lt;/p>
-&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>ローコストで多言語対応できるのでぜひやってみましょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;/ul></description></item><item><title>Lighthouseの使い方の紹介</title><link>https://bossagyu.com/blog/009-light-house/</link><pubDate>Fri, 22 Dec 2023 23:08:00 +0900</pubDate><guid>https://bossagyu.com/blog/009-light-house/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説します。&lt;/p>
 &lt;h2 id="lighthouseとは">Lighthouseとは&lt;/h2>
 &lt;p>LighthouseはGoogleが提供している、Webサイトのパフォーマンスを計測するツールです。
@@ -4291,7 +4387,12 @@ data-flex-basis="189px"
 今回はチェックしてません。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
-特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析&lt;/li>
+&lt;/ul></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
 &lt;p>私はこの仕組みを使って、LINE Botに定期的にリマインド通知を送る機能を実装しました。
 たとえば「毎朝7時に掃除のリマインドを送る」といった処理を、サーバーを用意せずに実現できます。&lt;/p>
@@ -4485,6 +4586,7 @@ data-flex-basis="1400px"
 &lt;p>サーバーレスで定期実行を実現できるので、リマインダーBotやバッチ処理などに活用してみてください。&lt;/p>
 &lt;h2 id="関連記事">関連記事&lt;/h2>
 &lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >掃除リマインダーBotの技術解説&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Google Search Consoleを用いてブログをGoogle検索の対象にする方法</title><link>https://bossagyu.com/blog/007-google-search-console/</link><pubDate>Mon, 18 Dec 2023 19:10:04 +0900</pubDate><guid>https://bossagyu.com/blog/007-google-search-console/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
@@ -4595,7 +4697,13 @@ data-flex-basis="801px"
 クリックしてから数時間でインデックスが登録されました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。&lt;br>
-せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/009-light-house/" >Lighthouseの使い方の紹介&lt;/a> - パフォーマンス計測&lt;/li>
+&lt;/ul></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
 &lt;ol>
@@ -4711,7 +4819,12 @@ data-flex-basis="721px"
 &lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
-Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>IntellijでのGithub Copilotの使い方</title><link>https://bossagyu.com/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/blog/005-github-copilot/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Github CopilotをIntellijで使う方法を解説します。
 合わせてショートカットのチートシートを記載します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
@@ -4785,8 +4898,13 @@ data-flex-basis="984px"
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
-&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。&lt;br>
-この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p></description></item><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-python-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>IntellijでGithub Copilotを利用する方法を解説しました。
+この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/017-vscode-copilot/" >VSCodeでGithub Copilotを使いこなす完全ガイド&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/042-github-copilot/" >Github CopilotをChat toolを使って便利に使う方法&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Pyenvとvenvを用いたローカル環境のセットアップ方法</title><link>https://bossagyu.com/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/blog/004-python-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>macのローカル環境で開発を行う際のpythonの環境構築の方法について記載します。&lt;br>
 今回は以下の２つの仕組みを利用して、pythonのバージョン管理と仮想環境の管理を行います。&lt;/p>
 &lt;ul>
@@ -4969,7 +5087,11 @@ data-flex-basis="984px"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p></description></item><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;/div>&lt;p>以上でローカル環境の構築が完了です。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（モダンな代替ツールとして）&lt;/li>
+&lt;/ul></description></item><item><title>HugoでGoogle Analyticsの設定をする方法</title><link>https://bossagyu.com/blog/003-google-analytics/</link><pubDate>Sat, 09 Dec 2023 18:09:42 +0900</pubDate><guid>https://bossagyu.com/blog/003-google-analytics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>HugoをでGoogle Analyticsを設定する方法をサクッと解説します。&lt;/p>
 &lt;h2 id="実現までの流れ">実現までの流れ&lt;/h2>
 &lt;ol>
@@ -5089,7 +5211,12 @@ data-flex-basis="782px"
 &lt;/div>&lt;p>上記ソースコードを追加した状態で、再度ビルドするとGoogle Analyticsにデータが送信されるようになります。&lt;/p>
 &lt;h2 id="tips">tips&lt;/h2>
 &lt;p>こちらの対応をしても、Google Analyticsにデータが連携されていないように見える場合は、タグの追加がうまくいっていない可能性があります。&lt;br>
-まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。&lt;/p></description></item><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/007-google-search-console/" >Google Search Consoleでブログを検索対象にする方法&lt;/a> - SEO対策&lt;/li>
+&lt;/ul></description></item><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。&lt;br>
 本ページでは一番最初にLINE Message APIの登録の方法とcurlでコマンドラインからメッセージを送る方法を紹介します。&lt;/p>
 &lt;h2 id="messaging-apiを利用する">Messaging APIを利用する&lt;/h2>
@@ -5184,7 +5311,11 @@ data-flex-basis="762px"
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！&lt;/p></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;/div>&lt;p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除を忘れない！掃除リマインダーLINE Bot&lt;/a>（LINE Botの実践プロジェクト）&lt;/li>
+&lt;/ul></description></item><item><title>Hugo + Netlify + Githubでブログを公開する</title><link>https://bossagyu.com/blog/001-hugo-netlify-build/</link><pubDate>Sat, 02 Dec 2023 00:59:37 +0900</pubDate><guid>https://bossagyu.com/blog/001-hugo-netlify-build/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Hugoで作ったサイトをGithubで管理、Netlifyでビルドした手順を0から作れるよう記載します。
 この方式にすると手元でMarkDownで書いたブログをGithubにPushするだけで簡単に公開できるようになります。&lt;/p>
 &lt;p>Faviconの設定方法も合わせて解説します。&lt;/p>
@@ -5356,4 +5487,12 @@ Googleより検索結果に表示されるための&lt;a class="link" href="http
 &lt;li>&lt;strong>Netlify&lt;/strong>: 自動デプロイ&lt;/li>
 &lt;li>&lt;strong>Favicon&lt;/strong>: ブランディングのための設定&lt;/li>
 &lt;/ol>
-&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p></description></item></channel></rss>
+&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析の導入&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/007-google-search-console/" >Google Search Consoleでブログを検索対象にする方法&lt;/a> - SEO対策&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/009-light-house/" >Lighthouseの使い方の紹介&lt;/a> - パフォーマンス計測&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/011-hugo-multilingul-support/" >ChatGPTを利用してHugoで作ったブログを多言語対応する方法&lt;/a> - 多言語対応&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/012-social-card/" >Twitter Social Cardの設定方法&lt;/a> - SNS共有の最適化&lt;/li>
+&lt;/ul></description></item></channel></rss>

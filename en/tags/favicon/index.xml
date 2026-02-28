@@ -207,4 +207,12 @@ Then click &amp;ldquo;Download the generated favicon&amp;rdquo; to download your
 &lt;li>&lt;strong>Netlify&lt;/strong>: Automatic deployment&lt;/li>
 &lt;li>&lt;strong>Favicon&lt;/strong>: Branding configuration&lt;/li>
 &lt;/ol>
-&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p></description></item></channel></rss>
+&lt;p>With this setup, you just write articles in Markdown and push to Github for automatic site updates.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/003-google-analytics/" >How to Set Up Google Analytics with Hugo&lt;/a> - Adding analytics&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/007-google-search-console/" >How to Add Your Blog to Google Search Using Google Search Console&lt;/a> - SEO setup&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/009-light-house/" >Introduction to Using Lighthouse&lt;/a> - Performance measurement&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/011-hugo-multilingul-support/" >Using ChatGPT to Make a Hugo Blog Multilingual&lt;/a> - Multilingual support&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/012-social-card/" >Setting Up Twitter Social Cards&lt;/a> - Social media optimization&lt;/li>
+&lt;/ul></description></item></channel></rss>

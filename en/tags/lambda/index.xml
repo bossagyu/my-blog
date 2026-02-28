@@ -87,7 +87,13 @@ data-flex-basis="345px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item><item><title>How to Schedule Lambda Functions with AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/006-intellij-lamda-setup/" >Efficient Lambda Development with AWS Toolkit in IntelliJ&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Schedule Lambda Functions with AWS EventBridge</title><link>https://bossagyu.com/en/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/en/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use AWS EventBridge to schedule Lambda functions for periodic execution.&lt;/p>
 &lt;p>I used this approach to implement scheduled reminder notifications for a LINE Bot.
 For example, you can send cleaning reminders every morning at 7 AM without managing any servers.&lt;/p>
@@ -280,8 +286,9 @@ Always delete rules you no longer need.&lt;/p>
 &lt;p>Serverless scheduled execution is great for reminder bots and batch processing. Give it a try!&lt;/p>
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Efficient Lambda Development with AWS Toolkit in IntelliJ</title><link>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/en/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to efficiently develop Lambda functions using the AWS Toolkit in IntelliJ.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
@@ -398,4 +405,9 @@ data-flex-basis="721px"
 &lt;p>Selecting Run will execute the Lambda locally.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
-Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p></description></item></channel></rss>
+Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

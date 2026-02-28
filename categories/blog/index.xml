@@ -67,4 +67,9 @@ Twitterから提供されている&lt;a class="link" href="https://cards-dev.twi
 >デバッグツール&lt;/a>を利用して、設定が正しく反映されているか確認してみましょう。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明しました。
-Social Cardを設定することで、Twitterで記事をシェアした際に、より多くの人に記事を読んでもらうことができますのでぜひ設定しましょう。&lt;/p></description></item></channel></rss>
+Social Cardを設定することで、Twitterで記事をシェアした際に、より多くの人に記事を読んでもらうことができますのでぜひ設定しましょう。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/007-google-search-console/" >Google Search Consoleでブログを検索対象にする方法&lt;/a> - SEO対策&lt;/li>
+&lt;/ul></description></item></channel></rss>

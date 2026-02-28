@@ -296,4 +296,10 @@ data-flex-basis="338px"
 >&lt;/p>
 &lt;p>We’ve successfully materialized data in the Online Store and fetched it using Feast.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p></description></item></channel></rss>
+&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (traditional Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/031-read-parquet-file/" >How to Read Parquet Files on macOS&lt;/a> (Feast sample data format)&lt;/li>
+&lt;/ul></description></item></channel></rss>

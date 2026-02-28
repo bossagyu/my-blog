@@ -134,5 +134,10 @@ data-flex-grow="242"
 data-flex-basis="583px"
 >&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.&lt;br>
-While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p></description></item></channel></rss>
+&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.
+While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (modern Python environment setup)&lt;/li>
+&lt;/ul></description></item></channel></rss>

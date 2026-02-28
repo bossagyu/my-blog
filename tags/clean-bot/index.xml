@@ -170,7 +170,12 @@ data-flex-basis="597px"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの全機能紹介&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>ぜひ活用して、掃除を習慣化しましょう！&lt;/p></description></item><item><title>掃除を忘れない！掃除リマインダーLINE Bot</title><link>https://bossagyu.com/blog/045-clean-bot/</link><pubDate>Sat, 07 Feb 2026 18:30:00 +0900</pubDate><guid>https://bossagyu.com/blog/045-clean-bot/</guid><description>&lt;h2 id="こんな悩みはありませんか">こんな悩みはありませんか？&lt;/h2>
+&lt;p>ぜひ活用して、掃除を習慣化しましょう！&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除を忘れない！掃除リマインダーLINE Bot&lt;/a>（全機能の紹介）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>（LINE Bot開発の基礎）&lt;/li>
+&lt;/ul></description></item><item><title>掃除を忘れない！掃除リマインダーLINE Bot</title><link>https://bossagyu.com/blog/045-clean-bot/</link><pubDate>Sat, 07 Feb 2026 18:30:00 +0900</pubDate><guid>https://bossagyu.com/blog/045-clean-bot/</guid><description>&lt;h2 id="こんな悩みはありませんか">こんな悩みはありませんか？&lt;/h2>
 &lt;ul>
 &lt;li>「掃除機、最後にかけたのいつだっけ&amp;hellip;」&lt;/li>
 &lt;li>「トイレ掃除、そろそろやらないと」&lt;/li>
@@ -323,4 +328,9 @@ data-flex-basis="240px"
 &lt;h2 id="無料で使えます">無料で使えます&lt;/h2>
 &lt;p>このBotは完全無料で利用できます。ぜひお試しください！&lt;/p>
 &lt;p>&lt;a class="link" href="https://lin.ee/kdwsLys" target="_blank" rel="noopener"
->友だち追加はこちら&lt;/a>&lt;/p></description></item></channel></rss>
+>友だち追加はこちら&lt;/a>&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/047-clean-bot-tutorial/" >【初心者向け】掃除リマインダーBotの使い方チュートリアル&lt;/a>（初心者向け使い方ガイド）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>（LINE Bot開発の基礎）&lt;/li>
+&lt;/ul></description></item></channel></rss>

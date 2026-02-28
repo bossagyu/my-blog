@@ -425,4 +425,9 @@ CR -->|Download| GCS
 &lt;/ul>
 &lt;p>By combining an event-driven architecture with GCP managed services, I was able to build a reliable document synchronization platform with minimal code. The simplicity of making documents searchable just by placing files in GCS was a significant advantage during the time-limited hackathon development.&lt;/p>
 &lt;p>The source code is available on &lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
->GitHub&lt;/a>.&lt;/p></description></item></channel></rss>
+>GitHub&lt;/a>.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (using OpenAI API)&lt;/li>
+&lt;/ul></description></item></channel></rss>

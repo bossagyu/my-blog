@@ -106,4 +106,10 @@ data-flex-basis="801px"
 クリックしてから数時間でインデックスが登録されました。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。&lt;br>
-せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p></description></item></channel></rss>
+せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/001-hugo-netlify-build/" >Hugo + Netlify + Githubでブログを公開する&lt;/a> - ブログの初期構築&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/009-light-house/" >Lighthouseの使い方の紹介&lt;/a> - パフォーマンス計測&lt;/li>
+&lt;/ul></description></item></channel></rss>

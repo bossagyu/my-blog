@@ -180,7 +180,12 @@
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>GoでRedisを使う方法について説明しました。
 GoでRedisを使う場合は、&lt;a class="link" href="https://github.com/redis/go-redis" target="_blank" rel="noopener"
->go-redis&lt;/a>を使用します。&lt;/p></description></item><item><title>RedisをDockerで起動する方法</title><link>https://bossagyu.com/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/blog/040-redis-local/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>go-redis&lt;/a>を使用します。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/040-redis-local/" >RedisをDockerで起動する方法&lt;/a>（Redisの起動方法）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/030-go-environment-construction/" >macでGoの開発環境を構築して最速でHello Worldする&lt;/a>（Go環境構築）&lt;/li>
+&lt;/ul></description></item><item><title>RedisをDockerで起動する方法</title><link>https://bossagyu.com/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/blog/040-redis-local/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、RedisをDockerで起動する方法について説明します。&lt;/p>
 &lt;h2 id="redisとは">Redisとは&lt;/h2>
 &lt;p>Redisは、オープンソースのインメモリデータ構造ストアであり、データベース、キャッシュ、メッセージブローカーとして使用されます。高速な読み書き性能を持ち、様々なデータ構造（文字列、リスト、セット、ハッシュなど）をサポートしています。&lt;/p>
@@ -253,5 +258,9 @@ GoでRedisを使う場合は、&lt;a class="link" href="https://github.com/redis
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>この記事では、Dockerを使用してRedisを起動する方法について説明しました。
-Redisは高速なデータベースとして広く利用されており、Dockerを使用することで簡単にセットアップできます。&lt;br>
-ぜひ、Redisを活用してみてください。&lt;/p></description></item></channel></rss>
+Redisは高速なデータベースとして広く利用されており、Dockerを使用することで簡単にセットアップできます。
+ぜひ、Redisを活用してみてください。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/041-redis-go/" >RedisをGoで使う方法&lt;/a>（GoでRedisを操作する実践例）&lt;/li>
+&lt;/ul></description></item></channel></rss>

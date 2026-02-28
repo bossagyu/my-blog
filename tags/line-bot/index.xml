@@ -170,7 +170,12 @@ data-flex-basis="597px"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの全機能紹介&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>ぜひ活用して、掃除を習慣化しましょう！&lt;/p></description></item><item><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link>https://bossagyu.com/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>ぜひ活用して、掃除を習慣化しましょう！&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除を忘れない！掃除リマインダーLINE Bot&lt;/a>（全機能の紹介）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>（LINE Bot開発の基礎）&lt;/li>
+&lt;/ul></description></item><item><title>AWS Lambda + LINE Botで掃除リマインダーを作る</title><link>https://bossagyu.com/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>家族で使える掃除リマインダーLINE Botを作りました。この記事では、その技術的な実装について解説します。&lt;/p>
 &lt;p>完成したBotはこちら: &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBot&lt;/a>&lt;/p>
 &lt;h2 id="アーキテクチャ">アーキテクチャ&lt;/h2>
@@ -692,6 +697,9 @@ E -->|通知| A
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/015-s3-object-check/" >S3のオブジェクトの存在確認をする方法【Python boto3】&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>掃除を忘れない！掃除リマインダーLINE Bot</title><link>https://bossagyu.com/blog/045-clean-bot/</link><pubDate>Sat, 07 Feb 2026 18:30:00 +0900</pubDate><guid>https://bossagyu.com/blog/045-clean-bot/</guid><description>&lt;h2 id="こんな悩みはありませんか">こんな悩みはありませんか？&lt;/h2>
 &lt;ul>
 &lt;li>「掃除機、最後にかけたのいつだっけ&amp;hellip;」&lt;/li>
@@ -845,7 +853,12 @@ data-flex-basis="240px"
 &lt;h2 id="無料で使えます">無料で使えます&lt;/h2>
 &lt;p>このBotは完全無料で利用できます。ぜひお試しください！&lt;/p>
 &lt;p>&lt;a class="link" href="https://lin.ee/kdwsLys" target="_blank" rel="noopener"
->友だち追加はこちら&lt;/a>&lt;/p></description></item><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+>友だち追加はこちら&lt;/a>&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/047-clean-bot-tutorial/" >【初心者向け】掃除リマインダーBotの使い方チュートリアル&lt;/a>（初心者向け使い方ガイド）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging APIの登録と使い方&lt;/a>（LINE Bot開発の基礎）&lt;/li>
+&lt;/ul></description></item><item><title>LINE Messaging APIの登録と使い方</title><link>https://bossagyu.com/blog/002-line-messaging-api/</link><pubDate>Thu, 07 Dec 2023 09:37:00 +0900</pubDate><guid>https://bossagyu.com/blog/002-line-messaging-api/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>LINEのBotを利用してアプリケーションを作ってみようと考えたのでまずはBotを利用できる状態にする。&lt;br>
 本ページでは一番最初にLINE Message APIの登録の方法とcurlでコマンドラインからメッセージを送る方法を紹介します。&lt;/p>
 &lt;h2 id="messaging-apiを利用する">Messaging APIを利用する&lt;/h2>
@@ -940,4 +953,8 @@ data-flex-basis="762px"
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除を忘れない！掃除リマインダーLINE Bot&lt;/a>（LINE Botの実践プロジェクト）&lt;/li>
+&lt;/ul></description></item></channel></rss>

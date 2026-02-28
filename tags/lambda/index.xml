@@ -93,7 +93,13 @@ data-flex-basis="345px"
 &lt;/div>
 &lt;/div>&lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>本記事ではAWS API GatewayとLambdaを連携させる方法を紹介しました。
-API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/006-intellij-lamda-setup/" >IntellijでAWS Toolkitを使ってLambdaを効率よく開発する&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/008-aws-eventbrdge/" >AWS EventBridgeを用いてLambdaを定期実行する方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>AWS EventBridgeを用いてLambdaを定期実行する方法</title><link>https://bossagyu.com/blog/008-aws-eventbrdge/</link><pubDate>Thu, 21 Dec 2023 23:03:13 +0900</pubDate><guid>https://bossagyu.com/blog/008-aws-eventbrdge/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>AWS EventBridgeを用いてLambdaを定期実行する方法を解説します。&lt;/p>
 &lt;p>私はこの仕組みを使って、LINE Botに定期的にリマインド通知を送る機能を実装しました。
 たとえば「毎朝7時に掃除のリマインドを送る」といった処理を、サーバーを用意せずに実現できます。&lt;/p>
@@ -287,6 +293,7 @@ data-flex-basis="1400px"
 &lt;p>サーバーレスで定期実行を実現できるので、リマインダーBotやバッチ処理などに活用してみてください。&lt;/p>
 &lt;h2 id="関連記事">関連記事&lt;/h2>
 &lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >掃除リマインダーBotの使い方&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >掃除リマインダーBotの技術解説&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する</title><link>https://bossagyu.com/blog/006-intellij-lamda-setup/</link><pubDate>Tue, 12 Dec 2023 22:40:05 +0900</pubDate><guid>https://bossagyu.com/blog/006-intellij-lamda-setup/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
@@ -405,4 +412,9 @@ data-flex-basis="721px"
 &lt;p>Runを選択すると、Lambdaがローカルで実行されます。&lt;/p>
 &lt;h2 id="まとめ">まとめ&lt;/h2>
 &lt;p>IntellijでAWS Toolkitを使ってLambdaを効率よく開発する方法を解説しました。
-Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p></description></item></channel></rss>
+Intellijで開発してローカルで実行できるので、開発効率がかなり上がります。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/014-aws-apigateway-lambda/" >AWS API GatewayとLambdaを連携させる方法&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >AWS Lambda + LINE Botで掃除リマインダーを作る&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

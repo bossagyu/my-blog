@@ -425,4 +425,9 @@ CR -->|ダウンロード| GCS
 &lt;/ul>
 &lt;p>イベント駆動アーキテクチャとGCPのマネージドサービスを組み合わせることで、少ないコードで信頼性の高いドキュメント同期基盤を実現できました。GCSにファイルを配置するだけで検索可能になるシンプルさは、ハッカソンの限られた時間内での開発にも大きく貢献しました。&lt;/p>
 &lt;p>ソースコードは&lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
->GitHub&lt;/a>で公開しています。&lt;/p></description></item></channel></rss>
+>GitHub&lt;/a>で公開しています。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/032-python-uv/" >MacでUVを用いてPythonの開発環境を構築する&lt;/a>（Python環境構築）&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/044-openai-response-api/" >OpenAI Response APIの使い方まとめ&lt;/a>（OpenAI APIの利用）&lt;/li>
+&lt;/ul></description></item></channel></rss>

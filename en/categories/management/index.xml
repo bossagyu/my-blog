@@ -134,8 +134,13 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.&lt;br>
-In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p></description></item><item><title>Explaining Business Analysis in ITIL v4</title><link>https://bossagyu.com/en/blog/018-itilv4-business-analysis/</link><pubDate>Fri, 09 Feb 2024 09:00:56 +0900</pubDate><guid>https://bossagyu.com/en/blog/018-itilv4-business-analysis/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.
+In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/016-itilv4-availability-management/" >Understanding Availability Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/018-itilv4-business-analysis/" >Explaining Business Analysis in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;/ul></description></item><item><title>Explaining Business Analysis in ITIL v4</title><link>https://bossagyu.com/en/blog/018-itilv4-business-analysis/</link><pubDate>Fri, 09 Feb 2024 09:00:56 +0900</pubDate><guid>https://bossagyu.com/en/blog/018-itilv4-business-analysis/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article consolidates my learning and understanding of business analysis as per ITIL v4. I will also apply my own experiences to explain the business analysis process.&lt;/p>
 &lt;h2 id="what-is-business-analysis">What is Business Analysis?&lt;/h2>
 &lt;p>Business analysis involves analyzing a business or any other component to propose solutions for meeting those needs or solving business challenges. It is important to note that the term &amp;ldquo;business&amp;rdquo; analysis does not solely pertain to business entities.&lt;/p>
@@ -190,6 +195,11 @@ In my experience, discussions about performance and availability often go hand i
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Business analysis management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/016-itilv4-availability-management/" >Understanding Availability Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/" >Explaining Capacity and Performance Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
 &lt;/ul></description></item><item><title>Understanding Availability Management in ITIL v4</title><link>https://bossagyu.com/en/blog/016-itilv4-availability-management/</link><pubDate>Tue, 30 Jan 2024 20:34:58 +0900</pubDate><guid>https://bossagyu.com/en/blog/016-itilv4-availability-management/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains availability management as defined in ITIL v4. I will also relate my own experiences to explain the processes involved in availability management.&lt;/p>
 &lt;h2 id="what-is-availability-management">What is Availability Management?&lt;/h2>
@@ -263,6 +273,11 @@ In my experience, discussions about performance and availability often go hand i
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide" target="_blank" rel="noopener"
 >Availability management: ITIL 4 Practice Guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/018-itilv4-business-analysis/" >Explaining Business Analysis in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/020-itilv4-capacity-and-performance-management/" >Explaining Capacity and Performance Management in ITIL v4&lt;/a> (related ITIL v4 article)&lt;/li>
 &lt;/ul></description></item><item><title>How to Create a Product Strategy</title><link>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</link><pubDate>Mon, 08 Jan 2024 21:55:15 +0900</pubDate><guid>https://bossagyu.com/en/blog/013-good-strategy-bad-strategy/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to create a good product strategy, based on the book &amp;ldquo;Good Strategy Bad Strategy.&amp;rdquo;&lt;/p>
 &lt;h2 id="background">Background&lt;/h2>

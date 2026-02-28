@@ -114,7 +114,12 @@ data-flex-basis="721px"
 &lt;p>Selecting Run will execute the Lambda locally.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
-Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Developing in IntelliJ and executing locally can significantly improve development efficiency.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use GitHub Copilot in IntelliJ.
 Additionally, a cheat sheet of shortcuts is provided.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
@@ -171,4 +176,9 @@ data-flex-basis="984px"
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use GitHub Copilot in IntelliJ.
-It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item></channel></rss>
+It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

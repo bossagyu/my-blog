@@ -87,4 +87,10 @@ data-flex-basis="345px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p></description></item></channel></rss>
+&lt;p>This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/006-intellij-lamda-setup/" >Efficient Lambda Development with AWS Toolkit in IntelliJ&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

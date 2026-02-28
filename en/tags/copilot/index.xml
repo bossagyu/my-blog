@@ -143,7 +143,14 @@ This blog was also written with GitHub Copilot assistance, significantly improvi
 &lt;li>&lt;strong>Chat Tools&lt;/strong>: Add context with &lt;code>#codebase&lt;/code> and &lt;code>#selection&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>GitHub Copilot not only provides code completions but also assists with writing text.
-Give it a try and see how it can help you.&lt;/p></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Give it a try and see how it can help you.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/005-github-copilot/" >How to Use GitHub Copilot in IntelliJ&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/035-github-copilot-markdown/" >How to Enable GitHub Copilot for Markdown&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/043-codex/" >How to Use Codex CLI&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Use GitHub Copilot in IntelliJ</title><link>https://bossagyu.com/en/blog/005-github-copilot/</link><pubDate>Mon, 11 Dec 2023 22:45:40 +0900</pubDate><guid>https://bossagyu.com/en/blog/005-github-copilot/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to use GitHub Copilot in IntelliJ.
 Additionally, a cheat sheet of shortcuts is provided.&lt;/p>
 &lt;h2 id="steps-to-implementation">Steps to Implementation&lt;/h2>
@@ -200,4 +207,9 @@ data-flex-basis="984px"
 &lt;/table>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use GitHub Copilot in IntelliJ.
-It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p></description></item></channel></rss>
+It&amp;rsquo;s worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/017-vscode-copilot/" >Complete Guide to Using GitHub Copilot in VSCode&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/042-github-copilot/" >How to Use GitHub Copilot More Effectively with Chat Tools&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

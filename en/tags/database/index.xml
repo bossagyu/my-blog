@@ -182,7 +182,12 @@
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>This article explained how to use Redis with Go.
 When working with Redis in Go, use the &lt;a class="link" href="https://github.com/redis/go-redis" target="_blank" rel="noopener"
->go-redis&lt;/a> package.&lt;/p></description></item><item><title>How to Run Redis with Docker</title><link>https://bossagyu.com/en/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/en/blog/040-redis-local/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+>go-redis&lt;/a> package.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/040-redis-local/" >How to Run Redis with Docker&lt;/a> (how to start Redis)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/030-go-environment-construction/" >Setting Up a Go Development Environment on Mac and Running Hello World&lt;/a> (Go environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>How to Run Redis with Docker</title><link>https://bossagyu.com/en/blog/040-redis-local/</link><pubDate>Fri, 03 Oct 2025 07:29:31 +0900</pubDate><guid>https://bossagyu.com/en/blog/040-redis-local/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to run Redis with Docker.&lt;/p>
 &lt;h2 id="what-is-redis">What is Redis?&lt;/h2>
 &lt;p>Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. It provides high-speed read/write performance and supports various data structures such as strings, lists, sets, and hashes.&lt;/p>
@@ -256,4 +261,8 @@ If it is not installed, please download and install it from the &lt;a class="lin
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>In this article, we explained how to run Redis using Docker.
 Redis is widely used as a high-performance database, and with Docker, it can be easily set up.
-Give Redis a try and see how it can help you.&lt;/p></description></item></channel></rss>
+Give Redis a try and see how it can help you.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/041-redis-go/" >How to Use Redis with Go&lt;/a> (practical example of using Redis in Go)&lt;/li>
+&lt;/ul></description></item></channel></rss>

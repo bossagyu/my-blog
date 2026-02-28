@@ -191,6 +191,7 @@ Always delete rules you no longer need.&lt;/p>
 &lt;p>Serverless scheduled execution is great for reminder bots and batch processing. Give it a try!&lt;/p>
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot - Technical Guide&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

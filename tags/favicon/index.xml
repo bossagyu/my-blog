@@ -170,4 +170,12 @@ Googleより検索結果に表示されるための&lt;a class="link" href="http
 &lt;li>&lt;strong>Netlify&lt;/strong>: 自動デプロイ&lt;/li>
 &lt;li>&lt;strong>Favicon&lt;/strong>: ブランディングのための設定&lt;/li>
 &lt;/ol>
-&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p></description></item></channel></rss>
+&lt;p>この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。&lt;/p>
+&lt;h2 id="関連記事">関連記事&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/003-google-analytics/" >HugoでGoogle Analyticsの設定をする方法&lt;/a> - アクセス解析の導入&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/007-google-search-console/" >Google Search Consoleでブログを検索対象にする方法&lt;/a> - SEO対策&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/009-light-house/" >Lighthouseの使い方の紹介&lt;/a> - パフォーマンス計測&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/011-hugo-multilingul-support/" >ChatGPTを利用してHugoで作ったブログを多言語対応する方法&lt;/a> - 多言語対応&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/012-social-card/" >Twitter Social Cardの設定方法&lt;/a> - SNS共有の最適化&lt;/li>
+&lt;/ul></description></item></channel></rss>

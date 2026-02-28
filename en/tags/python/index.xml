@@ -425,7 +425,12 @@ CR -->|Download| GCS
 &lt;/ul>
 &lt;p>By combining an event-driven architecture with GCP managed services, I was able to build a reliable document synchronization platform with minimal code. The simplicity of making documents searchable just by placing files in GCS was a significant advantage during the time-limited hackathon development.&lt;/p>
 &lt;p>The source code is available on &lt;a class="link" href="https://github.com/23-u-don/lawve-backend" target="_blank" rel="noopener"
->GitHub&lt;/a>.&lt;/p></description></item><item><title>Building a Cleaning Reminder Bot with AWS Lambda + LINE</title><link>https://bossagyu.com/en/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+>GitHub&lt;/a>.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/044-openai-response-api/" >How to Use the OpenAI Response API&lt;/a> (using OpenAI API)&lt;/li>
+&lt;/ul></description></item><item><title>Building a Cleaning Reminder Bot with AWS Lambda + LINE</title><link>https://bossagyu.com/en/blog/046-clean-bot-technical/</link><pubDate>Sat, 07 Feb 2026 19:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/046-clean-bot-technical/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>I built a cleaning reminder LINE Bot for family use. This article explains the technical implementation details.&lt;/p>
 &lt;p>See the completed Bot here: &lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >Cleaning Reminder Bot&lt;/a>&lt;/p>
 &lt;h2 id="architecture">Architecture&lt;/h2>
@@ -946,7 +951,10 @@ E -->|Notify| A
 &lt;h2 id="related-articles">Related Articles&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://bossagyu.com/blog/045-clean-bot/" >How to Use the Cleaning Reminder Bot&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://bossagyu.com/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/002-line-messaging-api/" >LINE Messaging API Registration and Usage&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/008-aws-eventbrdge/" >How to Schedule Lambda Functions with AWS EventBridge&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/014-aws-apigateway-lambda/" >Integrating AWS API Gateway with Lambda&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/015-s3-object-check/" >How to Check if an S3 Object Exists in Python boto3&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>How to Use the OpenAI Response API</title><link>https://bossagyu.com/en/blog/044-openai-response-api/</link><pubDate>Wed, 24 Dec 2025 10:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/044-openai-response-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article summarizes how to use the OpenAI Response API for text generation. It covers the official documentation, how to obtain an API key, and a minimal Python example.&lt;/p>
 &lt;h2 id="what-is-the-response-api">What is the Response API?&lt;/h2>
@@ -1025,7 +1033,12 @@ E -->|Notify| A
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/027-chatgpt-4o/" >Introduction to ChatGPT 4o&lt;/a> (overview of ChatGPT&amp;rsquo;s latest features)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/048-lawve-backend/" >Designing an Event-Driven Backend to Sync GCS with Gemini File Search API&lt;/a> (a practical example of API integration patterns)&lt;/li>
+&lt;/ul></description></item><item><title>Running the Feast Tutorial on macOS</title><link>https://bossagyu.com/en/blog/033-feast-tutorial/</link><pubDate>Mon, 13 Jan 2025 11:49:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/033-feast-tutorial/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In this article, we’ll follow the &lt;a class="link" href="https://github.com/feast-dev/feast" target="_blank" rel="noopener"
 >Feast tutorial&lt;/a> and run it on a Mac.&lt;/p>
 &lt;h2 id="prerequisites">Prerequisites&lt;/h2>
@@ -1323,7 +1336,13 @@ data-flex-basis="338px"
 >&lt;/p>
 &lt;p>We’ve successfully materialized data in the Online Store and fetched it using Feast.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p></description></item><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>We followed the Feast tutorial to prepare training data, materialize that data into the Online Store, and retrieve it. By managing both training and inference datasets in Feast, you can avoid training-serving skew, enhancing the consistency of your ML workflows.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (traditional Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/031-read-parquet-file/" >How to Read Parquet Files on macOS&lt;/a> (Feast sample data format)&lt;/li>
+&lt;/ul></description></item><item><title>Setting Up a Python Development Environment on Mac with UV</title><link>https://bossagyu.com/en/blog/032-python-uv/</link><pubDate>Wed, 01 Jan 2025 14:39:53 +0900</pubDate><guid>https://bossagyu.com/en/blog/032-python-uv/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article introduces how to set up a Python development environment on Mac using UV.&lt;/p>
 &lt;h2 id="what-is-uv">What is UV?&lt;/h2>
 &lt;p>UV is a package management tool announced in mid-2024.&lt;br>
@@ -1403,8 +1422,12 @@ data-flex-basis="1047px"
 &lt;/div>&lt;p>For more details on UV, refer to the &lt;a class="link" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener"
 >official documentation&lt;/a>.&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
-&lt;p>This article explained how to set up a Python development environment on Mac.&lt;br>
-As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p></description></item><item><title>Using Bluesky API for Automated Posting with Python</title><link>https://bossagyu.com/en/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/en/blog/024-bluesky-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article explained how to set up a Python development environment on Mac.
+As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (traditional Python environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>Using Bluesky API for Automated Posting with Python</title><link>https://bossagyu.com/en/blog/024-bluesky-api/</link><pubDate>Sun, 07 Apr 2024 23:52:09 +0900</pubDate><guid>https://bossagyu.com/en/blog/024-bluesky-api/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>&lt;a class="link" href="https://bsky.app/" target="_blank" rel="noopener"
 >Bluesky&lt;/a> is a decentralized social network initiated by Jack Dorsey, former CEO of Twitter.&lt;br>
 Built on the &lt;a class="link" href="https://atproto.com/docs" target="_blank" rel="noopener"
@@ -1540,8 +1563,13 @@ data-flex-grow="242"
 data-flex-basis="583px"
 >&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.&lt;br>
-While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p></description></item><item><title>How to Check if an S3 Object Exists in Python boto3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This article covered how to execute Bluesky&amp;rsquo;s API using Python.
+While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (modern Python environment setup)&lt;/li>
+&lt;/ul></description></item><item><title>How to Check if an S3 Object Exists in Python boto3</title><link>https://bossagyu.com/en/blog/015-s3-object-check/</link><pubDate>Sat, 27 Jan 2024 21:41:37 +0900</pubDate><guid>https://bossagyu.com/en/blog/015-s3-object-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article explains how to check whether an S3 object exists using Python.
 boto3 provides two API levels: &lt;code>resource&lt;/code> and &lt;code>client&lt;/code>. I&amp;rsquo;ll cover both methods.&lt;/p>
 &lt;p>I used this approach when developing a LINE Bot where I needed to check if a user&amp;rsquo;s configuration file existed in S3.&lt;/p>
@@ -1708,6 +1736,12 @@ For single object existence checks, use &lt;code>head_object&lt;/code>.&lt;/p>
 >boto3 S3 head_object&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3" target="_blank" rel="noopener"
 >Stack Overflow: check if a file exists in s3 bucket using boto3&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/046-clean-bot-technical/" >Building a Cleaning Reminder Bot with AWS Lambda + LINE&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/004-python-setup/" >Setting Up a Local Environment Using Pyenv and venv&lt;/a> (Python environment setup)&lt;/li>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (modern Python environment setup)&lt;/li>
 &lt;/ul></description></item><item><title>Setting Up a Local Environment Using Pyenv and venv</title><link>https://bossagyu.com/en/blog/004-python-setup/</link><pubDate>Sun, 10 Dec 2023 23:19:33 +0900</pubDate><guid>https://bossagyu.com/en/blog/004-python-setup/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This article documents how to set up a Python environment for development on a Mac local environment.&lt;br>
 In this case, we will use two systems to manage different versions of Python and virtual environments:&lt;/p>
@@ -1891,4 +1925,8 @@ In this case, we will use two systems to manage different versions of Python and
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">rm -rf venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;p>This completes the setup of the local environment.&lt;/p>
+&lt;h2 id="related-articles">Related Articles&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://bossagyu.com/en/blog/032-python-uv/" >Setting Up a Python Development Environment on Mac with UV&lt;/a> (as a modern alternative)&lt;/li>
+&lt;/ul></description></item></channel></rss>
