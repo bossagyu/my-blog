@@ -119,8 +119,10 @@ Hugo設定は `config/_default/` に分割:
 
 ## デプロイ
 
-- **GitHub Pages**（メイン）: `main`へのプッシュでGitHub Actionsが実行、Hugo 0.119.0 extended、`gh-pages`ブランチにデプロイ
-- **Netlify**（サブ）: Hugo 0.120.3、`public/`を公開
+- **GitHub Pages**: `main`へのプッシュでGitHub Actionsが実行、Hugo 0.120.3 extended、`gh-pages`ブランチにデプロイ
+- CDN: Fastly（80+ POP worldwide）
+- カスタムドメイン: bossagyu.com（Netlify DNS で A/AAAA レコード管理）
+- HTTPS: GitHub Pages 自動管理（Let's Encrypt）
 
 ## Gitワークフロー
 
