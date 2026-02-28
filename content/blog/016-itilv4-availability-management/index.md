@@ -2,6 +2,7 @@
 title = 'ITIL v4 可用性管理について解説'
 description = 'ITIL v4の可用性管理について、サービス可用性制御の確立から分析・改善プロセスまで実務経験を交えて解説します。SLA設計やダッシュボード構築の実践例も紹介。'
 date = 2024-01-30T20:34:58+09:00
+lastmod = 2024-01-30T20:34:58+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL', 'Availability Management']
@@ -65,3 +66,8 @@ tags = ['ITIL', 'Availability Management']
 
 ## 参考
 * [Availability management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide)
+
+## 関連記事
+
+- [ITIL v4 事業分析について解説](/blog/018-itilv4-business-analysis/)（関連ITIL v4記事）
+- [ITIL v4 キャパシティ及びパフォーマンス管理について解説](/blog/020-itilv4-capacity-and-performance-management/)（関連ITIL v4記事）

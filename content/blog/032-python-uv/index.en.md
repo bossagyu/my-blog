@@ -2,6 +2,7 @@
 title = "Setting Up a Python Development Environment on Mac with UV"
 description = 'How to set up a Python environment on Mac with uv, a fast Rust-based package manager. Covers installation, virtual environment creation, and package management.'
 date = 2025-01-01T14:39:53+09:00
+lastmod = 2025-01-01T14:39:53+09:00
 draft = false
 categories = ["Engineering"]
 tags = ["Python", "uv"]
@@ -63,5 +64,9 @@ uv pip install <package name>
 For more details on UV, refer to the [official documentation](https://docs.astral.sh/uv/).
 
 ## Summary
-This article explained how to set up a Python development environment on Mac.  
+This article explained how to set up a Python development environment on Mac.
 As of January 2025, UV is both fast and easy to use, making it a valuable tool for setting up a Python development environment.
+
+## Related Articles
+
+- [Setting Up a Local Environment Using Pyenv and venv](/en/blog/004-python-setup/) (traditional Python environment setup)

@@ -2,6 +2,7 @@
 title = 'Efficient Lambda Development with AWS Toolkit in IntelliJ'
 description = 'How to develop Lambda functions with AWS Toolkit in IntelliJ. Covers Docker and AWS CLI setup, Lambda creation, and local execution steps.'
 date = 2023-12-12T22:40:05+09:00
+lastmod = 2023-12-12T22:40:05+09:00
 draft = false
 categories = ['Engineering']
 tags = ['IntelliJ', 'AWS', 'Lambda']
@@ -76,3 +77,8 @@ Selecting Run will execute the Lambda locally.
 ## Summary
 This article provided a guide on efficiently developing Lambda using AWS Toolkit in IntelliJ.
 Developing in IntelliJ and executing locally can significantly improve development efficiency.
+
+## Related Articles
+
+- [Integrating AWS API Gateway with Lambda](/en/blog/014-aws-apigateway-lambda/)
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/en/blog/046-clean-bot-technical/)

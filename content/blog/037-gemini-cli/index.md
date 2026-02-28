@@ -2,6 +2,7 @@
 title = 'MacでGemini CLIをセットアップする方法'
 description = 'MacでGemini CLIをHomebrewでインストールし、ターミナルからGemini AIを利用する方法を解説。Googleアカウント連携からコード生成まで実践的に紹介します。'
 date = 2025-07-22T23:21:19+09:00
+lastmod = 2025-07-22T23:21:19+09:00
 draft = true
 categories = ['Engineering']
 tags = ['Gemini CLI', 'AI']
@@ -62,3 +63,8 @@ Gemini CLIをセットアップすることで、ターミナル上で直接Gemi
 Gemini CLIは非常に使いやすく、
 ターミナルでの作業をよりスムーズにしてくれます。
 ぜひ試してみてください。
+
+## 関連記事
+
+- [ChatGPT 4oの紹介](/blog/027-chatgpt-4o/)（ChatGPTとの比較）
+- [OpenAI Response APIの使い方まとめ](/blog/044-openai-response-api/)（API統合の実践）

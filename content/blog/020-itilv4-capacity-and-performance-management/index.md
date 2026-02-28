@@ -2,6 +2,7 @@
 title = 'ITIL v4 キャパシティ及びパフォーマンス管理について解説'
 description = 'ITIL v4のキャパシティ・パフォーマンス管理を解説。レイテンシー要件の特定からスループット測定、Dynatraceを使った可視化まで実務経験を交えて紹介します。'
 date = 2024-02-27T08:53:36+09:00
+lastmod = 2024-02-27T08:53:36+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL', 'Capacity Management', 'Performance Management']
@@ -69,6 +70,11 @@ tags = ['ITIL', 'Capacity Management', 'Performance Management']
 
 ## まとめ
 今回はキャパシティ及びパフォーマンス管理について学習した内容に基づき筆者の経験を当てはめ説明しました。
-キャパシティ及びパフォーマンス管理では、可用性管理相当のことをキャパシティとパフォーマンスの観点から行うことが理解できました。  
+キャパシティ及びパフォーマンス管理では、可用性管理相当のことをキャパシティとパフォーマンスの観点から行うことが理解できました。
 筆者の経験ではパフォーマンスの話と可用性の話についてはセットで行うことが多いのであまり独立して行わないと感じました。
+
+## 関連記事
+
+- [ITIL v4 可用性管理について解説](/blog/016-itilv4-availability-management/)（関連ITIL v4記事）
+- [ITIL v4 事業分析について解説](/blog/018-itilv4-business-analysis/)（関連ITIL v4記事）
 

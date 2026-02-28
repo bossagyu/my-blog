@@ -2,6 +2,7 @@
 title = 'Understanding Availability Management in ITIL v4'
 description = 'Understanding ITIL v4 availability management. Covers service availability control, analysis, improvement processes, SLA design, and dashboard examples from real experience.'
 date = 2024-01-30T20:34:58+09:00
+lastmod = 2024-01-30T20:34:58+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL']
@@ -60,3 +61,8 @@ Applying my own experiences to these processes, I understood them as follows:
 
 ## Reference
 * [Availability management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide)
+
+## Related Articles
+
+- [Explaining Business Analysis in ITIL v4](/en/blog/018-itilv4-business-analysis/) (related ITIL v4 article)
+- [Explaining Capacity and Performance Management in ITIL v4](/en/blog/020-itilv4-capacity-and-performance-management/) (related ITIL v4 article)

@@ -2,6 +2,7 @@
 title = 'How to Customize Indent Guides in VSCode'
 description = 'How to customize VSCode indent guide colors in settings. Change indent colors by depth level without extensions to improve code readability.'
 date = 2025-07-22T21:01:13+09:00
+lastmod = 2025-07-22T21:01:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['VSCode']

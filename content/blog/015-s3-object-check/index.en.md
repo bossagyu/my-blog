@@ -2,6 +2,7 @@
 title = 'How to Check if an S3 Object Exists in Python boto3'
 description = 'How to check if an S3 object exists using Python boto3. Covers the recommended head_object method, resource vs client differences, and common pitfalls.'
 date = 2024-01-27T21:41:37+09:00
+lastmod = 2024-01-27T21:41:37+09:00
 draft = false
 categories = ['Engineering']
 tags = ['AWS', 'S3', 'Python', 'boto3']
@@ -116,3 +117,9 @@ For single object existence checks, use `head_object`.
 
 - [boto3 S3 head_object](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html)
 - [Stack Overflow: check if a file exists in s3 bucket using boto3](https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3)
+
+## Related Articles
+
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/en/blog/046-clean-bot-technical/)
+- [Setting Up a Local Environment Using Pyenv and venv](/en/blog/004-python-setup/) (Python environment setup)
+- [Setting Up a Python Development Environment on Mac with UV](/en/blog/032-python-uv/) (modern Python environment setup)

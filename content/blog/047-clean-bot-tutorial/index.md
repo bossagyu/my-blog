@@ -2,6 +2,7 @@
 title = '【初心者向け】掃除リマインダーBotの使い方チュートリアル'
 description = '掃除リマインダーLINE Botの基本的な使い方を5ステップで解説。友だち追加からタスク完了まで、画像付きで分かりやすく説明します。'
 date = 2026-02-07T20:00:00+09:00
+lastmod = 2026-02-07T20:00:00+09:00
 draft = false
 categories = ['Product']
 tags = ['LINE BOT', 'Clean Bot', '掃除', 'チュートリアル']
@@ -138,3 +139,8 @@ Botから「掃除機を追加しました」と返信が来れば成功です�
 - [掃除リマインダーBotの全機能紹介](/blog/045-clean-bot/)
 
 ぜひ活用して、掃除を習慣化しましょう！
+
+## 関連記事
+
+- [掃除を忘れない！掃除リマインダーLINE Bot](/blog/045-clean-bot/)（全機能の紹介）
+- [LINE Messaging APIの登録と使い方](/blog/002-line-messaging-api/)（LINE Bot開発の基礎）

@@ -2,6 +2,7 @@
 title = 'chatGPTで画像を生成する方法'
 description = 'ChatGPT PlusのDALL-E機能を使って画像を生成する方法を解説。Explore GPTsからの起動方法、プロンプトの入力例、追加指示による画像加工まで紹介します。'
 date = 2024-03-31T17:35:07+09:00
+lastmod = 2024-03-31T17:35:07+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT', '画像生成']
@@ -58,3 +59,7 @@ Stable Diffusionを利用したときよりもプロンプトを工夫しなく�
 マシンソースがある人はやっぱりローカルmacでStable Diffusionでやるのが良さそうですね。
 
 ![ChatGPTで画像の生成が制限](img-023-006.png)
+
+## 関連記事
+
+- [ChatGPT 4oの紹介](/blog/027-chatgpt-4o/)（ChatGPT 4oの新機能紹介）

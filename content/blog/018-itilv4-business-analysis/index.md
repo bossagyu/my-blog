@@ -2,6 +2,7 @@
 title = 'ITIL v4 事業分析について解説'
 description = 'ITIL v4の事業分析プロセスを解説。SWOT分析やカスタマージャーニーマップなどの手法から、ソリューション特定・評価までの流れを実務経験を交えて紹介します。'
 date = 2024-02-09T09:00:56+09:00
+lastmod = 2024-02-09T09:00:56+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL', 'Business Analysis']
@@ -72,3 +73,8 @@ ITIL v4の事業分析について、学習し理解した内容をまとめま�
 
 ## 参考
 * [Business analysis management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide)
+
+## 関連記事
+
+- [ITIL v4 可用性管理について解説](/blog/016-itilv4-availability-management/)（関連ITIL v4記事）
+- [ITIL v4 キャパシティ及びパフォーマンス管理について解説](/blog/020-itilv4-capacity-and-performance-management/)（関連ITIL v4記事）

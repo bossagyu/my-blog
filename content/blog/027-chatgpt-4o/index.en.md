@@ -2,6 +2,7 @@
 title = 'Introduction to ChatGPT 4o'
 description = 'Overview of OpenAI GPT-4o features. Covers real-time voice interaction, faster responses, improved multilingual support, and key upgrades from previous models.'
 date = 2024-05-14T23:22:39+09:00
+lastmod = 2024-05-14T23:22:39+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT']
@@ -47,3 +48,8 @@ I believe that how well engineers can utilize generative AI will greatly affect 
 
 ## Related Information
 * [Hello ChatGPT-4o](https://openai.com/index/hello-gpt-4o/)
+
+## Related Articles
+
+- [Generating Images with ChatGPT](/en/blog/023-chatgpt-create-image/) (image generation with ChatGPT)
+- [How to Use the OpenAI Response API](/en/blog/044-openai-response-api/) (OpenAI API integration)

@@ -2,6 +2,7 @@
 title = 'Using Google Search Console to Make Your Blog Searchable on Google'
 description = 'How to use Google Search Console to make your blog discoverable on Google. Covers domain verification, sitemap registration, and index request steps.'
 date = 2023-12-18T19:10:04+09:00
+lastmod = 2023-12-18T19:10:04+09:00
 draft = false
 categories = ['Engineering']
 tags = ['google search console', 'SEO', 'blog']
@@ -73,3 +74,9 @@ It took a few hours for the index to be registered after clicking.
 ## Summary
 This article explained how to make your custom domain blog searchable using Google Search Console.  
 It's a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [How to Set Up Google Analytics with Hugo](/en/blog/003-google-analytics/) - Adding analytics
+- [Introduction to Using Lighthouse](/en/blog/009-light-house/) - Performance measurement

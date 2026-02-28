@@ -2,6 +2,7 @@
 title = 'Setting Up Twitter Social Cards'
 description = 'How to set up Twitter Social Cards for a Hugo blog. Covers Summary Card vs Large Image types, theme-specific settings, and debugging tools.'
 date = 2024-01-06T21:45:12+09:00
+lastmod = 2024-01-06T21:45:12+09:00
 draft = false
 categories = ['Blog']
 tags = ['Hugo', 'Twitter', 'Social Card']
@@ -58,3 +59,8 @@ If the settings don’t seem to work, it might be due to incorrect implementatio
 
 ## Summary
 This article explained how to set up Twitter Social Cards for a blog created with Hugo. Setting up Social Cards can enhance the visibility of your shared articles on Twitter, potentially attracting more readers, so it's definitely worth doing.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [Using Google Search Console to Make Your Blog Searchable on Google](/en/blog/007-google-search-console/) - SEO setup

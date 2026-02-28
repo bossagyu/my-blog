@@ -2,6 +2,7 @@
 title = 'ChatGPTを利用してHugoで作ったブログを多言語対応する方法'
 description = 'ChatGPTを使ってHugoブログを多言語対応する方法を解説。Markdownの英語化プロンプトとHugoのconfig.toml設定、ディレクトリ構成を詳しく説明します。'
 date = 2023-12-31T20:46:36+09:00
+lastmod = 2023-12-31T20:46:36+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'ChatGPT', 'multilingual']
@@ -81,3 +82,7 @@ ChatGPTを利用することで、英語化を簡単に行うことができま�
 また、多言語対応することで記事を日本以外の国にもリーチでき、より多くの人に記事を読んでもらえます。
 
 ローコストで多言語対応できるのでぜひやってみましょう。
+
+## 関連記事
+
+- [Hugo + Netlify + Githubでブログを公開する](/blog/001-hugo-netlify-build/) - ブログの初期構築

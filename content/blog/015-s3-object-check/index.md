@@ -2,6 +2,7 @@
 title = 'S3のオブジェクトの存在確認をする方法【Python boto3】'
 description = 'Python boto3でS3オブジェクトの存在確認をする方法を解説。head_objectを使った推奨方法、resourceとclientの違い、よくあるハマりポイントを紹介します。'
 date = 2024-01-27T21:41:37+09:00
+lastmod = 2024-01-27T21:41:37+09:00
 draft = false
 categories = ['Engineering']
 tags = ['AWS', 'S3', 'Python', 'boto3']
@@ -116,3 +117,9 @@ except ClientError as e:
 
 - [boto3 S3 head_object](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/head_object.html)
 - [Stack Overflow: check if a file exists in s3 bucket using boto3](https://stackoverflow.com/questions/33842944/check-if-a-key-exists-in-a-bucket-in-s3-using-boto3)
+
+## 関連記事
+
+- [AWS Lambda + LINE Botで掃除リマインダーを作る](/blog/046-clean-bot-technical/)
+- [Pyenvとvenvを用いたローカル環境のセットアップ方法](/blog/004-python-setup/)（Python環境構築）
+- [MacでUVを用いてPythonの開発環境を構築する](/blog/032-python-uv/)（モダンなPython環境構築）

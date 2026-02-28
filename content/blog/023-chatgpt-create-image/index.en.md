@@ -2,6 +2,7 @@
 title = 'Generating Images with ChatGPT'
 description = 'How to generate images with ChatGPT Plus using DALL-E. Covers launching from Explore GPTs, prompt input examples, and refining images with follow-up instructions.'
 date = 2024-03-31T17:35:07+09:00
+lastmod = 2024-03-31T17:35:07+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT', 'Image Generation']
@@ -58,3 +59,7 @@ Note that if you overuse this feature, you may receive a message asking you to w
 For those with access to a machine source, running Stable Diffusion locally on a Mac might still be the best option.
 
 ![ChatGPT image generation limit](img-023-006.png)
+
+## Related Articles
+
+- [Introduction to ChatGPT 4o](/en/blog/027-chatgpt-4o/) (overview of ChatGPT 4o features)

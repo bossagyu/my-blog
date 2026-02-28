@@ -2,6 +2,7 @@
 title = 'AWS Lambda + LINE Botで掃除リマインダーを作る'
 description = 'AWS Lambda、API Gateway、S3、EventBridgeを使った掃除リマインダーLINE Botの実装解説。SAMによるサーバーレス構成とPythonコードを詳しく紹介します。'
 date = 2026-02-07T19:00:00+09:00
+lastmod = 2026-02-07T19:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['LINE BOT', 'AWS Lambda', 'Python', 'SAM', 'S3']
@@ -319,3 +320,6 @@ curl -X POST http://localhost:3000/process_user_message \
 
 - [掃除リマインダーBotの使い方](/blog/045-clean-bot/)
 - [LINE Messaging APIの登録と使い方](/blog/002-line-messaging-api/)
+- [AWS EventBridgeを用いてLambdaを定期実行する方法](/blog/008-aws-eventbrdge/)
+- [AWS API GatewayとLambdaを連携させる方法](/blog/014-aws-apigateway-lambda/)
+- [S3のオブジェクトの存在確認をする方法【Python boto3】](/blog/015-s3-object-check/)

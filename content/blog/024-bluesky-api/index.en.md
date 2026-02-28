@@ -2,6 +2,7 @@
 title = 'Using Bluesky API for Automated Posting with Python'
 description = 'How to automate Bluesky posts using Python and AT Protocol. Covers app password generation, posting script creation, and execution steps.'
 date = 2024-04-07T23:52:09+09:00
+lastmod = 2024-04-07T23:52:09+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'Bluesky', 'API']
@@ -96,5 +97,10 @@ Upon execution, the post successfully appears on Bluesky.
 
 ## Conclusion
 
-This article covered how to execute Bluesky's API using Python.  
+This article covered how to execute Bluesky's API using Python.
 While Bluesky is still under development, unlike Twitter, which has limitations and charges for API use, Bluesky offers a free API, making it an excellent option for those looking to experiment with social networking APIs at no cost.
+
+## Related Articles
+
+- [Setting Up a Local Environment Using Pyenv and venv](/en/blog/004-python-setup/) (Python environment setup)
+- [Setting Up a Python Development Environment on Mac with UV](/en/blog/032-python-uv/) (modern Python environment setup)

@@ -2,6 +2,7 @@
 title = 'How to Read Parquet Files on macOS'
 description = 'How to read Parquet files on macOS from the command line. Covers parquet-cli installation and usage of meta, head, and schema commands.'
 date = 2024-09-15T16:52:04+09:00
+lastmod = 2024-09-15T16:52:04+09:00
 draft = false
 categories = ['Engineering']
 tags = ['parquet']
@@ -109,3 +110,7 @@ $ parquet schema driver_stats.parquet
 
 ## Conclusion
 This article explained how to easily read Parquet files on macOS.
+
+## Related Articles
+
+- [Running the Feast Tutorial on macOS](/en/blog/033-feast-tutorial/) (using Feast with Parquet files)

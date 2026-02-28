@@ -2,6 +2,7 @@
 title = 'How to Use Redis with Go'
 description = 'How to use Redis with Go. Covers go-redis library setup, connection, data read/write operations, and basic commands with sample code.'
 date = 2025-10-05T20:25:02+09:00
+lastmod = 2025-10-05T20:25:02+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Redis', 'Go', 'Database', 'NoSQL']
@@ -122,3 +123,8 @@ members = [alice bob]
 
 This article explained how to use Redis with Go.
 When working with Redis in Go, use the [go-redis](https://github.com/redis/go-redis) package.
+
+## Related Articles
+
+- [How to Run Redis with Docker](/en/blog/040-redis-local/) (how to start Redis)
+- [Setting Up a Go Development Environment on Mac and Running Hello World](/en/blog/030-go-environment-construction/) (Go environment setup)

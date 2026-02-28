@@ -2,6 +2,7 @@
 title = 'Integrating AWS API Gateway with Lambda'
 description = 'How to integrate AWS API Gateway with Lambda. Covers REST API vs HTTP API selection, proxy integration setup, and trigger configuration steps.'
 date = 2024-01-13T18:06:52+09:00
+lastmod = 2024-01-13T18:06:52+09:00
 draft = false
 categories = ['Engineering']
 tags = ['AWS', 'API Gateway', 'Lambda']
@@ -66,3 +67,9 @@ $ curl https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/default/apigat
 ## Summary
 
 This article introduced how to integrate AWS API Gateway with Lambda. By integrating with API Gateway, you can externally invoke Lambda functions at any time.
+
+## Related Articles
+
+- [Efficient Lambda Development with AWS Toolkit in IntelliJ](/en/blog/006-intellij-lamda-setup/)
+- [How to Schedule Lambda Functions with AWS EventBridge](/en/blog/008-aws-eventbrdge/)
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/en/blog/046-clean-bot-technical/)

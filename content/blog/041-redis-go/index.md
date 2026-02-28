@@ -2,6 +2,7 @@
 title = 'RedisをGoで使う方法'
 description = 'GoでRedisを操作する方法を解説。go-redisライブラリを使った接続、データの読み書き、基本的なコマンドの使い方をサンプルコード付きで紹介します。'
 date = 2025-10-05T20:25:02+09:00
+lastmod = 2025-10-05T20:25:02+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Redis', 'Go', 'Database', 'NoSQL']
@@ -116,3 +117,8 @@ members = [alice bob]
 ## まとめ
 GoでRedisを使う方法について説明しました。
 GoでRedisを使う場合は、[go-redis](https://github.com/redis/go-redis)を使用します。
+
+## 関連記事
+
+- [RedisをDockerで起動する方法](/blog/040-redis-local/)（Redisの起動方法）
+- [macでGoの開発環境を構築して最速でHello Worldする](/blog/030-go-environment-construction/)（Go環境構築）

@@ -2,6 +2,7 @@
 title = 'ChatGPT 4oの紹介'
 description = 'OpenAIが発表したGPT-4oの新機能を紹介。リアルタイム音声対話、高速応答、多言語対応の強化など、従来モデルからの進化ポイントを解説します。'
 date = 2024-05-14T23:22:39+09:00
+lastmod = 2024-05-14T23:22:39+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT']
@@ -47,3 +48,8 @@ ChatGPTのモデルの精度の向上はめざましく、どんどん人間の�
 
 ## 関連情報
 * [Hello ChatGPT-4o](https://openai.com/index/hello-gpt-4o/)
+
+## 関連記事
+
+- [chatGPTで画像を生成する方法](/blog/023-chatgpt-create-image/)（ChatGPTによる画像生成）
+- [OpenAI Response APIの使い方まとめ](/blog/044-openai-response-api/)（OpenAI API活用）

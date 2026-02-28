@@ -2,6 +2,7 @@
 title = 'Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法'
 description = 'VoltaでNode.jsとTypeScriptの開発環境をMacにセットアップする方法を解説。yarnのインストールからプロジェクト作成、Hello World実行までの手順を紹介します。'
 date = 2024-03-10T13:11:13+09:00
+lastmod = 2024-03-10T13:11:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['TypeScript', 'Node.js']
@@ -147,4 +148,8 @@ Hello, TypeScript!
 本記事では、Voltaを利用してTypeScriptの開発環境を簡単にセットアップする方法について説明しました。
 Voltaを利用することで、Node.jsのバージョン管理が簡単になり、開発環境のセットアップがスムーズに行えます。
 また、VoltaでNode.jsのバージョンを指定すると、package.jsonにバージョンが記述され、他の開発者とのバージョンの差異を解消することができる点も魅力的ですね。
+
+## 関連記事
+
+- [TyeScriptにおけるEnumの使い方](/blog/022-typescript-enum/)（TypeScript Enumの使い方）
 

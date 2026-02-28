@@ -2,6 +2,7 @@
 title = 'PythonでBluesky APIを用いて自動投稿する方法'
 description = 'PythonとATProtocolライブラリを使ってBluesky APIで自動投稿する方法を解説。アプリパスワードの生成から、投稿スクリプトの作成・実行までの手順を紹介します。'
 date = 2024-04-07T23:52:09+09:00
+lastmod = 2024-04-07T23:52:09+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'Bluesky', 'API']
@@ -102,5 +103,10 @@ $ python post_bluesky.py
 
 ## まとめ
 
-今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。  
+今回はPythonを用いてBlueskyのAPIを実行する方法をまとめました。
 Blueskyはまだまだ開発途中のSNSですが、TwitterはAPIを課金しないと使えないなどの制約があるので、無料でAPIを使ってSNSで遊んでみたいという方にはおすすめです。
+
+## 関連記事
+
+- [Pyenvとvenvを用いたローカル環境のセットアップ方法](/blog/004-python-setup/)（Python環境構築）
+- [MacでUVを用いてPythonの開発環境を構築する](/blog/032-python-uv/)（モダンなPython環境構築）

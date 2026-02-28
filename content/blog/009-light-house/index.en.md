@@ -2,6 +2,7 @@
 title = 'Introduction to Using Lighthouse'
 description = 'How to use Google Lighthouse to measure blog performance. Covers Performance, Accessibility, SEO, and Best Practices scores and how to interpret them.'
 date = 2023-12-22T23:08:00+09:00
+lastmod = 2023-12-22T23:08:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['lighthouse', 'SEO', 'performance']
@@ -54,3 +55,8 @@ Checks if the loading speed of web pages on smartphones is optimized and if it's
 ## Summary
 The article explained how to measure the performance of a blog using Lighthouse.
 Especially for SEO, as it affects visibility in Google search results, it's important to address these issues adequately.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [How to Set Up Google Analytics with Hugo](/en/blog/003-google-analytics/) - Adding analytics

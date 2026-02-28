@@ -2,6 +2,7 @@
 title = 'Building a Cleaning Reminder Bot with AWS Lambda + LINE'
 description = 'Building a cleaning reminder LINE Bot with AWS Lambda, API Gateway, S3, and EventBridge. Covers SAM serverless architecture and Python implementation details.'
 date = 2026-02-07T19:00:00+09:00
+lastmod = 2026-02-07T19:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['LINE BOT', 'AWS Lambda', 'Python', 'SAM', 'S3']
@@ -318,4 +319,7 @@ Source code is available on [GitHub](https://github.com/bossagyu/line-clean-bot)
 ## Related Articles
 
 - [How to Use the Cleaning Reminder Bot](/blog/045-clean-bot/)
-- [LINE Messaging API Registration and Usage](/blog/002-line-messaging-api/)
+- [LINE Messaging API Registration and Usage](/en/blog/002-line-messaging-api/)
+- [How to Schedule Lambda Functions with AWS EventBridge](/en/blog/008-aws-eventbrdge/)
+- [Integrating AWS API Gateway with Lambda](/en/blog/014-aws-apigateway-lambda/)
+- [How to Check if an S3 Object Exists in Python boto3](/en/blog/015-s3-object-check/)

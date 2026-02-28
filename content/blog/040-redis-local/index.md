@@ -2,6 +2,7 @@
 title = 'RedisをDockerで起動する方法'
 description = 'DockerでRedisコンテナを起動する方法を解説。インメモリデータベースRedisのセットアップから動作確認、コンテナの停止・削除まで実践的に紹介します。'
 date = 2025-10-03T07:29:31+09:00
+lastmod = 2025-10-03T07:29:31+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Redis', 'Database', 'NoSQL']
@@ -60,5 +61,9 @@ docker rm redis
 
 ## まとめ
 この記事では、Dockerを使用してRedisを起動する方法について説明しました。
-Redisは高速なデータベースとして広く利用されており、Dockerを使用することで簡単にセットアップできます。  
+Redisは高速なデータベースとして広く利用されており、Dockerを使用することで簡単にセットアップできます。
 ぜひ、Redisを活用してみてください。
+
+## 関連記事
+
+- [RedisをGoで使う方法](/blog/041-redis-go/)（GoでRedisを操作する実践例）

@@ -2,6 +2,7 @@
 title = 'How to Set Up Google Analytics with Hugo'
 description = 'How to set up Google Analytics GA4 on a Hugo blog. Covers tracking ID setup, config.toml configuration, and embedding analytics tags in templates.'
 date = 2023-12-09T18:09:42+09:00
+lastmod = 2023-12-09T18:09:42+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'SEO', 'Google Analytics']
@@ -82,3 +83,8 @@ After adding the above source code and rebuilding, data will be sent to Google A
 
 If it seems like data is not being transmitted to Google Analytics despite these steps, it's possible that the tags have not been added correctly.  
 To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [Using Google Search Console to Make Your Blog Searchable on Google](/en/blog/007-google-search-console/) - SEO setup

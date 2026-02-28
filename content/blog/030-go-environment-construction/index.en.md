@@ -2,6 +2,7 @@
 title = 'Setting Up a Go Development Environment on Mac and Running Hello World'
 description = 'How to set up a Go development environment on Mac. Covers Homebrew installation, Hello World program creation, execution, and binary build steps.'
 date = 2024-09-15T16:52:04+09:00
+lastmod = 2024-09-15T16:52:04+09:00
 draft = false
 categories = ['Engineering']
 tags = ['ChatGPT']
@@ -62,3 +63,8 @@ Hello World
 ## Conclusion
 
 That's how you can set up a Go development environment on Mac and quickly run a Hello World program.
+
+## Related Articles
+
+- [Research on gRPC](/en/blog/029-grpc/) (practical gRPC implementation)
+- [How to Use Redis with Go](/en/blog/041-redis-go/) (Redis + Go in practice)

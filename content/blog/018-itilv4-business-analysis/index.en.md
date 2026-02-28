@@ -2,6 +2,7 @@
 title = 'Explaining Business Analysis in ITIL v4'
 description = 'Understanding ITIL v4 business analysis. Covers SWOT analysis, customer journey mapping, and solution identification processes with practical insights.'
 date = 2024-02-09T09:00:56+09:00
+lastmod = 2024-02-09T09:00:56+09:00
 draft = false
 categories = ['Management']
 tags = ['ITIL', 'Business Analysis']
@@ -64,3 +65,8 @@ This article explained business analysis based on my learning and experiences. P
 
 ## Reference
 * [Business analysis management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide)
+
+## Related Articles
+
+- [Understanding Availability Management in ITIL v4](/en/blog/016-itilv4-availability-management/) (related ITIL v4 article)
+- [Explaining Capacity and Performance Management in ITIL v4](/en/blog/020-itilv4-capacity-and-performance-management/) (related ITIL v4 article)

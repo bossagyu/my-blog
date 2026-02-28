@@ -2,6 +2,7 @@
 title = 'Lighthouseの使い方の紹介'
 description = 'Google Lighthouseでブログのパフォーマンスを計測する方法を解説。Performance、Accessibility、SEO、Best Practicesの各指標の見方を紹介します。'
 date = 2023-12-22T23:08:00+09:00
+lastmod = 2023-12-22T23:08:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Hugo', 'Netlify', 'Github']
@@ -61,4 +62,7 @@ See calculatorのリンクをクリックすると詳細に飛べる。
 Lighthouseを用いて、ブログのパフォーマンスを計測する方法を解説しました。
 特にSEOについては、Googleの検索結果に表示されるかどうかに影響するので、しっかりと対応しておきましょう。
 
+## 関連記事
 
+- [Hugo + Netlify + Githubでブログを公開する](/blog/001-hugo-netlify-build/) - ブログの初期構築
+- [HugoでGoogle Analyticsの設定をする方法](/blog/003-google-analytics/) - アクセス解析

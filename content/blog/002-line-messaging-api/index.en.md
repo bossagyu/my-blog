@@ -2,6 +2,7 @@
 title = 'Registering and Using the LINE Messaging API'
 description = 'How to register for LINE Messaging API and send messages with curl. Step-by-step guide from provider creation to channel setup and Bot messaging.'
 date = 2023-12-07T09:37:00+09:00
+lastmod = 2023-12-07T09:37:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['LINE BOT', 'LINE API']
@@ -58,3 +59,7 @@ curl -v -X POST https://api.line.me/v2/bot/message/push \
 ```
 
 If a response is returned and you see a post from the Bot in your LINE chat, it's a success!
+
+## Related Articles
+
+- [Cleaning Reminder LINE Bot](/en/blog/045-clean-bot/) (a practical LINE Bot project)

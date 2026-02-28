@@ -2,6 +2,7 @@
 title = 'Designing an Event-Driven Backend to Sync GCS with Gemini File Search API'
 description = 'Building a FastAPI backend that automatically syncs Google Cloud Storage files with Gemini File Search API via Eventarc. Covers event-driven architecture design and implementation patterns for extensibility.'
 date = 2026-02-15T00:00:00+09:00
+lastmod = 2026-02-15T00:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Python', 'GCP', 'Gemini', 'FastAPI']
@@ -312,3 +313,8 @@ The Lawve backend was built on the following design principles:
 By combining an event-driven architecture with GCP managed services, I was able to build a reliable document synchronization platform with minimal code. The simplicity of making documents searchable just by placing files in GCS was a significant advantage during the time-limited hackathon development.
 
 The source code is available on [GitHub](https://github.com/23-u-don/lawve-backend).
+
+## Related Articles
+
+- [Setting Up a Python Development Environment on Mac with UV](/en/blog/032-python-uv/) (Python environment setup)
+- [How to Use the OpenAI Response API](/en/blog/044-openai-response-api/) (using OpenAI API)

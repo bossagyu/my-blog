@@ -2,6 +2,7 @@
 title = 'macでparquetファイルを読む方法'
 description = 'MacでParquetファイルをコマンドラインで読む方法を解説。parquet-cliのインストールからmeta、head、schemaコマンドの使い方まで実践的に紹介します。'
 date = 2024-09-15T16:52:04+09:00
+lastmod = 2024-09-15T16:52:04+09:00
 draft = false
 categories = ['Engineering']
 tags = ['parquet']
@@ -110,3 +111,7 @@ $ parquet schema driver_stats.parquet
 
 ## まとめ
 macでparquetファイルを簡単に読む方法を紹介しました。
+
+## 関連記事
+
+- [FeastのチュートリアルをMacで実行する](/blog/033-feast-tutorial/)（Parquetファイルを使ったFeastの活用）

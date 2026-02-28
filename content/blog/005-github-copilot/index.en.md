@@ -2,6 +2,7 @@
 title = 'How to Use GitHub Copilot in IntelliJ'
 description = 'How to use GitHub Copilot in IntelliJ. Covers plugin installation, Mac keyboard shortcuts, and code completion with comment-driven suggestions.'
 date = 2023-12-11T22:45:40+09:00
+lastmod = 2023-12-11T22:45:40+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Copilot', 'IntelliJ']
@@ -42,3 +43,8 @@ Here is a list of shortcuts for Mac:
 ## Summary
 This article explained how to use GitHub Copilot in IntelliJ.
 It's worth noting that this article was written using GitHub Copilot, and it significantly assists with blog creation in Markdown, so those interested should give it a try.
+
+## Related Articles
+
+- [Complete Guide to Using GitHub Copilot in VSCode](/en/blog/017-vscode-copilot/)
+- [How to Use GitHub Copilot More Effectively with Chat Tools](/en/blog/042-github-copilot/)

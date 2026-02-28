@@ -2,6 +2,7 @@
 title = 'グローバルなgitignoreを設定してプロジェクト全体に適応する方法'
 description = 'グローバルなgitignoreを~/.config/git/ignoreに設定して全プロジェクトに適用する方法を解説。.ideaやnode_modulesなどを一括で除外する設定例も紹介します。'
 date = 2024-04-16T23:16:25+09:00
+lastmod = 2024-04-16T23:16:25+09:00
 draft = false
 categories = ['Engineering']
 tags = ['git', 'gitignore']

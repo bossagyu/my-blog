@@ -2,6 +2,7 @@
 title = 'Google Search Consoleを用いてブログをGoogle検索の対象にする方法'
 description = 'Google Search Consoleでブログを検索対象にする方法を解説。ドメイン所有権の確認、サイトマップ登録、インデックス登録リクエストの手順を詳しく説明します。'
 date = 2023-12-18T19:10:04+09:00
+lastmod = 2023-12-18T19:10:04+09:00
 draft = false
 categories = ['Engineering']
 tags = ['google search console', 'SEO', 'blog']
@@ -74,3 +75,9 @@ Google Search Consoleの検索窓で登録したいURLを検索し、検索結�
 ## まとめ
 Google Search Consoleを用いて自身が作成した独自ドメインのブログが検索に引っかかるようにする方法を解説しました。  
 せっかくブログを作成したのに、Google検索に引っかからないのはもったいないので、ぜひ試してみてください。
+
+## 関連記事
+
+- [Hugo + Netlify + Githubでブログを公開する](/blog/001-hugo-netlify-build/) - ブログの初期構築
+- [HugoでGoogle Analyticsの設定をする方法](/blog/003-google-analytics/) - アクセス解析
+- [Lighthouseの使い方の紹介](/blog/009-light-house/) - パフォーマンス計測

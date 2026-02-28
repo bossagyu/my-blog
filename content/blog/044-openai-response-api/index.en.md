@@ -2,6 +2,7 @@
 title = 'How to Use the OpenAI Response API'
 description = 'How to use the OpenAI Response API. Covers API key setup, Python text generation, and tool calling with minimal code examples to get started.'
 date = 2025-12-24T10:00:00+09:00
+lastmod = 2025-12-24T10:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['OpenAI', 'ResponseAPI', 'Python', 'API']
@@ -63,3 +64,8 @@ Start with the docs and expand as your use case grows.
 
 ## Summary
 The Response API is a straightforward way to generate text with OpenAI. Check the docs, prepare an API key, and try the Python SDK for a smooth start.
+
+## Related Articles
+
+- [Introduction to ChatGPT 4o](/en/blog/027-chatgpt-4o/) (overview of ChatGPT's latest features)
+- [Designing an Event-Driven Backend to Sync GCS with Gemini File Search API](/en/blog/048-lawve-backend/) (a practical example of API integration patterns)

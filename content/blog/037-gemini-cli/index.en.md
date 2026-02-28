@@ -2,6 +2,7 @@
 title = 'How to Set Up Gemini CLI on Mac'
 description = 'How to install Gemini CLI on Mac with Homebrew and use Google Gemini AI from the terminal. Covers setup, Google account linking, and code generation.'
 date = 2025-07-22T23:21:19+09:00
+lastmod = 2025-07-22T23:21:19+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Gemini CLI', 'AI']
@@ -60,7 +61,12 @@ After inputting, Gemini will generate the code for you.
 ![Gemini CLI Execution Result](image-5.png)
 
 ## Summary
-By setting up Gemini CLI, you can use Gemini AI directly from the terminal.  
-This enables efficient development and task management using AI.  
-Gemini CLI is very user-friendly and makes terminal work smoother.  
+By setting up Gemini CLI, you can use Gemini AI directly from the terminal.
+This enables efficient development and task management using AI.
+Gemini CLI is very user-friendly and makes terminal work smoother.
 Give it a try!
+
+## Related Articles
+
+- [Introduction to ChatGPT 4o](/en/blog/027-chatgpt-4o/) (comparison with ChatGPT)
+- [How to Use the OpenAI Response API](/en/blog/044-openai-response-api/) (API integration in practice)

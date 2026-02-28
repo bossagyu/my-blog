@@ -2,6 +2,7 @@
 title = 'How to Schedule Lambda Functions with AWS EventBridge'
 description = 'How to schedule Lambda functions with AWS EventBridge. Covers cron expressions, JST timezone settings, costs, and common troubleshooting tips.'
 date = 2023-12-21T23:03:13+09:00
+lastmod = 2023-12-21T23:03:13+09:00
 draft = false
 categories = ['Engineering']
 tags = ['AWS', 'Lambda', 'eventbridge', 'serverless']
@@ -141,5 +142,6 @@ Serverless scheduled execution is great for reminder bots and batch processing. 
 
 ## Related Articles
 
+- [Integrating AWS API Gateway with Lambda](/en/blog/014-aws-apigateway-lambda/)
 - [How to Use the Cleaning Reminder Bot](/blog/045-clean-bot/)
-- [Building a Cleaning Reminder Bot - Technical Guide](/blog/046-clean-bot-technical/)
+- [Building a Cleaning Reminder Bot - Technical Guide](/en/blog/046-clean-bot-technical/)

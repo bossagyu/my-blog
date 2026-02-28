@@ -2,6 +2,7 @@
 title = 'OpenAI Response APIの使い方まとめ'
 description = 'OpenAI Response APIの基本的な使い方を解説。APIキー取得からPythonでのテキスト生成、ツール呼び出しまで、最小限のコードで始められます。'
 date = 2025-12-24T10:00:00+09:00
+lastmod = 2025-12-24T10:00:00+09:00
 draft = false
 categories = ['Engineering']
 tags = ['OpenAI', 'ResponseAPI', 'Python', 'API']
@@ -67,3 +68,8 @@ Response APIは単発の生成にも対話にも使える統一APIです。
 ## まとめ
 Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAPIです。
 公式ドキュメントを確認し、APIキーを準備してからPythonで試すとスムーズに導入できます。
+
+## 関連記事
+
+- [ChatGPT 4oの紹介](/blog/027-chatgpt-4o/)（ChatGPTの最新機能紹介）
+- [GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計](/blog/048-lawve-backend/)（API統合パターンの実践例）

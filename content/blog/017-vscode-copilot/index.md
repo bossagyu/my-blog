@@ -2,6 +2,7 @@
 title = 'VSCodeでGithub Copilotを使いこなす完全ガイド'
 description = 'VSCodeでGitHub Copilotを設定・活用する方法を解説。拡張機能のインストールからMarkdown対応、Chat toolの使い方まで網羅的に紹介します。'
 date = 2024-02-04T22:34:51+09:00
+lastmod = 2024-02-04T22:34:51+09:00
 draft = false
 categories = ['Engineering']
 tags = ['VSCode', 'Copilot', 'GitHub Copilot', 'Chat tool']
@@ -93,3 +94,10 @@ VSCodeでGithub Copilotを設定して使う方法について説明しました
 
 Github Copilotはソースコードだけではなく文章にも補完を行ってくれます。
 ぜひ活用してみてください。
+
+## 関連記事
+
+- [IntellijでのGithub Copilotの使い方](/blog/005-github-copilot/)
+- [GitHub CopilotをMarkdownで有効にする方法](/blog/035-github-copilot-markdown/)
+- [Github CopilotをChat toolを使って便利に使う方法](/blog/042-github-copilot/)
+- [Codex CLIの使い方まとめ](/blog/043-codex/)

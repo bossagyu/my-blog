@@ -2,6 +2,7 @@
 title = 'MacでStable Diffusion Web UIを使う方法'
 description = 'MacにStable Diffusion Web UIをインストールしてローカルで画像生成する方法を解説。Python環境構築からモデル配置、画像生成までの手順を紹介します。'
 date = 2024-02-12T11:24:59+09:00
+lastmod = 2024-02-12T11:24:59+09:00
 draft = false
 categories = ['Engineering']
 tags = ['Stable Diffusion', 'AI']

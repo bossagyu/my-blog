@@ -2,6 +2,7 @@
 title = 'AWS API GatewayとLambdaを連携させる方法'
 description = 'AWS API GatewayとLambdaを連携させる方法を解説。REST APIとHTTP APIの選び方、プロキシ統合の設定、トリガー追加の手順を詳しく説明します。'
 date = 2024-01-13T18:06:52+09:00
+lastmod = 2024-01-13T18:06:52+09:00
 draft = false
 categories = ['Engineering']
 tags = ['AWS', 'API Gateway', 'Lambda']
@@ -73,4 +74,10 @@ $ curl https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/default/apigat
 
 本記事ではAWS API GatewayとLambdaを連携させる方法を紹介しました。
 API Gatewayと連携させることで外部から任意のタイミングでLambda関数を呼び出すことができるようになります。
+
+## 関連記事
+
+- [IntellijでAWS Toolkitを使ってLambdaを効率よく開発する](/blog/006-intellij-lamda-setup/)
+- [AWS EventBridgeを用いてLambdaを定期実行する方法](/blog/008-aws-eventbrdge/)
+- [AWS Lambda + LINE Botで掃除リマインダーを作る](/blog/046-clean-bot-technical/)
 

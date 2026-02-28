@@ -2,6 +2,7 @@
 title = '掃除を忘れない！掃除リマインダーLINE Bot'
 description = '定期的な掃除を忘れがちな方へ。掃除機、トイレ、換気扇など、前回からの経過日数で自動リマインドするLINE Botの使い方を紹介します。'
 date = 2026-02-07T18:30:00+09:00
+lastmod = 2026-02-07T18:30:00+09:00
 draft = false
 categories = ['Product']
 tags = ['LINE BOT', 'Clean Bot', '掃除']
@@ -107,3 +108,8 @@ tags = ['LINE BOT', 'Clean Bot', '掃除']
 このBotは完全無料で利用できます。ぜひお試しください！
 
 [友だち追加はこちら](https://lin.ee/kdwsLys)
+
+## 関連記事
+
+- [【初心者向け】掃除リマインダーBotの使い方チュートリアル](/blog/047-clean-bot-tutorial/)（初心者向け使い方ガイド）
+- [LINE Messaging APIの登録と使い方](/blog/002-line-messaging-api/)（LINE Bot開発の基礎）
