@@ -1,0 +1,278 @@
+<!doctype html><html lang=ja-jp dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="PythonのFastAPIフレームワークでTODOアプリのCRUD APIを作る方法を解説。Pydanticモデルの定義からSwagger UIでの動作確認まで、サンプルコード付きで紹介します。"><title>FastAPIでCRUD APIを作る入門チュートリアル</title>
+<link rel=canonical href=https://bossagyu.com/blog/049-fastapi-crud/><link rel=stylesheet href=/scss/style.min.88a5c216a49d6b6c7d5518453faea9f70881482cfb770cb8b16ba1cbb7dad83f.css><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5880954007617915" crossorigin=anonymous></script><meta property="og:title" content="FastAPIでCRUD APIを作る入門チュートリアル"><meta property="og:description" content="PythonのFastAPIフレームワークでTODOアプリのCRUD APIを作る方法を解説。Pydanticモデルの定義からSwagger UIでの動作確認まで、サンプルコード付きで紹介します。"><meta property="og:url" content="https://bossagyu.com/blog/049-fastapi-crud/"><meta property="og:site_name" content="Bossagyu Blog"><meta property="og:type" content="article"><meta property="article:section" content="Blog"><meta property="article:tag" content="Python"><meta property="article:tag" content="FastAPI"><meta property="article:tag" content="API"><meta property="article:published_time" content="2026-02-28T00:00:00+09:00"><meta property="article:modified_time" content="2026-02-28T00:00:00+09:00"><meta property="og:image" content="https://bossagyu.com/images/share.webp"><meta name=twitter:title content="FastAPIでCRUD APIを作る入門チュートリアル"><meta name=twitter:description content="PythonのFastAPIフレームワークでTODOアプリのCRUD APIを作る方法を解説。Pydanticモデルの定義からSwagger UIでの動作確認まで、サンプルコード付きで紹介します。"><meta name=twitter:card content="summary"><meta name=twitter:image content="https://bossagyu.com/images/share.webp"><link rel="shortcut icon" href=/images/favicon.png><script async src="https://www.googletagmanager.com/gtag/js?id=G-5JL2R6XT6H"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-5JL2R6XT6H",{anonymize_ip:!1})}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","headline":"FastAPIでCRUD APIを作る入門チュートリアル","description":"PythonのFastAPIフレームワークでTODOアプリのCRUD APIを作る方法を解説。Pydanticモデルの定義からSwagger UIでの動作確認まで、サンプルコード付きで紹介します。","image":"https:\/\/bossagyu.com\/images\/share.webp","author":{"@type":"Person","name":"bossagyu","url":"https:\/\/bossagyu.com"},"publisher":{"@type":"Organization","name":"Bossagyu Blog","url":"https:\/\/bossagyu.com","logo":{"@type":"ImageObject","url":"https:\/\/bossagyu.com\/images\/share.webp"}},"datePublished":"2026-02-28T00:00:00\u002b09:00","dateModified":"2026-02-28T00:00:00\u002b09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/bossagyu.com\/blog\/049-fastapi-crud\/"},"articleSection":"Engineering","keywords":"Python, FastAPI, API"}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"dark")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/images/share.webp width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>Bossagyu Blog</a></h1><h2 class=site-description>エンジニアリングマネージャーがエンジニアリングとマネジメントについてまとめていくブログ</h2></div></header><ol class=social-menu><li><a href=https://github.com/bossagyu target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=mailto:Bossagyu@yahoo.co.jp target=_blank title=Mail rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://twitter.com/bossagyu target=_blank title=Twitter rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/page/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/page/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/page/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://bossagyu.com/en/>en-US 🇺🇸</option><option value=https://bossagyu.com/ selected>ja-jp 🇯🇵</option></select></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目次</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#概要>概要</a></li><li><a href=#前提条件>前提条件</a></li><li><a href=#環境構築>環境構築</a></li><li><a href=#hello-world>Hello World</a><ol><li><a href=#swagger-uiの確認>Swagger UIの確認</a></li></ol></li><li><a href=#crud-apiの実装>CRUD APIの実装</a><ol><li><a href=#モデルの定義>モデルの定義</a></li><li><a href=#作成post>作成（POST）</a></li><li><a href=#一覧取得get>一覧取得（GET）</a></li><li><a href=#個別取得get>個別取得（GET）</a></li><li><a href=#更新put>更新（PUT）</a></li><li><a href=#削除delete>削除（DELETE）</a></li><li><a href=#完成したコード>完成したコード</a></li></ol></li><li><a href=#動作確認>動作確認</a><ol><li><a href=#1-todoの作成>1. TODOの作成</a></li><li><a href=#2-一覧取得>2. 一覧取得</a></li><li><a href=#3-更新>3. 更新</a></li><li><a href=#4-削除>4. 削除</a></li></ol></li><li><a href=#まとめ>まとめ</a></li><li><a href=#関連記事>関連記事</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/engineering/ style=background-color:#4a90d9;color:#fff>Engineering</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/blog/049-fastapi-crud/>FastAPIでCRUD APIを作る入門チュートリアル</a></h2></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg><time class=article-time--published>Feb 28, 2026</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--reading>3 minute read</time></div></footer><footer class=article-translations><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://bossagyu.com/en/blog/049-fastapi-crud/ class=link>en-US 🇺🇸</a></div></footer></div></header><section class=article-content><h2 id=概要>概要</h2><p><a class=link href=https://fastapi.tiangolo.com/ target=_blank rel=noopener>FastAPI</a>は、Pythonで高性能なAPIを構築するためのWebフレームワークです。以下の特徴があります。</p><ul><li><strong>型ヒントベース</strong>: Pythonの型ヒントを活用し、リクエスト・レスポンスの自動バリデーションを実現</li><li><strong>自動ドキュメント</strong>: Swagger UI（OpenAPI）が自動生成され、ブラウザからAPIをテスト可能</li><li><strong>高速</strong>: Starlette + Pydanticをベースにしており、Node.jsやGoに匹敵するパフォーマンス</li></ul><p>この記事では、FastAPIを使ってTODOアプリのCRUD APIを作成する手順を解説します。</p><h2 id=前提条件>前提条件</h2><ul><li>Python 3.11以上</li><li>uvがインストール済み（<a class=link href=/blog/032-python-uv/>MacでUVを用いてPythonの開発環境を構築する</a>を参照）</li></ul><h2 id=環境構築>環境構築</h2><p>まず、プロジェクトを作成し、必要なパッケージをインストールします。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>uv init fastapi-todo
+</span></span><span class=line><span class=cl><span class=nb>cd</span> fastapi-todo
+</span></span><span class=line><span class=cl>uv add fastapi uvicorn
+</span></span></code></pre></td></tr></table></div></div><p><code>fastapi</code>がWebフレームワーク本体、<code>uvicorn</code>がASGIサーバーです。</p><h2 id=hello-world>Hello World</h2><p>まずは最小構成でFastAPIの動作を確認します。<code>main.py</code>を作成してください。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>fastapi</span> <span class=kn>import</span> <span class=n>FastAPI</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>app</span> <span class=o>=</span> <span class=n>FastAPI</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.get</span><span class=p>(</span><span class=s2>&#34;/&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>read_root</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>{</span><span class=s2>&#34;message&#34;</span><span class=p>:</span> <span class=s2>&#34;Hello, FastAPI!&#34;</span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>サーバーを起動します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>uv run uvicorn main:app --reload
+</span></span></code></pre></td></tr></table></div></div><p><code>--reload</code>オプションを付けると、コードの変更時に自動でリロードされます。</p><p>ブラウザで http://localhost:8000 にアクセスすると、以下のレスポンスが返ります。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span><span class=nt>&#34;message&#34;</span><span class=p>:</span> <span class=s2>&#34;Hello, FastAPI!&#34;</span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=swagger-uiの確認>Swagger UIの確認</h3><p>FastAPIの大きな魅力は、自動生成されるAPIドキュメントです。http://localhost:8000/docs にアクセスすると、Swagger UIが表示されます。</p><p>ここからAPIを直接テストできるため、開発中はcurlやPostmanなしでも動作確認が可能です。</p><h2 id=crud-apiの実装>CRUD APIの実装</h2><p>TODOアプリのCRUD APIを実装していきます。</p><h3 id=モデルの定義>モデルの定義</h3><p>まず、PydanticモデルでTODOのデータ構造を定義します。<code>main.py</code>を以下のように書き換えてください。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>fastapi</span> <span class=kn>import</span> <span class=n>FastAPI</span><span class=p>,</span> <span class=n>HTTPException</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>pydantic</span> <span class=kn>import</span> <span class=n>BaseModel</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>app</span> <span class=o>=</span> <span class=n>FastAPI</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>TodoCreate</span><span class=p>(</span><span class=n>BaseModel</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>title</span><span class=p>:</span> <span class=nb>str</span>
+</span></span><span class=line><span class=cl>    <span class=n>completed</span><span class=p>:</span> <span class=nb>bool</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>TodoResponse</span><span class=p>(</span><span class=n>BaseModel</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nb>id</span><span class=p>:</span> <span class=nb>int</span>
+</span></span><span class=line><span class=cl>    <span class=n>title</span><span class=p>:</span> <span class=nb>str</span>
+</span></span><span class=line><span class=cl>    <span class=n>completed</span><span class=p>:</span> <span class=nb>bool</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>todos</span><span class=p>:</span> <span class=nb>dict</span><span class=p>[</span><span class=nb>int</span><span class=p>,</span> <span class=nb>dict</span><span class=p>]</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=n>next_id</span><span class=p>:</span> <span class=nb>int</span> <span class=o>=</span> <span class=mi>1</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li><code>TodoCreate</code>: 新規作成・更新時のリクエストボディ</li><li><code>TodoResponse</code>: レスポンスの型定義</li><li><code>todos</code>: インメモリのデータストア（dict）</li><li><code>next_id</code>: IDの自動採番用カウンター</li></ul><h3 id=作成post>作成（POST）</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.post</span><span class=p>(</span><span class=s2>&#34;/todos&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=n>TodoResponse</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>create_todo</span><span class=p>(</span><span class=n>todo</span><span class=p>:</span> <span class=n>TodoCreate</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>global</span> <span class=n>next_id</span>
+</span></span><span class=line><span class=cl>    <span class=n>todo_data</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;id&#34;</span><span class=p>:</span> <span class=n>next_id</span><span class=p>,</span> <span class=s2>&#34;title&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>title</span><span class=p>,</span> <span class=s2>&#34;completed&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>completed</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>todos</span><span class=p>[</span><span class=n>next_id</span><span class=p>]</span> <span class=o>=</span> <span class=n>todo_data</span>
+</span></span><span class=line><span class=cl>    <span class=n>next_id</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>todo_data</span>
+</span></span></code></pre></td></tr></table></div></div><p><code>response_model=TodoResponse</code>を指定することで、レスポンスの型がSwagger UIに反映されます。</p><h3 id=一覧取得get>一覧取得（GET）</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.get</span><span class=p>(</span><span class=s2>&#34;/todos&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=nb>list</span><span class=p>[</span><span class=n>TodoResponse</span><span class=p>])</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>list_todos</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>list</span><span class=p>(</span><span class=n>todos</span><span class=o>.</span><span class=n>values</span><span class=p>())</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=個別取得get>個別取得（GET）</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.get</span><span class=p>(</span><span class=s2>&#34;/todos/</span><span class=si>{todo_id}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=n>TodoResponse</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_todo</span><span class=p>(</span><span class=n>todo_id</span><span class=p>:</span> <span class=nb>int</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>todo_id</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>todos</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=n>HTTPException</span><span class=p>(</span><span class=n>status_code</span><span class=o>=</span><span class=mi>404</span><span class=p>,</span> <span class=n>detail</span><span class=o>=</span><span class=s2>&#34;Todo not found&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>todos</span><span class=p>[</span><span class=n>todo_id</span><span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><p>存在しないIDの場合は<code>HTTPException</code>で404エラーを返します。</p><h3 id=更新put>更新（PUT）</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.put</span><span class=p>(</span><span class=s2>&#34;/todos/</span><span class=si>{todo_id}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=n>TodoResponse</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>update_todo</span><span class=p>(</span><span class=n>todo_id</span><span class=p>:</span> <span class=nb>int</span><span class=p>,</span> <span class=n>todo</span><span class=p>:</span> <span class=n>TodoCreate</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>todo_id</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>todos</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=n>HTTPException</span><span class=p>(</span><span class=n>status_code</span><span class=o>=</span><span class=mi>404</span><span class=p>,</span> <span class=n>detail</span><span class=o>=</span><span class=s2>&#34;Todo not found&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>todo_data</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;id&#34;</span><span class=p>:</span> <span class=n>todo_id</span><span class=p>,</span> <span class=s2>&#34;title&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>title</span><span class=p>,</span> <span class=s2>&#34;completed&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>completed</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>todos</span><span class=p>[</span><span class=n>todo_id</span><span class=p>]</span> <span class=o>=</span> <span class=n>todo_data</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>todo_data</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=削除delete>削除（DELETE）</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.delete</span><span class=p>(</span><span class=s2>&#34;/todos/</span><span class=si>{todo_id}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>delete_todo</span><span class=p>(</span><span class=n>todo_id</span><span class=p>:</span> <span class=nb>int</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>todo_id</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>todos</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=n>HTTPException</span><span class=p>(</span><span class=n>status_code</span><span class=o>=</span><span class=mi>404</span><span class=p>,</span> <span class=n>detail</span><span class=o>=</span><span class=s2>&#34;Todo not found&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>del</span> <span class=n>todos</span><span class=p>[</span><span class=n>todo_id</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>{</span><span class=s2>&#34;detail&#34;</span><span class=p>:</span> <span class=s2>&#34;Todo deleted&#34;</span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=完成したコード>完成したコード</h3><p>上記をすべてまとめた<code>main.py</code>の全体像は以下のとおりです。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>fastapi</span> <span class=kn>import</span> <span class=n>FastAPI</span><span class=p>,</span> <span class=n>HTTPException</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>pydantic</span> <span class=kn>import</span> <span class=n>BaseModel</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>app</span> <span class=o>=</span> <span class=n>FastAPI</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>TodoCreate</span><span class=p>(</span><span class=n>BaseModel</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>title</span><span class=p>:</span> <span class=nb>str</span>
+</span></span><span class=line><span class=cl>    <span class=n>completed</span><span class=p>:</span> <span class=nb>bool</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>TodoResponse</span><span class=p>(</span><span class=n>BaseModel</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nb>id</span><span class=p>:</span> <span class=nb>int</span>
+</span></span><span class=line><span class=cl>    <span class=n>title</span><span class=p>:</span> <span class=nb>str</span>
+</span></span><span class=line><span class=cl>    <span class=n>completed</span><span class=p>:</span> <span class=nb>bool</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>todos</span><span class=p>:</span> <span class=nb>dict</span><span class=p>[</span><span class=nb>int</span><span class=p>,</span> <span class=nb>dict</span><span class=p>]</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=n>next_id</span><span class=p>:</span> <span class=nb>int</span> <span class=o>=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.post</span><span class=p>(</span><span class=s2>&#34;/todos&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=n>TodoResponse</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>create_todo</span><span class=p>(</span><span class=n>todo</span><span class=p>:</span> <span class=n>TodoCreate</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>global</span> <span class=n>next_id</span>
+</span></span><span class=line><span class=cl>    <span class=n>todo_data</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;id&#34;</span><span class=p>:</span> <span class=n>next_id</span><span class=p>,</span> <span class=s2>&#34;title&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>title</span><span class=p>,</span> <span class=s2>&#34;completed&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>completed</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>todos</span><span class=p>[</span><span class=n>next_id</span><span class=p>]</span> <span class=o>=</span> <span class=n>todo_data</span>
+</span></span><span class=line><span class=cl>    <span class=n>next_id</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>todo_data</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.get</span><span class=p>(</span><span class=s2>&#34;/todos&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=nb>list</span><span class=p>[</span><span class=n>TodoResponse</span><span class=p>])</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>list_todos</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>list</span><span class=p>(</span><span class=n>todos</span><span class=o>.</span><span class=n>values</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.get</span><span class=p>(</span><span class=s2>&#34;/todos/</span><span class=si>{todo_id}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=n>TodoResponse</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_todo</span><span class=p>(</span><span class=n>todo_id</span><span class=p>:</span> <span class=nb>int</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>todo_id</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>todos</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=n>HTTPException</span><span class=p>(</span><span class=n>status_code</span><span class=o>=</span><span class=mi>404</span><span class=p>,</span> <span class=n>detail</span><span class=o>=</span><span class=s2>&#34;Todo not found&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>todos</span><span class=p>[</span><span class=n>todo_id</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.put</span><span class=p>(</span><span class=s2>&#34;/todos/</span><span class=si>{todo_id}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>response_model</span><span class=o>=</span><span class=n>TodoResponse</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>update_todo</span><span class=p>(</span><span class=n>todo_id</span><span class=p>:</span> <span class=nb>int</span><span class=p>,</span> <span class=n>todo</span><span class=p>:</span> <span class=n>TodoCreate</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>todo_id</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>todos</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=n>HTTPException</span><span class=p>(</span><span class=n>status_code</span><span class=o>=</span><span class=mi>404</span><span class=p>,</span> <span class=n>detail</span><span class=o>=</span><span class=s2>&#34;Todo not found&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>todo_data</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;id&#34;</span><span class=p>:</span> <span class=n>todo_id</span><span class=p>,</span> <span class=s2>&#34;title&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>title</span><span class=p>,</span> <span class=s2>&#34;completed&#34;</span><span class=p>:</span> <span class=n>todo</span><span class=o>.</span><span class=n>completed</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>todos</span><span class=p>[</span><span class=n>todo_id</span><span class=p>]</span> <span class=o>=</span> <span class=n>todo_data</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>todo_data</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.delete</span><span class=p>(</span><span class=s2>&#34;/todos/</span><span class=si>{todo_id}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>delete_todo</span><span class=p>(</span><span class=n>todo_id</span><span class=p>:</span> <span class=nb>int</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>todo_id</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>todos</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=n>HTTPException</span><span class=p>(</span><span class=n>status_code</span><span class=o>=</span><span class=mi>404</span><span class=p>,</span> <span class=n>detail</span><span class=o>=</span><span class=s2>&#34;Todo not found&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>del</span> <span class=n>todos</span><span class=p>[</span><span class=n>todo_id</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>{</span><span class=s2>&#34;detail&#34;</span><span class=p>:</span> <span class=s2>&#34;Todo deleted&#34;</span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=動作確認>動作確認</h2><p>サーバーを起動して、Swagger UIから動作確認を行います。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>uv run uvicorn main:app --reload
+</span></span></code></pre></td></tr></table></div></div><p>http://localhost:8000/docs にアクセスし、以下の順にテストしてください。</p><h3 id=1-todoの作成>1. TODOの作成</h3><p><code>POST /todos</code>を開き、「Try it out」をクリックして以下のJSONを入力します。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;買い物に行く&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;completed&#34;</span><span class=p>:</span> <span class=kc>false</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>「Execute」をクリックすると、以下のようなレスポンスが返ります。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;買い物に行く&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;completed&#34;</span><span class=p>:</span> <span class=kc>false</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-一覧取得>2. 一覧取得</h3><p><code>GET /todos</code>を実行すると、作成したTODOの一覧が返ります。</p><h3 id=3-更新>3. 更新</h3><p><code>PUT /todos/1</code>で<code>completed</code>を<code>true</code>に変更してみましょう。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;買い物に行く&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;completed&#34;</span><span class=p>:</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=4-削除>4. 削除</h3><p><code>DELETE /todos/1</code>を実行すると、TODOが削除されます。<code>GET /todos</code>で空の配列が返ることを確認してください。</p><h2 id=まとめ>まとめ</h2><p>この記事では、FastAPIを使ってTODO管理のCRUD APIを作成しました。FastAPIの主な利点をまとめます。</p><ul><li>Pydanticモデルによるリクエスト・レスポンスの自動バリデーション</li><li>Swagger UIによるインタラクティブなAPIドキュメント</li><li>Pythonの型ヒントだけでAPIの仕様が定義できるシンプルさ</li></ul><p>今回はインメモリのデータストアを使いましたが、実際のアプリケーションではSQLAlchemyなどのORMを使ってデータベースと連携することになります。</p><h2 id=関連記事>関連記事</h2><ul><li><a class=link href=/blog/032-python-uv/>MacでUVを用いてPythonの開発環境を構築する</a> - Python環境構築</li><li><a class=link href=/blog/048-lawve-backend/>GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計</a> - FastAPIの実践例</li></ul></section><footer class=article-footer><section class=article-tags><a href=/tags/python/>Python</a>
+<a href=/tags/fastapi/>FastAPI</a>
+<a href=/tags/api/>API</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>関連するコンテンツ</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/blog/048-lawve-backend/><div class=article-details><h2 class=article-title>GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計</h2></div></a></article><article><a href=/blog/044-openai-response-api/><div class=article-details><h2 class=article-title>OpenAI Response APIの使い方まとめ</h2></div></a></article><article><a href=/blog/024-bluesky-api/><div class=article-details><h2 class=article-title>PythonでBluesky APIを用いて自動投稿する方法</h2></div></a></article><article><a href=/blog/046-clean-bot-technical/><div class=article-details><h2 class=article-title>AWS Lambda + LINE Botで掃除リマインダーを作る</h2></div></a></article><article><a href=/blog/033-feast-tutorial/><div class=article-details><h2 class=article-title>FeastのチュートリアルをMacで実行する</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2023 -
+2026 Bossagyu Blog</section><section class=powerby><a href=/others/privacy-policy/>プライバシーポリシー</br></a><a href=/others/contact/>問い合わせ</br></a></br></section><section class=powerby>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.21.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
