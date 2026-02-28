@@ -77,6 +77,6 @@ It's a waste not to have your blog appear in Google searches after all the effor
 
 ## Related Articles
 
-- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
-- [How to Set Up Google Analytics with Hugo](/blog/003-google-analytics/) - Adding analytics
-- [Introduction to Using Lighthouse](/blog/009-light-house/) - Performance measurement
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [How to Set Up Google Analytics with Hugo](/en/blog/003-google-analytics/) - Adding analytics
+- [Introduction to Using Lighthouse](/en/blog/009-light-house/) - Performance measurement

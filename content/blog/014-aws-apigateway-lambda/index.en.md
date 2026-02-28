@@ -70,6 +70,6 @@ This article introduced how to integrate AWS API Gateway with Lambda. By integra
 
 ## Related Articles
 
-- [Efficient Lambda Development with AWS Toolkit in IntelliJ](/blog/006-intellij-lamda-setup/)
-- [How to Schedule Lambda Functions with AWS EventBridge](/blog/008-aws-eventbrdge/)
-- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/blog/046-clean-bot-technical/)
+- [Efficient Lambda Development with AWS Toolkit in IntelliJ](/en/blog/006-intellij-lamda-setup/)
+- [How to Schedule Lambda Functions with AWS EventBridge](/en/blog/008-aws-eventbrdge/)
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/en/blog/046-clean-bot-technical/)

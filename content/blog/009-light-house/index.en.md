@@ -58,5 +58,5 @@ Especially for SEO, as it affects visibility in Google search results, it's impo
 
 ## Related Articles
 
-- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
-- [How to Set Up Google Analytics with Hugo](/blog/003-google-analytics/) - Adding analytics
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [How to Set Up Google Analytics with Hugo](/en/blog/003-google-analytics/) - Adding analytics

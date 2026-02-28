@@ -78,4 +78,4 @@ Since it's low-cost and efficient, it's worth giving it a try.
 
 ## Related Articles
 
-- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup

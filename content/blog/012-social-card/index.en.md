@@ -62,5 +62,5 @@ This article explained how to set up Twitter Social Cards for a blog created wit
 
 ## Related Articles
 
-- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
-- [Using Google Search Console to Make Your Blog Searchable on Google](/blog/007-google-search-console/) - SEO setup
+- [Publishing a Blog with Hugo + Netlify + Github](/en/blog/001-hugo-netlify-build/) - Blog initial setup
+- [Using Google Search Console to Make Your Blog Searchable on Google](/en/blog/007-google-search-console/) - SEO setup

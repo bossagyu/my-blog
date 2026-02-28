@@ -120,6 +120,6 @@ For single object existence checks, use `head_object`.
 
 ## Related Articles
 
-- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/blog/046-clean-bot-technical/)
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/en/blog/046-clean-bot-technical/)
 - [Setting Up a Local Environment Using Pyenv and venv](/en/blog/004-python-setup/) (Python environment setup)
 - [Setting Up a Python Development Environment on Mac with UV](/en/blog/032-python-uv/) (modern Python environment setup)

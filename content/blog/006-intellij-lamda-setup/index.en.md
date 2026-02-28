@@ -80,5 +80,5 @@ Developing in IntelliJ and executing locally can significantly improve developme
 
 ## Related Articles
 
-- [Integrating AWS API Gateway with Lambda](/blog/014-aws-apigateway-lambda/)
-- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/blog/046-clean-bot-technical/)
+- [Integrating AWS API Gateway with Lambda](/en/blog/014-aws-apigateway-lambda/)
+- [Building a Cleaning Reminder Bot with AWS Lambda + LINE](/en/blog/046-clean-bot-technical/)
