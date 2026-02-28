@@ -131,3 +131,11 @@ Hugo + Netlify + Githubでブログを公開する方法を解説しました。
 4. **Favicon**: ブランディングのための設定
 
 この構成なら、Markdownで記事を書いてGithubにpushするだけで自動的にサイトが更新されます。
+
+## 関連記事
+
+- [HugoでGoogle Analyticsの設定をする方法](/blog/003-google-analytics/) - アクセス解析の導入
+- [Google Search Consoleでブログを検索対象にする方法](/blog/007-google-search-console/) - SEO対策
+- [Lighthouseの使い方の紹介](/blog/009-light-house/) - パフォーマンス計測
+- [ChatGPTを利用してHugoで作ったブログを多言語対応する方法](/blog/011-hugo-multilingul-support/) - 多言語対応
+- [Twitter Social Cardの設定方法](/blog/012-social-card/) - SNS共有の最適化

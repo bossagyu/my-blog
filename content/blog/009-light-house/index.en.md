@@ -55,3 +55,8 @@ Checks if the loading speed of web pages on smartphones is optimized and if it's
 ## Summary
 The article explained how to measure the performance of a blog using Lighthouse.
 Especially for SEO, as it affects visibility in Google search results, it's important to address these issues adequately.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
+- [How to Set Up Google Analytics with Hugo](/blog/003-google-analytics/) - Adding analytics

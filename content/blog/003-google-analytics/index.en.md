@@ -83,3 +83,8 @@ After adding the above source code and rebuilding, data will be sent to Google A
 
 If it seems like data is not being transmitted to Google Analytics despite these steps, it's possible that the tags have not been added correctly.  
 To troubleshoot, first check if the tracking is included in the HTML by using Google Developer Tools.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
+- [Using Google Search Console to Make Your Blog Searchable on Google](/blog/007-google-search-console/) - SEO setup

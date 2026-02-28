@@ -83,3 +83,8 @@ baseof.htmlに`{{- partial "analytics" . -}}` を追加する。
 
 こちらの対応をしても、Google Analyticsにデータが連携されていないように見える場合は、タグの追加がうまくいっていない可能性があります。  
 まずはタグがちゃんと入っているかの切り分けをするために、googleデベロッパーツールを開きトラッキングがhtml内に含まれているか確認してみるとよいです。
+
+## 関連記事
+
+- [Hugo + Netlify + Githubでブログを公開する](/blog/001-hugo-netlify-build/) - ブログの初期構築
+- [Google Search Consoleでブログを検索対象にする方法](/blog/007-google-search-console/) - SEO対策

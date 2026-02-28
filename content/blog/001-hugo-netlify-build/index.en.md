@@ -132,3 +132,11 @@ This guide covered how to publish a blog with Hugo + Netlify + Github.
 4. **Favicon**: Branding configuration
 
 With this setup, you just write articles in Markdown and push to Github for automatic site updates.
+
+## Related Articles
+
+- [How to Set Up Google Analytics with Hugo](/blog/003-google-analytics/) - Adding analytics
+- [How to Add Your Blog to Google Search Using Google Search Console](/blog/007-google-search-console/) - SEO setup
+- [Introduction to Using Lighthouse](/blog/009-light-house/) - Performance measurement
+- [Using ChatGPT to Make a Hugo Blog Multilingual](/blog/011-hugo-multilingul-support/) - Multilingual support
+- [Setting Up Twitter Social Cards](/blog/012-social-card/) - Social media optimization

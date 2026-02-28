@@ -65,3 +65,8 @@ Twitterから提供されている[デバッグツール](https://cards-dev.twit
 ## まとめ
 この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明しました。
 Social Cardを設定することで、Twitterで記事をシェアした際に、より多くの人に記事を読んでもらうことができますのでぜひ設定しましょう。
+
+## 関連記事
+
+- [Hugo + Netlify + Githubでブログを公開する](/blog/001-hugo-netlify-build/) - ブログの初期構築
+- [Google Search Consoleでブログを検索対象にする方法](/blog/007-google-search-console/) - SEO対策

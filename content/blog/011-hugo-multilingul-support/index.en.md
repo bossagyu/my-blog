@@ -75,3 +75,7 @@ In the English directory, naming files as `article-name.en.md` identifies them a
 This article explained how to make a Hugo blog multilingual using ChatGPT. Utilizing ChatGPT simplifies the translation process. Multilingual support can help reach audiences outside Japan, increasing readership.
 
 Since it's low-cost and efficient, it's worth giving it a try.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup

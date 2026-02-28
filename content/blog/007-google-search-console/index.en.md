@@ -74,3 +74,9 @@ It took a few hours for the index to be registered after clicking.
 ## Summary
 This article explained how to make your custom domain blog searchable using Google Search Console.  
 It's a waste not to have your blog appear in Google searches after all the effort of creating it, so give it a try.
+
+## Related Articles
+
+- [Publishing a Blog with Hugo + Netlify + Github](/blog/001-hugo-netlify-build/) - Blog initial setup
+- [How to Set Up Google Analytics with Hugo](/blog/003-google-analytics/) - Adding analytics
+- [Introduction to Using Lighthouse](/blog/009-light-house/) - Performance measurement
