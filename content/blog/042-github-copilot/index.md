@@ -41,3 +41,9 @@ Chat toolとはGithub Copilotのチャット内で特殊なタスクを実行で
 ## まとめ
 この記事では、Github Copilot ChatでChat toolを使う方法について説明しました。
 Chat toolを使うことで、より便利にCopilotを利用できるようになるので、ぜひ活用してみてください。
+
+## 関連記事
+
+- [VSCodeでGithub Copilotを使いこなす完全ガイド](/blog/017-vscode-copilot/)
+- [GitHub CopilotをMarkdownで有効にする方法](/blog/035-github-copilot-markdown/)
+- [Codex CLIの使い方まとめ](/blog/043-codex/)

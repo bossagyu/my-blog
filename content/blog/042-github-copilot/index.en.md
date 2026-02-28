@@ -51,3 +51,9 @@ There are many more useful commands available—refer to the official documentat
 
 In this article, we covered how to use Chat Tools within GitHub Copilot Chat.
 By taking advantage of these tools, you can make Copilot even more convenient and powerful—so give them a try!
+
+## Related Articles
+
+- [Complete Guide to Using GitHub Copilot in VSCode](/en/blog/017-vscode-copilot/)
+- [How to Enable GitHub Copilot for Markdown](/en/blog/035-github-copilot-markdown/)
+- [How to Use Codex CLI](/en/blog/043-codex/)

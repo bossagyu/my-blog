@@ -23,5 +23,10 @@ In the settings screen, change `markdown` from `false` to `true`.
 ![Enable Markdown Screen](image-1.png)
 
 ## Summary
-Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.  
+Enabling GitHub Copilot for Markdown makes editing Markdown files more efficient.
 You can enable it easily by changing the settings in VSCode, so give it a try!
+
+## Related Articles
+
+- [Complete Guide to Using GitHub Copilot in VSCode](/en/blog/017-vscode-copilot/)
+- [How to Use GitHub Copilot More Effectively with Chat Tools](/en/blog/042-github-copilot/)

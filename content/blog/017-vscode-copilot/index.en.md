@@ -92,3 +92,10 @@ This article covered how to set up and use GitHub Copilot in VSCode.
 
 GitHub Copilot not only provides code completions but also assists with writing text.
 Give it a try and see how it can help you.
+
+## Related Articles
+
+- [How to Use GitHub Copilot in IntelliJ](/en/blog/005-github-copilot/)
+- [How to Enable GitHub Copilot for Markdown](/en/blog/035-github-copilot-markdown/)
+- [How to Use GitHub Copilot More Effectively with Chat Tools](/en/blog/042-github-copilot/)
+- [How to Use Codex CLI](/en/blog/043-codex/)

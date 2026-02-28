@@ -108,3 +108,9 @@ codex chat
 ## まとめ
 Codex CLIはインストール後にサインインを済ませるだけで、コマンドラインからすぐにCodexを活用できます。
 よく使うコマンドを覚えておくと、スクリプト生成やファイル要約が素早く行えるようになります。
+
+## 関連記事
+
+- [VSCodeでGithub Copilotを使いこなす完全ガイド](/blog/017-vscode-copilot/)
+- [Github CopilotをChat toolを使って便利に使う方法](/blog/042-github-copilot/)
+- [OpenAI Response APIの使い方まとめ](/blog/044-openai-response-api/)

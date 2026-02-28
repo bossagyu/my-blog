@@ -25,3 +25,8 @@ VSCodeでGitHub Copilotのプラグインのページを開きます。
 ## まとめ
 GitHub CopilotをMarkdownで有効にすることで、Markdownファイルの編集がより効率的になります。
 VSCodeの設定を変更するだけで簡単に有効化できるので、ぜひ試してみてください。
+
+## 関連記事
+
+- [VSCodeでGithub Copilotを使いこなす完全ガイド](/blog/017-vscode-copilot/)
+- [Github CopilotをChat toolを使って便利に使う方法](/blog/042-github-copilot/)

@@ -106,3 +106,9 @@ Here are the main commands:
 
 ## Summary
 Once installed and signed in, you can immediately start using Codex from the command line. Knowing the frequently used commands helps you quickly generate scripts or summarize files.
+
+## Related Articles
+
+- [Complete Guide to Using GitHub Copilot in VSCode](/en/blog/017-vscode-copilot/)
+- [How to Use GitHub Copilot More Effectively with Chat Tools](/en/blog/042-github-copilot/)
+- [How to Use the OpenAI Response API](/en/blog/044-openai-response-api/)

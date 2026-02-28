@@ -94,3 +94,10 @@ VSCodeでGithub Copilotを設定して使う方法について説明しました
 
 Github Copilotはソースコードだけではなく文章にも補完を行ってくれます。
 ぜひ活用してみてください。
+
+## 関連記事
+
+- [IntellijでのGithub Copilotの使い方](/blog/005-github-copilot/)
+- [GitHub CopilotをMarkdownで有効にする方法](/blog/035-github-copilot-markdown/)
+- [Github CopilotをChat toolを使って便利に使う方法](/blog/042-github-copilot/)
+- [Codex CLIの使い方まとめ](/blog/043-codex/)

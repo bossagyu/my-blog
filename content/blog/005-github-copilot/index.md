@@ -56,5 +56,10 @@ public int double(int value) {   // ← 生成されたコード
 
 
 ## まとめ
-IntellijでGithub Copilotを利用する方法を解説しました。  
+IntellijでGithub Copilotを利用する方法を解説しました。
 この記事はGithub Copilotを利用して書いており、Markdownでのブログ作成でもかなり補完してくれるので、気になる人は試してみてください。
+
+## 関連記事
+
+- [VSCodeでGithub Copilotを使いこなす完全ガイド](/blog/017-vscode-copilot/)
+- [Github CopilotをChat toolを使って便利に使う方法](/blog/042-github-copilot/)
