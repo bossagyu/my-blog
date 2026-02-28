@@ -48,3 +48,8 @@ ChatGPTのモデルの精度の向上はめざましく、どんどん人間の�
 
 ## 関連情報
 * [Hello ChatGPT-4o](https://openai.com/index/hello-gpt-4o/)
+
+## 関連記事
+
+- [chatGPTで画像を生成する方法](/blog/023-chatgpt-create-image/)（ChatGPTによる画像生成）
+- [OpenAI Response APIの使い方まとめ](/blog/044-openai-response-api/)（OpenAI API活用）

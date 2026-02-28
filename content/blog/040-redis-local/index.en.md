@@ -74,3 +74,7 @@ docker rm redis
 In this article, we explained how to run Redis using Docker.
 Redis is widely used as a high-performance database, and with Docker, it can be easily set up.
 Give Redis a try and see how it can help you.
+
+## Related Articles
+
+- [How to Use Redis with Go](/en/blog/041-redis-go/) (practical example of using Redis in Go)

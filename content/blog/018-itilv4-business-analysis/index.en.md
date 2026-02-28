@@ -65,3 +65,8 @@ This article explained business analysis based on my learning and experiences. P
 
 ## Reference
 * [Business analysis management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide)
+
+## Related Articles
+
+- [Understanding Availability Management in ITIL v4](/en/blog/016-itilv4-availability-management/) (related ITIL v4 article)
+- [Explaining Capacity and Performance Management in ITIL v4](/en/blog/020-itilv4-capacity-and-performance-management/) (related ITIL v4 article)

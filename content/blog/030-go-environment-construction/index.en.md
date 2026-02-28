@@ -63,3 +63,8 @@ Hello World
 ## Conclusion
 
 That's how you can set up a Go development environment on Mac and quickly run a Hello World program.
+
+## Related Articles
+
+- [Research on gRPC](/en/blog/029-grpc/) (practical gRPC implementation)
+- [How to Use Redis with Go](/en/blog/041-redis-go/) (Redis + Go in practice)

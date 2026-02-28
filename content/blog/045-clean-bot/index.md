@@ -108,3 +108,8 @@ tags = ['LINE BOT', 'Clean Bot', '掃除']
 このBotは完全無料で利用できます。ぜひお試しください！
 
 [友だち追加はこちら](https://lin.ee/kdwsLys)
+
+## 関連記事
+
+- [【初心者向け】掃除リマインダーBotの使い方チュートリアル](/blog/047-clean-bot-tutorial/)（初心者向け使い方ガイド）
+- [LINE Messaging APIの登録と使い方](/blog/002-line-messaging-api/)（LINE Bot開発の基礎）

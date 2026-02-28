@@ -73,3 +73,8 @@ ITIL v4の事業分析について、学習し理解した内容をまとめま�
 
 ## 参考
 * [Business analysis management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/business-analysis-management-itil-4-practice-guide)
+
+## 関連記事
+
+- [ITIL v4 可用性管理について解説](/blog/016-itilv4-availability-management/)（関連ITIL v4記事）
+- [ITIL v4 キャパシティ及びパフォーマンス管理について解説](/blog/020-itilv4-capacity-and-performance-management/)（関連ITIL v4記事）

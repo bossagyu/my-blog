@@ -63,3 +63,8 @@ Gemini CLIをセットアップすることで、ターミナル上で直接Gemi
 Gemini CLIは非常に使いやすく、
 ターミナルでの作業をよりスムーズにしてくれます。
 ぜひ試してみてください。
+
+## 関連記事
+
+- [ChatGPT 4oの紹介](/blog/027-chatgpt-4o/)（ChatGPTとの比較）
+- [OpenAI Response APIの使い方まとめ](/blog/044-openai-response-api/)（API統合の実践）

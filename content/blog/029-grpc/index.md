@@ -227,5 +227,9 @@ Greeter client received: Hello Again, you!
 
 ## まとめ
 
-今回はgRPCについて調査の調査と公式ドキュメントのチュートリアルを行いました。  
+今回はgRPCについて調査の調査と公式ドキュメントのチュートリアルを行いました。
 gRPCはスキーマファーストで開発することができ、HTTP/2による高パフォーマンス通信が可能であることら、最近ではREST APIの代替手段として注目されている技術ですので、ぜひ抑えておきたいです。
+
+## 関連記事
+
+- [macでGoの開発環境を構築して最速でHello Worldする](/blog/030-go-environment-construction/)（Go環境構築）

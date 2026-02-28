@@ -59,3 +59,7 @@ Note that if you overuse this feature, you may receive a message asking you to w
 For those with access to a machine source, running Stable Diffusion locally on a Mac might still be the best option.
 
 ![ChatGPT image generation limit](img-023-006.png)
+
+## Related Articles
+
+- [Introduction to ChatGPT 4o](/en/blog/027-chatgpt-4o/) (overview of ChatGPT 4o features)

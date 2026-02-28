@@ -68,3 +68,7 @@ if (value === StringStatus.zero) {
 
 ## Summary
 This article explained how to use Enums in TypeScript. By utilizing Enums, you can improve the readability and maintainability of your code.
+
+## Related Articles
+
+- [Setting Up TypeScript Development Environment Easily with Volta](/en/blog/021-typescript-setup/) (TypeScript environment setup)

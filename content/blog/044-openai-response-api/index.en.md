@@ -67,4 +67,5 @@ The Response API is a straightforward way to generate text with OpenAI. Check th
 
 ## Related Articles
 
+- [Introduction to ChatGPT 4o](/en/blog/027-chatgpt-4o/) (overview of ChatGPT's latest features)
 - [Designing an Event-Driven Backend to Sync GCS with Gemini File Search API](/en/blog/048-lawve-backend/) (a practical example of API integration patterns)

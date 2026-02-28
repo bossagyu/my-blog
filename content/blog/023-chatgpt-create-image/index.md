@@ -59,3 +59,7 @@ Stable Diffusionを利用したときよりもプロンプトを工夫しなく�
 マシンソースがある人はやっぱりローカルmacでStable Diffusionでやるのが良さそうですね。
 
 ![ChatGPTで画像の生成が制限](img-023-006.png)
+
+## 関連記事
+
+- [ChatGPT 4oの紹介](/blog/027-chatgpt-4o/)（ChatGPT 4oの新機能紹介）

@@ -71,4 +71,5 @@ Response APIはシンプルな入力でテキスト生成を行えるOpenAIのAP
 
 ## 関連記事
 
+- [ChatGPT 4oの紹介](/blog/027-chatgpt-4o/)（ChatGPTの最新機能紹介）
 - [GCSとGemini File Search APIを自動同期するイベント駆動バックエンドの設計](/blog/048-lawve-backend/)（API統合パターンの実践例）

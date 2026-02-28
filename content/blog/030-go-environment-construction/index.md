@@ -63,3 +63,8 @@ Hello World
 ## まとめ
 
 以上で、MacでGo言語の開発環境を構築して、最速で Hello World する方法を紹介しました。
+
+## 関連記事
+
+- [gRPCについての調査](/blog/029-grpc/)（gRPCの実践）
+- [RedisをGoで使う方法](/blog/041-redis-go/)（Redis + Goの実践）

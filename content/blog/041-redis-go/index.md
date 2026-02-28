@@ -117,3 +117,8 @@ members = [alice bob]
 ## まとめ
 GoでRedisを使う方法について説明しました。
 GoでRedisを使う場合は、[go-redis](https://github.com/redis/go-redis)を使用します。
+
+## 関連記事
+
+- [RedisをDockerで起動する方法](/blog/040-redis-local/)（Redisの起動方法）
+- [macでGoの開発環境を構築して最速でHello Worldする](/blog/030-go-environment-construction/)（Go環境構築）

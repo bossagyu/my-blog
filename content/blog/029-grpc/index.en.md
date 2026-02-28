@@ -228,5 +228,9 @@ The newly added method is confirmed to be functioning correctly.
 
 ## Summary
 
-This time, we researched gRPC and followed the official documentation tutorial.  
+This time, we researched gRPC and followed the official documentation tutorial.
 gRPC allows for schema-first development and enables high-performance communication via HTTP/2. Recently, it has been gaining attention as an alternative to REST APIs, making it a technology worth familiarizing yourself with.
+
+## Related Articles
+
+- [Setting Up a Go Development Environment on Mac and Running Hello World](/en/blog/030-go-environment-construction/) (Go environment setup)

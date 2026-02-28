@@ -61,7 +61,12 @@ After inputting, Gemini will generate the code for you.
 ![Gemini CLI Execution Result](image-5.png)
 
 ## Summary
-By setting up Gemini CLI, you can use Gemini AI directly from the terminal.  
-This enables efficient development and task management using AI.  
-Gemini CLI is very user-friendly and makes terminal work smoother.  
+By setting up Gemini CLI, you can use Gemini AI directly from the terminal.
+This enables efficient development and task management using AI.
+Gemini CLI is very user-friendly and makes terminal work smoother.
 Give it a try!
+
+## Related Articles
+
+- [Introduction to ChatGPT 4o](/en/blog/027-chatgpt-4o/) (comparison with ChatGPT)
+- [How to Use the OpenAI Response API](/en/blog/044-openai-response-api/) (API integration in practice)

@@ -48,3 +48,8 @@ I believe that how well engineers can utilize generative AI will greatly affect 
 
 ## Related Information
 * [Hello ChatGPT-4o](https://openai.com/index/hello-gpt-4o/)
+
+## Related Articles
+
+- [Generating Images with ChatGPT](/en/blog/023-chatgpt-create-image/) (image generation with ChatGPT)
+- [How to Use the OpenAI Response API](/en/blog/044-openai-response-api/) (OpenAI API integration)

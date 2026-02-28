@@ -139,3 +139,8 @@ Botから「掃除機を追加しました」と返信が来れば成功です�
 - [掃除リマインダーBotの全機能紹介](/blog/045-clean-bot/)
 
 ぜひ活用して、掃除を習慣化しましょう！
+
+## 関連記事
+
+- [掃除を忘れない！掃除リマインダーLINE Bot](/blog/045-clean-bot/)（全機能の紹介）
+- [LINE Messaging APIの登録と使い方](/blog/002-line-messaging-api/)（LINE Bot開発の基礎）

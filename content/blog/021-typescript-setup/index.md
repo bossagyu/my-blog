@@ -149,3 +149,7 @@ Hello, TypeScript!
 Voltaを利用することで、Node.jsのバージョン管理が簡単になり、開発環境のセットアップがスムーズに行えます。
 また、VoltaでNode.jsのバージョンを指定すると、package.jsonにバージョンが記述され、他の開発者とのバージョンの差異を解消することができる点も魅力的ですね。
 
+## 関連記事
+
+- [TyeScriptにおけるEnumの使い方](/blog/022-typescript-enum/)（TypeScript Enumの使い方）
+

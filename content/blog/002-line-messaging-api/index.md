@@ -60,3 +60,7 @@ curl -v -X POST https://api.line.me/v2/bot/message/push \
 ```
 
 レスポンスが帰ってきて、LINEのトーク画面でBotからの投稿が行われていれば成功！
+
+## 関連記事
+
+- [掃除を忘れない！掃除リマインダーLINE Bot](/blog/045-clean-bot/)（LINE Botの実践プロジェクト）

@@ -66,3 +66,8 @@ tags = ['ITIL', 'Availability Management']
 
 ## 参考
 * [Availability management: ITIL 4 Practice Guide](https://www.axelos.com/resource-hub/practice/availability-management-itil-4-practice-guide)
+
+## 関連記事
+
+- [ITIL v4 事業分析について解説](/blog/018-itilv4-business-analysis/)（関連ITIL v4記事）
+- [ITIL v4 キャパシティ及びパフォーマンス管理について解説](/blog/020-itilv4-capacity-and-performance-management/)（関連ITIL v4記事）

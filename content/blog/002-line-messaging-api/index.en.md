@@ -59,3 +59,7 @@ curl -v -X POST https://api.line.me/v2/bot/message/push \
 ```
 
 If a response is returned and you see a post from the Bot in your LINE chat, it's a success!
+
+## Related Articles
+
+- [Cleaning Reminder LINE Bot](/en/blog/045-clean-bot/) (a practical LINE Bot project)

@@ -129,3 +129,7 @@ The test script ran successfully. This completes the setup of the TypeScript dev
 
 ## Summary
 This article described how to set up a TypeScript development environment easily using Volta. By using Volta, managing Node.js versions becomes straightforward, making the development environment setup smoother. Additionally, specifying the Node.js version with Volta in your project's package.json can help eliminate version discrepancies among developers, adding another layer of convenience to your workflow.
+
+## Related Articles
+
+- [Using Enums in TypeScript](/en/blog/022-typescript-enum/) (how to use TypeScript Enums)

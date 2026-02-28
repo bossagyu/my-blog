@@ -65,5 +65,10 @@ Applying my experiences to these activities, I understood them as follows:
     * We made plans to increase capacity based on demand forecasts and executed them.
 
 ## Summary
-In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.  
+In this article, I explained capacity and performance management based on what I have learned and applied it to my own experiences. I understood that capacity and performance management involves managing aspects similar to availability management, but from the perspective of capacity and performance.
 In my experience, discussions about performance and availability often go hand in hand, and I rarely deal with them independently.
+
+## Related Articles
+
+- [Understanding Availability Management in ITIL v4](/en/blog/016-itilv4-availability-management/) (related ITIL v4 article)
+- [Explaining Business Analysis in ITIL v4](/en/blog/018-itilv4-business-analysis/) (related ITIL v4 article)
