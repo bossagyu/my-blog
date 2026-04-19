@@ -109,3 +109,44 @@ Shu-Ha-Ri also describes how the learner's **agency** changes. Reception dominat
 - **Learning design patterns**: Apply patterns literally (Shu), adapt them to project context (Ha), and eventually design from first principles without needing patterns (Ri).
 - **Scrum adoption**: Start by following the Scrum Guide strictly, then adapt events and roles once the team has matured.
 - **Onboarding in general**: As a guide for how a mentor's stance should shift from prescribing procedures to reviewing decisions to co-creating systems.
+
+## The Four Stages of Competence
+
+### Origin and Background
+
+The "Four Stages of Competence" (also known as the Conscious Competence Ladder) is commonly attributed to Noel Burch of Gordon Training International in the 1970s. However, similar ideas are sometimes attributed to Abraham Maslow or Thomas Gordon, so the origin is not entirely settled.
+
+The distinctive feature of this model is that it combines two axes: whether a learner **has a capability**, and whether they are **aware of having or lacking it**. By focusing on awareness as much as ability, the model is particularly good at describing the learner's psychological state.
+
+### Four Stages
+
+The four stages can be organized as a 2x2 matrix.
+
+```mermaid
+quadrantChart
+    title Four Stages of Competence
+    x-axis "Low capability" --> "High capability"
+    y-axis "Unaware" --> "Aware"
+    quadrant-1 Conscious Competence
+    quadrant-2 Conscious Incompetence
+    quadrant-3 Unconscious Incompetence
+    quadrant-4 Unconscious Competence
+```
+
+**1. Unconscious Incompetence**
+The learner is not aware of what they cannot do, and thus sees no need to learn. Escape from this stage usually requires external feedback or a vivid encounter with one's own limits.
+
+**2. Conscious Incompetence**
+The learner recognizes their inability. This is psychologically the hardest stage, where self-doubt can derail learning. It helps to have an environment that offers small wins and a relationship that makes failure safe.
+
+**3. Conscious Competence**
+The learner can perform, but only with deliberate effort and attention. Execution is slow and tiring, yet consistently produces results. Repetition here builds the foundation for the next stage.
+
+**4. Unconscious Competence**
+The learner performs naturally, without conscious thought. Attention is freed for other things. A new challenge emerges: because the skill is tacit, it becomes hard to explain "why" to others.
+
+### Psychological Significance and a Fifth Stage
+
+Unlike other models, this one explicitly names the **valley of Conscious Incompetence**. Learning starts with confronting one's incompetence; how well we support learners at this stage largely determines whether they continue.
+
+Some variants add a fifth stage: **Conscious Competence of Unconscious Competence**, sometimes called "reflective competence." This is the state of being able to re-examine one's tacit skill and articulate it for others—a state mentors and teachers aspire to.
