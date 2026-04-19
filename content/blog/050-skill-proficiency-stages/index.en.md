@@ -187,3 +187,51 @@ The points of focus clearly diverge.
 - To support learners psychologically, especially near the valley of doubt → the **Four Stages of Competence**
 
 They complement each other, and it is often useful to view a single learner through multiple lenses.
+
+## Applications: Learning and Product Design
+
+These frameworks are useful not only as knowledge but as tools. Three common applications:
+
+### 1. Designing Your Own Learning
+
+Assess your current stage through multiple models. If you look solid as a Competent on Dreyfus but are still at Conscious Competence on the awareness axis, you have discovered a concrete next step. Noticing that you lack "experience breaking the form" can motivate you to seek exposure to other schools (other teams, tools, or languages).
+
+### 2. Mentoring and Supporting Others
+
+Different stages call for different involvement.
+
+- For novices and the unconsciously incompetent: provide explicit rules and a safe environment for repetition.
+- For the consciously incompetent: stack small wins and affirm that failure is part of the process.
+- For Competent learners / those at Ha: hand over decision-making responsibility and support through decision reviews.
+- For Proficient, Expert, or Ri learners: create opportunities to articulate their tacit knowledge for others.
+
+Misjudging the stage turns help into imposition or detachment. Being stage-aware improves the precision of involvement.
+
+### 3. Product and App Design
+
+These models also inform how we design for users with varying levels of expertise.
+
+- **Onboarding**: Provide explicit guides, step-by-step flows, and constraints for beginners (the Shu stage).
+- **Mode switching**: Offer shortcuts and advanced modes for experienced users, and reduce boilerplate hints (Ha and Ri).
+- **Supporting Conscious Incompetence**: Users who "don't know what they don't know" benefit from diagnostics and tutorials that point to what needs learning.
+- **Feedback that promotes stage transitions**: Rather than just returning errors, show hints for the learner's next step.
+
+Viewing a product through these lenses tends to clarify feature priorities and information architecture.
+
+## Summary
+
+Among the many frameworks describing technical proficiency, the Dreyfus model, Shu-Ha-Ri, and the Four Stages of Competence offer complementary lenses.
+
+- The Dreyfus model captures **changes in the quality of judgment**.
+- Shu-Ha-Ri captures **changes in the relationship with form**.
+- The Four Stages of Competence captures **the interplay of awareness and ability**.
+
+Models are maps, not the territory. Real learners change continuously, and their stages can vary across domains. Still, a map helps us estimate where we are and choose the next step. Use these frameworks as situation-appropriate tools—for your own learning, your relationships with others, and the products you build.
+
+### References
+
+- Stuart E. Dreyfus, Hubert L. Dreyfus, "A Five-Stage Model of the Mental Activities Involved in Directed Skill Acquisition" (1980, U.S. Air Force Office of Scientific Research)
+- Andy Hunt, *Pragmatic Thinking and Learning: Refactor Your Wetware* (2008, Pragmatic Bookshelf)
+- Kawakami Fuhaku, *Fuhaku Hikki*
+- Zeami, *Fūshikaden*
+- Noel Burch, "The Four Stages for Learning Any New Skill" (1970s, Gordon Training International)
