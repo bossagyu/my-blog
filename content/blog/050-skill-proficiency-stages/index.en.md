@@ -150,3 +150,40 @@ The learner performs naturally, without conscious thought. Attention is freed fo
 Unlike other models, this one explicitly names the **valley of Conscious Incompetence**. Learning starts with confronting one's incompetence; how well we support learners at this stage largely determines whether they continue.
 
 Some variants add a fifth stage: **Conscious Competence of Unconscious Competence**, sometimes called "reflective competence." This is the state of being able to re-examine one's tacit skill and articulate it for others—a state mentors and teachers aspire to.
+
+## Comparing the Three Frameworks
+
+At first glance the three models look similar, but they focus on different aspects.
+
+| Dimension | Dreyfus Model | Shu-Ha-Ri | Four Stages of Competence |
+|-----------|---------------|-----------|---------------------------|
+| Number of stages | 5 | 3 | 4 (5 in variants) |
+| Focus | Quality of judgment and action | Relationship to form | Combination of ability and awareness |
+| Cultural background | Western / phenomenology | Japanese / traditional arts | Western / education psychology |
+| Period of formulation | 1980 | Edo period (with older roots) | 1970s |
+| Implied learner | An individual cognition changing | A member inheriting form within a community | A self moving between conscious and unconscious |
+| Top-stage ideal | Intuitive judgment | Free action beyond form | Automatic, effortless execution |
+
+### Commonalities
+
+Beneath the surface, the models share structural features.
+
+- A direction from **external dependence to autonomy**. Rules, forms, or conscious effort are the starting point; they become internalized over time.
+- The top stage is described as **mastery that resists easy verbalization**. Dreyfus's Expert, Shu-Ha-Ri's Ri, and the Four Stages' Unconscious Competence all point to territory beyond explicit instruction.
+- Progression is **not linear**. Earlier skills remain as foundations rather than being discarded.
+
+### Differences
+
+The points of focus clearly diverge.
+
+- The **Dreyfus model** focuses on the quality of judgment, tracing the cognitive shift from rule-application to intuitive pattern recognition.
+- **Shu-Ha-Ri** focuses on relationship with form and the community that transmits it.
+- The **Four Stages of Competence** focuses on states of awareness, especially the pivot of realizing one's own incompetence.
+
+### Which to Use When
+
+- To analyze patterns of behavior and judgment → the **Dreyfus model**
+- To describe a learning environment with a master, mentor, or shared form → **Shu-Ha-Ri**
+- To support learners psychologically, especially near the valley of doubt → the **Four Stages of Competence**
+
+They complement each other, and it is often useful to view a single learner through multiple lenses.
