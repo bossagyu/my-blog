@@ -1,4 +1,211 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/categories/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 06 Jan 2024 21:45:12 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Twitter Social Cardの設定方法</title><link>https://bossagyu.com/blog/012-social-card/</link><pubDate>Sat, 06 Jan 2024 21:45:12 +0900</pubDate><guid>https://bossagyu.com/blog/012-social-card/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Bossagyu Blog</title><link>https://bossagyu.com/categories/blog/</link><description>Recent content in Blog on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/categories/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>技術習熟の3つのモデル：ドレイファス・守破離・意識的能力の4段階</title><link>https://bossagyu.com/blog/050-skill-proficiency-stages/</link><pubDate>Sun, 19 Apr 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/050-skill-proficiency-stages/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>私たちが何らかの技能を身につけていく過程は、一様ではありません。初めは手順書に頼り、やがて状況に応じた判断ができるようになり、さらに進むと無意識のうちに最適な動作ができるようになります。こうした段階的な変化を捉えるために、古くから多くのモデルが提唱されてきました。&lt;/p>
+&lt;p>本記事では、代表的な3つの習熟フレームワーク、&lt;strong>ドレイファスモデル&lt;/strong>、&lt;strong>守破離&lt;/strong>、&lt;strong>意識的能力の4段階&lt;/strong> を紹介し、それぞれの背景・段階構造・特徴を比較します。自分の現在地を知り、次の一歩を設計し、他者の学びを支えるための道具として、これらのモデルがどう使えるかを整理します。&lt;/p>
+&lt;h2 id="なぜ習熟段階を理解するのか">なぜ習熟段階を理解するのか&lt;/h2>
+&lt;p>習熟を段階として捉えるメリットは、大きく3つあります。&lt;/p>
+&lt;p>1つ目は &lt;strong>自己理解&lt;/strong> です。自分が今どの段階にいるのかが分かると、次に何を身につけるべきかが見えてきます。新人の頃に必要だった「手順を正確にこなす力」と、中堅になってから求められる「状況に応じた判断力」はまったく別のスキルです。段階を意識することで、努力の方向を誤らずに済みます。&lt;/p>
+&lt;p>2つ目は &lt;strong>学習設計&lt;/strong> です。最終ゴールだけを見て漠然と努力するより、段階的なマイルストーンを置くほうが継続しやすく、成長も確認しやすくなります。段階ごとに「今の自分に合った学び方」が変わることも、多くのモデルが示しています。&lt;/p>
+&lt;p>3つ目は &lt;strong>他者理解&lt;/strong> です。後輩を指導する場面や、チームメンバーの成長を見守る場面で、相手がどの段階にいるかを見立てられれば、必要な支援や関わり方を選びやすくなります。&lt;/p>
+&lt;p>ただし、モデルは現実そのものではありません。人の習熟は連続的で、領域ごとに段階がばらつくこともあります。本記事で紹介するモデルは、あくまで思考の補助線として使うものだと覚えておきたいところです。&lt;/p>
+&lt;h2 id="ドレイファスモデル">ドレイファスモデル&lt;/h2>
+&lt;h3 id="出自と背景">出自と背景&lt;/h3>
+&lt;p>ドレイファスモデルは、Stuart E. Dreyfus と Hubert L. Dreyfus の兄弟が1980年にカリフォルニア大学バークレー校でまとめた報告書 &amp;ldquo;A Five-Stage Model of the Mental Activities Involved in Directed Skill Acquisition&amp;rdquo; で提唱されたモデルです。もともとは米空軍科学研究局の委託研究であり、パイロットの訓練やチェスプレイヤー、自動車運転など、幅広い技能習得を題材に論じられました。&lt;/p>
+&lt;p>兄のスチュワートはオペレーションズ・リサーチ、弟のヒューバートは哲学（現象学）を専門とし、2人の共著として「熟達者の判断が必ずしも明示的なルールで説明できない」という問題意識を形にしたのがこのモデルです。&lt;/p>
+&lt;p>後にソフトウェアエンジニアリングの領域でも、Andy Hunt の著書『Pragmatic Thinking and Learning』などを通じて広く紹介され、エンジニアの成長を語るときの共通言語のひとつになりました。&lt;/p>
+&lt;h3 id="5段階の構造">5段階の構造&lt;/h3>
+&lt;p>ドレイファスモデルは、人が未経験の状態から熟達者に至るまでを5段階で描きます。&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart LR
+A[Novice&lt;br/>初心者] --> B[Advanced Beginner&lt;br/>上級初心者]
+B --> C[Competent&lt;br/>一人前]
+C --> D[Proficient&lt;br/>中堅]
+D --> E[Expert&lt;br/>達人]
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>各段階の特徴は次の通りです。&lt;/p>
+&lt;p>&lt;strong>1. Novice（初心者）&lt;/strong>
+状況を文脈から切り離し、与えられたルールに従って行動します。ルールを守ることで精一杯で、例外や全体像を見る余裕はありません。料理で言えばレシピ通りに計量する段階、運転で言えばマニュアル通りにペダルとハンドルを操作する段階です。&lt;/p>
+&lt;p>&lt;strong>2. Advanced Beginner（上級初心者）&lt;/strong>
+経験を積む中で、状況に付随する特徴に気づき始めます。とはいえ、どの特徴が重要でどれが些末かの見分けはまだつかず、すべてを同じ重みで扱いがちです。先輩に細かく質問し、カバーできないケースに直面して初めて学ぶ段階と言えます。&lt;/p>
+&lt;p>&lt;strong>3. Competent（一人前）&lt;/strong>
+複数の情報の中から重要なものを選び、自分で目標と計画を立てられるようになります。ルールは内面化され、状況への適応度が上がります。一方で「正解はひとつではない」ことが分かり始め、判断の責任を感じて悩むのもこの段階の特徴です。&lt;/p>
+&lt;p>&lt;strong>4. Proficient（中堅）&lt;/strong>
+状況を全体として捉え、何が起きているかを俯瞰できるようになります。過去の類似ケースを引き寄せてパターン認識で判断し、細部をルールで詰めるのはその後、という順序に逆転していきます。直感と分析の両方を使い分けるハイブリッドな段階です。&lt;/p>
+&lt;p>&lt;strong>5. Expert（達人）&lt;/strong>
+明示的なルールを意識せず、状況に埋め込まれた「正解」を直感的に導きます。熟達した医師が患者を一目見て診断の見当をつけたり、棋士が盤面を見て候補手を絞り込むように、分析より前に判断が立ち上がります。ただし、環境が通常と大きく異なる場合には、達人も意識的な分析に戻る必要があります。&lt;/p>
+&lt;h3 id="段階を移るときに起きる認知の変化">段階を移るときに起きる認知の変化&lt;/h3>
+&lt;p>このモデルが示唆する重要な点は、段階を上がるにつれて認知の中心が「分析」から「パターン認識」、さらに「直感」へと移っていくことです。これは単に速くなるというだけでなく、何を見ているかが変わるという質的な変化です。&lt;/p>
+&lt;p>また、上位段階に進むには、ルールに従うだけでなく「ルールを文脈に応じて解釈する経験」が欠かせません。ドレイファス兄弟は、熟達とは暗黙知の獲得であり、それを教科書的に教えることは難しいと繰り返し指摘しています。&lt;/p>
+&lt;h2 id="守破離">守破離&lt;/h2>
+&lt;h3 id="出自と背景-1">出自と背景&lt;/h3>
+&lt;p>守破離（しゅはり）は、日本の武道・茶道・華道といった伝統芸能の世界で発達してきた修行の段階論です。明確な成文として現れるのは江戸時代中期の茶人、川上不白（1719-1807）による『不白筆記』と伝えられていますが、その源流はさらに古く、世阿弥（1363-1443）が『風姿花伝』で示した「序破急」の発想や、千利休の教えに連なるとされます。&lt;/p>
+&lt;p>利休道歌として知られる一首に、「規矩作法 守り尽くして 破るとも 離るるとても 本（もと）を忘るな」という歌があり、これが守破離という言葉を象徴する一節としてよく引用されます。型を守り、やがて破り、さらに離れても、根本を忘れてはならない——というメッセージです。&lt;/p>
+&lt;p>近年では、アジャイル開発・スクラム・デザインパターン学習など、西洋生まれの知的実践にも「守破離」が応用され、日本語圏のソフトウェア業界では共通語のひとつになりました。&lt;/p>
+&lt;h3 id="3段階の構造">3段階の構造&lt;/h3>
+&lt;p>守破離は、師匠と弟子の関係を前提とした3段階のモデルです。&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart LR
+A[守&lt;br/>型を守る] --> B[破&lt;br/>型を破る]
+B --> C[離&lt;br/>型から離れる]
+C -.新たな型.-> A
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>&lt;strong>守&lt;/strong>
+師匠や流派の教える型を、忠実に守って稽古する段階です。自分の解釈を加えずに正確に反復することが求められます。「なぜこうするのか」は後から分かることが多く、まずは身体や思考に型を染み込ませる時期と言えます。&lt;/p>
+&lt;p>&lt;strong>破&lt;/strong>
+守の段階で体得した型を下敷きに、他流派の型や自分の工夫を取り入れて型を破っていく段階です。単なる反抗ではなく、比較と検証を通じて型を吟味する営みであり、ここで初めて「なぜそうするのか」が腹落ちしてきます。&lt;/p>
+&lt;p>&lt;strong>離&lt;/strong>
+型から離れ、独自の境地に至る段階です。このとき、型を捨てたのではなく、型が自分の一部になっているため、外から見ると型に縛られず自在に動いているように見えます。利休道歌の「本を忘るな」は、離に至っても根は守の時期にあることを戒めた言葉です。&lt;/p>
+&lt;h3 id="西洋モデルとの違い">西洋モデルとの違い&lt;/h3>
+&lt;p>ドレイファスモデルが個人の認知活動の変化を描くのに対し、守破離は &lt;strong>共同体の中で型を受け渡す&lt;/strong> ことを前提にしています。型には流派の歴史や先人の知恵が凝縮されており、それを正確に受け継ぐ「守」の時期がまずある、という思想です。&lt;/p>
+&lt;p>また、守破離は &lt;strong>学習者の主体性の現れ方&lt;/strong> を段階で示すモデルとも読めます。守では受容、破では対話と検証、離では創造が中心になり、単なるスキル上達ではなく人格の成熟や世界観の拡張まで含意する点も特徴的です。&lt;/p>
+&lt;h3 id="現代での応用例">現代での応用例&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>ソフトウェア開発のパターン学習&lt;/strong>: まずはデザインパターンをそのまま適用し（守）、プロジェクトに応じて変形し（破）、最終的にはパターンに頼らず問題に応じた設計ができる（離）、という学びの道筋として語られます。&lt;/li>
+&lt;li>&lt;strong>スクラム導入&lt;/strong>: 最初はスクラムガイドに忠実に従い、チームが習熟してきたら自分たちのコンテキストに合わせてイベントや役割を調整する、という段階論として引用されます。&lt;/li>
+&lt;li>&lt;strong>新人教育全般&lt;/strong>: 手順書通りに動く時期、自分なりの工夫を加える時期、仕組みそのものを設計する時期、という段階的な関わり方の指針として用いられます。&lt;/li>
+&lt;/ul>
+&lt;h2 id="意識的能力の4段階">意識的能力の4段階&lt;/h2>
+&lt;h3 id="出自と背景-2">出自と背景&lt;/h3>
+&lt;p>「意識的能力の4段階（Four Stages of Competence、別名 Conscious Competence Ladder）」は、1970年代に米国の Gordon Training International で講師を務めた Noel Burch が提唱したとされる学習モデルです。ただし、原型となる考え方はそれ以前から存在し、心理学者 Abraham Maslow に帰属させる説、同じく Thomas Gordon に帰属させる説もあるため、出典は完全に一意ではありません。&lt;/p>
+&lt;p>このモデルの特徴は、学習者の &lt;strong>能力の有無&lt;/strong> と、その能力の &lt;strong>自覚の有無&lt;/strong> という2つの軸を組み合わせて段階を整理している点です。能力そのものだけでなく「自分が何を知らないか／知っているか」をどれだけ意識できているかに焦点を当てており、学習者の心理面を扱いやすいフレームとして知られています。&lt;/p>
+&lt;h3 id="4段階の構造">4段階の構造&lt;/h3>
+&lt;p>4つの段階は、意識と能力の組み合わせで次のように表現できます。&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">quadrantChart
+title 意識的能力の4段階
+x-axis "能力が低い" --> "能力が高い"
+y-axis "自覚していない" --> "自覚している"
+quadrant-1 Conscious Competence / 意識的有能
+quadrant-2 Conscious Incompetence / 意識的無能
+quadrant-3 Unconscious Incompetence / 無意識的無能
+quadrant-4 Unconscious Competence / 無意識的有能
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>&lt;strong>1. Unconscious Incompetence（無意識的無能）&lt;/strong>
+できないことに気づいていない段階です。自分が何を知らないかすら分からないため、学習の必要性を感じません。ここからの脱出には、外部からのフィードバックや「できない現実」に気づかせる刺激が鍵になります。&lt;/p>
+&lt;p>&lt;strong>2. Conscious Incompetence（意識的無能）&lt;/strong>
+できないことを自覚した段階です。4段階のうち心理的にもっともストレスが大きく、「自分はダメだ」と感じて学習を諦めやすい危険地帯でもあります。ここを抜けるには、小さな成功体験を重ねられる環境と、安心して失敗できる関係性が重要です。&lt;/p>
+&lt;p>&lt;strong>3. Conscious Competence（意識的有能）&lt;/strong>
+意識的に注意を払えばできる段階です。手順を頭で辿りながら実行する状態で、疲れやすく遅くはあるものの、一貫して成果を出せるようになります。ここでの繰り返しが、次の段階への足場になります。&lt;/p>
+&lt;p>&lt;strong>4. Unconscious Competence（無意識的有能）&lt;/strong>
+考えなくても自然にできる段階です。タスクが自動化され、他のことに注意を振り向ける余裕が生まれます。ただし、言語化できないがゆえに「なぜそうするのか」を人に教えるのが難しくなる、という新たな課題が出てきます。&lt;/p>
+&lt;h3 id="心理面の意義と第5段階">心理面の意義と第5段階&lt;/h3>
+&lt;p>このモデルが他のモデルと異なるのは、&lt;strong>意識的無能の「谷」&lt;/strong> をはっきりと示すところです。学ぶとは、まず「できない自分」に直面することであり、ここでの支援が学習の継続可否を大きく左右します。&lt;/p>
+&lt;p>近年では、第4段階の先に &lt;strong>Conscious Competence of Unconscious Competence（反省的有能／教えられる状態）&lt;/strong> を置く派生モデルも提唱されています。これは、自動化された自分のスキルを再度意識に上げ、他者に言語化して伝えられる状態を指します。指導者・メンターに求められるのは、まさにこの第5段階の能力と言えるでしょう。&lt;/p>
+&lt;h2 id="3つのフレームワークの比較">3つのフレームワークの比較&lt;/h2>
+&lt;p>3つのモデルは一見似ているようで、着目している側面が異なります。まずは観点ごとに整理してみます。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>観点&lt;/th>
+&lt;th>ドレイファスモデル&lt;/th>
+&lt;th>守破離&lt;/th>
+&lt;th>意識的能力の4段階&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>段階数&lt;/td>
+&lt;td>5&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>4（派生で5）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>観察する側面&lt;/td>
+&lt;td>判断・行動の質&lt;/td>
+&lt;td>型との関係&lt;/td>
+&lt;td>能力と自覚の組み合わせ&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>文化的背景&lt;/td>
+&lt;td>西洋・哲学（現象学）&lt;/td>
+&lt;td>日本・伝統芸能&lt;/td>
+&lt;td>西洋・教育心理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>成立時期&lt;/td>
+&lt;td>1980年&lt;/td>
+&lt;td>江戸時代（源流はより古い）&lt;/td>
+&lt;td>1970年代&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>学習者像&lt;/td>
+&lt;td>個人の認知の変化&lt;/td>
+&lt;td>共同体で型を受け継ぐ存在&lt;/td>
+&lt;td>意識と無意識を行き来する存在&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>熟達の到達点&lt;/td>
+&lt;td>直感的判断&lt;/td>
+&lt;td>型から離れた自在さ&lt;/td>
+&lt;td>自動化された能力&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="共通点">共通点&lt;/h3>
+&lt;p>表面的な違いを超えて、3つのモデルには共通する構造もあります。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>初期は外部依存、後期は自律&lt;/strong> という方向性。ルールや型、意識的な努力から始まり、やがてそれらが内面化されていく。&lt;/li>
+&lt;li>&lt;strong>最上位は言語化しにくい熟達&lt;/strong> として描かれる。ドレイファスの Expert、守破離の離、4段階の Unconscious Competence はいずれも、明示的な指示を超えた領域を指します。&lt;/li>
+&lt;li>&lt;strong>段階の移行は直線ではない&lt;/strong>。どのモデルも、ある段階に必要な学びが次の段階に進むと不要になるのではなく、基礎として残り続けることを前提にしています。&lt;/li>
+&lt;/ul>
+&lt;h3 id="相違点">相違点&lt;/h3>
+&lt;p>一方で、着目点の違いは明確です。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ドレイファスモデル&lt;/strong> は「判断の質」にフォーカスします。ルール適用から直感的パターン認識への変化を、認知科学的に描いています。&lt;/li>
+&lt;li>&lt;strong>守破離&lt;/strong> は「型との関係」にフォーカスします。型を共有する共同体の存在と、そこから個として独立していく筋道を描きます。&lt;/li>
+&lt;li>&lt;strong>意識的能力の4段階&lt;/strong> は「意識の状態」にフォーカスします。特に「自分ができないと気づく瞬間」という心理的な転換点を明示的に扱います。&lt;/li>
+&lt;/ul>
+&lt;h3 id="どのモデルをいつ使うか">どのモデルをいつ使うか&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>自分や他者の行動パターンを分析したい&lt;/strong> とき → ドレイファスモデル&lt;/li>
+&lt;li>&lt;strong>師匠・メンター・型が存在する学習環境&lt;/strong> で段階を捉えたいとき → 守破離&lt;/li>
+&lt;li>&lt;strong>学習者の心理状態を支えたい、挫折しそうな人を支援したい&lt;/strong> とき → 意識的能力の4段階&lt;/li>
+&lt;/ul>
+&lt;p>目的に応じて使い分けるのが実践的で、1つに絞る必要はありません。むしろ、ある学習者の状況を複数のモデルで見てみると、違う側面が見えてくることが多いでしょう。&lt;/p>
+&lt;h2 id="応用学習とプロダクト設計への活かし方">応用：学習とプロダクト設計への活かし方&lt;/h2>
+&lt;p>これらのフレームワークは、単なる知識として知っておくだけでなく、実際の学習や設計の現場で使える道具でもあります。代表的な3つの使い道を挙げておきます。&lt;/p>
+&lt;h3 id="1-自分の学習計画に使う">1. 自分の学習計画に使う&lt;/h3>
+&lt;p>身につけたい領域について、「今の自分はどの段階にいるか」を複数のモデルから見立ててみます。ドレイファスで見ると一人前だが、意識的能力で見ると実はまだ意識的有能に留まっている——といったズレを発見すると、次に必要な学習行動が具体化します。たとえば「型を破る経験」が足りないと気づけば、他流派（他チーム・他ツール・他言語）の考え方に触れに行く計画が立てられます。&lt;/p>
+&lt;h3 id="2-他者の指導メンタリングに使う">2. 他者の指導・メンタリングに使う&lt;/h3>
+&lt;p>相手の段階によって、効果的な関わり方は変わります。&lt;/p>
+&lt;ul>
+&lt;li>初心者・無意識的無能には、正確なルールや型を示し、まず安全に反復できる環境を用意する&lt;/li>
+&lt;li>意識的無能の学習者には、小さな成功体験の積み重ねと、失敗を肯定する関係性を&lt;/li>
+&lt;li>一人前・破の段階には、判断の責任を渡し、意思決定のレビューで支える&lt;/li>
+&lt;li>中堅・達人・離の段階には、自身の経験を言語化して後進に伝える機会を&lt;/li>
+&lt;/ul>
+&lt;p>相手の段階を見誤ると、助けが押しつけになったり、放任が放置になったりします。段階を意識することで、関わり方を選ぶ精度が上がります。&lt;/p>
+&lt;h3 id="3-プロダクトアプリ設計に使う">3. プロダクト・アプリ設計に使う&lt;/h3>
+&lt;p>ユーザーの習熟段階に応じた設計も、これらのモデルから多くを学べます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>オンボーディング&lt;/strong>: 初心者には明示的なガイド・手順・制約を設ける。守の段階に相当します。&lt;/li>
+&lt;li>&lt;strong>モード切替&lt;/strong>: 習熟したユーザーには、ショートカットや上級モードを用意し、ルール表示を減らす。破や離の段階に寄り添う設計です。&lt;/li>
+&lt;li>&lt;strong>意識的無能の支援&lt;/strong>: 「何が分からないか分からない」状態のユーザーには、何を学ぶべきかを明示する診断・チュートリアルが効きます。&lt;/li>
+&lt;li>&lt;strong>段階の移行を促すフィードバック&lt;/strong>: 単にエラーを返すのではなく、今の段階の次に進むヒントを示す設計は、学習者としてのユーザーに寄り添う姿勢の表れです。&lt;/li>
+&lt;/ul>
+&lt;p>こうした視点でプロダクトを眺め直すと、機能の優先順位や情報設計が整理しやすくなります。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>技術習熟を段階として捉えるフレームワークは数多くありますが、ドレイファスモデル・守破離・意識的能力の4段階の3つは、それぞれ着目点が異なり、互いを補い合う関係にあります。&lt;/p>
+&lt;ul>
+&lt;li>ドレイファスモデルは &lt;strong>判断の質の変化&lt;/strong> を&lt;/li>
+&lt;li>守破離は &lt;strong>型との関係の変化&lt;/strong> を&lt;/li>
+&lt;li>意識的能力の4段階は &lt;strong>意識と能力の組み合わせ&lt;/strong> を&lt;/li>
+&lt;/ul>
+&lt;p>描くモデルです。&lt;/p>
+&lt;p>モデルはあくまで地図であり、領土そのものではありません。現実の学習者は連続的に変化し、領域によって段階がばらつきもします。それでも、地図があれば自分の現在地を見立て、次の一歩を選ぶ助けになります。自分自身の学習、他者への関わり、そしてプロダクト設計のそれぞれで、これらのモデルを状況に応じて使い分けてみると、見えてくるものが変わるはずです。&lt;/p>
+&lt;h3 id="参考文献">参考文献&lt;/h3>
+&lt;ul>
+&lt;li>Stuart E. Dreyfus, Hubert L. Dreyfus, &amp;ldquo;A Five-Stage Model of the Mental Activities Involved in Directed Skill Acquisition&amp;rdquo;（1980年, U.S. Air Force Office of Scientific Research）&lt;/li>
+&lt;li>Andy Hunt『Pragmatic Thinking and Learning: Refactor Your Wetware』（2008年, Pragmatic Bookshelf）&lt;/li>
+&lt;li>川上不白『不白筆記』&lt;/li>
+&lt;li>世阿弥『風姿花伝』&lt;/li>
+&lt;li>Noel Burch, &amp;ldquo;The Four Stages for Learning Any New Skill&amp;rdquo;（1970年代, Gordon Training International）&lt;/li>
+&lt;/ul></description></item><item><title>Twitter Social Cardの設定方法</title><link>https://bossagyu.com/blog/012-social-card/</link><pubDate>Sat, 06 Jan 2024 21:45:12 +0900</pubDate><guid>https://bossagyu.com/blog/012-social-card/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>この記事では、Hugoで作ったブログにTwitter Social Cardを設定する方法を説明します。&lt;/p>
 &lt;h2 id="twitter-social-cardとは">Twitter Social Cardとは&lt;/h2>
 &lt;p>Twitter Social Cardとは、Twitterで記事をシェアした際に表示される画像のことです。

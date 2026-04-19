@@ -1,4 +1,209 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with FastAPI: Building a CRUD API Tutorial</title><link>https://bossagyu.com/en/blog/049-fastapi-crud/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/049-fastapi-crud/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Bossagyu Blog</title><link>https://bossagyu.com/en/blog/</link><description>Recent content in Blogs on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Three Models of Technical Proficiency: Dreyfus, Shu-Ha-Ri, and the Four Stages of Competence</title><link>https://bossagyu.com/en/blog/050-skill-proficiency-stages/</link><pubDate>Sun, 19 Apr 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/050-skill-proficiency-stages/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>The process of acquiring a skill is rarely uniform. We start by relying on manuals, then learn to judge based on context, and eventually reach a stage where the right action comes without conscious thought. To capture these gradual changes, many models have been proposed over the decades.&lt;/p>
+&lt;p>This article introduces three representative frameworks for technical proficiency—the &lt;strong>Dreyfus model&lt;/strong>, &lt;strong>Shu-Ha-Ri&lt;/strong>, and the &lt;strong>Four Stages of Competence&lt;/strong>—and compares their origins, stages, and characteristics. The goal is to offer a toolkit for understanding where we are, designing our next step, and supporting the learning of others.&lt;/p>
+&lt;h2 id="why-understand-the-stages-of-proficiency">Why Understand the Stages of Proficiency&lt;/h2>
+&lt;p>Thinking of proficiency as a set of stages provides three main benefits.&lt;/p>
+&lt;p>First, &lt;strong>self-awareness&lt;/strong>. Knowing which stage you are in clarifies what to work on next. The skills that matter for a beginner (executing procedures correctly) differ greatly from those that matter for a mid-level practitioner (judgment in context). Awareness of stages prevents misdirected effort.&lt;/p>
+&lt;p>Second, &lt;strong>learning design&lt;/strong>. Rather than chasing a vague final goal, stage-based milestones make progress easier to sustain and measure. Many models also suggest that the optimal way to learn changes from stage to stage.&lt;/p>
+&lt;p>Third, &lt;strong>understanding others&lt;/strong>. In mentoring or team leadership, estimating someone&amp;rsquo;s current stage helps you choose the right support and level of challenge.&lt;/p>
+&lt;p>That said, models are not reality. Real learning is continuous and often uneven across domains. The frameworks below are best used as guideposts for thinking, not as rigid categorizations.&lt;/p>
+&lt;h2 id="the-dreyfus-model">The Dreyfus Model&lt;/h2>
+&lt;h3 id="origin-and-background">Origin and Background&lt;/h3>
+&lt;p>The Dreyfus model was proposed in 1980 by brothers Stuart E. Dreyfus and Hubert L. Dreyfus at UC Berkeley, in a report titled &amp;ldquo;A Five-Stage Model of the Mental Activities Involved in Directed Skill Acquisition.&amp;rdquo; Commissioned by the U.S. Air Force Office of Scientific Research, the report drew on pilot training, chess players, drivers, and other skilled practitioners.&lt;/p>
+&lt;p>Stuart specialized in operations research while Hubert specialized in philosophy (phenomenology). Together they formalized a key insight: the judgments of experts often cannot be reduced to explicit rules.&lt;/p>
+&lt;p>The model later became popular in software engineering thanks to books such as Andy Hunt&amp;rsquo;s &lt;em>Pragmatic Thinking and Learning&lt;/em>, and has become a shared vocabulary for discussing engineer growth.&lt;/p>
+&lt;h3 id="five-stages">Five Stages&lt;/h3>
+&lt;p>The Dreyfus model describes the journey from novice to expert in five stages.&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart LR
+A[Novice] --> B[Advanced Beginner]
+B --> C[Competent]
+C --> D[Proficient]
+D --> E[Expert]
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>&lt;strong>1. Novice&lt;/strong>
+Detaches from context and follows given rules. Following the rules is itself challenging, leaving little room to see exceptions or the bigger picture. Think of measuring ingredients from a recipe, or operating the pedals and wheel by the manual when learning to drive.&lt;/p>
+&lt;p>&lt;strong>2. Advanced Beginner&lt;/strong>
+Begins to notice contextual features through experience, but cannot yet distinguish important features from minor ones, and treats them with equal weight. This is the stage where learners ask many questions and encounter situations their rules don&amp;rsquo;t cover.&lt;/p>
+&lt;p>&lt;strong>3. Competent&lt;/strong>
+Selects important information from a pool of signals and can set goals and plans on their own. Rules have become internalized. At the same time, learners begin to sense that &amp;ldquo;there is no single right answer,&amp;rdquo; and may feel the weight of decision-making.&lt;/p>
+&lt;p>&lt;strong>4. Proficient&lt;/strong>
+Grasps situations holistically. Pattern recognition from past similar cases comes first; detailed rule-based reasoning fills in afterward. This is a hybrid stage where intuition and analysis work together.&lt;/p>
+&lt;p>&lt;strong>5. Expert&lt;/strong>
+Arrives at answers intuitively, embedded in the situation itself, without explicit rule-following. A seasoned doctor estimates a diagnosis at a glance; a master player narrows candidate moves before deliberate analysis. However, when the environment is unusual, even experts fall back on deliberate analysis.&lt;/p>
+&lt;h3 id="cognitive-shifts-between-stages">Cognitive Shifts Between Stages&lt;/h3>
+&lt;p>The key insight of this model is that as stages progress, the center of cognition shifts from &lt;strong>analysis&lt;/strong> to &lt;strong>pattern recognition&lt;/strong> to &lt;strong>intuition&lt;/strong>. This is not merely a speed-up but a qualitative change in what the practitioner perceives.&lt;/p>
+&lt;p>Moving up requires more than rule-following—it requires experience in interpreting rules in context. The Dreyfus brothers repeatedly note that mastery is tacit knowledge that textbooks alone cannot teach.&lt;/p>
+&lt;h2 id="shu-ha-ri">Shu-Ha-Ri&lt;/h2>
+&lt;h3 id="origin-and-background-1">Origin and Background&lt;/h3>
+&lt;p>Shu-Ha-Ri (守破離) is a Japanese model of training stages that emerged from traditional arts such as martial arts, tea ceremony, and flower arrangement. It appears explicitly in &lt;em>Fuhaku Hikki&lt;/em>, a text by the Edo-period tea master Kawakami Fuhaku (1719-1807). Its roots trace back further, to Zeami&amp;rsquo;s (1363-1443) &lt;em>Fūshikaden&lt;/em> and its idea of &lt;em>Jo-Ha-Kyū&lt;/em>, and to the teachings of Sen no Rikyū.&lt;/p>
+&lt;p>A poem often attributed to Rikyū reads, &amp;ldquo;Keep the forms of rules and manners until you break them, and even when you leave them, do not forget the origin.&amp;rdquo; This line neatly captures the spirit of Shu-Ha-Ri: preserve the form, then break it, then transcend it—without losing its root.&lt;/p>
+&lt;p>In recent years, Shu-Ha-Ri has been applied to Western practices such as agile development, Scrum adoption, and design pattern learning, becoming a shared vocabulary among Japanese-speaking software professionals.&lt;/p>
+&lt;h3 id="three-stages">Three Stages&lt;/h3>
+&lt;p>Shu-Ha-Ri is a three-stage model built on a master-apprentice relationship.&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart LR
+A[Shu&lt;br/>Follow the form] --> B[Ha&lt;br/>Break the form]
+B --> C[Ri&lt;br/>Leave the form]
+C -.new form.-> A
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>&lt;strong>Shu (守)&lt;/strong>
+Practice the forms taught by the master faithfully, without adding personal interpretation. The goal is to imprint the form onto body and mind. The &amp;ldquo;why&amp;rdquo; often comes later; what matters first is precise repetition.&lt;/p>
+&lt;p>&lt;strong>Ha (破)&lt;/strong>
+Building on the forms absorbed in Shu, the learner incorporates forms from other schools and personal adaptations, breaking the form. This is not mere rebellion but thoughtful comparison and testing. Here, the learner finally feels the reason behind the form.&lt;/p>
+&lt;p>&lt;strong>Ri (離)&lt;/strong>
+Leave the form and reach an independent mode of being. This is not discarding the form—by now, the form has become part of the self. Externally, the practitioner appears free and unconstrained. The phrase &amp;ldquo;do not forget the origin&amp;rdquo; warns that even at Ri, the root remains in Shu.&lt;/p>
+&lt;h3 id="differences-from-western-models">Differences from Western Models&lt;/h3>
+&lt;p>Where the Dreyfus model describes changes in an individual&amp;rsquo;s cognition, Shu-Ha-Ri presumes that &lt;strong>forms are passed within a community&lt;/strong>. The form encodes the history of the school and the wisdom of predecessors; inheriting it accurately is the purpose of Shu.&lt;/p>
+&lt;p>Shu-Ha-Ri also describes how the learner&amp;rsquo;s &lt;strong>agency&lt;/strong> changes. Reception dominates in Shu, dialogue and testing in Ha, creation in Ri. The model implies a maturation of the whole person, not only a skill upgrade.&lt;/p>
+&lt;h3 id="modern-applications">Modern Applications&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Learning design patterns&lt;/strong>: Apply patterns literally (Shu), adapt them to project context (Ha), and eventually design from first principles without needing patterns (Ri).&lt;/li>
+&lt;li>&lt;strong>Scrum adoption&lt;/strong>: Start by following the Scrum Guide strictly, then adapt events and roles once the team has matured.&lt;/li>
+&lt;li>&lt;strong>Onboarding in general&lt;/strong>: As a guide for how a mentor&amp;rsquo;s stance should shift from prescribing procedures to reviewing decisions to co-creating systems.&lt;/li>
+&lt;/ul>
+&lt;h2 id="the-four-stages-of-competence">The Four Stages of Competence&lt;/h2>
+&lt;h3 id="origin-and-background-2">Origin and Background&lt;/h3>
+&lt;p>The &amp;ldquo;Four Stages of Competence&amp;rdquo; (also known as the Conscious Competence Ladder) is commonly attributed to Noel Burch of Gordon Training International in the 1970s. However, similar ideas are sometimes attributed to Abraham Maslow or Thomas Gordon, so the origin is not entirely settled.&lt;/p>
+&lt;p>The distinctive feature of this model is that it combines two axes: whether a learner &lt;strong>has a capability&lt;/strong>, and whether they are &lt;strong>aware of having or lacking it&lt;/strong>. By focusing on awareness as much as ability, the model is particularly good at describing the learner&amp;rsquo;s psychological state.&lt;/p>
+&lt;h3 id="four-stages">Four Stages&lt;/h3>
+&lt;p>The four stages can be organized as a 2x2 matrix.&lt;/p>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">quadrantChart
+title Four Stages of Competence
+x-axis "Low capability" --> "High capability"
+y-axis "Unaware" --> "Aware"
+quadrant-1 Conscious Competence
+quadrant-2 Conscious Incompetence
+quadrant-3 Unconscious Incompetence
+quadrant-4 Unconscious Competence
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>&lt;strong>1. Unconscious Incompetence&lt;/strong>
+The learner is not aware of what they cannot do, and thus sees no need to learn. Escape from this stage usually requires external feedback or a vivid encounter with one&amp;rsquo;s own limits.&lt;/p>
+&lt;p>&lt;strong>2. Conscious Incompetence&lt;/strong>
+The learner recognizes their inability. This is psychologically the hardest stage, where self-doubt can derail learning. It helps to have an environment that offers small wins and a relationship that makes failure safe.&lt;/p>
+&lt;p>&lt;strong>3. Conscious Competence&lt;/strong>
+The learner can perform, but only with deliberate effort and attention. Execution is slow and tiring, yet consistently produces results. Repetition here builds the foundation for the next stage.&lt;/p>
+&lt;p>&lt;strong>4. Unconscious Competence&lt;/strong>
+The learner performs naturally, without conscious thought. Attention is freed for other things. A new challenge emerges: because the skill is tacit, it becomes hard to explain &amp;ldquo;why&amp;rdquo; to others.&lt;/p>
+&lt;h3 id="psychological-significance-and-a-fifth-stage">Psychological Significance and a Fifth Stage&lt;/h3>
+&lt;p>Unlike other models, this one explicitly names the &lt;strong>valley of Conscious Incompetence&lt;/strong>. Learning starts with confronting one&amp;rsquo;s incompetence; how well we support learners at this stage largely determines whether they continue.&lt;/p>
+&lt;p>Some variants add a fifth stage: &lt;strong>Conscious Competence of Unconscious Competence&lt;/strong>, sometimes called &amp;ldquo;reflective competence.&amp;rdquo; This is the state of being able to re-examine one&amp;rsquo;s tacit skill and articulate it for others—a state mentors and teachers aspire to.&lt;/p>
+&lt;h2 id="comparing-the-three-frameworks">Comparing the Three Frameworks&lt;/h2>
+&lt;p>At first glance the three models look similar, but they focus on different aspects.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Dimension&lt;/th>
+&lt;th>Dreyfus Model&lt;/th>
+&lt;th>Shu-Ha-Ri&lt;/th>
+&lt;th>Four Stages of Competence&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Number of stages&lt;/td>
+&lt;td>5&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>4 (5 in variants)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Focus&lt;/td>
+&lt;td>Quality of judgment and action&lt;/td>
+&lt;td>Relationship to form&lt;/td>
+&lt;td>Combination of ability and awareness&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Cultural background&lt;/td>
+&lt;td>Western / phenomenology&lt;/td>
+&lt;td>Japanese / traditional arts&lt;/td>
+&lt;td>Western / education psychology&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Period of formulation&lt;/td>
+&lt;td>1980&lt;/td>
+&lt;td>Edo period (with older roots)&lt;/td>
+&lt;td>1970s&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Implied learner&lt;/td>
+&lt;td>An individual cognition changing&lt;/td>
+&lt;td>A member inheriting form within a community&lt;/td>
+&lt;td>A self moving between conscious and unconscious&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Top-stage ideal&lt;/td>
+&lt;td>Intuitive judgment&lt;/td>
+&lt;td>Free action beyond form&lt;/td>
+&lt;td>Automatic, effortless execution&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="commonalities">Commonalities&lt;/h3>
+&lt;p>Beneath the surface, the models share structural features.&lt;/p>
+&lt;ul>
+&lt;li>A direction from &lt;strong>external dependence to autonomy&lt;/strong>. Rules, forms, or conscious effort are the starting point; they become internalized over time.&lt;/li>
+&lt;li>The top stage is described as &lt;strong>mastery that resists easy verbalization&lt;/strong>. Dreyfus&amp;rsquo;s Expert, Shu-Ha-Ri&amp;rsquo;s Ri, and the Four Stages&amp;rsquo; Unconscious Competence all point to territory beyond explicit instruction.&lt;/li>
+&lt;li>Progression is &lt;strong>not linear&lt;/strong>. Earlier skills remain as foundations rather than being discarded.&lt;/li>
+&lt;/ul>
+&lt;h3 id="differences">Differences&lt;/h3>
+&lt;p>The points of focus clearly diverge.&lt;/p>
+&lt;ul>
+&lt;li>The &lt;strong>Dreyfus model&lt;/strong> focuses on the quality of judgment, tracing the cognitive shift from rule-application to intuitive pattern recognition.&lt;/li>
+&lt;li>&lt;strong>Shu-Ha-Ri&lt;/strong> focuses on relationship with form and the community that transmits it.&lt;/li>
+&lt;li>The &lt;strong>Four Stages of Competence&lt;/strong> focuses on states of awareness, especially the pivot of realizing one&amp;rsquo;s own incompetence.&lt;/li>
+&lt;/ul>
+&lt;h3 id="which-to-use-when">Which to Use When&lt;/h3>
+&lt;ul>
+&lt;li>To analyze patterns of behavior and judgment → the &lt;strong>Dreyfus model&lt;/strong>&lt;/li>
+&lt;li>To describe a learning environment with a master, mentor, or shared form → &lt;strong>Shu-Ha-Ri&lt;/strong>&lt;/li>
+&lt;li>To support learners psychologically, especially near the valley of doubt → the &lt;strong>Four Stages of Competence&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>They complement each other, and it is often useful to view a single learner through multiple lenses.&lt;/p>
+&lt;h2 id="applications-learning-and-product-design">Applications: Learning and Product Design&lt;/h2>
+&lt;p>These frameworks are useful not only as knowledge but as tools. Three common applications:&lt;/p>
+&lt;h3 id="1-designing-your-own-learning">1. Designing Your Own Learning&lt;/h3>
+&lt;p>Assess your current stage through multiple models. If you look solid as a Competent on Dreyfus but are still at Conscious Competence on the awareness axis, you have discovered a concrete next step. Noticing that you lack &amp;ldquo;experience breaking the form&amp;rdquo; can motivate you to seek exposure to other schools (other teams, tools, or languages).&lt;/p>
+&lt;h3 id="2-mentoring-and-supporting-others">2. Mentoring and Supporting Others&lt;/h3>
+&lt;p>Different stages call for different involvement.&lt;/p>
+&lt;ul>
+&lt;li>For novices and the unconsciously incompetent: provide explicit rules and a safe environment for repetition.&lt;/li>
+&lt;li>For the consciously incompetent: stack small wins and affirm that failure is part of the process.&lt;/li>
+&lt;li>For Competent learners / those at Ha: hand over decision-making responsibility and support through decision reviews.&lt;/li>
+&lt;li>For Proficient, Expert, or Ri learners: create opportunities to articulate their tacit knowledge for others.&lt;/li>
+&lt;/ul>
+&lt;p>Misjudging the stage turns help into imposition or detachment. Being stage-aware improves the precision of involvement.&lt;/p>
+&lt;h3 id="3-product-and-app-design">3. Product and App Design&lt;/h3>
+&lt;p>These models also inform how we design for users with varying levels of expertise.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Onboarding&lt;/strong>: Provide explicit guides, step-by-step flows, and constraints for beginners (the Shu stage).&lt;/li>
+&lt;li>&lt;strong>Mode switching&lt;/strong>: Offer shortcuts and advanced modes for experienced users, and reduce boilerplate hints (Ha and Ri).&lt;/li>
+&lt;li>&lt;strong>Supporting Conscious Incompetence&lt;/strong>: Users who &amp;ldquo;don&amp;rsquo;t know what they don&amp;rsquo;t know&amp;rdquo; benefit from diagnostics and tutorials that point to what needs learning.&lt;/li>
+&lt;li>&lt;strong>Feedback that promotes stage transitions&lt;/strong>: Rather than just returning errors, show hints for the learner&amp;rsquo;s next step.&lt;/li>
+&lt;/ul>
+&lt;p>Viewing a product through these lenses tends to clarify feature priorities and information architecture.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>Among the many frameworks describing technical proficiency, the Dreyfus model, Shu-Ha-Ri, and the Four Stages of Competence offer complementary lenses.&lt;/p>
+&lt;ul>
+&lt;li>The Dreyfus model captures &lt;strong>changes in the quality of judgment&lt;/strong>.&lt;/li>
+&lt;li>Shu-Ha-Ri captures &lt;strong>changes in the relationship with form&lt;/strong>.&lt;/li>
+&lt;li>The Four Stages of Competence captures &lt;strong>the interplay of awareness and ability&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>Models are maps, not the territory. Real learners change continuously, and their stages can vary across domains. Still, a map helps us estimate where we are and choose the next step. Use these frameworks as situation-appropriate tools—for your own learning, your relationships with others, and the products you build.&lt;/p>
+&lt;h3 id="references">References&lt;/h3>
+&lt;ul>
+&lt;li>Stuart E. Dreyfus, Hubert L. Dreyfus, &amp;ldquo;A Five-Stage Model of the Mental Activities Involved in Directed Skill Acquisition&amp;rdquo; (1980, U.S. Air Force Office of Scientific Research)&lt;/li>
+&lt;li>Andy Hunt, &lt;em>Pragmatic Thinking and Learning: Refactor Your Wetware&lt;/em> (2008, Pragmatic Bookshelf)&lt;/li>
+&lt;li>Kawakami Fuhaku, &lt;em>Fuhaku Hikki&lt;/em>&lt;/li>
+&lt;li>Zeami, &lt;em>Fūshikaden&lt;/em>&lt;/li>
+&lt;li>Noel Burch, &amp;ldquo;The Four Stages for Learning Any New Skill&amp;rdquo; (1970s, Gordon Training International)&lt;/li>
+&lt;/ul></description></item><item><title>Getting Started with FastAPI: Building a CRUD API Tutorial</title><link>https://bossagyu.com/en/blog/049-fastapi-crud/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/049-fastapi-crud/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>&lt;a class="link" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener"
 >FastAPI&lt;/a> is a high-performance web framework for building APIs with Python. Its key features include:&lt;/p>
 &lt;ul>
