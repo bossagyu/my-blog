@@ -127,12 +127,12 @@ flowchart LR
 ```mermaid
 quadrantChart
     title 意識的能力の4段階
-    x-axis "能力が低い" --> "能力が高い"
-    y-axis "自覚していない" --> "自覚している"
-    quadrant-1 Conscious Competence / 意識的有能
-    quadrant-2 Conscious Incompetence / 意識的無能
-    quadrant-3 Unconscious Incompetence / 無意識的無能
-    quadrant-4 Unconscious Competence / 無意識的有能
+    x-axis 能力が低い --> 能力が高い
+    y-axis 自覚していない --> 自覚している
+    quadrant-1 意識的有能
+    quadrant-2 意識的無能
+    quadrant-3 無意識的無能
+    quadrant-4 無意識的有能
 ```
 
 **1. Unconscious Incompetence（無意識的無能）**

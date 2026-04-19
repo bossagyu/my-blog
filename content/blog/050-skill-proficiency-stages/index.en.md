@@ -125,8 +125,8 @@ The four stages can be organized as a 2x2 matrix.
 ```mermaid
 quadrantChart
     title Four Stages of Competence
-    x-axis "Low capability" --> "High capability"
-    y-axis "Unaware" --> "Aware"
+    x-axis Low capability --> High capability
+    y-axis Unaware --> Aware
     quadrant-1 Conscious Competence
     quadrant-2 Conscious Incompetence
     quadrant-3 Unconscious Incompetence
