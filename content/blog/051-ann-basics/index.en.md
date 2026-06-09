@@ -29,6 +29,8 @@ This is where ANN comes in. ANN takes the approach of "**giving up the guarantee
 
 Imagine looking for a book in a library. If you scan every shelf from end to end, you will definitely find the book — after several hours. In practice, you rely on the classification system: "cookbooks should be around here," and only check the shelves that look relevant. Occasionally you might miss a book that was shelved somewhere unexpected, but most of the time you find what you want in minutes. ANN turns this "narrow down first, then look" strategy into a data structure.
 
+![Brute-force kNN vs ANN: brute force computes the distance to every point, while ANN searches only the regions likely to be close](img-051-001-en.svg)
+
 Search quality is measured by **recall**. For example, if you return 9 of the true top 10 results, your recall is 90%. In practice, the sweet spot is typically maintaining 95–99% recall while running hundreds to thousands of times faster than brute force.
 
 ## The Six Building Blocks of an ANN System
@@ -40,6 +42,10 @@ ANN is not a single algorithm but a combination of several techniques. Let's loo
 At the heart of ANN is the index — a data structure built for fast search. Indexes fall into three major families.
 
 **Graph-based** methods build a graph connecting nearby vectors to each other, then traverse the edges to home in on the neighbors. The most prominent example is **HNSW (Hierarchical Navigable Small World)**, currently the most widely used index. Like a highway network, it maintains both coarse long-distance links and fine-grained local links in a hierarchical structure. Other examples include NSG and Vamana (used in DiskANN).
+
+![HNSW's hierarchical structure: approach roughly on the upper layers, then descend to search precisely on the bottom layer](img-051-002-en.svg)
+
+A search starts from the entry point on the sparse top layer. On each layer, it moves as close to the query as it can, then descends to the layer below and repeats. The "long-distance jumps" on the upper layers carry you near the destination quickly, and the fine-grained search on the bottom layer finishes the job — reaching the neighbors with very few distance computations.
 
 **Tree-based** methods recursively partition the space using tree structures. Classic examples are **KD-tree** and **Annoy**, developed by Spotify.
 
@@ -54,6 +60,10 @@ Quantization compresses vectors to reduce memory usage and speed up distance com
 - **SQ (Scalar Quantization)**: converts each dimension from float32 to int8 or similar, compressing the data to roughly 1/4 the size
 - **PQ (Product Quantization)**: splits each vector into multiple subspaces and encodes each part as the ID of a representative point (a code). It achieves high compression ratios and is a staple for large-scale data
 - **BQ (Binary Quantization)**: compresses each dimension down to a single bit, enabling ultra-fast distance computation with bitwise operations
+
+The idea behind PQ looks like this: split the vector into parts and replace each part with the ID of a representative point, drastically reducing the data size.
+
+![How PQ works: split the vector into subvectors and replace each part with a representative code, compressing 512 bytes down to 4 bytes](img-051-003-en.svg)
 
 The more you compress, the more memory you save — but accuracy drops because information is lost. Here too, you are tuning a trade-off.
 
@@ -105,6 +115,13 @@ A particularly common pattern is **quantization + index + reranking**:
 
 1. Load PQ-compressed vectors into an HNSW or IVF index to narrow down candidates quickly with a small memory footprint
 2. Re-sort only the small set of remaining candidates using the original full-precision vectors
+
+```mermaid
+flowchart LR
+    A[Query vector] --> B["Coarse filtering with ANN index<br/>(HNSW / IVF + quantization)"]
+    B -->|"top 100 candidates"| C["Reranking<br/>(exact recompute with original vectors)"]
+    C -->|"top 10"| D[Final results]
+```
 
 This two-stage design gives you the best of both worlds: memory is saved through compression, while final accuracy is guaranteed by reranking. It appears constantly in large-scale vector search systems, so it is well worth remembering.
 
