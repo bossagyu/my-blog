@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine Learning on Bossagyu Blog</title><link>https://bossagyu.com/tags/machine-learning/</link><description>Recent content in Machine Learning on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>近似最近傍探索（ANN）入門：ベクトル検索を支える仕組みを初心者向けに解説</title><link>https://bossagyu.com/blog/051-ann-basics/</link><pubDate>Tue, 09 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/051-ann-basics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>ChatGPTのようなLLMと社内文書を組み合わせるRAG（検索拡張生成）や、ECサイトの「あなたへのおすすめ」、画像の類似検索。これらの裏側では、&lt;strong>ベクトル検索&lt;/strong> という技術が動いています。そしてベクトル検索を実用的な速度で実現しているのが、本記事のテーマである &lt;strong>ANN（Approximate Nearest Neighbor：近似最近傍探索）&lt;/strong> です。&lt;/p>
+&lt;p>本記事では、ANNとは何か、なぜ「近似」で良いのか、そしてANNシステムを構成する6つの要素（インデックス、量子化、距離計算、探索パラメータ、ストレージ戦略、前処理・後処理）を、初心者の方でも分かるように順番に解説します。&lt;/p>
+&lt;h2 id="annとは何か">ANNとは何か&lt;/h2>
+&lt;h3 id="まずは最近傍探索から">まずは「最近傍探索」から&lt;/h3>
+&lt;p>最近傍探索（Nearest Neighbor Search）とは、たくさんのデータの中から「ある点に一番近いデータ」を見つける処理のことです。&lt;/p>
+&lt;p>ベクトル検索の文脈では、文章や画像はあらかじめ &lt;strong>埋め込みベクトル（Embedding）&lt;/strong> と呼ばれる数百〜数千次元の数値の配列に変換されています。意味が近い文章同士は、ベクトル空間上でも近い場所に配置されます。つまり「意味が似ている文章を探す」ことは「空間内で近いベクトルを探す」ことに置き換えられるのです。&lt;/p>
+&lt;p>最も素朴な方法は、クエリのベクトルと全データのベクトルを1件ずつ総当たりで比較することです。これを &lt;strong>kNN（k-Nearest Neighbors：k近傍探索）&lt;/strong> の全探索（ブルートフォース）と呼びます。この方法は必ず正解を返しますが、データが1億件あれば1億回の距離計算が必要になり、リアルタイムの検索には到底間に合いません。&lt;/p>
+&lt;h3 id="近似することで速くする">「近似」することで速くする&lt;/h3>
+&lt;p>そこで登場するのがANNです。ANNは「&lt;strong>100%正確な最近傍は保証しない代わりに、ほぼ正しい答えを桁違いに速く返す&lt;/strong>」というアプローチを取ります。&lt;/p>
+&lt;p>図書館で本を探す場面を想像してください。全部の棚を端から端まで見て回れば目当ての本は必ず見つかりますが、何時間もかかります。実際には「料理の棚はこのあたり」という分類を頼りに、関係がありそうな棚だけを見ますよね。まれに別の棚に置かれた本を見逃すかもしれませんが、ほとんどの場合は数分で目的の本にたどり着けます。ANNはまさにこの「あたりをつけて探す」仕組みをデータ構造として実現したものです。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/051-ann-basics/img-051-001.svg"
+loading="lazy"
+alt="全探索とANNの違い：全探索はすべての点と距離計算するのに対し、ANNは近そうな領域だけを調べる"
+>&lt;/p>
+&lt;p>検索精度は &lt;strong>再現率（Recall）&lt;/strong> という指標で測ります。例えば「真の上位10件のうち9件を返せれば再現率90%」です。実用上は、再現率95〜99%を保ちながら全探索の数百〜数千倍の速度を出す、といったバランスが狙いどころになります。&lt;/p>
+&lt;h2 id="annシステムを構成する6つの要素">ANNシステムを構成する6つの要素&lt;/h2>
+&lt;p>ANNは単一のアルゴリズムではなく、複数の技術の組み合わせで成り立っています。ここからは主要な6つの構成要素を順に見ていきます。&lt;/p>
+&lt;h3 id="1-インデックス探索用データ構造">1. インデックス（探索用データ構造）&lt;/h3>
+&lt;p>ANNの中心となるのが、高速に探索するためのデータ構造＝インデックスです。構築方式によって大きく3系統に分かれます。&lt;/p>
+&lt;p>&lt;strong>グラフベース&lt;/strong>は、ベクトル同士を「近いもの同士」でつないだグラフを作り、グラフの辺をたどって近傍に近づいていく方式です。代表例は &lt;strong>HNSW（Hierarchical Navigable Small World）&lt;/strong> で、現在最も広く使われています。高速道路網のように「長距離移動用の粗いつながり」と「近所を細かく回るつながり」を階層的に持つのが特徴です。ほかに NSG や、DiskANNで使われる Vamana があります。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/051-ann-basics/img-051-002.svg"
+loading="lazy"
+alt="HNSWの階層構造：上の層で大まかに近づき、下の層に降りて精密に探索する"
+>&lt;/p>
+&lt;p>検索はまばらな最上層のエントリーポイントから始まり、各層でクエリに近づけるだけ近づいてから下の層へ降りる、を繰り返します。上の層の「長距離ジャンプ」で一気に目的地の近くまで移動し、最下層で細かく探すことで、少ない計算回数で近傍にたどり着けます。&lt;/p>
+&lt;p>&lt;strong>ツリーベース&lt;/strong>は、空間を木構造で再帰的に分割していく方式です。古典的な &lt;strong>KD-tree&lt;/strong> や、Spotifyが開発した &lt;strong>Annoy&lt;/strong> が代表例です。&lt;/p>
+&lt;p>&lt;strong>ハッシュベース&lt;/strong>は、「近いベクトルは同じハッシュ値になりやすい」特殊なハッシュ関数を使う &lt;strong>LSH（Locality Sensitive Hashing）&lt;/strong> が代表例です。&lt;/p>
+&lt;p>また、データをあらかじめクラスタ（グループ）に分けておき、クエリに近いクラスタだけを探索する &lt;strong>IVF（Inverted File Index）&lt;/strong> もよく使われる方式です。&lt;/p>
+&lt;h3 id="2-量子化quantization">2. 量子化（Quantization）&lt;/h3>
+&lt;p>量子化は、ベクトルを圧縮してメモリ使用量を減らし、距離計算を速くする技術です。インデックスと組み合わせて使われます。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>SQ（Scalar Quantization）&lt;/strong>: 各次元の数値を float32 から int8 などに変換し、データ量を1/4程度に圧縮します&lt;/li>
+&lt;li>&lt;strong>PQ（Product Quantization）&lt;/strong>: ベクトルを複数の部分空間に分割し、各部分を代表点の番号（コード）で表現します。圧縮率が高く、大規模データで定番の手法です&lt;/li>
+&lt;li>&lt;strong>BQ（Binary Quantization）&lt;/strong>: 各次元を0/1のビットにまで圧縮し、ビット演算で距離計算を超高速化します&lt;/li>
+&lt;/ul>
+&lt;p>PQの考え方を図にすると次のようになります。ベクトルを部分に分割し、各部分を「代表点の番号」に置き換えることで、データ量を大幅に削減します。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/051-ann-basics/img-051-003.svg"
+loading="lazy"
+alt="PQの仕組み：ベクトルをサブベクトルに分割し、各部分を代表点のコードに置き換えて512バイトを4バイトに圧縮する"
+>&lt;/p>
+&lt;p>圧縮するほどメモリは節約できますが、元の情報が失われるため精度は下がります。ここでもトレードオフの調整が必要です。&lt;/p>
+&lt;h3 id="3-距離計算の手法">3. 距離計算の手法&lt;/h3>
+&lt;p>「近い」をどう定義するかも重要な選択です。主な距離（類似度）の指標には次のものがあります。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>コサイン類似度&lt;/strong>: ベクトル同士の角度で類似度を測ります。文章の埋め込みでよく使われます&lt;/li>
+&lt;li>&lt;strong>ユークリッド距離（L2）&lt;/strong>: 空間内の直線距離です&lt;/li>
+&lt;li>&lt;strong>内積（ドット積）&lt;/strong>: ベクトルの向きと大きさの両方を反映します&lt;/li>
+&lt;/ul>
+&lt;p>どれを選ぶべきかは、埋め込みを生成したモデルの特性に依存します。多くの埋め込みモデルは推奨の距離指標を公開しているので、それに合わせるのが基本です。&lt;/p>
+&lt;h3 id="4-探索パラメータチューニング">4. 探索パラメータ（チューニング）&lt;/h3>
+&lt;p>ANNのインデックスには、精度と速度のトレードオフを調整する「つまみ」が用意されています。&lt;/p>
+&lt;p>HNSWの場合:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>M&lt;/code>: 各ノードが持つ接続（辺）の数。大きいほど精度が上がり、メモリ消費が増えます&lt;/li>
+&lt;li>&lt;code>ef_construction&lt;/code>: インデックス構築時に調べる候補数。大きいほど質の良いグラフになり、構築時間が伸びます&lt;/li>
+&lt;li>&lt;code>ef_search&lt;/code>: 検索時に保持する候補数。大きいほど再現率が上がり、検索が遅くなります&lt;/li>
+&lt;/ul>
+&lt;p>IVFの場合:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>nprobe&lt;/code>: 検索時に探索するクラスタ数。大きいほど精度が上がり、遅くなります&lt;/li>
+&lt;/ul>
+&lt;p>実際の運用では、自分のデータで再現率とレイテンシを測定しながら、要件を満たす最小のパラメータを探すのが定石です。&lt;/p>
+&lt;h3 id="5-ストレージ戦略">5. ストレージ戦略&lt;/h3>
+&lt;p>データをどこに置くかも設計上の大きな分かれ目です。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>インメモリ&lt;/strong>: 全データをメモリに載せる方式です。最速ですが、数億件規模になるとメモリコストが膨らみます&lt;/li>
+&lt;li>&lt;strong>ディスクベース&lt;/strong>: &lt;strong>DiskANN&lt;/strong> に代表される、インデックスの大部分をSSDに置く方式です。速度はやや落ちますが、メモリに載りきらない大規模データを現実的なコストで扱えます&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-前処理後処理">6. 前処理・後処理&lt;/h3>
+&lt;p>インデックスの外側にも、精度とコストを改善する工夫があります。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>次元削減（前処理）&lt;/strong>: PCAなどでベクトルの次元数を減らし、計算負荷とメモリを軽減します&lt;/li>
+&lt;li>&lt;strong>リランキング（後処理）&lt;/strong>: ANNで粗く候補を絞り込んだ後（例：上位100件）、その候補だけを圧縮前のベクトルや厳密な距離計算で並べ替え直します。量子化で落ちた精度を、少ない追加コストで回復できる重要なテクニックです&lt;/li>
+&lt;/ul>
+&lt;h2 id="実用システム設計の勘所">実用システム設計の勘所&lt;/h2>
+&lt;p>ここまで見てきた要素を組み合わせて、「&lt;strong>速度・精度・メモリ・コスト&lt;/strong>」のバランスを設計するのが、実用的なANNシステム構築の勘所です。&lt;/p>
+&lt;p>特によく使われるのが、&lt;strong>量子化＋インデックス＋リランキング&lt;/strong> の組み合わせです。&lt;/p>
+&lt;ol>
+&lt;li>PQなどで圧縮したベクトルをHNSWやIVFのインデックスに載せ、省メモリかつ高速に候補を絞り込む&lt;/li>
+&lt;li>絞り込んだ少数の候補だけを、元の精度の高いベクトルで並べ替え直す&lt;/li>
+&lt;/ol>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart LR
+A[クエリベクトル] --> B["ANNインデックスで粗く絞り込み&lt;br/>(HNSW / IVF + 量子化)"]
+B -->|"候補 上位100件"| C["リランキング&lt;br/>(元のベクトルで厳密に再計算)"]
+C -->|"上位10件"| D[最終結果]
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>この2段構えにより、「メモリは圧縮で節約しつつ、最終的な精度はリランキングで担保する」という良いとこ取りができます。大規模なベクトル検索システムで頻出のパターンなので、覚えておいて損はありません。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>本記事では、ANN（近似最近傍探索）の基本を解説しました。&lt;/p>
+&lt;ul>
+&lt;li>ANNは「100%の正確さを少しだけ手放し、桁違いの速度を得る」技術で、RAGやレコメンドなどベクトル検索の基盤になっている&lt;/li>
+&lt;li>ANNシステムは、インデックス（HNSW、IVFなど）、量子化（PQ、SQ、BQ）、距離計算、探索パラメータ、ストレージ戦略、前処理・後処理という複数の要素の組み合わせで成り立つ&lt;/li>
+&lt;li>設計の本質は「速度・精度・メモリ・コスト」のトレードオフ調整であり、量子化＋インデックス＋リランキングが定番パターン&lt;/li>
+&lt;/ul>
+&lt;p>FaissやMilvus、pgvectorなどのライブラリ・データベースを使えば、これらの仕組みを自分で実装せずに利用できます。ただし、パラメータの意味やトレードオフの構造を理解しているかどうかで、運用時のチューニングの質は大きく変わります。本記事がその土台になれば幸いです。&lt;/p></description></item></channel></rss>

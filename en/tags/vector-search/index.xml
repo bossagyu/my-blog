@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vector Search on Bossagyu Blog</title><link>https://bossagyu.com/en/tags/vector-search/</link><description>Recent content in Vector Search on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/tags/vector-search/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to Approximate Nearest Neighbor (ANN) Search: How Vector Search Works, Explained for Beginners</title><link>https://bossagyu.com/en/blog/051-ann-basics/</link><pubDate>Tue, 09 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/051-ann-basics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>RAG (Retrieval-Augmented Generation) systems that combine LLMs like ChatGPT with internal documents, &amp;ldquo;recommended for you&amp;rdquo; sections on e-commerce sites, similar-image search — behind all of these runs a technology called &lt;strong>vector search&lt;/strong>. And what makes vector search fast enough for real-world use is the topic of this article: &lt;strong>ANN (Approximate Nearest Neighbor) search&lt;/strong>.&lt;/p>
+&lt;p>In this article, I will explain what ANN is, why &amp;ldquo;approximate&amp;rdquo; is good enough, and walk through the six building blocks of an ANN system — indexes, quantization, distance metrics, search parameters, storage strategy, and pre/post-processing — in a way that beginners can follow.&lt;/p>
+&lt;h2 id="what-is-ann">What Is ANN?&lt;/h2>
+&lt;h3 id="starting-with-nearest-neighbor-search">Starting with Nearest Neighbor Search&lt;/h3>
+&lt;p>Nearest neighbor search is the task of finding the data point closest to a given query point among a large collection of data.&lt;/p>
+&lt;p>In the context of vector search, documents and images are converted in advance into &lt;strong>embeddings&lt;/strong> — arrays of numbers with hundreds to thousands of dimensions. Texts with similar meanings end up close to each other in this vector space. In other words, &amp;ldquo;finding semantically similar documents&amp;rdquo; can be reformulated as &amp;ldquo;finding nearby vectors in space.&amp;rdquo;&lt;/p>
+&lt;p>The most naive approach is to compare the query vector against every single vector in the dataset, one by one. This is brute-force &lt;strong>kNN (k-Nearest Neighbors)&lt;/strong> search. It always returns the exact answer, but with 100 million records you need 100 million distance computations — far too slow for real-time search.&lt;/p>
+&lt;h3 id="trading-exactness-for-speed">Trading Exactness for Speed&lt;/h3>
+&lt;p>This is where ANN comes in. ANN takes the approach of &amp;ldquo;&lt;strong>giving up the guarantee of a 100% exact answer in exchange for returning a nearly correct answer orders of magnitude faster&lt;/strong>.&amp;rdquo;&lt;/p>
+&lt;p>Imagine looking for a book in a library. If you scan every shelf from end to end, you will definitely find the book — after several hours. In practice, you rely on the classification system: &amp;ldquo;cookbooks should be around here,&amp;rdquo; and only check the shelves that look relevant. Occasionally you might miss a book that was shelved somewhere unexpected, but most of the time you find what you want in minutes. ANN turns this &amp;ldquo;narrow down first, then look&amp;rdquo; strategy into a data structure.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/051-ann-basics/img-051-001-en.svg"
+loading="lazy"
+alt="Brute-force kNN vs ANN: brute force computes the distance to every point, while ANN searches only the regions likely to be close"
+>&lt;/p>
+&lt;p>Search quality is measured by &lt;strong>recall&lt;/strong>. For example, if you return 9 of the true top 10 results, your recall is 90%. In practice, the sweet spot is typically maintaining 95–99% recall while running hundreds to thousands of times faster than brute force.&lt;/p>
+&lt;h2 id="the-six-building-blocks-of-an-ann-system">The Six Building Blocks of an ANN System&lt;/h2>
+&lt;p>ANN is not a single algorithm but a combination of several techniques. Let&amp;rsquo;s look at the six main components one by one.&lt;/p>
+&lt;h3 id="1-indexes-search-data-structures">1. Indexes (Search Data Structures)&lt;/h3>
+&lt;p>At the heart of ANN is the index — a data structure built for fast search. Indexes fall into three major families.&lt;/p>
+&lt;p>&lt;strong>Graph-based&lt;/strong> methods build a graph connecting nearby vectors to each other, then traverse the edges to home in on the neighbors. The most prominent example is &lt;strong>HNSW (Hierarchical Navigable Small World)&lt;/strong>, currently the most widely used index. Like a highway network, it maintains both coarse long-distance links and fine-grained local links in a hierarchical structure. Other examples include NSG and Vamana (used in DiskANN).&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/051-ann-basics/img-051-002-en.svg"
+loading="lazy"
+alt="HNSW&amp;rsquo;s hierarchical structure: approach roughly on the upper layers, then descend to search precisely on the bottom layer"
+>&lt;/p>
+&lt;p>A search starts from the entry point on the sparse top layer. On each layer, it moves as close to the query as it can, then descends to the layer below and repeats. The &amp;ldquo;long-distance jumps&amp;rdquo; on the upper layers carry you near the destination quickly, and the fine-grained search on the bottom layer finishes the job — reaching the neighbors with very few distance computations.&lt;/p>
+&lt;p>&lt;strong>Tree-based&lt;/strong> methods recursively partition the space using tree structures. Classic examples are &lt;strong>KD-tree&lt;/strong> and &lt;strong>Annoy&lt;/strong>, developed by Spotify.&lt;/p>
+&lt;p>&lt;strong>Hash-based&lt;/strong> methods use special hash functions designed so that nearby vectors are likely to receive the same hash value. The representative technique is &lt;strong>LSH (Locality Sensitive Hashing)&lt;/strong>.&lt;/p>
+&lt;p>In addition, &lt;strong>IVF (Inverted File Index)&lt;/strong> is another popular approach: it clusters the data ahead of time and searches only the clusters closest to the query.&lt;/p>
+&lt;h3 id="2-quantization">2. Quantization&lt;/h3>
+&lt;p>Quantization compresses vectors to reduce memory usage and speed up distance computations. It is used in combination with indexes.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>SQ (Scalar Quantization)&lt;/strong>: converts each dimension from float32 to int8 or similar, compressing the data to roughly 1/4 the size&lt;/li>
+&lt;li>&lt;strong>PQ (Product Quantization)&lt;/strong>: splits each vector into multiple subspaces and encodes each part as the ID of a representative point (a code). It achieves high compression ratios and is a staple for large-scale data&lt;/li>
+&lt;li>&lt;strong>BQ (Binary Quantization)&lt;/strong>: compresses each dimension down to a single bit, enabling ultra-fast distance computation with bitwise operations&lt;/li>
+&lt;/ul>
+&lt;p>The idea behind PQ looks like this: split the vector into parts and replace each part with the ID of a representative point, drastically reducing the data size.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/051-ann-basics/img-051-003-en.svg"
+loading="lazy"
+alt="How PQ works: split the vector into subvectors and replace each part with a representative code, compressing 512 bytes down to 4 bytes"
+>&lt;/p>
+&lt;p>The more you compress, the more memory you save — but accuracy drops because information is lost. Here too, you are tuning a trade-off.&lt;/p>
+&lt;h3 id="3-distance-metrics">3. Distance Metrics&lt;/h3>
+&lt;p>How you define &amp;ldquo;near&amp;rdquo; is another important choice. The main distance (similarity) metrics are:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Cosine similarity&lt;/strong>: measures similarity by the angle between vectors. Commonly used for text embeddings&lt;/li>
+&lt;li>&lt;strong>Euclidean distance (L2)&lt;/strong>: the straight-line distance in space&lt;/li>
+&lt;li>&lt;strong>Inner product (dot product)&lt;/strong>: reflects both the direction and the magnitude of vectors&lt;/li>
+&lt;/ul>
+&lt;p>Which one to choose depends on the characteristics of the model that produced the embeddings. Most embedding models document their recommended metric, and following that recommendation is the standard practice.&lt;/p>
+&lt;h3 id="4-search-parameters-tuning">4. Search Parameters (Tuning)&lt;/h3>
+&lt;p>ANN indexes expose &amp;ldquo;knobs&amp;rdquo; for adjusting the trade-off between accuracy and speed.&lt;/p>
+&lt;p>For HNSW:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>M&lt;/code>: the number of connections (edges) per node. Larger values improve accuracy but increase memory usage&lt;/li>
+&lt;li>&lt;code>ef_construction&lt;/code>: the number of candidates examined during index construction. Larger values produce a better graph but take longer to build&lt;/li>
+&lt;li>&lt;code>ef_search&lt;/code>: the number of candidates kept during search. Larger values improve recall but slow down queries&lt;/li>
+&lt;/ul>
+&lt;p>For IVF:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>nprobe&lt;/code>: the number of clusters searched per query. Larger values improve accuracy but reduce speed&lt;/li>
+&lt;/ul>
+&lt;p>In real deployments, the standard approach is to measure recall and latency on your own data and find the smallest parameter values that meet your requirements.&lt;/p>
+&lt;h3 id="5-storage-strategy">5. Storage Strategy&lt;/h3>
+&lt;p>Where you keep the data is another major design decision.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>In-memory&lt;/strong>: keep everything in RAM. Fastest, but memory costs balloon at the scale of hundreds of millions of records&lt;/li>
+&lt;li>&lt;strong>Disk-based&lt;/strong>: approaches like &lt;strong>DiskANN&lt;/strong> keep most of the index on SSD. Somewhat slower, but they make datasets too large for memory affordable to handle&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-pre-processing-and-post-processing">6. Pre-processing and Post-processing&lt;/h3>
+&lt;p>There are also techniques outside the index itself that improve accuracy and cost.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Dimensionality reduction (pre-processing)&lt;/strong>: techniques like PCA reduce the number of dimensions, lowering compute and memory requirements&lt;/li>
+&lt;li>&lt;strong>Reranking (post-processing)&lt;/strong>: after ANN coarsely narrows down the candidates (say, to the top 100), only those candidates are re-sorted using the uncompressed vectors or exact distance computation. This is a key technique for recovering the accuracy lost to quantization at a small additional cost&lt;/li>
+&lt;/ul>
+&lt;h2 id="designing-practical-systems">Designing Practical Systems&lt;/h2>
+&lt;p>Combining all the elements above to balance &lt;strong>speed, accuracy, memory, and cost&lt;/strong> is the essence of building a practical ANN system.&lt;/p>
+&lt;p>A particularly common pattern is &lt;strong>quantization + index + reranking&lt;/strong>:&lt;/p>
+&lt;ol>
+&lt;li>Load PQ-compressed vectors into an HNSW or IVF index to narrow down candidates quickly with a small memory footprint&lt;/li>
+&lt;li>Re-sort only the small set of remaining candidates using the original full-precision vectors&lt;/li>
+&lt;/ol>
+&lt;div class="mermaid-wrapper" onclick="openMermaidModal(this)">
+&lt;pre class="mermaid">flowchart LR
+A[Query vector] --> B["Coarse filtering with ANN index&lt;br/>(HNSW / IVF + quantization)"]
+B -->|"top 100 candidates"| C["Reranking&lt;br/>(exact recompute with original vectors)"]
+C -->|"top 10"| D[Final results]
+&lt;/pre>
+&lt;span class="mermaid-hint">クリックで拡大&lt;/span>
+&lt;/div>
+&lt;p>This two-stage design gives you the best of both worlds: memory is saved through compression, while final accuracy is guaranteed by reranking. It appears constantly in large-scale vector search systems, so it is well worth remembering.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>In this article, I covered the fundamentals of ANN (Approximate Nearest Neighbor) search.&lt;/p>
+&lt;ul>
+&lt;li>ANN trades a small amount of exactness for orders-of-magnitude speedups, and it underpins vector search applications such as RAG and recommendations&lt;/li>
+&lt;li>An ANN system is a combination of multiple components: indexes (HNSW, IVF, etc.), quantization (PQ, SQ, BQ), distance metrics, search parameters, storage strategy, and pre/post-processing&lt;/li>
+&lt;li>The essence of the design is tuning the speed–accuracy–memory–cost trade-off, with quantization + index + reranking as the go-to pattern&lt;/li>
+&lt;/ul>
+&lt;p>Libraries and databases such as Faiss, Milvus, and pgvector let you use these mechanisms without implementing them yourself. However, understanding what the parameters mean and how the trade-offs are structured makes a big difference in how well you can tune a system in production. I hope this article serves as that foundation.&lt;/p></description></item></channel></rss>
