@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" font-family="sans-serif">
+  <rect width="760" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">How PQ (Product Quantization) Works</text>
+
+  <!-- original vector -->
+  <text x="80" y="68" font-size="12" fill="#555">Original vector (128 dims × float32 = 512 bytes)</text>
+  <g>
+    <rect x="80" y="78" width="150" height="44" fill="#dbe9f9" stroke="#4a7ebb"/>
+    <rect x="230" y="78" width="150" height="44" fill="#dbe9f9" stroke="#4a7ebb"/>
+    <rect x="380" y="78" width="150" height="44" fill="#dbe9f9" stroke="#4a7ebb"/>
+    <rect x="530" y="78" width="150" height="44" fill="#dbe9f9" stroke="#4a7ebb"/>
+  </g>
+  <g font-size="11" fill="#34495e" text-anchor="middle">
+    <text x="155" y="96">subvector 1</text>
+    <text x="305" y="96">subvector 2</text>
+    <text x="455" y="96">subvector 3</text>
+    <text x="605" y="96">subvector 4</text>
+    <text x="155" y="113">0.12, -0.34, …</text>
+    <text x="305" y="113">0.87, 0.05, …</text>
+    <text x="455" y="113">-0.61, 0.22, …</text>
+    <text x="605" y="113">0.44, -0.90, …</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#7f8c8d" stroke-width="1.8" marker-end="url(#arrow2)">
+    <line x1="155" y1="128" x2="155" y2="180"/>
+    <line x1="305" y1="128" x2="305" y2="180"/>
+    <line x1="455" y1="128" x2="455" y2="180"/>
+    <line x1="605" y1="128" x2="605" y2="180"/>
+  </g>
+  <text x="380" y="162" text-anchor="middle" font-size="11" fill="#7f8c8d">Replace each part with the ID of its closest representative point</text>
+
+  <!-- codes -->
+  <g>
+    <rect x="115" y="190" width="80" height="40" rx="6" fill="#fdebd0" stroke="#e67e22"/>
+    <rect x="265" y="190" width="80" height="40" rx="6" fill="#fdebd0" stroke="#e67e22"/>
+    <rect x="415" y="190" width="80" height="40" rx="6" fill="#fdebd0" stroke="#e67e22"/>
+    <rect x="565" y="190" width="80" height="40" rx="6" fill="#fdebd0" stroke="#e67e22"/>
+  </g>
+  <g font-size="13" fill="#9c5a14" text-anchor="middle" font-weight="bold">
+    <text x="155" y="215">code 17</text>
+    <text x="305" y="215">code 203</text>
+    <text x="455" y="215">code 8</text>
+    <text x="605" y="215">code 91</text>
+  </g>
+
+  <text x="380" y="268" text-anchor="middle" font-size="13" fill="#555">After compression: 4 codes (1 byte each) = 4 bytes</text>
+  <text x="380" y="292" text-anchor="middle" font-size="14" font-weight="bold" fill="#e67e22">512 bytes → 4 bytes (128× compression)</text>
+</svg>
