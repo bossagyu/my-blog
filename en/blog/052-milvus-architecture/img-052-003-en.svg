@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" font-family="sans-serif">
+  <rect width="760" height="410" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7f8c8d"/>
+    </marker>
+    <marker id="arrow3r" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#27ae60"/>
+    </marker>
+  </defs>
+
+  <!-- client -->
+  <rect x="320" y="14" width="120" height="40" rx="6" fill="#2c3e50"/>
+  <text x="380" y="39" text-anchor="middle" font-size="13" fill="#ffffff">Client</text>
+  <line x1="360" y1="54" x2="360" y2="88" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow3)"/>
+  <line x1="400" y1="88" x2="400" y2="54" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrow3r)"/>
+  <text x="290" y="76" text-anchor="middle" font-size="11" fill="#555">search request</text>
+  <text x="455" y="76" text-anchor="middle" font-size="11" fill="#27ae60">final result</text>
+
+  <!-- proxy -->
+  <rect x="290" y="92" width="180" height="56" rx="6" fill="#ffffff" stroke="#4a7ebb" stroke-width="1.5"/>
+  <text x="380" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Proxy</text>
+  <text x="380" y="132" text-anchor="middle" font-size="11" fill="#555">fan-out to shards, merge results</text>
+
+  <!-- proxy to streaming node only -->
+  <line x1="330" y1="148" x2="185" y2="194" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow3)"/>
+  <line x1="225" y1="194" x2="360" y2="152" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrow3r)"/>
+  <text x="190" y="162" text-anchor="middle" font-size="11" fill="#555">broadcast to all</text>
+  <text x="190" y="177" text-anchor="middle" font-size="11" fill="#555">Streaming Nodes</text>
+  <text x="330" y="184" text-anchor="middle" font-size="11" fill="#27ae60">shard results</text>
+
+  <!-- streaming node -->
+  <rect x="80" y="198" width="230" height="76" rx="6" fill="#ffffff" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="195" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Streaming Node</text>
+  <text x="195" y="242" text-anchor="middle" font-size="11" fill="#555">searches growing segments</text>
+  <text x="195" y="258" text-anchor="middle" font-size="11" fill="#555">(freshly written data)</text>
+
+  <!-- query node -->
+  <rect x="450" y="198" width="230" height="76" rx="6" fill="#ffffff" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="565" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Query Node</text>
+  <text x="565" y="242" text-anchor="middle" font-size="11" fill="#555">searches sealed segments</text>
+  <text x="565" y="258" text-anchor="middle" font-size="11" fill="#555">(persisted historical data)</text>
+
+  <!-- delegation: streaming node -> query node, results back -->
+  <line x1="310" y1="226" x2="446" y2="226" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow3)"/>
+  <text x="378" y="216" text-anchor="middle" font-size="10" fill="#777">delegates historical search</text>
+  <line x1="450" y1="254" x2="314" y2="254" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrow3r)"/>
+  <text x="378" y="246" text-anchor="middle" font-size="10" fill="#27ae60">results</text>
+
+  <!-- object storage -->
+  <rect x="450" y="324" width="230" height="60" rx="6" fill="#f4eefb" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="565" y="348" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Object Storage</text>
+  <text x="565" y="368" text-anchor="middle" font-size="11" fill="#555">sealed segments and indexes</text>
+  <line x1="565" y1="320" x2="565" y2="278" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow3)"/>
+  <text x="655" y="302" text-anchor="middle" font-size="11" fill="#555">loaded in advance</text>
+
+  <text x="230" y="330" text-anchor="middle" font-size="12" fill="#555">The Streaming Node combines fresh + historical results,</text>
+  <text x="230" y="350" text-anchor="middle" font-size="12" fill="#555">then the proxy merges all shard results for the client</text>
+</svg>

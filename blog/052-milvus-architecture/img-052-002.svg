@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" font-family="sans-serif">
+  <rect width="760" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- top row: write path -->
+  <rect x="20" y="44" width="110" height="56" rx="6" fill="#2c3e50"/>
+  <text x="75" y="68" text-anchor="middle" font-size="13" fill="#ffffff">クライアント</text>
+  <text x="75" y="86" text-anchor="middle" font-size="11" fill="#d0d7de">Insert / Delete</text>
+  <line x1="130" y1="72" x2="166" y2="72" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="170" y="44" width="150" height="56" rx="6" fill="#ffffff" stroke="#4a7ebb" stroke-width="1.5"/>
+  <text x="245" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Proxy</text>
+  <text x="245" y="84" text-anchor="middle" font-size="11" fill="#555">シャード単位に分割</text>
+  <circle cx="182" cy="38" r="11" fill="#e74c3c"/>
+  <text x="182" y="42.5" text-anchor="middle" font-size="12" fill="#ffffff">1</text>
+  <line x1="320" y1="72" x2="356" y2="72" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="338" y="60" text-anchor="middle" font-size="11" fill="#555">vchannel</text>
+
+  <rect x="360" y="44" width="180" height="56" rx="6" fill="#ffffff" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="450" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Streaming Node</text>
+  <text x="450" y="84" text-anchor="middle" font-size="11" fill="#555">TSO付与・整合性チェック</text>
+  <circle cx="372" cy="38" r="11" fill="#e74c3c"/>
+  <text x="372" y="42.5" text-anchor="middle" font-size="12" fill="#ffffff">2</text>
+  <line x1="540" y1="72" x2="586" y2="72" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="563" y="60" text-anchor="middle" font-size="11" fill="#555">追記</text>
+
+  <rect x="590" y="44" width="150" height="56" rx="6" fill="#ffffff" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="665" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">WAL Storage</text>
+  <text x="665" y="84" text-anchor="middle" font-size="11" fill="#555">永続化＝書き込み成功</text>
+  <circle cx="602" cy="38" r="11" fill="#e74c3c"/>
+  <text x="602" y="42.5" text-anchor="middle" font-size="12" fill="#ffffff">3</text>
+
+  <!-- streaming node builds growing segment -->
+  <line x1="450" y1="100" x2="450" y2="142" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="540" y="128" text-anchor="middle" font-size="11" fill="#555">WALを非同期に反映</text>
+
+  <rect x="340" y="146" width="220" height="62" rx="6" fill="#eafaf1" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="450" y="170" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Growing Segment</text>
+  <text x="450" y="190" text-anchor="middle" font-size="11" fill="#555">メモリ上の増分データ（即検索可能）</text>
+  <circle cx="352" cy="140" r="11" fill="#e74c3c"/>
+  <text x="352" y="144.5" text-anchor="middle" font-size="12" fill="#ffffff">4</text>
+
+  <line x1="450" y1="208" x2="450" y2="252" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="545" y="234" text-anchor="middle" font-size="11" fill="#555">Flush（シール処理）</text>
+
+  <!-- object storage with sealed segments -->
+  <rect x="180" y="256" width="400" height="120" rx="8" fill="#f4eefb" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="380" y="280" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Object Storage（S3 / MinIO など）</text>
+  <circle cx="192" cy="250" r="11" fill="#e74c3c"/>
+  <text x="192" y="254.5" text-anchor="middle" font-size="12" fill="#ffffff">5</text>
+  <rect x="210" y="296" width="160" height="60" rx="6" fill="#ffffff" stroke="#8e44ad"/>
+  <text x="290" y="320" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">Sealed Segment</text>
+  <text x="290" y="340" text-anchor="middle" font-size="11" fill="#555">不変・永続化済み</text>
+  <rect x="390" y="296" width="160" height="60" rx="6" fill="#ffffff" stroke="#8e44ad"/>
+  <text x="470" y="320" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">インデックス</text>
+  <text x="470" y="340" text-anchor="middle" font-size="11" fill="#555">セグメントごとに構築</text>
+
+  <!-- data node -->
+  <rect x="610" y="276" width="130" height="80" rx="6" fill="#ffffff" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="675" y="306" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3e50">Data Node</text>
+  <text x="675" y="326" text-anchor="middle" font-size="11" fill="#555">インデックス構築</text>
+  <text x="675" y="342" text-anchor="middle" font-size="11" fill="#555">コンパクション</text>
+  <circle cx="622" cy="270" r="11" fill="#e74c3c"/>
+  <text x="622" y="274.5" text-anchor="middle" font-size="12" fill="#ffffff">6</text>
+  <line x1="610" y1="306" x2="584" y2="306" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="584" y1="330" x2="610" y2="330" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <text x="380" y="412" text-anchor="middle" font-size="12" fill="#555">書き込みはWALへの永続化で確定し、Growing Segment → Sealed Segment へと段階的に永続化される</text>
+</svg>

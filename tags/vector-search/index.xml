@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vector Search on Bossagyu Blog</title><link>https://bossagyu.com/tags/vector-search/</link><description>Recent content in Vector Search on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/vector-search/index.xml" rel="self" type="application/rss+xml"/><item><title>近似最近傍探索（ANN）入門：ベクトル検索を支える仕組みを初心者向けに解説</title><link>https://bossagyu.com/blog/051-ann-basics/</link><pubDate>Tue, 09 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/051-ann-basics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vector Search on Bossagyu Blog</title><link>https://bossagyu.com/tags/vector-search/</link><description>Recent content in Vector Search on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 11 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/tags/vector-search/index.xml" rel="self" type="application/rss+xml"/><item><title>Milvusのアーキテクチャをわかりやすく解説：4層構成とデータの流れを図解で理解する</title><link>https://bossagyu.com/blog/052-milvus-architecture/</link><pubDate>Thu, 11 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/052-milvus-architecture/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>RAG（検索拡張生成）やレコメンドの普及にともない、ベクトルデータベースの代表格である &lt;strong>Milvus&lt;/strong> を採用する機会が増えています。Milvusは「とりあえず使う」だけならSDK経由で簡単に触れますが、本番運用やチューニングの段階になると、内部でデータがどう流れているかを理解しているかどうかで対応力が大きく変わります。&lt;/p>
+&lt;p>本記事では、Milvusのアーキテクチャを公式ドキュメントに基づいて、図解を交えながらわかりやすく解説します。前回の記事「&lt;a class="link" href="https://bossagyu.com/blog/051-ann-basics/" >近似最近傍探索（ANN）入門&lt;/a>」で扱った検索アルゴリズムが、システムとしてどう動くのかという視点でも読めるはずです。&lt;/p>
+&lt;p>なお、本記事は &lt;strong>Milvus 2.6系&lt;/strong> の公式ドキュメント（&lt;a class="link" href="https://milvus.io/docs/architecture_overview.md" target="_blank" rel="noopener"
+>Milvus Architecture Overview&lt;/a>）に基づいています。2.6でアーキテクチャが大きく整理されたため、それ以前のバージョンとはコンポーネント構成が異なる点にご注意ください。&lt;/p>
+&lt;h2 id="milvusとは">Milvusとは&lt;/h2>
+&lt;p>Milvusは、高性能な類似検索のために設計された &lt;strong>オープンソースのクラウドネイティブなベクトルデータベース&lt;/strong> です。内部ではFaiss、HNSW、DiskANN、SCANNといったベクトル検索ライブラリを活用しており、AIアプリケーションや非構造化データの検索基盤として広く使われています（出典: &lt;a class="link" href="https://milvus.io/docs/architecture_overview.md" target="_blank" rel="noopener"
+>Milvus Architecture Overview&lt;/a>）。&lt;/p>
+&lt;p>アーキテクチャ上の最大の特徴は、次の2つの設計原則です。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ストレージとコンピューティングの分離&lt;/strong>: すべてのコンポーネントはステートレスで、データの実体は外部ストレージに置かれます&lt;/li>
+&lt;li>&lt;strong>データプレーンと制御プレーンの分離&lt;/strong>: 「データを処理する役割」と「クラスタを管理する役割」を独立させ、それぞれを水平スケールできるようにしています&lt;/li>
+&lt;/ul>
+&lt;h2 id="4層アーキテクチャの全体像">4層アーキテクチャの全体像&lt;/h2>
+&lt;p>Milvusのクラスタは、大きく4つの層で構成されます（出典: &lt;a class="link" href="https://milvus.io/docs/four_layers.md" target="_blank" rel="noopener"
+>Storage/Computing Disaggregation&lt;/a>）。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/052-milvus-architecture/img-052-001.svg"
+loading="lazy"
+alt="Milvusの4層アーキテクチャ：アクセス層（Proxy）、制御プレーン（Coordinator）、ワーカーノード（Streaming/Query/Data Node）、ストレージ層（WAL/Object/Meta Storage）"
+>&lt;/p>
+&lt;h3 id="アクセス層access-layer">アクセス層（Access Layer）&lt;/h3>
+&lt;p>クライアントからのリクエストを最初に受け付ける、&lt;strong>ステートレスなProxy&lt;/strong> の集まりです。役割は次の通りです。&lt;/p>
+&lt;ul>
+&lt;li>リクエストの検証（バリデーション）&lt;/li>
+&lt;li>NginxやKubernetes Ingressなどのロードバランサーと組み合わせた、統一エンドポイントの提供&lt;/li>
+&lt;li>各ノードから返ってくる中間結果を集約し、最終結果としてクライアントに返却&lt;/li>
+&lt;/ul>
+&lt;p>Milvusは大規模並列処理（MPP）型の設計のため、「結果をまとめ上げる」役割をProxyが担っている点がポイントです。&lt;/p>
+&lt;h3 id="制御プレーンcoordinator">制御プレーン（Coordinator）&lt;/h3>
+&lt;p>Coordinatorは公式ドキュメントで「&lt;strong>Milvusの頭脳（the brain of Milvus）&lt;/strong>」と表現されるコンポーネントで、クラスタ全体のトポロジ管理・スケジューリング・一貫性の維持を担います。具体的な責務は以下の通りです。&lt;/p>
+&lt;ul>
+&lt;li>DDL/DCL（コレクション作成や権限管理など）の処理&lt;/li>
+&lt;li>&lt;strong>TSO（Timestamp Oracle）&lt;/strong> によるタイムスタンプ管理&lt;/li>
+&lt;li>WALとStreaming Nodeの割り当て管理&lt;/li>
+&lt;li>Query Nodeのトポロジ管理と負荷分散&lt;/li>
+&lt;li>コンパクションやインデックス構築といったオフラインタスクの分配&lt;/li>
+&lt;/ul>
+&lt;p>アクティブなCoordinatorはクラスタに1つで、高可用性のためにマスター・スレーブ構成を有効化することもできます（出典: &lt;a class="link" href="https://milvus.io/docs/main_components.md" target="_blank" rel="noopener"
+>Milvusの主要コンポーネント&lt;/a>）。&lt;/p>
+&lt;h3 id="ワーカーノード実行層">ワーカーノード（実行層）&lt;/h3>
+&lt;p>Coordinatorの指示を実行する、ステートレスな3種類のノードです。役割の違いを表にまとめます。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ノード&lt;/th>
+&lt;th>主な役割&lt;/th>
+&lt;th>扱うデータ&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Streaming Node&lt;/td>
+&lt;td>リアルタイム書き込み、WALによるシャード単位の一貫性・リカバリ、増分データの検索、Growing→Sealedへの変換&lt;/td>
+&lt;td>Growing Segment（書き込み直後のデータ）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Query Node&lt;/td>
+&lt;td>オブジェクトストレージから履歴データをロードして検索&lt;/td>
+&lt;td>Sealed Segment（永続化済みデータ）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Data Node&lt;/td>
+&lt;td>コンパクションやインデックス構築などのオフライン処理&lt;/td>
+&lt;td>Sealed Segment&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Milvus 2.6では「ストリーム処理はStreaming Node、バッチ処理はQuery NodeとData Node」と役割が明確に分離され、リアルタイム性とスループットを両立する構成になりました（出典: &lt;a class="link" href="https://milvus.io/blog/introduce-milvus-2-6-built-for-scale-designed-to-reduce-costs.md" target="_blank" rel="noopener"
+>Introducing Milvus 2.6&lt;/a>）。&lt;/p>
+&lt;h3 id="ストレージ層">ストレージ層&lt;/h3>
+&lt;p>データの実体を保持する層で、3種類のストレージから構成されます。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ストレージ&lt;/th>
+&lt;th>役割&lt;/th>
+&lt;th>実装例&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Meta Storage&lt;/td>
+&lt;td>メタデータのスナップショット、サービス登録&lt;/td>
+&lt;td>etcd&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>WAL Storage&lt;/td>
+&lt;td>書き込みの永続性保証（先行書き込みログ）&lt;/td>
+&lt;td>Woodpecker、Kafka、Pulsar&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Object Storage&lt;/td>
+&lt;td>セグメント（ログスナップショット）、インデックスファイルの保存&lt;/td>
+&lt;td>MinIO、AWS S3、Azure Blob&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>ワーカーノードがすべてステートレスでいられるのは、状態をこの層に追い出しているためです。ノードが落ちても、WALとオブジェクトストレージからデータを復元できます。&lt;/p>
+&lt;h2 id="データの書き込みフロー">データの書き込みフロー&lt;/h2>
+&lt;p>次に、Insertリクエストがどう処理されるかを見てみましょう（出典: &lt;a class="link" href="https://milvus.io/docs/data_processing.md" target="_blank" rel="noopener"
+>Milvusのデータ処理&lt;/a>）。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/052-milvus-architecture/img-052-002.svg"
+loading="lazy"
+alt="Milvusの書き込みフロー：Proxyがシャードに分割し、Streaming NodeがTSOを付与してWALに永続化、Growing Segmentを経てSealed SegmentとしてObject Storageに保存される"
+>&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Proxyがシャードに振り分ける&lt;/strong>: コレクションは複数の &lt;strong>シャード&lt;/strong> に分割されており、各シャードは &lt;strong>vchannel（仮想チャネル）&lt;/strong> に対応します。Proxyはルーティングルールに従って書き込みデータをシャード単位に分割します&lt;/li>
+&lt;li>&lt;strong>Streaming NodeがTSOを付与&lt;/strong>: 各vchannelを担当するStreaming Nodeが、操作の順序を保証するためのタイムスタンプ（TSO）を割り当て、整合性を検証します&lt;/li>
+&lt;li>&lt;strong>WALへ書き込み&lt;/strong>: データはまずWAL Storageに追記され、&lt;strong>永続化が完了した時点で書き込み成功&lt;/strong> となります。クラッシュしてもWALをリプレイすれば未反映の操作を完全に復元できます&lt;/li>
+&lt;li>&lt;strong>Growing Segmentに反映&lt;/strong>: Streaming NodeはWALのエントリを非同期にセグメントへ変換します。書き込み直後のデータは &lt;strong>Growing Segment&lt;/strong> と呼ばれるメモリ上の増分データとなり、この時点ですでに検索対象になります&lt;/li>
+&lt;li>&lt;strong>FlushでSealed Segmentへ&lt;/strong>: セグメントが容量のしきい値に達するなどの条件でFlushが実行されると、Growing Segmentは &lt;strong>Sealed Segment&lt;/strong>（不変・永続化済み）としてオブジェクトストレージに書き出されます&lt;/li>
+&lt;li>&lt;strong>Data Nodeがインデックスを構築&lt;/strong>: Sealed Segmentに対して、Data Nodeがセグメント単位でインデックスを構築し、結果をオブジェクトストレージに保存します&lt;/li>
+&lt;/ol>
+&lt;p>ベクトルインデックスの構築は計算負荷が高いため、SSE・AVX2・AVX512といった &lt;strong>SIMD命令によるアクセラレーション&lt;/strong> が活用されます。スカラーフィールドにはBloomフィルタや転置インデックスなどが使われます。&lt;/p>
+&lt;h2 id="検索クエリフロー">検索（クエリ）フロー&lt;/h2>
+&lt;p>検索リクエストは、書き込みとは逆に「散らばったデータをかき集める」流れになります。&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/blog/052-milvus-architecture/img-052-003.svg"
+loading="lazy"
+alt="Milvusの検索フロー：Proxyが全シャードのStreaming Nodeにブロードキャストし、Streaming NodeがGrowing Segmentを検索しつつSealed Segmentの検索をQuery Nodeに委譲、Proxyがシャードごとの結果をマージして返す"
+>&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Proxyが全シャードにブロードキャスト&lt;/strong>: 検索リクエストは、関係するシャードを担当するすべてのStreaming Nodeに並行して配信されます&lt;/li>
+&lt;li>&lt;strong>Streaming Nodeが最新データを検索&lt;/strong>: 各Streaming Nodeはクエリプランを生成し、ローカルのGrowing Segment（書き込まれた直後のデータ）を検索します&lt;/li>
+&lt;li>&lt;strong>Query Nodeが履歴データを検索&lt;/strong>: あわせてStreaming Nodeは、Sealed Segment（履歴データ）の検索をリモートのQuery Nodeに委譲します。Query Nodeはオブジェクトストレージから事前にロードしたセグメントとインデックスを使って検索します&lt;/li>
+&lt;li>&lt;strong>Proxyが結果をマージ&lt;/strong>: 各シャードの結果をProxyが集約・マージし、最終結果としてクライアントに返します&lt;/li>
+&lt;/ol>
+&lt;p>この仕組みにより、&lt;strong>書き込んだ直後のデータも検索にヒットしつつ、大量の履歴データはインデックスで高速に検索する&lt;/strong> という両立が実現されています。なお、Growing SegmentがFlushされてSealed Segmentになると、Coordinatorが &lt;strong>ハンドオフ&lt;/strong> を行い、Sealed SegmentをQuery Node群に均等に分配します。&lt;/p>
+&lt;h2 id="デプロイモードスタンドアロンとクラスタ">デプロイモード：スタンドアロンとクラスタ&lt;/h2>
+&lt;p>Milvusには大きく2つのデプロイモードがあります（出典: &lt;a class="link" href="https://milvus.io/docs/main_components.md" target="_blank" rel="noopener"
+>Milvusの主要コンポーネント&lt;/a>）。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>スタンドアロンモード&lt;/strong>: 全コンポーネントを1プロセスで動かす構成です。小規模データ・低負荷向けで、WALにはWoodpeckerやrocksmqなどの組み込み実装を使えるため、外部ミドルウェアへの依存をなくせます。ただし、スタンドアロンからクラスタへの &lt;strong>オンラインアップグレードはできない&lt;/strong> 点に注意が必要です&lt;/li>
+&lt;li>&lt;strong>クラスタモード&lt;/strong>: 各コンポーネントを独立したプロセスとして動かし、Kubernetes上でそれぞれを水平スケールできる構成です。大規模データ・高負荷の本番環境向けです&lt;/li>
+&lt;/ul>
+&lt;p>開発・検証はスタンドアロン、本番はクラスタ、という使い分けが基本になります。&lt;/p>
+&lt;h2 id="milvus-26でのアーキテクチャの進化">Milvus 2.6でのアーキテクチャの進化&lt;/h2>
+&lt;p>最後に、Milvus 2.6で行われた大きなアーキテクチャ変更を押さえておきます（出典: &lt;a class="link" href="https://milvus.io/blog/introduce-milvus-2-6-built-for-scale-designed-to-reduce-costs.md" target="_blank" rel="noopener"
+>Introducing Milvus 2.6&lt;/a>）。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Streaming Nodeの導入&lt;/strong>: 2.5まで複数コンポーネントにまたがっていたリアルタイム処理（メッセージ消費、増分セグメントの書き込み、増分データの検索、WALベースのリカバリ）が、専任のStreaming Nodeに集約されました&lt;/li>
+&lt;li>&lt;strong>Woodpecker（ゼロディスクWAL）&lt;/strong>: KafkaやPulsarといった外部メッセージキューへの依存をなくすために開発された、クラウドネイティブなWALシステムです。ログデータをすべてオブジェクトストレージに永続化する「ゼロディスク」設計で、ローカルディスクに依存しません（出典: &lt;a class="link" href="https://milvus.io/docs/woodpecker_architecture.md" target="_blank" rel="noopener"
+>Woodpecker Architecture&lt;/a>）&lt;/li>
+&lt;li>&lt;strong>Coordinatorの統合&lt;/strong>: 以前は分かれていた複数のコーディネータ（RootCoord、QueryCoord、DataCoordなど）が単一のCoordinatorに統合され、運用がシンプルになりました&lt;/li>
+&lt;/ul>
+&lt;p>いずれも「外部依存を減らし、クラウドネイティブな構成でコストと運用負荷を下げる」方向の進化と言えます。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>本記事では、Milvusのアーキテクチャを公式ドキュメントに基づいて解説しました。&lt;/p>
+&lt;ul>
+&lt;li>Milvusは &lt;strong>ストレージとコンピューティングの分離&lt;/strong> を徹底したクラウドネイティブ設計で、アクセス層（Proxy）・制御プレーン（Coordinator）・ワーカーノード・ストレージ層の4層で構成される&lt;/li>
+&lt;li>ワーカーノードは役割分担が明確で、&lt;strong>Streaming Nodeがリアルタイム処理、Query Nodeが履歴データの検索、Data Nodeがオフライン処理&lt;/strong> を担う&lt;/li>
+&lt;li>書き込みは「WALへの永続化で確定 → Growing Segment → FlushでSealed Segment化」と段階的に処理され、検索は最新データと履歴データの結果をProxyがマージして返す&lt;/li>
+&lt;li>Milvus 2.6ではStreaming NodeとWoodpecker（ゼロディスクWAL）の導入、Coordinatorの統合により、外部依存の少ないシンプルな構成に進化した&lt;/li>
+&lt;/ul>
+&lt;p>内部のデータフローを理解しておくと、「書き込み直後のデータが検索にヒットする仕組み」や「ノード障害時にデータが失われない理由」が腹落ちし、本番運用時のキャパシティプランニングやトラブルシューティングにも役立ちます。&lt;/p>
+&lt;h2 id="参考資料">参考資料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/architecture_overview.md" target="_blank" rel="noopener"
+>Milvus Architecture Overview | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/four_layers.md" target="_blank" rel="noopener"
+>Storage/Computing Disaggregation | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/main_components.md" target="_blank" rel="noopener"
+>Main Components | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/data_processing.md" target="_blank" rel="noopener"
+>Data Processing | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/blog/introduce-milvus-2-6-built-for-scale-designed-to-reduce-costs.md" target="_blank" rel="noopener"
+>Introducing Milvus 2.6: Affordable Vector Search at Billion Scale | Milvus Blog&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/woodpecker_architecture.md" target="_blank" rel="noopener"
+>Woodpecker Architecture | Milvus Documentation&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>近似最近傍探索（ANN）入門：ベクトル検索を支える仕組みを初心者向けに解説</title><link>https://bossagyu.com/blog/051-ann-basics/</link><pubDate>Tue, 09 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/blog/051-ann-basics/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>ChatGPTのようなLLMと社内文書を組み合わせるRAG（検索拡張生成）や、ECサイトの「あなたへのおすすめ」、画像の類似検索。これらの裏側では、&lt;strong>ベクトル検索&lt;/strong> という技術が動いています。そしてベクトル検索を実用的な速度で実現しているのが、本記事のテーマである &lt;strong>ANN（Approximate Nearest Neighbor：近似最近傍探索）&lt;/strong> です。&lt;/p>
 &lt;p>本記事では、ANNとは何か、なぜ「近似」で良いのか、そしてANNシステムを構成する6つの要素（インデックス、量子化、距離計算、探索パラメータ、ストレージ戦略、前処理・後処理）を、初心者の方でも分かるように順番に解説します。&lt;/p>
 &lt;h2 id="annとは何か">ANNとは何か&lt;/h2>

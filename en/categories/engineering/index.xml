@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to Approximate Nearest Neighbor (ANN) Search: How Vector Search Works, Explained for Beginners</title><link>https://bossagyu.com/en/blog/051-ann-basics/</link><pubDate>Tue, 09 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/051-ann-basics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Engineering on Bossagyu Blog</title><link>https://bossagyu.com/en/categories/engineering/</link><description>Recent content in Engineering on Bossagyu Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Thu, 11 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://bossagyu.com/en/categories/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Milvus Architecture Explained: Understanding the Four-Layer Design and Data Flows with Diagrams</title><link>https://bossagyu.com/en/blog/052-milvus-architecture/</link><pubDate>Thu, 11 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/052-milvus-architecture/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>With the rise of RAG (Retrieval-Augmented Generation) and recommendation systems, more and more teams are adopting &lt;strong>Milvus&lt;/strong>, one of the most popular vector databases. Getting started with Milvus through its SDK is easy, but once you reach production operations and tuning, understanding how data actually flows inside the system makes a huge difference.&lt;/p>
+&lt;p>In this article, I explain the Milvus architecture based on the official documentation, with diagrams to make it easy to follow. You can also read it as a follow-up to my previous article, &amp;ldquo;&lt;a class="link" href="https://bossagyu.com/en/blog/051-ann-basics/" >Introduction to Approximate Nearest Neighbor (ANN) Search&lt;/a>&amp;rdquo;, showing how those search algorithms operate as a distributed system.&lt;/p>
+&lt;p>Note that this article is based on the official documentation for &lt;strong>Milvus 2.6&lt;/strong> (&lt;a class="link" href="https://milvus.io/docs/architecture_overview.md" target="_blank" rel="noopener"
+>Milvus Architecture Overview&lt;/a>). The architecture was significantly reorganized in 2.6, so the component layout differs from earlier versions.&lt;/p>
+&lt;h2 id="what-is-milvus">What Is Milvus?&lt;/h2>
+&lt;p>Milvus is an &lt;strong>open-source, cloud-native vector database&lt;/strong> designed for high-performance similarity search. Internally it leverages vector search libraries such as Faiss, HNSW, DiskANN, and SCANN, and it is widely used as a search backbone for AI applications and unstructured data (source: &lt;a class="link" href="https://milvus.io/docs/architecture_overview.md" target="_blank" rel="noopener"
+>Milvus Architecture Overview&lt;/a>).&lt;/p>
+&lt;p>Two design principles define its architecture:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Disaggregation of storage and computing&lt;/strong>: all components are stateless, and the actual data lives in external storage&lt;/li>
+&lt;li>&lt;strong>Separation of the data plane and control plane&lt;/strong>: the components that process data and the components that manage the cluster are independent, so each can scale horizontally&lt;/li>
+&lt;/ul>
+&lt;h2 id="the-four-layer-architecture-at-a-glance">The Four-Layer Architecture at a Glance&lt;/h2>
+&lt;p>A Milvus cluster consists of four layers (source: &lt;a class="link" href="https://milvus.io/docs/four_layers.md" target="_blank" rel="noopener"
+>Storage/Computing Disaggregation&lt;/a>).&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/052-milvus-architecture/img-052-001-en.svg"
+loading="lazy"
+alt="The four-layer Milvus architecture: access layer (Proxy), control plane (Coordinator), worker nodes (Streaming/Query/Data Node), and storage layer (WAL/Object/Meta Storage)"
+>&lt;/p>
+&lt;h3 id="access-layer">Access Layer&lt;/h3>
+&lt;p>The access layer is a set of &lt;strong>stateless proxies&lt;/strong> that receive client requests first. Their responsibilities are:&lt;/p>
+&lt;ul>
+&lt;li>Validating requests&lt;/li>
+&lt;li>Providing a unified service endpoint together with load balancers such as Nginx or Kubernetes Ingress&lt;/li>
+&lt;li>Aggregating intermediate results from worker nodes and returning the final result to the client&lt;/li>
+&lt;/ul>
+&lt;p>Because Milvus follows a massively parallel processing (MPP) design, it is the proxy that consolidates partial results into the final answer.&lt;/p>
+&lt;h3 id="control-plane-coordinator">Control Plane (Coordinator)&lt;/h3>
+&lt;p>The Coordinator is described in the official documentation as &amp;ldquo;&lt;strong>the brain of Milvus&lt;/strong>&amp;rdquo;. It maintains cluster topology, schedules work, and ensures consistency. Its concrete responsibilities include:&lt;/p>
+&lt;ul>
+&lt;li>Handling DDL/DCL operations (creating collections, managing permissions, and so on)&lt;/li>
+&lt;li>Timestamp management via the &lt;strong>TSO (Timestamp Oracle)&lt;/strong>&lt;/li>
+&lt;li>Managing WAL bindings with Streaming Nodes&lt;/li>
+&lt;li>Managing Query Node topology and load balancing&lt;/li>
+&lt;li>Distributing offline tasks such as compaction and index building&lt;/li>
+&lt;/ul>
+&lt;p>Exactly one Coordinator is active in the cluster, and a master-slave mode can be enabled for high availability (source: &lt;a class="link" href="https://milvus.io/docs/main_components.md" target="_blank" rel="noopener"
+>Milvus Main Components&lt;/a>).&lt;/p>
+&lt;h3 id="worker-nodes-execution-layer">Worker Nodes (Execution Layer)&lt;/h3>
+&lt;p>Three types of stateless nodes execute the Coordinator&amp;rsquo;s instructions. The table below summarizes their roles.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Node&lt;/th>
+&lt;th>Main role&lt;/th>
+&lt;th>Data handled&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Streaming Node&lt;/td>
+&lt;td>Real-time writes, shard-level consistency and recovery via the WAL, search on incremental data, converting growing data into sealed segments&lt;/td>
+&lt;td>Growing segments (freshly written data)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Query Node&lt;/td>
+&lt;td>Loading historical data from object storage and searching it&lt;/td>
+&lt;td>Sealed segments (persisted data)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Data Node&lt;/td>
+&lt;td>Offline processing such as compaction and index building&lt;/td>
+&lt;td>Sealed segments&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>In Milvus 2.6, the roles were cleanly split — stream processing goes to the Streaming Node, batch processing goes to the Query Node and Data Node — achieving both real-time performance and high throughput (source: &lt;a class="link" href="https://milvus.io/blog/introduce-milvus-2-6-built-for-scale-designed-to-reduce-costs.md" target="_blank" rel="noopener"
+>Introducing Milvus 2.6&lt;/a>).&lt;/p>
+&lt;h3 id="storage-layer">Storage Layer&lt;/h3>
+&lt;p>The storage layer holds the actual data and consists of three kinds of storage.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Storage&lt;/th>
+&lt;th>Role&lt;/th>
+&lt;th>Implementations&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Meta Storage&lt;/td>
+&lt;td>Metadata snapshots, service registration&lt;/td>
+&lt;td>etcd&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>WAL Storage&lt;/td>
+&lt;td>Durability of writes (write-ahead logging)&lt;/td>
+&lt;td>Woodpecker, Kafka, Pulsar&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Object Storage&lt;/td>
+&lt;td>Segments (log snapshots) and index files&lt;/td>
+&lt;td>MinIO, AWS S3, Azure Blob&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>The reason every worker node can stay stateless is that all state is pushed down into this layer. Even if a node crashes, data can be recovered from the WAL and object storage.&lt;/p>
+&lt;h2 id="the-write-path">The Write Path&lt;/h2>
+&lt;p>Let&amp;rsquo;s look at how an insert request is processed (source: &lt;a class="link" href="https://milvus.io/docs/data_processing.md" target="_blank" rel="noopener"
+>Data Processing in Milvus&lt;/a>).&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/052-milvus-architecture/img-052-002-en.svg"
+loading="lazy"
+alt="The Milvus write path: the proxy splits data by shard, the Streaming Node assigns a TSO and persists the data to the WAL, and data moves from growing segments to sealed segments in object storage"
+>&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>The proxy routes data to shards&lt;/strong>: a collection is divided into multiple &lt;strong>shards&lt;/strong>, and each shard maps to a &lt;strong>vchannel (virtual channel)&lt;/strong>. The proxy splits incoming data into per-shard packages according to the shard routing rules&lt;/li>
+&lt;li>&lt;strong>The Streaming Node assigns a TSO&lt;/strong>: the Streaming Node responsible for each vchannel assigns a timestamp (TSO) to guarantee operation ordering and validates consistency&lt;/li>
+&lt;li>&lt;strong>Write to the WAL&lt;/strong>: data is appended to WAL storage, and &lt;strong>the write is considered successful once it is durable there&lt;/strong>. After a crash, the Streaming Node can replay the WAL to fully recover all pending operations&lt;/li>
+&lt;li>&lt;strong>Applied to a growing segment&lt;/strong>: the Streaming Node asynchronously converts WAL entries into segments. Freshly written data becomes an in-memory &lt;strong>growing segment&lt;/strong> and is already searchable at this point&lt;/li>
+&lt;li>&lt;strong>Flush turns it into a sealed segment&lt;/strong>: when a flush is triggered — for example, once the segment reaches its capacity threshold — the growing segment becomes a &lt;strong>sealed segment&lt;/strong> — immutable and persisted — in object storage&lt;/li>
+&lt;li>&lt;strong>The Data Node builds indexes&lt;/strong>: the Data Node builds an index for each sealed segment independently and stores the result back in object storage&lt;/li>
+&lt;/ol>
+&lt;p>Because vector index building is computationally demanding, it relies on &lt;strong>SIMD acceleration&lt;/strong> with instruction sets such as SSE, AVX2, and AVX512. Scalar fields use structures like Bloom filters and inverted indexes.&lt;/p>
+&lt;h2 id="the-search-path">The Search Path&lt;/h2>
+&lt;p>A search request flows in the opposite direction: it gathers data that is spread across the cluster.&lt;/p>
+&lt;p>&lt;img src="https://bossagyu.com/en/blog/052-milvus-architecture/img-052-003-en.svg"
+loading="lazy"
+alt="The Milvus search path: the proxy broadcasts to the Streaming Nodes of all shards, each Streaming Node searches growing segments and delegates sealed-segment search to Query Nodes, and the proxy merges the per-shard results"
+>&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>The proxy broadcasts to all shards&lt;/strong>: the search request is sent concurrently to every Streaming Node responsible for the related shards&lt;/li>
+&lt;li>&lt;strong>Streaming Nodes search the freshest data&lt;/strong>: each Streaming Node generates a query plan and searches its local growing segments (data written moments ago)&lt;/li>
+&lt;li>&lt;strong>Query Nodes search historical data&lt;/strong>: each Streaming Node also delegates the search over sealed segments (historical data) to remote Query Nodes, which search using segments and indexes loaded in advance from object storage&lt;/li>
+&lt;li>&lt;strong>The proxy merges the results&lt;/strong>: the proxy collects the results from all shards, merges them, and returns the final outcome to the client&lt;/li>
+&lt;/ol>
+&lt;p>This design lets Milvus &lt;strong>return just-written data in search results while still searching massive historical data quickly through indexes&lt;/strong>. When growing segments are flushed into sealed segments, the Coordinator performs a &lt;strong>handoff&lt;/strong>, distributing the sealed segments evenly across the Query Nodes.&lt;/p>
+&lt;h2 id="deployment-modes-standalone-vs-cluster">Deployment Modes: Standalone vs. Cluster&lt;/h2>
+&lt;p>Milvus offers two main deployment modes (source: &lt;a class="link" href="https://milvus.io/docs/main_components.md" target="_blank" rel="noopener"
+>Milvus Main Components&lt;/a>).&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Standalone mode&lt;/strong>: all components run in a single process. It suits small datasets and low workloads, and it can use embedded WAL implementations such as Woodpecker or rocksmq, eliminating third-party middleware dependencies. Note that &lt;strong>you cannot perform an online upgrade from a standalone instance to a cluster&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>Cluster mode&lt;/strong>: each component runs as an independent process and can be scaled out individually on Kubernetes. This mode is for large datasets and high-load production environments&lt;/li>
+&lt;/ul>
+&lt;p>A typical setup is standalone for development and testing, and cluster mode for production.&lt;/p>
+&lt;h2 id="how-the-architecture-evolved-in-milvus-26">How the Architecture Evolved in Milvus 2.6&lt;/h2>
+&lt;p>Finally, here are the major architectural changes introduced in Milvus 2.6 (source: &lt;a class="link" href="https://milvus.io/blog/introduce-milvus-2-6-built-for-scale-designed-to-reduce-costs.md" target="_blank" rel="noopener"
+>Introducing Milvus 2.6&lt;/a>).&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Introduction of the Streaming Node&lt;/strong>: real-time responsibilities that were scattered across multiple components in 2.5 — consuming the message queue, writing incremental segments, serving incremental queries, and WAL-based recovery — are now consolidated into a dedicated Streaming Node&lt;/li>
+&lt;li>&lt;strong>Woodpecker (zero-disk WAL)&lt;/strong>: a cloud-native WAL system built to remove the dependency on external message queues like Kafka and Pulsar. With its &amp;ldquo;zero-disk&amp;rdquo; design, all log data is persisted directly in object storage, with no reliance on local disks (source: &lt;a class="link" href="https://milvus.io/docs/woodpecker_architecture.md" target="_blank" rel="noopener"
+>Woodpecker Architecture&lt;/a>)&lt;/li>
+&lt;li>&lt;strong>Coordinator merge&lt;/strong>: the previously separate coordinators (RootCoord, QueryCoord, DataCoord, and so on) were merged into a single Coordinator, simplifying operations&lt;/li>
+&lt;/ul>
+&lt;p>All of these changes move in the same direction: fewer external dependencies and a simpler, cloud-native architecture that reduces cost and operational burden.&lt;/p>
+&lt;h2 id="summary">Summary&lt;/h2>
+&lt;p>In this article, I walked through the Milvus architecture based on the official documentation.&lt;/p>
+&lt;ul>
+&lt;li>Milvus is a cloud-native design built on &lt;strong>storage/computing disaggregation&lt;/strong>, consisting of four layers: the access layer (Proxy), the control plane (Coordinator), worker nodes, and the storage layer&lt;/li>
+&lt;li>The worker nodes have clearly separated roles: &lt;strong>the Streaming Node handles real-time processing, the Query Node searches historical data, and the Data Node handles offline processing&lt;/strong>&lt;/li>
+&lt;li>Writes are processed in stages — committed once durable in the WAL, then growing segment, then sealed segment via flush — while searches merge results from fresh and historical data at the proxy&lt;/li>
+&lt;li>Milvus 2.6 introduced the Streaming Node and Woodpecker (zero-disk WAL) and merged the coordinators, evolving toward a simpler architecture with fewer external dependencies&lt;/li>
+&lt;/ul>
+&lt;p>Understanding these internal data flows makes it clear why just-written data shows up in search results and why data survives node failures — knowledge that pays off in capacity planning and troubleshooting in production.&lt;/p>
+&lt;h2 id="references">References&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/architecture_overview.md" target="_blank" rel="noopener"
+>Milvus Architecture Overview | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/four_layers.md" target="_blank" rel="noopener"
+>Storage/Computing Disaggregation | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/main_components.md" target="_blank" rel="noopener"
+>Main Components | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/data_processing.md" target="_blank" rel="noopener"
+>Data Processing | Milvus Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/blog/introduce-milvus-2-6-built-for-scale-designed-to-reduce-costs.md" target="_blank" rel="noopener"
+>Introducing Milvus 2.6: Affordable Vector Search at Billion Scale | Milvus Blog&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://milvus.io/docs/woodpecker_architecture.md" target="_blank" rel="noopener"
+>Woodpecker Architecture | Milvus Documentation&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Introduction to Approximate Nearest Neighbor (ANN) Search: How Vector Search Works, Explained for Beginners</title><link>https://bossagyu.com/en/blog/051-ann-basics/</link><pubDate>Tue, 09 Jun 2026 00:00:00 +0900</pubDate><guid>https://bossagyu.com/en/blog/051-ann-basics/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>RAG (Retrieval-Augmented Generation) systems that combine LLMs like ChatGPT with internal documents, &amp;ldquo;recommended for you&amp;rdquo; sections on e-commerce sites, similar-image search — behind all of these runs a technology called &lt;strong>vector search&lt;/strong>. And what makes vector search fast enough for real-world use is the topic of this article: &lt;strong>ANN (Approximate Nearest Neighbor) search&lt;/strong>.&lt;/p>
 &lt;p>In this article, I will explain what ANN is, why &amp;ldquo;approximate&amp;rdquo; is good enough, and walk through the six building blocks of an ANN system — indexes, quantization, distance metrics, search parameters, storage strategy, and pre/post-processing — in a way that beginners can follow.&lt;/p>
 &lt;h2 id="what-is-ann">What Is ANN?&lt;/h2>
