@@ -26,7 +26,7 @@ Milvusは、高性能な類似検索のために設計された **オープン�
 
 ## 4層アーキテクチャの全体像
 
-Milvusのクラスタは、大きく4つの層で構成されます（出典: [Milvus Architecture Overview](https://milvus.io/docs/four_layers.md)）。
+Milvusのクラスタは、大きく4つの層で構成されます（出典: [Storage/Computing Disaggregation](https://milvus.io/docs/four_layers.md)）。
 
 ![Milvusの4層アーキテクチャ：アクセス層（Proxy）、制御プレーン（Coordinator）、ワーカーノード（Streaming/Query/Data Node）、ストレージ層（WAL/Object/Meta Storage）](img-052-001.svg)
 
@@ -50,7 +50,7 @@ Coordinatorは公式ドキュメントで「**Milvusの頭脳（the brain of Mil
 - Query Nodeのトポロジ管理と負荷分散
 - コンパクションやインデックス構築といったオフラインタスクの分配
 
-アクティブなCoordinatorはクラスタに1つで、高可用性のためのマスター・スレーブ構成にも対応しています。
+アクティブなCoordinatorはクラスタに1つで、高可用性のためにマスター・スレーブ構成を有効化することもできます（出典: [Milvusの主要コンポーネント](https://milvus.io/docs/main_components.md)）。
 
 ### ワーカーノード（実行層）
 
@@ -86,7 +86,7 @@ Milvus 2.6では「ストリーム処理はStreaming Node、バッチ処理はQu
 2. **Streaming NodeがTSOを付与**: 各vchannelを担当するStreaming Nodeが、操作の順序を保証するためのタイムスタンプ（TSO）を割り当て、整合性を検証します
 3. **WALへ書き込み**: データはまずWAL Storageに追記され、**永続化が完了した時点で書き込み成功** となります。クラッシュしてもWALをリプレイすれば未反映の操作を完全に復元できます
 4. **Growing Segmentに反映**: Streaming NodeはWALのエントリを非同期にセグメントへ変換します。書き込み直後のデータは **Growing Segment** と呼ばれるメモリ上の増分データとなり、この時点ですでに検索対象になります
-5. **FlushでSealed Segmentへ**: 一定の条件でFlushが実行されると、Growing Segmentは **Sealed Segment**（不変・永続化済み）としてオブジェクトストレージに書き出されます
+5. **FlushでSealed Segmentへ**: セグメントが容量のしきい値に達するなどの条件でFlushが実行されると、Growing Segmentは **Sealed Segment**（不変・永続化済み）としてオブジェクトストレージに書き出されます
 6. **Data Nodeがインデックスを構築**: Sealed Segmentに対して、Data Nodeがセグメント単位でインデックスを構築し、結果をオブジェクトストレージに保存します
 
 ベクトルインデックスの構築は計算負荷が高いため、SSE・AVX2・AVX512といった **SIMD命令によるアクセラレーション** が活用されます。スカラーフィールドにはBloomフィルタや転置インデックスなどが使われます。
@@ -95,7 +95,7 @@ Milvus 2.6では「ストリーム処理はStreaming Node、バッチ処理はQu
 
 検索リクエストは、書き込みとは逆に「散らばったデータをかき集める」流れになります。
 
-![Milvusの検索フロー：Proxyが全シャードにブロードキャストし、Streaming NodeがGrowing Segmentを、Query NodeがSealed Segmentを検索、Proxyが結果をマージして返す](img-052-003.svg)
+![Milvusの検索フロー：Proxyが全シャードのStreaming Nodeにブロードキャストし、Streaming NodeがGrowing Segmentを検索しつつSealed Segmentの検索をQuery Nodeに委譲、Proxyがシャードごとの結果をマージして返す](img-052-003.svg)
 
 1. **Proxyが全シャードにブロードキャスト**: 検索リクエストは、関係するシャードを担当するすべてのStreaming Nodeに並行して配信されます
 2. **Streaming Nodeが最新データを検索**: 各Streaming Nodeはクエリプランを生成し、ローカルのGrowing Segment（書き込まれた直後のデータ）を検索します

@@ -1,6 +1,6 @@
 +++
 title = 'Milvus Architecture Explained: Understanding the Four-Layer Design and Data Flows with Diagrams'
-description = 'A clear, diagram-based walkthrough of the Milvus vector database architecture: the four layers (Proxy, Coordinator, worker nodes, storage), write and search data flows, growing/sealed segments, and the Woodpecker WAL — all based on the official documentation.'
+description = 'A clear, diagram-based guide to the Milvus vector database architecture: its four layers, write and search data flows, segments, and the Woodpecker WAL.'
 date = 2026-06-11T00:00:00+09:00
 draft = false
 categories = ["Engineering"]
@@ -11,7 +11,7 @@ tags = ["Milvus", "Vector Search", "Database", "AI"]
 
 With the rise of RAG (Retrieval-Augmented Generation) and recommendation systems, more and more teams are adopting **Milvus**, one of the most popular vector databases. Getting started with Milvus through its SDK is easy, but once you reach production operations and tuning, understanding how data actually flows inside the system makes a huge difference.
 
-In this article, I explain the Milvus architecture based on the official documentation, with diagrams to make it easy to follow. You can also read it as a follow-up to my previous article, "[Introduction to Approximate Nearest Neighbor Search (ANN)](/en/blog/051-ann-basics/)", showing how those search algorithms operate as a distributed system.
+In this article, I explain the Milvus architecture based on the official documentation, with diagrams to make it easy to follow. You can also read it as a follow-up to my previous article, "[Introduction to Approximate Nearest Neighbor (ANN) Search](/en/blog/051-ann-basics/)", showing how those search algorithms operate as a distributed system.
 
 Note that this article is based on the official documentation for **Milvus 2.6** ([Milvus Architecture Overview](https://milvus.io/docs/architecture_overview.md)). The architecture was significantly reorganized in 2.6, so the component layout differs from earlier versions.
 
@@ -26,7 +26,7 @@ Two design principles define its architecture:
 
 ## The Four-Layer Architecture at a Glance
 
-A Milvus cluster consists of four layers (source: [Milvus Architecture Overview](https://milvus.io/docs/four_layers.md)).
+A Milvus cluster consists of four layers (source: [Storage/Computing Disaggregation](https://milvus.io/docs/four_layers.md)).
 
 ![The four-layer Milvus architecture: access layer (Proxy), control plane (Coordinator), worker nodes (Streaming/Query/Data Node), and storage layer (WAL/Object/Meta Storage)](img-052-001-en.svg)
 
@@ -50,7 +50,7 @@ The Coordinator is described in the official documentation as "**the brain of Mi
 - Managing Query Node topology and load balancing
 - Distributing offline tasks such as compaction and index building
 
-Exactly one Coordinator is active in the cluster, with master-slave options available for high availability.
+Exactly one Coordinator is active in the cluster, and a master-slave mode can be enabled for high availability (source: [Milvus Main Components](https://milvus.io/docs/main_components.md)).
 
 ### Worker Nodes (Execution Layer)
 
@@ -86,7 +86,7 @@ Let's look at how an insert request is processed (source: [Data Processing in Mi
 2. **The Streaming Node assigns a TSO**: the Streaming Node responsible for each vchannel assigns a timestamp (TSO) to guarantee operation ordering and validates consistency
 3. **Write to the WAL**: data is appended to WAL storage, and **the write is considered successful once it is durable there**. After a crash, the Streaming Node can replay the WAL to fully recover all pending operations
 4. **Applied to a growing segment**: the Streaming Node asynchronously converts WAL entries into segments. Freshly written data becomes an in-memory **growing segment** and is already searchable at this point
-5. **Flush turns it into a sealed segment**: when a flush is triggered, the growing segment becomes a **sealed segment** — immutable and persisted — in object storage
+5. **Flush turns it into a sealed segment**: when a flush is triggered — for example, once the segment reaches its capacity threshold — the growing segment becomes a **sealed segment** — immutable and persisted — in object storage
 6. **The Data Node builds indexes**: the Data Node builds an index for each sealed segment independently and stores the result back in object storage
 
 Because vector index building is computationally demanding, it relies on **SIMD acceleration** with instruction sets such as SSE, AVX2, and AVX512. Scalar fields use structures like Bloom filters and inverted indexes.
@@ -95,7 +95,7 @@ Because vector index building is computationally demanding, it relies on **SIMD 
 
 A search request flows in the opposite direction: it gathers data that is spread across the cluster.
 
-![The Milvus search path: the proxy broadcasts to all shards, Streaming Nodes search growing segments while Query Nodes search sealed segments, and the proxy merges the results](img-052-003-en.svg)
+![The Milvus search path: the proxy broadcasts to the Streaming Nodes of all shards, each Streaming Node searches growing segments and delegates sealed-segment search to Query Nodes, and the proxy merges the per-shard results](img-052-003-en.svg)
 
 1. **The proxy broadcasts to all shards**: the search request is sent concurrently to every Streaming Node responsible for the related shards
 2. **Streaming Nodes search the freshest data**: each Streaming Node generates a query plan and searches its local growing segments (data written moments ago)
