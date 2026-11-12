@@ -21,3 +21,12 @@ url = "mailto:Bossagyu@yahoo.co.jp"
 
 [social.params]
 icon = "messages"
+
+[[main]]
+identifier = "volstra"
+name = "Volstra"
+url = "/volstra/"
+weight = 10
+
+[main.params]
+icon = "link"
