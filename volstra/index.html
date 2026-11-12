@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volstra｜回復度から今日鍛える部位がわかる筋トレ記録アプリ</title>
+<meta name="description" content="記録したセットから筋肉 17 部位それぞれの回復度を計算し、今日鍛えるべき部位を提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。">
+<link rel="canonical" href="https://bossagyu.com/volstra/">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#0E1012">
+<!-- iOS の Safari で開いたときにアプリへの導線を出す -->
+<meta name="apple-itunes-app" content="app-id=6822727315">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Volstra">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://bossagyu.com/volstra/">
+<meta property="og:title" content="Volstra｜回復度から今日鍛える部位がわかる筋トレ記録アプリ">
+<meta property="og:description" content="記録したセットから筋肉 17 部位それぞれの回復度を計算し、今日鍛えるべき部位を提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。">
+<meta property="og:image" content="https://bossagyu.com/volstra/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Volstra の「今日」画面。今日鍛えるべき部位として三角筋中部・腹直筋・腹斜筋が並んでいる">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- 構造化データ。⚠️ aggregateRating は入れていない（評価が 0 件のため。無い評価を書くとガイドライン違反） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Volstra",
+  "alternateName": "Volstra - 筋トレ記録と部位提案",
+  "description": "記録したセットから筋肉 17 部位それぞれの回復度を計算し、今日鍛えるべき部位を提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。",
+  "applicationCategory": "HealthApplication",
+  "applicationSubCategory": "筋力トレーニングの記録",
+  "operatingSystem": "iOS 16.4 以上",
+  "url": "https://bossagyu.com/volstra/",
+  "installUrl": "https://apps.apple.com/jp/app/id6822727315",
+  "downloadUrl": "https://apps.apple.com/jp/app/id6822727315",
+  "inLanguage": ["ja", "en"],
+  "image": "https://bossagyu.com/volstra/og.png",
+  "screenshot": [
+    "https://bossagyu.com/volstra/shots/01-today.png",
+    "https://bossagyu.com/volstra/shots/02-muscles.png",
+    "https://bossagyu.com/volstra/shots/03-record.png",
+    "https://bossagyu.com/volstra/shots/04-history.png"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+  "author": { "@type": "Person", "name": "bossagyu" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Volstra — 紹介ページ
+   パレット: アプリのダークモードから実測（ライム #CAFF3C は「記録を始める」ボタン、地 #0E1012、面 #181B1F）
+   アイコンが黒地にライムのため、ストアとアプリに合わせて単一のダークで通す（ライトは用意しない）
+   レイアウト: 1 カラム / 最大 1040px。ヒーローは文章と実機画面の 2 分割、狭まれば縦に積む
+   ライムはアプリと同じ位置にだけ置く（主ボタン・データのバーとピル・現在地）。装飾には使わない */
+:root {
+  color-scheme: dark;
+  --lime:    #CAFF3C;
+  --lime-on: #0E1012;
+  --ground:  #0E1012;
+  --surface: #181B1F;
+  --ink:     #FCFEFF;
+  --muted:   #99A1A8;
+  --rule:    #262B31;
+  --display: "Archivo", system-ui, sans-serif;
+  --body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", "Noto Sans JP", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: .01em;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+a:focus-visible, .cta:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.wrap { width: 100%; max-width: 1040px; margin-inline: auto; padding-inline: 20px; }
+
+/* ---- header ---- */
+.top { border-bottom: 1px solid var(--rule); background: var(--surface); }
+.top .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding-block: 16px; flex-wrap: wrap;
+}
+.mark {
+  font-family: var(--display); font-weight: 700; font-size: 21px;
+  letter-spacing: -.015em; text-decoration: none; line-height: 1;
+}
+.mark span { color: var(--lime); }
+.toplink {
+  font-size: 14px; color: var(--muted); text-decoration: none;
+  border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+}
+.toplink:hover { color: var(--lime); border-color: var(--lime); }
+
+/* ---- hero ---- */
+.hero { background: var(--surface); border-bottom: 1px solid var(--rule); }
+.hero .wrap {
+  display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px;
+  align-items: center; padding-block: 76px 68px;
+}
+h1 {
+  font-size: clamp(30px, 5.2vw, 46px);
+  line-height: 1.38; letter-spacing: -.02em; font-weight: 700;
+  margin: 0 0 22px; text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--lime); }
+.lede { font-size: 17px; color: var(--muted); margin: 0 0 32px; max-width: 34em; }
+.cta {
+  display: inline-block; background: var(--lime); color: var(--lime-on);
+  font-weight: 700; font-size: 17px; text-decoration: none;
+  padding: 15px 30px; border-radius: 10px; line-height: 1.3;
+}
+.cta:hover { filter: brightness(1.08); }
+.terms {
+  margin: 14px 0 0; font-size: 13.5px; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.shot-hero { justify-self: center; width: 100%; max-width: 310px; margin: 0; }
+/* 画面が面（#181B1F）に溶けていたのを 2 段で解く。
+   画面の地はほぼ黒で、面との差が小さく、1px のヘアライン（#262B31）では輪郭が立たなかった。
+   ① 端末のベゼルで囲む  — 輪郭を確実に決める。地の色は変えない
+   ② 自身をぼかした光を後ろに敷く — ライムと白文字の位置がそのまま滲み、周辺だけ明るくなる */
+.shot {
+  position: relative; isolation: isolate;
+  padding: 7px; border-radius: 30px;
+  background: linear-gradient(160deg, #454C55, #232930 42%, #161A1F 70%, #39404A);
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .7);
+}
+.shot::before {
+  content: ""; position: absolute; inset: -3% -5%; z-index: -1;
+  background: var(--src) center / 100% 100% no-repeat;
+  filter: blur(32px) saturate(1.6) brightness(1.45);
+  opacity: .5; pointer-events: none;
+}
+.shot img { border-radius: 23px; }
+
+/* ---- section furniture ---- */
+section { padding-block: 76px; }
+h2 {
+  font-size: clamp(22px, 3.2vw, 29px); line-height: 1.5; letter-spacing: -.015em;
+  font-weight: 700; margin: 0 0 14px; text-wrap: balance;
+}
+.sub { color: var(--muted); margin: 0 0 40px; max-width: 42em; }
+
+/* ---- 根拠パネル ---- */
+.why .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.panel {
+  background: var(--surface); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 24px 22px;
+}
+.panel-note {
+  font-size: 13px; color: var(--muted); margin: 0 0 18px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+}
+.row + .row { margin-top: 22px; }
+.row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.row-name { font-weight: 700; font-size: 16px; }
+.pill {
+  font-family: var(--display); font-size: 12.5px; font-weight: 600;
+  background: color-mix(in srgb, var(--lime) 16%, transparent);
+  color: var(--lime); border-radius: 999px; padding: 3px 11px;
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.bar { height: 7px; border-radius: 999px; background: #2B3139; margin: 11px 0 7px; }
+.bar > i { display: block; height: 100%; border-radius: 999px; background: var(--lime); }
+.count {
+  font-family: var(--display); font-size: 13.5px; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.why ul { margin: 22px 0 0; padding-left: 1.1em; color: var(--muted); }
+.why li + li { margin-top: 8px; }
+.why li b { color: var(--ink); font-weight: 700; }
+
+/* ---- 画面 ---- */
+.screens { background: var(--surface); border-block: 1px solid var(--rule); }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px 34px; }
+.screen { margin: 0; }
+.screen h3 { font-size: 15.5px; margin: 18px 0 5px; font-weight: 700; }
+.screen p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ---- できること ---- */
+.feats { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.feat { padding: 18px 0; border-top: 1px solid var(--rule); }
+.feat h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+.feat p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+
+/* ---- 設計の立場 ---- */
+.stance { background: var(--surface); border-block: 1px solid var(--rule); }
+.stance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.stance-grid div { border-left: 3px solid var(--lime); padding-left: 16px; }
+.stance-grid h3 { margin: 0 0 5px; font-size: 16px; font-weight: 700; }
+.stance-grid p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ---- 注記 ---- */
+.note .wrap { max-width: 740px; }
+.note .inner {
+  border: 1px solid var(--rule); border-radius: 14px;
+  padding: 26px 26px 28px; background: var(--surface);
+}
+.note h2 { font-size: 19px; margin-bottom: 10px; }
+.note p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+/* ---- footer ---- */
+footer { border-top: 1px solid var(--rule); background: var(--surface); }
+footer .wrap { padding-block: 40px 56px; }
+.flinks { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 26px; padding: 0; list-style: none; }
+.flinks a { font-size: 14.5px; text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+.flinks a:hover { color: var(--lime); border-color: var(--lime); }
+.fine { font-size: 13px; color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 44px; padding-block: 52px 48px; }
+  .why .wrap { grid-template-columns: 1fr; gap: 36px; }
+  .grid4 { grid-template-columns: repeat(2, 1fr); }
+  .stance-grid { grid-template-columns: repeat(2, 1fr); }
+  section { padding-block: 56px; }
+}
+@media (max-width: 520px) {
+  .feats { grid-template-columns: 1fr; }
+  .shot-hero { max-width: 260px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Vol<span>stra</span></a>
+    <a class="toplink" href="https://apps.apple.com/jp/app/id6822727315">App Store で見る</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>今日はどこを鍛えるか、<br><em>記録が決める。</em></h1>
+      <p class="lede">
+        Volstra は、記録したセットから筋肉 17 部位それぞれの刺激量と回復度を計算し、
+        今日鍛えるべき部位を提案します。提案の根拠になった数字も、そのまま画面に出します。
+      </p>
+      <a class="cta" href="https://apps.apple.com/jp/app/id6822727315">App Store で入手</a>
+      <p class="terms">無料 ・ iPhone / iOS 16.4 以上</p>
+    </div>
+    <figure class="shot shot-hero" style="--src: url('shots/01-today.png')">
+      <img src="shots/01-today.png" width="620" height="1348"
+           alt="Volstra の「今日」画面。今日鍛えるべき部位として三角筋中部・腹直筋・腹斜筋が並び、それぞれ残りのセット数が表示されている">
+    </figure>
+  </div>
+</div>
+
+<section class="why">
+  <div class="wrap">
+    <div>
+      <h2>「今日は胸」とだけ言われても、<br>納得できない。</h2>
+      <p class="sub">
+        だから Volstra は、提案と一緒にその根拠を並べます。どの部位がどこまで回復したのか、
+        週の目標に対してあと何セット残っているのか。画面でそのまま確かめられます。
+      </p>
+      <ul>
+        <li><b>回復度</b> — 17 部位を 0〜100% で表示し、回復までの残り時間も出します</li>
+        <li><b>セット数</b> — 直近 7 日の実績を、週の目標と並べて表示します</li>
+        <li><b>順位の理由</b> — 回復状況と目標までの残りから、鍛える優先順位を決めています</li>
+      </ul>
+      <p class="sub" style="margin: 22px 0 0;">
+        根拠が見えるので、提案に従うかどうかは自分で決められます。
+      </p>
+    </div>
+
+    <div class="panel" aria-label="「筋肉」画面の表示例">
+      <p class="panel-note">セット数は直近 7 日の実績 / 週の目標</p>
+      <div class="row">
+        <div class="row-head">
+          <span class="row-name">大胸筋</span>
+          <span class="pill">回復中 57%　あと 10h</span>
+        </div>
+        <div class="bar"><i style="width: 43%"></i></div>
+        <div class="count">6 / 14 セット</div>
+      </div>
+      <div class="row">
+        <div class="row-head">
+          <span class="row-name">広背筋</span>
+        </div>
+        <div class="bar"><i style="width: 38%"></i></div>
+        <div class="count">6 / 16 セット</div>
+      </div>
+      <div class="row">
+        <div class="row-head">
+          <span class="row-name">三角筋前部</span>
+          <span class="pill">回復中 52%　あと 13h</span>
+        </div>
+        <div class="bar"><i style="width: 48%"></i></div>
+        <div class="count">3.8 / 8 セット</div>
+      </div>
+      <div class="row">
+        <div class="row-head">
+          <span class="row-name">三角筋中部</span>
+        </div>
+        <div class="bar"><i style="width: 0%"></i></div>
+        <div class="count">0 / 16 セット</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screens">
+  <div class="wrap">
+    <h2>画面</h2>
+    <p class="sub">実際のアプリの画面です。</p>
+    <div class="grid4">
+      <figure class="screen">
+        <div class="shot" style="--src: url('shots/02-muscles.png')"><img src="shots/02-muscles.png" width="620" height="1348" alt="「筋肉」画面。胸・背中・肩ごとに部位が並び、回復度とセット数が表示されている"></div>
+        <h3>筋肉</h3>
+        <p>17 部位の回復度とセット数。胸・背中・肩のまとまりで見られます。</p>
+      </figure>
+      <figure class="screen">
+        <div class="shot" style="--src: url('shots/03-record.png')"><img src="shots/03-record.png" width="620" height="1348" alt="「記録」画面。休憩タイマーが残り 1 分 22 秒を表示し、バーベルベンチプレス 60kg × 8 が記録されている"></div>
+        <h3>記録</h3>
+        <p>重量とレップを入れるだけ。休憩タイマーは自動で始まり、プレートの枚数も出ます。</p>
+      </figure>
+      <figure class="screen">
+        <div class="shot" style="--src: url('shots/05-templates.png')"><img src="shots/05-templates.png" width="620" height="1348" alt="「記録」画面でテンプレートの一覧を開いた状態。プッシュ デイ、プル デイ が並んでいる"></div>
+        <h3>テンプレート</h3>
+        <p>「プッシュ デイ」のように保存したメニューを、次回まとめて呼び出せます。</p>
+      </figure>
+      <figure class="screen">
+        <div class="shot" style="--src: url('shots/04-history.png')"><img src="shots/04-history.png" width="620" height="1348" alt="「履歴」画面。カレンダーで、トレーニングした日が塗られている"></div>
+        <h3>履歴</h3>
+        <p>トレーニングした日がカレンダーで一覧できます。過去の日にあとから足すこともできます。</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>できること</h2>
+    <p class="sub">標準で 70 種目を収録しています。</p>
+    <div class="feats">
+      <div class="feat"><h3>今日鍛える部位の提案</h3><p>回復状況と、週の目標までの残りから順位を付けます。</p></div>
+      <div class="feat"><h3>部位ごとの回復度</h3><p>17 部位を 0〜100% で表示します。</p></div>
+      <div class="feat"><h3>おすすめ種目</h3><p>標準 70 種目から、狙う部位に効くものを出します。</p></div>
+      <div class="feat"><h3>セットの記録</h3><p>ウォームアップのセットは自動で判別します。</p></div>
+      <div class="feat"><h3>休憩タイマー</h3><p>セットを記録すると自動で始まります。</p></div>
+      <div class="feat"><h3>プレート計算</h3><p>目標重量に対して、片側に何をつけるかを表示します。</p></div>
+      <div class="feat"><h3>推定 1RM の推移</h3><p>種目ごとにグラフで追えます。</p></div>
+      <div class="feat"><h3>カスタム種目</h3><p>似ている種目からコピーして追加できます。</p></div>
+      <div class="feat"><h3>履歴カレンダー</h3><p>過去の日付にあとから記録を足せます。</p></div>
+      <div class="feat"><h3>バックアップ</h3><p>JSON で書き出し・読み込み。自動バックアップつき。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stance">
+  <div class="wrap">
+    <h2>設計の立場</h2>
+    <p class="sub">準備なしに使い始められること、記録をいつでも取り出せることを前提に作っています。</p>
+    <div class="stance-grid">
+      <div>
+        <h3>アカウント不要</h3>
+        <p>登録もログインもありません。入れたその場で使い始められます。</p>
+      </div>
+      <div>
+        <h3>オフラインで動作</h3>
+        <p>通信が無くても、記録も提案もそのまま動きます。電波の届かない地下のジムでも同じです。</p>
+      </div>
+      <div>
+        <h3>記録を持ち出せる</h3>
+        <p>JSON でまるごと書き出し・読み込みができます。自動バックアップも取っています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="note">
+  <div class="wrap">
+    <div class="inner">
+      <h2>回復度について</h2>
+      <p>
+        回復度は、記録された刺激量と経過時間から計算した目安です。体調・睡眠・栄養などは考慮していません。
+        実際にトレーニングを行うかどうかは、ご自身の判断でお願いします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <ul class="flinks">
+      <li><a href="https://apps.apple.com/jp/app/id6822727315">App Store</a></li>
+      <li><a href="https://bossagyu.github.io/volstra-legal/privacy-policy.html">プライバシーポリシー</a></li>
+      <li><a href="https://bossagyu.github.io/volstra-legal/support.html">サポート</a></li>
+    </ul>
+    <p class="fine">
+      Volstra 1.0 ・ iPhone / iOS 16.4 以上 ・ 日本語・英語対応 ・ 無料<br>
+      © 2026 Kohei Yamamoto
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
