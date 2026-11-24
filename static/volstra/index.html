@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Volstra｜回復度から今日鍛える部位がわかる筋トレ記録アプリ</title>
-<meta name="description" content="記録したセットから筋肉 17 部位それぞれの回復度を計算し、今日鍛えるべき部位を提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。">
+<meta name="description" content="記録したセットから筋肉 17 部位それぞれの回復を計算し、今日鍛える部位と、種目・セット数のメニューを提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。">
 <link rel="canonical" href="https://bossagyu.com/volstra/">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="favicon.png">
@@ -17,11 +17,11 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:url" content="https://bossagyu.com/volstra/">
 <meta property="og:title" content="Volstra｜回復度から今日鍛える部位がわかる筋トレ記録アプリ">
-<meta property="og:description" content="記録したセットから筋肉 17 部位それぞれの回復度を計算し、今日鍛えるべき部位を提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。">
+<meta property="og:description" content="記録したセットから筋肉 17 部位それぞれの回復を計算し、今日鍛える部位と、種目・セット数のメニューを提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。">
 <meta property="og:image" content="https://bossagyu.com/volstra/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Volstra の「今日」画面。今日鍛えるべき部位として三角筋中部・腹直筋・腹斜筋が並んでいる">
+<meta property="og:image:alt" content="Volstra のホーム画面。体の図で部位ごとの回復が色分けされ、今日鍛えるべき部位として三角筋中部・腹直筋・腹斜筋が並んでいる">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- 構造化データ。⚠️ aggregateRating は入れていない（評価が 0 件のため。無い評価を書くとガイドライン違反） -->
@@ -31,7 +31,7 @@
   "@type": "SoftwareApplication",
   "name": "Volstra",
   "alternateName": "Volstra - 筋トレ記録と部位提案",
-  "description": "記録したセットから筋肉 17 部位それぞれの回復度を計算し、今日鍛えるべき部位を提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。",
+  "description": "記録したセットから筋肉 17 部位それぞれの回復を計算し、今日鍛える部位と、種目・セット数のメニューを提案する iPhone 用の筋トレ記録アプリ。提案の根拠になった数字も、そのまま画面に表示します。",
   "applicationCategory": "HealthApplication",
   "applicationSubCategory": "筋力トレーニングの記録",
   "operatingSystem": "iOS 16.4 以上",
@@ -41,10 +41,11 @@
   "inLanguage": ["ja", "en"],
   "image": "https://bossagyu.com/volstra/og.png",
   "screenshot": [
-    "https://bossagyu.com/volstra/shots/01-today.png",
-    "https://bossagyu.com/volstra/shots/02-muscles.png",
-    "https://bossagyu.com/volstra/shots/03-record.png",
-    "https://bossagyu.com/volstra/shots/04-history.png"
+    "https://bossagyu.com/volstra/shots/home.png",
+    "https://bossagyu.com/volstra/shots/menu.png",
+    "https://bossagyu.com/volstra/shots/muscle-status.png",
+    "https://bossagyu.com/volstra/shots/record.png",
+    "https://bossagyu.com/volstra/shots/progress.png"
   ],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
   "author": { "@type": "Person", "name": "bossagyu" }
@@ -58,7 +59,8 @@
    パレット: アプリのダークモードから実測（ライム #CAFF3C は「記録を始める」ボタン、地 #0E1012、面 #181B1F）
    アイコンが黒地にライムのため、ストアとアプリに合わせて単一のダークで通す（ライトは用意しない）
    レイアウト: 1 カラム / 最大 1040px。ヒーローは文章と実機画面の 2 分割、狭まれば縦に積む
-   ライムはアプリと同じ位置にだけ置く（主ボタン・データのバーとピル・現在地）。装飾には使わない */
+   ライムはアプリと同じ位置にだけ置く（主ボタン・データのバーとピル・現在地）。装飾には使わない
+   内容は 1.1.0（2026-11）に合わせてある。文はストアの説明文と揃える */
 :root {
   color-scheme: dark;
   --lime:    #CAFF3C;
@@ -170,6 +172,10 @@ h2 {
   padding-bottom: 14px; border-bottom: 1px solid var(--rule);
 }
 .row + .row { margin-top: 22px; }
+.panel-foot {
+  font-size: 13px; color: var(--muted); margin: 20px 0 0;
+  padding-top: 14px; border-top: 1px solid var(--rule); line-height: 1.7;
+}
 .row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .row-name { font-weight: 700; font-size: 16px; }
 .pill {
@@ -178,6 +184,8 @@ h2 {
   color: var(--lime); border-radius: 999px; padding: 3px 11px;
   white-space: nowrap; font-variant-numeric: tabular-nums;
 }
+/* 「回復中」はアプリと同じ橙（#FFB22E）。ライムは「鍛えられる」側の色 */
+.pill.rec { background: color-mix(in srgb, #FFB22E 16%, transparent); color: #FFB22E; }
 .bar { height: 7px; border-radius: 999px; background: #2B3139; margin: 11px 0 7px; }
 .bar > i { display: block; height: 100%; border-radius: 999px; background: var(--lime); }
 .count {
@@ -255,15 +263,16 @@ footer .wrap { padding-block: 40px 56px; }
     <div>
       <h1>今日はどこを鍛えるか、<br><em>記録が決める。</em></h1>
       <p class="lede">
-        Volstra は、記録したセットから筋肉 17 部位それぞれの刺激量と回復度を計算し、
-        今日鍛えるべき部位を提案します。提案の根拠になった数字も、そのまま画面に出します。
+        Volstra は、記録したセットを筋肉 17 部位ごとに数えて、どこまで回復したかを推定します。
+        そのうえで今日鍛える部位と、そのための種目・セット数を提案します。
+        提案の根拠になった数字も、そのまま画面に出します。
       </p>
       <a class="cta" href="https://apps.apple.com/jp/app/id6822727315">App Store で入手</a>
       <p class="terms">無料 ・ iPhone / iOS 16.4 以上</p>
     </div>
-    <figure class="shot shot-hero" style="--src: url('shots/01-today.png')">
-      <img src="shots/01-today.png" width="620" height="1348"
-           alt="Volstra の「今日」画面。今日鍛えるべき部位として三角筋中部・腹直筋・腹斜筋が並び、それぞれ残りのセット数が表示されている">
+    <figure class="shot shot-hero" style="--src: url('shots/home.png')">
+      <img src="shots/home.png" width="620" height="1348"
+           alt="Volstra のホーム画面。体の図で、鍛えられる部位と回復中の部位が色分けされている。その下に、今日鍛えるべき部位として三角筋中部・腹直筋・腹斜筋が並び、それぞれ残りのセット数が表示されている">
     </figure>
   </div>
 </div>
@@ -274,42 +283,28 @@ footer .wrap { padding-block: 40px 56px; }
       <h2>「今日は胸」とだけ言われても、<br>納得できない。</h2>
       <p class="sub">
         だから Volstra は、提案と一緒にその根拠を並べます。どの部位がどこまで回復したのか、
-        週の目標に対してあと何セット残っているのか。画面でそのまま確かめられます。
+        週の目標に対してあと何セット残っているのか。体の図と数字で、そのまま確かめられます。
       </p>
       <ul>
-        <li><b>回復度</b> — 17 部位を 0〜100% で表示し、回復までの残り時間も出します</li>
+        <li><b>体の図</b> — 回復中の部位と、直近 7 日に記録のない部位が、ひと目で分かります</li>
+        <li><b>回復</b> — 部位ごとに、どこまで回復したかと、回復までの残り時間を出します</li>
         <li><b>セット数</b> — 直近 7 日の実績を、週の目標と並べて表示します</li>
-        <li><b>順位の理由</b> — 回復状況と目標までの残りから、鍛える優先順位を決めています</li>
+        <li><b>メニューの理由</b> — 提案する種目ごとに、なぜその種目・そのセット数なのかを添えます</li>
       </ul>
       <p class="sub" style="margin: 22px 0 0;">
         根拠が見えるので、提案に従うかどうかは自分で決められます。
       </p>
     </div>
 
-    <div class="panel" aria-label="「筋肉」画面の表示例">
+    <div class="panel" aria-label="「部位の状態」画面の表示例">
       <p class="panel-note">セット数は直近 7 日の実績 / 週の目標</p>
       <div class="row">
         <div class="row-head">
           <span class="row-name">大胸筋</span>
-          <span class="pill">回復中 57%　あと 10h</span>
+          <span class="pill rec">回復中 57%　あと 10h</span>
         </div>
         <div class="bar"><i style="width: 43%"></i></div>
         <div class="count">6 / 14 セット</div>
-      </div>
-      <div class="row">
-        <div class="row-head">
-          <span class="row-name">広背筋</span>
-        </div>
-        <div class="bar"><i style="width: 38%"></i></div>
-        <div class="count">6 / 16 セット</div>
-      </div>
-      <div class="row">
-        <div class="row-head">
-          <span class="row-name">三角筋前部</span>
-          <span class="pill">回復中 52%　あと 13h</span>
-        </div>
-        <div class="bar"><i style="width: 48%"></i></div>
-        <div class="count">3.8 / 8 セット</div>
       </div>
       <div class="row">
         <div class="row-head">
@@ -318,6 +313,21 @@ footer .wrap { padding-block: 40px 56px; }
         <div class="bar"><i style="width: 0%"></i></div>
         <div class="count">0 / 16 セット</div>
       </div>
+      <div class="row">
+        <div class="row-head">
+          <span class="row-name">腹直筋</span>
+        </div>
+        <div class="bar"><i style="width: 0%"></i></div>
+        <div class="count">0 / 12 セット</div>
+      </div>
+      <div class="row">
+        <div class="row-head">
+          <span class="row-name">腹斜筋</span>
+        </div>
+        <div class="bar"><i style="width: 0%"></i></div>
+        <div class="count">0 / 8 セット</div>
+      </div>
+      <p class="panel-foot">大胸筋は回復中なので後回し。今週まだ手を付けていない 3 部位が、今日の提案になります。</p>
     </div>
   </div>
 </section>
@@ -328,24 +338,24 @@ footer .wrap { padding-block: 40px 56px; }
     <p class="sub">実際のアプリの画面です。</p>
     <div class="grid4">
       <figure class="screen">
-        <div class="shot" style="--src: url('shots/02-muscles.png')"><img src="shots/02-muscles.png" width="620" height="1348" alt="「筋肉」画面。胸・背中・肩ごとに部位が並び、回復度とセット数が表示されている"></div>
-        <h3>筋肉</h3>
-        <p>17 部位の回復度とセット数。胸・背中・肩のまとまりで見られます。</p>
+        <div class="shot" style="--src: url('shots/menu.png')"><img src="shots/menu.png" width="620" height="1348" loading="lazy" alt="ホーム画面の「今日のメニュー」。バイシクルクランチ 4 セット、ケーブル サイドレイズ 4 セットなど 4 種目が、種目ごとの理由と一緒に並んでいる"></div>
+        <h3>今日のメニュー</h3>
+        <p>鍛える部位に合わせて、種目とセット数を理由つきで提案。そのまま記録を始められます。</p>
       </figure>
       <figure class="screen">
-        <div class="shot" style="--src: url('shots/03-record.png')"><img src="shots/03-record.png" width="620" height="1348" alt="「記録」画面。休憩タイマーが残り 1 分 22 秒を表示し、バーベルベンチプレス 60kg × 8 が記録されている"></div>
+        <div class="shot" style="--src: url('shots/muscle-status.png')"><img src="shots/muscle-status.png" width="620" height="1348" loading="lazy" alt="「部位の状態」画面。体の図の前面と背面で、回復中の部位が色分けされている。下に大胸筋の回復 57%・あと 10 時間と、6 / 14 セットが表示されている"></div>
+        <h3>部位の状態</h3>
+        <p>17 部位の回復とセット数。明日・2 日後・3 日後の目安にも切り替えられます。</p>
+      </figure>
+      <figure class="screen">
+        <div class="shot" style="--src: url('shots/record.png')"><img src="shots/record.png" width="620" height="1348" loading="lazy" alt="「記録」画面。休憩タイマーが残り 1 分 22 秒を表示し、バーベル ベンチプレスの前回の記録 65kg × 8 を見ながら、67.5kg × 8 を記録して「前回超え」の印が付いている"></div>
         <h3>記録</h3>
-        <p>重量とレップを入れるだけ。休憩タイマーは自動で始まり、プレートの枚数も出ます。</p>
+        <p>前回のセットを見ながら入力。前回を超えると印が付き、休憩タイマーは自動で始まります。</p>
       </figure>
       <figure class="screen">
-        <div class="shot" style="--src: url('shots/05-templates.png')"><img src="shots/05-templates.png" width="620" height="1348" alt="「記録」画面でテンプレートの一覧を開いた状態。プッシュ デイ、プル デイ が並んでいる"></div>
-        <h3>テンプレート</h3>
-        <p>「プッシュ デイ」のように保存したメニューを、次回まとめて呼び出せます。</p>
-      </figure>
-      <figure class="screen">
-        <div class="shot" style="--src: url('shots/04-history.png')"><img src="shots/04-history.png" width="620" height="1348" alt="「履歴」画面。カレンダーで、トレーニングした日が塗られている"></div>
-        <h3>履歴</h3>
-        <p>トレーニングした日がカレンダーで一覧できます。過去の日にあとから足すこともできます。</p>
+        <div class="shot" style="--src: url('shots/progress.png')"><img src="shots/progress.png" width="620" height="1348" loading="lazy" alt="「種目の推移」画面。バーベル ベンチプレスの最大重量が、3 か月で 55kg から 65kg に伸びたグラフ"></div>
+        <h3>種目の推移</h3>
+        <p>最大重量・最多回数・推定 1RM を、種目ごとにグラフで追えます。</p>
       </figure>
     </div>
   </div>
@@ -354,17 +364,25 @@ footer .wrap { padding-block: 40px 56px; }
 <section>
   <div class="wrap">
     <h2>できること</h2>
-    <p class="sub">標準で 70 種目を収録しています。</p>
+    <p class="sub">標準で 106 種目を収録しています。</p>
     <div class="feats">
       <div class="feat"><h3>今日鍛える部位の提案</h3><p>回復状況と、週の目標までの残りから順位を付けます。</p></div>
-      <div class="feat"><h3>部位ごとの回復度</h3><p>17 部位を 0〜100% で表示します。</p></div>
-      <div class="feat"><h3>おすすめ種目</h3><p>標準 70 種目から、狙う部位に効くものを出します。</p></div>
-      <div class="feat"><h3>セットの記録</h3><p>ウォームアップのセットは自動で判別します。</p></div>
-      <div class="feat"><h3>休憩タイマー</h3><p>セットを記録すると自動で始まります。</p></div>
+      <div class="feat"><h3>今日のメニュー</h3><p>種目とセット数を、理由を添えて提案します。そのまま記録を始められます。</p></div>
+      <div class="feat"><h3>部位の状態</h3><p>17 部位の回復とセット数。明日・2 日後・3 日後の目安も見られます。</p></div>
+      <div class="feat"><h3>セットの記録</h3><p>前回のセットを見ながら入力できます。ウォームアップのセットは自動で判別します。</p></div>
+      <div class="feat"><h3>種目のガイド</h3><p>種目の絵と、やり方・ポイントのガイド（一部の種目を除く）。</p></div>
+      <div class="feat"><h3>種目ごとのメモ</h3><p>マシンのシートの位置などを残せます。</p></div>
+      <div class="feat"><h3>種目ごとの推移</h3><p>最大重量・最多回数・推定 1RM のグラフ。</p></div>
+      <div class="feat"><h3>テンプレート</h3><p>その日のメニューに名前を付けて保存し、次回まとめて呼び出せます。</p></div>
+      <div class="feat"><h3>休憩タイマー</h3><p>セットを記録すると自動で始まります。長さや通知は設定で変えられます。</p></div>
       <div class="feat"><h3>プレート計算</h3><p>目標重量に対して、片側に何をつけるかを表示します。</p></div>
-      <div class="feat"><h3>推定 1RM の推移</h3><p>種目ごとにグラフで追えます。</p></div>
+      <div class="feat"><h3>重さの単位</h3><p>kg と lb を切り替えられます。</p></div>
+      <div class="feat"><h3>自宅の器具</h3><p>自宅で鍛える日は、使える器具に合わせたメニューになります。</p></div>
+      <div class="feat"><h3>通知</h3><p>今日のメニューや、鍛えてよくなった部位を、選んだ時刻にお知らせします（初めはオフ）。</p></div>
+      <div class="feat"><h3>セットの数え方</h3><p>どのセットも 1 セットとして数えます。設定で、セットごとのきつさ（余裕・やや余裕・きつい）も記録できます。</p></div>
       <div class="feat"><h3>カスタム種目</h3><p>似ている種目からコピーして追加できます。</p></div>
-      <div class="feat"><h3>履歴カレンダー</h3><p>過去の日付にあとから記録を足せます。</p></div>
+      <div class="feat"><h3>履歴</h3><p>カレンダーと、直近 7 日・直近 4 週の集計。過去の日付への追加や、終えたワークアウトの編集もできます。</p></div>
+      <div class="feat"><h3>ワークアウトのまとめ</h3><p>鍛えた部位の図と種目の一覧。画像で共有できます。</p></div>
       <div class="feat"><h3>バックアップ</h3><p>JSON で書き出し・読み込み。自動バックアップつき。</p></div>
     </div>
   </div>
@@ -396,7 +414,7 @@ footer .wrap { padding-block: 40px 56px; }
     <div class="inner">
       <h2>回復度について</h2>
       <p>
-        回復度は、記録された刺激量と経過時間から計算した目安です。体調・睡眠・栄養などは考慮していません。
+        回復度は、記録されたセットと経過時間から計算した目安です。体調・睡眠・栄養などは考慮していません。
         実際にトレーニングを行うかどうかは、ご自身の判断でお願いします。
       </p>
     </div>
@@ -411,7 +429,7 @@ footer .wrap { padding-block: 40px 56px; }
       <li><a href="https://bossagyu.github.io/volstra-legal/support.html">サポート</a></li>
     </ul>
     <p class="fine">
-      Volstra 1.0 ・ iPhone / iOS 16.4 以上 ・ 日本語・英語対応 ・ 無料<br>
+      Volstra 1.1 ・ iPhone / iOS 16.4 以上 ・ 日本語・英語対応 ・ 無料<br>
       © 2026 Kohei Yamamoto
     </p>
   </div>
